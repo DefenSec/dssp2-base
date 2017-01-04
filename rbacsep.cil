@@ -1,0 +1,4184 @@
+; -*- mode: CIL; fill-column: 75; indent-tabs-mode: nil; tab-width: 4 -*-
+
+; Role-based access control separation security model
+
+;
+; RBACsep constraints
+;
+
+;
+; RBACsep alg_socket constraints
+;
+
+(constrain
+    (alg_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (alg_socket
+        (
+            name_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep appletalk_socket constraints
+;
+
+(constrain
+    (appletalk_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (appletalk_socket
+        (
+            name_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep atmpvc_socket constraints
+;
+
+(constrain
+    (atmpvc_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (atmpvc_socket
+        (
+            name_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep atmsvc_socket constraints
+;
+
+(constrain
+    (atmsvc_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (atmsvc_socket
+        (
+            name_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep ax25_socket constraints
+;
+
+(constrain
+    (ax25_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (ax25_socket
+        (
+            name_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep blk_file constraints
+;
+
+(constrain
+    (blk_file
+        (
+            append
+            audit_access
+            execmod
+            execute
+            getattr
+            ioctl
+            lock
+            link
+            mounton
+            open
+            quotaon
+            read
+            rename
+            setattr
+            unlink
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep bluetooth_socket constraints
+;
+
+(constrain
+    (bluetooth_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (bluetooth_socket
+        (
+            name_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep bridge_socket constraints
+;
+
+(constrain
+    (bridge_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (bridge_socket
+        (
+            name_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep caif_socket constraints
+;
+
+(constrain
+    (caif_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (caif_socket
+        (
+            name_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep can_socket constraints
+;
+
+(constrain
+    (can_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (can_socket
+        (
+            name_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep chr_file constraints
+;
+
+(constrain
+    (chr_file
+        (
+            append
+            audit_access
+            execmod
+            execute
+            getattr
+            ioctl
+            lock
+            link
+            mounton
+            open
+            quotaon
+            read
+            rename
+            setattr
+            unlink
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep dccp_socket constraints
+;
+
+(constrain
+    (dccp_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (dccp_socket
+        (
+            name_bind
+            name_connect
+            node_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep decnet_socket constraints
+;
+
+(constrain
+    (decnet_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (decnet_socket
+        (
+            name_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep dir constraints
+;
+
+(constrain
+    (dir
+        (
+            add_name
+            append
+            audit_access
+            execmod
+            execute
+            link
+            mounton
+            quotaon
+            remove_name
+            rename
+            reparent
+            rmdir
+            setattr
+            unlink
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+(constrain
+    (dir
+        (
+            getattr
+            ioctl
+            lock
+            open
+            read
+            search
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (or
+                        (eq r1 r2)
+                        (eq r1 rbacsep_exemption_role_attribute)
+                    )
+                    (eq t1 rbacsep_exemption_subj_type_attribute)
+                )
+                (eq t2 rbacsep_exemption_obj_type_attribute)
+            )
+            (and
+                (eq r2 rbacsep_exemption_role_attribute)
+                (neq t2 subj.subj_type_attribute)
+            )
+        )
+        (and
+            (eq t1 rbacsep_read_state_source_subj_type_attribute)
+            (eq t2 rbacsep_read_state_target_subj_type_attribute)
+        )
+    )
+)
+
+;
+; RBACsep fd constraints
+;
+
+(constrain
+    (fd
+        (
+            use
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBACsep fifo_file constraints
+;
+
+(constrain
+    (fifo_file
+        (
+            audit_access
+            execmod
+            execute
+            link
+            mounton
+            quotaon
+            rename
+            setattr
+            unlink
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+(constrain
+    (fifo_file
+        (
+            append
+            getattr
+            ioctl
+            lock
+            open
+            read
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (or
+                        (eq r1 r2)
+                        (eq r1 rbacsep_exemption_role_attribute)
+                    )
+                    (eq r2 rbacsep_exemption_role_attribute)
+                )
+                (eq t1 rbacsep_exemption_subj_type_attribute)
+            )
+            (eq t2 rbacsep_exemption_obj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBACsep file constraints
+;
+
+(constrain
+    (file
+        (
+            append
+            audit_access
+            execmod
+            execute
+            link
+            mounton
+            quotaon
+            rename
+            setattr
+            unlink
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+(constrain
+    (file
+        (
+            getattr
+            ioctl
+            lock
+            open
+            read
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (or
+                        (eq r1 r2)
+                        (eq r1 rbacsep_exemption_role_attribute)
+                    )
+                    (eq t1 rbacsep_exemption_subj_type_attribute)
+                )
+                (eq t2 rbacsep_exemption_obj_type_attribute)
+            )
+            (and
+                (eq r2 rbacsep_exemption_role_attribute)
+                (neq t2 subj.subj_type_attribute)
+            )
+        )
+        (and
+            (eq t1 rbacsep_read_state_source_subj_type_attribute)
+            (eq t2 rbacsep_read_state_target_subj_type_attribute)
+        )
+    )
+)
+
+;
+; RBACsep ib_socket constraints
+;
+
+(constrain
+    (ib_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (ib_socket
+        (
+            name_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep icmp_socket constraints
+;
+
+(constrain
+    (icmp_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (icmp_socket
+        (
+            name_bind
+            node_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep ieee802154_socket constraints
+;
+
+(constrain
+    (ieee802154_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (ieee802154_socket
+        (
+            name_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep ipc constraints
+;
+
+(constrain
+    (ipc
+        (
+            create
+            destroy
+            setattr
+            unix_write
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBACsep ipx_socket constraints
+;
+
+(constrain
+    (ipx_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (ipx_socket
+        (
+            name_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep irda_socket constraints
+;
+
+(constrain
+    (irda_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (irda_socket
+        (
+            name_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep isdn_socket constraints
+;
+
+(constrain
+    (isdn_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (isdn_socket
+        (
+            name_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep iucv_socket constraints
+;
+
+(constrain
+    (iucv_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (iucv_socket
+        (
+            name_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep kcm_socket constraints
+;
+
+(constrain
+    (kcm_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (kcm_socket
+        (
+            name_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep key constraints
+;
+
+(constrain
+    (key
+        (
+            create
+            link
+            read
+            search
+            setattr
+            view
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBACsep lnk_file constraints
+;
+
+(constrain
+    (lnk_file
+        (
+            append
+            audit_access
+            execmod
+            execute
+            link
+            mounton
+            quotaon
+            rename
+            setattr
+            unlink
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+(constrain
+    (lnk_file
+        (
+            getattr
+            ioctl
+            lock
+            open
+            read
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (or
+                        (eq r1 r2)
+                        (eq r1 rbacsep_exemption_role_attribute)
+                    )
+                    (eq t1 rbacsep_exemption_subj_type_attribute)
+                )
+                (eq t2 rbacsep_exemption_obj_type_attribute)
+            )
+            (and
+                (eq r2 rbacsep_exemption_role_attribute)
+                (neq t2 subj.subj_type_attribute)
+            )
+        )
+        (and
+            (eq t1 rbacsep_read_state_source_subj_type_attribute)
+            (eq t2 rbacsep_read_state_target_subj_type_attribute)
+        )
+    )
+)
+
+;
+; RBACsep llc_socket constraints
+;
+
+(constrain
+    (llc_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (llc_socket
+        (
+            name_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep msgq constraints
+;
+
+
+(constrain
+    (msgq
+        (
+            create
+            destroy
+            setattr
+            unix_write
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBACsep mpls_socket constraints
+;
+
+(constrain
+    (mpls_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (mpls_socket
+        (
+            name_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep netif constraints
+;
+
+(constrain
+    (netif
+        (
+            egress
+            ingress
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep netlink_audit_socket constraints
+;
+
+(constrain
+    (netlink_audit_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            nlmsg_read
+            nlmsg_readpriv
+            nlmsg_relay
+            nlmsg_tty_audit
+            nlmsg_write
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (netlink_audit_socket
+        (
+            name_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep netlink_connector_socket constraints
+;
+
+(constrain
+    (netlink_connector_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (netlink_connector_socket
+        (
+            name_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep netlink_crypto_socket constraints
+;
+
+(constrain
+    (netlink_crypto_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (netlink_crypto_socket
+        (
+            name_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep netlink_dnrt_socket constraints
+;
+
+(constrain
+    (netlink_dnrt_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (netlink_dnrt_socket
+        (
+            name_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep netlink_fib_lookup_socket constraints
+;
+
+(constrain
+    (netlink_fib_lookup_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (netlink_fib_lookup_socket
+        (
+            name_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep netlink_generic_socket constraints
+;
+
+(constrain
+    (netlink_generic_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (netlink_generic_socket
+        (
+            name_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep netlink_iscsi_socket constraints
+;
+
+(constrain
+    (netlink_iscsi_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (netlink_iscsi_socket
+        (
+            name_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep netlink_kobject_uevent_socket constraints
+;
+
+(constrain
+    (netlink_kobject_uevent_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (netlink_kobject_uevent_socket
+        (
+            name_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep netlink_netfilter_socket constraints
+;
+
+(constrain
+    (netlink_netfilter_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (netlink_netfilter_socket
+        (
+            name_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep netlink_nflog_socket constraints
+;
+
+(constrain
+    (netlink_nflog_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (netlink_nflog_socket
+        (
+            name_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep netlink_rdma_socket constraints
+;
+
+(constrain
+    (netlink_rdma_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (netlink_rdma_socket
+        (
+            name_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep netlink_route_socket constraints
+;
+
+(constrain
+    (netlink_route_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            nlmsg_read
+            nlmsg_write
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (netlink_route_socket
+        (
+            name_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep netlink_scsitransport_socket constraints
+;
+
+(constrain
+    (netlink_scsitransport_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (netlink_scsitransport_socket
+        (
+            name_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep netlink_selinux_socket constraints
+;
+
+(constrain
+    (netlink_selinux_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (netlink_selinux_socket
+        (
+            name_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep netlink_tcpdiag_socket constraints
+;
+
+(constrain
+    (netlink_tcpdiag_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            nlmsg_read
+            nlmsg_write
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (netlink_tcpdiag_socket
+        (
+            name_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep netlink_xfrm_socket constaints
+;
+
+(constrain
+    (netlink_xfrm_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            nlmsg_read
+            nlmsg_write
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (netlink_xfrm_socket
+        (
+            name_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep netrom_socket constraints
+;
+
+(constrain
+    (netrom_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (netrom_socket
+        (
+            name_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep nfc_socket constaints
+;
+
+(constrain
+    (nfc_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (nfc_socket
+        (
+            name_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep node constraints
+;
+
+(constrain
+    (node
+        (
+            recvfrom
+            sendto
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep packet constraints
+;
+
+(constrain
+    (packet
+        (
+            recv
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBACsep packet socket constraints
+;
+
+(constrain
+    (packet_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (packet_socket
+        (
+            name_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep phonet_socket constraints
+;
+
+(constrain
+    (phonet_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (phonet_socket
+        (
+            name_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep pppox_socket constraints
+;
+
+(constrain
+    (pppox_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (pppox_socket
+        (
+            name_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep process constraints
+;
+
+(constrain
+    (process
+        (
+            ptrace
+            sigchld
+            sigkill
+            sigstop
+            signull
+            signal
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBACsep qipcrtr_socket constraints
+;
+
+(constrain
+    (qipcrtr_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (qipcrtr_socket
+        (
+            name_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep rawip_socket constraints
+;
+
+(constrain
+    (rawip_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (rawip_socket
+        (
+            name_bind
+            node_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep rds_socket constraints
+;
+
+(constrain
+    (rds_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (rds_socket
+        (
+            name_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep rose_socket constraints
+;
+
+(constrain
+    (rose_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (rose_socket
+        (
+            name_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep rxrpc_socket constraints
+;
+
+(constrain
+    (rxrpc_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (rxrpc_socket
+        (
+            name_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep sctp_socket constraints
+;
+
+(constrain
+    (sctp_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (sctp_socket
+        (
+            name_bind
+            node_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep sem constraints
+;
+
+(constrain
+    (sem
+        (
+            create
+            destroy
+            setattr
+            unix_write
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBACsep shm constraints
+;
+
+(constrain
+    (shm
+        (
+            create
+            destroy
+            setattr
+            unix_write
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBACsep sock_file constraints
+;
+
+(constrain
+    (sock_file
+        (
+            audit_access
+            execmod
+            execute
+            link
+            mounton
+            quotaon
+            rename
+            setattr
+            unlink
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+(constrain
+    (sock_file
+        (
+            append
+            getattr
+            ioctl
+            lock
+            open
+            read
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (or
+                        (eq r1 r2)
+                        (eq r1 rbacsep_exemption_role_attribute)
+                    )
+                    (eq r2 rbacsep_exemption_role_attribute)
+                )
+                (eq t1 rbacsep_exemption_subj_type_attribute)
+            )
+            (eq t2 rbacsep_exemption_obj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBACsep tcp_socket constraints
+;
+
+(constrain
+    (tcp_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (tcp_socket
+        (
+            name_bind
+            name_connect
+            node_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep tipc_socket constraints
+;
+
+(constrain
+    (tipc_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (tipc_socket
+        (
+            name_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep tun_socket constraints
+;
+
+(constrain
+    (tun_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (tun_socket
+        (
+            name_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep udp_socket constraints
+;
+
+(constrain
+    (udp_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (udp_socket
+        (
+            name_bind
+            node_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep unix_dgram_socket constraints
+;
+
+(constrain
+    (unix_dgram_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (unix_dgram_socket
+        (
+            name_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep unix_stream_socket constraints
+;
+
+(constrain
+    (unix_stream_socket
+        (
+            accept
+            append
+            bind
+            connect
+            connectto
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (unix_stream_socket
+        (
+            name_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep vsock_socket constraints
+;
+
+(constrain
+    (vsock_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (vsock_socket
+        (
+            name_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep x25_socket constraints
+;
+
+(constrain
+    (x25_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (x25_socket
+        (
+            name_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
+; RBACsep macros
+;
+
+(macro rbacsep_exemption_obj_type ((type ARG1))
+    (typeattributeset rbacsep_exemption_obj_type_attribute ARG1)
+)
+
+(macro rbacsep_exemption_role ((role ARG1))
+    (roleattributeset rbacsep_exemption_role_attribute ARG1)
+)
+
+(macro rbacsep_exemption_subj_type ((type ARG1))
+    (typeattributeset rbacsep_exemption_subj_type_attribute ARG1)
+)
+
+(macro rbacsep_read_state_source_subj_type ((type ARG1))
+    (typeattributeset rbacsep_read_state_source_subj_type_attribute ARG1)
+)
+
+(macro rbacsep_read_state_target_subj_type ((type ARG1))
+    (typeattributeset rbacsep_read_state_target_subj_type_attribute ARG1)
+)
+
+;
+; RBACsep policy
+;
+
+(roleattribute rbacsep_exemption_role_attribute)
+
+(typeattribute rbacsep_exemption_obj_type_attribute)
+(typeattribute rbacsep_exemption_subj_type_attribute)
+(typeattribute rbacsep_read_state_source_subj_type_attribute)
+(typeattribute rbacsep_read_state_target_subj_type_attribute)
+
+(defaultrole blk_file source)
+(defaultrole chr_file source)
+(defaultrole dir source)
+(defaultrole fifo_file source)
+(defaultrole file source)
+(defaultrole lnk_file source)
+(defaultrole sock_file source)

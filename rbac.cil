@@ -1,0 +1,1597 @@
+; -*- mode: CIL; fill-column: 75; indent-tabs-mode: nil; tab-width: 4 -*-
+
+; Role-based access control security model
+
+;
+; RBAC constraints
+;
+
+;
+; RBAC alg_socket constraints
+;
+
+(constrain
+    (alg_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC appletalk_socket constraints
+;
+
+(constrain
+    (appletalk_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC atmpvc_socket constraints
+;
+
+(constrain
+    (atmpvc_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC atmsvc_socket constraints
+;
+
+(constrain
+    (atmsvc_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC ax25_socket constraints
+;
+
+(constrain
+    (ax25_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC blk_file constraints
+;
+
+(constrain
+    (blk_file
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC bluetooth_socket constraints
+;
+
+(constrain
+    (bluetooth_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC bridge_socket constraints
+;
+
+(constrain
+    (bridge_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC caif_socket constraints
+;
+
+(constrain
+    (caif_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC can_socket constraints
+;
+
+(constrain
+    (can_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC chr_file constraints
+;
+
+(constrain
+    (chr_file
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC dccp_socket constraints
+;
+
+(constrain
+    (dccp_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC decnet_socket constraints
+;
+
+(constrain
+    (decnet_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC dir constraints
+;
+
+(constrain
+    (dir
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC fifo_file constraints
+;
+
+(constrain
+    (fifo_file
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC file constraints
+;
+
+(constrain
+    (file
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC ib_socket constraints
+;
+
+(constrain
+    (ib_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC icmp_socket constraints
+;
+
+(constrain
+    (icmp_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC ieee802154_socket constraints
+;
+
+(constrain
+    (ieee802154_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC ipx_socket constraints
+;
+
+(constrain
+    (ipx_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC irda_socket constraints
+;
+
+(constrain
+    (irda_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC isdn_socket constraints
+;
+
+(constrain
+    (isdn_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC iucv_socket constraints
+;
+
+(constrain
+    (iucv_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC kcm_socket constraints
+;
+
+(constrain
+    (kcm_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC lnk_file constraints
+;
+
+(constrain
+    (lnk_file
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC llc_socket constraints
+;
+
+(constrain
+    (llc_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC mpls_socket constraints
+;
+
+(constrain
+    (mpls_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC netlink_audit_socket constraints
+;
+
+(constrain
+    (netlink_audit_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC netlink_connector_socket constraints
+;
+
+(constrain
+    (netlink_connector_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC netlink_crypto_socket constraints
+;
+
+(constrain
+    (netlink_crypto_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC netlink_dnrt_socket constraints
+;
+
+(constrain
+    (netlink_dnrt_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC netlink_fib_lookup_socket constraints
+;
+
+(constrain
+    (netlink_fib_lookup_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC netlink_generic_socket constraints
+;
+
+(constrain
+    (netlink_generic_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC netlink_iscsi_socket constraints
+;
+
+(constrain
+    (netlink_iscsi_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC netlink_kobject_uevent_socket constraints
+;
+
+(constrain
+    (netlink_kobject_uevent_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC netlink_netfilter_socket constraints
+;
+
+(constrain
+    (netlink_netfilter_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC netlink_nflog_socket constraints
+;
+
+(constrain
+    (netlink_nflog_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC netlink_rdma_socket constraints
+;
+
+(constrain
+    (netlink_rdma_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC netlink_route_socket constraints
+;
+
+(constrain
+    (netlink_route_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC netlink_scsitransport_socket constraints
+;
+
+(constrain
+    (netlink_scsitransport_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC netlink_selinux_socket constraints
+;
+
+(constrain
+    (netlink_selinux_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC netlink_tcpdiag_socket constraints
+;
+
+(constrain
+    (netlink_tcpdiag_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC netlink_xfrm_socket constaints
+;
+
+(constrain
+    (netlink_xfrm_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC netrom_socket constraints
+;
+
+(constrain
+    (netrom_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC nfc_socket constaints
+;
+
+(constrain
+    (nfc_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC packet socket constraints
+;
+
+(constrain
+    (packet_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC phonet_socket constraints
+;
+
+(constrain
+    (phonet_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC pppox_socket constraints
+;
+
+(constrain
+    (pppox_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC process constraints
+;
+
+(constrain
+    (process
+        (
+            dyntransition
+            noatsecure
+            rlimitinh
+            siginh
+            transition
+        )
+    )
+    (or
+        (or
+            (or
+                (eq r1 r2)
+                    (and
+                        (eq t1 rbac_role_change_exemption_subj_type_attribute)
+                        (eq t2 rbac_user_exemption_target_subj_type_attribute)
+                    )
+            )
+            (and
+                (eq t1 rbac_sys_role_change_exemption_subj_type_attribute)
+                (eq r2 rbac_sys_role_attribute)
+            )
+        )
+        (eq t1 rbac_uncond_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC qipcrtr_socket constraints
+;
+
+(constrain
+    (qipcrtr_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC rawip_socket constraints
+;
+
+(constrain
+    (rawip_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC rds_socket constraints
+;
+
+(constrain
+    (rds_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC rose_socket constraints
+;
+
+(constrain
+    (rose_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC rxrpc_socket constraints
+;
+
+(constrain
+    (rxrpc_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC sctp_socket constraints
+;
+
+(constrain
+    (sctp_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC sock_file constraints
+;
+
+(constrain
+    (sock_file
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC tcp_socket constraints
+;
+
+(constrain
+    (tcp_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC tipc_socket constraints
+;
+
+(constrain
+    (tipc_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC tun_socket constraints
+;
+
+(constrain
+    (tun_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC udp_socket constraints
+;
+
+(constrain
+    (udp_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC unix_dgram_socket constraints
+;
+
+(constrain
+    (unix_dgram_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC unix_stream_socket constraints
+;
+
+(constrain
+    (unix_stream_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC vsock_socket constraints
+;
+
+(constrain
+    (vsock_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC x25_socket constraints
+;
+
+(constrain
+    (x25_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
+; RBAC macros
+;
+
+(macro rbac_obj_role_change_exemption_subj_type ((type ARG1))
+    (typeattributeset rbac_obj_role_change_exemption_subj_type_attribute ARG1)
+)
+
+(macro rbac_role_change_exemption_subj_type ((type ARG1))
+    (typeattributeset rbac_role_change_exemption_subj_type_attribute ARG1)
+)
+
+(macro rbac_obj_sys_role_change_exemption_subj_type ((type ARG1))
+    (typeattributeset
+        rbac_obj_sys_role_change_exemption_subj_type_attribute ARG1)
+)
+
+(macro rbac_sys_role ((role ARG1))
+    (roleattributeset rbac_sys_role_attribute ARG1)
+)
+
+(macro rbac_sys_role_change_exemption_subj_type ((type ARG1))
+    (typeattributeset rbac_sys_role_change_exemption_subj_type_attribute ARG1)
+)
+
+(macro rbac_uncond_exemption_subj_type ((type ARG1))
+    (typeattributeset rbac_uncond_exemption_subj_type_attribute ARG1)
+)
+
+(macro rbac_user_exemption_target_subj_type ((type ARG1))
+    (typeattributeset rbac_user_exemption_target_subj_type_attribute ARG1)
+)
+
+;
+; RBAC policy
+;
+
+(roleattribute rbac_sys_role_attribute)
+
+(typeattribute rbac_obj_role_change_exemption_subj_type_attribute)
+(typeattribute rbac_obj_sys_role_change_exemption_subj_type_attribute)
+(typeattribute rbac_role_change_exemption_subj_type_attribute)
+(typeattribute rbac_sys_role_change_exemption_subj_type_attribute)
+(typeattribute rbac_uncond_exemption_subj_type_attribute)
+(typeattribute rbac_user_exemption_target_subj_type_attribute)

@@ -1,0 +1,2355 @@
+; -*- mode: CIL; fill-column: 75; indent-tabs-mode: nil; tab-width: 4 -*-
+
+; Dev policy
+;
+; 1. Dev initial security identifier declarations
+; 2. Dev name space
+;       Dev apm name space
+;       Dev autofs name space
+;       Dev clock name space
+;       Dev cpu name space
+;       Dev cuse name space
+;       Dev dev_file name space
+;       Dev devtty name space
+;       Dev dpaux name space
+;       Dev dri name space
+;       Dev event name space
+;       Dev framebuf name space
+;       Dev kmsg name space
+;       Dev kvm name space
+;       Dev loop_control name space
+;       Dev lvm_control name space
+;       Dev mei_misc name space
+;       Dev memory name space
+;       Dev mouse name space
+;       Dev null name space
+;       Dev nvram name space
+;       Dev pm_qos_misc name space
+;       Dev ppp name space
+;       Dev printer name space
+;       Dev ptmx name space
+;       Dev random name space
+;       Dev sound name space
+;       Dev tpm name space
+;       Dev tun_tap name space
+;       Dev uhid name space
+;       Dev urandom name space
+;       Dev usb name space
+;       Dev usbmon name space
+;       Dev v4l name space
+;       Dev vfio name space
+;       Dev vhost name space
+;       Dev watchdog name space
+;       Dev wireless name space
+;       Dev xserver_misc name space
+;       Dev zero name space
+
+;
+; Dev initial security identifier declarations
+;
+
+(sid devnull)
+
+;
+; Dev name space
+;
+
+(block dev
+
+    ;
+    ; Macros
+    ;
+
+    (macro read_memory_subj_type ((type ARG1))
+        (typeattributeset read_memory_subj_type_attribute ARG1)
+    )
+
+    (macro unconfined_subj_type ((type ARG1))
+        (typeattributeset unconfined_subj_type_attribute ARG1)
+    )
+
+    (macro write_memory_subj_type ((type ARG1))
+        (typeattributeset write_memory_subj_type_attribute ARG1)
+    )
+
+    ;
+    ; Policy
+    ;
+
+    (typeattribute read_memory_subj_type_attribute)
+    (typeattribute
+        not_read_memory_subj_type_or_unconfined_subj_type_attribute)
+
+    (typeattribute write_memory_subj_type_attribute)
+    (typeattribute
+        not_unconfined_subj_type_or_write_memory_subj_type_attribute)
+
+    (typeattribute unconfined_subj_type_attribute)
+
+    (typeattributeset
+        not_read_memory_subj_type_or_unconfined_subj_type_attribute
+            (not
+                (
+                    read_memory_subj_type_attribute
+                    unconfined_subj_type_attribute
+                )
+            )
+    )
+
+    (typeattributeset
+        not_unconfined_subj_type_or_write_memory_subj_type_attribute
+            (not
+                (
+                    unconfined_subj_type_attribute
+                    write_memory_subj_type_attribute
+                )
+            )
+    )
+
+    ;
+    ; Dev apm name space
+    ;
+
+    (block apm
+
+        ;
+        ; apm contexts
+        ;
+
+        (filecon "/dev/snapshot" char dev_file_context)
+
+        ;
+        ; apm policy
+        ;
+
+        (blockinherit dev_file.obj_template)
+    )
+
+    ;
+    ; Dev autofs name space
+    ;
+
+    (block autofs
+
+        ;
+        ; autofs contexts
+        ;
+
+        (filecon "/dev/autofs" char dev_file_context)
+
+        ;
+        ; autofs policy
+        ;
+
+        (blockinherit dev_file.obj_template)
+    )
+
+    ;
+    ; Dev clock name space
+    ;
+
+    (block clock
+
+        ;
+        ; clock contexts
+        ;
+
+        (filecon "/dev/hpet" char dev_file_context)
+        (filecon "/dev/ptp([0-9]+)?" char dev_file_context)
+        (filecon "/dev/rtc([0-9]+)?" char dev_file_context)
+
+        ;
+        ; clock macros
+        ;
+
+        (macro devtmpfs_obj_type_transition ((type ARG1))
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "ptp0"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "ptp1"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "ptp3"
+                )
+            )
+        )
+
+        ;
+        ; clock policy
+        ;
+
+        (blockinherit dev_file.obj_template)
+
+        (call devtmpfs_obj_type_transition
+            (
+                unconfined_subj_type_attribute
+            )
+        )
+    )
+
+    ;
+    ; Dev cpu name space
+    ;
+
+    (block cpu
+
+        ;
+        ; cpu contexts
+        ;
+
+        (filecon "/dev/cpu/.+" char dev_file_context)
+
+        ;
+        ; cpu policy
+        ;
+
+        (blockinherit dev_file.obj_template)
+    )
+
+    ;
+    ; Dev cuse name space
+    ;
+
+    (block cuse
+
+        ;
+        ; cuse contexts
+        ;
+
+        (filecon "/dev/cuse" char dev_file_context)
+
+        ;
+        ; cuse macros
+        ;
+
+        (macro devtmpfs_obj_type_transition ((type ARG1))
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "cuse"
+                )
+            )
+        )
+
+        ;
+        ; cuse policy
+        ;
+
+        (blockinherit dev_file.obj_template)
+
+        (call devtmpfs_obj_type_transition
+            (
+                unconfined_subj_type_attribute
+            )
+        )
+    )
+
+    ;
+    ; Dev dev_file name space
+    ;
+
+    (block dev_file
+
+        ;
+        ; dev_file macros
+        ;
+
+        (macro getattr_chr_files ((type ARG1))
+            (allow ARG1 obj_type_attribute
+                (chr_file
+                    (
+                        getattr
+                    )
+                )
+            )
+            (call fs.devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro manage_chr_files ((type ARG1))
+            (allow ARG1 self
+                (capability
+                    (
+                        mknod
+                    )
+                )
+            )
+            (allow ARG1 obj_type_attribute manage_chr_file_perms)
+            (call read_memory_subj_type
+                (
+                    ARG1
+                )
+            )
+            (call write_memory_subj_type
+                (
+                    ARG1
+                )
+            )
+            (call fs.devtmpfs.rw_dirs
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro obj_type ((type ARG1))
+            (typeattributeset obj_type_attribute ARG1)
+        )
+
+        (macro read_chr_files ((type ARG1))
+            (allow ARG1 obj_type_attribute read_chr_file_perms)
+            (call read_memory_subj_type
+                (
+                    ARG1
+                )
+            )
+            (call fs.devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabel_chr_files ((type ARG1))
+            (allow ARG1 obj_type_attribute relabel_chr_file_perms)
+            (call fs.devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelfrom_chr_files ((type ARG1))
+            (allow ARG1 obj_type_attribute relabelfrom_chr_file_perms)
+            (call fs.devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelto_chr_files ((type ARG1))
+            (allow ARG1 obj_type_attribute relabelto_chr_file_perms)
+            (call fs.devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rw_chr_files ((type ARG1))
+            (allow ARG1 obj_type_attribute rw_chr_file_perms)
+            (call read_memory_subj_type
+                (
+                    ARG1
+                )
+            )
+            (call write_memory_subj_type
+                (
+                    ARG1
+                )
+            )
+            (call fs.devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro setattr_chr_files ((type ARG1))
+            (allow ARG1 obj_type_attribute
+                (chr_file
+                    (
+                        setattr
+                    )
+                )
+            )
+            (call fs.devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro write_chr_files ((type ARG1))
+            (allow ARG1 obj_type_attribute write_chr_file_perms)
+            (call write_memory_subj_type
+                (
+                    ARG1
+                )
+            )
+            (call fs.devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        ;
+        ; dev_file policy
+        ;
+
+        (typeattribute obj_type_attribute)
+
+        (allow unconfined_subj_type_attribute obj_type_attribute
+            chr_file_except_execmod_and_mounton)
+
+        (call sys.obj_type
+            (
+                obj_type_attribute
+            )
+        )
+
+        ;
+        ; dev_file templates
+        ;
+
+        (block obj_stub
+
+            ;
+            ; dev.dev_file.obj_stub contexts
+            ;
+
+            (context dev_file_context
+                (
+                    sys.id
+                    sys.role
+                    dev_file
+                        (
+                            systemlow
+                            systemlow
+                        )
+                )
+            )
+
+            ;
+            ; dev.dev_file.obj_stub policy
+            ;
+
+            (blockabstract obj_stub)
+
+            (type dev_file)
+            (call dev.dev_file.obj_type
+                (
+                dev_file
+                )
+            )
+        )
+
+        (block obj_template
+
+            ;
+            ; dev.dev_file.obj_template macros
+            ;
+
+            (macro getattr_chr_files ((type ARG1))
+                (allow ARG1 dev_file
+                    (chr_file
+                        (
+                            getattr
+                        )
+                    )
+                )
+                (call fs.devtmpfs.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro manage_chr_files ((type ARG1))
+                (allow ARG1 self
+                    (capability
+                        (
+                            mknod
+                        )
+                    )
+                )
+                (allow ARG1 dev_file manage_chr_file_perms)
+                (call fs.devtmpfs.rw_dirs
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro read_chr_files ((type ARG1))
+                (allow ARG1 dev_file read_chr_file_perms)
+                (call fs.devtmpfs.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro relabel_chr_files ((type ARG1))
+                (allow ARG1 dev_file relabel_chr_file_perms)
+                (call fs.devtmpfs.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro relabelfrom_chr_files ((type ARG1))
+                (allow ARG1 dev_file relabelfrom_chr_file_perms)
+                (call fs.devtmpfs.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro relabelto_chr_files ((type ARG1))
+                (allow ARG1 dev_file relabelto_chr_file_perms)
+                (call fs.devtmpfs.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro rw_chr_files ((type ARG1))
+                (allow ARG1 dev_file rw_chr_file_perms)
+                (call fs.devtmpfs.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro setattr_chr_files ((type ARG1))
+                (allow ARG1 dev_file
+                    (chr_file
+                        (
+                            setattr
+                        )
+                    )
+                )
+                (call fs.devtmpfs.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro write_chr_files ((type ARG1))
+                (allow ARG1 dev_file write_chr_file_perms)
+                (call fs.devtmpfs.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            ;
+            ; dev.dev_file.obj_template policy
+            ;
+
+            (blockabstract obj_template)
+
+            (blockinherit dev.dev_file.obj_stub)
+        )
+    )
+
+    ;
+    ; Dev devtty name space
+    ;
+
+    (block devtty
+
+        ;
+        ; devtty contexts
+        ;
+
+        (filecon "/dev/tty" char dev_file_context)
+
+        ;
+        ; devtty macros
+        ;
+
+        (macro tmpfs_obj_type_transition ((type ARG1))
+            (call fs.tmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "tty"
+                )
+            )
+        )
+
+        ;
+        ; devtty policy
+        ;
+
+        (blockinherit dev_file.obj_template)
+
+        (call tmpfs_obj_type_transition
+            (
+                unconfined_subj_type_attribute
+            )
+        )
+
+        (call fs.tmpfs.associate
+            (
+                dev_file
+            )
+        )
+    )
+
+    ;
+    ; Dev dpaux name space
+    ;
+
+    (block dpaux
+
+        ;
+        ; dpaux contexts
+        ;
+
+        (filecon "/dev/drm_dp_aux[0-9]+" char dev_file_context)
+
+        ;
+        ; dpaux policy
+        ;
+
+        (blockinherit dev_file.obj_template)
+    )
+
+    ;
+    ; Dev dri name space
+    ;
+
+    (block dri
+
+        ;
+        ; dri contexts
+        ;
+
+        (filecon "/dev/dri/.+" char dev_file_context)
+
+        ;
+        ; dri macros
+        ;
+
+        (macro rw_inherited_chr_files ((type ARG1))
+            (allow ARG1 dev_file rw_inherited_chr_file_perms)
+        )
+
+        ;
+        ; dri policy
+        ;
+
+        (blockinherit dev_file.obj_template)
+    )
+
+    ;
+    ; Dev event name space
+    ;
+
+    (block event
+
+        ;
+        ; event contexts
+        ;
+
+        (filecon "/dev/input/event([0-9]+)?" char dev_file_context)
+        (filecon "/dev/uinput" char dev_file_context)
+
+        ;
+        ; event macros
+        ;
+
+        (macro devtmpfs_obj_type_transition ((type ARG1))
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "event0"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "event1"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "event2"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "event3"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "event4"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "event5"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "event6"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "event7"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "event8"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "event9"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "event10"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "event11"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "event12"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "event13"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "event14"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "event15"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "event16"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "event17"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "event18"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "event19"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "event20"
+                )
+            )
+        )
+
+        (macro rw_inherited_chr_files ((type ARG1))
+            (allow ARG1 dev_file rw_inherited_chr_file_perms)
+        )
+
+        ;
+        ; event policy
+        ;
+
+        (blockinherit dev_file.obj_template)
+
+        (call devtmpfs_obj_type_transition
+            (
+                unconfined_subj_type_attribute
+            )
+        )
+    )
+
+    ;
+    ; Dev framebuf name space
+    ;
+
+    (block framebuf
+
+        ;
+        ; framebuf contexts
+        ;
+
+        (filecon "/dev/fb([0-9]+)?" char dev_file_context)
+
+        ;
+        ; framebuf policy
+        ;
+
+        (blockinherit dev_file.obj_template)
+    )
+
+    ;
+    ; Dev kmsg name space
+    ;
+
+    (block kmsg
+
+        ;
+        ; kmsg contexts
+        ;
+
+        (filecon "/dev/kmsg" char dev_file_context)
+        (filecon "/dev/mcelog" char dev_file_context)
+
+        ;
+        ; kmsg policy
+        ;
+
+        (blockinherit dev_file.obj_template)
+    )
+
+    ;
+    ; Dev kvm name space
+    ;
+
+    (block kvm
+
+        ;
+        ; kvm contexts
+        ;
+
+        (filecon "/dev/kvm" char dev_file_context)
+
+        ;
+        ; kvm macros
+        ;
+
+        (macro devtmpfs_obj_type_transition ((type ARG1))
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "kvm"
+                )
+            )
+        )
+
+        ;
+        ; kvm policy
+        ;
+
+        (blockinherit dev_file.obj_template)
+
+        (call devtmpfs_obj_type_transition
+            (
+                unconfined_subj_type_attribute
+            )
+        )
+    )
+
+    ;
+    ; Dev loop_control name space
+    ;
+
+    (block loop_control
+
+        ;
+        ; loop_control contexts
+        ;
+
+        (filecon "/dev/loop-control" char dev_file_context)
+
+        ;
+        ; loop_control policy
+        ;
+
+        (blockinherit dev_file.obj_template)
+    )
+
+    ;
+    ; Dev lvm_control name space
+    ;
+
+    (block lvm_control
+
+        ;
+        ; lvm_control contexts
+        ;
+
+        (filecon "/dev/btrfs-control" char dev_file_context)
+        (filecon "/dev/mapper/control" char dev_file_context)
+
+        ;
+        ; lvm_control policy
+        ;
+
+        (blockinherit dev_file.obj_template)
+    )
+
+    ;
+    ; Dev mei_misc name space
+    ;
+
+    (block mei_misc
+
+        ;
+        ; mei_misc contexts
+        ;
+
+        (filecon "/dev/mei([0-9]+)?" char dev_file_context)
+
+        ;
+        ; mei_misc macros
+        ;
+
+        (macro devtmpfs_obj_type_transition ((type ARG1))
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "mei0"
+                )
+            )
+        )
+
+        ;
+        ; mei_misc policy
+        ;
+
+        (blockinherit dev_file.obj_template)
+
+        (call devtmpfs_obj_type_transition
+            (
+                unconfined_subj_type_attribute
+            )
+        )
+    )
+
+    ;
+    ; Dev memory name space
+    ;
+
+    (block memory
+
+        ;
+        ; memory contexts
+        ;
+
+        (filecon "/dev/mem" char dev_file_context)
+        (filecon "/dev/port" char dev_file_context)
+
+        ;
+        ; memory macros
+        ;
+
+        (macro getattr_chr_files ((type ARG1))
+            (allow ARG1 dev_file
+                (chr_file
+                    (
+                        getattr
+                    )
+                )
+            )
+            (call fs.devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro manage_chr_files ((type ARG1))
+            (allow ARG1 self
+                (capability
+                    (
+                        mknod
+                    )
+                )
+            )
+            (allow ARG1 dev_file manage_chr_file_perms)
+            (call read_memory_subj_type
+                (
+                    ARG1
+                )
+            )
+            (call write_memory_subj_type
+                (
+                    ARG1
+                )
+            )
+            (call fs.devtmpfs.rw_dirs
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro read_chr_files ((type ARG1))
+            (allow ARG1 dev_file read_chr_file_perms)
+            (call read_memory_subj_type
+                (
+                    ARG1
+                )
+            )
+            (call fs.devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabel_chr_files ((type ARG1))
+            (allow ARG1 dev_file relabel_chr_file_perms)
+            (call fs.devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelfrom_chr_files ((type ARG1))
+            (allow ARG1 dev_file relabelfrom_chr_file_perms)
+            (call fs.devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelto_chr_files ((type ARG1))
+            (allow ARG1 dev_file relabelto_chr_file_perms)
+            (call fs.devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rw_chr_files ((type ARG1))
+            (allow ARG1 dev_file rw_chr_file_perms)
+            (call read_memory_subj_type
+                (
+                    ARG1
+                )
+            )
+            (call write_memory_subj_type
+                (
+                    ARG1
+                )
+            )
+            (call fs.devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro setattr_chr_files ((type ARG1))
+            (allow ARG1 dev_file
+                (chr_file
+                    (
+                        setattr
+                    )
+                )
+            )
+            (call fs.devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro write_chr_files ((type ARG1))
+            (allow ARG1 dev_file write_chr_file_perms)
+            (call write_memory_subj_type
+                (
+                    ARG1
+                )
+            )
+            (call fs.devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        ;
+        ; memory policy
+        ;
+
+        (blockinherit dev_file.obj_stub)
+
+        (neverallow
+            not_read_memory_subj_type_or_unconfined_subj_type_attribute
+                dev_file
+                    (chr_file
+                        (
+                            read
+                        )
+                    )
+        )
+
+        (neverallow
+            not_unconfined_subj_type_or_write_memory_subj_type_attribute
+                dev_file
+                    (chr_file
+                        (
+                            append
+                            write
+                        )
+                    )
+        )
+    )
+
+    ;
+    ; Dev mouse name space
+    ;
+
+    (block mouse
+
+        ;
+        ; mouse contexts
+        ;
+
+        (filecon "/dev/psaux" char dev_file_context)
+        (filecon "/dev/input/js([0-9]+)?" char dev_file_context)
+        (filecon "/dev/input/mice" char dev_file_context)
+        (filecon "/dev/input/mouse([0-9]+)?" char dev_file_context)
+
+        ;
+        ; mouse macros
+        ;
+
+        (macro devtmpfs_obj_type_transition ((type ARG1))
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "js0"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "js1"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "js2"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "mouse0"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "mouse1"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "mouse2"
+                )
+            )
+        )
+
+        ;
+        ; mouse policy
+        ;
+
+        (blockinherit dev_file.obj_template)
+
+        (call devtmpfs_obj_type_transition
+            (
+                unconfined_subj_type_attribute
+            )
+        )
+    )
+
+    ;
+    ; Dev null name space
+    ;
+
+    (block null
+
+        ;
+        ; null contexts
+        ;
+
+        (filecon "/dev/full" char isid_context)
+        (filecon "/dev/null" char isid_context)
+
+        (sidcontext devnull isid_context)
+
+        ;
+        ; null macros
+        ;
+
+        (macro control_client_subj_type ((type ARG1))
+            (typeattributeset control_client_subj_type_attribute ARG1)
+        )
+
+        (macro getattr_chr_files ((type ARG1))
+            (allow ARG1 isid
+                (chr_file
+                    (
+                        getattr
+                    )
+                )
+            )
+            (call fs.devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro manage_chr_files ((type ARG1))
+            (allow ARG1 self
+                (capability
+                    (
+                        mknod
+                    )
+                )
+            )
+            (allow ARG1 isid manage_chr_file_perms)
+            (call fs.devtmpfs.rw_dirs
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro read_chr_files ((type ARG1))
+            (allow ARG1 isid read_chr_file_perms)
+            (call fs.devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabel_chr_files ((type ARG1))
+            (allow ARG1 isid relabel_chr_file_perms)
+            (call fs.devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelfrom_chr_files ((type ARG1))
+            (allow ARG1 isid relabelfrom_chr_file_perms)
+            (call fs.devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelto_chr_files ((type ARG1))
+            (allow ARG1 isid relabelto_chr_file_perms)
+            (call fs.devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rw_chr_files ((type ARG1))
+            (allow ARG1 isid rw_chr_file_perms)
+            (call fs.devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro setattr_chr_files ((type ARG1))
+            (allow ARG1 isid
+                (chr_file
+                    (
+                        setattr
+                    )
+                )
+            )
+            (call fs.devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro tmpfs_obj_type_transition ((type ARG1))
+            (call fs.tmpfs.obj_type_transition
+                (
+                    ARG1 isid chr_file "full"
+                )
+            )
+            (call fs.tmpfs.obj_type_transition
+                (
+                    ARG1 isid chr_file "null"
+                )
+            )
+        )
+
+        (macro write_chr_files ((type ARG1))
+            (allow ARG1 isid write_chr_file_perms)
+            (call fs.devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        ;
+        ; null policy
+        ;
+
+        (blockinherit sys.isid.stub)
+
+        (typeattribute control_client_subj_type_attribute)
+
+        (call tmpfs_obj_type_transition
+            (
+                unconfined_subj_type_attribute
+            )
+        )
+
+        (call dev_file.obj_type
+            (
+                isid
+            )
+        )
+
+        (call fs.tmpfs.associate
+            (
+                isid
+            )
+        )
+
+        (optional null_optional_systemd
+            (allow control_client_subj_type_attribute isid
+                (service
+                    (
+                        all
+                    )
+                )
+            )
+        )
+    )
+
+    ;
+    ; Dev nvram name space
+    ;
+
+    (block nvram
+
+        ;
+        ; nvram contexts
+        ;
+
+        (filecon "/dev/ndctl([0-9]+)?" char dev_file_context)
+        (filecon "/dev/nvram" char dev_file_context)
+
+        ;
+        ; nvram policy
+        ;
+
+        (blockinherit dev_file.obj_template)
+    )
+
+    ;
+    ; Dev pm_qos_mic name space
+    ;
+
+    (block pm_qos_misc
+
+        ;
+        ; pm_qos_misc contexts
+        ;
+
+        (filecon "/dev/cpu_dma_latency" char dev_file_context)
+        (filecon "/dev/memory_bandwidth" char dev_file_context)
+        (filecon "/dev/network_latency" char dev_file_context)
+        (filecon "/dev/network_throughput" char dev_file_context)
+
+        ;
+        ; pm_qos_misc policy
+        ;
+
+        (blockinherit dev_file.obj_template)
+    )
+
+    ;
+    ; Dev ppp name space
+    ;
+
+    (block ppp
+
+        ;
+        ; ppp contexts
+        ;
+
+        (filecon "/dev/ppp" char dev_file_context)
+
+        ;
+        ; ppp policy
+        ;
+
+        (blockinherit dev_file.obj_template)
+    )
+
+    ;
+    ; Dev printer name space
+    ;
+
+    (block printer
+
+        ;
+        ; printer contexts
+        ;
+
+        (filecon "/dev/lp([0-9]+)?" char dev_file_context)
+        (filecon "/dev/parport([0-9]+)?" char dev_file_context)
+
+        ;
+        ; printer policy
+        ;
+
+        (blockinherit dev_file.obj_template)
+    )
+
+    ;
+    ; Dev ptmx name space
+    ;
+
+    (block ptmx
+
+        ;
+        ; ptmx contexts
+        ;
+
+        (filecon "/dev/ptmx" char dev_file_context)
+
+        ;
+        ; ptmx macros
+        ;
+
+        (macro rw_inherited_chr_files ((type ARG1))
+            (allow ARG1 dev_file rw_inherited_chr_file_perms)
+        )
+
+        ;
+        ; ptmx policy
+        ;
+
+        (blockinherit dev_file.obj_template)
+    )
+
+    ;
+    ; Dev random name space
+    ;
+
+    (block random
+
+        ;
+        ; random contexts
+        ;
+
+        (filecon "/dev/hwrng" char dev_file_context)
+        (filecon "/dev/random" char dev_file_context)
+
+        ;
+        ; random macros
+        ;
+
+        (macro tmpfs_obj_type_transition ((type ARG1))
+            (call fs.tmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "hwrng"
+                )
+            )
+            (call fs.tmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "random"
+                )
+            )
+        )
+
+        ;
+        ; random policy
+        ;
+
+        (blockinherit dev_file.obj_template)
+
+        (call tmpfs_obj_type_transition
+             (
+                unconfined_subj_type_attribute
+            )
+        )
+
+        (call fs.tmpfs.associate
+            (
+                dev_file
+            )
+        )
+    )
+
+    ;
+    ; Dev sound name space
+    ;
+
+    (block sound
+
+        ;
+        ; sound contexts
+        ;
+
+        (filecon "/dev/snd/.+" char dev_file_context)
+
+        ;
+        ; sound macros
+        ;
+
+        (macro devtmpfs_obj_type_transition ((type ARG1))
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "hwC0D0"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "hwC1D0"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "hwC0D3"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "pcmC0D0c"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "pcmC0D0p"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "pcmC0D3p"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "pcmC0D7p"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "pcmC0D8p"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "pcmC1D0c"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "pcmC1D0p"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "pcmC1D3p"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "pcmC1D7p"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "pcmC1D8p"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "pcmC1D9p"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "pcmC2D0c"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "pcmC2D0p"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "controlC0"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "controlC1"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "controlC2"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "controlC29"
+                )
+            )
+        )
+
+        ;
+        ; sound policy
+        ;
+
+        (blockinherit dev_file.obj_template)
+
+        (call devtmpfs_obj_type_transition
+            (
+                unconfined_subj_type_attribute
+            )
+        )
+    )
+
+    ;
+    ; Dev tpm name space
+    ;
+
+    (block tpm
+
+        ;
+        ; tpm contexts
+        ;
+
+        (filecon "/dev/tpm([0-9]+)?" char dev_file_context)
+
+        ;
+        ; tpm macros
+        ;
+
+        (macro devtmpfs_obj_type_transition ((type ARG1))
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "tpm0"
+                )
+            )
+        )
+
+        ;
+        ; tpm policy
+        ;
+
+        (blockinherit dev_file.obj_template)
+
+        (call devtmpfs_obj_type_transition
+            (
+                unconfined_subj_type_attribute
+            )
+        )
+    )
+
+    ;
+    ; Dev tun_tap name space
+    ;
+
+    (block tun_tap
+
+        ;
+        ; tun_tap contexts
+        ;
+
+        (filecon "/dev/net/tun" char dev_file_context)
+
+        ;
+        ; tun_tap policy
+        ;
+
+        (blockinherit dev_file.obj_template)
+    )
+
+    ;
+    ; Dev uhid name space
+    ;
+
+    (block uhid
+
+        ;
+        ; uhid contexts
+        ;
+
+        (filecon "/dev/uhid" char dev_file_context)
+
+        ;
+        ; uhid policy
+        ;
+
+        (blockinherit dev_file.obj_template)
+    )
+
+    ;
+    ; Dev urandom name space
+    ;
+
+    (block urandom
+
+        ;
+        ; urandom contexts
+        ;
+
+        (filecon "/dev/urandom" char dev_file_context)
+
+        ;
+        ; urandom macros
+        ;
+
+        (macro tmpfs_obj_type_transition ((type ARG1))
+            (call fs.tmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "urandom"
+                )
+            )
+        )
+
+        ;
+        ; urandom policy
+        ;
+
+        (blockinherit dev_file.obj_template)
+
+        (call tmpfs_obj_type_transition
+            (
+                unconfined_subj_type_attribute
+            )
+        )
+
+        (call fs.tmpfs.associate
+            (
+                dev_file
+            )
+        )
+    )
+
+    ;
+    ; Dev usb name space
+    ;
+
+    (block usb
+
+        ;
+        ; usb contexts
+        ;
+
+        (filecon "/dev/bus/usb/.+" char dev_file_context)
+        (filecon "/dev/hidraw[0-9]+" char dev_file_context)
+        (filecon "/dev/usb.+" char dev_file_context)
+
+        ;
+        ; usb macros
+        ;
+
+        (macro devtmpfs_obj_type_transition ((type ARG1))
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "001"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "002"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "003"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "004"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "005"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "006"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "007"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "008"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "009"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "010"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "011"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "012"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "013"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "014"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "016"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "017"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "018"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "019"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "020"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "021"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "022"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "023"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "024"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "025"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "026"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "027"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "028"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "029"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "030"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "031"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "032"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "033"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "034"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "035"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "036"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "037"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "038"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "039"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "040"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "041"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "042"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "043"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "044"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "045"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "046"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "047"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "048"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "049"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "050"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "hiddev0"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "hiddev1"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "hiddev2"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "hiddev3"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "hidraw0"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "hidraw1"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "hidraw2"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "hidraw3"
+                )
+            )
+        )
+
+        ;
+        ; usb policy
+        ;
+
+        (blockinherit dev_file.obj_template)
+
+        (call devtmpfs_obj_type_transition
+            (
+                unconfined_subj_type_attribute
+            )
+        )
+    )
+
+    ;
+    ; Dev usbmon name space
+    ;
+
+    (block usbmon
+
+        ;
+        ; usbmon contexts
+        ;
+
+        (filecon "/dev/usbmon[0-9]+" char dev_file_context)
+
+        ;
+        ; usbmon policy
+        ;
+
+        (blockinherit dev_file.obj_template)
+    )
+
+    ;
+    ; Dev v4l name space
+    ;
+
+    (block v4l
+
+        ;
+        ; v4l contexts
+        ;
+
+        (filecon "/dev/media([0-9]+)?" char dev_file_context)
+        (filecon "/dev/video([0-9]+)?" char dev_file_context)
+
+        ;
+        ; v4l macros
+        ;
+
+        (macro devtmpfs_obj_type_transition ((type ARG1))
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "media0"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "media1"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "media3"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "video0"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "video1"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "video2"
+                )
+            )
+        )
+
+        ;
+        ; v4l policy
+        ;
+
+        (blockinherit dev_file.obj_template)
+
+        (call devtmpfs_obj_type_transition
+            (
+                unconfined_subj_type_attribute
+            )
+        )
+    )
+
+    ;
+    ; Dev vfio name space
+    ;
+
+    (block vfio
+
+        ;
+        ; vfio contexts
+        ;
+
+        (filecon "/dev/vfio/.+" char dev_file_context)
+
+        ;
+        ; vfio policy
+        ;
+
+        (blockinherit dev_file.obj_template)
+    )
+
+    ;
+    ; Dev vhost name space
+    ;
+
+    (block vhost
+
+        ;
+        ; vhost contexts
+        ;
+
+        (filecon "/dev/vhci" char dev_file_context)
+        (filecon "/dev/vhost-net" char dev_file_context)
+
+        ;
+        ; vhost policy
+        ;
+
+        (blockinherit dev_file.obj_template)
+    )
+
+    ;
+    ; Dev watchdog name space
+    ;
+
+    (block watchdog
+
+        ;
+        ; watchdog contexts
+        ;
+
+        (filecon "/dev/watchdog([0-9]+)?" char dev_file_context)
+
+        ;
+        ; watchdog macros
+        ;
+
+        (macro devtmpfs_obj_type_transition ((type ARG1))
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "watchdog"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "watchdog0"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "watchdog1"
+                )
+            )
+        )
+
+        ;
+        ; watchdog policy
+        ;
+
+        (blockinherit dev_file.obj_template)
+
+        (call devtmpfs_obj_type_transition
+            (
+                unconfined_subj_type_attribute
+            )
+        )
+    )
+
+    ;
+    ; Dev wireless name space
+    ;
+
+    (block wireless
+
+        ;
+        ; wireless contexts
+        ;
+
+        (filecon "/dev/rfkill" char dev_file_context)
+
+        ;
+        ; wireless macros
+        ;
+
+        (macro devtmpfs_obj_type_transition ((type ARG1))
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "rfkill"
+                )
+            )
+        )
+
+        (macro rw_inherited_chr_files ((type ARG1))
+            (allow ARG1 dev_file rw_inherited_chr_file_perms)
+        )
+
+        ;
+        ; wireless policy
+        ;
+
+        (blockinherit dev_file.obj_template)
+
+        (call devtmpfs_obj_type_transition
+            (
+                unconfined_subj_type_attribute
+            )
+        )
+    )
+
+    ;
+    ; Dev xserver_misc name space
+    ;
+
+    (block xserver_misc
+
+        ;
+        ; xserver_misc contexts
+        ;
+
+        (filecon "/dev/vga_arbiter" char dev_file_context)
+
+        ;
+        ; xserver_misc policy
+        ;
+
+        (blockinherit dev_file.obj_template)
+    )
+
+    ;
+    ; Dev zero name space
+    ;
+
+    (block zero
+
+        ;
+        ; zero contexts
+        ;
+
+        (filecon "/dev/zero" char dev_file_context)
+
+        ;
+        ; zero macros
+        ;
+
+        (macro tmpfs_obj_type_transition ((type ARG1))
+            (call fs.tmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "zero"
+                )
+            )
+        )
+
+        ;
+        ; zero policy
+        ;
+
+        (blockinherit dev_file.obj_template)
+
+        (call tmpfs_obj_type_transition
+            (
+                unconfined_subj_type_attribute
+            )
+        )
+
+        (call fs.tmpfs.associate
+            (
+                dev_file
+            )
+        )
+    )
+)

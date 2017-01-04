@@ -1,0 +1,24 @@
+; -*- mode: CIL; fill-column: 75; indent-tabs-mode: nil; tab-width: 4 -*-
+
+; Policy configuration
+;
+; 1. Policy configuration
+; 2. Enabled policy capabilities
+; 3. Disabled policy capabilities
+
+(handleunknown deny)
+(mls true)
+
+;
+; Enabled policy capabilities
+;
+
+(policycap "network_peer_controls")
+(policycap "open_perms")
+
+;
+; Disabled policy capabilities
+;
+
+; (policycap "always_check_network")
+; (policycap "extended_socket_class")

@@ -1,0 +1,2627 @@
+; -*- mode: CIL; fill-column: 75; indent-tabs-mode: nil; tab-width: 4 -*-
+
+; Class maps
+;
+; 1. Class map declarations
+;       all_files class map declarations
+;       all_sockets class map declarations
+;       blk_and_chr_files class map declarations
+;       blk_files class map declarations
+;       chr_files class map declarations
+;       dirs class map declarations
+;       fifo_files class map declarations
+;       files class map declarations
+;       files_except_blk_and_chr class map declarations
+;       process_state class map declarations
+;       lnk_files class map declarations
+;       sock_files class map declarations
+; 2. Class mappings
+;       all_files class mappings
+;       all_sockets class mappings
+;       blk_and_chr_files class mappings
+;       blk_files class mappings
+;       chr_files class mappings
+;       dirs class mappings
+;       fifo_files class mappings
+;       files class mappings
+;       files_except_blk_and_chr class mappings
+;       process_state class mappings
+;       lnk_files class mappings
+;       sock_files class mappings
+
+;
+; Class map declarations
+;
+
+;
+; all_files class map declarations
+;
+
+(classmap all_files
+    (
+        create
+        delete
+        getattr
+        manage
+        read
+        relabel
+        relabelfrom
+        relabelto
+        rename
+        rw
+        setattr
+        write
+    )
+)
+
+;
+; all_sockets class map declarations
+;
+
+(classmap all_sockets
+    (
+        common_socket_perms
+    )
+)
+
+;
+; blk_and_chr_files class map declarations
+;
+
+(classmap blk_and_chr_files
+    (
+        create
+        delete
+        getattr
+        manage
+        read
+        relabel
+        relabelfrom
+        relabelto
+        rename
+        rw
+        setattr
+        write
+    )
+)
+
+;
+; blk_files class map declarations
+;
+
+(classmap blk_files
+    (
+        create
+        delete
+        getattr
+        manage
+        read
+        relabel
+        relabelfrom
+        relabelto
+        rename
+        rw
+        setattr
+        write
+    )
+)
+
+;
+; chr_files class map declarations
+;
+
+(classmap chr_files
+    (
+        create
+        delete
+        getattr
+        manage
+        read
+        relabel
+        relabelfrom
+        relabelto
+        rename
+        rw
+        setattr
+        write
+    )
+)
+
+;
+; dirs class map declarations
+;
+
+(classmap dirs
+    (
+        create
+        delete
+        getattr
+        manage
+        relabel
+        relabelfrom
+        relabelto
+        rename
+        rw
+        setattr
+    )
+)
+
+;
+; fifo_files class map declarations
+;
+
+(classmap fifo_files
+    (
+        create
+        delete
+        getattr
+        manage
+        read
+        relabel
+        relabelfrom
+        relabelto
+        rename
+        rw
+        setattr
+        write
+    )
+)
+
+;
+; files class map declarations
+;
+
+(classmap files
+    (
+        create
+        delete
+        getattr
+        manage
+        read
+        relabel
+        relabelfrom
+        relabelto
+        rename
+        rw
+        setattr
+        write
+    )
+)
+
+;
+; files_except_blk_and_chr class map declarations
+;
+
+(classmap files_except_blk_and_chr
+    (
+        create
+        delete
+        getattr
+        manage
+        read
+        relabel
+        relabelfrom
+        relabelto
+        rename
+        rw
+        setattr
+        write
+    )
+)
+
+;
+; process_state class map declarations
+;
+
+(classmap process_state
+    (
+        ps
+        read
+    )
+)
+
+;
+; lnk_files class map declarations
+;
+
+(classmap lnk_files
+    (
+        create
+        delete
+        getattr
+        manage
+        read
+        relabel
+        relabelfrom
+        relabelto
+        rename
+        rw
+        setattr
+        write
+    )
+)
+
+;
+; sock_files class map declarations
+;
+
+(classmap sock_files
+    (
+        create
+        delete
+        getattr
+        manage
+        read
+        relabel
+        relabelfrom
+        relabelto
+        rename
+        rw
+        setattr
+        write
+    )
+)
+
+;
+; Class mappings
+;
+
+;
+; all_files class mappings
+;
+
+(classmapping all_files create add_entry_dir_perms)
+(classmapping all_files create create_blk_file_perms)
+(classmapping all_files create create_chr_file_perms)
+(classmapping all_files create create_dir_perms)
+(classmapping all_files create create_fifo_file_perms)
+(classmapping all_files create create_file_perms)
+(classmapping all_files create create_lnk_file_perms)
+(classmapping all_files create create_sock_file_perms)
+
+(classmapping all_files delete del_entry_dir_perms)
+(classmapping all_files delete delete_blk_file_perms)
+(classmapping all_files delete delete_chr_file_perms)
+(classmapping all_files delete delete_dir_perms)
+(classmapping all_files delete delete_fifo_file_perms)
+(classmapping all_files delete delete_file_perms)
+(classmapping all_files delete delete_lnk_file_perms)
+(classmapping all_files delete delete_sock_file_perms)
+
+(classmapping all_files getattr search_dir_perms)
+(classmapping all_files getattr
+    (blk_file
+        (
+            getattr
+        )
+    )
+)
+(classmapping all_files getattr
+    (chr_file
+        (
+            getattr
+        )
+    )
+)
+(classmapping all_files getattr
+    (dir
+        (
+            getattr
+        )
+    )
+)
+(classmapping all_files getattr
+    (fifo_file
+        (
+            getattr
+        )
+    )
+)
+(classmapping all_files getattr
+    (file
+        (
+            getattr
+        )
+    )
+)
+(classmapping all_files getattr
+    (lnk_file
+        (
+            getattr
+        )
+    )
+)
+(classmapping all_files getattr
+    (sock_file
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_files manage manage_blk_file_perms)
+(classmapping all_files manage manage_chr_file_perms)
+(classmapping all_files manage manage_dir_perms)
+(classmapping all_files manage manage_fifo_file_perms)
+(classmapping all_files manage manage_file_perms)
+(classmapping all_files manage manage_lnk_file_perms)
+(classmapping all_files manage manage_sock_file_perms)
+
+(classmapping all_files read read_blk_file_perms)
+(classmapping all_files read read_chr_file_perms)
+(classmapping all_files read list_dir_perms)
+(classmapping all_files read read_fifo_file_perms)
+(classmapping all_files read read_file_perms)
+(classmapping all_files read read_lnk_file_perms)
+(classmapping all_files read read_sock_file_perms)
+
+(classmapping all_files relabel search_dir_perms)
+(classmapping all_files relabel relabel_blk_file_perms)
+(classmapping all_files relabel relabel_chr_file_perms)
+(classmapping all_files relabel relabel_dir_perms)
+(classmapping all_files relabel relabel_fifo_file_perms)
+(classmapping all_files relabel relabel_file_perms)
+(classmapping all_files relabel relabel_lnk_file_perms)
+(classmapping all_files relabel relabel_sock_file_perms)
+
+(classmapping all_files relabelfrom search_dir_perms)
+(classmapping all_files relabelfrom relabelfrom_blk_file_perms)
+(classmapping all_files relabelfrom relabelfrom_chr_file_perms)
+(classmapping all_files relabelfrom relabelfrom_dir_perms)
+(classmapping all_files relabelfrom relabelfrom_fifo_file_perms)
+(classmapping all_files relabelfrom relabelfrom_file_perms)
+(classmapping all_files relabelfrom relabelfrom_lnk_file_perms)
+(classmapping all_files relabelfrom relabelfrom_sock_file_perms)
+
+(classmapping all_files relabelto search_dir_perms)
+(classmapping all_files relabelto relabelto_blk_file_perms)
+(classmapping all_files relabelto relabelto_chr_file_perms)
+(classmapping all_files relabelto relabelto_dir_perms)
+(classmapping all_files relabelto relabelto_fifo_file_perms)
+(classmapping all_files relabelto relabelto_file_perms)
+(classmapping all_files relabelto relabelto_lnk_file_perms)
+(classmapping all_files relabelto relabelto_sock_file_perms)
+
+(classmapping all_files rename search_dir_perms)
+(classmapping all_files rename rename_blk_file_perms)
+(classmapping all_files rename rename_chr_file_perms)
+(classmapping all_files rename rename_dir_perms)
+(classmapping all_files rename rename_fifo_file_perms)
+(classmapping all_files rename rename_file_perms)
+(classmapping all_files rename rename_lnk_file_perms)
+(classmapping all_files rename rename_sock_file_perms)
+
+(classmapping all_files rw rw_blk_file_perms)
+(classmapping all_files rw rw_chr_file_perms)
+(classmapping all_files rw rw_dir_perms)
+(classmapping all_files rw rw_fifo_file_perms)
+(classmapping all_files rw rw_file_perms)
+(classmapping all_files rw rw_lnk_file_perms)
+(classmapping all_files rw rw_sock_file_perms)
+
+(classmapping all_files setattr search_dir_perms)
+(classmapping all_files setattr
+    (blk_file
+        (
+            setattr
+        )
+    )
+)
+(classmapping all_files setattr
+    (chr_file
+        (
+            setattr
+        )
+    )
+)
+(classmapping all_files setattr
+    (dir
+        (
+            setattr
+        )
+    )
+)
+(classmapping all_files setattr
+    (fifo_file
+        (
+            setattr
+        )
+    )
+)
+(classmapping all_files setattr
+    (file
+        (
+            setattr
+        )
+    )
+)
+(classmapping all_files setattr
+    (lnk_file
+        (
+            setattr
+        )
+    )
+)
+(classmapping all_files setattr
+    (sock_file
+        (
+            setattr
+        )
+    )
+)
+
+(classmapping all_files write write_blk_file_perms)
+(classmapping all_files write write_chr_file_perms)
+(classmapping all_files write write_dir_perms)
+(classmapping all_files write write_fifo_file_perms)
+(classmapping all_files write write_file_perms)
+(classmapping all_files write write_lnk_file_perms)
+(classmapping all_files write write_sock_file_perms)
+
+;
+; all_sockets class mappings
+;
+
+(classmapping all_sockets common_socket_perms
+    (alg_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (appletalk_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (atmpvc_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (atmsvc_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (ax25_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (bluetooth_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (bridge_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (caif_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (can_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (dccp_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (decnet_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (ib_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (icmp_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (ieee802154_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (ipx_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (irda_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (isdn_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (iucv_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (kcm_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (key_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (llc_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (mpls_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (netlink_audit_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (netlink_connector_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (netlink_crypto_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (netlink_dnrt_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (netlink_fib_lookup_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (netlink_generic_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (netlink_iscsi_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (netlink_kobject_uevent_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (netlink_netfilter_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (netlink_nflog_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (netlink_rdma_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (netlink_route_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (netlink_scsitransport_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (netlink_selinux_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (netlink_tcpdiag_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (netlink_xfrm_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (netrom_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (nfc_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (packet_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (phonet_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (pppox_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (qipcrtr_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (rawip_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (rds_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (rose_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (rxrpc_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (sctp_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+(classmapping all_sockets common_socket_perms
+    (socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (tcp_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (tipc_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (tun_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (udp_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (unix_dgram_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (unix_stream_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (vsock_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
+    (x25_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+;
+; blk_and_chr_files class mappings
+;
+
+(classmapping blk_and_chr_files create add_entry_dir_perms)
+(classmapping blk_and_chr_files create create_blk_file_perms)
+(classmapping blk_and_chr_files create create_chr_file_perms)
+
+(classmapping blk_and_chr_files delete del_entry_dir_perms)
+(classmapping blk_and_chr_files delete delete_blk_file_perms)
+(classmapping blk_and_chr_files delete delete_chr_file_perms)
+
+(classmapping blk_and_chr_files getattr search_dir_perms)
+(classmapping blk_and_chr_files getattr
+    (blk_file
+        (
+            getattr
+        )
+    )
+)
+(classmapping blk_and_chr_files getattr
+    (chr_file
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping blk_and_chr_files manage rw_dir_perms)
+(classmapping blk_and_chr_files manage manage_blk_file_perms)
+(classmapping blk_and_chr_files manage manage_chr_file_perms)
+
+(classmapping blk_and_chr_files read search_dir_perms)
+(classmapping blk_and_chr_files read read_blk_file_perms)
+(classmapping blk_and_chr_files read read_chr_file_perms)
+
+(classmapping blk_and_chr_files relabel search_dir_perms)
+(classmapping blk_and_chr_files relabel relabel_blk_file_perms)
+(classmapping blk_and_chr_files relabel relabel_chr_file_perms)
+
+(classmapping blk_and_chr_files relabelfrom search_dir_perms)
+(classmapping blk_and_chr_files relabelfrom relabelfrom_blk_file_perms)
+(classmapping blk_and_chr_files relabelfrom relabelfrom_chr_file_perms)
+
+(classmapping blk_and_chr_files relabelto search_dir_perms)
+(classmapping blk_and_chr_files relabelto relabelto_blk_file_perms)
+(classmapping blk_and_chr_files relabelto relabelto_chr_file_perms)
+
+(classmapping blk_and_chr_files rename search_dir_perms)
+(classmapping blk_and_chr_files rename rename_blk_file_perms)
+(classmapping blk_and_chr_files rename rename_chr_file_perms)
+
+(classmapping blk_and_chr_files rw search_dir_perms)
+(classmapping blk_and_chr_files rw rw_blk_file_perms)
+(classmapping blk_and_chr_files rw rw_chr_file_perms)
+
+(classmapping blk_and_chr_files setattr search_dir_perms)
+(classmapping blk_and_chr_files setattr
+    (blk_file
+        (
+            setattr
+        )
+    )
+)
+(classmapping blk_and_chr_files setattr
+    (chr_file
+        (
+            setattr
+        )
+    )
+)
+
+(classmapping blk_and_chr_files write search_dir_perms)
+(classmapping blk_and_chr_files write write_blk_file_perms)
+(classmapping blk_and_chr_files write write_chr_file_perms)
+
+;
+; blk_files class mappings
+;
+
+(classmapping blk_files create add_entry_dir_perms)
+(classmapping blk_files create create_blk_file_perms)
+
+(classmapping blk_files delete del_entry_dir_perms)
+(classmapping blk_files delete delete_blk_file_perms)
+
+(classmapping blk_files getattr search_dir_perms)
+(classmapping blk_files getattr
+    (blk_file
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping blk_files manage rw_dir_perms)
+(classmapping blk_files manage manage_blk_file_perms)
+
+(classmapping blk_files read search_dir_perms)
+(classmapping blk_files read read_blk_file_perms)
+
+(classmapping blk_files relabel search_dir_perms)
+(classmapping blk_files relabel relabel_blk_file_perms)
+
+(classmapping blk_files relabelfrom search_dir_perms)
+(classmapping blk_files relabelfrom relabelfrom_blk_file_perms)
+
+(classmapping blk_files relabelto search_dir_perms)
+(classmapping blk_files relabelto relabelto_blk_file_perms)
+
+(classmapping blk_files rename search_dir_perms)
+(classmapping blk_files rename rename_blk_file_perms)
+
+(classmapping blk_files rw search_dir_perms)
+(classmapping blk_files rw rw_blk_file_perms)
+
+(classmapping blk_files setattr search_dir_perms)
+(classmapping blk_files setattr
+    (blk_file
+        (
+            setattr
+        )
+    )
+)
+
+(classmapping blk_files write search_dir_perms)
+(classmapping blk_files write write_blk_file_perms)
+
+;
+; chr_files class mappings
+;
+
+(classmapping chr_files create add_entry_dir_perms)
+(classmapping chr_files create create_chr_file_perms)
+
+(classmapping chr_files delete del_entry_dir_perms)
+(classmapping chr_files delete delete_chr_file_perms)
+
+(classmapping chr_files getattr search_dir_perms)
+(classmapping chr_files getattr
+    (chr_file
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping chr_files manage rw_dir_perms)
+(classmapping chr_files manage manage_chr_file_perms)
+
+(classmapping chr_files read search_dir_perms)
+(classmapping chr_files read read_chr_file_perms)
+
+(classmapping chr_files relabel search_dir_perms)
+(classmapping chr_files relabel relabel_chr_file_perms)
+
+(classmapping chr_files relabelfrom search_dir_perms)
+(classmapping chr_files relabelfrom relabelfrom_chr_file_perms)
+
+(classmapping chr_files relabelto search_dir_perms)
+(classmapping chr_files relabelto relabelto_chr_file_perms)
+
+(classmapping chr_files rename search_dir_perms)
+(classmapping chr_files rename rename_chr_file_perms)
+
+(classmapping chr_files rw search_dir_perms)
+(classmapping chr_files rw rw_chr_file_perms)
+
+(classmapping chr_files setattr search_dir_perms)
+(classmapping chr_files setattr
+    (chr_file
+        (
+            setattr
+        )
+    )
+)
+
+(classmapping chr_files write search_dir_perms)
+(classmapping chr_files write write_chr_file_perms)
+
+;
+; dirs class mappings
+;
+
+(classmapping dirs create add_entry_dir_perms)
+(classmapping dirs create create_dir_perms)
+
+(classmapping dirs delete del_entry_dir_perms)
+(classmapping dirs delete delete_dir_perms)
+
+(classmapping dirs getattr
+    (dir
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping dirs manage search_dir_perms)
+(classmapping dirs manage manage_dir_perms)
+
+(classmapping dirs relabel search_dir_perms)
+(classmapping dirs relabel relabel_dir_perms)
+
+(classmapping dirs relabelfrom search_dir_perms)
+(classmapping dirs relabelfrom relabelfrom_dir_perms)
+
+(classmapping dirs relabelto search_dir_perms)
+(classmapping dirs relabelto relabelto_dir_perms)
+
+(classmapping dirs rename search_dir_perms)
+(classmapping dirs rename rename_dir_perms)
+
+(classmapping dirs rw search_dir_perms)
+(classmapping dirs rw rw_dir_perms)
+
+(classmapping dirs setattr search_dir_perms)
+(classmapping dirs setattr
+    (dir
+        (
+            setattr
+        )
+    )
+)
+
+;
+; fifo_files class mappings
+;
+
+(classmapping fifo_files create add_entry_dir_perms)
+(classmapping fifo_files create create_fifo_file_perms)
+
+(classmapping fifo_files delete del_entry_dir_perms)
+(classmapping fifo_files delete delete_fifo_file_perms)
+
+(classmapping fifo_files getattr search_dir_perms)
+(classmapping fifo_files getattr
+    (fifo_file
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping fifo_files manage rw_dir_perms)
+(classmapping fifo_files manage manage_fifo_file_perms)
+
+(classmapping fifo_files read search_dir_perms)
+(classmapping fifo_files read read_fifo_file_perms)
+
+(classmapping fifo_files relabel search_dir_perms)
+(classmapping fifo_files relabel relabel_fifo_file_perms)
+
+(classmapping fifo_files relabelfrom search_dir_perms)
+(classmapping fifo_files relabelfrom relabelfrom_fifo_file_perms)
+
+(classmapping fifo_files relabelto search_dir_perms)
+(classmapping fifo_files relabelto relabelto_fifo_file_perms)
+
+(classmapping fifo_files rename search_dir_perms)
+(classmapping fifo_files rename rename_fifo_file_perms)
+
+(classmapping fifo_files rw search_dir_perms)
+(classmapping fifo_files rw rw_fifo_file_perms)
+
+(classmapping fifo_files setattr search_dir_perms)
+(classmapping fifo_files setattr
+    (fifo_file
+        (
+            setattr
+        )
+    )
+)
+
+(classmapping fifo_files write search_dir_perms)
+(classmapping fifo_files write write_fifo_file_perms)
+
+;
+; files class mappings
+;
+
+(classmapping files create add_entry_dir_perms)
+(classmapping files create create_file_perms)
+
+(classmapping files delete del_entry_dir_perms)
+(classmapping files delete delete_file_perms)
+
+(classmapping files getattr search_dir_perms)
+(classmapping files getattr
+    (file
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping files manage rw_dir_perms)
+(classmapping files manage manage_file_perms)
+
+(classmapping files read search_dir_perms)
+(classmapping files read read_file_perms)
+
+(classmapping files relabel search_dir_perms)
+(classmapping files relabel relabel_file_perms)
+
+(classmapping files relabelfrom search_dir_perms)
+(classmapping files relabelfrom relabelfrom_file_perms)
+
+(classmapping files relabelto search_dir_perms)
+(classmapping files relabelto relabelto_file_perms)
+
+(classmapping files rename search_dir_perms)
+(classmapping files rename rename_file_perms)
+
+(classmapping files rw search_dir_perms)
+(classmapping files rw rw_file_perms)
+
+(classmapping files setattr search_dir_perms)
+(classmapping files setattr
+    (file
+        (
+            setattr
+        )
+    )
+)
+
+(classmapping files write search_dir_perms)
+(classmapping files write write_file_perms)
+
+;
+; files_except_blk_and_chr class mappings
+;
+
+(classmapping files_except_blk_and_chr create add_entry_dir_perms)
+(classmapping files_except_blk_and_chr create create_dir_perms)
+(classmapping files_except_blk_and_chr create create_fifo_file_perms)
+(classmapping files_except_blk_and_chr create create_file_perms)
+(classmapping files_except_blk_and_chr create create_lnk_file_perms)
+(classmapping files_except_blk_and_chr create create_sock_file_perms)
+
+(classmapping files_except_blk_and_chr delete del_entry_dir_perms)
+(classmapping files_except_blk_and_chr delete delete_dir_perms)
+(classmapping files_except_blk_and_chr delete delete_fifo_file_perms)
+(classmapping files_except_blk_and_chr delete delete_file_perms)
+(classmapping files_except_blk_and_chr delete delete_lnk_file_perms)
+(classmapping files_except_blk_and_chr delete delete_sock_file_perms)
+
+(classmapping files_except_blk_and_chr getattr search_dir_perms)
+(classmapping files_except_blk_and_chr getattr
+    (dir
+        (
+            getattr
+        )
+    )
+)
+(classmapping files_except_blk_and_chr getattr
+    (fifo_file
+        (
+            getattr
+        )
+    )
+)
+(classmapping files_except_blk_and_chr getattr
+    (file
+        (
+            getattr
+        )
+    )
+)
+(classmapping files_except_blk_and_chr getattr
+    (lnk_file
+        (
+            getattr
+        )
+    )
+)
+(classmapping files_except_blk_and_chr getattr
+    (sock_file
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping files_except_blk_and_chr manage manage_dir_perms)
+(classmapping files_except_blk_and_chr manage manage_fifo_file_perms)
+(classmapping files_except_blk_and_chr manage manage_file_perms)
+(classmapping files_except_blk_and_chr manage manage_lnk_file_perms)
+(classmapping files_except_blk_and_chr manage manage_sock_file_perms)
+
+(classmapping files_except_blk_and_chr read list_dir_perms)
+(classmapping files_except_blk_and_chr read read_fifo_file_perms)
+(classmapping files_except_blk_and_chr read read_file_perms)
+(classmapping files_except_blk_and_chr read read_lnk_file_perms)
+(classmapping files_except_blk_and_chr read read_sock_file_perms)
+
+(classmapping files_except_blk_and_chr relabel search_dir_perms)
+(classmapping files_except_blk_and_chr relabel relabel_dir_perms)
+(classmapping files_except_blk_and_chr relabel relabel_fifo_file_perms)
+(classmapping files_except_blk_and_chr relabel relabel_file_perms)
+(classmapping files_except_blk_and_chr relabel relabel_lnk_file_perms)
+(classmapping files_except_blk_and_chr relabel relabel_sock_file_perms)
+
+(classmapping files_except_blk_and_chr relabelfrom search_dir_perms)
+(classmapping files_except_blk_and_chr relabelfrom relabelfrom_dir_perms)
+(classmapping files_except_blk_and_chr relabelfrom
+        relabelfrom_fifo_file_perms)
+(classmapping files_except_blk_and_chr relabelfrom relabelfrom_file_perms)
+(classmapping files_except_blk_and_chr relabelfrom
+        relabelfrom_lnk_file_perms)
+(classmapping files_except_blk_and_chr relabelfrom
+        relabelfrom_sock_file_perms)
+
+(classmapping files_except_blk_and_chr relabelto search_dir_perms)
+(classmapping files_except_blk_and_chr relabelto relabelto_dir_perms)
+(classmapping files_except_blk_and_chr relabelto relabelto_fifo_file_perms)
+(classmapping files_except_blk_and_chr relabelto relabelto_file_perms)
+(classmapping files_except_blk_and_chr relabelto relabelto_lnk_file_perms)
+(classmapping files_except_blk_and_chr relabelto relabelto_sock_file_perms)
+
+(classmapping files_except_blk_and_chr rename search_dir_perms)
+(classmapping files_except_blk_and_chr rename rename_dir_perms)
+(classmapping files_except_blk_and_chr rename rename_fifo_file_perms)
+(classmapping files_except_blk_and_chr rename rename_file_perms)
+(classmapping files_except_blk_and_chr rename rename_lnk_file_perms)
+(classmapping files_except_blk_and_chr rename rename_sock_file_perms)
+
+(classmapping files_except_blk_and_chr rw rw_dir_perms)
+(classmapping files_except_blk_and_chr rw rw_fifo_file_perms)
+(classmapping files_except_blk_and_chr rw rw_file_perms)
+(classmapping files_except_blk_and_chr rw rw_lnk_file_perms)
+(classmapping files_except_blk_and_chr rw rw_sock_file_perms)
+
+(classmapping files_except_blk_and_chr setattr search_dir_perms)
+(classmapping files_except_blk_and_chr setattr
+    (dir
+        (
+            setattr
+        )
+    )
+)
+(classmapping files_except_blk_and_chr setattr
+    (fifo_file
+        (
+            setattr
+        )
+    )
+)
+(classmapping files_except_blk_and_chr setattr
+    (file
+        (
+            setattr
+        )
+    )
+)
+(classmapping files_except_blk_and_chr setattr
+    (lnk_file
+        (
+            setattr
+        )
+    )
+)
+(classmapping files_except_blk_and_chr setattr
+    (sock_file
+        (
+            setattr
+        )
+    )
+)
+
+(classmapping files_except_blk_and_chr write write_dir_perms)
+(classmapping files_except_blk_and_chr write write_fifo_file_perms)
+(classmapping files_except_blk_and_chr write write_file_perms)
+(classmapping files_except_blk_and_chr write write_lnk_file_perms)
+(classmapping files_except_blk_and_chr write write_sock_file_perms)
+
+;
+; lnk_files class mappings
+;
+
+(classmapping lnk_files create add_entry_dir_perms)
+(classmapping lnk_files create create_lnk_file_perms)
+
+(classmapping lnk_files delete del_entry_dir_perms)
+(classmapping lnk_files delete delete_lnk_file_perms)
+
+(classmapping lnk_files getattr search_dir_perms)
+(classmapping lnk_files getattr
+    (lnk_file
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping lnk_files manage rw_dir_perms)
+(classmapping lnk_files manage manage_lnk_file_perms)
+
+(classmapping lnk_files read search_dir_perms)
+(classmapping lnk_files read read_lnk_file_perms)
+
+(classmapping lnk_files relabel search_dir_perms)
+(classmapping lnk_files relabel relabel_lnk_file_perms)
+
+(classmapping lnk_files relabelfrom search_dir_perms)
+(classmapping lnk_files relabelfrom relabelfrom_lnk_file_perms)
+
+(classmapping lnk_files relabelto search_dir_perms)
+(classmapping lnk_files relabelto relabelto_lnk_file_perms)
+
+(classmapping lnk_files rename search_dir_perms)
+(classmapping lnk_files rename rename_lnk_file_perms)
+
+(classmapping lnk_files rw search_dir_perms)
+(classmapping lnk_files rw rw_lnk_file_perms)
+
+(classmapping lnk_files setattr search_dir_perms)
+(classmapping lnk_files setattr
+    (lnk_file
+        (
+            setattr
+        )
+    )
+)
+
+(classmapping lnk_files write search_dir_perms)
+(classmapping lnk_files write write_lnk_file_perms)
+
+;
+; process_state class mappings
+;
+
+(classmapping process_state ps list_dir_perms)
+(classmapping process_state ps
+        (process
+            (
+                getattr
+            )
+        )
+)
+(classmapping process_state ps read_file_perms)
+(classmapping process_state ps read_lnk_file_perms)
+
+(classmapping process_state read list_dir_perms)
+(classmapping process_state read read_file_perms)
+(classmapping process_state read read_lnk_file_perms)
+
+;
+; sock_files class mappings
+;
+
+(classmapping sock_files create add_entry_dir_perms)
+(classmapping sock_files create create_sock_file_perms)
+
+(classmapping sock_files delete del_entry_dir_perms)
+(classmapping sock_files delete delete_sock_file_perms)
+
+(classmapping sock_files getattr search_dir_perms)
+(classmapping sock_files getattr
+    (sock_file
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping sock_files manage rw_dir_perms)
+(classmapping sock_files manage manage_sock_file_perms)
+
+(classmapping sock_files read search_dir_perms)
+(classmapping sock_files read read_sock_file_perms)
+
+(classmapping sock_files relabel search_dir_perms)
+(classmapping sock_files relabel relabel_sock_file_perms)
+
+(classmapping sock_files relabelfrom search_dir_perms)
+(classmapping sock_files relabelfrom relabelfrom_sock_file_perms)
+
+(classmapping sock_files relabelto search_dir_perms)
+(classmapping sock_files relabelto relabelto_sock_file_perms)
+
+(classmapping sock_files rename search_dir_perms)
+(classmapping sock_files rename rename_sock_file_perms)
+
+(classmapping sock_files rw search_dir_perms)
+(classmapping sock_files rw rw_sock_file_perms)
+
+(classmapping sock_files setattr search_dir_perms)
+(classmapping sock_files setattr
+    (sock_file
+        (
+            setattr
+        )
+    )
+)
+
+(classmapping sock_files write search_dir_perms)
+(classmapping sock_files write write_sock_file_perms)

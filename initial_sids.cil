@@ -1,0 +1,96 @@
+; -*- mode: CIL; fill-column: 75; indent-tabs-mode: nil; tab-width: 4 -*-
+
+; Unused initial security identifiers
+;
+; 1. Unused initial security identifier declarations
+; 2. Unused initial security identifier context specifications
+; 3. Sid order of all initial security identifiers
+
+;
+; Unused initial security identifier declarations
+;
+
+(sid any_socket)
+(sid file_labels)
+(sid icmp_socket)
+(sid igmp_packet)
+(sid init)
+(sid kmod)
+(sid policy)
+(sid scmp_packet)
+(sid sysctl_dev)
+(sid sysctl_fs)
+(sid sysctl_kernel)
+(sid sysctl_modprobe)
+(sid sysctl_net)
+(sid sysctl_net_unix)
+(sid sysctl_vm)
+(sid tcp_socket)
+
+;
+; Unused initial security identifier context specifications
+;
+
+(context unused_isid
+    (
+        sys.id
+        sys.role
+        sys.unlabeled.isid
+            (
+                systemlow
+                systemlow
+            )
+    )
+)
+
+(sidcontext any_socket unused_isid)
+(sidcontext file_labels unused_isid)
+(sidcontext icmp_socket unused_isid)
+(sidcontext igmp_packet unused_isid)
+(sidcontext init unused_isid)
+(sidcontext kmod unused_isid)
+(sidcontext policy unused_isid)
+(sidcontext scmp_packet unused_isid)
+(sidcontext sysctl_dev unused_isid)
+(sidcontext sysctl_fs unused_isid)
+(sidcontext sysctl_kernel unused_isid)
+(sidcontext sysctl_modprobe unused_isid)
+(sidcontext sysctl_net unused_isid)
+(sidcontext sysctl_net_unix unused_isid)
+(sidcontext sysctl_vm unused_isid)
+(sidcontext tcp_socket unused_isid)
+
+;
+; Sid order of all initial security identifiers
+;
+
+(sidorder
+    (
+        kernel
+        security
+        unlabeled
+        fs
+        file
+        file_labels
+        init
+        any_socket
+        port
+        netif
+        netmsg
+        node
+        igmp_packet
+        icmp_socket
+        tcp_socket
+        sysctl_modprobe
+        sysctl
+        sysctl_fs
+        sysctl_kernel
+        sysctl_net
+        sysctl_net_unix
+        sysctl_vm
+        sysctl_dev
+        kmod policy
+        scmp_packet
+        devnull
+    )
+)

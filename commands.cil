@@ -1,0 +1,1504 @@
+; -*- mode: CIL; fill-column: 75; indent-tabs-mode: nil; tab-width: 4 -*-
+
+; CMD policy
+;
+; 1. CMD generic_commands file context specifications in FS
+; 2. CMD name space
+; 3.    CMD generic_commands name space
+; 4.    CMD cmd_file name space
+; 5.    CMD shell name space
+
+;
+; CMD generic_commands file context specifications in FS
+;
+
+(in fs.rootfs
+    (filecon "/(s)?bin" symlink fs_context)
+)
+
+;
+; CMD name space
+;
+
+(block cmd
+
+    ;
+    ; CMD generic_commands name space
+    ;
+
+    (block generic_commands
+
+        ;
+        ; generic_commands contexts
+        ;
+
+        (filecon "/etc/profile\.d(/.*)?" file cmd_file_context)
+        (filecon "/etc/rc\.d/init\.d(/.*)?" file cmd_file_context)
+        (filecon "/etc/rc\.d/rc\.local" file cmd_file_context)
+        (filecon "/etc/sysconfig/network-scripts/ifdown-.*" file
+            cmd_file_context)
+        (filecon "/etc/sysconfig/network-scripts/ifup-.*" file
+            cmd_file_context)
+        (filecon "/etc/sysconfig/network-scripts/init\.ipv6-global"
+            file cmd_file_context)
+        (filecon "/usr/bin(/.*)?" any cmd_file_context)
+        (filecon "/usr/lib/jvm/java-.*-openjdk-.*/jre/bin(/.*)?"
+            any cmd_file_context)
+        (filecon "/usr/libexec(/.*)?" any cmd_file_context)
+        (filecon "/usr/sbin(/.*)?" any cmd_file_context)
+
+        ;
+        ; generic_commands macros
+        ;
+
+        (macro add_entries ((type ARG1))
+            (allow ARG1 cmd_file add_entry_dir_perms)
+            (call files.generic_data.search
+                (
+                    ARG1
+                )
+            )
+            (call fs.rootfs.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro append_files ((type ARG1))
+            (allow ARG1 cmd_file append_file_perms)
+            (call search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro bounded_files ((type ARG1))
+            (typebounds cmd_file ARG1)
+        )
+
+        (macro create ((type ARG1))
+            (call create_dirs
+                (
+                    ARG1
+                )
+            )
+            (call create_files
+                (
+                    ARG1
+                )
+            )
+            (call create_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro create_dirs ((type ARG1))
+            (allow ARG1 cmd_file
+                (dirs
+                    (
+                        create
+                    )
+                )
+            )
+            (call files.generic_data.search
+                (
+                    ARG1
+                )
+            )
+            (call fs.rootfs.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro create_files ((type ARG1))
+            (allow ARG1 cmd_file
+                (files
+                    (
+                        create
+                    )
+                )
+            )
+            (call files.generic_data.search
+                (
+                    ARG1
+                )
+            )
+            (call fs.rootfs.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro create_lnk_files ((type ARG1))
+            (allow ARG1 cmd_file
+                (lnk_files
+                    (
+                        create
+                    )
+                )
+            )
+            (call files.generic_data.search
+                (
+                    ARG1
+                )
+            )
+            (call fs.rootfs.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro del_entries ((type ARG1))
+            (allow ARG1 cmd_file del_entry_dir_perms)
+            (call files.generic_data.search
+                (
+                    ARG1
+                )
+            )
+            (call fs.rootfs.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro delete ((type ARG1))
+            (call delete_dirs
+                (
+                    ARG1
+                )
+            )
+            (call delete_files
+                (
+                    ARG1
+                )
+            )
+            (call delete_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro delete_dirs ((type ARG1))
+            (allow ARG1 cmd_file
+                (dirs
+                    (
+                        delete
+                    )
+                )
+            )
+            (call files.generic_data.search
+                (
+                    ARG1
+                )
+            )
+            (call fs.rootfs.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro delete_files ((type ARG1))
+            (allow ARG1 cmd_file
+                (files
+                    (
+                        delete
+                    )
+                )
+            )
+            (call files.generic_data.search
+                (
+                    ARG1
+                )
+            )
+            (call fs.rootfs.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro delete_lnk_files ((type ARG1))
+            (allow ARG1 cmd_file
+                (lnk_files
+                    (
+                        delete
+                    )
+                )
+            )
+            (call files.generic_data.search
+                (
+                    ARG1
+                )
+            )
+            (call fs.rootfs.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro entry_files ((type ARG1))
+            (allow ARG1 cmd_file
+                (file
+                    (
+                        entrypoint
+                    )
+                )
+            )
+        )
+
+        (macro exec_files ((type ARG1))
+            (allow ARG1 cmd_file exec_file_perms)
+            (call search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro getattr ((type ARG1))
+            (call getattr_dirs
+                (
+                    ARG1
+                )
+            )
+            (call getattr_files
+                (
+                    ARG1
+                )
+            )
+            (call getattr_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro getattr_dirs ((type ARG1))
+            (allow ARG1 cmd_file
+                (dirs
+                    (
+                        getattr
+                    )
+                )
+            )
+            (call files.generic_data.search
+                (
+                    ARG1
+                )
+            )
+            (call fs.rootfs.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro getattr_files ((type ARG1))
+            (allow ARG1 cmd_file
+                (files
+                    (
+                        getattr
+                    )
+                )
+            )
+            (call files.generic_data.search
+                (
+                    ARG1
+                )
+            )
+            (call fs.rootfs.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro getattr_lnk_files ((type ARG1))
+            (allow ARG1 cmd_file
+                (lnk_files
+                    (
+                        getattr
+                    )
+                )
+            )
+            (call files.generic_data.search
+                (
+                    ARG1
+                )
+            )
+            (call fs.rootfs.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro list ((type ARG1))
+            (allow ARG1 cmd_file list_dir_perms)
+            (call files.generic_data.search
+                (
+                    ARG1
+                )
+            )
+            (call fs.rootfs.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro manage ((type ARG1))
+            (call manage_dirs
+                (
+                    ARG1
+                )
+            )
+            (call manage_files
+                (
+                    ARG1
+                )
+            )
+            (call manage_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro manage_dirs ((type ARG1))
+            (allow ARG1 cmd_file
+                (dirs
+                    (
+                        manage
+                    )
+                )
+            )
+            (call files.generic_data.search
+                (
+                    ARG1
+                )
+            )
+            (call fs.rootfs.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro manage_files ((type ARG1))
+            (allow ARG1 cmd_file
+                (files
+                    (
+                        manage
+                    )
+                )
+            )
+            (call files.generic_data.search
+                (
+                    ARG1
+                )
+            )
+            (call fs.rootfs.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro manage_lnk_files ((type ARG1))
+            (allow ARG1 cmd_file
+                (lnk_files
+                    (
+                        manage
+                    )
+                )
+            )
+            (call files.generic_data.search
+                (
+                    ARG1
+                )
+            )
+            (call fs.rootfs.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro mmap_files ((type ARG1))
+            (allow ARG1 cmd_file mmap_file_perms)
+            (call search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro obj_type_transition ((type ARG1)(type ARG2)(class ARG3)(name ARG4))
+            (typetransition ARG1 cmd_file ARG3 ARG4 ARG2)
+            (call rw_dirs
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro read ((type ARG1))
+            (call list
+                (
+                    ARG1
+                )
+            )
+            (call read_files
+                (
+                    ARG1
+                )
+            )
+            (call read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro read_files ((type ARG1))
+            (allow ARG1 cmd_file
+                (files
+                    (
+                        read
+                    )
+                )
+            )
+            (call files.generic_data.search
+                (
+                    ARG1
+                )
+            )
+            (call fs.rootfs.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro read_lnk_files ((type ARG1))
+            (allow ARG1 cmd_file
+                (lnk_files
+                    (
+                        read
+                    )
+                )
+            )
+            (call files.generic_data.search
+                (
+                    ARG1
+                )
+            )
+            (call fs.rootfs.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabel ((type ARG1))
+            (call relabel_dirs
+                (
+                    ARG1
+                )
+            )
+            (call relabel_files
+                (
+                    ARG1
+                )
+            )
+            (call relabel_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabel_dirs ((type ARG1))
+            (allow ARG1 cmd_file
+                (dirs
+                    (
+                        relabel
+                    )
+                )
+            )
+            (call files.generic_data.search
+                (
+                    ARG1
+                )
+            )
+            (call fs.rootfs.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabel_files ((type ARG1))
+            (allow ARG1 cmd_file
+                (files
+                    (
+                        relabel
+                    )
+                )
+            )
+            (call files.generic_data.search
+                (
+                    ARG1
+                )
+            )
+            (call fs.rootfs.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabel_lnk_files ((type ARG1))
+            (allow ARG1 cmd_file
+                (lnk_files
+                    (
+                        relabel
+                    )
+                )
+            )
+            (call files.generic_data.search
+                (
+                    ARG1
+                )
+            )
+            (call fs.rootfs.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelfrom ((type ARG1))
+            (call relabelfrom_dirs
+                (
+                    ARG1
+                )
+            )
+            (call relabelfrom_files
+                (
+                    ARG1
+                )
+            )
+            (call relabelfrom_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelfrom_dirs ((type ARG1))
+            (allow ARG1 cmd_file
+                (dirs
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+            (call files.generic_data.search
+                (
+                    ARG1
+                )
+            )
+            (call fs.rootfs.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelfrom_files ((type ARG1))
+            (allow ARG1 cmd_file
+                (files
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+            (call files.generic_data.search
+                (
+                    ARG1
+                )
+            )
+            (call fs.rootfs.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelfrom_lnk_files ((type ARG1))
+            (allow ARG1 cmd_file
+                (lnk_files
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+            (call files.generic_data.search
+                (
+                    ARG1
+                )
+            )
+            (call fs.rootfs.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelto ((type ARG1))
+            (call relabelto_dirs
+                (
+                    ARG1
+                )
+            )
+            (call relabelto_files
+                (
+                    ARG1
+                )
+            )
+            (call relabelto_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelto_dirs ((type ARG1))
+            (allow ARG1 cmd_file
+                (dirs
+                    (
+                        relabelto
+                    )
+                )
+            )
+            (call files.generic_data.search
+                (
+                    ARG1
+                )
+            )
+            (call fs.rootfs.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelto_files ((type ARG1))
+            (allow ARG1 cmd_file
+                (files
+                    (
+                        relabelto
+                    )
+                )
+            )
+            (call files.generic_data.search
+                (
+                    ARG1
+                )
+            )
+            (call fs.rootfs.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelto_lnk_files ((type ARG1))
+            (allow ARG1 cmd_file
+                (lnk_files
+                    (
+                        relabelto
+                    )
+                )
+            )
+            (call files.generic_data.search
+                (
+                    ARG1
+                )
+            )
+            (call fs.rootfs.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rename ((type ARG1))
+            (call rename_dirs
+                (
+                    ARG1
+                )
+            )
+            (call rename_files
+                (
+                    ARG1
+                )
+            )
+            (call rename_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rename_dirs ((type ARG1))
+            (allow ARG1 cmd_file
+                (dirs
+                    (
+                        rename
+                    )
+                )
+            )
+            (call files.generic_data.search
+                (
+                    ARG1
+                )
+            )
+            (call fs.rootfs.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rename_files ((type ARG1))
+            (allow ARG1 cmd_file
+                (files
+                    (
+                        rename
+                    )
+                )
+            )
+            (call files.generic_data.search
+                (
+                    ARG1
+                )
+            )
+            (call fs.rootfs.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rename_lnk_files ((type ARG1))
+            (allow ARG1 cmd_file
+                (lnk_files
+                    (
+                        rename
+                    )
+                )
+            )
+            (call files.generic_data.search
+                (
+                    ARG1
+                )
+            )
+            (call fs.rootfs.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rw ((type ARG1))
+            (call rw_dirs
+                (
+                    ARG1
+                )
+            )
+            (call rw_files
+                (
+                    ARG1
+                )
+            )
+            (call rw_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rw_dirs ((type ARG1))
+            (allow ARG1 cmd_file
+                (dirs
+                    (
+                        rw
+                    )
+                )
+            )
+            (call files.generic_data.search
+                (
+                    ARG1
+                )
+            )
+            (call fs.rootfs.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rw_files ((type ARG1))
+            (allow ARG1 cmd_file
+                (files
+                    (
+                        rw
+                    )
+                )
+            )
+            (call files.generic_data.search
+                (
+                    ARG1
+                )
+            )
+            (call fs.rootfs.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rw_lnk_files ((type ARG1))
+            (allow ARG1 cmd_file
+                (lnk_files
+                    (
+                        rw
+                    )
+                )
+            )
+            (call files.generic_data.search
+                (
+                    ARG1
+                )
+            )
+            (call fs.rootfs.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro search ((type ARG1))
+            (allow ARG1 cmd_file search_dir_perms)
+            (call files.generic_data.search
+                (
+                    ARG1
+                )
+            )
+            (call fs.rootfs.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro setattr ((type ARG1))
+            (call setattr_dirs
+                (
+                    ARG1
+                )
+            )
+            (call setattr_files
+                (
+                    ARG1
+                )
+            )
+            (call setattr_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro setattr_dirs ((type ARG1))
+            (allow ARG1 cmd_file
+                (dirs
+                    (
+                        setattr
+                    )
+                )
+            )
+            (call files.generic_data.search
+                (
+                    ARG1
+                )
+            )
+            (call fs.rootfs.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro setattr_files ((type ARG1))
+            (allow ARG1 cmd_file
+                (files
+                    (
+                        setattr
+                    )
+                )
+            )
+            (call files.generic_data.search
+                (
+                    ARG1
+                )
+            )
+            (call fs.rootfs.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro setattr_lnk_files ((type ARG1))
+            (allow ARG1 cmd_file
+                (lnk_files
+                    (
+                        setattr
+                    )
+                )
+            )
+            (call files.generic_data.search
+                (
+                    ARG1
+                )
+            )
+            (call fs.rootfs.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro write ((type ARG1))
+            (call write_dirs
+                (
+                    ARG1
+                )
+            )
+            (call write_files
+                (
+                    ARG1
+                )
+            )
+            (call write_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro write_dirs ((type ARG1))
+            (allow ARG1 cmd_file
+                (dirs
+                    (
+                        write
+                    )
+                )
+            )
+            (call files.generic_data.search
+                (
+                    ARG1
+                )
+            )
+            (call fs.rootfs.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro write_files ((type ARG1))
+            (allow ARG1 cmd_file
+                (files
+                    (
+                        write
+                    )
+                )
+            )
+            (call files.generic_data.search
+                (
+                    ARG1
+                )
+            )
+            (call fs.rootfs.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro write_lnk_files ((type ARG1))
+            (allow ARG1 cmd_file
+                (lnk_files
+                    (
+                        write
+                    )
+                )
+            )
+            (call files.generic_data.search
+                (
+                    ARG1
+                )
+            )
+            (call fs.rootfs.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        ;
+        ; generic_commands policy
+        ;
+
+        (blockinherit cmd_file.obj_stub)
+    )
+
+    ;
+    ; CMD cmd_file name space
+    ;
+
+    (block cmd_file
+
+        ;
+        ; cmd_file macros
+        ;
+
+        (macro append_files ((type ARG1))
+            (allow ARG1 obj_type_attribute append_file_perms)
+            (call generic_commands.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro create_files ((type ARG1))
+            (allow ARG1 obj_type_attribute create_file_perms)
+            (call generic_commands.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro delete_files ((type ARG1))
+            (allow ARG1 obj_type_attribute delete_file_perms)
+            (call generic_commands.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro entry_files ((type ARG1))
+            (allow ARG1 obj_type_attribute
+                (file
+                    (
+                        entrypoint
+                    )
+                )
+            )
+        )
+
+        (macro exec_files ((type ARG1))
+            (allow ARG1 obj_type_attribute exec_file_perms)
+            (call generic_commands.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro getattr_files ((type ARG1))
+            (allow ARG1 obj_type_attribute
+                (file
+                    (
+                        getattr
+                    )
+                )
+            )
+            (call generic_commands.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro manage_files ((type ARG1))
+            (allow ARG1 obj_type_attribute manage_file_perms)
+            (call generic_commands.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro mmap_files ((type ARG1))
+            (allow ARG1 obj_type_attribute mmap_file_perms)
+            (call generic_commands.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro obj_type ((type ARG1))
+            (typeattributeset obj_type_attribute ARG1)
+        )
+
+        (macro read_files ((type ARG1))
+            (allow ARG1 obj_type_attribute read_file_perms)
+            (call generic_commands.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabel_files ((type ARG1))
+            (allow ARG1 obj_type_attribute relabel_file_perms)
+            (call generic_commands.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelfrom_files ((type ARG1))
+            (allow ARG1 obj_type_attribute relabelfrom_file_perms)
+            (call generic_commands.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelto_files ((type ARG1))
+            (allow ARG1 obj_type_attribute relabelto_file_perms)
+            (call generic_commands.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rename_files ((type ARG1))
+            (allow ARG1 obj_type_attribute rename_file_perms)
+            (call generic_commands.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rw_files ((type ARG1))
+            (allow ARG1 obj_type_attribute rw_file_perms)
+            (call generic_commands.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro setattr_files ((type ARG1))
+            (allow ARG1 obj_type_attribute
+                (file
+                    (
+                        setattr
+                    )
+                )
+            )
+            (call generic_commands.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro write_files ((type ARG1))
+            (allow ARG1 obj_type_attribute write_file_perms)
+            (call generic_commands.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        ;
+        ; cmd_file policy
+        ;
+
+        (typeattribute obj_type_attribute)
+
+        (call files.file.obj_type
+            (
+                obj_type_attribute
+            )
+        )
+
+        (call subj.entry_obj_type
+            (
+                obj_type_attribute
+            )
+        )
+
+        ;
+        ; cmd_file templates
+        ;
+
+        (block obj_stub
+
+            ;
+            ; cmd.cmd_file.obj_stub contexts
+            ;
+
+            (context cmd_file_context
+                (
+                    sys.id
+                    sys.role
+                    cmd_file
+                        (
+                            systemlow
+                            systemlow
+                        )
+                )
+            )
+
+            ;
+            ; cmd.cmd_file.obj_stub policy
+            ;
+
+            (blockabstract obj_stub)
+
+            (type cmd_file)
+            (call cmd.cmd_file.obj_type
+                (
+                    cmd_file
+                )
+            )
+        )
+
+        (block obj_template
+
+            ;
+            ; cmd.cmd_file.obj_template macros
+            ;
+
+            (macro append_files ((type ARG1))
+                (allow ARG1 cmd_file append_file_perms)
+                (call cmd.generic_commands.read_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro bounded_files ((type ARG1))
+                (typebounds cmd_file ARG1)
+            )
+
+            (macro create_files ((type ARG1))
+                (allow ARG1 cmd_file create_file_perms)
+                (call cmd.generic_commands.read_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro delete_files ((type ARG1))
+                (allow ARG1 cmd_file delete_file_perms)
+                (call cmd.generic_commands.read_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro entry_files ((type ARG1))
+                (allow ARG1 cmd_file
+                    (file
+                        (
+                            entrypoint
+                        )
+                    )
+                )
+            )
+
+            (macro exec_files ((type ARG1))
+                (allow ARG1 cmd_file exec_file_perms)
+                (call cmd.generic_commands.read_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro getattr_files ((type ARG1))
+                (allow ARG1 cmd_file
+                    (file
+                        (
+                            getattr
+                        )
+                    )
+                )
+                (call cmd.generic_commands.read_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro manage_files ((type ARG1))
+                (allow ARG1 cmd_file manage_file_perms)
+                (call cmd.generic_commands.read_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro mmap_files ((type ARG1))
+                (allow ARG1 cmd_file mmap_file_perms)
+                (call cmd.generic_commands.read_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro read_files ((type ARG1))
+                (allow ARG1 cmd_file read_file_perms)
+                (call cmd.generic_commands.read_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro relabel_files ((type ARG1))
+                (allow ARG1 cmd_file relabel_file_perms)
+                (call cmd.generic_commands.read_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro relabelfrom_files ((type ARG1))
+                (allow ARG1 cmd_file relabelfrom_file_perms)
+                (call cmd.generic_commands.read_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro relabelto_files ((type ARG1))
+                (allow ARG1 cmd_file relabelto_file_perms)
+                (call cmd.generic_commands.read_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro rename_files ((type ARG1))
+                (allow ARG1 cmd_file rename_file_perms)
+                (call cmd.generic_commands.read_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro rw_files ((type ARG1))
+                (allow ARG1 cmd_file rw_file_perms)
+                (call cmd.generic_commands.read_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro setattr_files ((type ARG1))
+                (allow ARG1 cmd_file
+                    (file
+                        (
+                            setattr
+                        )
+                    )
+                )
+                (call cmd.generic_commands.read_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro write_files ((type ARG1))
+                (allow ARG1 cmd_file write_file_perms)
+                (call cmd.generic_commands.read_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            ;
+            ; cmd.cmd_file.obj_template policy
+            ;
+
+            (blockabstract obj_template)
+
+            (blockinherit cmd.cmd_file.obj_stub)
+        )
+    )
+
+    ;
+    ; CMD shell name space
+    ;
+
+    (block shell
+
+        ;
+        ; shell contexts
+        ;
+
+        (filecon "/usr/bin/bash" file cmd_file_context)
+        (filecon "/usr/sbin/nologin" file cmd_file_context)
+
+        ;
+        ; shell policy
+        ;
+
+        (blockinherit cmd_file.obj_template)
+    )
+)

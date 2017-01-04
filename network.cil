@@ -1,0 +1,2657 @@
+; -*- mode: CIL; fill-column: 75; indent-tabs-mode: nil; tab-width: 4 -*-
+
+; Net policy
+;
+; 1. Net initial security identifier declarations
+; 2. Net name space
+;       Net ephemeral_port name space
+;       Net generic_ephemeral name space
+;       Net generic_hi_reserved name space
+;       Net generic_if name space
+;       Net generic_node name space
+;       Net generic_packet name space
+;       Net generic_peer name space
+;       Net generic_port name space
+;       Net generic_reserved name space
+;       Net generic_unreserved name space
+;       Net hi_reserved_port name space
+;       Net if name space
+;       Net node name space
+;       Net packet name space
+;       Net peer name space
+;       Net port name space
+;       Net reserved port name space
+;       Net unreserved_port name space
+
+;
+; Net initial security identifier declarations
+;
+
+(sid netif)
+(sid netmsg)
+(sid node)
+(sid port)
+
+;
+; Net name space
+;
+
+(block net
+
+    ;
+    ; Macros
+    ;
+
+    (macro unconfined_subj_type ((type ARG1))
+        (typeattributeset unconfined_subj_type_attribute ARG1)
+    )
+
+    ;
+    ; Policy
+    ;
+
+    (typeattribute unconfined_subj_type_attribute)
+
+    (call sys.unlabeled.dccp_recvfrom
+        (
+            unconfined_subj_type_attribute
+        )
+    )
+    (call sys.unlabeled.icmp_recvfrom
+        (
+            unconfined_subj_type_attribute
+        )
+    )
+    (call sys.unlabeled.rawip_recvfrom
+        (
+            unconfined_subj_type_attribute
+        )
+    )
+    (call sys.unlabeled.recv
+        (
+            unconfined_subj_type_attribute
+        )
+    )
+    (call sys.unlabeled.sctp_recvfrom
+        (
+            unconfined_subj_type_attribute
+        )
+    )
+    (call sys.unlabeled.tcp_recvfrom
+        (
+            unconfined_subj_type_attribute
+        )
+    )
+    (call sys.unlabeled.udp_recvfrom
+        (
+            unconfined_subj_type_attribute
+        )
+    )
+
+    ;
+    ; Net ephemeral_port name space
+    ;
+
+    (block ephemeral_port
+
+        ;
+        ; ephemeral_port macros
+        ;
+
+        (macro dccp_bind ((type ARG1))
+            (allow ARG1 self create_dccp_stream_socket_perms)
+            (allow ARG1 obj_type_attribute
+                (dccp_socket
+                    (
+                        name_bind
+                    )
+                )
+            )
+        )
+
+        (macro dccp_connect ((type ARG1))
+            (allow ARG1 self create_dccp_socket_perms)
+            (allow ARG1 obj_type_attribute
+                (dccp_socket
+                    (
+                        name_connect
+                    )
+                )
+            )
+        )
+
+        (macro icmp_bind ((type ARG1))
+            (allow ARG1 self create_icmp_socket_perms)
+            (allow ARG1 obj_type_attribute
+                (icmp_socket
+                    (
+                        name_bind
+                    )
+                )
+            )
+        )
+
+        (macro obj_type ((type ARG1))
+            (typeattributeset obj_type_attribute ARG1)
+        )
+
+        (macro rawip_bind ((type ARG1))
+            (allow ARG1 self create_rawip_socket_perms)
+            (allow ARG1 obj_type_attribute
+                (rawip_socket
+                    (
+                        name_bind
+                    )
+                )
+            )
+        )
+
+        (macro sctp_bind ((type ARG1))
+            (allow ARG1 self create_sctp_socket_perms)
+            (allow ARG1 obj_type_attribute
+                (sctp_socket
+                    (
+                        name_bind
+                    )
+                )
+            )
+        )
+
+        (macro tcp_bind ((type ARG1))
+            (allow ARG1 self create_tcp_stream_socket_perms)
+            (allow ARG1 obj_type_attribute
+                (tcp_socket
+                    (
+                        name_bind
+                    )
+                )
+            )
+        )
+
+        (macro tcp_connect ((type ARG1))
+            (allow ARG1 self create_tcp_socket_perms)
+            (allow ARG1 obj_type_attribute
+                (tcp_socket
+                    (
+                        name_connect
+                    )
+                )
+            )
+        )
+
+        (macro udp_bind ((type ARG1))
+            (allow ARG1 self create_udp_socket_perms)
+            (allow ARG1 obj_type_attribute
+                (udp_socket
+                    (
+                        name_bind
+                    )
+                )
+            )
+        )
+
+        ;
+        ; ephemeral_port policy
+        ;
+
+        (typeattribute obj_type_attribute)
+
+        (call port.obj_type
+            (
+                obj_type_attribute
+            )
+        )
+
+        ;
+        ; ephemeral_port templates
+        ;
+
+        (block obj_stub
+
+            ;
+            ; ephemeral_port.obj_stub contexts
+            ;
+
+            (context ephemeral_port_context
+                (
+                    sys.id
+                    sys.role
+                    ephemeral_port
+                        (
+                            systemlow
+                            systemlow
+                        )
+                )
+            )
+
+            ;
+            ; ephemeral_port.obj_stub policy
+            ;
+
+            (blockabstract obj_stub)
+
+            (type ephemeral_port)
+            (call net.ephemeral_port.obj_type
+                (
+                    ephemeral_port
+                )
+            )
+        )
+
+        (block obj_template
+
+            ;
+            ; ephemeral_port.obj_template macros
+            ;
+
+            (macro dccp_bind ((type ARG1))
+                (allow ARG1 self create_dccp_stream_socket_perms)
+                (allow ARG1 ephemeral_port
+                    (dccp_socket
+                        (
+                            name_bind
+                        )
+                    )
+                )
+            )
+
+            (macro dccp_connect ((type ARG1))
+                (allow ARG1 self create_dccp_socket_perms)
+                (allow ARG1 ephemeral_port
+                    (dccp_socket
+                        (
+                            name_connect
+                        )
+                    )
+                )
+            )
+
+            (macro icmp_bind ((type ARG1))
+                (allow ARG1 self create_icmp_socket_perms)
+                (allow ARG1 ephemeral_port
+                    (icmp_socket
+                        (
+                            name_bind
+                        )
+                    )
+                )
+            )
+
+            (macro rawip_bind ((type ARG1))
+                (allow ARG1 self create_rawip_socket_perms)
+                (allow ARG1 ephemeral_port
+                    (rawip_socket
+                        (
+                            name_bind
+                        )
+                    )
+                )
+            )
+
+            (macro sctp_bind ((type ARG1))
+                (allow ARG1 self create_sctp_socket_perms)
+                (allow ARG1 ephemeral_port
+                    (sctp_socket
+                        (
+                            name_bind
+                        )
+                    )
+                )
+            )
+
+            (macro tcp_bind ((type ARG1))
+                (allow ARG1 self create_tcp_stream_socket_perms)
+                (allow ARG1 ephemeral_port
+                    (tcp_socket
+                        (
+                            name_bind
+                        )
+                    )
+                )
+            )
+
+            (macro tcp_connect ((type ARG1))
+                (allow ARG1 self create_tcp_socket_perms)
+                (allow ARG1 ephemeral_port
+                    (tcp_socket
+                        (
+                            name_connect
+                        )
+                    )
+                )
+            )
+
+            (macro udp_bind ((type ARG1))
+                (allow ARG1 self create_udp_socket_perms)
+                (allow ARG1 ephemeral_port
+                    (udp_socket
+                        (
+                            name_bind
+                        )
+                    )
+                )
+            )
+
+            ;
+            ; ephemeral_port.obj_template policy
+            ;
+
+            (blockabstract obj_template)
+
+                (blockinherit net.ephemeral_port.obj_stub)
+        )
+    )
+
+    ;
+    ; Net generic_ephemeral name space
+    ;
+
+    (block generic_ephemeral
+
+        ;
+        ; generic_ephemeral contexts
+        ;
+
+        (portcon "dccp"
+            (
+                32768
+                61000
+            )
+            ephemeral_port_context
+        )
+
+        (portcon "tcp"
+            (
+                32768
+                61000
+            )
+            ephemeral_port_context
+        )
+
+        (portcon "udp"
+            (
+                32768
+                61000
+            )
+            ephemeral_port_context
+        )
+
+        ;
+        ; generic_ephemeral policy
+        ;
+
+        (blockinherit ephemeral_port.obj_template)
+    )
+
+    ;
+    ; Net generic_hi_reserved name space
+    ;
+
+    (block generic_hi_reserved
+
+        ;
+        ; generic_hi_reserved contexts
+        ;
+
+        (portcon "dccp"
+            (
+                512
+                1023
+            )
+            hi_reserved_port_context
+        )
+
+        (portcon "tcp"
+            (
+                512
+                1023
+            )
+            hi_reserved_port_context
+        )
+
+        (portcon "udp"
+            (
+                512
+                1023
+            )
+            hi_reserved_port_context
+        )
+
+        ;
+        ; generic_hi_reserved policy
+        ;
+
+        (blockinherit hi_reserved_port.obj_template)
+    )
+
+    ;
+    ; Net generic_if name space
+    ;
+
+    (block generic_if
+
+        ;
+        ; generic_if contexts
+        ;
+
+        (sidcontext netif isid_context)
+
+        ;
+        ; generic_if macros
+        ;
+
+        (macro egress ((type ARG1))
+            (allow ARG1 isid
+                (netif
+                    (
+                        egress
+                    )
+                )
+            )
+        )
+
+        (macro ingress ((type ARG1))
+            (allow ARG1 isid
+                (netif
+                    (
+                        ingress
+                    )
+                )
+            )
+        )
+
+        ;
+        ; generic_if policy
+        ;
+
+        (blockinherit sys.isid.stub)
+
+        (call if.obj_type
+            (
+                isid
+            )
+        )
+    )
+
+    ;
+    ; Net generic_node name space
+    ;
+
+    (block generic_node
+
+        ;
+        ; generic_node contexts
+        ;
+
+        (sidcontext node isid_context)
+
+        ;
+        ; generic_node macros
+        ;
+
+        (macro dccp_bind ((type ARG1))
+            (allow ARG1 isid
+                (dccp_socket
+                    (
+                        node_bind
+                    )
+                )
+            )
+        )
+
+        (macro icmp_bind ((type ARG1))
+            (allow ARG1 isid
+                (icmp_socket
+                    (
+                        node_bind
+                    )
+                )
+            )
+        )
+
+        (macro rawip_bind ((type ARG1))
+            (allow ARG1 isid
+                (rawip_socket
+                    (
+                        node_bind
+                    )
+                )
+            )
+        )
+
+        (macro sctp_bind ((type ARG1))
+            (allow ARG1 isid
+                (sctp_socket
+                    (
+                        node_bind
+                    )
+                )
+            )
+        )
+
+        (macro recvfrom ((type ARG1))
+            (allow ARG1 isid
+                (node
+                    (
+                        recvfrom
+                    )
+                )
+            )
+        )
+
+        (macro sendto ((type ARG1))
+            (allow ARG1 isid
+                (node
+                    (
+                        sendto
+                    )
+                )
+            )
+        )
+
+        (macro tcp_bind ((type ARG1))
+            (allow ARG1 isid
+                (tcp_socket
+                    (
+                        node_bind
+                    )
+                )
+            )
+        )
+
+        (macro udp_bind ((type ARG1))
+            (allow ARG1 isid
+                (udp_socket
+                    (
+                        node_bind
+                    )
+                )
+            )
+        )
+
+        ;
+        ; generic_node policy
+        ;
+
+        (blockinherit sys.isid.stub)
+
+        (call node.obj_type
+            (
+                isid
+            )
+        )
+    )
+
+    ;
+    ; Net generic_packet name space
+    ;
+
+    (block generic_packet
+
+        ;
+        ; generic_packet policy
+        ;
+
+        (blockinherit packet.obj_template)
+    )
+
+    ;
+    ; Net generic_peer name space
+    ;
+
+    (block generic_peer
+
+        ;
+        ; generic_peer contexts
+        ;
+
+        (sidcontext netmsg isid_context)
+
+        ;
+        ; generic_peer macros
+        ;
+
+        (macro recv ((type ARG1))
+            (allow ARG1 isid
+                (peer
+                    (
+                        recv
+                    )
+                )
+            )
+        )
+
+        ;
+        ; generic_peer policy
+        ;
+
+        (blockinherit sys.isid.stub)
+
+        (call peer.obj_type
+            (
+                isid
+            )
+        )
+    )
+
+    ;
+    ; Net generic_port name space
+    ;
+
+    (block generic_port
+
+        ;
+        ; generic_port contexts
+        ;
+
+        (sidcontext port isid_context)
+
+        ;
+        ; generic_port macros
+        ;
+
+        (macro dccp_bind ((type ARG1))
+            (allow ARG1 self create_dccp_stream_socket_perms)
+            (allow ARG1 isid
+                (dccp_socket
+                    (
+                        name_bind
+                    )
+                )
+            )
+        )
+
+        (macro dccp_connect ((type ARG1))
+            (allow ARG1 self create_dccp_socket_perms)
+            (allow ARG1 isid
+                (dccp_socket
+                    (
+                        name_connect
+                    )
+                )
+            )
+        )
+
+        (macro icmp_bind ((type ARG1))
+            (allow ARG1 self create_icmp_socket_perms)
+            (allow ARG1 isid
+                (icmp_socket
+                    (
+                        name_bind
+                    )
+                )
+            )
+        )
+
+        (macro rawip_bind ((type ARG1))
+            (allow ARG1 self create_rawip_socket_perms)
+            (allow ARG1 isid
+                (rawip_socket
+                    (
+                        name_bind
+                    )
+                )
+            )
+        )
+
+        (macro sctp_bind ((type ARG1))
+            (allow ARG1 self create_sctp_socket_perms)
+            (allow ARG1 isid
+                (sctp_socket
+                    (
+                        name_bind
+                    )
+                )
+            )
+        )
+
+        (macro tcp_bind ((type ARG1))
+            (allow ARG1 self create_tcp_stream_socket_perms)
+            (allow ARG1 isid
+                (tcp_socket
+                    (
+                        name_bind
+                    )
+                )
+            )
+        )
+
+        (macro tcp_connect ((type ARG1))
+            (allow ARG1 self create_tcp_socket_perms)
+            (allow ARG1 isid
+                (tcp_socket
+                    (
+                        name_connect
+                    )
+                )
+            )
+        )
+
+        (macro udp_bind ((type ARG1))
+            (allow ARG1 self create_udp_socket_perms)
+            (allow ARG1 isid
+                (udp_socket
+                    (
+                        name_bind
+                    )
+                )
+            )
+        )
+
+        ;
+        ; generic_port policy
+        ;
+
+        (blockinherit sys.isid.stub)
+
+        (call port.obj_type
+            (
+                isid
+            )
+        )
+    )
+
+    ;
+    ; Net generic_reserved name space
+    ;
+
+    (block generic_reserved
+
+        ;
+        ; generic_reserved contexts
+        ;
+
+        (portcon "dccp"
+            (
+                1
+                511
+            )
+            reserved_port_context
+        )
+
+        (portcon "tcp"
+            (
+                1
+                511
+            )
+            reserved_port_context
+        )
+
+        (portcon "udp"
+            (
+                1
+                511
+            )
+            reserved_port_context
+        )
+
+        ;
+        ; generic_reserved policy
+        ;
+
+        (blockinherit reserved_port.obj_template)
+    )
+
+    ;
+    ; Net generic_unreserved name space
+    ;
+
+    (block generic_unreserved
+
+        ;
+        ; generic_unreserved contexts
+        ;
+
+        (portcon "dccp"
+            (
+                1024
+                32767
+            )
+            unreserved_port_context
+        )
+
+        (portcon "dccp"
+            (
+                61001
+                65535
+            )
+            unreserved_port_context
+        )
+
+        (portcon "tcp"
+            (
+                1024
+                32767
+            )
+            unreserved_port_context
+        )
+
+        (portcon "tcp"
+            (
+                61001
+                65535
+            )
+            unreserved_port_context
+        )
+
+        (portcon "udp"
+            (
+                1024
+                32767
+            )
+            unreserved_port_context
+        )
+
+        (portcon "udp"
+            (
+                61001
+                65535
+            )
+            unreserved_port_context
+        )
+
+        ;
+        ; generic_unreserved policy
+        ;
+
+        (blockinherit unreserved_port.obj_template)
+    )
+
+    ;
+    ; Net hi_reserved_port name space
+    ;
+
+    (block hi_reserved_port
+
+        ;
+        ; hi_reserved_port macros
+        ;
+
+        (macro dccp_bind ((type ARG1))
+            (allow ARG1 self
+                (capability
+                    (
+                        net_bind_service
+                    )
+                )
+            )
+            (allow ARG1 self create_dccp_stream_socket_perms)
+            (allow ARG1 obj_type_attribute
+                (dccp_socket
+                    (
+                        name_bind
+                    )
+                )
+            )
+        )
+
+        (macro dccp_connect ((type ARG1))
+            (allow ARG1 self create_dccp_socket_perms)
+            (allow ARG1 obj_type_attribute
+                (dccp_socket
+                    (
+                        name_connect
+                    )
+                )
+            )
+        )
+
+        (macro icmp_bind ((type ARG1))
+            (allow ARG1 self
+                (capability
+                    (
+                        net_bind_service
+                    )
+                )
+            )
+            (allow ARG1 self create_icmp_socket_perms)
+            (allow ARG1 obj_type_attribute
+                (icmp_socket
+                    (
+                        name_bind
+                    )
+                )
+            )
+        )
+
+        (macro obj_type ((type ARG1))
+            (typeattributeset obj_type_attribute ARG1)
+        )
+
+        (macro rawip_bind ((type ARG1))
+            (allow ARG1 self
+                (capability
+                    (
+                        net_bind_service
+                    )
+                )
+            )
+            (allow ARG1 self create_icmp_socket_perms)
+            (allow ARG1 obj_type_attribute
+                (rawip_socket
+                    (
+                        name_bind
+                    )
+                )
+            )
+        )
+
+        (macro sctp_bind ((type ARG1))
+            (allow ARG1 self
+                (capability
+                    (
+                        net_bind_service
+                    )
+                )
+            )
+            (allow ARG1 self create_sctp_socket_perms)
+            (allow ARG1 obj_type_attribute
+                (sctp_socket
+                    (
+                        name_bind
+                    )
+                )
+            )
+        )
+
+        (macro tcp_bind ((type ARG1))
+            (allow ARG1 self
+                (capability
+                    (
+                        net_bind_service
+                    )
+                )
+            )
+            (allow ARG1 self create_tcp_stream_socket_perms)
+            (allow ARG1 obj_type_attribute
+                (tcp_socket
+                    (
+                        name_bind
+                    )
+                )
+            )
+        )
+
+        (macro tcp_connect ((type ARG1))
+            (allow ARG1 self create_tcp_socket_perms)
+            (allow ARG1 obj_type_attribute
+                (tcp_socket
+                    (
+                        name_connect
+                    )
+                )
+            )
+        )
+
+        (macro udp_bind ((type ARG1))
+            (allow ARG1 self
+                (capability
+                    (
+                        net_bind_service
+                    )
+                )
+            )
+            (allow ARG1 self create_udp_socket_perms)
+            (allow ARG1 obj_type_attribute
+                (udp_socket
+                    (
+                        name_bind
+                    )
+                )
+            )
+        )
+
+        ;
+        ; hi_reserved_port policy
+        ;
+
+        (typeattribute obj_type_attribute)
+
+        (call reserved_port.obj_type
+            (
+                obj_type_attribute
+            )
+        )
+
+        ;
+        ; hi_reserved_port templates
+        ;
+
+        (block obj_stub
+
+            ;
+            ; hi_reserved_port.obj_stub contexts
+            ;
+
+            (context hi_reserved_port_context
+                (
+                    sys.id
+                    sys.role
+                    hi_reserved_port
+                        (
+                            systemlow
+                            systemlow
+                        )
+                )
+            )
+
+            ;
+            ; hi_reserved_port.obj_stub policy
+            ;
+
+            (blockabstract obj_stub)
+
+            (type hi_reserved_port)
+            (call net.hi_reserved_port.obj_type
+                (
+                    hi_reserved_port
+                )
+            )
+        )
+
+        (block obj_template
+
+            ;
+            ; hi_reserved_port.obj_template macros
+            ;
+
+            (macro dccp_bind ((type ARG1))
+                (allow ARG1 self
+                    (capability
+                        (
+                            net_bind_service
+                        )
+                    )
+                )
+                (allow ARG1 self create_dccp_stream_socket_perms)
+                (allow ARG1 hi_reserved_port
+                    (dccp_socket
+                        (
+                            name_bind
+                        )
+                    )
+                )
+            )
+
+            (macro dccp_connect ((type ARG1))
+                (allow ARG1 self create_dccp_socket_perms)
+                (allow ARG1 hi_reserved_port
+                    (dccp_socket
+                        (
+                            name_connect
+                        )
+                    )
+                )
+            )
+
+            (macro icmp_bind ((type ARG1))
+                (allow ARG1 self
+                    (capability
+                        (
+                            net_bind_service
+                        )
+                    )
+                )
+                (allow ARG1 self create_icmp_socket_perms)
+                (allow ARG1 hi_reserved_port
+                    (icmp_socket
+                        (
+                            name_bind
+                        )
+                    )
+                )
+            )
+
+            (macro rawip_bind ((type ARG1))
+                (allow ARG1 self
+                    (capability
+                        (
+                            net_bind_service
+                        )
+                    )
+                )
+                (allow ARG1 self create_rawip_socket_perms)
+                (allow ARG1 hi_reserved_port
+                    (rawip_socket
+                        (
+                            name_bind
+                        )
+                    )
+                )
+            )
+
+            (macro sctp_bind ((type ARG1))
+                (allow ARG1 self
+                    (capability
+                        (
+                            net_bind_service
+                        )
+                    )
+                )
+                (allow ARG1 self create_sctp_socket_perms)
+                (allow ARG1 hi_reserved_port
+                    (sctp_socket
+                        (
+                            name_bind
+                        )
+                    )
+                )
+            )
+
+            (macro tcp_bind ((type ARG1))
+                (allow ARG1 self
+                    (capability
+                        (
+                            net_bind_service
+                        )
+                    )
+                )
+                (allow ARG1 self create_tcp_stream_socket_perms)
+                (allow ARG1 hi_reserved_port
+                    (tcp_socket
+                        (
+                            name_bind
+                        )
+                    )
+                )
+            )
+
+            (macro tcp_connect ((type ARG1))
+                (allow ARG1 self create_tcp_socket_perms)
+                (allow ARG1 hi_reserved_port
+                    (tcp_socket
+                        (
+                            name_connect
+                        )
+                    )
+                )
+            )
+
+            (macro udp_bind ((type ARG1))
+                (allow ARG1 self
+                    (capability
+                        (
+                            net_bind_service
+                        )
+                    )
+                )
+                (allow ARG1 self create_udp_socket_perms)
+                (allow ARG1 hi_reserved_port
+                    (udp_socket
+                        (
+                            name_bind
+                        )
+                    )
+                )
+            )
+
+            ;
+            ; hi_reserved_port.obj_template policy
+            ;
+
+            (blockabstract obj_template)
+
+            (blockinherit net.hi_reserved_port.obj_stub)
+        )
+    )
+
+    ;
+    ; Net if name space
+    ;
+
+    (block if
+
+        ;
+        ; if macros
+        ;
+
+        (macro egress ((type ARG1))
+            (allow ARG1 obj_type_attribute
+                (netif
+                    (
+                        egress
+                    )
+                )
+            )
+        )
+
+        (macro ingress ((type ARG1))
+            (allow ARG1 obj_type_attribute
+                (netif
+                    (
+                        ingress
+                    )
+                )
+            )
+        )
+
+        (macro obj_type ((type ARG1))
+            (typeattributeset obj_type_attribute ARG1)
+        )
+
+        ;
+        ; if policy
+        ;
+
+        (typeattribute obj_type_attribute)
+
+        (allow unconfined_subj_type_attribute obj_type_attribute
+            (netif
+                (
+                    egress
+                    ingress
+                )
+            )
+        )
+
+        (call sys.obj_type
+            (
+                obj_type_attribute
+            )
+        )
+
+        ;
+        ; if templates
+        ;
+
+        (block obj_stub
+
+            ;
+            ; if.obj_stub context
+            ;
+
+            (context if_context
+                (
+                    sys.id
+                    sys.role
+                    if
+                        (
+                            systemlow
+                            systemlow
+                        )
+                )
+            )
+
+            ;
+            ; if.obj_stub policy
+            ;
+
+            (blockabstract obj_stub)
+
+            (type if)
+            (call net.if.obj_type
+                (
+                    if
+                )
+            )
+        )
+
+        (block obj_template
+
+            ;
+            ; if.obj_template macros
+            ;
+
+            (macro egress ((type ARG1))
+                (allow ARG1 if
+                    (netif
+                        (
+                            egress
+                        )
+                    )
+                )
+            )
+
+            (macro ingress ((type ARG1))
+                (allow ARG1 if
+                    (netif
+                        (
+                            ingress
+                        )
+                    )
+                )
+            )
+
+            ;
+            ; if.obj_template policy
+            ;
+
+            (blockabstract obj_template)
+
+            (blockinherit net.if.obj_stub)
+        )
+    )
+
+    ;
+    ; Net node name space
+    ;
+
+    (block node
+
+        ;
+        ; node macros
+        ;
+
+        (macro dccp_bind ((type ARG1))
+            (allow ARG1 obj_type_attribute
+                (dccp_socket
+                    (
+                        node_bind
+                    )
+                )
+            )
+        )
+
+        (macro icmp_bind ((type ARG1))
+            (allow ARG1 obj_type_attribute
+                (icmp_socket
+                    (
+                        node_bind
+                    )
+                )
+            )
+        )
+
+        (macro obj_type ((type ARG1))
+            (typeattributeset obj_type_attribute ARG1)
+        )
+
+        (macro rawip_bind ((type ARG1))
+            (allow ARG1 obj_type_attribute
+                (rawip_socket
+                    (
+                        node_bind
+                    )
+                )
+            )
+        )
+
+        (macro sctp_bind ((type ARG1))
+            (allow ARG1 obj_type_attribute
+                (sctp_socket
+                    (
+                        node_bind
+                    )
+                )
+            )
+        )
+
+        (macro recvfrom ((type ARG1))
+            (allow ARG1 obj_type_attribute
+                (node
+                    (
+                        recvfrom
+                    )
+                )
+            )
+        )
+
+        (macro sendto ((type ARG1))
+            (allow ARG1 obj_type_attribute
+                (node
+                    (
+                        sendto
+                    )
+                )
+            )
+        )
+
+        (macro tcp_bind ((type ARG1))
+            (allow ARG1 obj_type_attribute
+                (tcp_socket
+                    (
+                        node_bind
+                    )
+                )
+            )
+        )
+
+        (macro udp_bind ((type ARG1))
+            (allow ARG1 obj_type_attribute
+                (udp_socket
+                    (
+                        node_bind
+                    )
+                )
+            )
+        )
+
+        ;
+        ; node policy
+        ;
+
+        (typeattribute obj_type_attribute)
+
+        (allow unconfined_subj_type_attribute obj_type_attribute
+            (dccp_socket
+                (
+                    node_bind
+                )
+            )
+        )
+        (allow unconfined_subj_type_attribute obj_type_attribute
+            (icmp_socket
+                (
+                    node_bind
+                )
+            )
+        )
+        (allow unconfined_subj_type_attribute obj_type_attribute
+            (node
+                (
+                    recvfrom
+                    sendto
+                )
+            )
+        )
+        (allow unconfined_subj_type_attribute obj_type_attribute
+            (rawip_socket
+                (
+                    node_bind
+                )
+            )
+        )
+        (allow unconfined_subj_type_attribute obj_type_attribute
+            (sctp_socket
+                (
+                    node_bind
+                )
+            )
+        )
+        (allow unconfined_subj_type_attribute obj_type_attribute
+            (tcp_socket
+                (
+                    node_bind
+                )
+            )
+        )
+        (allow unconfined_subj_type_attribute obj_type_attribute
+            (udp_socket
+                (
+                    node_bind
+                )
+            )
+        )
+
+        (call sys.obj_type
+            (
+                obj_type_attribute
+            )
+        )
+
+        ;
+        ; node templates
+        ;
+
+        (block obj_stub
+
+            ;
+            ; node.obj_stub contexts
+            ;
+
+            (context node_context
+                (
+                    sys.id
+                    sys.role
+                    node
+                        (
+                            systemlow
+                            systemlow
+                       )
+                )
+            )
+
+            ;
+            ; node.obj_stub policy
+            ;
+
+            (blockabstract obj_stub)
+
+            (type node)
+            (call net.node.obj_type
+                (
+                    node
+                )
+            )
+        )
+
+        (block obj_template
+
+            ;
+            ; node.obj_template macros
+            ;
+
+            (macro dccp_bind ((type ARG1))
+                (allow ARG1 node
+                    (dccp_socket
+                        (
+                            node_bind
+                        )
+                    )
+                )
+            )
+
+            (macro icmp_bind ((type ARG1))
+                (allow ARG1 node
+                    (icmp_socket
+                        (
+                            node_bind
+                        )
+                    )
+                )
+            )
+
+            (macro rawip_bind ((type ARG1))
+                (allow ARG1 node
+                    (rawip_socket
+                        (
+                            node_bind
+                        )
+                    )
+                )
+            )
+
+            (macro sctp_bind ((type ARG1))
+                (allow ARG1 node
+                    (sctp_socket
+                        (
+                            node_bind
+                        )
+                    )
+                )
+            )
+
+            (macro recvfrom ((type ARG1))
+                (allow ARG1 node
+                    (node
+                        (
+                            recvfrom
+                        )
+                    )
+                )
+            )
+
+            (macro sendto ((type ARG1))
+                (allow ARG1 node
+                    (node
+                        (
+                            sendto
+                        )
+                    )
+                )
+            )
+
+            (macro tcp_bind ((type ARG1))
+                (allow ARG1 node
+                    (tcp_socket
+                        (
+                            node_bind
+                        )
+                    )
+                )
+            )
+
+            (macro udp_bind ((type ARG1))
+                (allow ARG1 node
+                    (udp_socket
+                        (
+                            node_bind
+                        )
+                    )
+                )
+            )
+
+            ;
+            ; node.obj_template policy
+            ;
+
+            (blockabstract obj_template)
+
+            (blockinherit net.node.obj_stub)
+        )
+    )
+
+    ;
+    ; Net packet name space
+    ;
+
+    (block packet
+
+        ;
+        ; packet macros
+        ;
+
+        (macro forward_in ((type ARG1))
+            (allow ARG1 obj_type_attribute
+                (packet
+                    (
+                        forward_in
+                    )
+                )
+            )
+        )
+
+        (macro forward_out ((type ARG1))
+            (allow ARG1 obj_type_attribute
+                (packet
+                    (
+                        forward_out
+                    )
+                )
+            )
+        )
+
+        (macro obj_type ((type ARG1))
+            (typeattributeset obj_type_attribute ARG1)
+        )
+
+        (macro recv ((type ARG1))
+            (allow ARG1 obj_type_attribute
+                (packet
+                    (
+                        recv
+                    )
+                )
+            )
+        )
+
+        (macro relabelto ((type ARG1))
+            (allow ARG1 obj_type_attribute
+                (packet
+                    (
+                        relabelto
+                    )
+                )
+            )
+        )
+
+        (macro send ((type ARG1))
+            (allow ARG1 obj_type_attribute
+                (packet
+                    (
+                        send
+                    )
+                )
+            )
+        )
+
+        ;
+        ; packet policy
+        ;
+
+        (typeattribute obj_type_attribute)
+
+        (allow unconfined_subj_type_attribute obj_type_attribute
+            (packet
+                (
+                    forward_in
+                    forward_out
+                    recv
+                    relabelto
+                    send
+                )
+            )
+        )
+
+        (call sys.obj_type
+            (
+                obj_type_attribute
+            )
+        )
+
+        ;
+        ; packet templates
+        ;
+
+        (block obj_stub
+
+            ;
+            ; packet.obj_stub contexts
+            ;
+
+            (context packet_context
+                (
+                    sys.id
+                    sys.role
+                    packet
+                        (
+                            systemlow
+                            systemlow
+                        )
+                )
+            )
+
+            ;
+            ; packet.obj_stub policy
+            ;
+
+            (blockabstract obj_stub)
+
+            (type packet)
+            (call net.packet.obj_type
+                (
+                    packet
+                )
+            )
+        )
+
+        (block obj_template
+
+            ;
+            ; packet.obj_template macros
+            ;
+
+            (macro forward_in ((type ARG1))
+                (allow ARG1 packet
+                    (packet
+                        (
+                            forward_in
+                        )
+                    )
+                )
+            )
+
+            (macro forward_out ((type ARG1))
+                (allow ARG1 packet
+                    (packet
+                        (
+                            forward_out
+                        )
+                    )
+                )
+            )
+
+            (macro recv ((type ARG1))
+                (allow ARG1 packet
+                    (packet
+                        (
+                            recv
+                        )
+                    )
+                )
+            )
+
+            (macro relabelto ((type ARG1))
+                (allow ARG1 packet
+                    (packet
+                        (
+                            relabelto
+                        )
+                    )
+                )
+            )
+
+            (macro send ((type ARG1))
+                (allow ARG1 packet
+                    (packet
+                        (
+                            send
+                        )
+                    )
+                )
+            )
+
+            ;
+            ; packet.obj_template policy
+            ;
+
+            (blockabstract obj_template)
+
+            (blockinherit net.packet.obj_stub)
+        )
+    )
+
+    ;
+    ; Net peer name space
+    ;
+
+    (block peer
+
+        ;
+        ; peer macros
+        ;
+
+        (macro obj_type ((type ARG1))
+            (typeattributeset obj_type_attribute ARG1)
+        )
+
+        (macro recv ((type ARG1))
+            (allow ARG1 obj_type_attribute
+                (peer
+                    (
+                        recv
+                    )
+                )
+            )
+        )
+
+        ;
+        ; peer policy
+        ;
+
+        (typeattribute obj_type_attribute)
+
+        (allow unconfined_subj_type_attribute obj_type_attribute
+            (peer
+                (
+                    recv
+                )
+            )
+        )
+
+        (call sys.obj_type
+            (
+                obj_type_attribute
+            )
+        )
+
+        ;
+        ; peer templates
+        ;
+
+        (block obj_stub
+
+            ;
+            ; peer.obj_stub contexts
+            ;
+
+            (context peer_context
+                (
+                    sys.id
+                    sys.role
+                    peer
+                        (
+                            systemlow
+                            systemlow
+                        )
+                )
+            )
+
+            ;
+            ; peer.obj_stub policy
+            ;
+
+            (blockabstract obj_stub)
+
+            (type peer)
+            (call net.peer.obj_type
+                (
+                    peer
+                )
+            )
+        )
+
+        (block obj_template
+
+            ;
+            ; peer.obj_template macros
+            ;
+
+            (macro recv ((type ARG1))
+                (allow ARG1 peer
+                    (peer
+                        (
+                            recv
+                        )
+                    )
+                )
+            )
+
+            ;
+            ; peer.obj_template policy
+            ;
+
+            (blockabstract obj_template)
+
+            (blockinherit net.peer.obj_stub)
+       )
+    )
+
+    ;
+    ; Net port name space
+    ;
+
+    (block port
+
+        ;
+        ; port macros
+        ;
+
+        (macro dccp_bind ((type ARG1))
+            (allow ARG1 self create_dccp_stream_socket_perms)
+            (allow ARG1 obj_type_attribute
+                (dccp_socket
+                    (
+                        name_bind
+                    )
+                )
+            )
+        )
+
+        (macro dccp_connect ((type ARG1))
+            (allow ARG1 self create_dccp_socket_perms)
+            (allow ARG1 obj_type_attribute
+                (dccp_socket
+                    (
+                        name_connect
+                    )
+                )
+            )
+        )
+
+        (macro icmp_bind ((type ARG1))
+            (allow ARG1 self create_icmp_socket_perms)
+            (allow ARG1 obj_type_attribute
+                (icmp_socket
+                    (
+                        name_bind
+                    )
+                )
+            )
+        )
+
+        (macro obj_type ((type ARG1))
+            (typeattributeset obj_type_attribute ARG1)
+        )
+
+        (macro rawip_bind ((type ARG1))
+            (allow ARG1 self create_rawip_socket_perms)
+            (allow ARG1 obj_type_attribute
+                (rawip_socket
+                    (
+                        name_bind
+                    )
+                )
+            )
+        )
+
+        (macro sctp_bind ((type ARG1))
+            (allow ARG1 self create_sctp_socket_perms)
+            (allow ARG1 obj_type_attribute
+                (sctp_socket
+                    (
+                        name_bind
+                    )
+                )
+            )
+        )
+
+        (macro tcp_bind ((type ARG1))
+            (allow ARG1 self create_tcp_stream_socket_perms)
+            (allow ARG1 obj_type_attribute
+                (tcp_socket
+                    (
+                        name_bind
+                    )
+                )
+            )
+        )
+
+        (macro tcp_connect ((type ARG1))
+            (allow ARG1 self create_tcp_socket_perms)
+            (allow ARG1 obj_type_attribute
+                (tcp_socket
+                    (
+                        name_connect
+                    )
+                )
+            )
+        )
+
+        (macro udp_bind ((type ARG1))
+            (allow ARG1 self create_udp_socket_perms)
+            (allow ARG1 obj_type_attribute
+                (udp_socket
+                    (
+                        name_bind
+                    )
+                )
+            )
+        )
+
+        ;
+        ; port policy
+        ;
+
+        (typeattribute obj_type_attribute)
+
+        (allow unconfined_subj_type_attribute obj_type_attribute
+            (dccp_socket
+                (
+                    name_bind
+                    name_connect
+                )
+            )
+        )
+        (allow unconfined_subj_type_attribute obj_type_attribute
+            (icmp_socket
+                (
+                    name_bind
+                )
+            )
+        )
+        (allow unconfined_subj_type_attribute obj_type_attribute
+            (rawip_socket
+                (
+                    name_bind
+                )
+            )
+        )
+        (allow unconfined_subj_type_attribute obj_type_attribute
+            (sctp_socket
+                (
+                    name_bind
+                )
+            )
+        )
+        (allow unconfined_subj_type_attribute obj_type_attribute
+            (tcp_socket
+                (
+                    name_bind
+                    name_connect
+                )
+            )
+        )
+        (allow unconfined_subj_type_attribute obj_type_attribute
+            (udp_socket
+                (
+                    name_bind
+                )
+            )
+        )
+
+        (call sys.obj_type
+            (
+                obj_type_attribute
+            )
+        )
+    )
+
+    ;
+    ; Net reserved port name space
+    ;
+
+    (block reserved_port
+
+        ;
+        ; reserved_port macros
+        ;
+
+        (macro dccp_bind ((type ARG1))
+            (allow ARG1 self
+                (capability
+                    (
+                        net_bind_service
+                    )
+                )
+            )
+            (allow ARG1 self create_dccp_stream_socket_perms)
+            (allow ARG1 obj_type_attribute
+                (dccp_socket
+                    (
+                        name_bind
+                    )
+                )
+            )
+        )
+
+        (macro dccp_connect ((type ARG1))
+            (allow ARG1 self create_dccp_socket_perms)
+            (allow ARG1 obj_type_attribute
+                (dccp_socket
+                    (
+                        name_connect
+                    )
+                )
+            )
+        )
+
+        (macro icmp_bind ((type ARG1))
+            (allow ARG1 self
+                (capability
+                    (
+                        net_bind_service
+                    )
+                )
+            )
+            (allow ARG1 self create_icmp_socket_perms)
+            (allow ARG1 obj_type_attribute
+                (icmp_socket
+                      (
+                        name_bind
+                    )
+                )
+            )
+        )
+
+        (macro obj_type ((type ARG1))
+            (typeattributeset obj_type_attribute ARG1)
+        )
+
+        (macro rawip_bind ((type ARG1))
+            (allow ARG1 self
+                (capability
+                    (
+                        net_bind_service
+                    )
+                )
+            )
+            (allow ARG1 self create_rawip_socket_perms)
+            (allow ARG1 obj_type_attribute
+                (rawip_socket
+                    (
+                        name_bind
+                    )
+                )
+            )
+        )
+
+        (macro sctp_bind ((type ARG1))
+            (allow ARG1 self
+                (capability
+                    (
+                        net_bind_service
+                    )
+                )
+            )
+            (allow ARG1 self create_sctp_socket_perms)
+            (allow ARG1 obj_type_attribute
+                (sctp_socket
+                    (
+                        name_bind
+                    )
+                )
+            )
+        )
+
+        (macro tcp_bind ((type ARG1))
+            (allow ARG1 self
+                (capability
+                    (
+                        net_bind_service
+                    )
+                )
+            )
+            (allow ARG1 self create_tcp_stream_socket_perms)
+            (allow ARG1 obj_type_attribute
+                (tcp_socket
+                    (
+                        name_bind
+                    )
+                )
+            )
+        )
+
+        (macro tcp_connect ((type ARG1))
+            (allow ARG1 self create_tcp_socket_perms)
+            (allow ARG1 obj_type_attribute
+                (tcp_socket
+                    (
+                        name_connect
+                    )
+                )
+            )
+        )
+
+        (macro udp_bind ((type ARG1))
+            (allow ARG1 self
+                (capability
+                    (
+                        net_bind_service
+                    )
+                )
+            )
+            (allow ARG1 self create_udp_socket_perms)
+            (allow ARG1 obj_type_attribute
+                (udp_socket
+                    (
+                        name_bind
+                    )
+                )
+            )
+        )
+
+        ;
+        ; reserved_port policy
+        ;
+
+        (typeattribute obj_type_attribute)
+
+        (call port.obj_type
+            (
+                obj_type_attribute
+            )
+        )
+
+        ;
+        ; reserved_port templates
+        ;
+
+        (block obj_stub
+
+            ;
+            ; reserved_port.obj_stub contexts
+            ;
+
+            (context reserved_port_context
+                (
+                    sys.id
+                    sys.role
+                    reserved_port
+                        (
+                            systemlow
+                            systemlow
+                        )
+                )
+            )
+
+            ;
+            ; reserved_port.obj_stub policy
+            ;
+
+            (blockabstract obj_stub)
+
+            (type reserved_port)
+            (call net.reserved_port.obj_type
+                (
+                    reserved_port
+                )
+            )
+        )
+
+        (block obj_template
+
+            ;
+            ; reserved_port.obj_template macros
+            ;
+
+            (macro dccp_bind ((type ARG1))
+                (allow ARG1 self
+                    (capability
+                        (
+                            net_bind_service
+                        )
+                    )
+                )
+                (allow ARG1 self create_dccp_stream_socket_perms)
+                (allow ARG1 reserved_port
+                    (dccp_socket
+                        (
+                            name_bind
+                        )
+                    )
+                )
+            )
+
+            (macro dccp_connect ((type ARG1))
+                (allow ARG1 self create_dccp_socket_perms)
+                (allow ARG1 reserved_port
+                    (dccp_socket
+                        (
+                            name_connect
+                        )
+                    )
+                )
+            )
+
+            (macro icmp_bind ((type ARG1))
+                (allow ARG1 self
+                    (capability
+                        (
+                            net_bind_service
+                        )
+                    )
+                )
+                (allow ARG1 self create_icmp_socket_perms)
+                (allow ARG1 reserved_port
+                    (icmp_socket
+                        (
+                            name_bind
+                        )
+                    )
+                )
+            )
+
+            (macro rawip_bind ((type ARG1))
+                (allow ARG1 self
+                    (capability
+                        (
+                            net_bind_service
+                        )
+                    )
+                )
+                (allow ARG1 self create_rawip_socket_perms)
+                (allow ARG1 reserved_port
+                    (rawip_socket
+                        (
+                            name_bind
+                        )
+                    )
+                )
+            )
+
+            (macro sctp_bind ((type ARG1))
+                (allow ARG1 self
+                    (capability
+                        (
+                            net_bind_service
+                        )
+                    )
+                )
+                (allow ARG1 self create_sctp_socket_perms)
+                (allow ARG1 reserved_port
+                    (sctp_socket
+                        (
+                            name_bind
+                        )
+                    )
+                )
+            )
+
+            (macro tcp_bind ((type ARG1))
+                (allow ARG1 self
+                    (capability
+                        (
+                            net_bind_service
+                        )
+                    )
+                )
+                (allow ARG1 self create_tcp_stream_socket_perms)
+                (allow ARG1 reserved_port
+                    (tcp_socket
+                        (
+                            name_bind
+                        )
+                    )
+                )
+            )
+
+            (macro tcp_connect ((type ARG1))
+                (allow ARG1 self create_tcp_socket_perms)
+                (allow ARG1 reserved_port
+                    (tcp_socket
+                        (
+                            name_connect
+                        )
+                    )
+                )
+            )
+
+            (macro udp_bind ((type ARG1))
+                (allow ARG1 self
+                    (capability
+                        (
+                            net_bind_service
+                        )
+                    )
+                )
+                (allow ARG1 self create_udp_socket_perms)
+                (allow ARG1 reserved_port
+                    (udp_socket
+                        (
+                            name_bind
+                        )
+                    )
+                )
+            )
+
+            ;
+            ; reserved_port.obj_template policy
+            ;
+
+            (blockabstract obj_template)
+
+            (blockinherit net.reserved_port.obj_stub)
+        )
+    )
+
+    (block unreserved_port
+
+        ;
+        ; unreserved_port macros
+        ;
+
+        (macro dccp_bind ((type ARG1))
+            (allow ARG1 self create_dccp_stream_socket_perms)
+            (allow ARG1 obj_type_attribute
+                (dccp_socket
+                    (
+                        name_bind
+                    )
+                )
+            )
+        )
+
+        (macro dccp_connect ((type ARG1))
+            (allow ARG1 self create_dccp_socket_perms)
+            (allow ARG1 obj_type_attribute
+                (dccp_socket
+                    (
+                        name_connect
+                    )
+                )
+            )
+        )
+
+        (macro icmp_bind ((type ARG1))
+            (allow ARG1 self create_icmp_socket_perms)
+            (allow ARG1 obj_type_attribute
+                (icmp_socket
+                    (
+                        name_bind
+                    )
+                )
+            )
+        )
+
+        (macro obj_type ((type ARG1))
+            (typeattributeset obj_type_attribute ARG1)
+        )
+
+        (macro rawip_bind ((type ARG1))
+            (allow ARG1 self create_rawip_socket_perms)
+            (allow ARG1 obj_type_attribute
+                (rawip_socket
+                    (
+                        name_bind
+                    )
+                )
+            )
+        )
+
+        (macro sctp_bind ((type ARG1))
+            (allow ARG1 self create_sctp_socket_perms)
+            (allow ARG1 obj_type_attribute
+                (sctp_socket
+                    (
+                        name_bind
+                    )
+                )
+            )
+        )
+
+        (macro tcp_bind ((type ARG1))
+            (allow ARG1 self create_tcp_stream_socket_perms)
+            (allow ARG1 obj_type_attribute
+                (tcp_socket
+                    (
+                        name_bind
+                    )
+                )
+            )
+        )
+
+        (macro tcp_connect ((type ARG1))
+            (allow ARG1 self create_tcp_socket_perms)
+            (allow ARG1 obj_type_attribute
+                (tcp_socket
+                    (
+                        name_connect
+                    )
+                )
+            )
+        )
+
+        (macro udp_bind ((type ARG1))
+            (allow ARG1 self create_udp_socket_perms)
+            (allow ARG1 obj_type_attribute
+                (udp_socket
+                    (
+                        name_bind
+                    )
+                )
+            )
+        )
+
+        ;
+        ; unreserved_port policy
+        ;
+
+        (typeattribute obj_type_attribute)
+
+        (call port.obj_type
+            (
+                obj_type_attribute
+            )
+        )
+
+        ;
+        ; unreserved_port templates
+        ;
+
+        (block obj_stub
+
+            ;
+            ; unreserved_port.obj_stub contexts
+            ;
+
+            (context unreserved_port_context
+                (
+                    sys.id
+                    sys.role
+                    unreserved_port
+                        (
+                            systemlow
+                            systemlow
+                        )
+                )
+            )
+
+            ;
+            ; unreserved_port.obj_stub policy
+            ;
+
+            (blockabstract obj_stub)
+
+            (type unreserved_port)
+            (call net.unreserved_port.obj_type
+                (
+                    unreserved_port
+                )
+            )
+        )
+
+        (block obj_template
+
+            ;
+            ; unreserved_port.obj_template macros
+            ;
+
+            (macro dccp_bind ((type ARG1))
+                (allow ARG1 self create_dccp_stream_socket_perms)
+                (allow ARG1 unreserved_port
+                    (dccp_socket
+                        (
+                            name_bind
+                        )
+                    )
+                )
+            )
+
+            (macro dccp_connect ((type ARG1))
+                (allow ARG1 self create_dccp_socket_perms)
+                (allow ARG1 unreserved_port
+                    (dccp_socket
+                        (
+                            name_connect
+                        )
+                    )
+                )
+            )
+
+            (macro icmp_bind ((type ARG1))
+                (allow ARG1 self create_icmp_socket_perms)
+                (allow ARG1 unreserved_port
+                    (icmp_socket
+                        (
+                            name_bind
+                        )
+                    )
+                )
+            )
+
+            (macro rawip_bind ((type ARG1))
+                (allow ARG1 self create_rawip_socket_perms)
+                (allow ARG1 unreserved_port
+                    (rawip_socket
+                        (
+                            name_bind
+                        )
+                    )
+                )
+            )
+
+            (macro sctp_bind ((type ARG1))
+                (allow ARG1 self create_sctp_socket_perms)
+                (allow ARG1 unreserved_port
+                    (sctp_socket
+                        (
+                            name_bind
+                        )
+                    )
+                )
+            )
+
+            (macro tcp_bind ((type ARG1))
+                (allow ARG1 self create_tcp_stream_socket_perms)
+                (allow ARG1 unreserved_port
+                    (tcp_socket
+                        (
+                            name_bind
+                        )
+                    )
+                )
+            )
+
+            (macro tcp_connect ((type ARG1))
+                (allow ARG1 self create_tcp_socket_perms)
+                (allow ARG1 unreserved_port
+                    (tcp_socket
+                        (
+                            name_connect
+                        )
+                    )
+                )
+            )
+
+            (macro udp_bind ((type ARG1))
+                (allow ARG1 self create_udp_socket_perms)
+                (allow ARG1 unreserved_port
+                    (udp_socket
+                        (
+                            name_bind
+                        )
+                    )
+                )
+            )
+
+            ;
+            ; unreserved_port.obj_template policy
+            ;
+
+            (blockabstract obj_template)
+
+            (blockinherit net.unreserved_port.obj_stub)
+        )
+    )
+)

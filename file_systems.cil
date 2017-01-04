@@ -1,0 +1,8263 @@
+; -*- mode: CIL; fill-column: 75; indent-tabs-mode: nil; tab-width: 4 -*-
+
+; FS policy
+;
+; 1. FS initial security identifier declarations
+; 2. FS name space
+;       FS aio name space
+;       FS anon_inodefs name space
+;       FS autofs name space
+;       FS bdev name space
+;       FS binfmt_misc name space
+;       FS cifs name space
+;       FS cgroup name space
+;       FS configfs name space
+;       FS debugfs name space
+;       FS devpts name space
+;       FS devtmpfs name space
+;       FS dosfs name space
+;       FS drm name space
+;       FS efivarfs name space
+;       FS fuse name space
+;       FS hugetlbfs name space
+;       FS iso9660 name space
+;       FS nfs name space
+;       FS nfsd name space
+;       FS nsfs name space
+;       FS proc name space
+;       FS pstore name space
+;       FS removable name space
+;       FS rootfs name space
+;       FS rpc_pipefs name space
+;       FS sysfs name space
+;       FS tmpfs name space
+;       FS tracefs name space
+;       FS xattr name space
+
+;
+; FS initial security identifier declarations
+;
+
+(sid fs)
+
+;
+; FS name space
+;
+
+(block fs
+
+    ;
+    ; Macros
+    ;
+
+    (macro associate ((type ARG1))
+        (allow ARG1 obj_type_attribute
+            (filesystem
+                (
+                    associate
+                )
+            )
+        )
+    )
+
+    (macro getattr ((type ARG1))
+        (allow ARG1 obj_type_attribute
+            (filesystem
+                (
+                    getattr
+                )
+            )
+        )
+    )
+
+    (macro mount ((type ARG1))
+        (allow ARG1 obj_type_attribute
+            (filesystem
+                (
+                    mount
+                )
+            )
+        )
+    )
+
+    (macro obj_type ((type ARG1))
+        (typeattributeset obj_type_attribute ARG1)
+    )
+
+    (macro quotaget ((type ARG1))
+        (allow ARG1 obj_type_attribute
+            (filesystem
+                (
+                    quotaget
+                )
+            )
+        )
+    )
+
+    (macro quotamod ((type ARG1))
+        (allow ARG1 obj_type_attribute
+            (filesystem
+                (
+                    quotamod
+                )
+            )
+        )
+    )
+
+    (macro relabel ((type ARG1))
+        (allow ARG1 obj_type_attribute
+            (filesystem
+                (
+                    getattr
+                    relabelfrom
+                    relabelto
+                )
+            )
+        )
+    )
+
+    (macro relabelfrom ((type ARG1))
+        (allow ARG1 obj_type_attribute
+            (filesystem
+                (
+                    getattr
+                    relabelfrom
+                )
+            )
+        )
+    )
+
+    (macro relabelto ((type ARG1))
+        (allow ARG1 obj_type_attribute
+            (filesystem
+                (
+                    getattr
+                    relabelto
+                )
+            )
+        )
+    )
+
+    (macro remount ((type ARG1))
+        (allow ARG1 obj_type_attribute
+            (filesystem
+                (
+                    remount
+                )
+            )
+        )
+    )
+
+    (macro unconfined_subj_type ((type ARG1))
+        (typeattributeset unconfined_subj_type_attribute ARG1)
+    )
+
+    (macro unmount ((type ARG1))
+        (allow ARG1 obj_type_attribute
+            (filesystem
+                (
+                    unmount
+                )
+            )
+        )
+    )
+
+    ;
+    ; Policy
+    ;
+
+    (typeattribute obj_type_attribute)
+    (typeattribute unconfined_subj_type_attribute)
+
+    (allow obj_type_attribute self
+        (filesystem
+            (
+                associate
+            )
+        )
+    )
+
+    (allow unconfined_subj_type_attribute obj_type_attribute
+        blk_file_except_execmod_and_mounton)
+    (allow unconfined_subj_type_attribute obj_type_attribute
+        chr_file_except_execmod_and_mounton)
+    (allow unconfined_subj_type_attribute obj_type_attribute
+        dir_except_execmod)
+    (allow unconfined_subj_type_attribute obj_type_attribute
+        file_except_entrypoint_execmod_and_mounton)
+
+    (allow unconfined_subj_type_attribute obj_type_attribute
+        (filesystem
+            (
+                all
+            )
+        )
+    )
+
+    (allow unconfined_subj_type_attribute obj_type_attribute
+        lnk_file_except_execmod_and_mounton)
+    (allow unconfined_subj_type_attribute obj_type_attribute
+        sock_file_except_execmod_and_mounton)
+
+    (call sys.obj_type
+        (
+            obj_type_attribute
+        )
+    )
+
+    ;
+    ; Templates
+    ;
+
+    (block obj_stub
+
+        ;
+        ; fs.obj_stub contexts
+        ;
+
+        (context fs_context
+            (
+                sys.id
+                sys.role
+                fs
+                    (
+                        systemlow
+                        systemlow
+                    )
+            )
+        )
+
+        ;
+        ; fs.obj_stub policy
+        ;
+
+        (blockabstract obj_stub)
+
+        (type fs)
+        (call fs.obj_type
+            (
+                fs
+            )
+        )
+    )
+
+    (block obj_template
+
+        ;
+        ; fs.obj_template macros
+        ;
+
+        (macro associate ((type ARG1))
+            (allow ARG1 fs
+                (filesystem
+                    (
+                        associate
+                    )
+                )
+            )
+        )
+
+        (macro getattr ((type ARG1))
+            (allow ARG1 fs
+                (filesystem
+                    (
+                        getattr
+                    )
+                )
+            )
+        )
+
+        (macro mount ((type ARG1))
+            (allow ARG1 fs
+                (filesystem
+                    (
+                        mount
+                    )
+                )
+            )
+        )
+
+        (macro quotaget ((type ARG1))
+            (allow ARG1 fs
+                (filesystem
+                    (
+                        quotaget
+                    )
+                )
+            )
+        )
+
+        (macro quotamod ((type ARG1))
+            (allow ARG1 fs
+                (filesystem
+                    (
+                        quotamod
+                    )
+                )
+            )
+        )
+
+        (macro relabel ((type ARG1))
+            (allow ARG1 fs
+                (filesystem
+                    (
+                        getattr
+                        relabelfrom
+                        relabelto
+                    )
+                )
+            )
+        )
+
+        (macro relabelfrom ((type ARG1))
+            (allow ARG1 fs
+                (filesystem
+                    (
+                        getattr
+                        relabelfrom
+                    )
+                )
+            )
+        )
+
+        (macro relabelto ((type ARG1))
+            (allow ARG1 fs
+                (filesystem
+                    (
+                        getattr
+                        relabelto
+                    )
+                )
+            )
+        )
+
+        (macro remount ((type ARG1))
+            (allow ARG1 fs
+                (filesystem
+                    (
+                        remount
+                    )
+                )
+            )
+        )
+
+        (macro unmount ((type ARG1))
+            (allow ARG1 fs
+                (filesystem
+                    (
+                        unmount
+                    )
+                )
+            )
+        )
+
+        ;
+        ; fs.obj_template policy
+        ;
+
+        (blockabstract obj_template)
+
+        (blockinherit fs.obj_stub)
+    )
+
+    ;
+    ; FS aio name space
+    ;
+
+    (block aio
+
+        ;
+        ; aio contexts
+        ;
+
+        (genfscon "aio" "/" fs_context)
+
+        ;
+        ; aio policy
+        ;
+
+        (blockinherit fs.obj_template)
+    )
+
+    ;
+    ; FS anon_inodefs name space
+    ;
+
+    (block anon_inodefs
+
+        ;
+        ; anon_inodefs contexts
+        ;
+
+        (genfscon "anon_inodefs" "/" fs_context)
+
+        ;
+        ; anon_inodefs policy
+        ;
+
+        (blockinherit fs.obj_template)
+    )
+
+    ;
+    ; FS autofs name space
+    ;
+
+    (block autofs
+
+        ;
+        ; autofs contexts
+        ;
+
+        (genfscon "autofs" "/" fs_context)
+
+        ;
+        ; autofs policy
+        ;
+
+        (blockinherit fs.obj_template)
+
+        (call sys.mountpoint.obj_type
+            (
+                fs
+            )
+        )
+    )
+
+    ;
+    ; FS bdev name space
+    ;
+
+    (block bdev
+
+        ;
+        ; bdev contexts
+        ;
+
+        (genfscon "bdev" "/" fs_context)
+
+        ;
+        ; bdev policy
+        ;
+
+        (blockinherit fs.obj_template)
+    )
+
+    ;
+    ; FS binfmt_misc name space
+    ;
+
+    (block binfmt_misc
+
+        ;
+        ; binfmt_misc contexts
+        ;
+
+        (genfscon "binfmt_misc" "/" fs_context)
+
+        ;
+        ; binfmt_misc macros
+        ;
+
+        (macro read_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        read
+                    )
+                )
+            )
+            (call sys.fs_sysctl.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rw_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        rw
+                    )
+                )
+            )
+            (call sys.fs_sysctl.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro search ((type ARG1))
+            (allow ARG1 fs search_dir_perms)
+            (call sys.fs_sysctl.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        ;
+        ; binfmt_misc policy
+        ;
+
+        (blockinherit fs.obj_template)
+
+        (call sys.mountpoint.obj_type
+            (
+                fs
+            )
+        )
+    )
+
+    ;
+    ; FS cgroup name space
+    ;
+
+    (block cgroup
+
+        ;
+        ; cgroup contexts
+        ;
+
+        (genfscon "cgroup" "/" fs_context)
+        (genfscon "cgroup2" "/" fs_context)
+
+        ;
+        ; cgroup macros
+        ;
+
+        (macro list ((type ARG1))
+            (allow ARG1 fs list_dir_perms)
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+            (call tmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro manage_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        manage
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+            (call tmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro read_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        read
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+            (call tmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rw_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        rw
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+            (call tmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro search ((type ARG1))
+            (allow ARG1 fs search_dir_perms)
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+            (call tmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro setattr_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        setattr
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+            (call tmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        ;
+        ; cgroup policy
+        ;
+
+        (blockinherit fs.obj_template)
+
+        (call sys.mountpoint.obj_type
+            (
+                fs
+            )
+        )
+    )
+
+    ;
+    ; FS cifs name space
+    ;
+
+    (block cifs
+
+        ;
+        ; cifs contexts
+        ;
+
+        (genfscon "cifs" "/" fs_context)
+        (genfscon "smbfs" "/" fs_context)
+
+        ;
+        ; cifs macros
+        ;
+
+        (macro add_entries ((type ARG1))
+            (allow ARG1 fs add_entry_dir_perms)
+        )
+
+        (macro append_fifo_files ((type ARG1))
+            (allow ARG1 fs append_fifo_file_perms)
+            (call search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro append_files ((type ARG1))
+            (allow ARG1 fs append_file_perms)
+            (call search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro create ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        create
+                    )
+                )
+            )
+        )
+
+        (macro create_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        create
+                    )
+                )
+            )
+        )
+
+        (macro create_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        create
+                    )
+                )
+            )
+        )
+
+        (macro create_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        create
+                    )
+                )
+            )
+        )
+
+        (macro create_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        create
+                    )
+                )
+            )
+        )
+
+        (macro create_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        create
+                    )
+                )
+            )
+        )
+
+        (macro del_entries ((type ARG1))
+            (allow ARG1 fs del_entry_dir_perms)
+        )
+
+        (macro delete ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        delete
+                    )
+                )
+            )
+        )
+
+        (macro delete_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        delete
+                    )
+                )
+            )
+        )
+
+        (macro delete_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        delete
+                    )
+                )
+            )
+        )
+
+        (macro delete_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        delete
+                    )
+                )
+            )
+        )
+
+        (macro delete_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        delete
+                    )
+                )
+            )
+        )
+
+        (macro delete_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        delete
+                    )
+                )
+            )
+        )
+
+        (macro exec_files ((type ARG1))
+            (allow ARG1 fs exec_file_perms)
+            (call search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro getattr ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        getattr
+                    )
+                )
+            )
+        )
+
+        (macro getattr_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        getattr
+                    )
+                )
+            )
+        )
+
+        (macro getattr_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        getattr
+                    )
+                )
+            )
+        )
+
+        (macro getattr_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        getattr
+                    )
+                )
+            )
+        )
+
+        (macro getattr_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        getattr
+                    )
+                )
+            )
+        )
+
+        (macro getattr_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        getattr
+                    )
+                )
+            )
+        )
+
+        (macro list ((type ARG1))
+            (allow ARG1 fs list_dir_perms)
+        )
+
+        (macro manage ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        manage
+                    )
+                )
+            )
+        )
+
+        (macro manage_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        manage
+                    )
+                )
+            )
+        )
+
+        (macro manage_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        manage
+                    )
+                )
+            )
+        )
+
+        (macro manage_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        manage
+                    )
+                )
+            )
+        )
+
+        (macro manage_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        manage
+                    )
+                )
+            )
+        )
+
+        (macro manage_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        manage
+                    )
+                )
+            )
+        )
+
+        (macro mmap_files ((type ARG1))
+            (allow ARG1 fs mmap_file_perms)
+            (call search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro read ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        read
+                    )
+                )
+            )
+        )
+
+        (macro read_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        read
+                    )
+                )
+            )
+        )
+
+        (macro read_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        read
+                    )
+                )
+            )
+        )
+
+        (macro read_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        read
+                    )
+                )
+            )
+        )
+
+        (macro read_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        read
+                    )
+                )
+            )
+        )
+
+        (macro relabel ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        relabel
+                    )
+                )
+            )
+        )
+
+        (macro relabel_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        relabel
+                    )
+                )
+            )
+        )
+
+        (macro relabel_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        relabel
+                    )
+                )
+            )
+        )
+
+        (macro relabel_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        relabel
+                    )
+                )
+            )
+        )
+
+        (macro relabel_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        relabel
+                    )
+                )
+            )
+        )
+
+        (macro relabel_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        relabel
+                    )
+                )
+            )
+        )
+
+        (macro relabelfrom ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+        )
+
+        (macro relabelfrom_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+        )
+
+        (macro relabelfrom_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+        )
+
+        (macro relabelfrom_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+        )
+
+        (macro relabelfrom_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+        )
+
+        (macro relabelfrom_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+        )
+
+        (macro relabelto ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        relabelto
+                    )
+                )
+            )
+        )
+
+        (macro relabelto_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        relabelto
+                    )
+                )
+            )
+        )
+
+        (macro relabelto_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        relabelto
+                    )
+                )
+            )
+        )
+
+        (macro relabelto_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        relabelto
+                    )
+                )
+            )
+        )
+
+        (macro relabelto_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        relabelto
+                    )
+                )
+            )
+        )
+
+        (macro relabelto_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        relabelto
+                    )
+                )
+            )
+        )
+
+        (macro rename ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        rename
+                    )
+                )
+            )
+        )
+
+        (macro rename_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        rename
+                    )
+                )
+            )
+        )
+
+        (macro rename_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        rename
+                    )
+                )
+            )
+        )
+
+        (macro rename_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        rename
+                    )
+                )
+            )
+        )
+
+        (macro rename_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        rename
+                    )
+                )
+            )
+        )
+
+        (macro rename_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        rename
+                    )
+                )
+            )
+        )
+
+        (macro rw ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        rw
+                    )
+                )
+            )
+        )
+
+        (macro rw_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        rw
+                    )
+                )
+            )
+        )
+
+        (macro rw_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        rw
+                    )
+                )
+            )
+        )
+
+        (macro rw_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        rw
+                    )
+                )
+            )
+        )
+
+        (macro rw_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        rw
+                    )
+                )
+            )
+        )
+
+        (macro rw_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        rw
+                    )
+                )
+            )
+        )
+
+        (macro search ((type ARG1))
+            (allow ARG1 fs search_dir_perms)
+        )
+
+        (macro setattr ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        setattr
+                    )
+                )
+            )
+        )
+
+        (macro setattr_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        setattr
+                    )
+                )
+            )
+        )
+
+        (macro setattr_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        setattr
+                    )
+                )
+            )
+        )
+
+        (macro setattr_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        setattr
+                    )
+                )
+            )
+        )
+
+        (macro setattr_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        setattr
+                    )
+                )
+            )
+        )
+
+        (macro setattr_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        setattr
+                    )
+                )
+            )
+        )
+
+        (macro write ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        write
+                    )
+                )
+            )
+        )
+
+        (macro write_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        write
+                    )
+                )
+            )
+        )
+
+        (macro write_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        write
+                    )
+                )
+            )
+        )
+
+        (macro write_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        write
+                    )
+                )
+            )
+        )
+
+        (macro write_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        write
+                    )
+                )
+            )
+        )
+
+        (macro write_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        write
+                    )
+                )
+            )
+        )
+
+        ;
+        ; cifs policy
+        ;
+
+        (blockinherit fs.obj_template)
+
+        (call sys.mountpoint.obj_type
+            (
+                fs
+            )
+        )
+    )
+
+    ;
+    ; FS configfs name space
+    ;
+
+    (block configfs
+
+        ;
+        ; configfs contexts
+        ;
+
+        (genfscon "configfs" "/" fs_context)
+
+        ;
+        ; configfs macros
+        ;
+
+        (macro list ((type ARG1))
+            (allow ARG1 fs list_dir_perms)
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro read_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        read
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rw_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        rw
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro search ((type ARG1))
+            (allow ARG1 fs search_dir_perms)
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        ;
+        ; configfs policy
+        ;
+
+        (blockinherit fs.obj_template)
+
+        (call sys.mountpoint.obj_type
+            (
+                fs
+            )
+        )
+    )
+
+    ;
+    ; FS debugfs name space
+    ;
+
+    (block debugfs
+
+        ;
+        ; debugfs contexts
+        ;
+
+        (genfscon "debugfs" "/" fs_context)
+
+        ;
+        ; debugfs macros
+        ;
+
+        (macro list ((type ARG1))
+            (allow ARG1 fs list_dir_perms)
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro read_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        read
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rw_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        rw
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro search ((type ARG1))
+            (allow ARG1 fs search_dir_perms)
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        ;
+        ; debugfs policy
+        ;
+
+        (blockinherit fs.obj_template)
+
+        (call sys.mountpoint.obj_type
+            (
+                fs
+            )
+        )
+    )
+
+    ;
+    ; FS devpts name space
+    ;
+
+    (block devpts
+
+        ;
+        ; devpts contexts
+        ;
+
+        (genfscon "devpts" "/" fs_context)
+
+        ;
+        ; devpts macros
+        ;
+
+        (macro getattr_chr_files ((type ARG1))
+            (allow ARG1 fs
+                (chr_files
+                    (
+                        getattr
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro list ((type ARG1))
+            (allow ARG1 fs list_dir_perms)
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro obj_type_transition ((type ARG1)(type ARG2)(class ARG3)(name ARG4))
+            (typetransition ARG1 fs ARG3 ARG4 ARG2)
+            (call rw_dirs
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rw_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        rw
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rw_inherited_chr_files ((type ARG1))
+            (allow ARG1 fs rw_inherited_chr_file_perms)
+        )
+
+        (macro search ((type ARG1))
+            (allow ARG1 fs search_dir_perms)
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        ;
+        ; devpts policy
+        ;
+
+        (blockinherit fs.obj_template)
+
+        (call sys.mountpoint.obj_type
+            (
+                fs
+            )
+        )
+    )
+
+    ;
+    ; FS devtmpfs name space
+    ;
+
+    (block devtmpfs
+
+        ;
+        ; devtmpfs contexts
+        ;
+
+        (filecon "/dev" dir fs_context)
+        (filecon "/dev(/.*)?" any ())
+
+        (fsuse trans "devtmpfs" fs_context)
+
+        ;
+        ; devtmpfs macros
+        ;
+
+        (macro list ((type ARG1))
+            (allow ARG1 fs list_dir_perms)
+        )
+
+        (macro manage_blk_files ((type ARG1))
+            (allow ARG1 self
+                (capability
+                    (
+                        mknod
+                    )
+                )
+            )
+            (allow ARG1 fs
+                (blk_files
+                    (
+                        manage
+                    )
+                )
+            )
+        )
+
+        (macro manage_chr_files ((type ARG1))
+            (allow ARG1 self
+                (capability
+                    (
+                        mknod
+                    )
+                )
+            )
+            (allow ARG1 fs
+                (chr_files
+                    (
+                        manage
+                    )
+                )
+            )
+        )
+
+        (macro manage_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        manage
+                    )
+                )
+            )
+        )
+
+        (macro manage_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        manage
+                    )
+                )
+            )
+        )
+
+        (macro manage_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        manage
+                    )
+                )
+            )
+        )
+
+        (macro obj_type_transition ((type ARG1)(type ARG2)(class ARG3)(name ARG4))
+            (typetransition ARG1 fs ARG3 ARG4 ARG2)
+            (call rw_dirs
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelfrom_blk_files ((type ARG1))
+            (allow ARG1 fs
+                (blk_files
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+        )
+
+        (macro relabelfrom_chr_files ((type ARG1))
+            (allow ARG1 fs
+                (chr_files
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+        )
+
+        (macro rw_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        rw
+                    )
+                )
+            )
+        )
+
+        (macro search ((type ARG1))
+            (allow ARG1 fs search_dir_perms)
+        )
+
+        ;
+        ; devtmpfs policy
+        ;
+
+        (blockinherit fs.obj_template)
+
+        (call xattr.associate
+            (
+                fs
+            )
+        )
+
+        (call sys.mountpoint.obj_type
+            (
+                fs
+            )
+        )
+    )
+
+    ;
+    ; FS dosfs name space
+    ;
+
+    (block dosfs
+
+        ;
+        ; dosfs contexts
+        ;
+
+        (filecon "/efi(/.*)?" any fs_context)
+        (filecon "/boot/efi(/.*)?" any fs_context)
+
+        (genfscon "vfat" "/" fs_context)
+
+        ;
+        ; dosfs macros
+        ;
+
+        (macro add_entries ((type ARG1))
+            (allow ARG1 fs add_entry_dir_perms)
+        )
+
+        (macro append_fifo_files ((type ARG1))
+            (allow ARG1 fs append_fifo_file_perms)
+            (call search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro append_files ((type ARG1))
+            (allow ARG1 fs append_file_perms)
+            (call search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro create ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        create
+                    )
+                )
+            )
+        )
+
+        (macro create_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        create
+                    )
+                )
+            )
+        )
+
+        (macro create_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        create
+                    )
+                )
+            )
+        )
+
+        (macro create_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        create
+                    )
+                )
+            )
+        )
+
+        (macro create_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        create
+                    )
+                )
+            )
+        )
+
+        (macro create_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        create
+                    )
+                )
+            )
+        )
+
+        (macro del_entries ((type ARG1))
+            (allow ARG1 fs del_entry_dir_perms)
+        )
+
+        (macro delete ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        delete
+                    )
+                )
+            )
+        )
+
+        (macro delete_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        delete
+                    )
+                )
+            )
+        )
+
+        (macro delete_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        delete
+                    )
+                )
+            )
+        )
+
+        (macro delete_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        delete
+                    )
+                )
+            )
+        )
+
+        (macro delete_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        delete
+                    )
+                )
+            )
+        )
+
+        (macro delete_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        delete
+                    )
+                )
+            )
+        )
+
+        (macro exec_files ((type ARG1))
+            (allow ARG1 fs exec_file_perms)
+            (call search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro getattr ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        getattr
+                    )
+                )
+            )
+        )
+
+        (macro getattr_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        getattr
+                    )
+                )
+            )
+        )
+
+        (macro getattr_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        getattr
+                    )
+                )
+            )
+        )
+
+        (macro getattr_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        getattr
+                    )
+                )
+            )
+        )
+
+        (macro getattr_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        getattr
+                    )
+                )
+            )
+        )
+
+        (macro getattr_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        getattr
+                    )
+                )
+            )
+        )
+
+        (macro list ((type ARG1))
+            (allow ARG1 fs list_dir_perms)
+        )
+
+        (macro manage ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        manage
+                    )
+                )
+            )
+        )
+
+        (macro manage_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        manage
+                    )
+                )
+            )
+        )
+
+        (macro manage_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        manage
+                    )
+                )
+            )
+        )
+
+        (macro manage_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        manage
+                    )
+                )
+            )
+        )
+
+        (macro manage_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        manage
+                    )
+                )
+            )
+        )
+
+        (macro manage_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        manage
+                    )
+                )
+            )
+        )
+
+        (macro mmap_files ((type ARG1))
+            (allow ARG1 fs mmap_file_perms)
+            (call search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro read ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        read
+                    )
+                )
+            )
+        )
+
+        (macro read_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        read
+                    )
+                )
+            )
+        )
+
+        (macro read_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        read
+                    )
+                )
+            )
+        )
+
+        (macro read_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        read
+                    )
+                )
+            )
+        )
+
+        (macro read_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        read
+                    )
+                )
+            )
+        )
+
+        (macro relabel ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        relabel
+                    )
+                )
+            )
+        )
+
+        (macro relabel_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        relabel
+                    )
+                )
+            )
+        )
+
+        (macro relabel_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        relabel
+                    )
+                )
+            )
+        )
+
+        (macro relabel_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        relabel
+                    )
+                )
+            )
+        )
+
+        (macro relabel_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        relabel
+                    )
+                )
+            )
+        )
+
+        (macro relabel_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        relabel
+                    )
+                )
+            )
+        )
+
+        (macro relabelfrom ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+        )
+
+        (macro relabelfrom_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+        )
+
+        (macro relabelfrom_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+        )
+
+        (macro relabelfrom_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+        )
+
+        (macro relabelfrom_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+        )
+
+        (macro relabelfrom_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+        )
+
+        (macro relabelto ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        relabelto
+                    )
+                )
+            )
+        )
+
+        (macro relabelto_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        relabelto
+                    )
+                )
+            )
+        )
+
+        (macro relabelto_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        relabelto
+                    )
+                )
+            )
+        )
+
+        (macro relabelto_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        relabelto
+                    )
+                )
+            )
+        )
+
+        (macro relabelto_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        relabelto
+                    )
+                )
+            )
+        )
+
+        (macro relabelto_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        relabelto
+                    )
+                )
+            )
+        )
+
+        (macro rename ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        rename
+                    )
+                )
+            )
+        )
+
+        (macro rename_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        rename
+                    )
+                )
+            )
+        )
+
+        (macro rename_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        rename
+                    )
+                )
+            )
+        )
+
+        (macro rename_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        rename
+                    )
+                )
+            )
+        )
+
+        (macro rename_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        rename
+                    )
+                )
+            )
+        )
+
+        (macro rename_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        rename
+                    )
+                )
+            )
+        )
+
+        (macro rw ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        rw
+                    )
+                )
+            )
+        )
+
+        (macro rw_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        rw
+                    )
+                )
+            )
+        )
+
+        (macro rw_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        rw
+                    )
+                )
+            )
+        )
+
+        (macro rw_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        rw
+                    )
+                )
+            )
+        )
+
+        (macro rw_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        rw
+                    )
+                )
+            )
+        )
+
+        (macro rw_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        rw
+                    )
+                )
+            )
+        )
+
+        (macro search ((type ARG1))
+            (allow ARG1 fs search_dir_perms)
+        )
+
+        (macro setattr ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        setattr
+                    )
+                )
+            )
+        )
+
+        (macro setattr_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        setattr
+                    )
+                )
+            )
+        )
+
+        (macro setattr_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        setattr
+                    )
+                )
+            )
+        )
+
+        (macro setattr_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        setattr
+                    )
+                )
+            )
+        )
+
+        (macro setattr_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        setattr
+                    )
+                )
+            )
+        )
+
+        (macro setattr_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        setattr
+                    )
+                )
+            )
+        )
+
+        (macro write ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        write
+                    )
+                )
+            )
+        )
+
+        (macro write_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        write
+                    )
+                )
+            )
+        )
+
+        (macro write_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        write
+                    )
+                )
+            )
+        )
+
+        (macro write_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        write
+                    )
+                )
+            )
+        )
+
+        (macro write_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        write
+                    )
+                )
+            )
+        )
+
+        (macro write_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        write
+                    )
+                )
+            )
+        )
+
+        ;
+        ; dosfs policy
+        ;
+
+        (blockinherit fs.obj_template)
+
+        (call xattr.associate
+            (
+                fs
+            )
+        )
+
+        (call sys.mountpoint.obj_type
+            (
+                fs
+            )
+        )
+    )
+
+    ;
+    ; FS drm name space
+    ;
+
+    (block drm
+
+        ;
+        ; drm contexts
+        ;
+
+        (genfscon "drm" "/" fs_context)
+
+        ;
+        ; drm policy
+        ;
+
+        (blockinherit fs.obj_template)
+    )
+
+    ;
+    ; FS efivarfs name space
+    ;
+
+    (block efivarfs
+
+        ;
+        ; efivarfs contexts
+        ;
+
+        (genfscon "efivarfs" "/" fs_context)
+
+        ;
+        ; efivarfs macros
+        ;
+
+        (macro list ((type ARG1))
+            (allow ARG1 fs list_dir_perms)
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro manage_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        manage
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro read_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        read
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rw_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        rw
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rw_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        rw
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro search ((type ARG1))
+            (allow ARG1 fs search_dir_perms)
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        ;
+        ; efivarfs policy
+        ;
+
+        (blockinherit fs.obj_template)
+
+        (call sys.mountpoint.obj_type
+            (
+                fs
+            )
+        )
+    )
+
+    ;
+    ; FS fuse name space
+    ;
+
+    (block fuse
+
+        ;
+        ; fuse contexts
+        ;
+
+        (genfscon "fuse" "/" fs_context)
+        (genfscon "fuseblk" "/" fs_context)
+        (genfscon "fusectl" "/" fs_context)
+
+        ;
+        ; fuse macros
+        ;
+
+        (macro add_entries ((type ARG1))
+            (allow ARG1 fs add_entry_dir_perms)
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro append_fifo_files ((type ARG1))
+            (allow ARG1 fs append_fifo_file_perms)
+            (call search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro append_files ((type ARG1))
+            (allow ARG1 fs append_file_perms)
+            (call search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro create ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        create
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro create_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        create
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro create_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        create
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro create_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        create
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro create_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        create
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro create_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        create
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro del_entries ((type ARG1))
+            (allow ARG1 fs del_entry_dir_perms)
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro delete ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        delete
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro delete_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        delete
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro delete_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        delete
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro delete_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        delete
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro delete_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        delete
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro delete_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        delete
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro exec_files ((type ARG1))
+            (allow ARG1 fs exec_file_perms)
+            (call search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro getattr ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        getattr
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro getattr_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        getattr
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro getattr_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        getattr
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro getattr_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        getattr
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro getattr_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        getattr
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro getattr_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        getattr
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro list ((type ARG1))
+            (allow ARG1 fs list_dir_perms)
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro manage ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        manage
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro manage_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        manage
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro manage_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        manage
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro manage_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        manage
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro manage_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        manage
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro manage_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        manage
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro mmap_files ((type ARG1))
+            (allow ARG1 fs mmap_file_perms)
+            (call search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro read ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        read
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro read_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        read
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro read_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        read
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro read_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        read
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro read_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        read
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabel ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        relabel
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabel_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        relabel
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabel_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        relabel
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabel_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        relabel
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabel_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        relabel
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabel_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        relabel
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelfrom ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelfrom_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelfrom_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelfrom_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelfrom_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelfrom_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelto ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        relabelto
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelto_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        relabelto
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelto_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        relabelto
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelto_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        relabelto
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelto_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        relabelto
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelto_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        relabelto
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rename ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        rename
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rename_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        rename
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rename_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        rename
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rename_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        rename
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rename_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        rename
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rename_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        rename
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rw ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        rw
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rw_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        rw
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rw_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        rw
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rw_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        rw
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rw_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        rw
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rw_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        rw
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro search ((type ARG1))
+            (allow ARG1 fs search_dir_perms)
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro setattr ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        setattr
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro setattr_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        setattr
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro setattr_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        setattr
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro setattr_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        setattr
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro setattr_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        setattr
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro setattr_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        setattr
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro write ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        write
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro write_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        write
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro write_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        write
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro write_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        write
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro write_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        write
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro write_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        write
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        ;
+        ; fuse policy
+        ;
+
+        (blockinherit fs.obj_template)
+
+
+        (call sys.mountpoint.obj_type
+            (
+                fs
+            )
+        )
+    )
+
+    ;
+    ; FS hugetlbfs name space
+    ;
+
+    (block hugetlbfs
+
+        ;
+        ; hugetlbfs contexts
+        ;
+
+        (fsuse trans "hugetlbfs" fs_context)
+
+        ;
+        ; hugetlbfs macros
+        ;
+
+        (macro list ((type ARG1))
+            (allow ARG1 fs list_dir_perms)
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro manage_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        manage
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro read_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        read
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rw_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        rw
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rw_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        rw
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro search ((type ARG1))
+            (allow ARG1 fs search_dir_perms)
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        ;
+        ; hugetlbfs policy
+        ;
+
+        (blockinherit fs.obj_template)
+
+
+        (call sys.mountpoint.obj_type
+            (
+                fs
+            )
+        )
+    )
+
+    ;
+    ; FS iso9660 name space
+    ;
+
+    (block iso9660
+
+        ;
+        ; iso9660 contexts
+        ;
+
+        (genfscon "iso9660" "/" fs_context)
+
+        ;
+        ; iso9660 macros
+        ;
+
+        (macro add_entries ((type ARG1))
+            (allow ARG1 fs add_entry_dir_perms)
+        )
+
+        (macro append_fifo_files ((type ARG1))
+            (allow ARG1 fs append_fifo_file_perms)
+            (call search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro append_files ((type ARG1))
+            (allow ARG1 fs append_file_perms)
+            (call search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro create ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        create
+                    )
+                )
+            )
+        )
+
+        (macro create_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        create
+                    )
+                )
+            )
+        )
+
+        (macro create_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        create
+                    )
+                )
+            )
+        )
+
+        (macro create_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        create
+                    )
+                )
+            )
+        )
+
+        (macro create_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        create
+                    )
+                )
+            )
+        )
+
+        (macro create_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        create
+                    )
+                )
+            )
+        )
+
+        (macro del_entries ((type ARG1))
+            (allow ARG1 fs del_entry_dir_perms)
+        )
+
+        (macro delete ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        delete
+                    )
+                )
+            )
+        )
+
+        (macro delete_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        delete
+                    )
+                )
+            )
+        )
+
+        (macro delete_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        delete
+                    )
+                )
+            )
+        )
+
+        (macro delete_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        delete
+                    )
+                )
+            )
+        )
+
+        (macro delete_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        delete
+                    )
+                )
+            )
+        )
+
+        (macro delete_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        delete
+                    )
+                )
+            )
+        )
+
+        (macro exec_files ((type ARG1))
+            (allow ARG1 fs exec_file_perms)
+            (call search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro getattr ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        getattr
+                    )
+                )
+            )
+        )
+
+        (macro getattr_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        getattr
+                    )
+                )
+            )
+        )
+
+        (macro getattr_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        getattr
+                    )
+                )
+            )
+        )
+
+        (macro getattr_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        getattr
+                    )
+                )
+            )
+        )
+
+        (macro getattr_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        getattr
+                    )
+                )
+            )
+        )
+
+        (macro getattr_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        getattr
+                    )
+                )
+            )
+        )
+
+        (macro list ((type ARG1))
+            (allow ARG1 fs list_dir_perms)
+        )
+
+        (macro manage ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        manage
+                    )
+                )
+            )
+        )
+
+        (macro manage_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        manage
+                    )
+                )
+            )
+        )
+
+        (macro manage_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        manage
+                    )
+                )
+            )
+        )
+
+        (macro manage_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        manage
+                    )
+                )
+            )
+        )
+
+        (macro manage_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        manage
+                    )
+                )
+            )
+        )
+
+        (macro manage_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        manage
+                    )
+                )
+            )
+        )
+
+        (macro mmap_files ((type ARG1))
+            (allow ARG1 fs mmap_file_perms)
+            (call search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro read ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        read
+                    )
+                )
+            )
+        )
+
+        (macro read_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        read
+                    )
+                )
+            )
+        )
+
+        (macro read_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        read
+                    )
+                )
+            )
+        )
+
+        (macro read_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        read
+                    )
+                )
+            )
+        )
+
+        (macro read_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        read
+                    )
+                )
+            )
+        )
+
+        (macro relabel ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        relabel
+                    )
+                )
+            )
+        )
+
+        (macro relabel_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        relabel
+                    )
+                )
+            )
+        )
+
+        (macro relabel_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        relabel
+                    )
+                )
+            )
+        )
+
+        (macro relabel_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        relabel
+                    )
+                )
+            )
+        )
+
+        (macro relabel_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        relabel
+                    )
+                )
+            )
+        )
+
+        (macro relabel_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        relabel
+                    )
+                )
+            )
+        )
+
+        (macro relabelfrom ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+        )
+
+        (macro relabelfrom_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+        )
+
+        (macro relabelfrom_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+        )
+
+        (macro relabelfrom_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+        )
+
+        (macro relabelfrom_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+        )
+
+        (macro relabelfrom_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+        )
+
+        (macro relabelto ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        relabelto
+                    )
+                )
+            )
+        )
+
+        (macro relabelto_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        relabelto
+                    )
+                )
+            )
+        )
+
+        (macro relabelto_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        relabelto
+                    )
+                )
+            )
+        )
+
+        (macro relabelto_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        relabelto
+                    )
+                )
+            )
+        )
+
+        (macro relabelto_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        relabelto
+                    )
+                )
+            )
+        )
+
+        (macro relabelto_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        relabelto
+                    )
+                )
+            )
+        )
+
+        (macro rename ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        rename
+                    )
+                )
+            )
+        )
+
+        (macro rename_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        rename
+                    )
+                )
+            )
+        )
+
+        (macro rename_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        rename
+                    )
+                )
+            )
+        )
+
+        (macro rename_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        rename
+                    )
+                )
+            )
+        )
+
+        (macro rename_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        rename
+                    )
+                )
+            )
+        )
+
+        (macro rename_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        rename
+                    )
+                )
+            )
+        )
+
+        (macro rw ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        rw
+                    )
+                )
+            )
+        )
+
+        (macro rw_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        rw
+                    )
+                )
+            )
+        )
+
+        (macro rw_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        rw
+                    )
+                )
+            )
+        )
+
+        (macro rw_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        rw
+                    )
+                )
+            )
+        )
+
+        (macro rw_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        rw
+                    )
+                )
+            )
+        )
+
+        (macro rw_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        rw
+                    )
+                )
+            )
+        )
+
+        (macro search ((type ARG1))
+            (allow ARG1 fs search_dir_perms)
+        )
+
+        (macro setattr ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        setattr
+                    )
+                )
+            )
+        )
+
+        (macro setattr_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        setattr
+                    )
+                )
+            )
+        )
+
+        (macro setattr_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        setattr
+                    )
+                )
+            )
+        )
+
+        (macro setattr_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        setattr
+                    )
+                )
+            )
+        )
+
+        (macro setattr_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        setattr
+                    )
+                )
+            )
+        )
+
+        (macro setattr_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        setattr
+                    )
+                )
+            )
+        )
+
+        (macro write ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        write
+                    )
+                )
+            )
+        )
+
+        (macro write_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        write
+                    )
+                )
+            )
+        )
+
+        (macro write_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        write
+                    )
+                )
+            )
+        )
+
+        (macro write_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        write
+                    )
+                )
+            )
+        )
+
+        (macro write_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        write
+                    )
+                )
+            )
+        )
+
+        (macro write_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        write
+                    )
+                )
+            )
+        )
+
+        ;
+        ; iso9660 policy
+        ;
+
+        (blockinherit fs.obj_template)
+
+
+        (call sys.mountpoint.obj_type
+            (
+                fs
+            )
+        )
+    )
+
+    ;
+    ; FS nfs name space
+    ;
+
+    (block nfs
+
+        ;
+        ; nfs contexts
+        ;
+
+        (genfscon "afs" "/" fs_context)
+        (genfscon "lustre" "/" fs_context)
+        (genfscon "nfs" "/" fs_context)
+        (genfscon "nfs4" "/" fs_context)
+
+        ;
+        ; nfs macros
+        ;
+
+        (macro add_entries ((type ARG1))
+            (allow ARG1 fs add_entry_dir_perms)
+        )
+
+        (macro append_fifo_files ((type ARG1))
+            (allow ARG1 fs append_fifo_file_perms)
+            (call search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro append_files ((type ARG1))
+            (allow ARG1 fs append_file_perms)
+            (call search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro create ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        create
+                    )
+                )
+            )
+        )
+
+        (macro create_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        create
+                    )
+                )
+            )
+        )
+
+        (macro create_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        create
+                    )
+                )
+            )
+        )
+
+        (macro create_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        create
+                    )
+                )
+            )
+        )
+
+        (macro create_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        create
+                    )
+                )
+            )
+        )
+
+        (macro create_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        create
+                    )
+                )
+            )
+        )
+
+        (macro del_entries ((type ARG1))
+            (allow ARG1 fs del_entry_dir_perms)
+        )
+
+        (macro delete ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        delete
+                    )
+                )
+            )
+        )
+
+        (macro delete_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        delete
+                    )
+                )
+            )
+        )
+
+        (macro delete_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        delete
+                    )
+                )
+            )
+        )
+
+        (macro delete_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        delete
+                    )
+                )
+            )
+        )
+
+        (macro delete_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        delete
+                    )
+                )
+            )
+        )
+
+        (macro delete_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        delete
+                    )
+                )
+            )
+        )
+
+        (macro exec_files ((type ARG1))
+            (allow ARG1 fs exec_file_perms)
+            (call search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro getattr ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        getattr
+                    )
+                )
+            )
+        )
+
+        (macro getattr_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        getattr
+                    )
+                )
+            )
+        )
+
+        (macro getattr_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        getattr
+                    )
+                )
+            )
+        )
+
+        (macro getattr_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        getattr
+                    )
+                )
+            )
+        )
+
+        (macro getattr_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        getattr
+                    )
+                )
+            )
+        )
+
+        (macro getattr_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        getattr
+                    )
+                )
+            )
+        )
+
+        (macro list ((type ARG1))
+            (allow ARG1 fs list_dir_perms)
+        )
+
+        (macro manage ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        manage
+                    )
+                )
+            )
+        )
+
+        (macro manage_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        manage
+                    )
+                )
+            )
+        )
+
+        (macro manage_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        manage
+                    )
+                )
+            )
+        )
+
+        (macro manage_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        manage
+                    )
+                )
+            )
+        )
+
+        (macro manage_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        manage
+                    )
+                )
+            )
+        )
+
+        (macro manage_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        manage
+                    )
+                )
+            )
+        )
+
+        (macro mmap_files ((type ARG1))
+            (allow ARG1 fs mmap_file_perms)
+            (call search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro read ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        read
+                    )
+                )
+            )
+        )
+
+        (macro read_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        read
+                    )
+                )
+            )
+        )
+
+        (macro read_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        read
+                    )
+                )
+            )
+        )
+
+        (macro read_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        read
+                    )
+                )
+            )
+        )
+
+        (macro read_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        read
+                    )
+                )
+            )
+        )
+
+        (macro relabel ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        relabel
+                    )
+                )
+            )
+        )
+
+        (macro relabel_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        relabel
+                    )
+                )
+            )
+        )
+
+        (macro relabel_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        relabel
+                    )
+                )
+            )
+        )
+
+        (macro relabel_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        relabel
+                    )
+                )
+            )
+        )
+
+        (macro relabel_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        relabel
+                    )
+                )
+            )
+        )
+
+        (macro relabel_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        relabel
+                    )
+                )
+            )
+        )
+
+        (macro relabelfrom ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+        )
+
+        (macro relabelfrom_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+        )
+
+        (macro relabelfrom_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+        )
+
+        (macro relabelfrom_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+        )
+
+        (macro relabelfrom_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+        )
+
+        (macro relabelfrom_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+        )
+
+        (macro relabelto ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        relabelto
+                    )
+                )
+            )
+        )
+
+        (macro relabelto_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        relabelto
+                    )
+                )
+            )
+        )
+
+        (macro relabelto_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        relabelto
+                    )
+                )
+            )
+        )
+
+        (macro relabelto_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        relabelto
+                    )
+                )
+            )
+        )
+
+        (macro relabelto_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        relabelto
+                    )
+                )
+            )
+        )
+
+        (macro relabelto_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        relabelto
+                    )
+                )
+            )
+        )
+
+        (macro rename ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        rename
+                    )
+                )
+            )
+        )
+
+        (macro rename_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        rename
+                    )
+                )
+            )
+        )
+
+        (macro rename_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        rename
+                    )
+                )
+            )
+        )
+
+        (macro rename_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        rename
+                    )
+                )
+            )
+        )
+
+        (macro rename_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        rename
+                    )
+                )
+            )
+        )
+
+        (macro rename_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        rename
+                    )
+                )
+            )
+        )
+
+        (macro rw ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        rw
+                    )
+                )
+            )
+        )
+
+        (macro rw_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        rw
+                    )
+                )
+            )
+        )
+
+        (macro rw_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        rw
+                    )
+                )
+            )
+        )
+
+        (macro rw_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        rw
+                    )
+                )
+            )
+        )
+
+        (macro rw_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        rw
+                    )
+                )
+            )
+        )
+
+        (macro rw_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        rw
+                    )
+                )
+            )
+        )
+
+        (macro search ((type ARG1))
+            (allow ARG1 fs search_dir_perms)
+        )
+
+        (macro setattr ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        setattr
+                    )
+                )
+            )
+        )
+
+        (macro setattr_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        setattr
+                    )
+                )
+            )
+        )
+
+        (macro setattr_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        setattr
+                    )
+                )
+            )
+        )
+
+        (macro setattr_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        setattr
+                    )
+                )
+            )
+        )
+
+        (macro setattr_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        setattr
+                    )
+                )
+            )
+        )
+
+        (macro setattr_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        setattr
+                    )
+                )
+            )
+        )
+
+        (macro write ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        write
+                    )
+                )
+            )
+        )
+
+        (macro write_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        write
+                    )
+                )
+            )
+        )
+
+        (macro write_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        write
+                    )
+                )
+            )
+        )
+
+        (macro write_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        write
+                    )
+                )
+            )
+        )
+
+        (macro write_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        write
+                    )
+                )
+            )
+        )
+
+        (macro write_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        write
+                    )
+                )
+            )
+        )
+
+        ;
+        ; nfs policy
+        ;
+
+        (blockinherit fs.obj_template)
+
+        (call sys.mountpoint.obj_type
+            (
+                fs
+            )
+        )
+    )
+
+    ;
+    ; FS nfsd name space
+    ;
+
+    (block nfsd
+
+        ;
+        ; nfsd contexts
+        ;
+
+        (genfscon "nfsd" "/" fs_context)
+
+        ;
+        ; nfsd policy
+        ;
+
+        (blockinherit fs.obj_template)
+
+        (call sys.mountpoint.obj_type
+            (
+                fs
+            )
+        )
+    )
+
+    ;
+    ; FS nsfs name space
+    ;
+
+    (block nsfs
+
+        ;
+        ; nsfs contexts
+        ;
+
+        (genfscon "nsfs" "/" fs_context)
+
+        ;
+        ; nsfs macros
+        ;
+
+        (macro list ((type ARG1))
+            (allow ARG1 fs list_dir_perms)
+        )
+
+        (macro read_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        read
+                    )
+                )
+            )
+        )
+
+        (macro search ((type ARG1))
+            (allow ARG1 fs search_dir_perms)
+        )
+
+        ;
+        ; nsfs policy
+        ;
+
+        (blockinherit fs.obj_template)
+    )
+
+    ;
+    ; FS proc name space
+    ;
+
+    (block proc
+
+        ;
+        ; proc contexts
+        ;
+
+        (filecon "/proc" dir fs_context)
+        (filecon "/proc(/.*)?" any ())
+
+        (genfscon "proc" "/" fs_context)
+        (genfscon "proc" "/sysvipc" fs_context)
+
+        ;
+        ; proc macros
+        ;
+
+        (macro list ((type ARG1))
+            (allow ARG1 fs list_dir_perms)
+        )
+
+        (macro read ((type ARG1))
+            (call list
+                (
+                    ARG1
+                )
+            )
+            (call read_files
+                (
+                    ARG1
+                )
+            )
+            (call read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro read_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        read
+                    )
+                )
+            )
+        )
+
+        (macro read_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        read
+                    )
+                )
+            )
+        )
+
+        (macro search ((type ARG1))
+            (allow ARG1 fs search_dir_perms)
+        )
+
+        ;
+        ; proc policy
+        ;
+
+        (blockinherit fs.obj_template)
+
+        (call xattr.associate
+            (
+                fs
+            )
+        )
+
+        (call sys.mountpoint.obj_type
+            (
+                fs
+            )
+        )
+    )
+
+    ;
+    ; FS pstore name space
+    ;
+
+    (block pstore
+
+        ;
+        ; pstore contexts
+        ;
+
+        (genfscon "pstore" "/" fs_context)
+
+        ;
+        ; pstore macros
+        ;
+
+        (macro list ((type ARG1))
+            (allow ARG1 fs list_dir_perms)
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro read_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        read
+                    )
+                )
+            )
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro search ((type ARG1))
+            (allow ARG1 fs search_dir_perms)
+            (call sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        ;
+        ; pstore policy
+        ;
+
+        (blockinherit fs.obj_template)
+
+        (call sys.mountpoint.obj_type
+            (
+                fs
+            )
+        )
+    )
+
+    ;
+    ; FS removable name space
+    ;
+
+    (block removable
+
+        ;
+        ; removable macros
+        ;
+
+        (macro add_entries ((type ARG1))
+            (allow ARG1 fs add_entry_dir_perms)
+        )
+
+        (macro append_fifo_files ((type ARG1))
+            (allow ARG1 fs append_fifo_file_perms)
+            (call search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro append_files ((type ARG1))
+            (allow ARG1 fs append_file_perms)
+            (call search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro create ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        create
+                    )
+                )
+            )
+        )
+
+        (macro create_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        create
+                    )
+                )
+            )
+        )
+
+        (macro create_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        create
+                    )
+                )
+            )
+        )
+
+        (macro create_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        create
+                    )
+                )
+            )
+        )
+
+        (macro create_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        create
+                    )
+                )
+            )
+        )
+
+        (macro create_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        create
+                    )
+                )
+            )
+        )
+
+        (macro del_entries ((type ARG1))
+            (allow ARG1 fs del_entry_dir_perms)
+        )
+
+        (macro delete ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        delete
+                    )
+                )
+            )
+        )
+
+        (macro delete_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        delete
+                    )
+                )
+            )
+        )
+
+        (macro delete_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        delete
+                    )
+                )
+            )
+        )
+
+        (macro delete_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        delete
+                    )
+                )
+            )
+        )
+
+        (macro delete_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        delete
+                    )
+                )
+            )
+        )
+
+        (macro delete_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        delete
+                    )
+                )
+            )
+        )
+
+        (macro exec_files ((type ARG1))
+            (allow ARG1 fs exec_file_perms)
+            (call search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro getattr ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        getattr
+                    )
+                )
+            )
+        )
+
+        (macro getattr_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        getattr
+                    )
+                )
+            )
+        )
+
+        (macro getattr_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        getattr
+                    )
+                )
+            )
+        )
+
+        (macro getattr_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        getattr
+                    )
+                )
+            )
+        )
+
+        (macro getattr_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        getattr
+                    )
+                )
+            )
+        )
+
+        (macro getattr_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        getattr
+                    )
+                )
+            )
+        )
+
+        (macro list ((type ARG1))
+            (allow ARG1 fs list_dir_perms)
+        )
+
+        (macro manage ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        manage
+                    )
+                )
+            )
+        )
+
+        (macro manage_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        manage
+                    )
+                )
+            )
+        )
+
+        (macro manage_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        manage
+                    )
+                )
+            )
+        )
+
+        (macro manage_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        manage
+                    )
+                )
+            )
+        )
+
+        (macro manage_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        manage
+                    )
+                )
+            )
+        )
+
+        (macro manage_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        manage
+                    )
+                )
+            )
+        )
+
+        (macro mmap_files ((type ARG1))
+            (allow ARG1 fs mmap_file_perms)
+            (call search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro read ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        read
+                    )
+                )
+            )
+        )
+
+        (macro read_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        read
+                    )
+                )
+            )
+        )
+
+        (macro read_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        read
+                    )
+                )
+            )
+        )
+
+        (macro read_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        read
+                    )
+                )
+            )
+        )
+
+        (macro read_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        read
+                    )
+                )
+            )
+        )
+
+        (macro relabel ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        relabel
+                    )
+                )
+            )
+        )
+
+        (macro relabel_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        relabel
+                    )
+                )
+            )
+        )
+
+        (macro relabel_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        relabel
+                    )
+                )
+            )
+        )
+
+        (macro relabel_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        relabel
+                    )
+                )
+            )
+        )
+
+        (macro relabel_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        relabel
+                    )
+                )
+            )
+        )
+
+        (macro relabel_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        relabel
+                    )
+                )
+            )
+        )
+
+        (macro relabelfrom ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+        )
+
+        (macro relabelfrom_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+        )
+
+        (macro relabelfrom_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+        )
+
+        (macro relabelfrom_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+        )
+
+        (macro relabelfrom_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+        )
+
+        (macro relabelfrom_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+        )
+
+        (macro relabelto ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        relabelto
+                    )
+                )
+            )
+        )
+
+        (macro relabelto_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        relabelto
+                    )
+                )
+            )
+        )
+
+        (macro relabelto_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        relabelto
+                    )
+                )
+            )
+        )
+
+        (macro relabelto_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        relabelto
+                    )
+                )
+            )
+        )
+
+        (macro relabelto_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        relabelto
+                    )
+                )
+            )
+        )
+
+        (macro relabelto_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        relabelto
+                    )
+                )
+            )
+        )
+
+        (macro rename ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        rename
+                    )
+                )
+            )
+        )
+
+        (macro rename_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        rename
+                    )
+                )
+            )
+        )
+
+        (macro rename_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        rename
+                    )
+                )
+            )
+        )
+
+        (macro rename_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        rename
+                    )
+                )
+            )
+        )
+
+        (macro rename_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        rename
+                    )
+                )
+            )
+        )
+
+        (macro rename_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        rename
+                    )
+                )
+            )
+        )
+
+        (macro rw ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        rw
+                    )
+                )
+            )
+        )
+
+        (macro rw_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        rw
+                    )
+                )
+            )
+        )
+
+        (macro rw_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        rw
+                    )
+                )
+            )
+        )
+
+        (macro rw_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        rw
+                    )
+                )
+            )
+        )
+
+        (macro rw_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        rw
+                    )
+                )
+            )
+        )
+
+        (macro rw_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        rw
+                    )
+                )
+            )
+        )
+
+        (macro search ((type ARG1))
+            (allow ARG1 fs search_dir_perms)
+        )
+
+        (macro setattr ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        setattr
+                    )
+                )
+            )
+        )
+
+        (macro setattr_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        setattr
+                    )
+                )
+            )
+        )
+
+        (macro setattr_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        setattr
+                    )
+                )
+            )
+        )
+
+        (macro setattr_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        setattr
+                    )
+                )
+            )
+        )
+
+        (macro setattr_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        setattr
+                    )
+                )
+            )
+        )
+
+        (macro setattr_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        setattr
+                    )
+                )
+            )
+        )
+
+        (macro write ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        write
+                    )
+                )
+            )
+        )
+
+        (macro write_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        write
+                    )
+                )
+            )
+        )
+
+        (macro write_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        write
+                    )
+                )
+            )
+        )
+
+        (macro write_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        write
+                    )
+                )
+            )
+        )
+
+        (macro write_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        write
+                    )
+                )
+            )
+        )
+
+        (macro write_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        write
+                    )
+                )
+            )
+        )
+
+        ;
+        ; removable policy
+        ;
+
+        (blockinherit fs.obj_template)
+    )
+
+    ;
+    ; FS rootfs name space
+    ;
+
+    (block rootfs
+
+        ;
+        ; rootfs contexts
+        ;
+
+        (filecon "/" dir fs_context)
+
+        (genfscon "rootfs" "/" fs_context)
+
+        ;
+        ; rootfs macros
+        ;
+
+        (macro audit_write_access_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dir
+                    (
+                        getattr
+                        write
+                    )
+                )
+            )
+        )
+
+        (macro list ((type ARG1))
+            (allow ARG1 fs list_dir_perms)
+        )
+
+        (macro mounton_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dir
+                    (
+                        mounton
+                    )
+                )
+            )
+        )
+
+        (macro obj_type_transition ((type ARG1)(type ARG2)(class ARG3)(name ARG4))
+            (typetransition ARG1 fs ARG3 ARG4 ARG2)
+            (call rw_dirs
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro read_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        read
+                    )
+                )
+            )
+        )
+
+        (macro rw_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        rw
+                    )
+                )
+            )
+        )
+
+        (macro search ((type ARG1))
+            (allow ARG1 fs search_dir_perms)
+        )
+
+        ;
+        ; rootfs policy
+        ;
+
+        (blockinherit fs.obj_template)
+
+        (call xattr.associate
+            (
+                fs
+            )
+        )
+
+        (call sys.mountpoint.obj_type
+            (
+                fs
+            )
+        )
+    )
+
+    ;
+    ; FS rpc_pipefs name space
+    ;
+
+    (block rpc_pipefs
+
+        ;
+        ; rpc_pipefs contexts
+        ;
+
+        (filecon "/run/rpc_pipefs(/.*)?" any ())
+
+        (genfscon "rpc_pipefs" "/" fs_context)
+
+        ;
+        ; rpc_pipefs macros
+        ;
+
+        (macro list ((type ARG1))
+            (allow ARG1 fs list_dir_perms)
+            (call files.generic_runtime.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro search ((type ARG1))
+            (allow ARG1 fs search_dir_perms)
+            (call files.generic_runtime.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        ;
+        ; rpc_pipefs policy
+        ;
+
+        (blockinherit fs.obj_template)
+
+        (call sys.mountpoint.obj_type
+            (
+                fs
+            )
+        )
+    )
+
+    ;
+    ; FS sysfs name space
+    ;
+
+    (block sysfs
+
+        ;
+        ; sysfs contexts
+        ;
+
+        (filecon "/sys" dir fs_context)
+        (filecon "/sys(/.*)?" any ())
+
+        (genfscon "sysfs" "/" fs_context)
+
+        ;
+        ; sysfs macros
+        ;
+
+        (macro audit_write_access_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dir
+                    (
+                        getattr
+                        write
+                    )
+                )
+            )
+        )
+
+        (macro list ((type ARG1))
+            (allow ARG1 fs list_dir_perms)
+        )
+
+        (macro read ((type ARG1))
+            (call list
+                (
+                    ARG1
+                )
+            )
+            (call read_files
+                (
+                    ARG1
+                )
+            )
+            (call read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro read_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        read
+                    )
+                )
+            )
+        )
+
+        (macro read_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        read
+                    )
+                )
+            )
+        )
+
+        (macro rw_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        rw
+                    )
+                )
+            )
+        )
+
+        (macro search ((type ARG1))
+            (allow ARG1 fs search_dir_perms)
+        )
+
+        ;
+        ; sysfs policy
+        ;
+
+        (blockinherit fs.obj_template)
+
+        (call xattr.associate
+            (
+                fs
+            )
+        )
+
+        (call sys.mountpoint.obj_type
+            (
+                fs
+            )
+        )
+    )
+
+    ;
+    ; FS tmpfs name space
+    ;
+
+    (block tmpfs
+
+        ;
+        ; tmpfs contexts
+        ;
+
+        (filecon "/tmp" dir fs_context)
+        (filecon "/tmp(/.*)?" any ())
+
+        (filecon "/run/user(/.*)?" any ())
+
+        (fsuse trans "mqueue" fs_context)
+        (fsuse trans "tmpfs" fs_context)
+
+        ;
+        ; tmpfs macros
+        ;
+
+        (macro add_entries ((type ARG1))
+            (allow ARG1 fs add_entry_dir_perms)
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro append_fifo_files ((type ARG1))
+            (allow ARG1 fs append_fifo_file_perms)
+            (call search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro append_files ((type ARG1))
+            (allow ARG1 fs append_file_perms)
+            (call search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro create ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        create
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro create_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        create
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro create_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        create
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro create_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        create
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro create_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        create
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro create_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        create
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro del_entries ((type ARG1))
+            (allow ARG1 fs del_entry_dir_perms)
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro delete ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        delete
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro delete_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        delete
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro delete_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        delete
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro delete_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        delete
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro delete_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        delete
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro delete_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        delete
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro exec_files ((type ARG1))
+            (allow ARG1 fs exec_file_perms)
+            (call search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro getattr ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        getattr
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro getattr_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        getattr
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro getattr_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        getattr
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro getattr_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        getattr
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro getattr_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        getattr
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro getattr_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        getattr
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro list ((type ARG1))
+            (allow ARG1 fs list_dir_perms)
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro manage ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        manage
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro manage_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        manage
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro manage_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        manage
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro manage_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        manage
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro manage_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        manage
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro manage_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        manage
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro mmap_files ((type ARG1))
+            (allow ARG1 fs mmap_file_perms)
+            (call search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro obj_type_transition ((type ARG1)(type ARG2)(class ARG3)(name ARG4))
+            (typetransition ARG1 fs ARG3 ARG4 ARG2)
+            (call rw_dirs
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro read ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        read
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro read_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        read
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro read_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        read
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro read_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        read
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro read_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        read
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabel ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        relabel
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabel_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        relabel
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabel_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        relabel
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabel_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        relabel
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabel_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        relabel
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabel_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        relabel
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelfrom ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelfrom_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelfrom_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelfrom_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelfrom_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelfrom_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelto ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        relabelto
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelto_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        relabelto
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelto_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        relabelto
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelto_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        relabelto
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelto_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        relabelto
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelto_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        relabelto
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rename ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        rename
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rename_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        rename
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rename_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        rename
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rename_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        rename
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rename_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        rename
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rename_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        rename
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rw ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        rw
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rw_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        rw
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rw_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        rw
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rw_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        rw
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rw_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        rw
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rw_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        rw
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro search ((type ARG1))
+            (allow ARG1 fs search_dir_perms)
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro setattr ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        setattr
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro setattr_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        setattr
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro setattr_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        setattr
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro setattr_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        setattr
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro setattr_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        setattr
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro setattr_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        setattr
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro write ((type ARG1))
+            (allow ARG1 fs
+                (files_except_blk_and_chr
+                    (
+                        write
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro write_dirs ((type ARG1))
+            (allow ARG1 fs
+                (dirs
+                    (
+                        write
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro write_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        write
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro write_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        write
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro write_lnk_files ((type ARG1))
+            (allow ARG1 fs
+                (lnk_files
+                    (
+                        write
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro write_sock_files ((type ARG1))
+            (allow ARG1 fs
+                (sock_files
+                    (
+                        write
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        ;
+        ; tmpfs policy
+        ;
+
+        (blockinherit fs.obj_template)
+
+        (call xattr.associate
+            (
+                fs
+            )
+        )
+
+        (call sys.mountpoint.obj_type
+            (
+                fs
+            )
+        )
+    )
+
+    ;
+    ; FS tracefs name space
+    ;
+
+    (block tracefs
+
+        ;
+        ; tracefs contexts
+        ;
+
+        (genfscon "tracefs" "/" fs_context)
+
+        ;
+        ; tracefs macros
+        ;
+
+        (macro list ((type ARG1))
+            (allow ARG1 fs list_dir_perms)
+            (call debugfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro read_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        read
+                    )
+                )
+            )
+            (call debugfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rw_files ((type ARG1))
+            (allow ARG1 fs
+                (files
+                    (
+                        rw
+                    )
+                )
+            )
+            (call debugfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro search ((type ARG1))
+            (allow ARG1 fs search_dir_perms)
+            (call debugfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        ;
+        ; tracefs policy
+        ;
+
+        (blockinherit fs.obj_template)
+    )
+
+    ;
+    ; FS xattr name space
+    ;
+
+    (block xattr
+
+        ;
+        ; xattr contexts
+        ;
+
+        (fsuse task "pipefs" isid_context)
+        (fsuse task "sockfs" isid_context)
+
+        (fsuse xattr "ext4" isid_context)
+        (fsuse xattr "xfs" isid_context)
+        (fsuse xattr "btrfs" isid_context)
+
+        (sidcontext fs isid_context)
+
+        ;
+        ; xattr macros
+        ;
+
+        (macro associate ((type ARG1))
+            (allow ARG1 isid
+                (filesystem
+                    (
+                        associate
+                    )
+                )
+            )
+        )
+
+        (macro getattr ((type ARG1))
+            (allow ARG1 isid
+                (filesystem
+                    (
+                        getattr
+                    )
+                )
+            )
+        )
+
+        (macro mount ((type ARG1))
+            (allow ARG1 isid
+                (filesystem
+                    (
+                        mount
+                    )
+                )
+            )
+        )
+
+        (macro quotaget ((type ARG1))
+            (allow ARG1 isid
+                (filesystem
+                    (
+                        quotaget
+                    )
+                )
+            )
+        )
+
+        (macro quotamod ((type ARG1))
+            (allow ARG1 isid
+                (filesystem
+                    (
+                        quotamod
+                    )
+                )
+            )
+        )
+
+        (macro relabel ((type ARG1))
+            (allow ARG1 isid
+                (filesystem
+                    (
+                        getattr
+                        relabelfrom
+                        relabelto
+                    )
+                )
+            )
+        )
+
+        (macro relabelfrom ((type ARG1))
+            (allow ARG1 isid
+                (filesystem
+                    (
+                        getattr
+                        relabelfrom
+                    )
+                )
+            )
+        )
+
+        (macro relabelto ((type ARG1))
+            (allow ARG1 isid
+                (filesystem
+                    (
+                        getattr
+                        relabelto
+                    )
+                )
+            )
+        )
+
+        (macro remount ((type ARG1))
+            (allow ARG1 isid
+                (filesystem
+                    (
+                        remount
+                    )
+                )
+            )
+        )
+
+        (macro unmount ((type ARG1))
+            (allow ARG1 isid
+                (filesystem
+                    (
+                        unmount
+                    )
+                )
+            )
+        )
+
+        ;
+        ; xattr policy
+        ;
+
+        (blockinherit sys.isid.stub)
+
+        (call fs.obj_type
+            (
+                isid
+            )
+        )
+    )
+)
