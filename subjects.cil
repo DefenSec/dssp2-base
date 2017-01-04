@@ -522,21 +522,21 @@
         )
     )
 
-    ;;(call sys.meminfo.read_files
-    ;;    (
-    ;;        common_subj_type_attribute
-    ;;    )
-    ;;)
-    ;;(call sys.vm_overcommit.read_files
-    ;;    (
-    ;;        common_subj_type_attribute
-    ;;    )
-    ;;)
-    ;;(call sys.invalid.search
-    ;;    (
-    ;;        common_subj_type_attribute
-    ;;    )
-    ;;)
+    (call sys.meminfo_proc.read_files
+        (
+            common_subj_type_attribute
+        )
+    )
+    (call sys.vm_overcommit_sysctl.read_files
+        (
+            common_subj_type_attribute
+        )
+    )
+    (call sys.invalid.search
+        (
+            common_subj_type_attribute
+        )
+    )
 
     (call cmd.generic_commands.read_lnk_files
         (
