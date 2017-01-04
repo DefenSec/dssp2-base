@@ -596,7 +596,7 @@
     )
 
     (optional common_optional_sd_shutdown
-        (call sd_shutdown.send_sigchld
+        (call sd_shutdown.sigchld
             (
                 common_subj_type_attribute
             )
