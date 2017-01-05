@@ -10805,7 +10805,7 @@
         ; var_log macros
         ;
 
-        (macro var_log_obj_type_transition ((type ARG1))
+        (macro generic_var_log_obj_type_transition ((type ARG1))
             (call files.generic_var_log.obj_type_transition
                 (
                     ARG1 var_log_file file "boot.log"
@@ -10825,7 +10825,7 @@
             )
         )
 
-        (call var_log_obj_type_transition
+        (call generic_var_log_obj_type_transition
             (
                 sys.isid
             )
