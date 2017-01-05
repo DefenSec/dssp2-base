@@ -2,19 +2,10 @@
 
 ; CMD policy
 ;
-; 1. CMD generic_commands file context specifications in FS
-; 2. CMD name space
-; 3.    CMD generic_commands name space
-; 4.    CMD cmd_file name space
-; 5.    CMD shell name space
-
-;
-; CMD generic_commands file context specifications in FS
-;
-
-(in fs.rootfs
-    (filecon "/(s)?bin" symlink fs_context)
-)
+; 1. CMD name space
+; 2.    CMD generic_commands name space
+; 3.    CMD cmd_file name space
+; 4.    CMD shell name space
 
 ;
 ; CMD name space
@@ -53,12 +44,7 @@
 
         (macro add_entries ((type ARG1))
             (allow ARG1 cmd_file add_entry_dir_perms)
-            (call files.generic_data.search
-                (
-                    ARG1
-                )
-            )
-            (call fs.rootfs.read_lnk_files
+            (call read_lnk_files
                 (
                     ARG1
                 )
@@ -113,12 +99,7 @@
                     )
                 )
             )
-            (call files.generic_data.search
-                (
-                    ARG1
-                )
-            )
-            (call fs.rootfs.read_lnk_files
+            (call read_lnk_files
                 (
                     ARG1
                 )
@@ -133,12 +114,7 @@
                     )
                 )
             )
-            (call files.generic_data.search
-                (
-                    ARG1
-                )
-            )
-            (call fs.rootfs.read_lnk_files
+            (call read_lnk_files
                 (
                     ARG1
                 )
@@ -153,12 +129,7 @@
                     )
                 )
             )
-            (call files.generic_data.search
-                (
-                    ARG1
-                )
-            )
-            (call fs.rootfs.read_lnk_files
+            (call read_lnk_files
                 (
                     ARG1
                 )
@@ -167,12 +138,7 @@
 
         (macro del_entries ((type ARG1))
             (allow ARG1 cmd_file del_entry_dir_perms)
-            (call files.generic_data.search
-                (
-                    ARG1
-                )
-            )
-            (call fs.rootfs.read_lnk_files
+            (call read_lnk_files
                 (
                     ARG1
                 )
@@ -205,12 +171,7 @@
                     )
                 )
             )
-            (call files.generic_data.search
-                (
-                    ARG1
-                )
-            )
-            (call fs.rootfs.read_lnk_files
+            (call read_lnk_files
                 (
                     ARG1
                 )
@@ -225,12 +186,7 @@
                     )
                 )
             )
-            (call files.generic_data.search
-                (
-                    ARG1
-                )
-            )
-            (call fs.rootfs.read_lnk_files
+            (call read_lnk_files
                 (
                     ARG1
                 )
@@ -245,12 +201,7 @@
                     )
                 )
             )
-            (call files.generic_data.search
-                (
-                    ARG1
-                )
-            )
-            (call fs.rootfs.read_lnk_files
+            (call read_lnk_files
                 (
                     ARG1
                 )
@@ -302,12 +253,7 @@
                     )
                 )
             )
-            (call files.generic_data.search
-                (
-                    ARG1
-                )
-            )
-            (call fs.rootfs.read_lnk_files
+            (call read_lnk_files
                 (
                     ARG1
                 )
@@ -322,12 +268,7 @@
                     )
                 )
             )
-            (call files.generic_data.search
-                (
-                    ARG1
-                )
-            )
-            (call fs.rootfs.read_lnk_files
+            (call read_lnk_files
                 (
                     ARG1
                 )
@@ -342,12 +283,7 @@
                     )
                 )
             )
-            (call files.generic_data.search
-                (
-                    ARG1
-                )
-            )
-            (call fs.rootfs.read_lnk_files
+            (call read_lnk_files
                 (
                     ARG1
                 )
@@ -356,12 +292,7 @@
 
         (macro list ((type ARG1))
             (allow ARG1 cmd_file list_dir_perms)
-            (call files.generic_data.search
-                (
-                    ARG1
-                )
-            )
-            (call fs.rootfs.read_lnk_files
+            (call read_lnk_files
                 (
                     ARG1
                 )
@@ -394,12 +325,7 @@
                     )
                 )
             )
-            (call files.generic_data.search
-                (
-                    ARG1
-                )
-            )
-            (call fs.rootfs.read_lnk_files
+            (call read_lnk_files
                 (
                     ARG1
                 )
@@ -414,12 +340,7 @@
                     )
                 )
             )
-            (call files.generic_data.search
-                (
-                    ARG1
-                )
-            )
-            (call fs.rootfs.read_lnk_files
+            (call read_lnk_files
                 (
                     ARG1
                 )
@@ -435,11 +356,6 @@
                 )
             )
             (call files.generic_data.search
-                (
-                    ARG1
-                )
-            )
-            (call fs.rootfs.read_lnk_files
                 (
                     ARG1
                 )
@@ -490,12 +406,7 @@
                     )
                 )
             )
-            (call files.generic_data.search
-                (
-                    ARG1
-                )
-            )
-            (call fs.rootfs.read_lnk_files
+            (call read_lnk_files
                 (
                     ARG1
                 )
@@ -511,11 +422,6 @@
                 )
             )
             (call files.generic_data.search
-                (
-                    ARG1
-                )
-            )
-            (call fs.rootfs.read_lnk_files
                 (
                     ARG1
                 )
@@ -548,12 +454,7 @@
                     )
                 )
             )
-            (call files.generic_data.search
-                (
-                    ARG1
-                )
-            )
-            (call fs.rootfs.read_lnk_files
+            (call read_lnk_files
                 (
                     ARG1
                 )
@@ -568,12 +469,7 @@
                     )
                 )
             )
-            (call files.generic_data.search
-                (
-                    ARG1
-                )
-            )
-            (call fs.rootfs.read_lnk_files
+            (call read_lnk_files
                 (
                     ARG1
                 )
@@ -588,12 +484,7 @@
                     )
                 )
             )
-            (call files.generic_data.search
-                (
-                    ARG1
-                )
-            )
-            (call fs.rootfs.read_lnk_files
+            (call read_lnk_files
                 (
                     ARG1
                 )
@@ -626,12 +517,7 @@
                     )
                 )
             )
-            (call files.generic_data.search
-                (
-                    ARG1
-                )
-            )
-            (call fs.rootfs.read_lnk_files
+            (call read_lnk_files
                 (
                     ARG1
                 )
@@ -646,12 +532,7 @@
                     )
                 )
             )
-            (call files.generic_data.search
-                (
-                    ARG1
-                )
-            )
-            (call fs.rootfs.read_lnk_files
+            (call read_lnk_files
                 (
                     ARG1
                 )
@@ -666,12 +547,7 @@
                     )
                 )
             )
-            (call files.generic_data.search
-                (
-                    ARG1
-                )
-            )
-            (call fs.rootfs.read_lnk_files
+            (call read_lnk_files
                 (
                     ARG1
                 )
@@ -704,12 +580,7 @@
                     )
                 )
             )
-            (call files.generic_data.search
-                (
-                    ARG1
-                )
-            )
-            (call fs.rootfs.read_lnk_files
+            (call read_lnk_files
                 (
                     ARG1
                 )
@@ -724,12 +595,7 @@
                     )
                 )
             )
-            (call files.generic_data.search
-                (
-                    ARG1
-                )
-            )
-            (call fs.rootfs.read_lnk_files
+            (call read_lnk_files
                 (
                     ARG1
                 )
@@ -744,12 +610,7 @@
                     )
                 )
             )
-            (call files.generic_data.search
-                (
-                    ARG1
-                )
-            )
-            (call fs.rootfs.read_lnk_files
+            (call read_lnk_files
                 (
                     ARG1
                 )
@@ -782,12 +643,7 @@
                     )
                 )
             )
-            (call files.generic_data.search
-                (
-                    ARG1
-                )
-            )
-            (call fs.rootfs.read_lnk_files
+            (call read_lnk_files
                 (
                     ARG1
                 )
@@ -802,12 +658,7 @@
                     )
                 )
             )
-            (call files.generic_data.search
-                (
-                    ARG1
-                )
-            )
-            (call fs.rootfs.read_lnk_files
+            (call read_lnk_files
                 (
                     ARG1
                 )
@@ -822,12 +673,7 @@
                     )
                 )
             )
-            (call files.generic_data.search
-                (
-                    ARG1
-                )
-            )
-            (call fs.rootfs.read_lnk_files
+            (call read_lnk_files
                 (
                     ARG1
                 )
@@ -860,12 +706,7 @@
                     )
                 )
             )
-            (call files.generic_data.search
-                (
-                    ARG1
-                )
-            )
-            (call fs.rootfs.read_lnk_files
+            (call read_lnk_files
                 (
                     ARG1
                 )
@@ -880,12 +721,7 @@
                     )
                 )
             )
-            (call files.generic_data.search
-                (
-                    ARG1
-                )
-            )
-            (call fs.rootfs.read_lnk_files
+            (call read_lnk_files
                 (
                     ARG1
                 )
@@ -905,21 +741,11 @@
                     ARG1
                 )
             )
-            (call fs.rootfs.read_lnk_files
-                (
-                    ARG1
-                )
-            )
         )
 
         (macro search ((type ARG1))
             (allow ARG1 cmd_file search_dir_perms)
-            (call files.generic_data.search
-                (
-                    ARG1
-                )
-            )
-            (call fs.rootfs.read_lnk_files
+            (call read_lnk_files
                 (
                     ARG1
                 )
@@ -952,12 +778,7 @@
                     )
                 )
             )
-            (call files.generic_data.search
-                (
-                    ARG1
-                )
-            )
-            (call fs.rootfs.read_lnk_files
+            (call read_lnk_files
                 (
                     ARG1
                 )
@@ -972,12 +793,7 @@
                     )
                 )
             )
-            (call files.generic_data.search
-                (
-                    ARG1
-                )
-            )
-            (call fs.rootfs.read_lnk_files
+            (call read_lnk_files
                 (
                     ARG1
                 )
@@ -992,12 +808,7 @@
                     )
                 )
             )
-            (call files.generic_data.search
-                (
-                    ARG1
-                )
-            )
-            (call fs.rootfs.read_lnk_files
+            (call read_lnk_files
                 (
                     ARG1
                 )
@@ -1030,12 +841,7 @@
                     )
                 )
             )
-            (call files.generic_data.search
-                (
-                    ARG1
-                )
-            )
-            (call fs.rootfs.read_lnk_files
+            (call read_lnk_files
                 (
                     ARG1
                 )
@@ -1050,12 +856,7 @@
                     )
                 )
             )
-            (call files.generic_data.search
-                (
-                    ARG1
-                )
-            )
-            (call fs.rootfs.read_lnk_files
+            (call read_lnk_files
                 (
                     ARG1
                 )
@@ -1070,12 +871,7 @@
                     )
                 )
             )
-            (call files.generic_data.search
-                (
-                    ARG1
-                )
-            )
-            (call fs.rootfs.read_lnk_files
+            (call read_lnk_files
                 (
                     ARG1
                 )
@@ -1153,7 +949,7 @@
                     )
                 )
             )
-            (call generic_commands.search
+            (call generic_commands.read_lnk_files
                 (
                     ARG1
                 )
