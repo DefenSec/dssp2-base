@@ -23,7 +23,7 @@
                 ARG1
             )
         )
-        (call fs.devpts.getattr
+        (call fs.devpts.getattr_fs
             (
                 ARG1
             )

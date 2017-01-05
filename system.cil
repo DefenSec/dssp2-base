@@ -633,7 +633,7 @@
             isid
         )
     )
-    (call fs.xattr.getattr
+    (call fs.xattr.getattr_fs
         (
             isid
         )
