@@ -10290,6 +10290,37 @@
                 )
             )
         )
+
+        (allow unconfined_subj_type_attribute isid
+            blk_file_except_execmod_and_mounton)
+        (allow unconfined_subj_type_attribute isid
+            chr_file_except_execmod_and_mounton)
+        (allow unconfined_subj_type_attribute isid
+            dir_except_execmod)
+        (allow unconfined_subj_type_attribute isid
+            fifo_file_except_execmod_and_mounton)
+        (allow unconfined_subj_type_attribute isid
+            file_except_entrypoint_execmod_and_mounton)
+        (allow unconfined_subj_type_attribute isid
+            (filesystem
+                (
+                    associate
+                    getattr
+                    mount
+                    quotaget
+                    quotamod
+                    remount
+                    relabelfrom
+                    relabelto
+                    unmount
+                )
+            )
+        )
+        (allow unconfined_subj_type_attribute isid
+            lnk_file_except_execmod_and_mounton)
+        (allow unconfined_subj_type_attribute isid signal_perms)
+        (allow unconfined_subj_type_attribute isid
+            sock_file_except_execmod_and_mounton)
     )
 
     ;
