@@ -2735,6 +2735,12 @@
             )
         )
 
+        (call fs.devtmpfs.associate
+            (
+                obj_type_attribute
+            )
+        )
+
         ;
         ; stor_file templates
         ;

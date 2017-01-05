@@ -750,6 +750,12 @@
             )
         )
 
+        (call fs.devtmpfs.associate
+            (
+                obj_type_attribute
+            )
+        )
+
         ;
         ; serial_file templates
         ;
