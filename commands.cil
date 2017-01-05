@@ -74,6 +74,15 @@
             )
         )
 
+        (macro cmd_file_auto_subj_type_transition ((type ARG1)(type ARG2))
+            (typetransition ARG1 cmd_file process "*" ARG2)
+            (call mmap_files
+                (
+                    ARG1
+                )
+            )
+        )
+
         (macro bounded_files ((type ARG1))
             (typebounds cmd_file ARG1)
         )
@@ -1314,6 +1323,15 @@
             (macro append_files ((type ARG1))
                 (allow ARG1 cmd_file append_file_perms)
                 (call cmd.generic_commands.read_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro cmd_file_auto_subj_type_transition ((type ARG1)(type ARG2))
+                (typetransition ARG1 cmd_file process "*" ARG2)
+                (call mmap_files
                     (
                         ARG1
                     )
