@@ -408,6 +408,12 @@
             )
         )
 
+        (call fs.devtmpfs.associate
+            (
+                obj_type_attribute
+            )
+        )
+
         ;
         ; dev_file templates
         ;

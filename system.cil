@@ -6041,6 +6041,13 @@
             )
         )
 
+        (allow unconfined_subj_type_attribute obj_type_attribute
+            list_dir_perms)
+        (allow unconfined_subj_type_attribute obj_type_attribute
+            read_lnk_file_perms)
+        (allow unconfined_subj_type_attribute obj_type_attribute
+            rw_file_perms)
+
         ;
         ; proc_file templates
         ;
@@ -7220,6 +7227,16 @@
                     ARG1
                 )
             )
+            (call write_security_subj_type
+                (
+                    ARG1
+                )
+            )
+            (call write_usermodehelper_subj_type
+                (
+                    ARG1
+                )
+            )
         )
 
         (macro getattr ((type ARG1))
@@ -7503,6 +7520,16 @@
                     ARG1
                 )
             )
+            (call write_security_subj_type
+                (
+                    ARG1
+                )
+            )
+            (call write_usermodehelper_subj_type
+                (
+                    ARG1
+                )
+            )
         )
 
         (macro rw_lnk_files ((type ARG1))
@@ -7620,6 +7647,16 @@
                     ARG1
                 )
             )
+            (call write_security_subj_type
+                (
+                    ARG1
+                )
+            )
+            (call write_usermodehelper_subj_type
+                (
+                    ARG1
+                )
+            )
         )
 
         (macro write_lnk_files ((type ARG1))
@@ -7678,6 +7715,25 @@
                 )
             )
         )
+
+        (allow unconfined_subj_type_attribute obj_type_attribute
+            list_dir_perms)
+        (allow unconfined_subj_type_attribute obj_type_attribute
+            read_lnk_file_perms)
+        (allow unconfined_subj_type_attribute obj_type_attribute
+            rw_file_perms)
+
+        (allow unconfined_subj_type_attribute isid
+            (dir
+                (
+                    mounton
+                )
+            )
+        )
+
+        ;
+        ; sysctl_file templates
+        ;
 
         (block obj_template
 
@@ -8548,6 +8604,13 @@
                 obj_type_attribute
             )
         )
+
+        (allow unconfined_subj_type_attribute obj_type_attribute
+            list_dir_perms)
+        (allow unconfined_subj_type_attribute obj_type_attribute
+            read_lnk_file_perms)
+        (allow unconfined_subj_type_attribute obj_type_attribute
+            rw_file_perms)
 
         ;
         ; sysfs_file templates
