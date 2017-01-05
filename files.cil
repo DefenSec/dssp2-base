@@ -2,8 +2,7 @@
 
 ; Files policy
 ;
-; 1. Files generic_boot file context specifications in FS
-; 2. Files name space
+; 1. Files name space
 ;       Files auth_file name space
 ;       Files boot_file name space
 ;       Files boot_flag_file name space
@@ -44,17 +43,6 @@
 ;       Files var_log_file name space
 ;       Files var_spool_file name space
 ;       Files var_tmp_file name space
-
-;
-; Files generic_boot file context specifications in FS
-;
-
-(in fs.rootfs
-    (filecon "/initrd\.img" symlink fs_context)
-    (filecon "/initrd\.img\.old" symlink fs_context)
-    (filecon "/vmlinuz" symlink fs_context)
-    (filecon "/vmlinuz\.old" symlink fs_context)
-)
 
 ;
 ; Files name space

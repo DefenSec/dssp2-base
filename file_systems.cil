@@ -18691,6 +18691,11 @@
 
         (filecon "/" dir fs_context)
 
+        (filecon "/initrd\.img" symlink fs_context)
+        (filecon "/initrd\.img\.old" symlink fs_context)
+        (filecon "/vmlinuz" symlink fs_context)
+        (filecon "/vmlinuz\.old" symlink fs_context)
+
         (genfscon "rootfs" "/" fs_context)
 
         ;
@@ -19352,6 +19357,29 @@
         (call sys.mountpoint.obj_type
             (
                 fs
+            )
+        )
+
+        (call obj_type_transition
+            (
+                unconfined_subj_type_attribute fs lnk_file "initrd.img"
+            )
+        )
+        (call obj_type_transition
+            (
+                unconfined_subj_type_attribute fs lnk_file
+                    "initrd.img.old"
+            )
+        )
+        (call obj_type_transition
+            (
+                unconfined_subj_type_attribute fs lnk_file "vmlinuz"
+            )
+        )
+        (call obj_type_transition
+            (
+                unconfined_subj_type_attribute fs lnk_file
+                    "vmlinuz.old"
             )
         )
     )
