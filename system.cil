@@ -1579,6 +1579,14 @@
         ;
 
         (blockinherit sys.sysctl_file.obj_template)
+
+        (allow unconfined_subj_type_attribute sysctl_file
+            (dir
+                (
+                    mounton
+                )
+            )
+        )
     )
 
     ;
@@ -1658,6 +1666,16 @@
 
         (macro list ((type ARG1))
             (allow ARG1 isid list_dir_perms)
+        )
+
+        (macro mounton_dirs ((type ARG1))
+            (allow ARG1 isid
+                (dir
+                    (
+                        mounton
+                    )
+                )
+            )
         )
 
         (macro read ((type ARG1))
@@ -1999,6 +2017,14 @@
         (call sysctl_file.obj_type
             (
                 isid
+            )
+        )
+
+        (allow unconfined_subj_type_attribute isid
+            (dir
+                (
+                    mounton
+                )
             )
         )
     )
@@ -3754,6 +3780,14 @@
         ;
 
         (blockinherit sys.sysctl_file.obj_stub)
+
+        (allow unconfined_subj_type_attribute sysctl_file
+            (dir
+                (
+                    mounton
+                )
+            )
+        )
     )
 
     ;
