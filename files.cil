@@ -2835,7 +2835,7 @@
         )
     )
 
-    (macro unconfined_sub_type ((type ARG1))
+    (macro unconfined_subj_type ((type ARG1))
         (typeattributeset unconfined_subj_type_attribute ARG1)
     )
 
