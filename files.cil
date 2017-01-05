@@ -75,12 +75,12 @@
     )
 
     (macro add_entries_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             add_entry_dir_perms)
     )
 
     (macro add_entries_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             add_entry_dir_perms)
     )
 
@@ -93,12 +93,12 @@
     )
 
     (macro append_fifo_files_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             append_fifo_file_perms)
     )
 
     (macro append_fifo_files_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             append_fifo_file_perms)
     )
 
@@ -111,12 +111,12 @@
     )
 
     (macro append_files_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             append_file_perms)
     )
 
     (macro append_files_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             append_file_perms)
     )
 
@@ -145,7 +145,7 @@
     )
 
     (macro create_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (files_except_blk_and_chr
                 (
                     create
@@ -155,7 +155,7 @@
     )
 
     (macro create_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (files_except_blk_and_chr
                 (
                     create
@@ -185,7 +185,7 @@
     )
 
     (macro create_dirs_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (dirs
                 (
                     create
@@ -195,7 +195,7 @@
     )
 
     (macro create_dirs_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (dirs
                 (
                     create
@@ -225,7 +225,7 @@
     )
 
     (macro create_fifo_files_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (fifo_files
                 (
                     create
@@ -235,7 +235,7 @@
     )
 
     (macro create_fifo_files_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (fifo_files
                 (
                     create
@@ -265,7 +265,7 @@
     )
 
     (macro create_files_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (files
                 (
                     create
@@ -275,7 +275,7 @@
     )
 
     (macro create_files_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (files
                 (
                     create
@@ -305,7 +305,7 @@
     )
 
     (macro create_lnk_files_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (lnk_files
                 (
                     create
@@ -315,7 +315,7 @@
     )
 
     (macro create_lnk_files_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (lnk_files
                 (
                     create
@@ -345,7 +345,7 @@
     )
 
     (macro create_sock_files_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (sock_files
                 (
                     create
@@ -355,7 +355,7 @@
     )
 
     (macro create_sock_files_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (sock_files
                 (
                     create
@@ -373,12 +373,12 @@
     )
 
     (macro del_entries_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             del_entry_dir_perms)
     )
 
     (macro del_entries_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute del_entry_dir_perms)
+        (allow ARG1 except_sec_obj_type_attribute del_entry_dir_perms)
     )
 
     (macro delete ((type ARG1))
@@ -402,7 +402,7 @@
     )
 
     (macro delete_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (files_except_blk_and_chr
                 (
                     delete
@@ -412,7 +412,7 @@
     )
 
     (macro delete_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (files_except_blk_and_chr
                 (
                     delete
@@ -442,7 +442,7 @@
     )
 
     (macro delete_dirs_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (dirs
                 (
                     delete
@@ -452,7 +452,7 @@
     )
 
     (macro delete_dirs_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (dirs
                 (
                     delete
@@ -482,7 +482,7 @@
     )
 
     (macro delete_fifo_files_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (fifo_files
                 (
                     delete
@@ -492,7 +492,7 @@
     )
 
     (macro delete_fifo_files_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (fifo_files
                 (
                     delete
@@ -522,7 +522,7 @@
     )
 
     (macro delete_files_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (files
                 (
                     delete
@@ -532,7 +532,7 @@
     )
 
     (macro delete_files_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (files
                 (
                     delete
@@ -562,7 +562,7 @@
     )
 
     (macro delete_lnk_files_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (lnk_files
                 (
                     delete
@@ -572,7 +572,7 @@
     )
 
     (macro delete_lnk_files_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (lnk_files
                 (
                     delete
@@ -602,7 +602,7 @@
     )
 
     (macro delete_sock_files_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (sock_files
                 (
                     delete
@@ -612,7 +612,7 @@
     )
 
     (macro delete_sock_files_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (sock_files
                 (
                     delete
@@ -630,11 +630,11 @@
     )
 
     (macro exec_files_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute exec_file_perms)
+        (allow ARG1 except_auth_obj_type_attribute exec_file_perms)
     )
 
     (macro exec_files_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute exec_file_perms)
+        (allow ARG1 except_sec_obj_type_attribute exec_file_perms)
     )
 
     (macro exception ((type ARG1)(type ARG2))
@@ -680,7 +680,7 @@
     )
 
     (macro getattr_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (files_except_blk_and_chr
                 (
                     getattr
@@ -690,7 +690,7 @@
     )
 
     (macro getattr_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (files_except_blk_and_chr
                 (
                     getattr
@@ -720,7 +720,7 @@
     )
 
     (macro getattr_dirs_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (dirs
                 (
                     getattr
@@ -730,7 +730,7 @@
     )
 
     (macro getattr_dirs_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (dirs
                 (
                     getattr
@@ -760,7 +760,7 @@
     )
 
     (macro getattr_fifo_files_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (fifo_files
                 (
                     getattr
@@ -770,7 +770,7 @@
     )
 
     (macro getattr_fifo_files_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (fifo_files
                 (
                     getattr
@@ -800,7 +800,7 @@
     )
 
     (macro getattr_files_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (files
                 (
                     getattr
@@ -810,7 +810,7 @@
     )
 
     (macro getattr_files_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (files
                 (
                     getattr
@@ -840,7 +840,7 @@
     )
 
     (macro getattr_lnk_files_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (lnk_files
                 (
                     getattr
@@ -850,7 +850,7 @@
     )
 
     (macro getattr_lnk_files_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (lnk_files
                 (
                     getattr
@@ -880,7 +880,7 @@
     )
 
     (macro getattr_sock_files_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (sock_files
                 (
                     getattr
@@ -890,7 +890,7 @@
     )
 
     (macro getattr_sock_files_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (sock_files
                 (
                     getattr
@@ -908,11 +908,11 @@
     )
 
     (macro list_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute list_dir_perms)
+        (allow ARG1 except_auth_obj_type_attribute list_dir_perms)
     )
 
     (macro list_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute list_dir_perms)
+        (allow ARG1 except_sec_obj_type_attribute list_dir_perms)
     )
 
     (macro manage ((type ARG1))
@@ -936,7 +936,7 @@
     )
 
     (macro manage_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (files_except_blk_and_chr
                 (
                     manage
@@ -946,7 +946,7 @@
     )
 
     (macro manage_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (files_except_blk_and_chr
                 (
                     manage
@@ -976,7 +976,7 @@
     )
 
     (macro manage_dirs_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (dirs
                 (
                     manage
@@ -986,7 +986,7 @@
     )
 
     (macro manage_dirs_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (dirs
                 (
                     manage
@@ -1016,7 +1016,7 @@
     )
 
     (macro manage_fifo_files_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (fifo_files
                 (
                     manage
@@ -1026,7 +1026,7 @@
     )
 
     (macro manage_fifo_files_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (fifo_files
                 (
                     manage
@@ -1056,7 +1056,7 @@
     )
 
     (macro manage_files_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (files
                 (
                     manage
@@ -1066,7 +1066,7 @@
     )
 
     (macro manage_files_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (files
                 (
                     manage
@@ -1096,7 +1096,7 @@
     )
 
     (macro manage_lnk_files_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (lnk_files
                 (
                     manage
@@ -1106,7 +1106,7 @@
     )
 
     (macro manage_lnk_files_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (lnk_files
                 (
                     manage
@@ -1136,7 +1136,7 @@
     )
 
     (macro manage_sock_files_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (sock_files
                 (
                     manage
@@ -1146,7 +1146,7 @@
     )
 
     (macro manage_sock_files_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (sock_files
                 (
                     manage
@@ -1164,11 +1164,11 @@
     )
 
     (macro mmap_files_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute mmap_file_perms)
+        (allow ARG1 except_auth_obj_type_attribute mmap_file_perms)
     )
 
     (macro mmap_files_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute mmap_file_perms)
+        (allow ARG1 except_sec_obj_type_attribute mmap_file_perms)
     )
 
     (macro obj_type ((type ARG1))
@@ -1196,7 +1196,7 @@
     )
 
     (macro read_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (files_except_blk_and_chr
                 (
                     read
@@ -1206,7 +1206,7 @@
     )
 
     (macro read_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (files_except_blk_and_chr
                 (
                     read
@@ -1236,7 +1236,7 @@
     )
 
     (macro read_fifo_files_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (fifo_files
                 (
                     read
@@ -1246,7 +1246,7 @@
     )
 
     (macro read_fifo_files_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (fifo_files
                 (
                     read
@@ -1276,7 +1276,7 @@
     )
 
     (macro read_files_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (files
                 (
                     read
@@ -1316,7 +1316,7 @@
     )
 
     (macro read_lnk_files_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (lnk_files
                 (
                     read
@@ -1326,7 +1326,7 @@
     )
 
     (macro read_lnk_files_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (lnk_files
                 (
                     read
@@ -1356,7 +1356,7 @@
     )
 
     (macro read_sock_files_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (sock_files
                 (
                     read
@@ -1366,7 +1366,7 @@
     )
 
     (macro read_sock_files_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (sock_files
                 (
                     read
@@ -1396,7 +1396,7 @@
     )
 
     (macro relabel_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (files_except_blk_and_chr
                 (
                     relabel
@@ -1406,7 +1406,7 @@
     )
 
     (macro relabel_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (files_except_blk_and_chr
                 (
                     relabel
@@ -1436,7 +1436,7 @@
     )
 
     (macro relabel_dirs_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (dirs
                 (
                     relabel
@@ -1446,7 +1446,7 @@
     )
 
     (macro relabel_dirs_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (dirs
                 (
                     relabel
@@ -1476,7 +1476,7 @@
     )
 
     (macro relabel_fifo_files_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (fifo_files
                 (
                     relabel
@@ -1486,7 +1486,7 @@
     )
 
     (macro relabel_fifo_files_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (fifo_files
                 (
                     relabel
@@ -1516,7 +1516,7 @@
     )
 
     (macro relabel_files_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (files
                 (
                     relabel
@@ -1526,7 +1526,7 @@
     )
 
     (macro relabel_files_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (files
                 (
                     relabel
@@ -1556,7 +1556,7 @@
     )
 
     (macro relabel_lnk_files_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (lnk_files
                 (
                     relabel
@@ -1566,7 +1566,7 @@
     )
 
     (macro relabel_lnk_files_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (lnk_files
                 (
                     relabel
@@ -1596,7 +1596,7 @@
     )
 
     (macro relabel_sock_files_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (sock_files
                 (
                     relabel
@@ -1606,7 +1606,7 @@
     )
 
     (macro relabel_sock_files_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (sock_files
                 (
                     relabel
@@ -1636,7 +1636,7 @@
     )
 
     (macro relabelfrom_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (files_except_blk_and_chr
                 (
                     relabelfrom
@@ -1646,7 +1646,7 @@
     )
 
     (macro relabelfrom_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (files_except_blk_and_chr
                 (
                     relabelfrom
@@ -1676,7 +1676,7 @@
     )
 
     (macro relabelfrom_dirs_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (dirs
                 (
                     relabelfrom
@@ -1686,7 +1686,7 @@
     )
 
     (macro relabelfrom_dirs_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (dirs
                 (
                     relabelfrom
@@ -1716,7 +1716,7 @@
     )
 
     (macro relabelfrom_fifo_files_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (fifo_files
                 (
                     relabelfrom
@@ -1726,7 +1726,7 @@
     )
 
     (macro relabelfrom_fifo_files_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (fifo_files
                 (
                     relabelfrom
@@ -1756,7 +1756,7 @@
     )
 
     (macro relabelfrom_files_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (files
                 (
                     relabelfrom
@@ -1766,7 +1766,7 @@
     )
 
     (macro relabelfrom_files_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (files
                 (
                     relabelfrom
@@ -1796,7 +1796,7 @@
     )
 
     (macro relabelfrom_lnk_files_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (lnk_files
                 (
                     relabelfrom
@@ -1806,7 +1806,7 @@
     )
 
     (macro relabelfrom_lnk_files_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (lnk_files
                 (
                     relabelfrom
@@ -1836,7 +1836,7 @@
     )
 
     (macro relabelfrom_sock_files_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (sock_files
                 (
                     relabelfrom
@@ -1846,7 +1846,7 @@
     )
 
     (macro relabelfrom_sock_files_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (sock_files
                 (
                     relabelfrom
@@ -1876,7 +1876,7 @@
     )
 
     (macro relabelto_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (files_except_blk_and_chr
                 (
                     relabelto
@@ -1886,7 +1886,7 @@
     )
 
     (macro relabelto_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (files_except_blk_and_chr
                 (
                     relabelto
@@ -1916,7 +1916,7 @@
     )
 
     (macro relabelto_dirs_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (dirs
                 (
                     relabelto
@@ -1926,7 +1926,7 @@
     )
 
     (macro relabelto_dirs_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (dirs
                 (
                     relabelto
@@ -1956,7 +1956,7 @@
     )
 
     (macro relabelto_fifo_files_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (fifo_files
                 (
                     relabelto
@@ -1966,7 +1966,7 @@
     )
 
     (macro relabelto_fifo_files_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (fifo_files
                 (
                     relabelto
@@ -1996,7 +1996,7 @@
     )
 
     (macro relabelto_files_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (files
                 (
                     relabelto
@@ -2006,7 +2006,7 @@
     )
 
     (macro relabelto_files_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (files
                 (
                     relabelto
@@ -2036,7 +2036,7 @@
     )
 
     (macro relabelto_lnk_files_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (lnk_files
                 (
                     relabelto
@@ -2046,7 +2046,7 @@
     )
 
     (macro relabelto_lnk_files_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (lnk_files
                 (
                     relabelto
@@ -2076,7 +2076,7 @@
     )
 
     (macro relabelto_sock_files_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (sock_files
                 (
                     relabelto
@@ -2086,7 +2086,7 @@
     )
 
     (macro relabelto_sock_files_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (sock_files
                 (
                     relabelto
@@ -2116,7 +2116,7 @@
     )
 
     (macro rename_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (files_except_blk_and_chr
                 (
                     rename
@@ -2126,7 +2126,7 @@
     )
 
     (macro rename_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (files_except_blk_and_chr
                 (
                     rename
@@ -2156,7 +2156,7 @@
     )
 
     (macro rename_dirs_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (dirs
                 (
                     rename
@@ -2166,7 +2166,7 @@
     )
 
     (macro rename_dirs_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (dirs
                 (
                     rename
@@ -2196,7 +2196,7 @@
     )
 
     (macro rename_fifo_files_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (fifo_files
                 (
                     rename
@@ -2206,7 +2206,7 @@
     )
 
     (macro rename_fifo_files_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (fifo_files
                 (
                     rename
@@ -2236,7 +2236,7 @@
     )
 
     (macro rename_files_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (files
                 (
                     rename
@@ -2246,7 +2246,7 @@
     )
 
     (macro rename_files_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (files
                 (
                     rename
@@ -2276,7 +2276,7 @@
     )
 
     (macro rename_lnk_files_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (lnk_files
                 (
                     rename
@@ -2286,7 +2286,7 @@
     )
 
     (macro rename_lnk_files_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (lnk_files
                 (
                     rename
@@ -2316,7 +2316,7 @@
     )
 
     (macro rename_sock_files_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (sock_files
                 (
                     rename
@@ -2326,7 +2326,7 @@
     )
 
     (macro rename_sock_files_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (sock_files
                 (
                     rename
@@ -2356,7 +2356,7 @@
     )
 
     (macro rw_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (files_except_blk_and_chr
                 (
                     rw
@@ -2366,7 +2366,7 @@
     )
 
     (macro rw_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (files_except_blk_and_chr
                 (
                     rw
@@ -2396,7 +2396,7 @@
     )
 
     (macro rw_dirs_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (dirs
                 (
                     rw
@@ -2406,7 +2406,7 @@
     )
 
     (macro rw_dirs_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (dirs
                 (
                     rw
@@ -2436,7 +2436,7 @@
     )
 
     (macro rw_fifo_files_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (fifo_files
                 (
                     rw
@@ -2446,7 +2446,7 @@
     )
 
     (macro rw_fifo_files_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (fifo_files
                 (
                     rw
@@ -2476,7 +2476,7 @@
     )
 
     (macro rw_files_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (files
                 (
                     rw
@@ -2486,7 +2486,7 @@
     )
 
     (macro rw_files_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (files
                 (
                     rw
@@ -2516,7 +2516,7 @@
     )
 
     (macro rw_lnk_files_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (lnk_files
                 (
                     rw
@@ -2526,7 +2526,7 @@
     )
 
     (macro rw_lnk_files_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (lnk_files
                 (
                     rw
@@ -2556,7 +2556,7 @@
     )
 
     (macro rw_sock_files_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (sock_files
                 (
                     rw
@@ -2566,7 +2566,7 @@
     )
 
     (macro rw_sock_files_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (sock_files
                 (
                     rw
@@ -2584,11 +2584,11 @@
     )
 
     (macro search_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute search_dir_perms)
+        (allow ARG1 except_auth_obj_type_attribute search_dir_perms)
     )
 
     (macro search_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute search_dir_perms)
+        (allow ARG1 except_sec_obj_type_attribute search_dir_perms)
     )
 
     (macro sec_obj_type ((type ARG1))
@@ -2616,7 +2616,7 @@
     )
 
     (macro setattr_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (files_except_blk_and_chr
                 (
                     setattr
@@ -2626,7 +2626,7 @@
     )
 
     (macro setattr_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (files_except_blk_and_chr
                 (
                     setattr
@@ -2656,7 +2656,7 @@
     )
 
     (macro setattr_dirs_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (dirs
                 (
                     setattr
@@ -2666,7 +2666,7 @@
     )
 
     (macro setattr_dirs_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (dirs
                 (
                     setattr
@@ -2696,7 +2696,7 @@
     )
 
     (macro setattr_fifo_files_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (fifo_files
                 (
                     setattr
@@ -2706,7 +2706,7 @@
     )
 
     (macro setattr_fifo_files_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (fifo_files
                 (
                     setattr
@@ -2736,7 +2736,7 @@
     )
 
     (macro setattr_files_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (files
                 (
                     setattr
@@ -2746,7 +2746,7 @@
     )
 
     (macro setattr_files_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (files
                 (
                     setattr
@@ -2776,7 +2776,7 @@
     )
 
     (macro setattr_lnk_files_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (lnk_files
                 (
                     setattr
@@ -2786,7 +2786,7 @@
     )
 
     (macro setattr_lnk_files_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (lnk_files
                 (
                     setattr
@@ -2816,7 +2816,7 @@
     )
 
     (macro setattr_sock_files_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (sock_files
                 (
                     setattr
@@ -2826,7 +2826,7 @@
     )
 
     (macro setattr_sock_files_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (sock_files
                 (
                     setattr
@@ -2860,7 +2860,7 @@
     )
 
     (macro write_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (files_except_blk_and_chr
                 (
                     write
@@ -2870,7 +2870,7 @@
     )
 
     (macro write_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (files_except_blk_and_chr
                 (
                     write
@@ -2900,7 +2900,7 @@
     )
 
     (macro write_dirs_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (dirs
                 (
                     write
@@ -2910,7 +2910,7 @@
     )
 
     (macro write_dirs_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (dirs
                 (
                     write
@@ -2940,7 +2940,7 @@
     )
 
     (macro write_fifo_files_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (fifo_files
                 (
                     write
@@ -2950,7 +2950,7 @@
     )
 
     (macro write_fifo_files_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (fifo_files
                 (
                     write
@@ -2980,7 +2980,7 @@
     )
 
     (macro write_files_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (files
                 (
                     write
@@ -2990,7 +2990,7 @@
     )
 
     (macro write_files_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (files
                 (
                     write
@@ -3020,7 +3020,7 @@
     )
 
     (macro write_lnk_files_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (lnk_files
                 (
                     write
@@ -3030,7 +3030,7 @@
     )
 
     (macro write_lnk_files_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (lnk_files
                 (
                     write
@@ -3060,7 +3060,7 @@
     )
 
     (macro write_sock_files_except_auth ((type ARG1))
-        (allow ARG1 file_except_auth_obj_type_attribute
+        (allow ARG1 except_auth_obj_type_attribute
             (sock_files
                 (
                     write
@@ -3070,7 +3070,7 @@
     )
 
     (macro write_sock_files_except_sec ((type ARG1))
-        (allow ARG1 file_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (sock_files
                 (
                     write
@@ -3086,13 +3086,13 @@
     (boolean execmod_except false)
 
     (typeattribute auth_obj_type_attribute)
-    (typeattribute file_except_auth_obj_type_attribute)
+    (typeattribute except_auth_obj_type_attribute)
 
     (typeattribute except_obj_type_attribute)
     (typeattribute exception_obj_type_attribute)
     (typeattribute obj_type_attribute)
 
-    (typeattribute file_except_sec_obj_type_attribute)
+    (typeattribute except_sec_obj_type_attribute)
     (typeattribute sec_obj_type_attribute)
 
     (typeattribute unconfined_subj_type_attribute)
@@ -3112,7 +3112,7 @@
         )
     )
 
-    (typeattributeset file_except_auth_obj_type_attribute
+    (typeattributeset except_auth_obj_type_attribute
         (and
             (
                 obj_type_attribute
@@ -3125,7 +3125,7 @@
         )
     )
 
-    (typeattributeset file_except_sec_obj_type_attribute
+    (typeattributeset except_sec_obj_type_attribute
         (and
             (
                 obj_type_attribute
