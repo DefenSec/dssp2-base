@@ -216,6 +216,11 @@
                     )
                 )
             )
+            (call mmap_files
+                (
+                    ARG1
+                )
+            )
         )
 
         (macro exec_files ((type ARG1))
@@ -1164,6 +1169,11 @@
                         )
                     )
                 )
+                (call mmap_files
+                    (
+                        ARG1
+                    )
+                )
             )
 
             (macro exec_files ((type ARG1))
@@ -1308,6 +1318,14 @@
 
         (filecon "/usr/bin/bash" file cmd_file_context)
         (filecon "/usr/sbin/nologin" file cmd_file_context)
+
+        ;
+        ; shell macros
+        ;
+
+        (macro mmap_inherited_files ((type ARG1))
+            (allow ARG1 cmd_file mmap_inherited_file_perms)
+        )
 
         ;
         ; shell policy

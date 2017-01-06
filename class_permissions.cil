@@ -207,6 +207,7 @@
 (classpermission file_except_entrypoint_execmod_and_mounton)
 (classpermission manage_file_perms)
 (classpermission mmap_file_perms)
+(classpermission mmap_inherited_file_perms)
 (classpermission read_file_perms)
 (classpermission read_inherited_file_perms)
 (classpermission relabel_file_perms)
@@ -2259,6 +2260,17 @@
             getattr
             ioctl
             open
+            read
+        )
+    )
+)
+
+(classpermissionset mmap_inherited_file_perms
+    (file
+        (
+            execute
+            getattr
+            ioctl
             read
         )
     )
