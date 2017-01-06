@@ -603,14 +603,6 @@
         )
     )
 
-    (optional common_optional_seutil
-        (call seutil.libselinux_client_subj_type
-            (
-                common_subj_type_attribute
-            )
-        )
-    )
-
     (optional common_optional_systemd
         (call systemd.sigchld
             (
