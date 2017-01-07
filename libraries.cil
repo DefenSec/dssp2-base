@@ -1621,7 +1621,7 @@
         ; textrel macros
         ;
 
-        (macro execmod_files ((type ARG1))
+        (macro execmod ((type ARG1))
             (allow ARG1 lib_file
                 (file
                     (

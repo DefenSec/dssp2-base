@@ -587,7 +587,7 @@
             common_subj_type_attribute
         )
     )
-    (call lib.textrel.execmod_files
+    (call lib.textrel.execmod
         (
             common_subj_type_attribute
         )
