@@ -544,6 +544,12 @@
         )
     )
 
+    (call cmd.shell.mmap_inherited_files
+        (
+            common_subj_type_attribute
+        )
+    )
+
     (call dev.devtty.rw_chr_files
         (
             common_subj_type_attribute
@@ -600,8 +606,24 @@
         )
     )
 
+    (optional common_optional_miscfiles
+        (call misc.locale.read
+            (
+                common_subj_type_attribute
+            )
+        )
+    )
+
     (optional common_optional_sd_shutdown
         (call sd_shutdown.sigchld
+            (
+                common_subj_type_attribute
+            )
+        )
+    )
+
+    (optional common_optional_seutils
+        (call seutils.libselinux_linked_subj_type
             (
                 common_subj_type_attribute
             )
