@@ -551,6 +551,24 @@
         ; securityfs macros
         ;
 
+        (macro add_entries ((type ARG1))
+            (allow ARG1 isid add_entry_dir_perms)
+            (call fs.sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro append_files ((type ARG1))
+            (allow ARG1 isid append_file_perms)
+            (call search
+                (
+                    ARG1
+                )
+            )
+        )
+
         (macro associate ((type ARG1))
             (allow ARG1 isid
                 (filesystem
@@ -561,7 +579,199 @@
             )
         )
 
+        (macro create ((type ARG1))
+            (call create_dirs
+                (
+                    ARG1
+                )
+            )
+            (call create_files
+                (
+                    ARG1
+                )
+            )
+            (call create_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro create_dirs ((type ARG1))
+            (allow ARG1 isid
+                (dirs
+                    (
+                        create
+                    )
+                )
+            )
+            (call fs.sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro create_files ((type ARG1))
+            (allow ARG1 isid
+                (files
+                    (
+                        create
+                    )
+                )
+            )
+            (call fs.sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro create_lnk_files ((type ARG1))
+            (allow ARG1 isid
+                (lnk_files
+                    (
+                        create
+                    )
+                )
+            )
+            (call fs.sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro del_entries ((type ARG1))
+            (allow ARG1 isid del_entry_dir_perms)
+            (call fs.sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro delete ((type ARG1))
+            (call delete_dirs
+                (
+                    ARG1
+                )
+            )
+            (call delete_files
+                (
+                    ARG1
+                )
+            )
+            (call delete_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro delete_dirs ((type ARG1))
+            (allow ARG1 isid
+                (dirs
+                    (
+                        delete
+                    )
+                )
+            )
+            (call fs.sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro delete_files ((type ARG1))
+            (allow ARG1 isid
+                (files
+                    (
+                        delete
+                    )
+                )
+            )
+            (call fs.sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro delete_lnk_files ((type ARG1))
+            (allow ARG1 isid
+                (lnk_files
+                    (
+                        delete
+                    )
+                )
+            )
+            (call fs.sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro exec_files ((type ARG1))
+            (allow ARG1 isid exec_file_perms)
+            (call search
+                (
+                    ARG1
+                )
+            )
+        )
+
         (macro getattr ((type ARG1))
+            (call getattr_dirs
+                (
+                    ARG1
+                )
+            )
+            (call getattr_files
+                (
+                    ARG1
+                )
+            )
+            (call getattr_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro getattr_dirs ((type ARG1))
+            (allow ARG1 isid
+                (dirs
+                    (
+                        getattr
+                    )
+                )
+            )
+            (call fs.sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro getattr_files ((type ARG1))
+            (allow ARG1 isid
+                (files
+                    (
+                        getattr
+                    )
+                )
+            )
+            (call fs.sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro getattr_fs ((type ARG1))
             (allow ARG1 isid
                 (filesystem
                     (
@@ -571,9 +781,96 @@
             )
         )
 
+        (macro getattr_lnk_files ((type ARG1))
+            (allow ARG1 isid
+                (lnk_files
+                    (
+                        getattr
+                    )
+                )
+            )
+            (call fs.sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
         (macro list ((type ARG1))
             (allow ARG1 isid list_dir_perms)
             (call fs.sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro manage ((type ARG1))
+            (call manage_dirs
+                (
+                    ARG1
+                )
+            )
+            (call manage_files
+                (
+                    ARG1
+                )
+            )
+            (call manage_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro manage_dirs ((type ARG1))
+            (allow ARG1 isid
+                (dirs
+                    (
+                        manage
+                    )
+                )
+            )
+            (call fs.sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro manage_files ((type ARG1))
+            (allow ARG1 isid
+                (files
+                    (
+                        manage
+                    )
+                )
+            )
+            (call fs.sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro manage_lnk_files ((type ARG1))
+            (allow ARG1 isid
+                (lnk_files
+                    (
+                        manage
+                    )
+                )
+            )
+            (call fs.sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro mmap_files ((type ARG1))
+            (allow ARG1 isid mmap_file_perms)
+            (call search
                 (
                     ARG1
                 )
@@ -625,6 +922,24 @@
             )
         )
 
+        (macro read ((type ARG1))
+            (call list
+                (
+                    ARG1
+                )
+            )
+            (call read_files
+                (
+                    ARG1
+                )
+            )
+            (call read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
         (macro read_files ((type ARG1))
             (allow ARG1 isid
                 (files
@@ -640,7 +955,70 @@
             )
         )
 
+        (macro read_lnk_files ((type ARG1))
+            (allow ARG1 isid
+                (lnk_files
+                    (
+                        read
+                    )
+                )
+            )
+            (call fs.sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
         (macro relabel ((type ARG1))
+            (call relabel_dirs
+                (
+                    ARG1
+                )
+            )
+            (call relabel_files
+                (
+                    ARG1
+                )
+            )
+            (call relabel_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabel_dirs ((type ARG1))
+            (allow ARG1 isid
+                (dirs
+                    (
+                        relabel
+                    )
+                )
+            )
+            (call fs.sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabel_files ((type ARG1))
+            (allow ARG1 isid
+                (files
+                    (
+                        relabel
+                    )
+                )
+            )
+            (call fs.sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabel_fs ((type ARG1))
             (allow ARG1 isid
                 (filesystem
                     (
@@ -648,11 +1026,74 @@
                         relabelfrom
                         relabelto
                     )
+                )
+            )
+        )
+
+        (macro relabel_lnk_files ((type ARG1))
+            (allow ARG1 isid
+                (lnk_files
+                    (
+                        relabel
+                    )
+                )
+            )
+            (call fs.sysfs.search
+                (
+                    ARG1
                 )
             )
         )
 
         (macro relabelfrom ((type ARG1))
+            (call relabelfrom_dirs
+                (
+                    ARG1
+                )
+            )
+            (call relabelfrom_files
+                (
+                    ARG1
+                )
+            )
+            (call relabelfrom_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelfrom_dirs ((type ARG1))
+            (allow ARG1 isid
+                (dirs
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+            (call fs.sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelfrom_files ((type ARG1))
+            (allow ARG1 isid
+                (files
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+            (call fs.sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelfrom_fs ((type ARG1))
             (allow ARG1 isid
                 (filesystem
                     (
@@ -663,13 +1104,91 @@
             )
         )
 
+        (macro relabelfrom_lnk_files ((type ARG1))
+            (allow ARG1 isid
+                (lnk_files
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+            (call fs.sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
         (macro relabelto ((type ARG1))
+            (call relabelto_dirs
+                (
+                    ARG1
+                )
+            )
+            (call relabelto_files
+                (
+                    ARG1
+                )
+            )
+            (call relabelto_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelto_dirs ((type ARG1))
+            (allow ARG1 isid
+                (dirs
+                    (
+                        relabelto
+                    )
+                )
+            )
+            (call fs.sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelto_files ((type ARG1))
+            (allow ARG1 isid
+                (files
+                    (
+                        relabelto
+                    )
+                )
+            )
+            (call fs.sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelto_fs ((type ARG1))
             (allow ARG1 isid
                 (filesystem
                     (
                         getattr
                         relabelto
                     )
+                )
+            )
+        )
+
+        (macro relabelto_lnk_files ((type ARG1))
+            (allow ARG1 isid
+                (lnk_files
+                    (
+                        relabelto
+                    )
+                )
+            )
+            (call fs.sysfs.search
+                (
+                    ARG1
                 )
             )
         )
@@ -684,9 +1203,120 @@
             )
         )
 
+        (macro rename ((type ARG1))
+            (call rename_dirs
+                (
+                    ARG1
+                )
+            )
+            (call rename_files
+                (
+                    ARG1
+                )
+            )
+            (call rename_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rename_dirs ((type ARG1))
+            (allow ARG1 isid
+                (dirs
+                    (
+                        rename
+                    )
+                )
+            )
+            (call fs.sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rename_files ((type ARG1))
+            (allow ARG1 isid
+                (files
+                    (
+                        rename
+                    )
+                )
+            )
+            (call fs.sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rename_lnk_files ((type ARG1))
+            (allow ARG1 isid
+                (lnk_files
+                    (
+                        rename
+                    )
+                )
+            )
+            (call fs.sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rw ((type ARG1))
+            (call rw_dirs
+                (
+                    ARG1
+                )
+            )
+            (call rw_files
+                (
+                    ARG1
+                )
+            )
+            (call rw_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rw_dirs ((type ARG1))
+            (allow ARG1 isid
+                (dirs
+                    (
+                        rw
+                    )
+                )
+            )
+            (call fs.sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
         (macro rw_files ((type ARG1))
             (allow ARG1 isid
                 (files
+                    (
+                        rw
+                    )
+                )
+            )
+            (call fs.sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rw_lnk_files ((type ARG1))
+            (allow ARG1 isid
+                (lnk_files
                     (
                         rw
                     )
@@ -708,12 +1338,138 @@
             )
         )
 
+        (macro setattr ((type ARG1))
+            (call setattr_dirs
+                (
+                    ARG1
+                )
+            )
+            (call setattr_files
+                (
+                    ARG1
+                )
+            )
+            (call setattr_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro setattr_dirs ((type ARG1))
+            (allow ARG1 isid
+                (dirs
+                    (
+                        setattr
+                    )
+                )
+            )
+            (call fs.sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro setattr_files ((type ARG1))
+            (allow ARG1 isid
+                (files
+                    (
+                        setattr
+                    )
+                )
+            )
+            (call fs.sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro setattr_lnk_files ((type ARG1))
+            (allow ARG1 isid
+                (lnk_files
+                    (
+                        setattr
+                    )
+                )
+            )
+            (call fs.sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
         (macro unmount ((type ARG1))
             (allow ARG1 isid
                 (filesystem
                     (
                         unmount
                     )
+                )
+            )
+        )
+
+        (macro write ((type ARG1))
+            (call write_dirs
+                (
+                    ARG1
+                )
+            )
+            (call write_files
+                (
+                    ARG1
+                )
+            )
+            (call write_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro write_dirs ((type ARG1))
+            (allow ARG1 isid
+                (dirs
+                    (
+                        write
+                    )
+                )
+            )
+            (call fs.sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro write_files ((type ARG1))
+            (allow ARG1 isid
+                (files
+                    (
+                        write
+                    )
+                )
+            )
+            (call fs.sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro write_lnk_files ((type ARG1))
+            (allow ARG1 isid
+                (lnk_files
+                    (
+                        write
+                    )
+                )
+            )
+            (call fs.sysfs.search
+                (
+                    ARG1
                 )
             )
         )

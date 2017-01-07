@@ -4362,7 +4362,7 @@
                     ARG1
                 )
             )
-            (call tmpfs.search
+            (call tmpfs.read_lnk_files
                 (
                     ARG1
                 )
@@ -4409,7 +4409,7 @@
                     ARG1
                 )
             )
-            (call tmpfs.search
+            (call tmpfs.read_lnk_files
                 (
                     ARG1
                 )
@@ -4449,7 +4449,7 @@
                     ARG1
                 )
             )
-            (call tmpfs.search
+            (call tmpfs.read_lnk_files
                 (
                     ARG1
                 )
@@ -4463,7 +4463,7 @@
                     ARG1
                 )
             )
-            (call tmpfs.search
+            (call tmpfs.read_lnk_files
                 (
                     ARG1
                 )
@@ -4501,7 +4501,7 @@
                     ARG1
                 )
             )
-            (call tmpfs.search
+            (call tmpfs.read_lnk_files
                 (
                     ARG1
                 )
@@ -4521,7 +4521,7 @@
                     ARG1
                 )
             )
-            (call tmpfs.search
+            (call tmpfs.read_lnk_files
                 (
                     ARG1
                 )
@@ -4541,7 +4541,7 @@
                     ARG1
                 )
             )
-            (call tmpfs.search
+            (call tmpfs.read_lnk_files
                 (
                     ARG1
                 )
@@ -4588,7 +4588,7 @@
                     ARG1
                 )
             )
-            (call tmpfs.search
+            (call tmpfs.read_lnk_files
                 (
                     ARG1
                 )
@@ -4608,7 +4608,7 @@
                     ARG1
                 )
             )
-            (call tmpfs.search
+            (call tmpfs.read_lnk_files
                 (
                     ARG1
                 )
@@ -4628,7 +4628,7 @@
                     ARG1
                 )
             )
-            (call tmpfs.search
+            (call tmpfs.read_lnk_files
                 (
                     ARG1
                 )
@@ -4642,7 +4642,7 @@
                     ARG1
                 )
             )
-            (call tmpfs.search
+            (call tmpfs.read_lnk_files
                 (
                     ARG1
                 )
@@ -4680,7 +4680,7 @@
                     ARG1
                 )
             )
-            (call tmpfs.search
+            (call tmpfs.read_lnk_files
                 (
                     ARG1
                 )
@@ -4700,7 +4700,7 @@
                     ARG1
                 )
             )
-            (call tmpfs.search
+            (call tmpfs.read_lnk_files
                 (
                     ARG1
                 )
@@ -4720,7 +4720,7 @@
                     ARG1
                 )
             )
-            (call tmpfs.search
+            (call tmpfs.read_lnk_files
                 (
                     ARG1
                 )
@@ -4767,7 +4767,7 @@
                     ARG1
                 )
             )
-            (call tmpfs.search
+            (call tmpfs.read_lnk_files
                 (
                     ARG1
                 )
@@ -4787,7 +4787,7 @@
                     ARG1
                 )
             )
-            (call tmpfs.search
+            (call tmpfs.read_lnk_files
                 (
                     ARG1
                 )
@@ -4825,7 +4825,7 @@
                     ARG1
                 )
             )
-            (call tmpfs.search
+            (call tmpfs.read_lnk_files
                 (
                     ARG1
                 )
@@ -4845,7 +4845,7 @@
                     ARG1
                 )
             )
-            (call tmpfs.search
+            (call tmpfs.read_lnk_files
                 (
                     ARG1
                 )
@@ -4865,7 +4865,7 @@
                     ARG1
                 )
             )
-            (call tmpfs.search
+            (call tmpfs.read_lnk_files
                 (
                     ARG1
                 )
@@ -4903,7 +4903,7 @@
                     ARG1
                 )
             )
-            (call tmpfs.search
+            (call tmpfs.read_lnk_files
                 (
                     ARG1
                 )
@@ -4923,7 +4923,7 @@
                     ARG1
                 )
             )
-            (call tmpfs.search
+            (call tmpfs.read_lnk_files
                 (
                     ARG1
                 )
@@ -4943,7 +4943,7 @@
                     ARG1
                 )
             )
-            (call tmpfs.search
+            (call tmpfs.read_lnk_files
                 (
                     ARG1
                 )
@@ -4981,7 +4981,7 @@
                     ARG1
                 )
             )
-            (call tmpfs.search
+            (call tmpfs.read_lnk_files
                 (
                     ARG1
                 )
@@ -5001,7 +5001,7 @@
                     ARG1
                 )
             )
-            (call tmpfs.search
+            (call tmpfs.read_lnk_files
                 (
                     ARG1
                 )
@@ -5021,7 +5021,7 @@
                     ARG1
                 )
             )
-            (call tmpfs.search
+            (call tmpfs.read_lnk_files
                 (
                     ARG1
                 )
@@ -5059,7 +5059,7 @@
                     ARG1
                 )
             )
-            (call tmpfs.search
+            (call tmpfs.read_lnk_files
                 (
                     ARG1
                 )
@@ -5079,7 +5079,7 @@
                     ARG1
                 )
             )
-            (call tmpfs.search
+            (call tmpfs.read_lnk_files
                 (
                     ARG1
                 )
@@ -5099,7 +5099,7 @@
                     ARG1
                 )
             )
-            (call tmpfs.search
+            (call tmpfs.read_lnk_files
                 (
                     ARG1
                 )
@@ -5137,7 +5137,7 @@
                     ARG1
                 )
             )
-            (call tmpfs.search
+            (call tmpfs.read_lnk_files
                 (
                     ARG1
                 )
@@ -5157,7 +5157,7 @@
                     ARG1
                 )
             )
-            (call tmpfs.search
+            (call tmpfs.read_lnk_files
                 (
                     ARG1
                 )
@@ -5177,7 +5177,7 @@
                     ARG1
                 )
             )
-            (call tmpfs.search
+            (call tmpfs.read_lnk_files
                 (
                     ARG1
                 )
@@ -5191,7 +5191,7 @@
                     ARG1
                 )
             )
-            (call tmpfs.search
+            (call tmpfs.read_lnk_files
                 (
                     ARG1
                 )
@@ -5229,7 +5229,7 @@
                     ARG1
                 )
             )
-            (call tmpfs.search
+            (call tmpfs.read_lnk_files
                 (
                     ARG1
                 )
@@ -5249,7 +5249,7 @@
                     ARG1
                 )
             )
-            (call tmpfs.search
+            (call tmpfs.read_lnk_files
                 (
                     ARG1
                 )
@@ -5269,7 +5269,7 @@
                     ARG1
                 )
             )
-            (call tmpfs.search
+            (call tmpfs.read_lnk_files
                 (
                     ARG1
                 )
@@ -5307,7 +5307,7 @@
                     ARG1
                 )
             )
-            (call tmpfs.search
+            (call tmpfs.read_lnk_files
                 (
                     ARG1
                 )
@@ -5327,7 +5327,7 @@
                     ARG1
                 )
             )
-            (call tmpfs.search
+            (call tmpfs.read_lnk_files
                 (
                     ARG1
                 )
@@ -5347,7 +5347,7 @@
                     ARG1
                 )
             )
-            (call tmpfs.search
+            (call tmpfs.read_lnk_files
                 (
                     ARG1
                 )

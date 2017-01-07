@@ -3126,19 +3126,19 @@
         )
     )
 
-    (allow unconfined_subj_type_attribute obj_type_attribute
+    (allow unconfined_subj_type_attribute except_obj_type_attribute
         blk_file_except_execmod_and_mounton)
-    (allow unconfined_subj_type_attribute obj_type_attribute
+    (allow unconfined_subj_type_attribute except_obj_type_attribute
         chr_file_except_execmod_and_mounton)
-    (allow unconfined_subj_type_attribute obj_type_attribute
+    (allow unconfined_subj_type_attribute except_obj_type_attribute
         dir_except_execmod)
-    (allow unconfined_subj_type_attribute obj_type_attribute
+    (allow unconfined_subj_type_attribute except_obj_type_attribute
         fifo_file_except_execmod_and_mounton)
-    (allow unconfined_subj_type_attribute obj_type_attribute
+    (allow unconfined_subj_type_attribute except_obj_type_attribute
         file_except_entrypoint_execmod_and_mounton)
-    (allow unconfined_subj_type_attribute obj_type_attribute
+    (allow unconfined_subj_type_attribute except_obj_type_attribute
         lnk_file_except_execmod_and_mounton)
-    (allow unconfined_subj_type_attribute obj_type_attribute
+    (allow unconfined_subj_type_attribute except_obj_type_attribute
         sock_file_except_execmod_and_mounton)
 
 
