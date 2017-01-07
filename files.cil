@@ -609,19 +609,19 @@
         )
     )
 
-    (macro exec_files ((type ARG1))
+    (macro execute ((type ARG1))
         (allow ARG1 obj_type_attribute exec_file_perms)
     )
 
-    (macro exec_files_except ((type ARG1))
+    (macro execute_except ((type ARG1))
         (allow ARG1 except_obj_type_attribute exec_file_perms)
     )
 
-    (macro exec_files_except_auth ((type ARG1))
+    (macro execute_except_auth ((type ARG1))
         (allow ARG1 except_auth_obj_type_attribute exec_file_perms)
     )
 
-    (macro exec_files_except_sec ((type ARG1))
+    (macro execute_except_sec ((type ARG1))
         (allow ARG1 except_sec_obj_type_attribute exec_file_perms)
     )
 
@@ -1143,19 +1143,19 @@
         )
     )
 
-    (macro mmap_files ((type ARG1))
+    (macro mmap ((type ARG1))
         (allow ARG1 obj_type_attribute mmap_file_perms)
     )
 
-    (macro mmap_files_except ((type ARG1))
+    (macro mmap_except ((type ARG1))
         (allow ARG1 except_obj_type_attribute mmap_file_perms)
     )
 
-    (macro mmap_files_except_auth ((type ARG1))
+    (macro mmap_except_auth ((type ARG1))
         (allow ARG1 except_auth_obj_type_attribute mmap_file_perms)
     )
 
-    (macro mmap_files_except_sec ((type ARG1))
+    (macro mmap_except_sec ((type ARG1))
         (allow ARG1 except_sec_obj_type_attribute mmap_file_perms)
     )
 
@@ -3240,7 +3240,7 @@
             (allow ARG1 obj_type_attribute delete_sock_file_perms)
         )
 
-        (macro exec_files ((type ARG1))
+        (macro execute ((type ARG1))
             (allow ARG1 obj_type_attribute exec_file_perms)
         )
 
@@ -3338,7 +3338,7 @@
             (allow ARG1 obj_type_attribute manage_sock_file_perms)
         )
 
-        (macro mmap_files ((type ARG1))
+        (macro mmap ((type ARG1))
             (allow ARG1 obj_type_attribute mmap_file_perms)
         )
 
@@ -3752,7 +3752,7 @@
                 (allow ARG1 auth_file delete_sock_file_perms)
             )
 
-            (macro exec_files ((type ARG1))
+            (macro execute ((type ARG1))
                 (allow ARG1 auth_file exec_file_perms)
             )
 
@@ -3850,7 +3850,7 @@
                 (allow ARG1 auth_file manage_sock_file_perms)
             )
 
-            (macro mmap_files ((type ARG1))
+            (macro mmap ((type ARG1))
                 (allow ARG1 auth_file mmap_file_perms)
             )
 
@@ -4270,7 +4270,7 @@
             )
         )
 
-        (macro exec_files ((type ARG1))
+        (macro execute ((type ARG1))
             (allow ARG1 obj_type_attribute exec_file_perms)
             (call generic_boot.search
                 (
@@ -4396,7 +4396,7 @@
             )
         )
 
-        (macro mmap_files ((type ARG1))
+        (macro mmap ((type ARG1))
             (allow ARG1 obj_type_attribute mmap_file_perms)
             (call generic_boot.search
                 (
@@ -4958,7 +4958,7 @@
                 )
             )
 
-            (macro exec_files ((type ARG1))
+            (macro execute ((type ARG1))
                 (allow ARG1 boot_file exec_file_perms)
                 (call files.generic_boot.search
                     (
@@ -5084,7 +5084,7 @@
                 )
             )
 
-            (macro mmap_files ((type ARG1))
+            (macro mmap ((type ARG1))
                 (allow ARG1 boot_file mmap_file_perms)
                 (call files.generic_boot.search
                     (
@@ -5813,7 +5813,7 @@
             )
         )
 
-        (macro exec_files ((type ARG1))
+        (macro execute ((type ARG1))
             (allow ARG1 obj_type_attribute exec_file_perms)
             (call generic_config.search
                 (
@@ -5929,7 +5929,7 @@
             )
         )
 
-        (macro mmap_files ((type ARG1))
+        (macro mmap ((type ARG1))
             (allow ARG1 obj_type_attribute mmap_file_perms)
             (call generic_config.search
                 (
@@ -6476,7 +6476,7 @@
                 )
             )
 
-            (macro exec_files ((type ARG1))
+            (macro execute ((type ARG1))
                 (allow ARG1 config_file exec_file_perms)
                 (call files.generic_config.search
                     (
@@ -6602,7 +6602,7 @@
                 )
             )
 
-            (macro mmap_files ((type ARG1))
+            (macro mmap ((type ARG1))
                 (allow ARG1 config_file mmap_file_perms)
                 (call files.generic_config.search
                     (
@@ -7126,7 +7126,7 @@
             )
         )
 
-        (macro exec_files ((type ARG1))
+        (macro execute ((type ARG1))
             (allow ARG1 obj_type_attribute exec_file_perms)
             (call generic_data.search
                 (
@@ -7242,7 +7242,7 @@
             )
         )
 
-        (macro mmap_files ((type ARG1))
+        (macro mmap ((type ARG1))
             (allow ARG1 obj_type_attribute mmap_file_perms)
             (call generic_data.search
                 (
@@ -7789,7 +7789,7 @@
                 )
             )
 
-            (macro exec_files ((type ARG1))
+            (macro execute ((type ARG1))
                 (allow ARG1 data_file exec_file_perms)
                 (call files.generic_data.search
                     (
@@ -7915,7 +7915,7 @@
                 )
             )
 
-            (macro mmap_files ((type ARG1))
+            (macro mmap ((type ARG1))
                 (allow ARG1 data_file mmap_file_perms)
                 (call files.generic_data.search
                     (
@@ -8468,7 +8468,7 @@
             (allow ARG1 obj_type_attribute delete_sock_file_perms)
         )
 
-        (macro exec_files ((type ARG1))
+        (macro execute ((type ARG1))
             (allow ARG1 obj_type_attribute exec_file_perms)
         )
 
@@ -8566,7 +8566,7 @@
             (allow ARG1 obj_type_attribute manage_sock_file_perms)
         )
 
-        (macro mmap_files ((type ARG1))
+        (macro mmap ((type ARG1))
             (allow ARG1 obj_type_attribute mmap_file_perms)
         )
 
@@ -8962,7 +8962,7 @@
                 (allow ARG1 file delete_sock_file_perms)
             )
 
-            (macro exec_files ((type ARG1))
+            (macro execute ((type ARG1))
                 (allow ARG1 file exec_file_perms)
             )
 
@@ -9060,7 +9060,7 @@
                 (allow ARG1 file manage_sock_file_perms)
             )
 
-            (macro mmap_files ((type ARG1))
+            (macro mmap ((type ARG1))
                 (allow ARG1 file mmap_file_perms)
             )
 
@@ -9528,7 +9528,7 @@
             )
         )
 
-        (macro exec_files ((type ARG1))
+        (macro execute ((type ARG1))
             (allow ARG1 boot_file exec_file_perms)
             (call search
                 (
@@ -9672,7 +9672,7 @@
             )
         )
 
-        (macro mmap_files ((type ARG1))
+        (macro mmap ((type ARG1))
             (allow ARG1 boot_file mmap_file_perms)
             (call search
                 (
@@ -10399,7 +10399,7 @@
             )
         )
 
-        (macro exec_files ((type ARG1))
+        (macro execute ((type ARG1))
             (allow ARG1 config_file exec_file_perms)
             (call search
                 (
@@ -10508,7 +10508,7 @@
             )
         )
 
-        (macro mmap_files ((type ARG1))
+        (macro mmap ((type ARG1))
             (allow ARG1 config_file mmap_file_perms)
             (call search
                 (
@@ -11047,7 +11047,7 @@
             )
         )
 
-        (macro exec_files ((type ARG1))
+        (macro execute ((type ARG1))
             (allow ARG1 data_file exec_file_perms)
             (call search
                 (
@@ -11156,7 +11156,7 @@
             )
         )
 
-        (macro mmap_files ((type ARG1))
+        (macro mmap ((type ARG1))
             (allow ARG1 data_file mmap_file_perms)
             (call search
                 (
@@ -11734,7 +11734,7 @@
             )
         )
 
-        (macro exec_files ((type ARG1))
+        (macro execute ((type ARG1))
             (allow ARG1 modules_file exec_file_perms)
             (call search
                 (
@@ -11893,7 +11893,7 @@
             )
         )
 
-        (macro mmap_files ((type ARG1))
+        (macro mmap ((type ARG1))
             (allow ARG1 modules_file mmap_file_perms)
             (call search
                 (
@@ -12648,7 +12648,7 @@
             )
         )
 
-        (macro exec_files ((type ARG1))
+        (macro execute ((type ARG1))
             (allow ARG1 runtime_file exec_file_perms)
             (call search
                 (
@@ -12846,7 +12846,7 @@
             )
         )
 
-        (macro mmap_files ((type ARG1))
+        (macro mmap ((type ARG1))
             (allow ARG1 runtime_file mmap_file_perms)
             (call search
                 (
@@ -13760,7 +13760,7 @@
             )
         )
 
-        (macro exec_files ((type ARG1))
+        (macro execute ((type ARG1))
             (allow ARG1 runtime_config_file exec_file_perms)
             (call search
                 (
@@ -13904,7 +13904,7 @@
             )
         )
 
-        (macro mmap_files ((type ARG1))
+        (macro mmap ((type ARG1))
             (allow ARG1 runtime_config_file mmap_file_perms)
             (call search
                 (
@@ -14596,7 +14596,7 @@
             )
         )
 
-        (macro exec_files ((type ARG1))
+        (macro execute ((type ARG1))
             (allow ARG1 runtime_lock_file exec_file_perms)
             (call search
                 (
@@ -14740,7 +14740,7 @@
             )
         )
 
-        (macro mmap_files ((type ARG1))
+        (macro mmap ((type ARG1))
             (allow ARG1 runtime_lock_file mmap_file_perms)
             (call search
                 (
@@ -15426,7 +15426,7 @@
             )
         )
 
-        (macro exec_files ((type ARG1))
+        (macro execute ((type ARG1))
             (allow ARG1 var_file exec_file_perms)
             (call search
                 (
@@ -15559,7 +15559,7 @@
             )
         )
 
-        (macro mmap_files ((type ARG1))
+        (macro mmap ((type ARG1))
             (allow ARG1 var_file mmap_file_perms)
         )
 
@@ -16291,7 +16291,7 @@
             )
         )
 
-        (macro exec_files ((type ARG1))
+        (macro execute ((type ARG1))
             (allow ARG1 var_cache_file exec_file_perms)
             (call search
                 (
@@ -16489,7 +16489,7 @@
             )
         )
 
-        (macro mmap_files ((type ARG1))
+        (macro mmap ((type ARG1))
             (allow ARG1 var_cache_file mmap_file_perms)
             (call search
                 (
@@ -17403,7 +17403,7 @@
             )
         )
 
-        (macro exec_files ((type ARG1))
+        (macro execute ((type ARG1))
             (allow ARG1 var_db_file exec_file_perms)
             (call search
                 (
@@ -17547,7 +17547,7 @@
             )
         )
 
-        (macro mmap_files ((type ARG1))
+        (macro mmap ((type ARG1))
             (allow ARG1 var_db_file mmap_file_perms)
             (call search
                 (
@@ -18308,7 +18308,7 @@
             )
         )
 
-        (macro exec_files ((type ARG1))
+        (macro execute ((type ARG1))
             (allow ARG1 var_lib_file exec_file_perms)
             (call search
                 (
@@ -18506,7 +18506,7 @@
             )
         )
 
-        (macro mmap_files ((type ARG1))
+        (macro mmap ((type ARG1))
             (allow ARG1 var_lib_file mmap_file_perms)
             (call search
                 (
@@ -19420,7 +19420,7 @@
             )
         )
 
-        (macro exec_files ((type ARG1))
+        (macro execute ((type ARG1))
             (allow ARG1 var_log_file exec_file_perms)
             (call search
                 (
@@ -19564,7 +19564,7 @@
             )
         )
 
-        (macro mmap_files ((type ARG1))
+        (macro mmap ((type ARG1))
             (allow ARG1 var_log_file mmap_file_perms)
             (call search
                 (
@@ -20325,7 +20325,7 @@
             )
         )
 
-        (macro exec_files ((type ARG1))
+        (macro execute ((type ARG1))
             (allow ARG1 var_spool_file exec_file_perms)
             (call search
                 (
@@ -20523,7 +20523,7 @@
             )
         )
 
-        (macro mmap_files ((type ARG1))
+        (macro mmap ((type ARG1))
             (allow ARG1 var_spool_file mmap_file_perms)
             (call search
                 (
@@ -21570,7 +21570,7 @@
             )
         )
 
-        (macro exec_files ((type ARG1))
+        (macro execute ((type ARG1))
             (allow ARG1 var_tmp_file exec_file_perms)
             (call search
                 (
@@ -21833,7 +21833,7 @@
             )
         )
 
-        (macro mmap_files ((type ARG1))
+        (macro mmap ((type ARG1))
             (allow ARG1 var_tmp_file mmap_file_perms)
             (call search
                 (
@@ -24044,7 +24044,7 @@
             )
         )
 
-        (macro exec_files ((type ARG1))
+        (macro execute ((type ARG1))
             (allow ARG1 obj_type_attribute exec_file_perms)
             (call generic_modules.read_lnk_files
                 (
@@ -24092,7 +24092,7 @@
             )
         )
 
-        (macro mmap_files ((type ARG1))
+        (macro mmap ((type ARG1))
             (allow ARG1 obj_type_attribute mmap_file_perms)
             (call generic_modules.read_lnk_files
                 (
@@ -24270,7 +24270,7 @@
                 )
             )
 
-            (macro exec_files ((type ARG1))
+            (macro execute ((type ARG1))
                 (allow ARG1 modules_file exec_file_perms)
                 (call files.generic_modules.read_lnk_files
                     (
@@ -24318,7 +24318,7 @@
                 )
             )
 
-            (macro mmap_files ((type ARG1))
+            (macro mmap ((type ARG1))
                 (allow ARG1 modules_file mmap_file_perms)
                 (call files.generic_modules.read_lnk_files
                     (
@@ -24581,7 +24581,7 @@
             )
         )
 
-        (macro exec_files ((type ARG1))
+        (macro execute ((type ARG1))
             (allow ARG1 obj_type_attribute exec_file_perms)
             (call generic_runtime.search
                 (
@@ -24749,7 +24749,7 @@
             )
         )
 
-        (macro mmap_files ((type ARG1))
+        (macro mmap ((type ARG1))
             (allow ARG1 obj_type_attribute mmap_file_perms)
             (call generic_runtime.search
                 (
@@ -25488,7 +25488,7 @@
                 )
             )
 
-            (macro exec_files ((type ARG1))
+            (macro execute ((type ARG1))
                 (allow ARG1 runtime_file exec_file_perms)
                 (call files.generic_runtime.search
                     (
@@ -25656,7 +25656,7 @@
                 )
             )
 
-            (macro mmap_files ((type ARG1))
+            (macro mmap ((type ARG1))
                 (allow ARG1 runtime_file mmap_file_perms)
                 (call files.generic_runtime.search
                     (
@@ -26321,7 +26321,7 @@
             )
         )
 
-        (macro exec_files ((type ARG1))
+        (macro execute ((type ARG1))
             (allow ARG1 obj_type_attribute exec_file_perms)
             (call generic_runtime_config.search
                 (
@@ -26447,7 +26447,7 @@
             )
         )
 
-        (macro mmap_files ((type ARG1))
+        (macro mmap ((type ARG1))
             (allow ARG1 obj_type_attribute mmap_file_perms)
             (call generic_runtime_config.search
                 (
@@ -27009,7 +27009,7 @@
                 )
             )
 
-            (macro exec_files ((type ARG1))
+            (macro execute ((type ARG1))
                 (allow ARG1 runtime_config_file exec_file_perms)
                 (call files.generic_runtime_config.search
                     (
@@ -27135,7 +27135,7 @@
                 )
             )
 
-            (macro mmap_files ((type ARG1))
+            (macro mmap ((type ARG1))
                 (allow ARG1 runtime_config_file mmap_file_perms)
                 (call files.generic_runtime_config.search
                     (
@@ -27668,7 +27668,7 @@
             )
         )
 
-        (macro exec_files ((type ARG1))
+        (macro execute ((type ARG1))
             (allow ARG1 obj_type_attribute exec_file_perms)
             (call generic_runtime_lock.search
                 (
@@ -27794,7 +27794,7 @@
             )
         )
 
-        (macro mmap_files ((type ARG1))
+        (macro mmap ((type ARG1))
             (allow ARG1 obj_type_attribute mmap_file_perms)
             (call generic_runtime_lock.search
                 (
@@ -28356,7 +28356,7 @@
                 )
             )
 
-            (macro exec_files ((type ARG1))
+            (macro execute ((type ARG1))
                 (allow ARG1 runtime_lock_file exec_file_perms)
                 (call files.generic_runtime_lock.search
                     (
@@ -28482,7 +28482,7 @@
                 )
             )
 
-            (macro mmap_files ((type ARG1))
+            (macro mmap ((type ARG1))
                 (allow ARG1 runtime_lock_file mmap_file_perms)
                 (call files.generic_runtime_lock.search
                     (
@@ -29409,7 +29409,7 @@
             (allow ARG1 obj_type_attribute delete_sock_file_perms)
         )
 
-        (macro exec_files ((type ARG1))
+        (macro execute ((type ARG1))
             (allow ARG1 obj_type_attribute exec_file_perms)
         )
 
@@ -29507,7 +29507,7 @@
             (allow ARG1 obj_type_attribute manage_sock_file_perms)
         )
 
-        (macro mmap_files ((type ARG1))
+        (macro mmap ((type ARG1))
             (allow ARG1 obj_type_attribute mmap_file_perms)
         )
 
@@ -29921,7 +29921,7 @@
                 (allow ARG1 sec_file delete_sock_file_perms)
             )
 
-            (macro exec_files ((type ARG1))
+            (macro execute ((type ARG1))
                 (allow ARG1 sec_file exec_file_perms)
             )
 
@@ -30019,7 +30019,7 @@
                 (allow ARG1 sec_file manage_sock_file_perms)
             )
 
-            (macro mmap_files ((type ARG1))
+            (macro mmap ((type ARG1))
                 (allow ARG1 sec_file mmap_file_perms)
             )
 
@@ -30478,7 +30478,7 @@
             )
         )
 
-        (macro exec_files ((type ARG1))
+        (macro execute ((type ARG1))
             (allow ARG1 obj_type_attribute exec_file_perms)
             (call fs.tmpfs.search
                 (
@@ -30646,7 +30646,7 @@
             )
         )
 
-        (macro mmap_files ((type ARG1))
+        (macro mmap ((type ARG1))
             (allow ARG1 obj_type_attribute mmap_file_perms)
             (call fs.tmpfs.search
                 (
@@ -31385,7 +31385,7 @@
                 )
             )
 
-            (macro exec_files ((type ARG1))
+            (macro execute ((type ARG1))
                 (allow ARG1 tmpfs_file exec_file_perms)
                 (call fs.tmpfs.search
                     (
@@ -31553,7 +31553,7 @@
                 )
             )
 
-            (macro mmap_files ((type ARG1))
+            (macro mmap ((type ARG1))
                 (allow ARG1 tmpfs_file mmap_file_perms)
                 (call fs.tmpfs.search
                     (
@@ -32182,7 +32182,7 @@
             (allow ARG1 file delete_sock_file_perms)
         )
 
-        (macro exec_files ((type ARG1))
+        (macro execute ((type ARG1))
             (allow ARG1 file exec_file_perms)
         )
 
@@ -32280,7 +32280,7 @@
             (allow ARG1 file manage_sock_file_perms)
         )
 
-        (macro mmap_files ((type ARG1))
+        (macro mmap ((type ARG1))
             (allow ARG1 file mmap_file_perms)
         )
 
@@ -32741,7 +32741,7 @@
             )
         )
 
-        (macro exec_files ((type ARG1))
+        (macro execute ((type ARG1))
             (allow ARG1 obj_type_attribute exec_file_perms)
             (call generic_var.search
                 (
@@ -32889,7 +32889,7 @@
             )
         )
 
-        (macro mmap_files ((type ARG1))
+        (macro mmap ((type ARG1))
             (allow ARG1 obj_type_attribute mmap_file_perms)
             (call generic_var.search
                 (
@@ -33567,7 +33567,7 @@
                 )
             )
 
-            (macro exec_files ((type ARG1))
+            (macro execute ((type ARG1))
                 (allow ARG1 var_file exec_file_perms)
                 (call files.generic_var.search
                     (
@@ -33735,7 +33735,7 @@
                 )
             )
 
-            (macro mmap_files ((type ARG1))
+            (macro mmap ((type ARG1))
                 (allow ARG1 var_file mmap_file_perms)
                 (call files.generic_var.search
                     (
@@ -34439,7 +34439,7 @@
             )
         )
 
-        (macro exec_files ((type ARG1))
+        (macro execute ((type ARG1))
             (allow ARG1 obj_type_attribute exec_file_perms)
             (call generic_var_cache.search
                 (
@@ -34607,7 +34607,7 @@
             )
         )
 
-        (macro mmap_files ((type ARG1))
+        (macro mmap ((type ARG1))
             (allow ARG1 obj_type_attribute mmap_file_perms)
             (call generic_var_cache.search
                 (
@@ -35340,7 +35340,7 @@
                 )
             )
 
-            (macro exec_files ((type ARG1))
+            (macro execute ((type ARG1))
                 (allow ARG1 var_cache_file exec_file_perms)
                 (call files.generic_var_cache.search
                     (
@@ -35508,7 +35508,7 @@
                 )
             )
 
-            (macro mmap_files ((type ARG1))
+            (macro mmap ((type ARG1))
                 (allow ARG1 var_cache_file mmap_file_perms)
                 (call files.generic_var_cache.search
                     (
@@ -36173,7 +36173,7 @@
             )
         )
 
-        (macro exec_files ((type ARG1))
+        (macro execute ((type ARG1))
             (allow ARG1 obj_type_attribute exec_file_perms)
             (call generic_var_db.search
                 (
@@ -36299,7 +36299,7 @@
             )
         )
 
-        (macro mmap_files ((type ARG1))
+        (macro mmap ((type ARG1))
             (allow ARG1 obj_type_attribute mmap_file_perms)
             (call generic_var_db.search
                 (
@@ -36861,7 +36861,7 @@
                 )
             )
 
-            (macro exec_files ((type ARG1))
+            (macro execute ((type ARG1))
                 (allow ARG1 var_db_file exec_file_perms)
                 (call files.generic_var_db.search
                     (
@@ -36987,7 +36987,7 @@
                 )
             )
 
-            (macro mmap_files ((type ARG1))
+            (macro mmap ((type ARG1))
                 (allow ARG1 var_db_file mmap_file_perms)
                 (call files.generic_var_db.search
                     (
@@ -37559,7 +37559,7 @@
             )
         )
 
-        (macro exec_files ((type ARG1))
+        (macro execute ((type ARG1))
             (allow ARG1 obj_type_attribute exec_file_perms)
             (call generic_var_lib.search
                 (
@@ -37727,7 +37727,7 @@
             )
         )
 
-        (macro mmap_files ((type ARG1))
+        (macro mmap ((type ARG1))
             (allow ARG1 obj_type_attribute mmap_file_perms)
             (call generic_var_lib.search
                 (
@@ -38460,7 +38460,7 @@
                 )
             )
 
-            (macro exec_files ((type ARG1))
+            (macro execute ((type ARG1))
                 (allow ARG1 var_lib_file exec_file_perms)
                 (call files.generic_var_lib.search
                     (
@@ -38628,7 +38628,7 @@
                 )
             )
 
-            (macro mmap_files ((type ARG1))
+            (macro mmap ((type ARG1))
                 (allow ARG1 var_lib_file mmap_file_perms)
                 (call files.generic_var_lib.search
                     (
@@ -39293,7 +39293,7 @@
             )
         )
 
-        (macro exec_files ((type ARG1))
+        (macro execute ((type ARG1))
             (allow ARG1 obj_type_attribute exec_file_perms)
             (call generic_var_log.search
                 (
@@ -39419,7 +39419,7 @@
             )
         )
 
-        (macro mmap_files ((type ARG1))
+        (macro mmap ((type ARG1))
             (allow ARG1 obj_type_attribute mmap_file_perms)
             (call generic_var_log.search
                 (
@@ -39981,7 +39981,7 @@
                 )
             )
 
-            (macro exec_files ((type ARG1))
+            (macro execute ((type ARG1))
                 (allow ARG1 var_log_file exec_file_perms)
                 (call files.generic_var_log.search
                     (
@@ -40107,7 +40107,7 @@
                 )
             )
 
-            (macro mmap_files ((type ARG1))
+            (macro mmap ((type ARG1))
                 (allow ARG1 var_log_file mmap_file_perms)
                 (call files.generic_var_log.search
                     (
@@ -40679,7 +40679,7 @@
             )
         )
 
-        (macro exec_files ((type ARG1))
+        (macro execute ((type ARG1))
             (allow ARG1 obj_type_attribute exec_file_perms)
             (call generic_var_spool.search
                 (
@@ -40847,7 +40847,7 @@
             )
         )
 
-        (macro mmap_files ((type ARG1))
+        (macro mmap ((type ARG1))
             (allow ARG1 obj_type_attribute mmap_file_perms)
             (call generic_var_spool.search
                 (
@@ -41580,7 +41580,7 @@
                 )
             )
 
-            (macro exec_files ((type ARG1))
+            (macro execute ((type ARG1))
                 (allow ARG1 var_spool_file exec_file_perms)
                 (call files.generic_var_spool.search
                     (
@@ -41748,7 +41748,7 @@
                 )
             )
 
-            (macro mmap_files ((type ARG1))
+            (macro mmap ((type ARG1))
                 (allow ARG1 var_spool_file mmap_file_perms)
                 (call files.generic_var_spool.search
                     (
@@ -42472,7 +42472,7 @@
             )
         )
 
-        (macro exec_files ((type ARG1))
+        (macro execute ((type ARG1))
             (allow ARG1 obj_type_attribute exec_file_perms)
             (call generic_var_tmp.search
                 (
@@ -42660,7 +42660,7 @@
             )
         )
 
-        (macro mmap_files ((type ARG1))
+        (macro mmap ((type ARG1))
             (allow ARG1 obj_type_attribute mmap_file_perms)
             (call generic_var_tmp.search
                 (
@@ -43453,7 +43453,7 @@
                 )
             )
 
-            (macro exec_files ((type ARG1))
+            (macro execute ((type ARG1))
                 (allow ARG1 var_tmp_file exec_file_perms)
                 (call files.generic_var_tmp.search
                     (
@@ -43621,7 +43621,7 @@
                 )
             )
 
-            (macro mmap_files ((type ARG1))
+            (macro mmap ((type ARG1))
                 (allow ARG1 var_tmp_file mmap_file_perms)
                 (call files.generic_var_tmp.search
                     (

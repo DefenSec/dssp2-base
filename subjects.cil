@@ -565,8 +565,13 @@
             common_subj_type_attribute
         )
     )
+    (call fs.rootfs.search
+        (
+            common_subj_type_attribute
+        )
+    )
 
-    (call lib.generic_libraries.mmap_files
+    (call lib.generic_libraries.mmap
         (
             common_subj_type_attribute
         )
@@ -581,7 +586,7 @@
             common_subj_type_attribute
         )
     )
-    (call lib.textrel.mmap_files
+    (call lib.textrel.mmap
         (
             common_subj_type_attribute
         )

@@ -62,7 +62,7 @@
 
         (macro cmd_file_auto_subj_type_transition ((type ARG1)(type ARG2))
             (typetransition ARG1 cmd_file process "*" ARG2)
-            (call mmap_files
+            (call mmap
                 (
                     ARG1
                 )
@@ -216,14 +216,14 @@
                     )
                 )
             )
-            (call mmap_files
+            (call mmap
                 (
                     ARG1
                 )
             )
         )
 
-        (macro exec_files ((type ARG1))
+        (macro execute ((type ARG1))
             (allow ARG1 cmd_file exec_file_perms)
             (call search
                 (
@@ -367,7 +367,7 @@
             )
         )
 
-        (macro mmap_files ((type ARG1))
+        (macro mmap ((type ARG1))
             (allow ARG1 cmd_file mmap_file_perms)
             (call search
                 (
@@ -937,7 +937,7 @@
             )
         )
 
-        (macro exec_files ((type ARG1))
+        (macro execute ((type ARG1))
             (allow ARG1 obj_type_attribute exec_file_perms)
             (call generic_commands.read_lnk_files
                 (
@@ -970,7 +970,7 @@
             )
         )
 
-        (macro mmap_files ((type ARG1))
+        (macro mmap ((type ARG1))
             (allow ARG1 obj_type_attribute mmap_file_perms)
             (call generic_commands.read_lnk_files
                 (
@@ -1132,7 +1132,7 @@
 
             (macro cmd_file_auto_subj_type_transition ((type ARG1)(type ARG2))
                 (typetransition ARG1 cmd_file process "*" ARG2)
-                (call mmap_files
+                (call mmap
                     (
                         ARG1
                     )
@@ -1169,14 +1169,14 @@
                         )
                     )
                 )
-                (call mmap_files
+                (call mmap
                     (
                         ARG1
                     )
                 )
             )
 
-            (macro exec_files ((type ARG1))
+            (macro execute ((type ARG1))
                 (allow ARG1 cmd_file exec_file_perms)
                 (call cmd.generic_commands.read_lnk_files
                     (
@@ -1209,7 +1209,7 @@
                 )
             )
 
-            (macro mmap_files ((type ARG1))
+            (macro mmap ((type ARG1))
                 (allow ARG1 cmd_file mmap_file_perms)
                 (call cmd.generic_commands.read_lnk_files
                     (
