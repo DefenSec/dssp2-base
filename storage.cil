@@ -1423,6 +1423,82 @@
             )
         )
 
+        (macro create ((type ARG1))
+            (call create_blk_files
+                (
+                    ARG1
+                )
+            )
+            (call create_chr_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro create_blk_files ((type ARG1))
+            (allow ARG1 self
+                (capability
+                    (
+                        mknod
+                    )
+                )
+            )
+            (allow ARG1 stor_file create_blk_file_perms)
+            (call fs.devtmpfs.rw_dirs
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro create_chr_files ((type ARG1))
+            (allow ARG1 self
+                (capability
+                    (
+                        mknod
+                    )
+                )
+            )
+            (allow ARG1 stor_file create_chr_file_perms)
+            (call fs.devtmpfs.rw_dirs
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro delete ((type ARG1))
+            (call delete_blk_files
+                (
+                    ARG1
+                )
+            )
+            (call delete_chr_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro delete_blk_files ((type ARG1))
+            (allow ARG1 stor_file delete_blk_file_perms)
+            (call fs.devtmpfs.rw_dirs
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro delete_chr_files ((type ARG1))
+            (allow ARG1 stor_file delete_chr_file_perms)
+            (call fs.devtmpfs.rw_dirs
+                (
+                    ARG1
+                )
+            )
+        )
+
         (macro getattr ((type ARG1))
             (call getattr_blk_files
                 (
@@ -1532,12 +1608,12 @@
         )
 
         (macro read ((type ARG1))
-            (call manage_blk_files
+            (call read_blk_files
                 (
                     ARG1
                 )
             )
-            (call manage_chr_files
+            (call read_chr_files
                 (
                     ARG1
                 )
@@ -1658,6 +1734,37 @@
 
         (macro relabelto_chr_files ((type ARG1))
             (allow ARG1 stor_file relabelto_chr_file_perms)
+            (call fs.devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rename ((type ARG1))
+            (call rename_blk_files
+                (
+                    ARG1
+                )
+            )
+            (call rename_chr_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rename_blk_files ((type ARG1))
+            (allow ARG1 stor_file rename_blk_file_perms)
+            (call fs.devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rename_chr_files ((type ARG1))
+            (allow ARG1 stor_file rename_chr_file_perms)
             (call fs.devtmpfs.search
                 (
                     ARG1
@@ -2133,6 +2240,31 @@
             )
         )
 
+        (macro create_chr_files ((type ARG1))
+            (allow ARG1 self
+                (capability
+                    (
+                        mknod
+                    )
+                )
+            )
+            (allow ARG1 stor_file create_chr_file_perms)
+            (call fs.devtmpfs.rw_dirs
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro delete_chr_files ((type ARG1))
+            (allow ARG1 stor_file delete_chr_file_perms)
+            (call fs.devtmpfs.rw_dirs
+                (
+                    ARG1
+                )
+            )
+        )
+
         (macro getattr_chr_files ((type ARG1))
             (allow ARG1 stor_file
                 (chr_file
@@ -2208,6 +2340,16 @@
 
         (macro relabelto_chr_files ((type ARG1))
             (allow ARG1 stor_file relabelto_chr_file_perms)
+            (call fs.devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+
+        (macro rename_chr_files ((type ARG1))
+            (allow ARG1 stor_file rename_chr_file_perms)
             (call fs.devtmpfs.search
                 (
                     ARG1
@@ -2306,6 +2448,82 @@
         ;
         ; stor_file macros
         ;
+
+        (macro create ((type ARG1))
+            (call create_blk_files
+                (
+                    ARG1
+                )
+            )
+            (call create_chr_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro create_blk_files ((type ARG1))
+            (allow ARG1 self
+                (capability
+                    (
+                        mknod
+                    )
+                )
+            )
+            (allow ARG1 obj_type_attribute create_blk_file_perms)
+            (call fs.devtmpfs.rw_dirs
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro create_chr_files ((type ARG1))
+            (allow ARG1 self
+                (capability
+                    (
+                        mknod
+                    )
+                )
+            )
+            (allow ARG1 obj_type_attribute create_chr_file_perms)
+            (call fs.devtmpfs.rw_dirs
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro delete ((type ARG1))
+            (call delete_blk_files
+                (
+                    ARG1
+                )
+            )
+            (call delete_chr_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro delete_blk_files ((type ARG1))
+            (allow ARG1 obj_type_attribute delete_blk_file_perms)
+            (call fs.devtmpfs.rw_dirs
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro delete_chr_files ((type ARG1))
+            (allow ARG1 obj_type_attribute delete_chr_file_perms)
+            (call fs.devtmpfs.rw_dirs
+                (
+                    ARG1
+                )
+            )
+        )
 
         (macro getattr ((type ARG1))
             (call getattr_blk_files
@@ -2561,6 +2779,37 @@
 
         (macro relabelto_chr_files ((type ARG1))
             (allow ARG1 obj_type_attribute relabelto_chr_file_perms)
+            (call fs.devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rename ((type ARG1))
+            (call rename_blk_files
+                (
+                    ARG1
+                )
+            )
+            (call rename_chr_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rename_blk_files ((type ARG1))
+            (allow ARG1 obj_type_attribute rename_blk_file_perms)
+            (call fs.devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rename_chr_files ((type ARG1))
+            (allow ARG1 obj_type_attribute rename_chr_file_perms)
             (call fs.devtmpfs.search
                 (
                     ARG1

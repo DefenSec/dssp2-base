@@ -338,6 +338,24 @@
             ; login_pty_file.obj_template macros
             ;
 
+            (macro create_chr_files ((type ARG1))
+                (allow ARG1 login_pty_file create_chr_file_perms)
+                (call fs.devpts.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro delete_chr_files ((type ARG1))
+                (allow ARG1 login_pty_file delete_chr_file_perms)
+                (call fs.devpts.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
             (macro getattr_chr_files ((type ARG1))
                 (allow ARG1 login_pty_file
                     (chr_file
@@ -373,6 +391,15 @@
 
             (macro relabelto_chr_files ((type ARG1))
                 (allow ARG1 login_pty_file relabelto_chr_file_perms)
+                (call fs.devpts.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro rename_chr_files ((type ARG1))
+                (allow ARG1 login_pty_file rename_chr_file_perms)
                 (call fs.devpts.search
                     (
                         ARG1
@@ -429,6 +456,24 @@
         ; pty_file macros
         ;
 
+        (macro create_chr_files ((type ARG1))
+            (allow ARG1 obj_type_attribute create_chr_file_perms)
+            (call fs.devpts.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro delete_chr_files ((type ARG1))
+            (allow ARG1 obj_type_attribute delete_chr_file_perms)
+            (call fs.devpts.search
+                (
+                    ARG1
+                )
+            )
+        )
+
         (macro getattr_chr_files ((type ARG1))
             (allow ARG1 obj_type_attribute
                 (chr_file
@@ -437,6 +482,15 @@
                     )
                 )
             )
+            (call fs.devpts.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro manage_chr_files ((type ARG1))
+            (allow ARG1 obj_type_attribute manage_chr_file_perms)
             (call fs.devpts.search
                 (
                     ARG1
@@ -475,6 +529,15 @@
             )
         )
 
+        (macro rename_chr_files ((type ARG1))
+            (allow ARG1 obj_type_attribute rename_chr_file_perms)
+            (call fs.devpts.search
+                (
+                    ARG1
+                )
+            )
+        )
+
         (macro rw_chr_files ((type ARG1))
             (allow ARG1 obj_type_attribute rw_term_perms)
             (call fs.devpts.search
@@ -501,6 +564,15 @@
                     )
                 )
             )
+            (call fs.devpts.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro write_chr_files ((type ARG1))
+            (allow ARG1 obj_type_attribute write_chr_file_perms)
             (call fs.devpts.search
                 (
                     ARG1
@@ -552,6 +624,24 @@
             ; pty_file,obj_template macros
             ;
 
+            (macro create_chr_files ((type ARG1))
+                (allow ARG1 pty_file create_chr_file_perms)
+                (call fs.devpts.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro delete_chr_files ((type ARG1))
+                (allow ARG1 pty_file delete_chr_file_perms)
+                (call fs.devpts.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
             (macro getattr_chr_files ((type ARG1))
                 (allow ARG1 pty_file
                     (chr_file
@@ -560,6 +650,15 @@
                         )
                     )
                 )
+                (call fs.devpts.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro manage_chr_files ((type ARG1))
+                (allow ARG1 pty_file manage_chr_file_perms)
                 (call fs.devpts.search
                     (
                         ARG1
@@ -587,6 +686,15 @@
 
             (macro relabelto_chr_files ((type ARG1))
                 (allow ARG1 pty_file relabelto_chr_file_perms)
+                (call fs.devpts.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro rename_chr_files ((type ARG1))
+                (allow ARG1 pty_file rename_chr_file_perms)
                 (call fs.devpts.search
                     (
                         ARG1
@@ -627,6 +735,15 @@
                 )
             )
 
+            (macro write_chr_files ((type ARG1))
+                (allow ARG1 pty_file write_chr_file_perms)
+                (call fs.devpts.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
             ;
             ; pty_file.obj_template policy
             ;
@@ -642,6 +759,31 @@
         ;
         ; serial_file macros
         ;
+
+        (macro create_chr_files ((type ARG1))
+            (allow ARG1 self
+                (capability
+                    (
+                        mknod
+                    )
+                )
+            )
+            (allow ARG1 obj_type_attribute create_chr_file_perms)
+            (call fs.devtmpfs.rw_dirs
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro delete_chr_files ((type ARG1))
+            (allow ARG1 obj_type_attribute delete_chr_file_perms)
+            (call fs.devtmpfs.rw_dirs
+                (
+                    ARG1
+                )
+            )
+        )
 
         (macro getattr_chr_files ((type ARG1))
             (allow ARG1 obj_type_attribute
@@ -705,6 +847,15 @@
             )
         )
 
+        (macro rename_chr_files ((type ARG1))
+            (allow ARG1 obj_type_attribute rename_chr_file_perms)
+            (call fs.devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
         (macro rw_chr_files ((type ARG1))
             (allow ARG1 obj_type_attribute rw_term_perms)
             (call fs.devtmpfs.search
@@ -731,6 +882,15 @@
                     )
                 )
             )
+            (call fs.devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro write_chr_files ((type ARG1))
+            (allow ARG1 obj_type_attribute write_chr_file_perms)
             (call fs.devtmpfs.search
                 (
                     ARG1
@@ -798,6 +958,31 @@
             ; serial_file.obj_template macros
             ;
 
+            (macro create_chr_files ((type ARG1))
+                (allow ARG1 self
+                    (capability
+                        (
+                            mknod
+                        )
+                    )
+                )
+                (allow ARG1 serial_file create_chr_file_perms)
+                (call fs.devtmpfs.rw_dirs
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro delete_chr_files ((type ARG1))
+                (allow ARG1 serial_file delete_chr_file_perms)
+                (call fs.devtmpfs.rw_dirs
+                    (
+                        ARG1
+                    )
+                )
+            )
+
             (macro getattr_chr_files ((type ARG1))
                 (allow ARG1 serial_file
                     (chr_file
@@ -856,6 +1041,15 @@
                 )
             )
 
+            (macro rename_chr_files ((type ARG1))
+                (allow ARG1 serial_file rename_chr_file_perms)
+                (call fs.devtmpfs.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
             (macro rw_chr_files ((type ARG1))
                 (allow ARG1 serial_file rw_term_perms)
                 (call fs.devtmpfs.search
@@ -882,6 +1076,15 @@
                         )
                     )
                 )
+                (call fs.devtmpfs.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro write_chr_files ((type ARG1))
+                (allow ARG1 serial_file write_chr_file_perms)
                 (call fs.devtmpfs.search
                     (
                         ARG1
