@@ -3622,6 +3622,12 @@
 
         (typeattribute obj_type_attribute)
 
+        (call auth_obj_type
+            (
+                obj_type_attribute
+            )
+        )
+
         (call files.obj_type
             (
                 obj_type_attribute
@@ -29786,6 +29792,12 @@
         (typeattribute obj_type_attribute)
 
         (call files.obj_type
+            (
+                obj_type_attribute
+            )
+        )
+
+        (call sec_obj_type
             (
                 obj_type_attribute
             )
