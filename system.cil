@@ -884,7 +884,6 @@
     ; Sys cpu_sysfs name space
     ;
 
-
     (block cpu_sysfs
 
         ;
