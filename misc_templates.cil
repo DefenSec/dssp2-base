@@ -311,8 +311,8 @@
 
     (roletype role_attribute subj)
 
-    (optional hybrid_agent_template_optional_user
-        (call user.terminals.rw_inherited_chr_files
+    (optional hybrid_agent_template_optional_users
+        (call users.terminals.rw_inherited_chr_files
             (
                 subj
             )
@@ -352,8 +352,8 @@
 
     (roletype role_attribute subj)
 
-    (optional user_agent_template_optional_user
-        (call user.terminals.rw_inherited_chr_files
+    (optional user_agent_template_optional_users
+        (call users.terminals.rw_inherited_chr_files
             (
                 subj
             )
