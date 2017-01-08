@@ -823,7 +823,7 @@
             )
             (and
                 (eq r2 rbacsep_exemption_role_attribute)
-                (neq t2 subj.subj_type_attribute)
+                (neq t2 rbacsep_target_subj_type_attribute)
             )
         )
         (and
@@ -4164,6 +4164,10 @@
     (typeattributeset rbacsep_read_state_target_subj_type_attribute ARG1)
 )
 
+(macro rbacsep_target_subj_type ((type ARG1))
+    (typeattributeset rbacsep_target_subj_type_attribute ARG1)
+)
+
 ;
 ; RBACsep policy
 ;
@@ -4174,6 +4178,7 @@
 (typeattribute rbacsep_exemption_subj_type_attribute)
 (typeattribute rbacsep_read_state_source_subj_type_attribute)
 (typeattribute rbacsep_read_state_target_subj_type_attribute)
+(typeattribute rbacsep_target_subj_type_attribute)
 
 (defaultrole blk_file source)
 (defaultrole chr_file source)

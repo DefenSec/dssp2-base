@@ -16,94 +16,8 @@
     ; Macros
     ;
 
-    (macro dontaudit_noatsecure ((type ARG1))
-        (dontaudit ARG1 common_subj_type_attribute
-            (process
-                (
-                    noatsecure
-                )
-            )
-        )
-    )
-
-    (macro dontaudit_read_state ((type ARG1))
-        (dontaudit ARG1 common_subj_type_attribute
-            (process_state
-                (
-                    read
-                )
-            )
-        )
-    )
-
-    (macro dontaudit_rlimitinh ((type ARG1))
-        (dontaudit ARG1 common_subj_type_attribute
-            (process
-                (
-                    rlimitinh
-                )
-            )
-        )
-    )
-
-    (macro dontaudit_siginh ((type ARG1))
-        (dontaudit ARG1 common_subj_type_attribute
-            (process
-                (
-                    siginh
-                )
-            )
-        )
-    )
-
-    (macro append_inherited_fifo_files ((type ARG1))
-        (allow ARG1 common_subj_type_attribute
-            append_inherited_fifo_file_perms)
-        (call use_fd
-            (
-                ARG1
-            )
-        )
-    )
-
-    (macro append_inherited_unix_stream_sockets ((type ARG1))
-        (allow ARG1 common_subj_type_attribute
-            append_inherited_unix_stream_socket_perms)
-        (call use_fd
-            (
-                ARG1
-            )
-        )
-    )
-
     (macro common_subj_type ((type ARG1))
         (typeattributeset common_subj_type_attribute ARG1)
-    )
-
-    (macro create_keyring ((type ARG1))
-        (allow ARG1 self
-            (process
-                (
-                    setkeycreate
-                )
-            )
-        )
-        (allow ARG1 common_subj_type_attribute create_key_perms)
-    )
-
-    (macro dyntransition ((type ARG1))
-        (allow ARG1 common_subj_type_attribute
-            (process
-                (
-                    dyntransition
-                )
-            )
-        )
-        (call dyntransition_subj_type
-            (
-                ARG1
-            )
-        )
     )
 
     (macro dyntransition_subj_type ((type ARG1))
@@ -126,276 +40,12 @@
         (typeattributeset execstack_subj_type_attribute ARG1)
     )
 
-    (macro getattr ((type ARG1))
-        (allow ARG1 common_subj_type_attribute
-            (process
-                (
-                    getattr
-                )
-            )
-        )
-    )
-
-    (macro getpgid ((type ARG1))
-        (allow ARG1 common_subj_type_attribute
-            (process
-                (
-                    getpgid
-                )
-            )
-        )
-    )
-
-    (macro getsched ((type ARG1))
-        (allow ARG1 common_subj_type_attribute
-            (process
-                (
-                    getsched
-                )
-            )
-        )
-    )
-
-    (macro getsession ((type ARG1))
-        (allow ARG1 common_subj_type_attribute
-            (process
-                (
-                    getsession
-                )
-            )
-        )
-    )
-
     (macro interactive_fd_subj_type ((type ARG1))
         (typeattributeset interactive_fd_subj_type_attribute ARG1)
     )
 
-    (macro link_keyring ((type ARG1))
-        (allow ARG1 common_subj_type_attribute link_key_perms)
-    )
-
     (macro mmap_low_subj_type ((type ARG1))
         (typeattributeset mmap_low_subj_type_attribute ARG1)
-    )
-
-    (macro noatsecure ((type ARG1))
-        (allow ARG1 common_subj_type_attribute
-            (process
-                (
-                    noatsecure
-                )
-            )
-        )
-    )
-
-    (macro ps ((type ARG1))
-        (allow ARG1 common_subj_type_attribute
-            (state
-                (
-                    ps
-                )
-            )
-        )
-    )
-
-    (macro ptrace ((type ARG1))
-        (allow ARG1 common_subj_type_attribute
-            (process
-                (
-                    ptrace
-                )
-            )
-        )
-        (call sys_ptrace_subj_type
-            (
-                ARG1
-            )
-        )
-    )
-
-    (macro read_state ((type ARG1))
-        (allow ARG1 common_subj_type_attribute
-            (state
-                (
-                    read
-                )
-            )
-        )
-    )
-
-    (macro rlimitinh ((type ARG1))
-        (allow ARG1 common_subj_type_attribute
-            (process
-                (
-                rlimitinh
-                )
-            )
-        )
-    )
-
-    (macro rw_fifo_files ((type ARG1))
-        (allow ARG1 common_subj_type_attribute rw_fifo_file_perms)
-    )
-
-    (macro rw_inherited_fifo_files ((type ARG1))
-        (allow ARG1 common_subj_type_attribute
-            rw_inherited_fifo_file_perms)
-        (call use_fd
-            (
-                ARG1
-            )
-        )
-    )
-
-    (macro rw_inherited_tcp_sockets ((type ARG1))
-        (allow ARG1 common_subj_type_attribute
-            rw_inherited_tcp_socket_perms)
-        (call use_fd
-            (
-                ARG1
-            )
-        )
-    )
-
-    (macro rw_inherited_unix_dgram_sockets ((type ARG1))
-        (allow ARG1 common_subj_type_attribute
-            rw_inherited_unix_dgram_socket_perms)
-        (call use_fd
-            (
-                ARG1
-            )
-        )
-    )
-
-    (macro rw_inherited_unix_stream_sockets ((type ARG1))
-        (allow ARG1 common_subj_type_attribute
-            rw_inherited_unix_stream_socket_perms)
-        (call use_fd
-            (
-                ARG1
-            )
-        )
-    )
-
-    (macro rw_unix_stream_sockets ((type ARG1))
-        (allow ARG1 common_subj_type_attribute rw_unix_stream_socket_perms)
-    )
-
-    (macro setkeycreate ((type ARG1))
-        (allow ARG1 common_subj_type_attribute
-            (process
-                (
-                    setkeycreate
-                )
-            )
-        )
-    )
-
-    (macro setpgid ((type ARG1))
-        (allow ARG1 common_subj_type_attribute
-            (process
-                (
-                    setpgid
-                )
-            )
-        )
-    )
-
-    (macro setrlimit ((type ARG1))
-        (allow ARG1 common_subj_type_attribute
-            (process
-                (
-                    setrlimit
-                )
-            )
-        )
-    )
-
-    (macro setsched ((type ARG1))
-        (allow ARG1 common_subj_type_attribute
-            (process
-                (
-                    setsched
-                )
-            )
-        )
-    )
-
-    (macro share ((type ARG1))
-        (allow ARG1 common_subj_type_attribute
-            (process
-                (
-                    share
-                )
-            )
-        )
-    )
-
-    (macro sigchld ((type ARG1))
-        (allow ARG1 common_subj_type_attribute
-            (process
-                (
-                    sigchld
-                )
-            )
-        )
-    )
-
-    (macro siginh ((type ARG1))
-        (allow ARG1 common_subj_type_attribute
-            (process
-                (
-                    siginh
-                )
-            )
-        )
-    )
-
-    (macro sigkill ((type ARG1))
-        (allow ARG1 self
-            (capability
-                (
-                    kill
-                )
-            )
-        )
-        (allow ARG1 common_subj_type_attribute
-            (process
-                (
-                    sigkill
-                )
-            )
-        )
-    )
-
-    (macro signal ((type ARG1))
-        (allow ARG2 common_subj_type_attribute
-            (process
-                (
-                    signal
-                )
-            )
-        )
-    )
-
-    (macro signull ((type ARG1))
-        (allow ARG1 common_subj_type_attribute
-            (process
-                (
-                    signull
-                )
-            )
-        )
-    )
-
-    (macro sigstop ((type ARG1))
-        (allow ARG1 common_subj_type_attribute
-            (process
-                (
-                    sigstop
-                )
-            )
-        )
     )
 
     (macro subj_type ((type ARG1))
@@ -406,50 +56,8 @@
         (typeattributeset sys_ptrace_subj_type_attribute ARG1)
     )
 
-    (macro transition ((type ARG1))
-        (allow ARG1 common_subj_type_attribute
-            (process
-                (
-                    transition
-                )
-            )
-        )
-    )
-
     (macro unconfined_subj_type ((type ARG1))
         (typeattributeset unconfined_subj_type_attribute ARG1)
-    )
-
-    (macro unix_dgram_socket_sendto ((type ARG1))
-        (allow ARG1 self create_unix_dgram_socket_perms)
-        (allow ARG1 common_subj_type_attribute
-            (unix_dgram_socket
-                (
-                    sendto
-                )
-            )
-        )
-    )
-
-    (macro unix_stream_socket_connectto ((type ARG1))
-        (allow ARG1 self create_unix_stream_socket_perms)
-        (allow ARG1 common_subj_type_attribute
-            (unix_stream_socket
-                (
-                    connectto
-                )
-            )
-        )
-    )
-
-    (macro use_fd ((type ARG1))
-        (allow ARG1 common_subj_type_attribute
-            (fd
-                (
-                    use
-                )
-            )
-        )
     )
 
     (macro use_interactive_fd_subj_type ((type ARG1))
@@ -516,6 +124,12 @@
     (allow common_subj_type_attribute self rw_file_perms)
 
     (call subj_type
+        (
+            common_subj_type_attribute
+        )
+    )
+
+    (call rbacsep_target_subj_type
         (
             common_subj_type_attribute
         )
@@ -1054,6 +668,407 @@
     (block common_subj
 
         ;
+        ; common_subj macros
+        ;
+
+        (macro dontaudit_noatsecure ((type ARG1))
+            (dontaudit ARG1 subj_type_attribute
+                (process
+                    (
+                        noatsecure
+                    )
+                )
+            )
+        )
+
+        (macro dontaudit_read_state ((type ARG1))
+            (dontaudit ARG1 subj_type_attribute
+                (process_state
+                    (
+                        read
+                    )
+                )
+            )
+        )
+
+        (macro dontaudit_rlimitinh ((type ARG1))
+            (dontaudit ARG1 subj_type_attribute
+                (process
+                    (
+                        rlimitinh
+                    )
+                )
+            )
+        )
+
+        (macro dontaudit_siginh ((type ARG1))
+            (dontaudit ARG1 subj_type_attribute
+                (process
+                    (
+                        siginh
+                    )
+                )
+            )
+        )
+
+        (macro append_inherited_fifo_files ((type ARG1))
+            (allow ARG1 subj_type_attribute
+                append_inherited_fifo_file_perms)
+            (call use_fd
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro append_inherited_unix_stream_sockets ((type ARG1))
+            (allow ARG1 subj_type_attribute
+                append_inherited_unix_stream_socket_perms)
+            (call use_fd
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro create_keyring ((type ARG1))
+            (allow ARG1 self
+                (process
+                    (
+                        setkeycreate
+                    )
+                )
+            )
+            (allow ARG1 subj_type_attribute create_key_perms)
+        )
+
+        (macro dyntransition ((type ARG1))
+            (allow ARG1 subj_type_attribute
+                (process
+                    (
+                        dyntransition
+                    )
+                )
+            )
+            (call dyntransition_subj_type
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro getattr ((type ARG1))
+            (allow ARG1 subj_type_attribute
+                (process
+                    (
+                        getattr
+                    )
+                )
+            )
+        )
+
+        (macro getpgid ((type ARG1))
+            (allow ARG1 subj_type_attribute
+                (process
+                    (
+                        getpgid
+                    )
+                )
+            )
+        )
+
+        (macro getsched ((type ARG1))
+            (allow ARG1 subj_type_attribute
+                (process
+                    (
+                        getsched
+                    )
+                )
+            )
+        )
+
+        (macro getsession ((type ARG1))
+            (allow ARG1 subj_type_attribute
+                (process
+                    (
+                        getsession
+                    )
+                )
+            )
+        )
+
+        (macro link_keyring ((type ARG1))
+            (allow ARG1 subj_type_attribute link_key_perms)
+        )
+
+
+        (macro noatsecure ((type ARG1))
+            (allow ARG1 subj_type_attribute
+                (process
+                    (
+                        noatsecure
+                    )
+                )
+            )
+        )
+
+        (macro ps ((type ARG1))
+            (allow ARG1 subj_type_attribute
+                (state
+                    (
+                        ps
+                    )
+                )
+            )
+        )
+
+        (macro ptrace ((type ARG1))
+            (allow ARG1 subj_type_attribute
+                (process
+                    (
+                        ptrace
+                    )
+                )
+            )
+            (call sys_ptrace_subj_type
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro read_state ((type ARG1))
+            (allow ARG1 subj_type_attribute
+                (state
+                    (
+                        read
+                    )
+                )
+            )
+        )
+
+        (macro rlimitinh ((type ARG1))
+            (allow ARG1 subj_type_attribute
+                (process
+                    (
+                        rlimitinh
+                    )
+                )
+            )
+        )
+
+        (macro rw_fifo_files ((type ARG1))
+            (allow ARG1 subj_type_attribute rw_fifo_file_perms)
+        )
+
+        (macro rw_inherited_fifo_files ((type ARG1))
+            (allow ARG1 subj_type_attribute
+                rw_inherited_fifo_file_perms)
+            (call use_fd
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rw_inherited_tcp_sockets ((type ARG1))
+            (allow ARG1 subj_type_attribute
+                rw_inherited_tcp_socket_perms)
+            (call use_fd
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rw_inherited_unix_dgram_sockets ((type ARG1))
+            (allow ARG1 subj_type_attribute
+                rw_inherited_unix_dgram_socket_perms)
+            (call use_fd
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rw_inherited_unix_stream_sockets ((type ARG1))
+            (allow ARG1 subj_type_attribute
+                rw_inherited_unix_stream_socket_perms)
+            (call use_fd
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rw_unix_stream_sockets ((type ARG1))
+            (allow ARG1 subj_type_attribute rw_unix_stream_socket_perms)
+        )
+
+        (macro setkeycreate ((type ARG1))
+            (allow ARG1 subj_type_attribute
+                (process
+                    (
+                        setkeycreate
+                    )
+                )
+            )
+        )
+
+        (macro setpgid ((type ARG1))
+            (allow ARG1 subj_type_attribute
+                (process
+                    (
+                        setpgid
+                    )
+                )
+            )
+        )
+
+        (macro setrlimit ((type ARG1))
+            (allow ARG1 subj_type_attribute
+                (process
+                    (
+                        setrlimit
+                    )
+                )
+            )
+        )
+
+        (macro setsched ((type ARG1))
+            (allow ARG1 subj_type_attribute
+                (process
+                    (
+                        setsched
+                    )
+                )
+            )
+        )
+
+        (macro share ((type ARG1))
+            (allow ARG1 subj_type_attribute
+                (process
+                    (
+                        share
+                    )
+                )
+            )
+        )
+
+        (macro sigchld ((type ARG1))
+            (allow ARG1 subj_type_attribute
+                (process
+                    (
+                        sigchld
+                    )
+                )
+            )
+        )
+
+        (macro siginh ((type ARG1))
+            (allow ARG1 subj_type_attribute
+                (process
+                    (
+                        siginh
+                    )
+                )
+            )
+        )
+
+        (macro sigkill ((type ARG1))
+            (allow ARG1 self
+                (capability
+                    (
+                        kill
+                    )
+                )
+            )
+            (allow ARG1 subj_type_attribute
+                (process
+                    (
+                        sigkill
+                    )
+                )
+            )
+        )
+
+        (macro signal ((type ARG1))
+            (allow ARG2 subj_type_attribute
+                (process
+                    (
+                        signal
+                    )
+                )
+            )
+        )
+
+        (macro signull ((type ARG1))
+            (allow ARG1 subj_type_attribute
+                (process
+                    (
+                        signull
+                    )
+                )
+            )
+        )
+
+        (macro sigstop ((type ARG1))
+            (allow ARG1 subj_type_attribute
+                (process
+                    (
+                        sigstop
+                    )
+                )
+            )
+        )
+
+        (macro subj_type ((type ARG1))
+            (typeattributeset subj_type_attribute ARG1)
+        )
+
+        (macro transition ((type ARG1))
+            (allow ARG1 subj_type_attribute
+                (process
+                    (
+                        transition
+                    )
+                )
+            )
+        )
+
+        (macro unix_dgram_socket_sendto ((type ARG1))
+            (allow ARG1 self create_unix_dgram_socket_perms)
+            (allow ARG1 subj_type_attribute
+                (unix_dgram_socket
+                    (
+                        sendto
+                    )
+                )
+            )
+        )
+
+        (macro unix_stream_socket_connectto ((type ARG1))
+            (allow ARG1 self create_unix_stream_socket_perms)
+            (allow ARG1 subj_type_attribute
+                (unix_stream_socket
+                    (
+                        connectto
+                    )
+                )
+            )
+        )
+
+        (macro use_fd ((type ARG1))
+            (allow ARG1 subj_type_attribute
+                (fd
+                    (
+                        use
+                    )
+                )
+            )
+        )
+
+        ;
         ; common_subj templates
         ;
 
@@ -1065,7 +1080,16 @@
 
             (blockabstract subj_stub)
 
+            (typeattribute subj_type_attribute)
+
             (type subj)
+
+            (call subj_type
+                (
+                    subj
+                )
+            )
+
             (call subj.common_subj_type
                 (
                     subj
