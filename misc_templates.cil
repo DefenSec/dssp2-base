@@ -285,7 +285,7 @@
     (blockabstract agent_base_template)
 
     (blockinherit cmd.cmd_file.obj_template)
-    (blockinherit subj.template)
+    (blockinherit subj.common_subj.template)
 
     (call entry
         (
