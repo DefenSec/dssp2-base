@@ -208,7 +208,7 @@
             )
         )
 
-        (macro entry_files ((type ARG1))
+        (macro entry ((type ARG1))
             (allow ARG1 cmd_file
                 (file
                     (
@@ -927,7 +927,7 @@
             )
         )
 
-        (macro entry_files ((type ARG1))
+        (macro entry ((type ARG1))
             (allow ARG1 obj_type_attribute
                 (file
                     (
@@ -1161,7 +1161,7 @@
                 )
             )
 
-            (macro entry_files ((type ARG1))
+            (macro entry ((type ARG1))
                 (allow ARG1 cmd_file
                     (file
                         (
