@@ -233,7 +233,7 @@
     )
 
     (macro rw_fifo_files ((type ARG1))
-        (allow ARG1 common_subj_type_attribute rw_fifp_file_perms)
+        (allow ARG1 common_subj_type_attribute rw_fifo_file_perms)
     )
 
     (macro rw_inherited_fifo_files ((type ARG1))
@@ -1247,7 +1247,7 @@
         )
 
         (macro rw_fifo_files ((type ARG1))
-            (allow ARG1 subj rw_fifp_file_perms)
+            (allow ARG1 subj rw_fifo_file_perms)
         )
 
         (macro rw_inherited_fifo_files ((type ARG1))
