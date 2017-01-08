@@ -312,12 +312,7 @@
     (roletype role_attribute subj)
 
     (optional hybrid_agent_template_optional_user
-        (call user.pty.rw_inherited_chr_files
-            (
-                subj
-            )
-        )
-        (call user.tty.rw_inherited_chr_files
+        (call user.terminals.rw_inherited_chr_files
             (
                 subj
             )
@@ -358,12 +353,7 @@
     (roletype role_attribute subj)
 
     (optional user_agent_template_optional_user
-        (call user.pty.rw_inherited_chr_files
-            (
-                subj
-            )
-        )
-        (call user.tty.rw_inherited_chr_files
+        (call user.terminals.rw_inherited_chr_files
             (
                 subj
             )
