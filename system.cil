@@ -417,7 +417,7 @@
 
     (roletype role isid)
 
-    (call subj.common_subj_type
+    (call subj.common_subj.subj_type
         (
             isid
         )
