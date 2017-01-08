@@ -1054,16 +1054,16 @@
     (block common_subj
 
         ;
-        ; common_sub templates
+        ; common_subj templates
         ;
 
-        (block stub
+        (block subj_stub
 
             ;
-            ; subj.common_subj.stub policy
+            ; subj.common_subj.subj_stub policy
             ;
 
-            (blockabstract stub)
+            (blockabstract subj_stub)
 
             (type subj)
             (call subj.common_subj_type
@@ -1073,10 +1073,10 @@
             )
         )
 
-        (block template
+        (block subj_template
 
             ;
-            ; subj.common_subj.template macros
+            ; subj.common_subj.subj_template macros
             ;
 
             (macro dontaudit_noatsecure ((type ARG1))
@@ -1455,12 +1455,12 @@
         )
 
         ;
-        ; subj.common_subj.template policy
+        ; subj.common_subj.subj_template policy
         ;
 
-        (blockabstract template)
+        (blockabstract subj_template)
 
-        (blockinherit subj.common_subj.stub)
+        (blockinherit subj.common_subj.subj_stub)
     )
 
     ;
