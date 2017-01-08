@@ -420,8 +420,7 @@
     )
 
     (macro unix_dgram_socket_sendto ((type ARG1))
-        (allow ARG1 common_subj_type_attribute
-            create_unix_dgram_socket_perms)
+        (allow ARG1 self create_unix_dgram_socket_perms)
         (allow ARG1 common_subj_type_attribute
             (unix_dgram_socket
                 (
@@ -432,8 +431,7 @@
     )
 
     (macro unix_stream_socket_connectto ((type ARG1))
-        (allow ARG1 common_subj_type_attribute
-            create_unix_stream_socket_perms)
+        (allow ARG1 self create_unix_stream_socket_perms)
         (allow ARG1 common_subj_type_attribute
             (unix_stream_socket
                 (
@@ -1413,7 +1411,7 @@
         )
 
         (macro unix_dgram_socket_sendto ((type ARG1))
-            (allow ARG1 subj create_unix_dgram_socket_perms)
+            (allow ARG1 self create_unix_dgram_socket_perms)
             (allow ARG1 subj
                 (unix_dgram_socket
                     (
@@ -1424,7 +1422,7 @@
         )
 
         (macro unix_stream_socket_connectto ((type ARG1))
-            (allow ARG1 subj create_unix_stream_socket_perms)
+            (allow ARG1 self create_unix_stream_socket_perms)
             (allow ARG1 subj
                 (unix_stream_socket
                     (
