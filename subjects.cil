@@ -920,6 +920,8 @@
         ; common_subj policy
         ;
 
+        (typeattribute subj_type_attribute)
+
         (allow subj_type_attribute self
             (process
                 (
@@ -1081,8 +1083,7 @@
             (typeattribute subj_type_attribute)
 
             (type subj)
-
-            (call subj_type
+            (call subj.common_subj.subj_type
                 (
                     subj
                 )
