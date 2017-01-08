@@ -729,7 +729,7 @@
     )
 
     (optional sys_optional_mount
-        (call mount.use_fd_subj_type
+        (call mount.use_fd
             (
                 isid
             )
