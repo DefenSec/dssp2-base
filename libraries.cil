@@ -1249,156 +1249,7 @@
         ; lib_file macros
         ;
 
-        (macro append_files ((type ARG1))
-            (allow ARG1 obj_type_attribute append_file_perms)
-            (call generic_libraries.read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro create_files ((type ARG1))
-            (allow ARG1 obj_type_attribute create_file_perms)
-            (call generic_libraries.read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro delete_files ((type ARG1))
-            (allow ARG1 obj_type_attribute delete_file_perms)
-            (call generic_libraries.read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro execute ((type ARG1))
-            (allow ARG1 obj_type_attribute exec_file_perms)
-            (call generic_libraries.read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro getattr_files ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (file
-                    (
-                        getattr
-                    )
-                )
-            )
-            (call generic_libraries.read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro manage_files ((type ARG1))
-            (allow ARG1 obj_type_attribute manage_file_perms)
-            (call generic_libraries.read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro mmap ((type ARG1))
-            (allow ARG1 obj_type_attribute mmap_file_perms)
-            (call generic_libraries.read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro obj_type ((type ARG1))
-            (typeattributeset obj_type_attribute ARG1)
-        )
-
-        (macro read_files ((type ARG1))
-            (allow ARG1 obj_type_attribute read_file_perms)
-            (call generic_libraries.read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabel_files ((type ARG1))
-            (allow ARG1 obj_type_attribute relabel_file_perms)
-            (call generic_libraries.read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabelfrom_files ((type ARG1))
-            (allow ARG1 obj_type_attribute relabelfrom_file_perms)
-            (call generic_libraries.read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabelto_files ((type ARG1))
-            (allow ARG1 obj_type_attribute relabelto_file_perms)
-            (call generic_libraries.read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro rename_files ((type ARG1))
-            (allow ARG1 obj_type_attribute rename_file_perms)
-            (call generic_libraries.read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro rw_files ((type ARG1))
-            (allow ARG1 obj_type_attribute rw_file_perms)
-            (call generic_libraries.read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro setattr_files ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (file
-                    (
-                        setattr
-                    )
-                )
-            )
-            (call generic_libraries.read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro write_files ((type ARG1))
-            (allow ARG1 obj_type_attribute write_file_perms)
-            (call generic_libraries.read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+        (blockinherit obj_macro_template)
 
         ;
         ; lib_file policy
@@ -1415,6 +1266,170 @@
         ;
         ; lib_file templates
         ;
+
+        (block obj_macro_template
+
+            ;
+            ; lib.lib_file.obj_macro_template macros
+            ;
+
+            (macro append_files ((type ARG1))
+                (allow ARG1 obj_type_attribute append_file_perms)
+                (call lib.generic_libraries.read_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro create_files ((type ARG1))
+                (allow ARG1 obj_type_attribute create_file_perms)
+                (call lib.generic_libraries.read_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro delete_files ((type ARG1))
+                (allow ARG1 obj_type_attribute delete_file_perms)
+                (call lib.generic_libraries.read_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro execute ((type ARG1))
+                (allow ARG1 obj_type_attribute exec_file_perms)
+                (call lib.generic_libraries.read_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro getattr_files ((type ARG1))
+                (allow ARG1 obj_type_attribute
+                    (file
+                        (
+                            getattr
+                        )
+                    )
+                )
+                (call lib.generic_libraries.read_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro manage_files ((type ARG1))
+                (allow ARG1 obj_type_attribute manage_file_perms)
+                (call lib.generic_libraries.read_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro mmap ((type ARG1))
+                (allow ARG1 obj_type_attribute mmap_file_perms)
+                (call lib.generic_libraries.read_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro obj_type ((type ARG1))
+                (typeattributeset obj_type_attribute ARG1)
+            )
+
+            (macro read_files ((type ARG1))
+                (allow ARG1 obj_type_attribute read_file_perms)
+                (call lib.generic_libraries.read_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro relabel_files ((type ARG1))
+                (allow ARG1 obj_type_attribute relabel_file_perms)
+                (call lib.generic_libraries.read_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro relabelfrom_files ((type ARG1))
+                (allow ARG1 obj_type_attribute relabelfrom_file_perms)
+                (call lib.generic_libraries.read_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro relabelto_files ((type ARG1))
+                (allow ARG1 obj_type_attribute relabelto_file_perms)
+                (call lib.generic_libraries.read_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro rename_files ((type ARG1))
+                (allow ARG1 obj_type_attribute rename_file_perms)
+                (call lib.generic_libraries.read_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro rw_files ((type ARG1))
+                (allow ARG1 obj_type_attribute rw_file_perms)
+                (call lib.generic_libraries.read_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro setattr_files ((type ARG1))
+                (allow ARG1 obj_type_attribute
+                    (file
+                        (
+                            setattr
+                        )
+                    )
+                )
+                (call lib.generic_libraries.read_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro write_files ((type ARG1))
+                (allow ARG1 obj_type_attribute write_file_perms)
+                (call lib.generic_libraries.read_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            ;
+            ; lib.lib_file.obj_macro_template policy
+            ;
+
+            (blockabstract obj_macro_template)
+        )
 
         (block obj_stub
 

@@ -4399,85 +4399,7 @@
         ; mountpoint macros
         ;
 
-        (macro dontaudit_audit_access_dirs ((type ARG1))
-            (dontaudit ARG1 obj_type_attribute
-                (dir
-                    (
-                        audit_access
-                    )
-                )
-            )
-        )
-
-        (macro dontaudit_list ((type ARG1))
-            (dontaudit ARG1 obj_type_attribute list_dir_perms)
-        )
-
-        (macro audit_write_access_dirs ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (dir
-                    (
-                        getattr
-                        write
-                    )
-                )
-            )
-        )
-
-        (macro getattr_dirs ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (dirs
-                    (
-                        getattr
-                    )
-                )
-            )
-        )
-
-        (macro list ((type ARG1))
-            (allow ARG1 obj_type_attribute list_dir_perms)
-        )
-
-        (macro mounton_dirs ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (dir
-                    (
-                        mounton
-                    )
-                )
-            )
-        )
-
-        (macro obj_type ((type ARG1))
-            (typeattributeset obj_type_attribute ARG1)
-        )
-
-        (macro obj_type_transition ((type ARG1)(type ARG2)(class ARG3)(name ARG4))
-            (typetransition ARG1 obj_type_attribute ARG3 ARG4 ARG2)
-            (call rw_dirs
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabel_dirs ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (dirs
-                    (
-                        relabel
-                    )
-                )
-            )
-        )
-
-        (macro rw_dirs ((type ARG1))
-            (allow ARG1 obj_type_attribute rw_dir_perms)
-        )
-
-        (macro search ((type ARG1))
-            (allow ARG1 obj_type_attribute search_dir_perms)
-        )
+        (blockinherit obj_macro_template)
 
         ;
         ; mountpoint policy
@@ -4491,6 +4413,103 @@
                     mounton
                 )
             )
+        )
+
+        ;
+        ; mountpoint templates
+        ;
+
+        (block obj_macro_template
+
+            ;
+            ; sys.mountpoint.obj_macro_template macros
+            ;
+
+            (macro dontaudit_audit_access_dirs ((type ARG1))
+                (dontaudit ARG1 obj_type_attribute
+                    (dir
+                        (
+                            audit_access
+                        )
+                    )
+                )
+            )
+
+            (macro dontaudit_list ((type ARG1))
+                (dontaudit ARG1 obj_type_attribute list_dir_perms)
+            )
+
+            (macro audit_write_access_dirs ((type ARG1))
+                (allow ARG1 obj_type_attribute
+                    (dir
+                        (
+                            getattr
+                            write
+                        )
+                    )
+                )
+            )
+
+            (macro getattr_dirs ((type ARG1))
+                (allow ARG1 obj_type_attribute
+                    (dirs
+                        (
+                            getattr
+                        )
+                    )
+                )
+            )
+
+            (macro list ((type ARG1))
+                (allow ARG1 obj_type_attribute list_dir_perms)
+            )
+
+            (macro mounton_dirs ((type ARG1))
+                (allow ARG1 obj_type_attribute
+                    (dir
+                        (
+                            mounton
+                        )
+                    )
+                )
+            )
+
+            (macro obj_type ((type ARG1))
+                (typeattributeset obj_type_attribute ARG1)
+            )
+
+            (macro obj_type_transition ((type ARG1)(type ARG2)(class ARG3)(name ARG4))
+                (typetransition ARG1 obj_type_attribute ARG3 ARG4 ARG2)
+                (call rw_dirs
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro relabel_dirs ((type ARG1))
+                (allow ARG1 obj_type_attribute
+                    (dirs
+                        (
+                            relabel
+                        )
+                    )
+                )
+            )
+
+            (macro rw_dirs ((type ARG1))
+                (allow ARG1 obj_type_attribute rw_dir_perms)
+            )
+
+            (macro search ((type ARG1))
+                (allow ARG1 obj_type_attribute search_dir_perms)
+            )
+
+            ;
+            ; sys.mountpoint.obj_macro_template policy
+            ;
+
+            (blockabstract obj_macro_template)
         )
     )
 
@@ -5744,323 +5763,7 @@
         ; proc_file macros
         ;
 
-        (macro append_files ((type ARG1))
-            (allow ARG1 obj_type_attribute append_file_perms)
-            (call dump_kernel_subj_type
-                (
-                    ARG1
-                )
-            )
-            (call read_kernel_msg_subj_type
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro getattr ((type ARG1))
-            (call getattr_dirs
-                (
-                    ARG1
-                )
-            )
-            (call getattr_files
-                (
-                    ARG1
-                )
-            )
-            (call getattr_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro getattr_dirs ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (dir
-                    (
-                        getattr
-                    )
-                )
-            )
-        )
-
-        (macro getattr_files ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (file
-                    (
-                        getattr
-                    )
-                )
-            )
-        )
-
-        (macro getattr_lnk_files ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (lnk_file
-                    (
-                        getattr
-                    )
-                )
-            )
-        )
-
-        (macro list ((type ARG1))
-            (allow ARG1 obj_type_attribute list_dir_perms)
-        )
-
-        (macro obj_type ((type ARG1))
-            (typeattributeset obj_type_attribute ARG1)
-        )
-
-        (macro read ((type ARG1))
-            (call list
-                (
-                    ARG1
-                )
-            )
-            (call read_files
-                (
-                    ARG1
-                )
-            )
-            (call read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro read_files ((type ARG1))
-            (allow ARG1 obj_type_attribute read_file_perms)
-            (call dump_kernel_subj_type
-                (
-                    ARG1
-                )
-            )
-            (call read_kernel_msg_subj_type
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro read_lnk_files ((type ARG1))
-            (allow ARG1 obj_type_attribute read_lnk_file_perms)
-        )
-
-        (macro relabel ((type ARG1))
-            (call relabel_dirs
-                (
-                    ARG1
-                )
-            )
-            (call relabel_files
-                (
-                    ARG1
-                )
-            )
-            (call relabel_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabel_dirs ((type ARG1))
-            (allow ARG1 obj_type_attribute relabel_dir_perms)
-        )
-
-        (macro relabel_files ((type ARG1))
-            (allow ARG1 obj_type_attribute relabel_file_perms)
-        )
-
-        (macro relabel_lnk_files ((type ARG1))
-            (allow ARG1 obj_type_attribute relabel_lnk_file_perms)
-        )
-
-        (macro relabelfrom ((type ARG1))
-            (call relabelfrom_dirs
-                (
-                    ARG1
-                )
-            )
-            (call relabelfrom_files
-                (
-                    ARG1
-                )
-            )
-            (call relabelfrom_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabelfrom_dirs ((type ARG1))
-            (allow ARG1 obj_type_attribute relabelfrom_dir_perms)
-        )
-
-        (macro relabelfrom_files ((type ARG1))
-            (allow ARG1 obj_type_attribute relabelfrom_file_perms)
-        )
-
-        (macro relabelfrom_lnk_files ((type ARG1))
-            (allow ARG1 obj_type_attribute relabelfrom_lnk_file_perms)
-        )
-
-        (macro relabelto ((type ARG1))
-            (call relabelto_dirs
-                (
-                    ARG1
-                )
-            )
-            (call relabelto_files
-                (
-                    ARG1
-                )
-            )
-            (call relabelto_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabelto_dirs ((type ARG1))
-            (allow ARG1 obj_type_attribute relabelto_dir_perms)
-        )
-
-        (macro relabelto_files ((type ARG1))
-            (allow ARG1 obj_type_attribute relabelto_file_perms)
-        )
-
-        (macro relabelto_lnk_files ((type ARG1))
-            (allow ARG1 obj_type_attribute relabelto_lnk_file_perms)
-        )
-
-        (macro rw ((type ARG1))
-            (call rw_dirs
-                (
-                    ARG1
-                )
-            )
-            (call rw_files
-                (
-                    ARG1
-                )
-            )
-            (call rw_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro rw_dirs ((type ARG1))
-            (allow ARG1 obj_type_attribute rw_dir_perms)
-        )
-
-        (macro rw_files ((type ARG1))
-            (allow ARG1 obj_type_attribute rw_file_perms)
-            (call dump_kernel_subj_type
-                (
-                    ARG1
-                )
-            )
-            (call read_kernel_msg_subj_type
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro rw_lnk_files ((type ARG1))
-            (allow ARG1 obj_type_attribute rw_lnk_file_perms)
-        )
-
-        (macro search ((type ARG1))
-            (allow ARG1 obj_type_attribute search_dir_perms)
-        )
-
-        (macro setattr ((type ARG1))
-            (call setattr_dirs
-                (
-                    ARG1
-                )
-            )
-            (call setattr_files
-                (
-                    ARG1
-                )
-            )
-            (call setattr_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro setattr_dirs ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (dir
-                    (
-                        setattr
-                    )
-                )
-            )
-        )
-
-        (macro setattr_files ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (file
-                    (
-                        setattr
-                    )
-                )
-            )
-        )
-
-        (macro setattr_lnk_files ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (lnk_file
-                    (
-                        setattr
-                    )
-                )
-            )
-        )
-
-        (macro write ((type ARG1))
-            (call write_dirs
-                (
-                    ARG1
-                )
-            )
-            (call write_files
-                (
-                    ARG1
-                )
-            )
-            (call write_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro write_dirs ((type ARG1))
-            (allow ARG1 obj_type_attribute write_dir_perms)
-        )
-
-        (macro write_files ((type ARG1))
-            (allow ARG1 obj_type_attribute write_file_perms)
-        )
-
-        (macro write_lnk_files ((type ARG1))
-            (allow ARG1 obj_type_attribute write_lnk_file_perms)
-        )
+        (blockinherit obj_macro_template)
 
         ;
         ; proc_file policy
@@ -6084,6 +5787,337 @@
         ;
         ; proc_file templates
         ;
+
+        (block obj_macro_template
+
+            ;
+            ; sys.proc_file.obj_macro_template macros
+            ;
+
+            (macro append_files ((type ARG1))
+                (allow ARG1 obj_type_attribute append_file_perms)
+                (call sys.dump_kernel_subj_type
+                    (
+                        ARG1
+                    )
+                )
+                (call sys.read_kernel_msg_subj_type
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro getattr ((type ARG1))
+                (call getattr_dirs
+                    (
+                        ARG1
+                    )
+                )
+                (call getattr_files
+                    (
+                        ARG1
+                    )
+                )
+                (call getattr_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro getattr_dirs ((type ARG1))
+                (allow ARG1 obj_type_attribute
+                    (dir
+                        (
+                            getattr
+                        )
+                    )
+                )
+            )
+
+            (macro getattr_files ((type ARG1))
+                (allow ARG1 obj_type_attribute
+                    (file
+                        (
+                            getattr
+                        )
+                    )
+                )
+            )
+
+            (macro getattr_lnk_files ((type ARG1))
+                (allow ARG1 obj_type_attribute
+                    (lnk_file
+                        (
+                            getattr
+                        )
+                    )
+                )
+            )
+
+            (macro list ((type ARG1))
+                (allow ARG1 obj_type_attribute list_dir_perms)
+            )
+
+            (macro obj_type ((type ARG1))
+                (typeattributeset obj_type_attribute ARG1)
+            )
+
+            (macro read ((type ARG1))
+                (call list
+                    (
+                        ARG1
+                    )
+                )
+                (call read_files
+                    (
+                        ARG1
+                    )
+                )
+                (call read_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro read_files ((type ARG1))
+                (allow ARG1 obj_type_attribute read_file_perms)
+                (call sys.dump_kernel_subj_type
+                    (
+                        ARG1
+                    )
+                )
+                (call sys.read_kernel_msg_subj_type
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro read_lnk_files ((type ARG1))
+                (allow ARG1 obj_type_attribute read_lnk_file_perms)
+            )
+
+            (macro relabel ((type ARG1))
+                (call relabel_dirs
+                    (
+                        ARG1
+                    )
+                )
+                (call relabel_files
+                    (
+                        ARG1
+                    )
+                )
+                (call relabel_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro relabel_dirs ((type ARG1))
+                (allow ARG1 obj_type_attribute relabel_dir_perms)
+            )
+
+            (macro relabel_files ((type ARG1))
+                (allow ARG1 obj_type_attribute relabel_file_perms)
+            )
+
+            (macro relabel_lnk_files ((type ARG1))
+                (allow ARG1 obj_type_attribute relabel_lnk_file_perms)
+            )
+
+            (macro relabelfrom ((type ARG1))
+                (call relabelfrom_dirs
+                    (
+                        ARG1
+                    )
+                )
+                (call relabelfrom_files
+                    (
+                        ARG1
+                    )
+                )
+                (call relabelfrom_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro relabelfrom_dirs ((type ARG1))
+                (allow ARG1 obj_type_attribute relabelfrom_dir_perms)
+            )
+
+            (macro relabelfrom_files ((type ARG1))
+                (allow ARG1 obj_type_attribute relabelfrom_file_perms)
+            )
+
+            (macro relabelfrom_lnk_files ((type ARG1))
+                (allow ARG1 obj_type_attribute relabelfrom_lnk_file_perms)
+            )
+
+            (macro relabelto ((type ARG1))
+                (call relabelto_dirs
+                    (
+                        ARG1
+                    )
+                )
+                (call relabelto_files
+                    (
+                        ARG1
+                    )
+                )
+                (call relabelto_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro relabelto_dirs ((type ARG1))
+                (allow ARG1 obj_type_attribute relabelto_dir_perms)
+            )
+
+            (macro relabelto_files ((type ARG1))
+                (allow ARG1 obj_type_attribute relabelto_file_perms)
+            )
+
+            (macro relabelto_lnk_files ((type ARG1))
+                (allow ARG1 obj_type_attribute relabelto_lnk_file_perms)
+            )
+
+            (macro rw ((type ARG1))
+                (call rw_dirs
+                    (
+                        ARG1
+                    )
+                )
+                (call rw_files
+                    (
+                        ARG1
+                    )
+                )
+                (call rw_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro rw_dirs ((type ARG1))
+                (allow ARG1 obj_type_attribute rw_dir_perms)
+            )
+
+            (macro rw_files ((type ARG1))
+                (allow ARG1 obj_type_attribute rw_file_perms)
+                (call sys.dump_kernel_subj_type
+                    (
+                        ARG1
+                    )
+                )
+                (call sys.read_kernel_msg_subj_type
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro rw_lnk_files ((type ARG1))
+                (allow ARG1 obj_type_attribute rw_lnk_file_perms)
+            )
+
+            (macro search ((type ARG1))
+                (allow ARG1 obj_type_attribute search_dir_perms)
+            )
+
+            (macro setattr ((type ARG1))
+                (call setattr_dirs
+                    (
+                        ARG1
+                    )
+                )
+                (call setattr_files
+                    (
+                        ARG1
+                    )
+                )
+                (call setattr_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro setattr_dirs ((type ARG1))
+                (allow ARG1 obj_type_attribute
+                    (dir
+                        (
+                            setattr
+                        )
+                    )
+                )
+            )
+
+            (macro setattr_files ((type ARG1))
+                (allow ARG1 obj_type_attribute
+                    (file
+                        (
+                            setattr
+                        )
+                    )
+                )
+            )
+
+            (macro setattr_lnk_files ((type ARG1))
+                (allow ARG1 obj_type_attribute
+                    (lnk_file
+                        (
+                            setattr
+                        )
+                    )
+                )
+            )
+
+            (macro write ((type ARG1))
+                (call write_dirs
+                    (
+                        ARG1
+                    )
+                )
+                (call write_files
+                    (
+                        ARG1
+                    )
+                )
+                (call write_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro write_dirs ((type ARG1))
+                (allow ARG1 obj_type_attribute write_dir_perms)
+            )
+
+            (macro write_files ((type ARG1))
+                (allow ARG1 obj_type_attribute write_file_perms)
+            )
+
+            (macro write_lnk_files ((type ARG1))
+                (allow ARG1 obj_type_attribute write_lnk_file_perms)
+            )
+
+            ;
+            ; sys.proc_file.obj_macro_template policy
+            ;
+
+            (blockabstract obj_macro_template)
+        )
 
         (block obj_stub
 
@@ -7253,453 +7287,7 @@
         ; sysctl_file macros
         ;
 
-        (macro append_files ((type ARG1))
-            (allow ARG1 obj_type_attribute append_file_perms)
-            (call search
-                (
-                    ARG1
-                )
-            )
-            (call write_security_subj_type
-                (
-                    ARG1
-                )
-            )
-            (call write_usermodehelper_subj_type
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro getattr ((type ARG1))
-            (call getattr_dirs
-                (
-                    ARG1
-                )
-            )
-            (call getattr_files
-                (
-                    ARG1
-                )
-            )
-            (call getattr_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro getattr_dirs ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (dir
-                    (
-                        getattr
-                    )
-                )
-            )
-            (call generic_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro getattr_files ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (file
-                    (
-                        getattr
-                    )
-                )
-            )
-            (call generic_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro getattr_lnk_files ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (lnk_file
-                    (
-                        getattr
-                    )
-                )
-            )
-            (call generic_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro list ((type ARG1))
-            (allow ARG1 obj_type_attribute list_dir_perms)
-            (call generic_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro obj_type ((type ARG1))
-            (typeattributeset obj_type_attribute ARG1)
-        )
-
-        (macro read ((type ARG1))
-            (call list
-                (
-                    ARG1
-                )
-            )
-            (call read_files
-                (
-                    ARG1
-                )
-            )
-            (call read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro read_files ((type ARG1))
-            (allow ARG1 obj_type_attribute read_file_perms)
-            (call generic_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro read_lnk_files ((type ARG1))
-            (allow ARG1 obj_type_attribute read_lnk_file_perms)
-            (call generic_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabel ((type ARG1))
-            (call relabel_dirs
-                (
-                    ARG1
-                )
-            )
-            (call relabel_files
-                (
-                    ARG1
-                )
-            )
-            (call relabel_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabel_dirs ((type ARG1))
-            (allow ARG1 obj_type_attribute relabel_dir_perms)
-            (call generic_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabel_files ((type ARG1))
-            (allow ARG1 obj_type_attribute relabel_file_perms)
-            (call generic_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabel_lnk_files ((type ARG1))
-            (allow ARG1 obj_type_attribute relabel_lnk_file_perms)
-            (call generic_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabelfrom ((type ARG1))
-            (call relabelfrom_dirs
-                (
-                    ARG1
-                )
-            )
-            (call relabelfrom_files
-                (
-                    ARG1
-                )
-            )
-            (call relabelfrom_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabelfrom_dirs ((type ARG1))
-            (allow ARG1 obj_type_attribute relabelfrom_dir_perms)
-            (call generic_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabelfrom_files ((type ARG1))
-            (allow ARG1 obj_type_attribute relabelfrom_file_perms)
-            (call generic_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabelfrom_lnk_files ((type ARG1))
-            (allow ARG1 obj_type_attribute relabelfrom_lnk_file_perms)
-            (call generic_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabelto ((type ARG1))
-            (call relabelto_dirs
-                (
-                    ARG1
-                )
-            )
-            (call relabelto_files
-                (
-                    ARG1
-                )
-            )
-            (call relabelto_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabelto_dirs ((type ARG1))
-            (allow ARG1 obj_type_attribute relabelto_dir_perms)
-            (call generic_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabelto_files ((type ARG1))
-            (allow ARG1 obj_type_attribute relabelto_file_perms)
-            (call generic_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabelto_lnk_files ((type ARG1))
-            (allow ARG1 obj_type_attribute relabelto_lnk_file_perms)
-            (call generic_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro rw ((type ARG1))
-            (call rw_dirs
-                (
-                    ARG1
-                )
-            )
-            (call rw_files
-                (
-                    ARG1
-                )
-            )
-            (call rw_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro rw_dirs ((type ARG1))
-            (allow ARG1 obj_type_attribute rw_dir_perms)
-            (call generic_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro rw_files ((type ARG1))
-            (allow ARG1 obj_type_attribute rw_file_perms)
-            (call generic_sysctl.search
-                (
-                    ARG1
-                )
-            )
-            (call write_security_subj_type
-                (
-                    ARG1
-                )
-            )
-            (call write_usermodehelper_subj_type
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro rw_lnk_files ((type ARG1))
-            (allow ARG1 obj_type_attribute rw_lnk_file_perms)
-            (call generic_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro search ((type ARG1))
-            (allow ARG1 obj_type_attribute search_dir_perms)
-            (call generic_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro setattr ((type ARG1))
-            (call setattr_dirs
-                (
-                    ARG1
-                )
-            )
-            (call setattr_files
-                (
-                    ARG1
-                )
-            )
-            (call setattr_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro setattr_dirs ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (dir
-                    (
-                        setattr
-                    )
-                )
-            )
-            (call generic_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro setattr_files ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (file
-                    (
-                        setattr
-                    )
-                )
-            )
-            (call generic_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro setattr_lnk_files ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (lnk_file
-                    (
-                        setattr
-                    )
-                )
-            )
-            (call generic_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro write ((type ARG1))
-            (call write_dirs
-                (
-                    ARG1
-                )
-            )
-            (call write_files
-                (
-                    ARG1
-                )
-            )
-            (call write_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro write_dirs ((type ARG1))
-            (allow ARG1 obj_type_attribute write_dir_perms)
-            (call generic_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro write_files ((type ARG1))
-            (allow ARG1 obj_type_attribute write_file_perms)
-            (call generic_sysctl.search
-                (
-                    ARG1
-                )
-            )
-            (call write_security_subj_type
-                (
-                    ARG1
-                )
-            )
-            (call write_usermodehelper_subj_type
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro write_lnk_files ((type ARG1))
-            (allow ARG1 obj_type_attribute write_lnk_file_perms)
-            (call generic_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
+        (blockinherit obj_macro_template)
 
         ;
         ; sysctl_file policy
@@ -7716,6 +7304,467 @@
         ;
         ; sysctl_file templates
         ;
+
+        (block obj_macro_template
+
+            ;
+            ;
+            ;
+
+            (macro append_files ((type ARG1))
+                (allow ARG1 obj_type_attribute append_file_perms)
+                (call search
+                    (
+                        ARG1
+                    )
+                )
+                (call sys.write_security_subj_type
+                    (
+                        ARG1
+                    )
+                )
+                (call sys.write_usermodehelper_subj_type
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro getattr ((type ARG1))
+                (call getattr_dirs
+                    (
+                        ARG1
+                    )
+                )
+                (call getattr_files
+                    (
+                        ARG1
+                    )
+                )
+                (call getattr_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro getattr_dirs ((type ARG1))
+                (allow ARG1 obj_type_attribute
+                    (dir
+                        (
+                            getattr
+                        )
+                    )
+                )
+                (call sys.generic_sysctl.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro getattr_files ((type ARG1))
+                (allow ARG1 obj_type_attribute
+                    (file
+                        (
+                            getattr
+                        )
+                    )
+                )
+                (call sys.generic_sysctl.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro getattr_lnk_files ((type ARG1))
+                (allow ARG1 obj_type_attribute
+                    (lnk_file
+                        (
+                            getattr
+                        )
+                    )
+                )
+                (call sys.generic_sysctl.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro list ((type ARG1))
+                (allow ARG1 obj_type_attribute list_dir_perms)
+                (call sys.generic_sysctl.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro obj_type ((type ARG1))
+                (typeattributeset obj_type_attribute ARG1)
+            )
+
+            (macro read ((type ARG1))
+                (call list
+                    (
+                        ARG1
+                    )
+                )
+                (call read_files
+                    (
+                        ARG1
+                    )
+                )
+                (call read_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro read_files ((type ARG1))
+                (allow ARG1 obj_type_attribute read_file_perms)
+                (call sys.generic_sysctl.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro read_lnk_files ((type ARG1))
+                (allow ARG1 obj_type_attribute read_lnk_file_perms)
+                (call sys.generic_sysctl.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro relabel ((type ARG1))
+                (call relabel_dirs
+                    (
+                        ARG1
+                    )
+                )
+                (call relabel_files
+                    (
+                        ARG1
+                    )
+                )
+                (call relabel_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro relabel_dirs ((type ARG1))
+                (allow ARG1 obj_type_attribute relabel_dir_perms)
+                (call sys.generic_sysctl.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro relabel_files ((type ARG1))
+                (allow ARG1 obj_type_attribute relabel_file_perms)
+                (call sys.generic_sysctl.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro relabel_lnk_files ((type ARG1))
+                (allow ARG1 obj_type_attribute relabel_lnk_file_perms)
+                (call sys.generic_sysctl.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro relabelfrom ((type ARG1))
+                (call relabelfrom_dirs
+                    (
+                        ARG1
+                    )
+                )
+                (call relabelfrom_files
+                    (
+                        ARG1
+                    )
+                )
+                (call relabelfrom_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro relabelfrom_dirs ((type ARG1))
+                (allow ARG1 obj_type_attribute relabelfrom_dir_perms)
+                (call sys.generic_sysctl.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro relabelfrom_files ((type ARG1))
+                (allow ARG1 obj_type_attribute relabelfrom_file_perms)
+                (call sys.generic_sysctl.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro relabelfrom_lnk_files ((type ARG1))
+                (allow ARG1 obj_type_attribute relabelfrom_lnk_file_perms)
+                (call sys.generic_sysctl.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro relabelto ((type ARG1))
+                (call relabelto_dirs
+                    (
+                        ARG1
+                    )
+                )
+                (call relabelto_files
+                    (
+                        ARG1
+                    )
+                )
+                (call relabelto_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro relabelto_dirs ((type ARG1))
+                (allow ARG1 obj_type_attribute relabelto_dir_perms)
+                (call sys.generic_sysctl.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro relabelto_files ((type ARG1))
+                (allow ARG1 obj_type_attribute relabelto_file_perms)
+                (call sys.generic_sysctl.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro relabelto_lnk_files ((type ARG1))
+                (allow ARG1 obj_type_attribute relabelto_lnk_file_perms)
+                (call sys.generic_sysctl.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro rw ((type ARG1))
+                (call rw_dirs
+                    (
+                        ARG1
+                    )
+                )
+                (call rw_files
+                    (
+                        ARG1
+                    )
+                )
+                (call rw_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro rw_dirs ((type ARG1))
+                (allow ARG1 obj_type_attribute rw_dir_perms)
+                (call sys.generic_sysctl.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro rw_files ((type ARG1))
+                (allow ARG1 obj_type_attribute rw_file_perms)
+                (call sys.generic_sysctl.search
+                    (
+                        ARG1
+                    )
+                )
+                (call sys.write_security_subj_type
+                    (
+                        ARG1
+                    )
+                )
+                (call sys.write_usermodehelper_subj_type
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro rw_lnk_files ((type ARG1))
+                (allow ARG1 obj_type_attribute rw_lnk_file_perms)
+                (call sys.generic_sysctl.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro search ((type ARG1))
+                (allow ARG1 obj_type_attribute search_dir_perms)
+                (call sys.generic_sysctl.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro setattr ((type ARG1))
+                (call setattr_dirs
+                    (
+                        ARG1
+                    )
+                )
+                (call setattr_files
+                    (
+                        ARG1
+                    )
+                )
+                (call setattr_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro setattr_dirs ((type ARG1))
+                (allow ARG1 obj_type_attribute
+                    (dir
+                        (
+                            setattr
+                        )
+                    )
+                )
+                (call sys.generic_sysctl.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro setattr_files ((type ARG1))
+                (allow ARG1 obj_type_attribute
+                    (file
+                        (
+                            setattr
+                        )
+                    )
+                )
+                (call sys.generic_sysctl.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro setattr_lnk_files ((type ARG1))
+                (allow ARG1 obj_type_attribute
+                    (lnk_file
+                        (
+                            setattr
+                        )
+                    )
+                )
+                (call sys.generic_sysctl.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro write ((type ARG1))
+                (call write_dirs
+                    (
+                        ARG1
+                    )
+                )
+                (call write_files
+                    (
+                        ARG1
+                    )
+                )
+                (call write_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro write_dirs ((type ARG1))
+                (allow ARG1 obj_type_attribute write_dir_perms)
+                (call sys.generic_sysctl.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro write_files ((type ARG1))
+                (allow ARG1 obj_type_attribute write_file_perms)
+                (call sys.generic_sysctl.search
+                    (
+                        ARG1
+                    )
+                )
+                (call sys.write_security_subj_type
+                    (
+                        ARG1
+                    )
+                )
+                (call sys.write_usermodehelper_subj_type
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro write_lnk_files ((type ARG1))
+                (allow ARG1 obj_type_attribute write_lnk_file_perms)
+                (call sys.generic_sysctl.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            ;
+            ; sys.sysctl_file.obj_macro_template policy
+            ;
+
+            (blockabstract obj_macro_template)
+        )
 
         (block obj_stub
 

@@ -277,64 +277,7 @@
         ; bool_file macros
         ;
 
-        (macro get ((type ARG1))
-            (allow ARG1 obj_type_attribute read_file_perms)
-            (call securityfs.list
-                (
-                    ARG1
-                )
-            )
-        )
-
-
-        (macro obj_type ((type ARG1))
-            (typeattributeset obj_type_attribute ARG1)
-        )
-
-        (macro set ((type ARG1))
-            (allow ARG1 securityfs.isid
-                (security
-                    (
-                        setbool
-                    )
-                )
-            )
-            (allow ARG1 obj_type_attribute read_file_perms)
-            (allow ARG1
-                obj_type_except_sec_load_policy_obj_type_attribute
-                    (file
-                        (
-                            append
-                            write
-                        )
-                    )
-            )
-            (call securityfs.list
-                (
-                    ARG1
-                )
-            )
-            (call securityfs.rw_files
-                (
-                    ARG1
-                )
-            )
-            (booleanif
-                (
-                    load_policy
-                )
-                    (true
-                        (allow ARG1 load_policy.bool_file
-                            (file
-                                (
-                                    append
-                                    write
-                                )
-                           )
-                       )
-                   )
-            )
-        )
+        (blockinherit obj_macro_template)
 
         ;
         ; bool_file policy
@@ -380,10 +323,82 @@
         ; bool_file templates
         ;
 
+        (block obj_macro_template
+
+            ;
+            ; sec.bool_file.obj_macro_template macros
+            ;
+
+            (macro get ((type ARG1))
+                (allow ARG1 obj_type_attribute read_file_perms)
+                (call sec.securityfs.list
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+
+            (macro obj_type ((type ARG1))
+                (typeattributeset obj_type_attribute ARG1)
+            )
+
+            (macro set ((type ARG1))
+                (allow ARG1 sec.securityfs.isid
+                    (security
+                        (
+                            setbool
+                        )
+                    )
+                )
+                (allow ARG1 obj_type_attribute read_file_perms)
+                (allow ARG1
+                    sec,obj_type_except_sec_load_policy_obj_type_attribute
+                        (file
+                            (
+                                append
+                                write
+                            )
+                        )
+                )
+                (call sec.securityfs.list
+                    (
+                        ARG1
+                    )
+                )
+                (call sec.securityfs.rw_files
+                    (
+                        ARG1
+                    )
+                )
+                (booleanif
+                    (
+                        sec.load_policy
+                    )
+                        (true
+                            (allow ARG1 sec.load_policy.bool_file
+                                (file
+                                    (
+                                        append
+                                        write
+                                    )
+                               )
+                           )
+                       )
+                )
+            )
+
+            ;
+            ; sec.bool_file.obj_macro_template policy
+            ;
+
+            (blockabstract obj_macro_template)
+        )
+
         (block obj_stub
 
             ;
-            ; bool_file.obj_stub context
+            ; sec.bool_file.obj_stub context
             ;
 
             (context bool_file_context
@@ -399,7 +414,7 @@
             )
 
             ;
-            ; bool_file.obj_stub policy
+            ; sec.bool_file.obj_stub policy
             ;
 
             (blockabstract obj_stub)
@@ -415,12 +430,12 @@
         (block obj_template
 
             ;
-            ; bool_file.obj_template macros
+            ; sec.bool_file.obj_template macros
             ;
 
             (macro get ((type ARG1))
                 (allow ARG1 bool_file read_file_perms)
-                (call securityfs.list
+                (call sec.securityfs.list
                     (
                         ARG1
                     )
@@ -429,19 +444,19 @@
 
             (macro set ((type ARG1))
                 (allow ARG1 bool_file rw_file_perms)
-                (allow ARG1 securityfs.isid
+                (allow ARG1 sec.securityfs.isid
                     (security
                         (
                             setbool
                         )
                     )
                 )
-                (call securityfs.list
+                (call sec.securityfs.list
                     (
                         ARG1
                     )
                 )
-                (call securityfs.rw_files
+                (call sec.securityfs.rw_files
                     (
                         ARG1
                     )
@@ -449,7 +464,7 @@
             )
 
             ;
-            ; bool_file.obj_template policy
+            ; sec.bool_file.obj_template policy
             ;
 
             (blockabstract obj_template)

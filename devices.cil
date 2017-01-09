@@ -259,155 +259,7 @@
         ; dev_file macros
         ;
 
-        (macro create_chr_files ((type ARG1))
-            (allow ARG1 self
-                (capability
-                    (
-                        mknod
-                    )
-                )
-            )
-            (allow ARG1 obj_type_attribute create_chr_file_perms)
-            (call fs.devtmpfs.rw_dirs
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro delete_chr_files ((type ARG1))
-            (allow ARG1 obj_type_attribute delete_chr_file_perms)
-            (call fs.devtmpfs.rw_dirs
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro getattr_chr_files ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (chr_file
-                    (
-                        getattr
-                    )
-                )
-            )
-            (call fs.devtmpfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro manage_chr_files ((type ARG1))
-            (allow ARG1 self
-                (capability
-                    (
-                        mknod
-                    )
-                )
-            )
-            (allow ARG1 obj_type_attribute manage_chr_file_perms)
-            (call read_memory_subj_type
-                (
-                    ARG1
-                )
-            )
-            (call write_memory_subj_type
-                (
-                    ARG1
-                )
-            )
-            (call fs.devtmpfs.rw_dirs
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro obj_type ((type ARG1))
-            (typeattributeset obj_type_attribute ARG1)
-        )
-
-        (macro read_chr_files ((type ARG1))
-            (allow ARG1 obj_type_attribute read_chr_file_perms)
-            (call read_memory_subj_type
-                (
-                    ARG1
-                )
-            )
-            (call fs.devtmpfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabelfrom_chr_files ((type ARG1))
-            (allow ARG1 obj_type_attribute relabelfrom_chr_file_perms)
-            (call fs.devtmpfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro rename_chr_files ((type ARG1))
-            (allow ARG1 obj_type_attribute rename_chr_file_perms)
-            (call fs.devtmpfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro rw_chr_files ((type ARG1))
-            (allow ARG1 obj_type_attribute rw_chr_file_perms)
-            (call read_memory_subj_type
-                (
-                    ARG1
-                )
-            )
-            (call write_memory_subj_type
-                (
-                    ARG1
-                )
-            )
-            (call fs.devtmpfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro setattr_chr_files ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (chr_file
-                    (
-                        setattr
-                    )
-                )
-            )
-            (call fs.devtmpfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro write_chr_files ((type ARG1))
-            (allow ARG1 obj_type_attribute write_chr_file_perms)
-            (call write_memory_subj_type
-                (
-                    ARG1
-                )
-            )
-            (call fs.devtmpfs.search
-                (
-                    ARG1
-                )
-            )
-        )
+        (blockinherit obj_macro_template)
 
         ;
         ; dev_file policy
@@ -433,6 +285,169 @@
         ;
         ; dev_file templates
         ;
+
+        (block obj_macro_template
+
+            ;
+            ; dev.dev_file.obj_macro_template macros
+            ;
+
+            (macro create_chr_files ((type ARG1))
+                (allow ARG1 self
+                    (capability
+                        (
+                            mknod
+                        )
+                    )
+                )
+                (allow ARG1 obj_type_attribute create_chr_file_perms)
+                (call fs.devtmpfs.rw_dirs
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro delete_chr_files ((type ARG1))
+                (allow ARG1 obj_type_attribute delete_chr_file_perms)
+                (call fs.devtmpfs.rw_dirs
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro getattr_chr_files ((type ARG1))
+                (allow ARG1 obj_type_attribute
+                    (chr_file
+                        (
+                            getattr
+                        )
+                    )
+                )
+                (call fs.devtmpfs.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro manage_chr_files ((type ARG1))
+                (allow ARG1 self
+                    (capability
+                        (
+                            mknod
+                        )
+                    )
+                )
+                (allow ARG1 obj_type_attribute manage_chr_file_perms)
+                (call dev.read_memory_subj_type
+                    (
+                        ARG1
+                    )
+                )
+                (call dev.write_memory_subj_type
+                    (
+                        ARG1
+                    )
+                )
+                (call fs.devtmpfs.rw_dirs
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro obj_type ((type ARG1))
+                (typeattributeset obj_type_attribute ARG1)
+            )
+
+            (macro read_chr_files ((type ARG1))
+                (allow ARG1 obj_type_attribute read_chr_file_perms)
+                (call dev.read_memory_subj_type
+                    (
+                        ARG1
+                    )
+                )
+                (call fs.devtmpfs.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro relabelfrom_chr_files ((type ARG1))
+                (allow ARG1 obj_type_attribute relabelfrom_chr_file_perms)
+                (call fs.devtmpfs.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro rename_chr_files ((type ARG1))
+                (allow ARG1 obj_type_attribute rename_chr_file_perms)
+                (call fs.devtmpfs.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro rw_chr_files ((type ARG1))
+                (allow ARG1 obj_type_attribute rw_chr_file_perms)
+                (call dev.read_memory_subj_type
+                    (
+                        ARG1
+                    )
+                )
+                (call write_memory_subj_type
+                    (
+                        ARG1
+                    )
+                )
+                (call fs.devtmpfs.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro setattr_chr_files ((type ARG1))
+                (allow ARG1 obj_type_attribute
+                    (chr_file
+                        (
+                            setattr
+                        )
+                    )
+                )
+                (call fs.devtmpfs.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro write_chr_files ((type ARG1))
+                (allow ARG1 obj_type_attribute write_chr_file_perms)
+                (call dev.write_memory_subj_type
+                    (
+                        ARG1
+                    )
+                )
+                (call fs.devtmpfs.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            ;
+            ; dev.dev_file.obj_macro_template policy
+            ;
+
+            (blockabstract obj_macro_template)
+        )
 
         (block obj_stub
 
