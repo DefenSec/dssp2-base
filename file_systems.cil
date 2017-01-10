@@ -7860,6 +7860,8 @@
         ; devpts contexts
         ;
 
+        (fsuse trans "devpts" fs_context)
+
         (genfscon "devpts" "/" fs_context)
 
         ;
