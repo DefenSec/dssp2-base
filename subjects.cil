@@ -531,147 +531,7 @@
         ; common_subj policy
         ;
 
-        (typeattribute subj_type_attribute)
-
-        (allow subj_type_attribute self
-            (process
-                (
-                    fork
-                    sigchld
-                    signal
-                    sigkill
-                    signull
-                    sigstop
-                )
-            )
-        )
-
-        (allow subj_type_attribute self list_dir_perms)
-        (allow subj_type_attribute self read_lnk_file_perms)
-        (allow subj_type_attribute self rw_fifo_file_perms)
-        (allow subj_type_attribute self rw_file_perms)
-
-        (call subj.subj_type
-            (
-                subj_type_attribute
-            )
-        )
-
-        (call sys.meminfo_proc.read_files
-            (
-                subj_type_attribute
-            )
-        )
-        (call sys.vm_overcommit_sysctl.read_files
-            (
-                subj_type_attribute
-            )
-        )
-        (call sys.invalid.search
-            (
-                subj_type_attribute
-            )
-        )
-
-        (call cmd.generic_commands.read_lnk_files
-            (
-                subj_type_attribute
-            )
-        )
-
-        (call cmd.shell.mmap_inherited_files
-            (
-                subj_type_attribute
-            )
-        )
-
-        (call dev.devtty.rw_chr_files
-            (
-                subj_type_attribute
-            )
-        )
-        (call dev.null.rw_chr_files
-            (
-                subj_type_attribute
-            )
-        )
-        (call dev.zero.rw_chr_files
-            (
-                subj_type_attribute
-            )
-        )
-
-        (call fs.proc.read_lnk_files
-            (
-                subj_type_attribute
-            )
-        )
-        (call fs.rootfs.search
-            (
-                subj_type_attribute
-            )
-        )
-
-        (call lib.generic_libraries.mmap
-            (
-                subj_type_attribute
-            )
-        )
-        (call lib.ld_so.use_files
-            (
-                subj_type_attribute
-            )
-        )
-        (call lib.textrel.execmod
-            (
-                subj_type_attribute
-            )
-        )
-        (call lib.textrel.mmap
-            (
-                subj_type_attribute
-            )
-        )
-
-        (optional common_optional_mcstransd
-            (call mcstransd.client_subj_type
-                (
-                    subj_type_attribute
-                )
-            )
-        )
-
-        (optional common_optional_miscfiles
-            (call misc.locale.read
-                (
-                    subj_type_attribute
-                )
-            )
-        )
-
-        (optional common_optional_sd_shutdown
-            (call sd_shutdown.sigchld
-                (
-                    subj_type_attribute
-                )
-            )
-        )
-
-        (optional common_optional_seutils
-            (call seutils.libselinux_linked_subj_type
-                (
-                    subj_type_attribute
-                )
-            )
-        )
-
-        (optional common_optional_systemd
-            (call systemd.sigchld
-                (
-                    subj_type_attribute
-                )
-            )
-        )
+        (blockinherit subj_policy_template)
 
         ;
         ; common_subj templates
@@ -1086,6 +946,158 @@
             ;
 
             (blockabstract subj_macro_template)
+        )
+
+        (block subj_policy_template
+
+            ;
+            ; subj.common_subj.subj_policy_template policy
+            ;
+
+            (blockabstract subj_policy_template)
+
+            (typeattribute subj_type_attribute)
+
+            (allow subj_type_attribute self
+                (process
+                    (
+                        fork
+                        sigchld
+                        signal
+                        sigkill
+                        signull
+                        sigstop
+                    )
+                )
+            )
+
+            (allow subj_type_attribute self list_dir_perms)
+            (allow subj_type_attribute self read_lnk_file_perms)
+            (allow subj_type_attribute self rw_fifo_file_perms)
+            (allow subj_type_attribute self rw_file_perms)
+
+            (call subj.subj_type
+                (
+                    subj_type_attribute
+                )
+            )
+
+            (call sys.invalid.search
+                (
+                    subj_type_attribute
+                )
+            )
+            (call sys.meminfo_proc.read_files
+                (
+                    subj_type_attribute
+                )
+            )
+
+            (call sys.vm_overcommit_sysctl.read_files
+                (
+                    subj_type_attribute
+                )
+            )
+
+            (call cmd.generic_commands.read_lnk_files
+                (
+                    subj_type_attribute
+                )
+            )
+
+            (call cmd.shell.mmap_inherited_files
+                (
+                    subj_type_attribute
+                )
+            )
+
+            (call dev.devtty.rw_chr_files
+                (
+                    subj_type_attribute
+                )
+            )
+            (call dev.null.rw_chr_files
+                (
+                    subj_type_attribute
+                )
+            )
+            (call dev.zero.rw_chr_files
+                (
+                    subj_type_attribute
+                )
+            )
+
+            (call fs.proc.read_lnk_files
+                (
+                    subj_type_attribute
+                )
+            )
+            (call fs.rootfs.search
+                (
+                    subj_type_attribute
+                )
+            )
+
+            (call lib.generic_libraries.mmap
+                (
+                    subj_type_attribute
+                )
+            )
+            (call lib.ld_so.use_files
+                (
+                    subj_type_attribute
+                )
+            )
+            (call lib.textrel.execmod
+                (
+                    subj_type_attribute
+                )
+            )
+            (call lib.textrel.mmap
+                (
+                    subj_type_attribute
+                )
+            )
+
+            (optional common_subj_optional_mcstransd
+                (call mcstransd.client_subj_type
+                    (
+                        subj_type_attribute
+                    )
+                )
+            )
+
+            (optional common_subj_optional_miscfiles
+                (call misc.locale.read
+                    (
+                        subj_type_attribute
+                    )
+                )
+            )
+
+            (optional common_subj_optional_sd_shutdown
+                (call sd_shutdown.sigchld
+                    (
+                        subj_type_attribute
+                    )
+                )
+            )
+
+            (optional common_subj_optional_seutils
+                (call seutils.libselinux_linked_subj_type
+                    (
+                        subj_type_attribute
+                    )
+                )
+            )
+
+            (optional common_subj_optional_systemd
+                (call systemd.sigchld
+                    (
+                        subj_type_attribute
+                    )
+                )
+            )
         )
 
         (block subj_stub
