@@ -235,7 +235,7 @@
         (roleattributeset role_attribute ARG1)
     )
 
-    (macro roleallow_role ((type ARG1))
+    (macro roleallow_role ((role ARG1))
         (roleattributeset roleallow_role_attribute ARG1)
     )
 
