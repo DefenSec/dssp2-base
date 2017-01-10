@@ -19,40 +19,8 @@
 
     (blockinherit pty_file.obj_macro_template)
 
-    (macro create_pty ((type ARG1)(type ARG2))
-        (call dev.ptmx.rw_chr_files
-            (
-                ARG1
-            )
-        )
-        (call fs.devpts.getattr_fs
-            (
-                ARG1
-            )
-        )
-        (call fs.devpts.obj_type_transition
-            (
-                ARG1 ARG2 chr_file "*"
-            )
-        )
-    )
-
     (macro unconfined_subj_type ((type ARG1))
         (typeattributeset unconfined_subj_type_attribute ARG1)
-    )
-
-    (macro user_pty ((type ARG1)(type ARG2))
-        (typechange ARG1 login_pty.obj_type_attribute chr_file
-            ARG2)
-    )
-
-    (macro user_tty ((type ARG1)(type ARG2))
-        (typechange ARG1 generic_serial.serial_file chr_file ARG2)
-        (booleanif console_login
-            (true
-                (typechange ARG1 console.dev_file chr_file ARG2)
-            )
-        )
     )
 
     ;
@@ -209,6 +177,15 @@
             )
         )
 
+        (macro user_tty ((type ARG1)(type ARG2))
+            (typechange ARG1 serial_file chr_file ARG2)
+            (booleanif console_login
+                (true
+                    (typechange ARG1 console.dev_file chr_file ARG2)
+                )
+            )
+        )
+
         ;
         ; generic_serial policy
         ;
@@ -229,6 +206,10 @@
         ;
 
         (blockinherit pty_file.obj_macro_template)
+
+        (macro user_pty ((type ARG1)(type ARG2))
+            (typechange ARG1 obj_type_attribute chr_file ARG2)
+        )
 
         ;
         ; login_pty_file policy
@@ -382,6 +363,24 @@
         ;
 
         (blockinherit obj_macro_template)
+
+        (macro create_pty ((type ARG1)(type ARG2))
+            (call dev.ptmx.rw_chr_files
+                (
+                    ARG1
+                )
+            )
+            (call fs.devpts.getattr_fs
+                (
+                    ARG1
+                )
+            )
+            (call fs.devpts.obj_type_transition
+                (
+                    ARG1 ARG2 chr_file "*"
+                )
+            )
+        )
 
         ;
         ; pty_file policy
