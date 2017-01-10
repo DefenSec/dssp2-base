@@ -111,6 +111,16 @@
         ; fs.obj_macro_template macros
         ;
 
+        (macro dontaudit_getattr_fs ((type ARG1))
+            (dontaudit ARG1 obj_type_attribute
+                (filesystem
+                    (
+                        getattr
+                    )
+                )
+            )
+        )
+
         (macro add_entries ((type ARG1))
             (allow ARG1 obj_type_attribute add_entry_dir_perms)
         )
