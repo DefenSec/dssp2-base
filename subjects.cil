@@ -1495,15 +1495,15 @@
                     )
                 )
             )
+
+            ;
+            ; subj.common_subj.subj_template policy
+            ;
+
+            (blockabstract subj_template)
+
+            (blockinherit subj.common_subj.subj_stub)
         )
-
-        ;
-        ; subj.common_subj.subj_template policy
-        ;
-
-        (blockabstract subj_template)
-
-        (blockinherit subj.common_subj.subj_stub)
     )
 
     ;
