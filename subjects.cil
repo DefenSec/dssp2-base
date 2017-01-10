@@ -1108,8 +1108,6 @@
 
             (blockabstract subj_stub)
 
-            (typeattribute subj_type_attribute)
-
             (type subj)
             (call subj.common_subj.subj_type
                 (
