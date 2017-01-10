@@ -7,7 +7,7 @@
 ;       Term console_login name space
 ;       Term generic_serial name space
 ;       Term login_pty_file name space
-;       Term pty name_file space
+;       Term pty_file name space
 ;       Term serial_file name space
 ;       Term virtio name space
 
