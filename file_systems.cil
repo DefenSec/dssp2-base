@@ -8232,6 +8232,10 @@
             )
         )
 
+        (macro write_inherited_chr_files ((type ARG1))
+            (allow ARG1 fs write_inherited_chr_file_perms)
+        )
+
         ;
         ; devpts policy
         ;
