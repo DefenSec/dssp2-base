@@ -71,6 +71,7 @@
                 (
                     sigchld
                     signal
+                    signull
                 )
             )
         )
@@ -155,6 +156,7 @@
                 (
                     sigchld
                     signal
+                    signull
                 )
             )
         )
@@ -197,6 +199,7 @@
                 (
                     sigchld
                     signal
+                    signull
                 )
             )
         )
