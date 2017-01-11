@@ -4439,12 +4439,40 @@
                 (dontaudit ARG1 obj_type_attribute list_dir_perms)
             )
 
+            (macro add_entries ((type ARG1))
+                (allow ARG1 obj_type_attribute add_entry_dir_perms)
+            )
+
             (macro audit_write_access_dirs ((type ARG1))
                 (allow ARG1 obj_type_attribute
                     (dir
                         (
                             getattr
                             write
+                        )
+                    )
+                )
+            )
+
+            (macro create_dirs ((type ARG1))
+                (allow ARG1 obj_type_attribute
+                    (dirs
+                        (
+                            create
+                        )
+                    )
+                )
+            )
+
+            (macro del_entries ((type ARG1))
+                (allow ARG1 obj_type_attribute del_entry_dir_perms)
+            )
+
+            (macro delete_dirs ((type ARG1))
+                (allow ARG1 obj_type_attribute
+                    (dirs
+                        (
+                            delete
                         )
                     )
                 )
@@ -4462,6 +4490,16 @@
 
             (macro list ((type ARG1))
                 (allow ARG1 obj_type_attribute list_dir_perms)
+            )
+
+            (macro manage_dirs ((type ARG1))
+                (allow ARG1 obj_type_attribute
+                    (dirs
+                        (
+                            manage
+                        )
+                    )
+                )
             )
 
             (macro mounton_dirs ((type ARG1))
@@ -4497,12 +4535,68 @@
                 )
             )
 
+            (macro relabelfrom_dirs ((type ARG1))
+                (allow ARG1 obj_type_attribute
+                    (dirs
+                        (
+                            relabelfrom
+                        )
+                    )
+                )
+            )
+
+            (macro relabelto_dirs ((type ARG1))
+                (allow ARG1 obj_type_attribute
+                    (dirs
+                        (
+                            relabelto
+                        )
+                    )
+                )
+            )
+
+            (macro rename_dirs ((type ARG1))
+                (allow ARG1 obj_type_attribute
+                    (dirs
+                        (
+                            rename
+                        )
+                    )
+                )
+            )
+
             (macro rw_dirs ((type ARG1))
-                (allow ARG1 obj_type_attribute rw_dir_perms)
+                (allow ARG1 obj_type_attribute
+                    (dirs
+                        (
+                            rw
+                        )
+                    )
+                )
             )
 
             (macro search ((type ARG1))
                 (allow ARG1 obj_type_attribute search_dir_perms)
+            )
+
+            (macro setattr_dirs ((type ARG1))
+                (allow ARG1 obj_type_attribute
+                    (dirs
+                        (
+                            setattr
+                        )
+                    )
+                )
+            )
+
+            (macro write_dirs ((type ARG1))
+                (allow ARG1 obj_type_attribute
+                    (dirs
+                        (
+                            write
+                        )
+                    )
+                )
             )
 
             ;
