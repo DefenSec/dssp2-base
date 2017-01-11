@@ -1004,7 +1004,7 @@
     )
 
     (macro read_files_except_sec ((type ARG1))
-        (allow ARG1 files_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (files
                 (
                     read
@@ -1034,7 +1034,7 @@
     )
 
     (macro read_inherited_except_sec ((type ARG1))
-        (allow ARG1 files_except_sec_obj_type_attribute
+        (allow ARG1 except_sec_obj_type_attribute
             (files_except_blk_and_chr
                 (
                     read_inherited
