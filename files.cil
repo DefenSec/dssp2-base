@@ -2443,19 +2443,19 @@
     )
 
     (allow unconfined_subj_type_attribute except_obj_type_attribute
-        blk_file_except_execmod_and_mounton)
+        blk_file_except_execmod)
     (allow unconfined_subj_type_attribute except_obj_type_attribute
-        chr_file_except_execmod_and_mounton)
+        chr_file_except_execmod)
     (allow unconfined_subj_type_attribute except_obj_type_attribute
         dir_except_execmod)
     (allow unconfined_subj_type_attribute except_obj_type_attribute
-        fifo_file_except_execmod_and_mounton)
+        fifo_file_except_execmod)
     (allow unconfined_subj_type_attribute except_obj_type_attribute
-        file_except_entrypoint_execmod_and_mounton)
+        file_except_entrypoint_and_execmod)
     (allow unconfined_subj_type_attribute except_obj_type_attribute
-        lnk_file_except_execmod_and_mounton)
+        lnk_file_except_execmod)
     (allow unconfined_subj_type_attribute except_obj_type_attribute
-        sock_file_except_execmod_and_mounton)
+        sock_file_except_execmod)
 
 
     (call sys.obj_type
@@ -2467,18 +2467,6 @@
     (call fs.xattr.associate
         (
             obj_type_attribute
-        )
-    )
-
-    (optional files_optional_mount
-        (booleanif mount.mount_any_file
-            (true
-                (call mounton_except
-                    (
-                        unconfined_subj_type_attribute
-                    )
-                )
-            )
         )
     )
 

@@ -67,6 +67,7 @@
 
 (classpermission append_blk_file_perms)
 (classpermission append_inherited_blk_file_perms)
+(classpermission blk_file_except_execmod)
 (classpermission blk_file_except_execmod_and_mounton)
 (classpermission create_blk_file_perms)
 (classpermission delete_blk_file_perms)
@@ -124,6 +125,7 @@
 
 (classpermission append_chr_file_perms)
 (classpermission append_inherited_chr_file_perms)
+(classpermission chr_file_except_execmod)
 (classpermission chr_file_except_execmod_and_mounton)
 (classpermission create_chr_file_perms)
 (classpermission delete_chr_file_perms)
@@ -185,6 +187,7 @@
 (classpermission append_inherited_fifo_file_perms)
 (classpermission create_fifo_file_perms)
 (classpermission delete_fifo_file_perms)
+(classpermission fifo_file_except_execmod)
 (classpermission fifo_file_except_execmod_and_mounton)
 (classpermission manage_fifo_file_perms)
 (classpermission read_fifo_file_perms)
@@ -208,6 +211,7 @@
 (classpermission delete_file_perms)
 (classpermission exec_file_perms)
 (classpermission file_except_getattr)
+(classpermission file_except_entrypoint_and_execmod)
 (classpermission file_except_entrypoint_execmod_and_mounton)
 (classpermission manage_file_perms)
 (classpermission mmap_file_perms)
@@ -326,6 +330,7 @@
 
 (classpermission create_lnk_file_perms)
 (classpermission delete_lnk_file_perms)
+(classpermission lnk_file_except_execmod)
 (classpermission lnk_file_except_execmod_and_mounton)
 (classpermission manage_lnk_file_perms)
 (classpermission read_lnk_file_perms)
@@ -589,6 +594,7 @@
 (classpermission rename_sock_file_perms)
 (classpermission rw_sock_file_perms)
 (classpermission rw_inherited_sock_file_perms)
+(classpermission sock_file_except_execmod)
 (classpermission sock_file_except_execmod_and_mounton)
 (classpermission write_sock_file_perms)
 (classpermission write_inherited_sock_file_perms)
@@ -1085,6 +1091,16 @@
     )
 )
 
+(classpermissionset blk_file_except_execmod
+    (blk_file
+        (not
+            (
+                execmod
+            )
+        )
+    )
+)
+
 (classpermissionset blk_file_except_execmod_and_mounton
     (blk_file
         (not
@@ -1517,6 +1533,16 @@
             getattr
             ioctl
             lock
+        )
+    )
+)
+
+(classpermissionset chr_file_except_execmod
+    (chr_file
+        (not
+            (
+                execmod
+            )
         )
     )
 )
@@ -2061,6 +2087,16 @@
     )
 )
 
+(classpermissionset fifo_file_except_execmod
+    (fifo_file
+        (not
+            (
+                execmod
+            )
+        )
+    )
+)
+
 (classpermissionset fifo_file_except_execmod_and_mounton
     (fifo_file
         (not
@@ -2268,6 +2304,17 @@
         (not
             (
                 getattr
+            )
+        )
+    )
+)
+
+(classpermissionset file_except_entrypoint_and_execmod
+    (file
+        (not
+            (
+                entrypoint
+                execmod
             )
         )
     )
@@ -3114,6 +3161,16 @@
         (
             getattr
             unlink
+        )
+    )
+)
+
+(classpermissionset lnk_file_except_execmod
+    (lnk_file
+        (not
+            (
+                execmod
+            )
         )
     )
 )
@@ -4834,6 +4891,16 @@
             lock
             read
             write
+        )
+    )
+)
+
+(classpermissionset sock_file_except_execmod
+    (sock_file
+        (not
+            (
+                execmod
+            )
         )
     )
 )
