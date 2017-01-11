@@ -9480,6 +9480,26 @@
         ; unlabeled macros
         ;
 
+        (macro dontaudit_audit_access_dirs ((type ARG1))
+            (dontaudit ARG1 isid
+                (dir
+                    (
+                        audit_access
+                    )
+                )
+            )
+        )
+
+        (macro dontaudit_setattr_dirs ((type ARG1))
+            (dontaudit ARG1 isid
+                (dir
+                    (
+                        setattr
+                    )
+                )
+            )
+        )
+
         (macro add_entries ((type ARG1))
             (allow ARG1 isid add_entry_dir_perms)
         )
