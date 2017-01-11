@@ -9925,7 +9925,6 @@
         ; generic_boot_flag contexts
         ;
 
-        (filecon "/\.ismount-test-file" file boot_flag_file_context)
         (filecon "/fastboot" file boot_flag_file_context)
         (filecon "/forcefsck" file boot_flag_file_context)
         (filecon "/forcequotacheck" file boot_flag_file_context)
@@ -9935,11 +9934,6 @@
         ;
 
         (macro rootfs_obj_type_transition ((type ARG1))
-            (call fs.rootfs.obj_type_transition
-                (
-                    ARG1 boot_flag_file file ".ismount-test-file"
-                )
-            )
             (call fs.rootfs.obj_type_transition
                 (
                     ARG1 boot_flag_file file "fastboot"
