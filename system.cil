@@ -2044,1022 +2044,13 @@
         ; invalid macros
         ;
 
-        (macro add_entries ((type ARG1))
-            (allow ARG1 isid add_entry_dir_perms)
-        )
-
-        (macro append_blk_files ((type ARG1))
-            (allow ARG1 isid append_blk_file_perms)
-            (call search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro append_chr_files ((type ARG1))
-            (allow ARG1 isid append_chr_file_perms)
-            (call search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro append_fifo_files ((type ARG1))
-            (allow ARG1 isid append_fifo_file_perms)
-            (call search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro append_files ((type ARG1))
-            (allow ARG1 isid append_file_perms)
-            (call search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro associate ((type ARG1))
-            (allow ARG1 isid
-                (filesystem
-                    (
-                        associate
-                    )
-                )
-            )
-        )
-
-        (macro create ((type ARG1))
-            (allow ARG1 isid
-                (all_files
-                    (
-                        create
-                    )
-                )
-            )
-        )
-
-        (macro create_blk_files ((type ARG1))
-            (allow ARG1 isid
-                (blk_files
-                    (
-                        create
-                    )
-                )
-            )
-        )
-
-        (macro create_chr_files ((type ARG1))
-            (allow ARG1 isid
-                (chr_files
-                    (
-                        create
-                    )
-                )
-            )
-        )
-
-        (macro create_dirs ((type ARG1))
-            (allow ARG1 isid
-                (dirs
-                    (
-                        create
-                    )
-                )
-            )
-        )
-
-        (macro create_fifo_files ((type ARG1))
-            (allow ARG1 isid
-                (fifo_files
-                    (
-                        create
-                    )
-                )
-            )
-        )
-
-        (macro create_files ((type ARG1))
-            (allow ARG1 isid
-                (files
-                    (
-                        create
-                    )
-                )
-            )
-        )
-
-        (macro create_lnk_files ((type ARG1))
-            (allow ARG1 isid
-                (lnk_files
-                    (
-                        create
-                    )
-                )
-            )
-        )
-
-        (macro create_sock_files ((type ARG1))
-            (allow ARG1 isid
-                (sock_files
-                    (
-                        create
-                    )
-                )
-            )
-        )
-
-        (macro del_entries ((type ARG1))
-            (allow ARG1 isid del_entry_dir_perms)
-        )
-
-        (macro delete ((type ARG1))
-            (allow ARG1 isid
-                (all_files
-                    (
-                        delete
-                    )
-                )
-            )
-        )
-
-        (macro delete_blk_files ((type ARG1))
-            (allow ARG1 isid
-                (blk_files
-                    (
-                        delete
-                    )
-                )
-            )
-        )
-
-        (macro delete_chr_files ((type ARG1))
-            (allow ARG1 isid
-                (chr_files
-                    (
-                        delete
-                    )
-                )
-            )
-        )
-
-        (macro delete_dirs ((type ARG1))
-            (allow ARG1 isid
-                (dirs
-                    (
-                        delete
-                    )
-                )
-            )
-        )
-
-        (macro delete_fifo_files ((type ARG1))
-            (allow ARG1 isid
-                (fifo_files
-                    (
-                        delete
-                    )
-                )
-            )
-        )
-
-        (macro delete_files ((type ARG1))
-            (allow ARG1 isid
-                (files
-                    (
-                        delete
-                    )
-                )
-            )
-        )
-
-        (macro delete_lnk_files ((type ARG1))
-            (allow ARG1 isid
-                (lnk_files
-                    (
-                        delete
-                    )
-                )
-            )
-        )
-
-        (macro delete_sock_files ((type ARG1))
-            (allow ARG1 isid
-                (sock_files
-                    (
-                        delete
-                    )
-                )
-            )
-        )
-
-        (macro execute ((type ARG1))
-            (allow ARG1 isid exec_file_perms)
-            (call search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro getattr ((type ARG1))
-            (allow ARG1 isid_file
-                (all_files
-                    (
-                        getattr
-                    )
-                )
-            )
-        )
-
-        (macro getattr_blk_files ((type ARG1))
-            (allow ARG1 isid
-                (blk_files
-                    (
-                        getattr
-                    )
-                )
-            )
-        )
-
-        (macro getattr_chr_files ((type ARG1))
-            (allow ARG1 isid
-                (chr_files
-                    (
-                        getattr
-                    )
-                )
-            )
-        )
-
-        (macro getattr_dirs ((type ARG1))
-            (allow ARG1 isid
-                (dirs
-                    (
-                        getattr
-                    )
-                )
-            )
-        )
-
-        (macro getattr_fifo_files ((type ARG1))
-            (allow ARG1 isid
-                (fifo_files
-                    (
-                        getattr
-                    )
-                )
-            )
-        )
-
-        (macro getattr_files ((type ARG1))
-            (allow ARG1 isid
-                (files
-                    (
-                        getattr
-                    )
-                )
-            )
-        )
-
-        (macro getattr_fs ((type ARG1))
-            (allow ARG1 isid
-                (filesystem
-                    (
-                        getattr
-                    )
-                )
-            )
-        )
-
-        (macro getattr_lnk_files ((type ARG1))
-            (allow ARG1 isid
-                (lnk_files
-                    (
-                        getattr
-                    )
-                )
-            )
-        )
-
-        (macro getattr_sock_files ((type ARG1))
-            (allow ARG1 isid
-                (sock_files
-                    (
-                        getattr
-                    )
-                )
-            )
-        )
-
-        (macro list ((type ARG1))
-            (allow ARG1 isid list_dir_perms)
-        )
-
-        (macro manage ((type ARG1))
-            (allow ARG1 isid
-                (all_files
-                    (
-                        manage
-                    )
-                )
-            )
-        )
-
-        (macro manage_blk_files ((type ARG1))
-            (allow ARG1 isid
-                (blk_files
-                    (
-                        manage
-                    )
-                )
-            )
-        )
-
-        (macro manage_chr_files ((type ARG1))
-            (allow ARG1 isid
-                (chr_files
-                    (
-                        manage
-                    )
-                )
-            )
-        )
-
-        (macro manage_dirs ((type ARG1))
-            (allow ARG1 isid
-                (dirs
-                    (
-                        manage
-                    )
-                )
-            )
-        )
-
-        (macro manage_fifo_files ((type ARG1))
-            (allow ARG1 isid
-                (fifo_files
-                    (
-                        manage
-                    )
-                )
-            )
-        )
-
-        (macro manage_files ((type ARG1))
-            (allow ARG1 isid
-                (files
-                    (
-                        manage
-                    )
-                )
-            )
-        )
-
-        (macro manage_lnk_files ((type ARG1))
-            (allow ARG1 isid
-                (lnk_files
-                    (
-                        manage
-                    )
-                )
-            )
-        )
-
-        (macro manage_sock_files ((type ARG1))
-            (allow ARG1 isid
-                (sock_files
-                    (
-                        manage
-                    )
-                )
-            )
-        )
-
-        (macro mmap ((type ARG1))
-            (allow ARG1 isid mmap_file_perms)
-            (call search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro mount ((type ARG1))
-            (allow ARG1 isid
-                (filesystem
-                    (
-                        mount
-                    )
-                )
-            )
-        )
-
-        (macro quotaget ((type ARG1))
-            (allow ARG1 isid
-                (filesystem
-                    (
-                        quotaget
-                    )
-                )
-            )
-        )
-
-        (macro quotamod ((type ARG1))
-            (allow ARG1 isid
-                (filesystem
-                    (
-                        quotamod
-                    )
-                )
-            )
-        )
-
-        (macro read ((type ARG1))
-            (allow ARG1 isid
-                (all_files
-                    (
-                        read
-                    )
-                )
-            )
-        )
-
-        (macro read_blk_files ((type ARG1))
-            (allow ARG1 isid
-                (blk_files
-                    (
-                        read
-                    )
-                )
-            )
-        )
-
-        (macro read_chr_files ((type ARG1))
-            (allow ARG1 isid
-                (chr_files
-                    (
-                        read
-                    )
-                )
-            )
-        )
-
-        (macro read_fifo_files ((type ARG1))
-            (allow ARG1 isid
-                (fifo_files
-                    (
-                        read
-                    )
-                )
-            )
-        )
-
-        (macro read_files ((type ARG1))
-            (allow ARG1 isid
-                (files
-                    (
-                        read
-                    )
-                )
-            )
-        )
-
-        (macro read_lnk_files ((type ARG1))
-            (allow ARG1 isid
-                (lnk_files
-                    (
-                        read
-                    )
-                )
-            )
-        )
-
-        (macro read_sock_files ((type ARG1))
-            (allow ARG1 isid
-                (sock_files
-                    (
-                        read
-                    )
-                )
-            )
-        )
+        (blockinherit obj_macro_template)
 
         (macro read_state ((type ARG1))
             (allow ARG1 isid
                 (process_state
                     (
                         read
-                    )
-                )
-            )
-        )
-
-        (macro relabel ((type ARG1))
-            (allow ARG1 isid
-                (all_files
-                    (
-                        relabel
-                    )
-                )
-            )
-        )
-
-        (macro relabel_blk_files ((type ARG1))
-            (allow ARG1 isid
-                (blk_files
-                    (
-                        relabel
-                    )
-                )
-            )
-        )
-
-        (macro relabel_chr_files ((type ARG1))
-            (allow ARG1 isid
-                (chr_files
-                    (
-                        relabel
-                    )
-                )
-            )
-        )
-
-        (macro relabel_dirs ((type ARG1))
-            (allow ARG1 isid
-                (dirs
-                    (
-                        relabel
-                    )
-                )
-            )
-        )
-
-        (macro relabel_fifo_files ((type ARG1))
-            (allow ARG1 isid
-                (fifo_files
-                    (
-                        relabel
-                    )
-                )
-            )
-        )
-
-        (macro relabel_files ((type ARG1))
-            (allow ARG1 isid
-                (files
-                    (
-                        relabel
-                    )
-                )
-            )
-        )
-
-        (macro relabel_lnk_files ((type ARG1))
-            (allow ARG1 isid
-                (lnk_files
-                    (
-                        relabel
-                    )
-                )
-            )
-        )
-
-        (macro relabel_sock_files ((type ARG1))
-            (allow ARG1 isid
-                (sock_files
-                    (
-                        relabel
-                    )
-                )
-            )
-        )
-
-        (macro relabelfrom ((type ARG1))
-            (allow ARG1 isid
-                (all_files
-                    (
-                        relabelfrom
-                    )
-                )
-            )
-        )
-
-        (macro relabelfrom_blk_files ((type ARG1))
-            (allow ARG1 isid
-                (blk_files
-                    (
-                        relabelfrom
-                    )
-                )
-            )
-        )
-
-        (macro relabelfrom_chr_files ((type ARG1))
-            (allow ARG1 isid
-                (chr_files
-                    (
-                        relabelfrom
-                    )
-                )
-            )
-        )
-
-        (macro relabelfrom_dirs ((type ARG1))
-            (allow ARG1 isid
-                (dirs
-                    (
-                        relabelfrom
-                    )
-                )
-            )
-        )
-
-        (macro relabelfrom_fifo_files ((type ARG1))
-            (allow ARG1 isid
-                (fifo_files
-                    (
-                        relabelfrom
-                    )
-                )
-            )
-        )
-
-        (macro relabelfrom_files ((type ARG1))
-            (allow ARG1 isid
-                (files
-                    (
-                        relabelfrom
-                    )
-                )
-            )
-        )
-
-        (macro relabelfrom_fs ((type ARG1))
-            (allow ARG1 isid
-                (filesystem
-                    (
-                        getattr
-                        relabelfrom
-                    )
-                )
-            )
-        )
-
-        (macro relabelfrom_lnk_files ((type ARG1))
-            (allow ARG1 isid
-                (lnk_files
-                    (
-                        relabelfrom
-                    )
-                )
-            )
-        )
-
-        (macro relabelfrom_sock_files ((type ARG1))
-            (allow ARG1 isid
-                (sock_files
-                    (
-                        relabelfrom
-                    )
-                )
-            )
-        )
-
-        (macro relabelto ((type ARG1))
-            (allow ARG1 isid
-                (all_files
-                    (
-                        relabelto
-                    )
-                )
-            )
-        )
-
-        (macro relabelto_dirs ((type ARG1))
-            (allow ARG1 isid
-                (dirs
-                    (
-                        relabelto
-                    )
-                )
-            )
-        )
-
-        (macro relabelto_blk_files ((type ARG1))
-            (allow ARG1 isid
-                (blk_files
-                    (
-                        relabelto
-                    )
-                )
-            )
-        )
-
-        (macro relabelto_chr_files ((type ARG1))
-            (allow ARG1 isid
-                (chr_files
-                    (
-                        relabelto
-                    )
-                )
-            )
-        )
-
-        (macro relabelto_fifo_files ((type ARG1))
-            (allow ARG1 isid
-                (fifo_files
-                    (
-                        relabelto
-                    )
-                )
-            )
-        )
-
-        (macro relabelto_files ((type ARG1))
-            (allow ARG1 isid
-                (files
-                    (
-                        relabelto
-                    )
-                )
-            )
-        )
-
-        (macro relabelto_lnk_files ((type ARG1))
-            (allow ARG1 isid
-                (lnk_files
-                    (
-                        relabelto
-                    )
-                )
-            )
-        )
-
-        (macro relabelto_sock_files ((type ARG1))
-            (allow ARG1 isid
-                (sock_files
-                    (
-                        relabelto
-                    )
-                )
-            )
-        )
-
-        (macro remount ((type ARG1))
-            (allow ARG1 isid
-                (filesystem
-                    (
-                        remount
-                    )
-                )
-            )
-        )
-
-        (macro rename ((type ARG1))
-            (allow ARG1 isid
-                (all_files
-                    (
-                        rename
-                    )
-                )
-            )
-        )
-
-        (macro rename_blk_files ((type ARG1))
-            (allow ARG1 isid
-                (blk_files
-                    (
-                        rename
-                    )
-                )
-            )
-        )
-
-        (macro rename_chr_files ((type ARG1))
-            (allow ARG1 isid
-                (chr_files
-                    (
-                        rename
-                    )
-                )
-            )
-        )
-
-        (macro rename_dirs ((type ARG1))
-            (allow ARG1 isid
-                (dirs
-                    (
-                        rename
-                    )
-                )
-            )
-        )
-
-        (macro rename_fifo_files ((type ARG1))
-            (allow ARG1 isid
-                (fifo_files
-                    (
-                        rename
-                    )
-                )
-            )
-        )
-
-        (macro rename_files ((type ARG1))
-            (allow ARG1 isid
-                (files
-                    (
-                        rename
-                    )
-                )
-            )
-        )
-
-        (macro rename_lnk_files ((type ARG1))
-            (allow ARG1 isid
-                (lnk_files
-                    (
-                        rename
-                    )
-                )
-            )
-        )
-
-        (macro rename_sock_files ((type ARG1))
-            (allow ARG1 isid
-                (sock_files
-                    (
-                        rename
-                    )
-                )
-            )
-        )
-
-        (macro rw ((type ARG1))
-            (allow ARG1 isid
-                (all_files
-                    (
-                        rw
-                    )
-                )
-            )
-        )
-
-        (macro rw_blk_files ((type ARG1))
-            (allow ARG1 isid
-                (blk_files
-                    (
-                        rw
-                    )
-                )
-            )
-        )
-
-        (macro rw_chr_files ((type ARG1))
-            (allow ARG1 isid
-                (chr_files
-                    (
-                        rw
-                    )
-                )
-            )
-        )
-
-        (macro rw_dirs ((type ARG1))
-            (allow ARG1 isid
-                (dirs
-                    (
-                        rw
-                    )
-                )
-            )
-        )
-
-        (macro rw_fifo_files ((type ARG1))
-            (allow ARG1 isid
-                (fifo_files
-                    (
-                        rw
-                    )
-                )
-            )
-        )
-
-        (macro rw_files ((type ARG1))
-            (allow ARG1 isid
-                (files
-                    (
-                        rw
-                    )
-                )
-            )
-        )
-
-        (macro rw_lnk_files ((type ARG1))
-            (allow ARG1 isid
-                (lnk_files
-                    (
-                        rw
-                    )
-                )
-            )
-        )
-
-        (macro rw_sock_files ((type ARG1))
-            (allow ARG1 isid
-                (sock_files
-                    (
-                        rw
-                    )
-                )
-            )
-        )
-
-        (macro search ((type ARG1))
-            (allow ARG1 isid search_dir_perms)
-        )
-
-        (macro setattr ((type ARG1))
-            (allow ARG1 isid
-                (all_files
-                    (
-                        setattr
-                    )
-                )
-            )
-        )
-
-        (macro setattr_blk_files ((type ARG1))
-            (allow ARG1 isid
-                (blk_files
-                    (
-                        setattr
-                    )
-                )
-            )
-        )
-
-        (macro setattr_chr_files ((type ARG1))
-            (allow ARG1 isid
-                (chr_files
-                    (
-                        setattr
-                    )
-                )
-            )
-        )
-
-        (macro setattr_dirs ((type ARG1))
-            (allow ARG1 isid
-                (dirs
-                    (
-                        setattr
-                    )
-                )
-            )
-        )
-
-        (macro setattr_fifo_files ((type ARG1))
-            (allow ARG1 isid
-                (fifo_files
-                    (
-                        setattr
-                    )
-                )
-            )
-        )
-
-        (macro setattr_files ((type ARG1))
-            (allow ARG1 isid
-                (files
-                    (
-                        setattr
-                    )
-                )
-            )
-        )
-
-        (macro setattr_lnk_files ((type ARG1))
-            (allow ARG1 isid
-                (lnk_files
-                    (
-                        setattr
-                    )
-                )
-            )
-        )
-
-        (macro setattr_sock_files ((type ARG1))
-            (allow ARG1 isid
-                (sock_files
-                    (
-                        setattr
                     )
                 )
             )
@@ -3100,97 +2091,6 @@
                 (process
                     (
                         sigstop
-                    )
-                )
-            )
-        )
-
-        (macro unmount ((type ARG1))
-            (allow ARG1 isid
-                (filesystem
-                    (
-                        unmount
-                    )
-                )
-            )
-        )
-
-        (macro write ((type ARG1))
-            (allow ARG1 isid
-                (all_files
-                    (
-                        write
-                    )
-                )
-            )
-        )
-
-        (macro write_blk_files ((type ARG1))
-            (allow ARG1 isid
-                (blk_files
-                    (
-                        write
-                    )
-                )
-            )
-        )
-
-
-        (macro write_chr_files ((type ARG1))
-            (allow ARG1 isid
-                (chr_files
-                    (
-                        write
-                    )
-                )
-            )
-        )
-
-        (macro write_dirs ((type ARG1))
-            (allow ARG1 isid
-                (dirs
-                    (
-                        write
-                    )
-                )
-            )
-        )
-
-        (macro write_fifo_files ((type ARG1))
-            (allow ARG1 isid
-                (fifo_files
-                    (
-                        write
-                    )
-                )
-            )
-        )
-
-        (macro write_files ((type ARG1))
-            (allow ARG1 isid
-                (files
-                    (
-                        write
-                    )
-                )
-            )
-        )
-
-        (macro write_lnk_files ((type ARG1))
-            (allow ARG1 isid
-                (lnk_files
-                    (
-                        write
-                    )
-                )
-            )
-        )
-
-        (macro write_sock_files ((type ARG1))
-            (allow ARG1 isid
-                (sock_files
-                    (
-                        write
                     )
                 )
             )
@@ -3284,6 +2184,1124 @@
         (allow unconfined_subj_type_attribute isid signal_perms)
         (allow unconfined_subj_type_attribute isid
             sock_file_except_execmod_and_mounton)
+
+        ;
+        ; invalid templates
+        ;
+
+        (block obj_macro_template
+
+            ;
+            ; sys.invalid.obj_macro_template macros
+            ;
+
+            (macro add_entries ((type ARG1))
+                (allow ARG1 isid add_entry_dir_perms)
+            )
+
+            (macro append_blk_files ((type ARG1))
+                (allow ARG1 isid append_blk_file_perms)
+                (call search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro append_chr_files ((type ARG1))
+                (allow ARG1 isid append_chr_file_perms)
+                (call search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro append_fifo_files ((type ARG1))
+                (allow ARG1 isid append_fifo_file_perms)
+                (call search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro append_files ((type ARG1))
+                (allow ARG1 isid append_file_perms)
+                (call search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro associate ((type ARG1))
+                (allow ARG1 isid
+                    (filesystem
+                        (
+                            associate
+                        )
+                    )
+                )
+            )
+
+            (macro create ((type ARG1))
+                (allow ARG1 isid
+                    (all_files
+                        (
+                            create
+                        )
+                    )
+                )
+            )
+
+            (macro create_blk_files ((type ARG1))
+                (allow ARG1 isid
+                    (blk_files
+                        (
+                            create
+                        )
+                    )
+                )
+            )
+
+            (macro create_chr_files ((type ARG1))
+                (allow ARG1 isid
+                    (chr_files
+                        (
+                            create
+                        )
+                    )
+                )
+            )
+
+            (macro create_dirs ((type ARG1))
+                (allow ARG1 isid
+                    (dirs
+                        (
+                            create
+                        )
+                    )
+                )
+            )
+
+            (macro create_fifo_files ((type ARG1))
+                (allow ARG1 isid
+                    (fifo_files
+                        (
+                            create
+                        )
+                    )
+                )
+            )
+
+            (macro create_files ((type ARG1))
+                (allow ARG1 isid
+                    (files
+                        (
+                            create
+                        )
+                    )
+                )
+            )
+
+            (macro create_lnk_files ((type ARG1))
+                (allow ARG1 isid
+                    (lnk_files
+                        (
+                            create
+                        )
+                    )
+                )
+            )
+
+            (macro create_sock_files ((type ARG1))
+                (allow ARG1 isid
+                    (sock_files
+                        (
+                            create
+                        )
+                    )
+                )
+            )
+
+            (macro del_entries ((type ARG1))
+                (allow ARG1 isid del_entry_dir_perms)
+            )
+
+            (macro delete ((type ARG1))
+                (allow ARG1 isid
+                    (all_files
+                        (
+                            delete
+                        )
+                    )
+                )
+            )
+
+            (macro delete_blk_files ((type ARG1))
+                (allow ARG1 isid
+                    (blk_files
+                        (
+                            delete
+                        )
+                    )
+                )
+            )
+
+            (macro delete_chr_files ((type ARG1))
+                (allow ARG1 isid
+                    (chr_files
+                        (
+                            delete
+                        )
+                    )
+                )
+            )
+
+            (macro delete_dirs ((type ARG1))
+                (allow ARG1 isid
+                    (dirs
+                        (
+                            delete
+                        )
+                    )
+                )
+            )
+
+            (macro delete_fifo_files ((type ARG1))
+                (allow ARG1 isid
+                    (fifo_files
+                        (
+                            delete
+                        )
+                    )
+                )
+            )
+
+            (macro delete_files ((type ARG1))
+                (allow ARG1 isid
+                    (files
+                        (
+                            delete
+                        )
+                    )
+                )
+            )
+
+            (macro delete_lnk_files ((type ARG1))
+                (allow ARG1 isid
+                    (lnk_files
+                        (
+                            delete
+                        )
+                    )
+                )
+            )
+
+            (macro delete_sock_files ((type ARG1))
+                (allow ARG1 isid
+                    (sock_files
+                        (
+                            delete
+                        )
+                    )
+                )
+            )
+
+            (macro execute ((type ARG1))
+                (allow ARG1 isid exec_file_perms)
+                (call search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro getattr ((type ARG1))
+                (allow ARG1 isid_file
+                    (all_files
+                        (
+                            getattr
+                        )
+                    )
+                )
+            )
+
+            (macro getattr_blk_files ((type ARG1))
+                (allow ARG1 isid
+                    (blk_files
+                        (
+                            getattr
+                        )
+                    )
+                )
+            )
+
+            (macro getattr_chr_files ((type ARG1))
+                (allow ARG1 isid
+                    (chr_files
+                        (
+                            getattr
+                        )
+                    )
+                )
+            )
+
+            (macro getattr_dirs ((type ARG1))
+                (allow ARG1 isid
+                    (dirs
+                        (
+                            getattr
+                        )
+                    )
+                )
+            )
+
+            (macro getattr_fifo_files ((type ARG1))
+                (allow ARG1 isid
+                    (fifo_files
+                        (
+                            getattr
+                        )
+                    )
+                )
+            )
+
+            (macro getattr_files ((type ARG1))
+                (allow ARG1 isid
+                    (files
+                        (
+                            getattr
+                        )
+                    )
+                )
+            )
+
+            (macro getattr_fs ((type ARG1))
+                (allow ARG1 isid
+                    (filesystem
+                        (
+                            getattr
+                        )
+                    )
+                )
+            )
+
+            (macro getattr_lnk_files ((type ARG1))
+                (allow ARG1 isid
+                    (lnk_files
+                        (
+                            getattr
+                        )
+                    )
+                )
+            )
+
+            (macro getattr_sock_files ((type ARG1))
+                (allow ARG1 isid
+                    (sock_files
+                        (
+                            getattr
+                        )
+                    )
+                )
+            )
+
+            (macro list ((type ARG1))
+                (allow ARG1 isid list_dir_perms)
+            )
+
+            (macro manage ((type ARG1))
+                (allow ARG1 isid
+                    (all_files
+                        (
+                            manage
+                        )
+                    )
+                )
+            )
+
+            (macro manage_blk_files ((type ARG1))
+                (allow ARG1 isid
+                    (blk_files
+                        (
+                            manage
+                        )
+                    )
+                )
+            )
+
+            (macro manage_chr_files ((type ARG1))
+                (allow ARG1 isid
+                    (chr_files
+                        (
+                            manage
+                        )
+                    )
+                )
+            )
+
+            (macro manage_dirs ((type ARG1))
+                (allow ARG1 isid
+                    (dirs
+                        (
+                            manage
+                        )
+                    )
+                )
+            )
+
+            (macro manage_fifo_files ((type ARG1))
+                (allow ARG1 isid
+                    (fifo_files
+                        (
+                            manage
+                        )
+                    )
+                )
+            )
+
+            (macro manage_files ((type ARG1))
+                (allow ARG1 isid
+                    (files
+                        (
+                            manage
+                        )
+                    )
+                )
+            )
+
+            (macro manage_lnk_files ((type ARG1))
+                (allow ARG1 isid
+                    (lnk_files
+                        (
+                            manage
+                        )
+                    )
+                )
+            )
+
+            (macro manage_sock_files ((type ARG1))
+                (allow ARG1 isid
+                    (sock_files
+                        (
+                            manage
+                        )
+                    )
+                )
+            )
+
+            (macro mmap ((type ARG1))
+                (allow ARG1 isid mmap_file_perms)
+                (call search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro mount ((type ARG1))
+                (allow ARG1 isid
+                    (filesystem
+                        (
+                            mount
+                        )
+                    )
+                )
+            )
+
+            (macro quotaget ((type ARG1))
+                (allow ARG1 isid
+                    (filesystem
+                        (
+                            quotaget
+                        )
+                    )
+                )
+            )
+
+            (macro quotamod ((type ARG1))
+                (allow ARG1 isid
+                    (filesystem
+                        (
+                            quotamod
+                        )
+                    )
+                )
+            )
+
+            (macro read ((type ARG1))
+                (allow ARG1 isid
+                    (all_files
+                        (
+                            read
+                        )
+                    )
+                )
+            )
+
+            (macro read_blk_files ((type ARG1))
+                (allow ARG1 isid
+                    (blk_files
+                        (
+                            read
+                        )
+                    )
+                )
+            )
+
+            (macro read_chr_files ((type ARG1))
+                (allow ARG1 isid
+                    (chr_files
+                        (
+                            read
+                        )
+                    )
+                )
+            )
+
+            (macro read_fifo_files ((type ARG1))
+                (allow ARG1 isid
+                    (fifo_files
+                        (
+                            read
+                        )
+                    )
+                )
+            )
+
+            (macro read_files ((type ARG1))
+                (allow ARG1 isid
+                    (files
+                        (
+                            read
+                        )
+                    )
+                )
+            )
+
+            (macro read_lnk_files ((type ARG1))
+                (allow ARG1 isid
+                    (lnk_files
+                        (
+                            read
+                        )
+                    )
+                )
+            )
+
+            (macro read_sock_files ((type ARG1))
+                (allow ARG1 isid
+                    (sock_files
+                        (
+                            read
+                        )
+                    )
+                )
+            )
+
+            (macro relabel ((type ARG1))
+                (allow ARG1 isid
+                    (all_files
+                        (
+                            relabel
+                        )
+                    )
+                )
+            )
+
+            (macro relabel_blk_files ((type ARG1))
+                (allow ARG1 isid
+                    (blk_files
+                        (
+                            relabel
+                        )
+                    )
+                )
+            )
+
+            (macro relabel_chr_files ((type ARG1))
+                (allow ARG1 isid
+                    (chr_files
+                        (
+                            relabel
+                        )
+                    )
+                )
+            )
+
+            (macro relabel_dirs ((type ARG1))
+                (allow ARG1 isid
+                    (dirs
+                        (
+                            relabel
+                        )
+                    )
+                )
+            )
+
+            (macro relabel_fifo_files ((type ARG1))
+                (allow ARG1 isid
+                    (fifo_files
+                        (
+                            relabel
+                        )
+                    )
+                )
+            )
+
+            (macro relabel_files ((type ARG1))
+                (allow ARG1 isid
+                    (files
+                        (
+                            relabel
+                        )
+                    )
+                )
+            )
+
+            (macro relabel_lnk_files ((type ARG1))
+                (allow ARG1 isid
+                    (lnk_files
+                        (
+                            relabel
+                        )
+                    )
+                )
+            )
+
+            (macro relabel_sock_files ((type ARG1))
+                (allow ARG1 isid
+                    (sock_files
+                        (
+                            relabel
+                        )
+                    )
+                )
+            )
+
+            (macro relabelfrom ((type ARG1))
+                (allow ARG1 isid
+                    (all_files
+                        (
+                            relabelfrom
+                        )
+                    )
+                )
+            )
+
+            (macro relabelfrom_blk_files ((type ARG1))
+                (allow ARG1 isid
+                    (blk_files
+                        (
+                            relabelfrom
+                        )
+                    )
+                )
+            )
+
+            (macro relabelfrom_chr_files ((type ARG1))
+                (allow ARG1 isid
+                    (chr_files
+                        (
+                            relabelfrom
+                        )
+                    )
+                )
+            )
+
+            (macro relabelfrom_dirs ((type ARG1))
+                (allow ARG1 isid
+                    (dirs
+                        (
+                            relabelfrom
+                        )
+                    )
+                )
+            )
+
+            (macro relabelfrom_fifo_files ((type ARG1))
+                (allow ARG1 isid
+                    (fifo_files
+                        (
+                            relabelfrom
+                        )
+                    )
+                )
+            )
+
+            (macro relabelfrom_files ((type ARG1))
+                (allow ARG1 isid
+                    (files
+                        (
+                            relabelfrom
+                        )
+                    )
+                )
+            )
+
+            (macro relabelfrom_fs ((type ARG1))
+                (allow ARG1 isid
+                    (filesystem
+                        (
+                            getattr
+                            relabelfrom
+                        )
+                    )
+                )
+            )
+
+            (macro relabelfrom_lnk_files ((type ARG1))
+                (allow ARG1 isid
+                    (lnk_files
+                        (
+                            relabelfrom
+                        )
+                    )
+                )
+            )
+
+            (macro relabelfrom_sock_files ((type ARG1))
+                (allow ARG1 isid
+                    (sock_files
+                        (
+                            relabelfrom
+                        )
+                    )
+                )
+            )
+
+            (macro relabelto ((type ARG1))
+                (allow ARG1 isid
+                    (all_files
+                        (
+                            relabelto
+                        )
+                    )
+                )
+            )
+
+            (macro relabelto_dirs ((type ARG1))
+                (allow ARG1 isid
+                    (dirs
+                        (
+                            relabelto
+                        )
+                    )
+                )
+            )
+
+            (macro relabelto_blk_files ((type ARG1))
+                (allow ARG1 isid
+                    (blk_files
+                        (
+                            relabelto
+                        )
+                    )
+                )
+            )
+
+            (macro relabelto_chr_files ((type ARG1))
+                (allow ARG1 isid
+                    (chr_files
+                        (
+                            relabelto
+                        )
+                    )
+                )
+            )
+
+            (macro relabelto_fifo_files ((type ARG1))
+                (allow ARG1 isid
+                    (fifo_files
+                        (
+                            relabelto
+                        )
+                    )
+                )
+            )
+
+            (macro relabelto_files ((type ARG1))
+                (allow ARG1 isid
+                    (files
+                        (
+                            relabelto
+                        )
+                    )
+                )
+            )
+
+            (macro relabelto_lnk_files ((type ARG1))
+                (allow ARG1 isid
+                    (lnk_files
+                        (
+                            relabelto
+                        )
+                    )
+                )
+            )
+
+            (macro relabelto_sock_files ((type ARG1))
+                (allow ARG1 isid
+                    (sock_files
+                        (
+                            relabelto
+                        )
+                    )
+                )
+            )
+
+            (macro remount ((type ARG1))
+                (allow ARG1 isid
+                    (filesystem
+                        (
+                            remount
+                        )
+                    )
+                )
+            )
+
+            (macro rename ((type ARG1))
+                (allow ARG1 isid
+                    (all_files
+                        (
+                            rename
+                        )
+                    )
+                )
+            )
+
+            (macro rename_blk_files ((type ARG1))
+                (allow ARG1 isid
+                    (blk_files
+                        (
+                            rename
+                        )
+                    )
+                )
+            )
+
+            (macro rename_chr_files ((type ARG1))
+                (allow ARG1 isid
+                    (chr_files
+                        (
+                            rename
+                        )
+                    )
+                )
+            )
+
+            (macro rename_dirs ((type ARG1))
+                (allow ARG1 isid
+                    (dirs
+                        (
+                            rename
+                        )
+                    )
+                )
+            )
+
+            (macro rename_fifo_files ((type ARG1))
+                (allow ARG1 isid
+                    (fifo_files
+                        (
+                            rename
+                        )
+                    )
+                )
+            )
+
+            (macro rename_files ((type ARG1))
+                (allow ARG1 isid
+                    (files
+                        (
+                            rename
+                        )
+                    )
+                )
+            )
+
+            (macro rename_lnk_files ((type ARG1))
+                (allow ARG1 isid
+                    (lnk_files
+                        (
+                            rename
+                        )
+                    )
+                )
+            )
+
+            (macro rename_sock_files ((type ARG1))
+                (allow ARG1 isid
+                    (sock_files
+                        (
+                            rename
+                        )
+                    )
+                )
+            )
+
+            (macro rw ((type ARG1))
+                (allow ARG1 isid
+                    (all_files
+                        (
+                            rw
+                        )
+                    )
+                )
+            )
+
+            (macro rw_blk_files ((type ARG1))
+                (allow ARG1 isid
+                    (blk_files
+                        (
+                            rw
+                        )
+                    )
+                )
+            )
+
+            (macro rw_chr_files ((type ARG1))
+                (allow ARG1 isid
+                    (chr_files
+                        (
+                            rw
+                        )
+                    )
+                )
+            )
+
+            (macro rw_dirs ((type ARG1))
+                (allow ARG1 isid
+                    (dirs
+                        (
+                            rw
+                        )
+                    )
+                )
+            )
+
+            (macro rw_fifo_files ((type ARG1))
+                (allow ARG1 isid
+                    (fifo_files
+                        (
+                            rw
+                        )
+                    )
+                )
+            )
+
+            (macro rw_files ((type ARG1))
+                (allow ARG1 isid
+                    (files
+                        (
+                            rw
+                        )
+                    )
+                )
+            )
+
+            (macro rw_lnk_files ((type ARG1))
+                (allow ARG1 isid
+                    (lnk_files
+                        (
+                            rw
+                        )
+                    )
+                )
+            )
+
+            (macro rw_sock_files ((type ARG1))
+                (allow ARG1 isid
+                    (sock_files
+                        (
+                            rw
+                        )
+                    )
+                )
+            )
+
+            (macro search ((type ARG1))
+                (allow ARG1 isid search_dir_perms)
+            )
+
+            (macro setattr ((type ARG1))
+                (allow ARG1 isid
+                    (all_files
+                        (
+                            setattr
+                        )
+                    )
+                )
+            )
+
+            (macro setattr_blk_files ((type ARG1))
+                (allow ARG1 isid
+                    (blk_files
+                        (
+                            setattr
+                        )
+                    )
+                )
+            )
+
+            (macro setattr_chr_files ((type ARG1))
+                (allow ARG1 isid
+                    (chr_files
+                        (
+                            setattr
+                        )
+                    )
+                )
+            )
+
+            (macro setattr_dirs ((type ARG1))
+                (allow ARG1 isid
+                    (dirs
+                        (
+                            setattr
+                        )
+                    )
+                )
+            )
+
+            (macro setattr_fifo_files ((type ARG1))
+                (allow ARG1 isid
+                    (fifo_files
+                        (
+                            setattr
+                        )
+                    )
+                )
+            )
+
+            (macro setattr_files ((type ARG1))
+                (allow ARG1 isid
+                    (files
+                        (
+                            setattr
+                        )
+                    )
+                )
+            )
+
+            (macro setattr_lnk_files ((type ARG1))
+                (allow ARG1 isid
+                    (lnk_files
+                        (
+                            setattr
+                        )
+                    )
+                )
+            )
+
+            (macro setattr_sock_files ((type ARG1))
+                (allow ARG1 isid
+                    (sock_files
+                        (
+                            setattr
+                        )
+                    )
+                )
+            )
+
+            (macro unmount ((type ARG1))
+                (allow ARG1 isid
+                    (filesystem
+                        (
+                            unmount
+                        )
+                    )
+                )
+            )
+
+            (macro write ((type ARG1))
+                (allow ARG1 isid
+                    (all_files
+                        (
+                            write
+                        )
+                    )
+                )
+            )
+
+            (macro write_blk_files ((type ARG1))
+                (allow ARG1 isid
+                    (blk_files
+                        (
+                            write
+                        )
+                    )
+                )
+            )
+
+            (macro write_chr_files ((type ARG1))
+                (allow ARG1 isid
+                    (chr_files
+                        (
+                            write
+                        )
+                    )
+                )
+            )
+
+            (macro write_dirs ((type ARG1))
+                (allow ARG1 isid
+                    (dirs
+                        (
+                            write
+                        )
+                    )
+                )
+            )
+
+            (macro write_fifo_files ((type ARG1))
+                (allow ARG1 isid
+                    (fifo_files
+                        (
+                            write
+                        )
+                    )
+                )
+            )
+
+            (macro write_files ((type ARG1))
+                (allow ARG1 isid
+                    (files
+                        (
+                            write
+                        )
+                    )
+                )
+            )
+
+            (macro write_lnk_files ((type ARG1))
+                (allow ARG1 isid
+                    (lnk_files
+                        (
+                            write
+                        )
+                    )
+                )
+            )
+
+            (macro write_sock_files ((type ARG1))
+                (allow ARG1 isid
+                    (sock_files
+                        (
+                            write
+                        )
+                    )
+                )
+            )
+
+            ;
+            ; sys.invalid.obj_macro_template policy
+            ;
+
+            (blockabstract obj_macro_template)    
+        )
     )
 
     ;
@@ -9480,6 +9498,8 @@
         ; unlabeled macros
         ;
 
+        (blockinherit invalid.obj_macro_template)
+
         (macro dontaudit_audit_access_dirs ((type ARG1))
             (dontaudit ARG1 isid
                 (dir
@@ -9500,314 +9520,11 @@
             )
         )
 
-        (macro add_entries ((type ARG1))
-            (allow ARG1 isid add_entry_dir_perms)
-        )
-
-        (macro append_blk_files ((type ARG1))
-            (allow ARG1 isid append_blk_file_perms)
-            (call search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro append_chr_files ((type ARG1))
-            (allow ARG1 isid append_chr_file_perms)
-            (call search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro append_fifo_files ((type ARG1))
-            (allow ARG1 isid append_fifo_file_perms)
-            (call search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro append_files ((type ARG1))
-            (allow ARG1 isid append_file_perms)
-            (call search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro create ((type ARG1))
-            (allow ARG1 isid
-                (all_files
-                    (
-                        create
-                    )
-                )
-            )
-        )
-
-        (macro create_blk_files ((type ARG1))
-            (allow ARG1 isid
-                (blk_files
-                    (
-                        create
-                    )
-                )
-            )
-        )
-
-        (macro create_chr_files ((type ARG1))
-            (allow ARG1 isid
-                (chr_files
-                    (
-                        create
-                    )
-                )
-            )
-        )
-
-        (macro create_dirs ((type ARG1))
-            (allow ARG1 isid
-                (dirs
-                    (
-                        create
-                    )
-                )
-            )
-        )
-
-        (macro create_fifo_files ((type ARG1))
-            (allow ARG1 isid
-                (fifo_files
-                    (
-                        create
-                    )
-                )
-            )
-        )
-
-        (macro create_files ((type ARG1))
-            (allow ARG1 isid
-                (files
-                    (
-                        create
-                    )
-                )
-            )
-        )
-
-        (macro create_lnk_files ((type ARG1))
-            (allow ARG1 isid
-                (lnk_files
-                    (
-                        create
-                    )
-                )
-            )
-        )
-
-        (macro create_sock_files ((type ARG1))
-            (allow ARG1 isid
-                (sock_files
-                    (
-                        create
-                    )
-                )
-            )
-        )
-
         (macro dccp_recvfrom ((type ARG1))
             (allow ARG1 isid
                 (dccp_socket
                     (
                         recvfrom
-                    )
-                )
-            )
-        )
-
-        (macro del_entries ((type ARG1))
-            (allow ARG1 isid del_entry_dir_perms)
-        )
-
-        (macro delete ((type ARG1))
-            (allow ARG1 isid
-                (all_files
-                    (
-                        delete
-                    )
-                )
-            )
-        )
-
-        (macro delete_blk_files ((type ARG1))
-            (allow ARG1 isid
-                (blk_files
-                    (
-                        delete
-                    )
-                )
-            )
-        )
-
-        (macro delete_chr_files ((type ARG1))
-            (allow ARG1 isid
-                (chr_files
-                    (
-                        delete
-                    )
-                )
-            )
-        )
-
-        (macro delete_dirs ((type ARG1))
-            (allow ARG1 isid
-                (dirs
-                    (
-                        delete
-                    )
-                )
-            )
-        )
-
-        (macro delete_fifo_files ((type ARG1))
-            (allow ARG1 isid
-                (fifo_files
-                    (
-                        delete
-                    )
-                )
-            )
-        )
-
-        (macro delete_files ((type ARG1))
-            (allow ARG1 isid
-                (files
-                    (
-                        delete
-                    )
-                )
-            )
-        )
-
-        (macro delete_lnk_files ((type ARG1))
-            (allow ARG1 isid
-                (lnk_files
-                    (
-                        delete
-                    )
-                )
-            )
-        )
-
-        (macro delete_sock_files ((type ARG1))
-            (allow ARG1 isid
-                (sock_files
-                    (
-                        delete
-                    )
-                )
-            )
-        )
-
-        (macro execute ((type ARG1))
-            (allow ARG1 isid exec_file_perms)
-            (call search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro getattr ((type ARG1))
-            (allow ARG1 isid_file
-                (all_files
-                    (
-                        getattr
-                    )
-                )
-            )
-        )
-
-        (macro getattr_blk_files ((type ARG1))
-            (allow ARG1 isid
-                (blk_files
-                    (
-                        getattr
-                    )
-                )
-            )
-        )
-
-        (macro getattr_chr_files ((type ARG1))
-            (allow ARG1 isid
-                (chr_files
-                    (
-                        getattr
-                    )
-                )
-            )
-        )
-
-        (macro getattr_dirs ((type ARG1))
-            (allow ARG1 isid
-                (dirs
-                    (
-                        getattr
-                    )
-                )
-            )
-        )
-
-        (macro getattr_fifo_files ((type ARG1))
-            (allow ARG1 isid
-                (fifo_files
-                    (
-                        getattr
-                    )
-                )
-            )
-        )
-
-        (macro getattr_files ((type ARG1))
-            (allow ARG1 isid
-                (files
-                    (
-                        getattr
-                    )
-                )
-            )
-        )
-
-        (macro getattr_fs ((type ARG1))
-            (allow ARG1 isid
-                (filesystem
-                    (
-                        getattr
-                    )
-                )
-            )
-        )
-
-        (macro getattr_lnk_files ((type ARG1))
-            (allow ARG1 isid
-                (lnk_files
-                    (
-                        getattr
-                    )
-                )
-            )
-        )
-
-        (macro getattr_sock_files ((type ARG1))
-            (allow ARG1 isid
-                (sock_files
-                    (
-                        getattr
                     )
                 )
             )
@@ -9823,204 +9540,11 @@
             )
         )
 
-        (macro list ((type ARG1))
-            (allow ARG1 isid list_dir_perms)
-        )
-
-        (macro manage ((type ARG1))
-            (allow ARG1 isid
-                (all_files
-                    (
-                        manage
-                    )
-                )
-            )
-        )
-
-        (macro manage_blk_files ((type ARG1))
-            (allow ARG1 isid
-                (blk_files
-                    (
-                        manage
-                    )
-                )
-            )
-        )
-
-        (macro manage_chr_files ((type ARG1))
-            (allow ARG1 isid
-                (chr_files
-                    (
-                        manage
-                    )
-                )
-            )
-        )
-
-        (macro manage_dirs ((type ARG1))
-            (allow ARG1 isid
-                (dirs
-                    (
-                        manage
-                    )
-                )
-            )
-        )
-
-        (macro manage_fifo_files ((type ARG1))
-            (allow ARG1 isid
-                (fifo_files
-                    (
-                        manage
-                    )
-                )
-            )
-        )
-
-        (macro manage_files ((type ARG1))
-            (allow ARG1 isid
-                (files
-                    (
-                        manage
-                    )
-                )
-            )
-        )
-
-        (macro manage_lnk_files ((type ARG1))
-            (allow ARG1 isid
-                (lnk_files
-                    (
-                        manage
-                    )
-                )
-            )
-        )
-
-        (macro manage_sock_files ((type ARG1))
-            (allow ARG1 isid
-                (sock_files
-                    (
-                        manage
-                    )
-                )
-            )
-        )
-
-        (macro mmap ((type ARG1))
-            (allow ARG1 isid mmap_file_perms)
-            (call search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro mount ((type ARG1))
-            (allow ARG1 isid
-                (filesystem
-                    (
-                        mount
-                    )
-                )
-            )
-        )
-
-        (macro quotaget ((type ARG1))
-            (allow ARG1 isid
-                (filesystem
-                    (
-                        quotaget
-                    )
-                )
-            )
-        )
-
-        (macro quotamod ((type ARG1))
-            (allow ARG1 isid
-                (filesystem
-                    (
-                        quotamod
-                    )
-                )
-            )
-        )
-
         (macro rawip_recvfrom ((type ARG1))
             (allow ARG1 isid
                 (rawip_socket
                     (
                         recvfrom
-                    )
-                )
-            )
-        )
-
-        (macro read ((type ARG1))
-            (allow ARG1 isid
-                (all_files
-                    (
-                        read
-                    )
-                )
-            )
-        )
-
-        (macro read_blk_files ((type ARG1))
-            (allow ARG1 isid
-                (blk_files
-                    (
-                        read
-                    )
-                )
-            )
-        )
-
-        (macro read_chr_files ((type ARG1))
-            (allow ARG1 isid
-                (chr_files
-                    (
-                        read
-                    )
-                )
-            )
-        )
-
-        (macro read_fifo_files ((type ARG1))
-            (allow ARG1 isid
-                (fifo_files
-                    (
-                        read
-                    )
-                )
-            )
-        )
-
-        (macro read_files ((type ARG1))
-            (allow ARG1 isid
-                (files
-                    (
-                        read
-                    )
-                )
-            )
-        )
-
-        (macro read_lnk_files ((type ARG1))
-            (allow ARG1 isid
-                (lnk_files
-                    (
-                        read
-                    )
-                )
-            )
-        )
-
-        (macro read_sock_files ((type ARG1))
-            (allow ARG1 isid
-                (sock_files
-                    (
-                        read
                     )
                 )
             )
@@ -10036,356 +9560,11 @@
             )
         )
 
-        (macro relabelfrom ((type ARG1))
-            (allow ARG1 isid
-                (all_files
-                    (
-                        relabelfrom
-                    )
-                )
-            )
-        )
-
-        (macro relabelfrom_blk_files ((type ARG1))
-            (allow ARG1 isid
-                (blk_files
-                    (
-                        relabelfrom
-                    )
-                )
-            )
-        )
-
-        (macro relabelfrom_chr_files ((type ARG1))
-            (allow ARG1 isid
-                (chr_files
-                    (
-                        relabelfrom
-                    )
-                )
-            )
-        )
-
-        (macro relabelfrom_dirs ((type ARG1))
-            (allow ARG1 isid
-                (dirs
-                    (
-                        relabelfrom
-                    )
-                )
-            )
-        )
-
-        (macro relabelfrom_fifo_files ((type ARG1))
-            (allow ARG1 isid
-                (fifo_files
-                    (
-                        relabelfrom
-                    )
-                )
-            )
-        )
-
-        (macro relabelfrom_files ((type ARG1))
-            (allow ARG1 isid
-                (files
-                    (
-                        relabelfrom
-                    )
-                )
-            )
-        )
-
-        (macro relabelfrom_fs ((type ARG1))
-            (allow ARG1 isid
-                (filesystem
-                    (
-                        getattr
-                        relabelfrom
-                    )
-                )
-            )
-        )
-
-        (macro relabelfrom_lnk_files ((type ARG1))
-            (allow ARG1 isid
-                (lnk_files
-                    (
-                        relabelfrom
-                    )
-                )
-            )
-        )
-
-        (macro relabelfrom_sock_files ((type ARG1))
-            (allow ARG1 isid
-                (sock_files
-                    (
-                        relabelfrom
-                    )
-                )
-            )
-        )
-
-        (macro remount ((type ARG1))
-            (allow ARG1 isid
-                (filesystem
-                    (
-                        remount
-                    )
-                )
-            )
-        )
-
-        (macro rename ((type ARG1))
-            (allow ARG1 isid
-                (all_files
-                    (
-                        rename
-                    )
-                )
-            )
-        )
-
-        (macro rename_blk_files ((type ARG1))
-            (allow ARG1 isid
-                (blk_files
-                    (
-                        rename
-                    )
-                )
-            )
-        )
-
-        (macro rename_chr_files ((type ARG1))
-            (allow ARG1 isid
-                (chr_files
-                    (
-                        rename
-                    )
-                )
-            )
-        )
-
-        (macro rename_dirs ((type ARG1))
-            (allow ARG1 isid
-                (dirs
-                    (
-                        rename
-                    )
-                )
-            )
-        )
-
-        (macro rename_fifo_files ((type ARG1))
-            (allow ARG1 isid
-                (fifo_files
-                    (
-                        rename
-                    )
-                )
-            )
-        )
-
-        (macro rename_files ((type ARG1))
-            (allow ARG1 isid
-                (files
-                    (
-                        rename
-                    )
-                )
-            )
-        )
-
-        (macro rename_lnk_files ((type ARG1))
-            (allow ARG1 isid
-                (lnk_files
-                    (
-                        rename
-                    )
-                )
-            )
-        )
-
-        (macro rename_sock_files ((type ARG1))
-            (allow ARG1 isid
-                (sock_files
-                    (
-                        rename
-                    )
-                )
-            )
-        )
-
-        (macro rw ((type ARG1))
-            (allow ARG1 isid
-                (all_files
-                    (
-                        rw
-                    )
-                )
-            )
-        )
-
-        (macro rw_blk_files ((type ARG1))
-            (allow ARG1 isid
-                (blk_files
-                    (
-                        rw
-                    )
-                )
-            )
-        )
-
-        (macro rw_chr_files ((type ARG1))
-            (allow ARG1 isid
-                (chr_files
-                    (
-                        rw
-                    )
-                )
-            )
-        )
-
-        (macro rw_dirs ((type ARG1))
-            (allow ARG1 isid
-                (dirs
-                    (
-                        rw
-                    )
-                )
-            )
-        )
-
-        (macro rw_fifo_files ((type ARG1))
-            (allow ARG1 isid
-                (fifo_files
-                    (
-                        rw
-                    )
-                )
-            )
-        )
-
-        (macro rw_files ((type ARG1))
-            (allow ARG1 isid
-                (files
-                    (
-                        rw
-                    )
-                )
-            )
-        )
-
-        (macro rw_lnk_files ((type ARG1))
-            (allow ARG1 isid
-                (lnk_files
-                    (
-                        rw
-                    )
-                )
-            )
-        )
-
-        (macro rw_sock_files ((type ARG1))
-            (allow ARG1 isid
-                (sock_files
-                    (
-                        rw
-                    )
-                )
-            )
-        )
-
         (macro sctp_recvfrom ((type ARG1))
             (allow ARG1 isid
                 (sctp_socket
                     (
                         recvfrom
-                    )
-                )
-            )
-        )
-
-        (macro search ((type ARG1))
-            (allow ARG1 isid search_dir_perms)
-        )
-
-        (macro setattr ((type ARG1))
-            (allow ARG1 isid
-                (all_files
-                    (
-                        setattr
-                    )
-                )
-            )
-        )
-
-        (macro setattr_blk_files ((type ARG1))
-            (allow ARG1 isid
-                (blk_files
-                    (
-                        setattr
-                    )
-                )
-            )
-        )
-
-        (macro setattr_chr_files ((type ARG1))
-            (allow ARG1 isid
-                (chr_files
-                    (
-                        setattr
-                    )
-                )
-            )
-        )
-
-        (macro setattr_dirs ((type ARG1))
-            (allow ARG1 isid
-                (dirs
-                    (
-                        setattr
-                    )
-                )
-            )
-        )
-
-        (macro setattr_fifo_files ((type ARG1))
-            (allow ARG1 isid
-                (fifo_files
-                    (
-                        setattr
-                    )
-                )
-            )
-        )
-
-        (macro setattr_files ((type ARG1))
-            (allow ARG1 isid
-                (files
-                    (
-                        setattr
-                    )
-                )
-            )
-        )
-
-        (macro setattr_lnk_files ((type ARG1))
-            (allow ARG1 isid
-                (lnk_files
-                    (
-                        setattr
-                    )
-                )
-            )
-        )
-
-        (macro setattr_sock_files ((type ARG1))
-            (allow ARG1 isid
-                (sock_files
-                    (
-                        setattr
                     )
                 )
             )
@@ -10406,97 +9585,6 @@
                 (udp_socket
                     (
                         recvfrom
-                    )
-                )
-            )
-        )
-
-        (macro unmount ((type ARG1))
-            (allow ARG1 isid
-                (filesystem
-                    (
-                        unmount
-                    )
-                )
-            )
-        )
-
-        (macro write ((type ARG1))
-            (allow ARG1 isid
-                (all_files
-                    (
-                        write
-                    )
-                )
-            )
-        )
-
-        (macro write_blk_files ((type ARG1))
-            (allow ARG1 isid
-                (blk_files
-                    (
-                        write
-                    )
-                )
-            )
-        )
-
-
-        (macro write_chr_files ((type ARG1))
-            (allow ARG1 isid
-                (chr_files
-                    (
-                        write
-                    )
-                )
-            )
-        )
-
-        (macro write_dirs ((type ARG1))
-            (allow ARG1 isid
-                (dirs
-                    (
-                        write
-                    )
-                )
-            )
-        )
-
-        (macro write_fifo_files ((type ARG1))
-            (allow ARG1 isid
-                (fifo_files
-                    (
-                        write
-                    )
-                )
-            )
-        )
-
-        (macro write_files ((type ARG1))
-            (allow ARG1 isid
-                (files
-                    (
-                        write
-                    )
-                )
-            )
-        )
-
-        (macro write_lnk_files ((type ARG1))
-            (allow ARG1 isid
-                (lnk_files
-                    (
-                        write
-                    )
-                )
-            )
-        )
-
-        (macro write_sock_files ((type ARG1))
-            (allow ARG1 isid
-                (sock_files
-                    (
-                        write
                     )
                 )
             )
