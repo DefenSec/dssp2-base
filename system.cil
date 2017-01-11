@@ -735,9 +735,9 @@
             )
         )
 
-        (booleanif mount_any_file
+        (booleanif mount.mount_any_file
             (true
-                (call files.read_inherited_files_except
+                (call files.read_inherited_except
                     (
                         subj
                     )

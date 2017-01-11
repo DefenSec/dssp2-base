@@ -43,7 +43,9 @@
         delete
         getattr
         manage
+        mounton
         read
+        read_inherited
         relabel
         relabelfrom
         relabelto
@@ -74,7 +76,9 @@
         delete
         getattr
         manage
+        mounton
         read
+        read_inherited
         relabel
         relabelfrom
         relabelto
@@ -198,7 +202,9 @@
         delete
         getattr
         manage
+        mounton
         read
+        read_inherited
         relabel
         relabelfrom
         relabelto
@@ -347,6 +353,56 @@
 (classmapping all_files manage manage_lnk_file_perms)
 (classmapping all_files manage manage_sock_file_perms)
 
+(classmapping all_files mounton
+    (blk_file
+        (
+            mounton
+        )
+    )
+)
+(classmapping all_files mounton
+    (chr_file
+        (
+            mounton
+        )
+    )
+)
+(classmapping all_files mounton
+    (dir
+        (
+            mounton
+        )
+    )
+)
+(classmapping all_files mounton
+    (fifo_file
+        (
+            mounton
+        )
+    )
+)
+(classmapping all_files mounton
+    (file
+        (
+            mounton
+        )
+    )
+)
+(classmapping all_files mounton
+    (lnk_file
+        (
+            mounton
+        )
+    )
+)
+(classmapping all_files mounton
+    (sock_file
+        (
+            mounton
+        )
+    )
+)
+
 (classmapping all_files read read_blk_file_perms)
 (classmapping all_files read read_chr_file_perms)
 (classmapping all_files read list_dir_perms)
@@ -354,6 +410,14 @@
 (classmapping all_files read read_file_perms)
 (classmapping all_files read read_lnk_file_perms)
 (classmapping all_files read read_sock_file_perms)
+
+(classmapping all_files read_inherited read_inherited_blk_file_perms)
+(classmapping all_files read_inherited read_inherited_chr_file_perms)
+(classmapping all_files read_inherited list_inherited_dir_perms)
+(classmapping all_files read_inherited read_inherited_fifo_file_perms)
+(classmapping all_files read_inherited read_inherited_file_perms)
+(classmapping all_files read_inherited read_lnk_file_perms)
+(classmapping all_files read_inherited read_inherited_sock_file_perms)
 
 (classmapping all_files relabel search_dir_perms)
 (classmapping all_files relabel relabel_blk_file_perms)
@@ -2059,9 +2123,29 @@
 (classmapping blk_and_chr_files manage manage_blk_file_perms)
 (classmapping blk_and_chr_files manage manage_chr_file_perms)
 
+(classmapping blk_and_chr_files mounton
+    (blk_file
+        (
+            mounton
+        )
+    )
+)
+(classmapping blk_and_chr_files mounton
+    (chr_file
+        (
+            mounton
+        )
+    )
+)
+
 (classmapping blk_and_chr_files read search_dir_perms)
 (classmapping blk_and_chr_files read read_blk_file_perms)
 (classmapping blk_and_chr_files read read_chr_file_perms)
+
+(classmapping blk_and_chr_files read_inherited
+    read_inherited_blk_file_perms)
+(classmapping blk_and_chr_files read_inherited
+    read_inherited_chr_file_perms)
 
 (classmapping blk_and_chr_files relabel search_dir_perms)
 (classmapping blk_and_chr_files relabel relabel_blk_file_perms)
@@ -2417,11 +2501,57 @@
 (classmapping files_except_blk_and_chr manage manage_lnk_file_perms)
 (classmapping files_except_blk_and_chr manage manage_sock_file_perms)
 
+(classmapping files_except_blk_and_chr mounton
+    (dir
+        (
+            mounton
+        )
+    )
+)
+(classmapping files_except_blk_and_chr mounton
+    (fifo_file
+        (
+            mounton
+        )
+    )
+)
+(classmapping files_except_blk_and_chr mounton
+    (file
+        (
+            mounton
+        )
+    )
+)
+(classmapping files_except_blk_and_chr mounton
+    (lnk_file
+        (
+            mounton
+        )
+    )
+)
+(classmapping files_except_blk_and_chr mounton
+    (sock_file
+        (
+            mounton
+        )
+    )
+)
+
 (classmapping files_except_blk_and_chr read list_dir_perms)
 (classmapping files_except_blk_and_chr read read_fifo_file_perms)
 (classmapping files_except_blk_and_chr read read_file_perms)
 (classmapping files_except_blk_and_chr read read_lnk_file_perms)
 (classmapping files_except_blk_and_chr read read_sock_file_perms)
+
+(classmapping files_except_blk_and_chr read_inherited
+    list_inherited_dir_perms)
+(classmapping files_except_blk_and_chr read_inherited
+    read_inherited_fifo_file_perms)
+(classmapping files_except_blk_and_chr read_inherited
+    read_inherited_file_perms)
+(classmapping files_except_blk_and_chr read_inherited read_lnk_file_perms)
+(classmapping files_except_blk_and_chr read_inherited
+    read_inherited_sock_file_perms)
 
 (classmapping files_except_blk_and_chr relabel search_dir_perms)
 (classmapping files_except_blk_and_chr relabel relabel_dir_perms)

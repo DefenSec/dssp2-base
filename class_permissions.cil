@@ -72,6 +72,7 @@
 (classpermission delete_blk_file_perms)
 (classpermission manage_blk_file_perms)
 (classpermission read_blk_file_perms)
+(classpermission read_inherited_blk_file_perms)
 (classpermission relabel_blk_file_perms)
 (classpermission relabelfrom_blk_file_perms)
 (classpermission relabelto_blk_file_perms)
@@ -128,6 +129,7 @@
 (classpermission delete_chr_file_perms)
 (classpermission manage_chr_file_perms)
 (classpermission read_chr_file_perms)
+(classpermission read_inherited_chr_file_perms)
 (classpermission relabel_chr_file_perms)
 (classpermission relabelfrom_chr_file_perms)
 (classpermission relabelto_chr_file_perms)
@@ -165,6 +167,7 @@
 (classpermission delete_dir_perms)
 (classpermission dir_except_execmod)
 (classpermission list_dir_perms)
+(classpermission list_inherited_dir_perms)
 (classpermission manage_dir_perms)
 (classpermission relabel_dir_perms)
 (classpermission relabelfrom_dir_perms)
@@ -185,6 +188,7 @@
 (classpermission fifo_file_except_execmod_and_mounton)
 (classpermission manage_fifo_file_perms)
 (classpermission read_fifo_file_perms)
+(classpermission read_inherited_fifo_file_perms)
 (classpermission relabel_fifo_file_perms)
 (classpermission relabelfrom_fifo_file_perms)
 (classpermission relabelto_fifo_file_perms)
@@ -578,6 +582,7 @@
 (classpermission delete_sock_file_perms)
 (classpermission manage_sock_file_perms)
 (classpermission read_sock_file_perms)
+(classpermission read_inherited_sock_file_perms)
 (classpermission relabel_sock_file_perms)
 (classpermission relabelfrom_sock_file_perms)
 (classpermission relabelto_sock_file_perms)
@@ -1141,6 +1146,17 @@
     )
 )
 
+(classpermissionset read_inherited_blk_file_perms
+    (blk_file
+        (
+            getattr
+            ioctl
+            lock
+            read
+        )
+    )
+)
+
 (classpermissionset relabel_blk_file_perms
     (blk_file
         (
@@ -1566,6 +1582,17 @@
     )
 )
 
+(classpermissionset read_inherited_chr_file_perms
+    (chr_file
+        (
+            getattr
+            ioctl
+            lock
+            read
+        )
+    )
+)
+
 (classpermissionset relabel_chr_file_perms
     (chr_file
         (
@@ -1875,6 +1902,18 @@
     )
 )
 
+(classpermissionset list_inherited_dir_perms
+    (dir
+        (
+            getattr
+            ioctl
+            lock
+            read
+            search
+        )
+    )
+)
+
 (classpermissionset manage_dir_perms
     (dir
         (
@@ -2063,6 +2102,18 @@
         )
     )
 )
+
+(classpermissionset read_inherited_fifo_file_perms
+    (fifo_file
+        (
+            getattr
+            ioctl
+            lock
+            read
+        )
+    )
+)
+
 
 (classpermissionset relabel_fifo_file_perms
     (fifo_file
@@ -2283,6 +2334,17 @@
             ioctl
             lock
             open
+            read
+        )
+    )
+)
+
+(classpermissionset read_inherited_file_perms
+    (file
+        (
+            getattr
+            ioctl
+            lock
             read
         )
     )
@@ -4696,6 +4758,17 @@
             ioctl
             lock
             open
+            read
+        )
+    )
+)
+
+(classpermissionset read_inherited_sock_file_perms
+    (sock_file
+        (
+            getattr
+            ioctl
+            lock
             read
         )
     )
