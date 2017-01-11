@@ -353,7 +353,7 @@
                 )
                 (allow ARG1 obj_type_attribute read_file_perms)
                 (allow ARG1
-                    sec,obj_type_except_sec_load_policy_obj_type_attribute
+                    sec.obj_type_except_sec_load_policy_obj_type_attribute
                         (file
                             (
                                 append
