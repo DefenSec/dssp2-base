@@ -686,7 +686,7 @@
 
             (macro ps ((type ARG1))
                 (allow ARG1 subj_type_attribute
-                    (state
+                    (process_state
                         (
                             ps
                         )
@@ -711,7 +711,7 @@
 
             (macro read_state ((type ARG1))
                 (allow ARG1 subj_type_attribute
-                    (state
+                    (process_state
                         (
                             read
                         )
@@ -1134,7 +1134,7 @@
 
             (macro dontaudit_read_state ((type ARG1))
                 (dontaudit ARG1 subj
-                    (state
+                    (process_state
                         (
                             read
                         )
@@ -1262,7 +1262,7 @@
 
            (macro ps ((type ARG1))
                 (allow ARG1 subj
-                    (state
+                    (process_state
                         (
                             ps
                         )
@@ -1282,7 +1282,7 @@
 
             (macro read_state ((type ARG1))
                 (allow ARG1 subj
-                    (state
+                    (process_state
                         (
                             read
                         )
