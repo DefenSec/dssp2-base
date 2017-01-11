@@ -22886,6 +22886,19 @@
             )
         )
 
+        (macro create ((type ARG1))
+            (call create_dirs
+                (
+                    ARG1
+                )
+            )
+            (call create_files
+                (
+                    ARG1
+                )
+            )
+        )
+
         (macro create_dirs ((type ARG1))
             (allow ARG1 file
                 (dirs
@@ -22925,6 +22938,19 @@
             )
         )
 
+        (macro delete ((type ARG1))
+            (call delete_dirs
+                (
+                    ARG1
+                )
+            )
+            (call delete_files
+                (
+                    ARG1
+                )
+            )
+        )
+
         (macro delete_dirs ((type ARG1))
             (allow ARG1 file
                 (dirs
@@ -22949,6 +22975,19 @@
                 )
             )
             (call sys.mountpoint.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro getattr ((type ARG1))
+            (call getattr_dirs
+                (
+                    ARG1
+                )
+            )
+            (call getattr_files
                 (
                     ARG1
                 )
@@ -22994,6 +23033,19 @@
             )
         )
 
+        (macro manage ((type ARG1))
+            (call manage_dirs
+                (
+                    ARG1
+                )
+            )
+            (call manage_files
+                (
+                    ARG1
+                )
+            )
+        )
+
         (macro manage_dirs ((type ARG1))
             (allow ARG1 file
                 (dirs
@@ -23032,6 +23084,19 @@
             )
         )
 
+        (macro read ((type ARG1))
+            (call list
+                (
+                    ARG1
+                )
+            )
+            (call read_files
+                (
+                    ARG1
+                )
+            )
+        )
+
         (macro read_files ((type ARG1))
             (allow ARG1 file
                 (files
@@ -23041,6 +23106,19 @@
                 )
             )
             (call sys.mountpoint.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabel ((type ARG1))
+            (call relabel_dirs
+                (
+                    ARG1
+                )
+            )
+            (call relabel_files
                 (
                     ARG1
                 )
@@ -23077,6 +23155,19 @@
             )
         )
 
+        (macro relabelfrom ((type ARG1))
+            (call relabelfrom_dirs
+                (
+                    ARG1
+                )
+            )
+            (call relabelfrom_files
+                (
+                    ARG1
+                )
+            )
+        )
+
         (macro relabelfrom_dirs ((type ARG1))
             (allow ARG1 file
                 (dirs
@@ -23101,6 +23192,19 @@
                 )
             )
             (call sys.mountpoint.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelto ((type ARG1))
+            (call relabelto_dirs
+                (
+                    ARG1
+                )
+            )
+            (call relabelto_files
                 (
                     ARG1
                 )
@@ -23137,6 +23241,19 @@
             )
         )
 
+        (macro rename ((type ARG1))
+            (call rename_dirs
+                (
+                    ARG1
+                )
+            )
+            (call rename_files
+                (
+                    ARG1
+                )
+            )
+        )
+
         (macro rename_dirs ((type ARG1))
             (allow ARG1 file
                 (dirs
@@ -23161,6 +23278,19 @@
                 )
             )
             (call sys.mountpoint.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rw ((type ARG1))
+            (call rw_dirs
+                (
+                    ARG1
+                )
+            )
+            (call rw_files
                 (
                     ARG1
                 )
@@ -23206,6 +23336,19 @@
             )
         )
 
+        (macro setattr ((type ARG1))
+            (call setattr_dirs
+                (
+                    ARG1
+                )
+            )
+            (call setattr_files
+                (
+                    ARG1
+                )
+            )
+        )
+
         (macro setattr_dirs ((type ARG1))
             (allow ARG1 file
                 (dirs
@@ -23230,6 +23373,19 @@
                 )
             )
             (call sys.mountpoint.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro write ((type ARG1))
+            (call write_dirs
+                (
+                    ARG1
+                )
+            )
+            (call write_files
                 (
                     ARG1
                 )
