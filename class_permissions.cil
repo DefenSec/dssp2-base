@@ -93,15 +93,6 @@
 (classpermission write_inherited_bluetooth_socket_perms)
 
 ;
-; bridge_socket class permissions
-;
-
-(classpermission create_bridge_socket_perms)
-(classpermission rw_bridge_socket_perms)
-(classpermission rw_inherited_bridge_socket_perms)
-(classpermission write_inherited_bridge_socket_perms)
-
-;
 ; caif_socket class permissions
 ;
 
@@ -228,15 +219,6 @@
 (classpermission write_inherited_file_perms)
 
 ;
-; ib_socket class permissions
-;
-
-(classpermission create_ib_socket_perms)
-(classpermission rw_ib_socket_perms)
-(classpermission rw_inherited_ib_socket_perms)
-(classpermission write_inherited_ib_socket_perms)
-
-;
 ; icmp_socket class permissions
 ;
 
@@ -340,15 +322,6 @@
 (classpermission rename_lnk_file_perms)
 (classpermission rw_lnk_file_perms)
 (classpermission write_lnk_file_perms)
-
-;
-; mpls_socket class permissions
-;
-
-(classpermission create_mpls_socket_perms)
-(classpermission rw_mpls_socket_perms)
-(classpermission rw_inherited_mpls_socket_perms)
-(classpermission write_inherited_mpls_socket_perms)
 
 ;
 ; msgq class permissions
@@ -1316,68 +1289,6 @@
 
 (classpermissionset write_inherited_bluetooth_socket_perms
     (bluetooth_socket
-        (
-            getattr
-            ioctl
-            write
-        )
-    )
-)
-
-;
-; bridge_socket class permission sets
-;
-
-(classpermissionset create_bridge_socket_perms
-    (bridge_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset rw_bridge_socket_perms
-    (bridge_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset rw_inherited_bridge_socket_perms
-    (bridge_socket
-        (
-            getattr
-            ioctl
-            read
-            write
-        )
-    )
-)
-
-(classpermissionset write_inherited_bridge_socket_perms
-    (bridge_socket
         (
             getattr
             ioctl
@@ -2498,68 +2409,6 @@
 )
 
 ;
-; ib_socket class permission sets
-;
-
-(classpermissionset create_ib_socket_perms
-    (ib_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset rw_ib_socket_perms
-    (ib_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset rw_inherited_ib_socket_perms
-    (ib_socket
-        (
-            getattr
-            ioctl
-            read
-            write
-        )
-    )
-)
-
-(classpermissionset write_inherited_ib_socket_perms
-    (ib_socket
-        (
-            getattr
-            ioctl
-            write
-        )
-    )
-)
-
-;
 ; icmp_socket class permission sets
 ;
 
@@ -3272,68 +3121,6 @@
             getattr
             ioctl
             lock
-            write
-        )
-    )
-)
-
-;
-; mpls_socket class permission sets
-;
-
-(classpermissionset create_mpls_socket_perms
-    (mpls_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset rw_mpls_socket_perms
-    (mpls_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset rw_inherited_mpls_socket_perms
-    (mpls_socket
-        (
-            getattr
-            ioctl
-            read
-            write
-        )
-    )
-)
-
-(classpermissionset write_inherited_mpls_socket_perms
-    (mpls_socket
-        (
-            getattr
-            ioctl
             write
         )
     )

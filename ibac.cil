@@ -175,30 +175,6 @@
 )
 
 ;
-; IBAC bridge_socket constraints
-;
-
-(constrain
-    (bridge_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
-
-;
 ; IBAC caif_socket constraints
 ;
 
@@ -372,30 +348,6 @@
 
 (constrain
     (file
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
-
-;
-; IBAC ib_socket constraints
-;
-
-(constrain
-    (ib_socket
         (
             create
             relabelfrom
@@ -612,30 +564,6 @@
 
 (constrain
     (llc_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
-
-;
-; IBAC mpls_socket constraints
-;
-
-(constrain
-    (mpls_socket
         (
             create
             relabelfrom

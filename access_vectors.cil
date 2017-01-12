@@ -753,13 +753,6 @@
 (classcommon bluetooth_socket common_socket)
 
 ;
-; bridge_socket class
-;
-
-(class bridge_socket ())
-(classcommon bridge_socket common_socket)
-
-;
 ; caif_socket class
 ;
 
@@ -779,13 +772,6 @@
 
 (class decnet_socket ())
 (classcommon decnet_socket common_socket)
-
-;
-; ib_socket class
-;
-
-(class ib_socket ())
-(classcommon ib_socket common_socket)
 
 ;
 ; icmp_socket class
@@ -846,13 +832,6 @@
 
 (class llc_socket ())
 (classcommon llc_socket common_socket)
-
-;
-; mpls_socket class
-;
-
-(class mpls_socket ())
-(classcommon mpls_socket common_socket)
 
 ;
 ; netrom_socket class
@@ -953,11 +932,9 @@
         atmsvc_socket
         ax25_socket
         bluetooth_socket
-        bridge_socket
         caif_socket
         can_socket
         decnet_socket
-        ib_socket
         icmp_socket
         ieee802154_socket
         ipx_socket
@@ -966,7 +943,6 @@
         iucv_socket
         kcm_socket
         llc_socket
-        mpls_socket
         netrom_socket
         nfc_socket
         phonet_socket

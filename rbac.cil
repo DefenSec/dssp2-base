@@ -175,30 +175,6 @@
 )
 
 ;
-; RBAC bridge_socket constraints
-;
-
-(constrain
-    (bridge_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq r1 r2)
-                (and
-                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
-                    (eq r2 rbac_sys_role_attribute)
-                )
-        )
-        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
-    )
-)
-
-;
 ; RBAC caif_socket constraints
 ;
 
@@ -372,30 +348,6 @@
 
 (constrain
     (file
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq r1 r2)
-                (and
-                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
-                    (eq r2 rbac_sys_role_attribute)
-                )
-        )
-        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
-    )
-)
-
-;
-; RBAC ib_socket constraints
-;
-
-(constrain
-    (ib_socket
         (
             create
             relabelfrom
@@ -612,30 +564,6 @@
 
 (constrain
     (llc_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq r1 r2)
-                (and
-                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
-                    (eq r2 rbac_sys_role_attribute)
-                )
-        )
-        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
-    )
-)
-
-;
-; RBAC mpls_socket constraints
-;
-
-(constrain
-    (mpls_socket
         (
             create
             relabelfrom
