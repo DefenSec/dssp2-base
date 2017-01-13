@@ -1092,7 +1092,7 @@
             )
 
             (optional common_subj_optional_systemd
-                (call systemd.sigchld
+                (call systemd.system.sigchld
                     (
                         subj_type_attribute
                     )

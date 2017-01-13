@@ -801,17 +801,17 @@
                 isid
             )
         )
-        (call systemd.read_state
+        (call systemd.system.read_state
             (
                 isid
             )
         )
-        (call systemd.signal
+        (call systemd.system.signal
             (
                 isid
             )
         )
-        (call systemd.dynamic_subj_type_transition
+        (call systemd.system.dynamic_subj_type_transition
             (
                 isid
             )
@@ -2147,7 +2147,7 @@
         )
 
         (optional invalid_optional_systemd
-            (call systemd.sigchld
+            (call systemd.system.sigchld
                 (
                     ARG1
                 )
