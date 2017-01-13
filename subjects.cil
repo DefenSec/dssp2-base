@@ -999,12 +999,6 @@
                 )
             )
 
-            (call cmd.generic_commands.read_lnk_files
-                (
-                    subj_type_attribute
-                )
-            )
-
             (call cmd.shell.mmap_inherited_files
                 (
                     subj_type_attribute
