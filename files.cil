@@ -54,7 +54,7 @@
     ; Macros
     ;
 
-    (blockinherit obj_macro_template)
+    (blockinherit obj_all_macro_template)
 
     (macro add_entries_except ((type ARG1))
         (allow ARG1 except_obj_type_attribute add_entry_dir_perms)
@@ -2474,10 +2474,10 @@
     ; Templates
     ;
 
-    (block obj_macro_template
+    (block obj_all_macro_template
 
         ;
-        ; files.obj_macro_template macros
+        ; files.obj_all_macro_template macros
         ;
 
         (macro add_entries ((type ARG1))
@@ -3227,10 +3227,10 @@
         )
 
         ;
-        ; files.obj_macro_template policy
+        ; files.obj_all_macro_template policy
         ;
 
-        (blockabstract obj_macro_template)
+        (blockabstract obj_all_macro_template)
     )
 
     ;
@@ -3243,7 +3243,7 @@
         ; auth_file macros
         ;
 
-        (blockinherit files.obj_macro_template)
+        (blockinherit files.obj_all_macro_template)
 
         ;
         ; auth policy
@@ -3782,7 +3782,7 @@
         ; boot_file macros
         ;
 
-        (blockinherit obj_macro_template)
+        (blockinherit obj_all_macro_template)
 
         ;
         ; boot_file policy
@@ -4443,10 +4443,10 @@
             (blockabstract obj_nested_file_macro_template)
         )
 
-        (block obj_macro_template
+        (block obj_all_macro_template
 
             ;
-            ; files.boot_file.obj_macro_template macros
+            ; files.boot_file.obj_all_macro_template macros
             ;
 
             (macro add_entries ((type ARG1))
@@ -5084,10 +5084,10 @@
             )
 
             ;
-            ; files.boot_file.obj_macro_template policy
+            ; files.boot_file.obj_all_macro_template policy
             ;
 
-            (blockabstract obj_macro_template)
+            (blockabstract obj_all_macro_template)
         )
 
         (block obj_stub
@@ -5787,7 +5787,7 @@
         ; boot_flag_file macros
         ;
 
-        (blockinherit obj_macro_template)
+        (blockinherit obj_all_macro_template)
 
         ;
         ; boot_flag_file policy
@@ -5805,10 +5805,10 @@
         ; boot_flag_file templates
         ;
 
-        (block obj_macro_template
+        (block obj_all_macro_template
 
             ;
-            ; files.boot_flag_file.obj_macro_template macros
+            ; files.boot_flag_file.obj_all_macro_template macros
             ;
 
             (macro append_files ((type ARG1))
@@ -5880,10 +5880,10 @@
             )
 
             ;
-            ; files.boot_flag_file.obj_macro_template policy
+            ; files.boot_flag_file.obj_all_macro_template policy
             ;
 
-            (blockabstract obj_macro_template)
+            (blockabstract obj_all_macro_template)
         )
 
         (block obj_stub
@@ -6008,7 +6008,7 @@
         ; config_file macros
         ;
 
-        (blockinherit obj_macro_template)
+        (blockinherit obj_all_macro_template)
 
         ;
         ; config_file policy
@@ -6669,10 +6669,10 @@
             (blockabstract obj_nested_file_macro_template)
         )
 
-        (block obj_macro_template
+        (block obj_all_macro_template
 
             ;
-            ; files.config_file.obj_macro_template macros
+            ; files.config_file.obj_all_macro_template macros
             ;
 
             (macro add_entries ((type ARG1))
@@ -7275,10 +7275,10 @@
             )
 
             ;
-            ; files.config_file.obj_macro_template policy
+            ; files.config_file.obj_all_macro_template policy
             ;
 
-            (blockabstract obj_macro_template)
+            (blockabstract obj_all_macro_template)
         )
 
         (block obj_stub
@@ -7979,7 +7979,7 @@
         ; data_file macros
         ;
 
-        (blockinherit obj_macro_template)
+        (blockinherit obj_all_macro_template)
 
         ;
         ; data_file policy
@@ -8640,10 +8640,10 @@
             (blockabstract obj_nested_file_macro_template)
         )
 
-        (block obj_macro_template
+        (block obj_all_macro_template
 
             ;
-            ; files.data_file.obj_macro_template macros
+            ; files.data_file.obj_all_macro_template macros
             ;
 
             (macro add_entries ((type ARG1))
@@ -9246,10 +9246,10 @@
             )
 
             ;
-            ; files.data_file.obj_macro_template policy
+            ; files.data_file.obj_all_macro_template policy
             ;
 
-            (blockabstract obj_macro_template)
+            (blockabstract obj_all_macro_template)
         )
 
         (block obj_stub
@@ -10010,16 +10010,16 @@
         ; file macros
         ;
 
-        (blockinherit obj_macro_template)
+        (blockinherit obj_all_macro_template)
 
         ;
         ; file templates
         ;
 
-        (block obj_macro_template
+        (block obj_all_macro_template
 
             ;
-            ; files.file.obj_macro_template macros
+            ; files.file.obj_all_macro_template macros
             ;
 
             (macro add_entries ((type ARG1))
@@ -10475,10 +10475,10 @@
             )
 
             ;
-            ; files.file.obj_macro_template policy
+            ; files.file.obj_all_macro_template policy
             ;
 
-            (blockabstract obj_macro_template)
+            (blockabstract obj_all_macro_template)
         )
 
         (block obj_stub
@@ -25800,7 +25800,7 @@
         ; modules_file macros
         ;
 
-        (blockinherit obj_macro_template)
+        (blockinherit obj_all_macro_template)
 
         ;
         ; modules_file policy
@@ -25824,10 +25824,10 @@
         ; modules_file templates
         ;
 
-        (block obj_macro_template
+        (block obj_all_macro_template
 
             ;
-            ; files.modules_file.obj_macro_template macros
+            ; files.modules_file.obj_all_macro_template macros
             ;
 
             (macro append_files ((type ARG1))
@@ -25997,10 +25997,10 @@
             )
 
             ;
-            ; files.modules_file.obj_macro_template policy
+            ; files.modules_file.obj_all_macro_template policy
             ;
 
-            (blockabstract obj_macro_template)
+            (blockabstract obj_all_macro_template)
         )
 
         (block obj_stub
@@ -26223,7 +26223,7 @@
         ; runtime_file macros
         ;
 
-        (blockinherit obj_macro_template)
+        (blockinherit obj_all_macro_template)
 
         ;
         ; runtime_file policy
@@ -27103,10 +27103,10 @@
             (blockabstract obj_nested_file_macro_template)
         )
 
-        (block obj_macro_template
+        (block obj_all_macro_template
 
             ;
-            ; files.runtime_file.obj_macro_template macros
+            ; files.runtime_file.obj_all_macro_template macros
             ;
 
             (macro add_entries ((type ARG1))
@@ -27957,10 +27957,10 @@
             )
 
             ;
-            ; files.runtime_file.obj_macro_template policy
+            ; files.runtime_file.obj_all_macro_template policy
             ;
 
-            (blockabstract obj_macro_template)
+            (blockabstract obj_all_macro_template)
         )
 
         (block obj_stub
@@ -28873,7 +28873,7 @@
         ; runtime_config_file macros
         ;
 
-        (blockinherit obj_macro_template)
+        (blockinherit obj_all_macro_template)
 
         ;
         ; runtime_config_file policy
@@ -29534,10 +29534,10 @@
             (blockabstract obj_nested_file_macro_template)
         )
 
-        (block obj_macro_template
+        (block obj_all_macro_template
 
             ;
-            ; files.runtime_config_file.obj_macro_template macros
+            ; files.runtime_config_file.obj_all_macro_template macros
             ;
 
             (macro add_entries ((type ARG1))
@@ -30175,10 +30175,10 @@
             )
 
             ;
-            ; files.runtime_config_file.obj_macro_template policy
+            ; files.runtime_config_file.obj_all_macro_template policy
             ;
 
-            (blockabstract obj_macro_template)
+            (blockabstract obj_all_macro_template)
         )
 
         (block obj_stub
@@ -30878,7 +30878,7 @@
         ; runtime_lock_file macros
         ;
 
-        (blockinherit obj_macro_template)
+        (blockinherit obj_all_macro_template)
 
         ;
         ; runtime_lock_file policy
@@ -31539,10 +31539,10 @@
             (blockabstract obj_nested_file_macro_template)
         )
 
-        (block obj_macro_template
+        (block obj_all_macro_template
 
             ;
-            ; files.runtime_lock_file.obj_macro_template macros
+            ; files.runtime_lock_file.obj_all_macro_template macros
             ;
 
             (macro add_entries ((type ARG1))
@@ -32180,10 +32180,10 @@
             )
 
             ;
-            ; files.runtime_lock_file.obj_macro_template policy
+            ; files.runtime_lock_file.obj_all_macro_template policy
             ;
 
-            (blockabstract obj_macro_template)
+            (blockabstract obj_all_macro_template)
         )
 
         (block obj_stub
@@ -33318,7 +33318,7 @@
         ; sec_file macros
         ;
 
-        (blockinherit files.obj_macro_template)
+        (blockinherit files.obj_all_macro_template)
 
         ;
         ; sec_file policy
@@ -33857,7 +33857,7 @@
         ; tmpfs_file macros
         ;
 
-        (blockinherit obj_macro_template)
+        (blockinherit obj_all_macro_template)
 
         ;
         ; tmpfs_file policy
@@ -34737,10 +34737,10 @@
             (blockabstract obj_nested_file_macro_template)
         )
 
-        (block obj_macro_template
+        (block obj_all_macro_template
 
             ;
-            ; files.tmpfs_file.obj_macro_template macros
+            ; files.tmpfs_file.obj_all_macro_template macros
             ;
 
             (macro add_entries ((type ARG1))
@@ -35591,10 +35591,10 @@
             )
 
             ;
-            ; files.tmpfs_file.obj_macro_template policy
+            ; files.tmpfs_file.obj_all_macro_template policy
             ;
 
-            (blockabstract obj_macro_template)
+            (blockabstract obj_all_macro_template)
         )
 
         (block obj_stub
@@ -37011,7 +37011,7 @@
         ; var_file macros
         ;
 
-        (blockinherit obj_macro_template)
+        (blockinherit obj_all_macro_template)
 
         ;
         ; var_file policy
@@ -37885,10 +37885,10 @@
             (blockabstract obj_nested_file_macro_template)
         )
 
-        (block obj_macro_template
+        (block obj_all_macro_template
 
             ;
-            ; files.var_file.obj_macro_template macros
+            ; files.var_file.obj_all_macro_template macros
             ;
 
             (macro add_entries ((type ARG1))
@@ -38644,10 +38644,10 @@
             )
 
             ;
-            ; files.var_file.obj_macro_template policy
+            ; files.var_file.obj_all_macro_template policy
             ;
 
-            (blockabstract obj_macro_template)
+            (blockabstract obj_all_macro_template)
         )
 
         (block obj_stub
@@ -39560,7 +39560,7 @@
         ; var_cache_file macros
         ;
 
-        (blockinherit obj_macro_template)
+        (blockinherit obj_all_macro_template)
 
         ;
         ; var_cache_file policy
@@ -40434,10 +40434,10 @@
             (blockabstract obj_nested_file_macro_template)
         )
 
-        (block obj_macro_template
+        (block obj_all_macro_template
 
             ;
-            ; files.var_cache_file.obj_macro_template macros
+            ; files.var_cache_file.obj_all_macro_template macros
             ;
 
             (macro add_entries ((type ARG1))
@@ -41288,10 +41288,10 @@
             )
 
             ;
-            ; files.var_cache_file.obj_macro_template policy
+            ; files.var_cache_file.obj_all_macro_template policy
             ;
 
-            (blockabstract obj_macro_template)
+            (blockabstract obj_all_macro_template)
         )
 
         (block obj_stub
@@ -42204,7 +42204,7 @@
         ; var_db_file macros
         ;
 
-        (blockinherit obj_macro_template)
+        (blockinherit obj_all_macro_template)
 
         ;
         ; var_db_file policy
@@ -42865,10 +42865,10 @@
             (blockabstract obj_nested_file_macro_template)
         )
 
-        (block obj_macro_template
+        (block obj_all_macro_template
 
             ;
-            ; files.var_db_file.obj_macro_template macros
+            ; files.var_db_file.obj_all_macro_template macros
             ;
 
             (macro add_entries ((type ARG1))
@@ -43506,10 +43506,10 @@
             )
 
             ;
-            ; files.var_db_file.obj_macro_template policy
+            ; files.var_db_file.obj_all_macro_template policy
             ;
 
-            (blockabstract obj_macro_template)
+            (blockabstract obj_all_macro_template)
         )
 
         (block obj_stub
@@ -44209,7 +44209,7 @@
         ; var_lib_file macros
         ;
 
-        (blockinherit obj_macro_template)
+        (blockinherit obj_all_macro_template)
 
         ;
         ; var_lib_file policy
@@ -45083,10 +45083,10 @@
             (blockabstract obj_nested_file_macro_template)
         )
 
-        (block obj_macro_template
+        (block obj_all_macro_template
 
             ;
-            ; files.var_lib_file.obj_macro_template macros
+            ; files.var_lib_file.obj_all_macro_template macros
             ;
 
             (macro add_entries ((type ARG1))
@@ -45937,10 +45937,10 @@
             )
 
             ;
-            ; files.var_lib_file.obj_macro_template policy
+            ; files.var_lib_file.obj_all_macro_template policy
             ;
 
-            (blockabstract obj_macro_template)
+            (blockabstract obj_all_macro_template)
         )
 
         (block obj_stub
@@ -46853,7 +46853,7 @@
         ; var_log_file macros
         ;
 
-        (blockinherit obj_macro_template)
+        (blockinherit obj_all_macro_template)
 
         ;
         ; var_log_file policy
@@ -47514,10 +47514,10 @@
             (blockabstract obj_nested_file_macro_template)
         )
 
-        (block obj_macro_template
+        (block obj_all_macro_template
 
             ;
-            ; files.var_log_file.obj_macro_template macros
+            ; files.var_log_file.obj_all_macro_template macros
             ;
 
             (macro add_entries ((type ARG1))
@@ -48155,10 +48155,10 @@
             )
 
             ;
-            ; files.var_log_file.obj_macro_template policy
+            ; files.var_log_file.obj_all_macro_template policy
             ;
 
-            (blockabstract obj_macro_template)
+            (blockabstract obj_all_macro_template)
         )
 
         (block obj_stub
@@ -48858,7 +48858,7 @@
         ; var_spool_file macros
         ;
 
-        (blockinherit obj_macro_template)
+        (blockinherit obj_all_macro_template)
 
         ;
         ; var_spool_file policy
@@ -49732,10 +49732,10 @@
             (blockabstract obj_nested_file_macro_template)
         )
 
-        (block obj_macro_template
+        (block obj_all_macro_template
 
             ;
-            ; files.var_spool_file.obj_macro_template macros
+            ; files.var_spool_file.obj_all_macro_template macros
             ;
 
             (macro add_entries ((type ARG1))
@@ -50586,10 +50586,10 @@
             )
 
             ;
-            ; files.var_spool_file.obj_macro_template policy
+            ; files.var_spool_file.obj_all_macro_template policy
             ;
 
-            (blockabstract obj_macro_template)
+            (blockabstract obj_all_macro_template)
         )
 
         (block obj_stub
@@ -51502,7 +51502,7 @@
         ; var_tmp_file macros
         ;
 
-        (blockinherit obj_macro_template)
+        (blockinherit obj_all_macro_template)
 
         ;
         ; var_tmp_file policy
@@ -52376,10 +52376,10 @@
             (blockabstract obj_nested_file_macro_template)
         )
 
-        (block obj_macro_template
+        (block obj_all_macro_template
 
             ;
-            ; files.var_tmp_file.obj_macro_template macros
+            ; files.var_tmp_file.obj_all_macro_template macros
             ;
 
             (macro add_entries ((type ARG1))
@@ -53325,10 +53325,10 @@
             )
 
             ;
-            ; files.var_tmp_file.obj_macro_template policy
+            ; files.var_tmp_file.obj_all_macro_template policy
             ;
 
-            (blockabstract obj_macro_template)
+            (blockabstract obj_all_macro_template)
         )
 
         (block obj_stub

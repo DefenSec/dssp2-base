@@ -277,7 +277,7 @@
         ; bool_file macros
         ;
 
-        (blockinherit obj_macro_template)
+        (blockinherit obj_all_macro_template)
 
         ;
         ; bool_file policy
@@ -323,10 +323,10 @@
         ; bool_file templates
         ;
 
-        (block obj_macro_template
+        (block obj_all_macro_template
 
             ;
-            ; sec.bool_file.obj_macro_template macros
+            ; sec.bool_file.obj_all_macro_template macros
             ;
 
             (macro get ((type ARG1))
@@ -389,10 +389,10 @@
             )
 
             ;
-            ; sec.bool_file.obj_macro_template policy
+            ; sec.bool_file.obj_all_macro_template policy
             ;
 
-            (blockabstract obj_macro_template)
+            (blockabstract obj_all_macro_template)
         )
 
         (block obj_stub

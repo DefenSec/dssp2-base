@@ -17,7 +17,7 @@
     ; Macros
     ;
 
-    (blockinherit pty_file.obj_macro_template)
+    (blockinherit pty_file.obj_all_macro_template)
 
     (macro unconfined_subj_type ((type ARG1))
         (typeattributeset unconfined_subj_type_attribute ARG1)
@@ -213,7 +213,7 @@
         ; login_pty_file macros
         ;
 
-        (blockinherit pty_file.obj_macro_template)
+        (blockinherit pty_file.obj_all_macro_template)
 
         (macro login_pty ((type ARG1)(type ARG2))
             (typechange ARG1 obj_type_attribute chr_file ARG2)
@@ -370,7 +370,7 @@
         ; pty_file macros
         ;
 
-        (blockinherit obj_macro_template)
+        (blockinherit obj_all_macro_template)
 
         (macro create_pty ((type ARG1)(type ARG2))
             (call dev.ptmx.rw_chr_files
@@ -412,10 +412,10 @@
         ; pty_file templates
         ;
 
-        (block obj_macro_template
+        (block obj_all_macro_template
 
             ;
-            ; term.pty_file.obj_macro_template macros
+            ; term.pty_file.obj_all_macro_template macros
             ;
 
             (macro create_chr_files ((type ARG1))
@@ -538,10 +538,10 @@
             )
 
             ;
-            ; term.pty_file.obj_macro_template policy
+            ; term.pty_file.obj_all_macro_template policy
             ;
 
-            (blockabstract obj_macro_template)
+            (blockabstract obj_all_macro_template)
         )
 
         (block obj_stub
@@ -697,7 +697,7 @@
         ; serial_file macros
         ;
 
-        (blockinherit obj_macro_template)
+        (blockinherit obj_all_macro_template)
 
         ;
         ; serial_file policy
@@ -721,10 +721,10 @@
         ; serial_file templates
         ;
 
-        (block obj_macro_template
+        (block obj_all_macro_template
 
             ;
-            ; term.serial_file.obj_macro_template macros
+            ; term.serial_file.obj_all_macro_template macros
             ;
 
             (macro create_chr_files ((type ARG1))
@@ -861,10 +861,10 @@
             )
 
             ;
-            ; term.serial_file.obj_macro_template policy
+            ; term.serial_file.obj_all_macro_template policy
             ;
 
-            (blockabstract obj_macro_template)
+            (blockabstract obj_all_macro_template)
         )
 
         (block obj_stub

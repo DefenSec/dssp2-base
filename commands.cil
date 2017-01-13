@@ -900,7 +900,7 @@
         ; cmd_file macros
         ;
 
-        (blockinherit obj_macro_template)
+        (blockinherit obj_all_macro_template)
 
         ;
         ; cmd_file policy
@@ -924,10 +924,10 @@
         ; cmd_file templates
         ;
 
-        (block obj_macro_template
+        (block obj_all_macro_template
 
             ;
-            ; cmd.cmd_file.obj_macro_template macros
+            ; cmd.cmd_file.obj_all_macro_template macros
             ;
 
             (macro append_files ((type ARG1))
@@ -1092,10 +1092,10 @@
             )
 
             ;
-            ; cmd.cmd_file.obj_macro_template policy
+            ; cmd.cmd_file.obj_all_macro_template policy
             ;
 
-            (blockabstract obj_macro_template)
+            (blockabstract obj_all_macro_template)
 
         )
 

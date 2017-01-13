@@ -1249,7 +1249,7 @@
         ; lib_file macros
         ;
 
-        (blockinherit obj_macro_template)
+        (blockinherit obj_all_macro_template)
 
         ;
         ; lib_file policy
@@ -1267,10 +1267,10 @@
         ; lib_file templates
         ;
 
-        (block obj_macro_template
+        (block obj_all_macro_template
 
             ;
-            ; lib.lib_file.obj_macro_template macros
+            ; lib.lib_file.obj_all_macro_template macros
             ;
 
             (macro append_files ((type ARG1))
@@ -1425,10 +1425,10 @@
             )
 
             ;
-            ; lib.lib_file.obj_macro_template policy
+            ; lib.lib_file.obj_all_macro_template policy
             ;
 
-            (blockabstract obj_macro_template)
+            (blockabstract obj_all_macro_template)
         )
 
         (block obj_stub

@@ -98,7 +98,7 @@
         ; ephemeral_port macros
         ;
 
-        (blockinherit port.obj_macro_template)
+        (blockinherit port.obj_all_macro_template)
 
         ;
         ; ephemeral_port policy
@@ -777,7 +777,7 @@
         ; hi_reserved_port macros
         ;
 
-        (blockinherit reserved_port.obj_macro_template)
+        (blockinherit reserved_port.obj_all_macro_template)
 
         ;
         ; hi_reserved_port policy
@@ -983,7 +983,7 @@
         ; if macros
         ;
 
-        (blockinherit obj_macro_template)
+        (blockinherit obj_all_macro_template)
 
         ;
         ; if policy
@@ -1010,10 +1010,10 @@
         ; if templates
         ;
 
-        (block obj_macro_template
+        (block obj_all_macro_template
 
             ;
-            ; net.if.obj_macro_template macros
+            ; net.if.obj_all_macro_template macros
             ;
 
             (macro egress ((type ARG1))
@@ -1041,10 +1041,10 @@
             )
 
             ;
-            ; net.if.obj_macro_template policy
+            ; net.if.obj_all_macro_template policy
             ;
 
-            (blockabstract obj_macro_template)
+            (blockabstract obj_all_macro_template)
         )
 
         (block obj_stub
@@ -1125,7 +1125,7 @@
         ; node macros
         ;
 
-        (blockinherit obj_macro_template)
+        (blockinherit obj_all_macro_template)
 
         ;
         ; node policy
@@ -1194,10 +1194,10 @@
         ; node templates
         ;
 
-        (block obj_macro_template
+        (block obj_all_macro_template
 
             ;
-            ; net.node.obj_macro_template macros
+            ; net.node.obj_all_macro_template macros
             ;
 
             (macro dccp_bind ((type ARG1))
@@ -1285,10 +1285,10 @@
             )
 
             ;
-            ; net.node.obj_macro_template policy
+            ; net.node.obj_all_macro_template policy
             ;
 
-            (blockabstract obj_macro_template)
+            (blockabstract obj_all_macro_template)
         )
 
         (block obj_stub
@@ -1429,7 +1429,7 @@
         ; packet macros
         ;
 
-        (blockinherit obj_macro_template)
+        (blockinherit obj_all_macro_template)
 
         ;
         ; packet policy
@@ -1459,10 +1459,10 @@
         ; packet templates
         ;
 
-        (block obj_macro_template
+        (block obj_all_macro_template
 
             ;
-            ; net.packet.obj_macro_template macros
+            ; net.packet.obj_all_macro_template macros
             ;
 
             (macro forward_in ((type ARG1))
@@ -1520,10 +1520,10 @@
             )
 
             ;
-            ; net.packet.obj_macro_template policy
+            ; net.packet.obj_all_macro_template policy
             ;
 
-            (blockabstract obj_macro_template)
+            (blockabstract obj_all_macro_template)
         )
 
         (block obj_stub
@@ -1634,7 +1634,7 @@
         ; peer macros
         ;
 
-        (blockinherit obj_macro_template)
+        (blockinherit obj_all_macro_template)
 
         ;
         ; peer policy
@@ -1660,10 +1660,10 @@
         ; peer templates
         ;
 
-        (block obj_macro_template
+        (block obj_all_macro_template
 
             ;
-            ; net.peer.obj_macro_template macros
+            ; net.peer.obj_all_macro_template macros
             ;
 
             (macro obj_type ((type ARG1))
@@ -1681,10 +1681,10 @@
             )
 
             ;
-            ; net.peer.obj_macro_template policy
+            ; net.peer.obj_all_macro_template policy
             ;
 
-            (blockabstract obj_macro_template)
+            (blockabstract obj_all_macro_template)
         )
 
         (block obj_stub
@@ -1755,7 +1755,7 @@
         ; port macros
         ;
 
-        (blockinherit obj_macro_template)
+        (blockinherit obj_all_macro_template)
 
         ;
         ; port policy
@@ -1818,10 +1818,10 @@
         ; port templates
         ;
 
-        (block obj_macro_template
+        (block obj_all_macro_template
 
             ;
-            ; net.port.obj_macro_template macros
+            ; net.port.obj_all_macro_template macros
             ;
 
             (macro dccp_bind ((type ARG1))
@@ -1917,10 +1917,10 @@
             )
 
             ;
-            ; net.port.obj_macro_template policy
+            ; net.port.obj_all_macro_template policy
             ;
 
-            (blockabstract obj_macro_template)
+            (blockabstract obj_all_macro_template)
         )
     )
 
@@ -1934,7 +1934,7 @@
         ; reserved_port macros
         ;
 
-        (blockinherit obj_macro_template)
+        (blockinherit obj_all_macro_template)
 
         ;
         ; reserved_port policy
@@ -1952,10 +1952,10 @@
         ; reserved_port templates
         ;
 
-        (block obj_macro_template
+        (block obj_all_macro_template
 
             ;
-            ; net.reserved_port.obj_macro_template macros
+            ; net.reserved_port.obj_all_macro_template macros
             ;
 
             (macro dccp_bind ((type ARG1))
@@ -2093,10 +2093,10 @@
             )
 
             ;
-            ; net.reserved_port.obj_macro_template policy
+            ; net.reserved_port.obj_all_macro_template policy
             ;
 
-            (blockabstract obj_macro_template)
+            (blockabstract obj_all_macro_template)
         )
 
         (block obj_stub
@@ -2283,7 +2283,7 @@
         ; unreserved_port macros
         ;
 
-        (blockinherit port.obj_macro_template)
+        (blockinherit port.obj_all_macro_template)
 
         ;
         ; unreserved_port policy

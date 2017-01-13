@@ -2449,7 +2449,7 @@
         ; stor_file macros
         ;
 
-        (blockinherit obj_macro_template)
+        (blockinherit obj_all_macro_template)
 
         ;
         ; stor_file policy
@@ -2478,10 +2478,10 @@
         ; stor_file templates
         ;
 
-        (block obj_macro_template
+        (block obj_all_macro_template
 
             ;
-            ; stor.stor_file.obj_macro_template macros
+            ; stor.stor_file.obj_all_macro_template macros
             ;
 
             (macro create ((type ARG1))
@@ -3003,10 +3003,10 @@
             )
 
             ;
-            ; stor.stor_file.obj_macro_template policy
+            ; stor.stor_file.obj_all_macro_template policy
             ;
 
-            (blockabstract obj_macro_template)
+            (blockabstract obj_all_macro_template)
         )
 
         (block obj_stub

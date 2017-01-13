@@ -2044,7 +2044,7 @@
         ; invalid macros
         ;
 
-        (blockinherit obj_macro_template)
+        (blockinherit obj_all_macro_template)
 
         (macro read_state ((type ARG1))
             (allow ARG1 isid
@@ -2189,10 +2189,10 @@
         ; invalid templates
         ;
 
-        (block obj_macro_template
+        (block obj_all_macro_template
 
             ;
-            ; sys.invalid.obj_macro_template macros
+            ; sys.invalid.obj_all_macro_template macros
             ;
 
             (macro add_entries ((type ARG1))
@@ -3297,10 +3297,10 @@
             )
 
             ;
-            ; sys.invalid.obj_macro_template policy
+            ; sys.invalid.obj_all_macro_template policy
             ;
 
-            (blockabstract obj_macro_template)    
+            (blockabstract obj_all_macro_template)
         )
     )
 
@@ -4417,7 +4417,7 @@
         ; mountpoint macros
         ;
 
-        (blockinherit obj_macro_template)
+        (blockinherit obj_all_macro_template)
 
         ;
         ; mountpoint policy
@@ -4437,10 +4437,10 @@
         ; mountpoint templates
         ;
 
-        (block obj_macro_template
+        (block obj_all_macro_template
 
             ;
-            ; sys.mountpoint.obj_macro_template macros
+            ; sys.mountpoint.obj_all_macro_template macros
             ;
 
             (macro dontaudit_audit_access_dirs ((type ARG1))
@@ -4618,10 +4618,10 @@
             )
 
             ;
-            ; sys.mountpoint.obj_macro_template policy
+            ; sys.mountpoint.obj_all_macro_template policy
             ;
 
-            (blockabstract obj_macro_template)
+            (blockabstract obj_all_macro_template)
         )
     )
 
@@ -5875,7 +5875,7 @@
         ; proc_file macros
         ;
 
-        (blockinherit obj_macro_template)
+        (blockinherit obj_all_macro_template)
 
         ;
         ; proc_file policy
@@ -5900,10 +5900,10 @@
         ; proc_file templates
         ;
 
-        (block obj_macro_template
+        (block obj_all_macro_template
 
             ;
-            ; sys.proc_file.obj_macro_template macros
+            ; sys.proc_file.obj_all_macro_template macros
             ;
 
             (macro dontaudit_read_files ((type ARG1))
@@ -6229,10 +6229,10 @@
             )
 
             ;
-            ; sys.proc_file.obj_macro_template policy
+            ; sys.proc_file.obj_all_macro_template policy
             ;
 
-            (blockabstract obj_macro_template)
+            (blockabstract obj_all_macro_template)
         )
 
         (block obj_stub
@@ -7403,7 +7403,7 @@
         ; sysctl_file macros
         ;
 
-        (blockinherit obj_macro_template)
+        (blockinherit obj_all_macro_template)
 
         ;
         ; sysctl_file policy
@@ -7421,7 +7421,7 @@
         ; sysctl_file templates
         ;
 
-        (block obj_macro_template
+        (block obj_all_macro_template
 
             ;
             ;
@@ -7882,10 +7882,10 @@
             )
 
             ;
-            ; sys.sysctl_file.obj_macro_template policy
+            ; sys.sysctl_file.obj_all_macro_template policy
             ;
 
-            (blockabstract obj_macro_template)
+            (blockabstract obj_all_macro_template)
         )
 
         (block obj_stub
@@ -8379,7 +8379,7 @@
         ; sysfs_file macros
         ;
 
-        (blockinherit obj_macro_template)
+        (blockinherit obj_all_macro_template)
 
         ;
         ; sysfs_file policy
@@ -8404,10 +8404,10 @@
         ; sysfs_file templates
         ;
 
-        (block obj_macro_template
+        (block obj_all_macro_template
 
             ;
-            ; sys.sysfs_file.obj_macro_template macros
+            ; sys.sysfs_file.obj_all_macro_template macros
             ;
 
             (macro dontaudit_read ((type ARG1))
@@ -8835,10 +8835,10 @@
             )
 
             ;
-            ; sys.sysfs_file.obj_macro_template policy
+            ; sys.sysfs_file.obj_all_macro_template policy
             ;
 
-            (blockabstract obj_macro_template)
+            (blockabstract obj_all_macro_template)
         )
 
         (block obj_stub
@@ -9498,7 +9498,7 @@
         ; unlabeled macros
         ;
 
-        (blockinherit invalid.obj_macro_template)
+        (blockinherit invalid.obj_all_macro_template)
 
         (macro dontaudit_audit_access_dirs ((type ARG1))
             (dontaudit ARG1 isid

@@ -50,7 +50,7 @@
     ; Macros
     ;
 
-    (blockinherit obj_macro_template)
+    (blockinherit obj_all_macro_template)
 
     (macro unconfined_subj_type ((type ARG1))
         (typeattributeset unconfined_subj_type_attribute ARG1)
@@ -105,10 +105,10 @@
     ; Templates
     ;
 
-    (block obj_macro_template
+    (block obj_all_macro_template
 
         ;
-        ; fs.obj_macro_template macros
+        ; fs.obj_all_macro_template macros
         ;
 
         (macro dontaudit_getattr_fs ((type ARG1))
@@ -839,10 +839,10 @@
         )
 
         ;
-        ; fs.obj_macro_template policy
+        ; fs.obj_all_macro_template policy
         ;
 
-        (blockabstract obj_macro_template)
+        (blockabstract obj_all_macro_template)
     )
 
     (block obj_stub

@@ -259,7 +259,7 @@
         ; dev_file macros
         ;
 
-        (blockinherit obj_macro_template)
+        (blockinherit obj_all_macro_template)
 
         ;
         ; dev_file policy
@@ -286,10 +286,10 @@
         ; dev_file templates
         ;
 
-        (block obj_macro_template
+        (block obj_all_macro_template
 
             ;
-            ; dev.dev_file.obj_macro_template macros
+            ; dev.dev_file.obj_all_macro_template macros
             ;
 
             (macro create_chr_files ((type ARG1))
@@ -443,10 +443,10 @@
             )
 
             ;
-            ; dev.dev_file.obj_macro_template policy
+            ; dev.dev_file.obj_all_macro_template policy
             ;
 
-            (blockabstract obj_macro_template)
+            (blockabstract obj_all_macro_template)
         )
 
         (block obj_stub
