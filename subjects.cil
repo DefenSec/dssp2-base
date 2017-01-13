@@ -525,7 +525,7 @@
         ; common_subj macros
         ;
 
-        (blockinherit subj_macro_template)
+        (blockinherit subj_all_macro_template)
 
         ;
         ; common_subj policy
@@ -537,10 +537,10 @@
         ; common_subj templates
         ;
 
-        (block subj_macro_template
+        (block subj_all_macro_template
 
             ;
-            ; subj.common_subj.subj_macro_template macros
+            ; subj.common_subj.subj_all_macro_template macros
             ;
 
             (macro dontaudit_noatsecure ((type ARG1))
@@ -942,10 +942,10 @@
             )
 
             ;
-            ; subj.common_subj.subj_macro_template policy
+            ; subj.common_subj.subj_all_macro_template policy
             ;
 
-            (blockabstract subj_macro_template)
+            (blockabstract subj_all_macro_template)
         )
 
         (block subj_policy_template
