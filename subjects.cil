@@ -866,7 +866,7 @@
             )
 
             (macro signal ((type ARG1))
-                (allow ARG2 subj_type_attribute
+                (allow ARG1 subj_type_attribute
                     (process
                         (
                             signal
