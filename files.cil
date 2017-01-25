@@ -16071,6 +16071,12 @@
         ;
 
         (blockinherit runtime_config_file.obj_stub)
+
+        (call generic_runtime_obj_type_transition
+            (
+                unconfined_subj_type_attribute
+            )
+        )
     )
 
     ;
@@ -16247,6 +16253,14 @@
             (call search
                 (
                     ARG1
+                )
+            )
+        )
+
+        (macro generic_runtime_obj_type_transition ((type ARG1))
+            (call generic_runtime.obj_type_transition
+                (
+                    ARG1 runtime_lock_file dir "lock"
                 )
             )
         )
@@ -16907,6 +16921,12 @@
         ;
 
         (blockinherit runtime_lock_file.obj_stub)
+
+        (call generic_runtime_obj_type_transition
+            (
+                unconfined_subj_type_attribute
+            )
+        )
     )
 
     ;
