@@ -1419,7 +1419,7 @@
             )
 
             (macro signal ((type ARG1))
-                (allow ARG2 subj
+                (allow ARG1 subj
                     (process
                         (
                             signal
