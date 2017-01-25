@@ -1268,6 +1268,31 @@
             (typeattributeset control_client_subj_type_attribute ARG1)
         )
 
+        (macro create_chr_files ((type ARG1))
+            (allow ARG1 self
+                (capability
+                    (
+                        mknod
+                    )
+                )
+            )
+            (allow ARG1 isid create_chr_file_perms)
+            (call fs.devtmpfs.add_entries
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro delete_chr_files ((type ARG1))
+            (allow ARG1 isid delete_chr_file_perms)
+            (call fs.devtmpfs.del_entries
+                (
+                    ARG1
+                )
+            )
+        )
+
         (macro getattr_chr_files ((type ARG1))
             (allow ARG1 isid
                 (chr_file
