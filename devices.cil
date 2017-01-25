@@ -487,6 +487,31 @@
             ; dev.dev_file.obj_template macros
             ;
 
+            (macro create_chr_files ((type ARG1))
+                (allow ARG1 self
+                    (capability
+                        (
+                            mknod
+                        )
+                    )
+                )
+                (allow ARG1 dev_file create_chr_file_perms)
+                (call fs.devtmpfs.add_entries
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro delete_chr_files ((type ARG1))
+                (allow ARG1 dev_file delete_chr_file_perms)
+                (call fs.devtmpfs.del_entries
+                    (
+                        ARG1
+                    )
+                )
+            )
+
             (macro getattr_chr_files ((type ARG1))
                 (allow ARG1 dev_file
                     (chr_file
