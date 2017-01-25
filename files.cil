@@ -15407,6 +15407,14 @@
             )
         )
 
+        (macro generic_runtime_obj_type_transition ((type ARG1))
+            (call generic_runtime.obj_type_transition
+                (
+                    ARG1 runtime_config_file dir "sysconfig"
+                )
+            )
+        )
+
         (macro getattr ((type ARG1))
             (call getattr_dirs
                 (
