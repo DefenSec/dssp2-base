@@ -11928,7 +11928,7 @@
 
         (macro audit_write_access_dirs ((type ARG1))
             (allow ARG1 config_file
-                (file
+                (dir
                     (
                         getattr
                         write
@@ -16964,6 +16964,17 @@
             (call search
                 (
                     ARG1
+                )
+            )
+        )
+
+        (macro audit_write_access_dirs ((type ARG1))
+            (allow ARG1 var_file
+                (dir
+                    (
+                        getattr
+                        write
+                    )
                 )
             )
         )
