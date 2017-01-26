@@ -939,6 +939,17 @@
                 )
             )
 
+            (macro audit_execute_access ((type ARG1))
+                (allow ARG1 obj_type_attribute
+                    (file
+                        (
+                            getattr
+                            execute
+                        )
+                    )
+                )
+            )
+
             (macro create_files ((type ARG1))
                 (allow ARG1 obj_type_attribute create_file_perms)
                 (call cmd.generic_commands.read_lnk_files
