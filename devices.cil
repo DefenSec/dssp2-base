@@ -21,6 +21,7 @@
 ;       Dev lvm_control name space
 ;       Dev mei_misc name space
 ;       Dev memory name space
+;       Dev modem name space
 ;       Dev mouse name space
 ;       Dev null name space
 ;       Dev nvram name space
@@ -1178,6 +1179,25 @@
                         )
                     )
         )
+    )
+
+    ;
+    ; Dev modem name space
+    ;
+
+    (block modem
+
+        ;
+        ; modem contexts
+        ;
+
+        (filecon "/dev/cdc-wdm([0-9]+)?" char dev_file_context)
+
+        ;
+        ; modem policy
+        ;
+
+        (blockinherit dev_file.obj_template)
     )
 
     ;
