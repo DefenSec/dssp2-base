@@ -4,10 +4,12 @@
 ;
 ; 1. Sys initial security identifier declarations
 ; 2. Sys name space
+;       Sys abi_sysctl name space
 ;       Sys cpu_sysfs name space
 ;       Sys cpu_online_sysfs name space
 ;       Sys cpuinfo_proc name space
 ;       Sys crypto_sysctl name space
+;       Sys debug_sysctl name space
 ;       Sys dev_sysctl name space
 ;       Sys fs_sysctl name space
 ;       Sys generic_sysctl name space
@@ -38,6 +40,7 @@
 ;       Sys sysfs_file name space
 ;       Sys sysrq_proc name space
 ;       Sys unlabeled name space
+;       Sys user_sysctl name space
 ;       Sys usermodehelper_sysctl name space
 ;       Sys var_log name space
 ;       Sys vm_sysctl name space
@@ -882,6 +885,25 @@
     )
 
     ;
+    ; Sys abi_sysctl name space
+    ;
+
+    (block abi_sysctl
+
+        ;
+        ; abi_sysctl contexts
+        ;
+
+        (genfscon "proc" "/sys/abi" sysctl_file_context)
+
+        ;
+        ; abi_sysctl policy
+        ;
+
+        (blockinherit sys.sysctl_file.obj_template)
+    )
+
+    ;
     ; Sys cpu_sysfs name space
     ;
 
@@ -1524,6 +1546,25 @@
 
         ;
         ; crypto_sysctl policy
+        ;
+
+        (blockinherit sys.sysctl_file.obj_template)
+    )
+
+    ;
+    ; Sys debug_sysctl name space
+    ;
+
+    (block debug_sysctl
+
+        ;
+        ; debug_sysctl contexts
+        ;
+
+        (genfscon "proc" "/sys/debug" sysctl_file_context)
+
+        ;
+        ; debug_sysctl policy
         ;
 
         (blockinherit sys.sysctl_file.obj_template)
@@ -9721,11 +9762,31 @@
                 )
             )
         )
+
         (allow unconfined_subj_type_attribute isid
             lnk_file_except_execmod_and_mounton)
         (allow unconfined_subj_type_attribute isid signal_perms)
         (allow unconfined_subj_type_attribute isid
             sock_file_except_execmod_and_mounton)
+    )
+
+    ;
+    ; Sys user_sysctl name space
+    ;
+
+    (block user_sysctl
+
+        ;
+        ; user_sysctl contexts
+        ;
+
+        (genfscon "proc" "/sys/user" sysctl_file_context)
+
+        ;
+        ; user_sysctl policy
+        ;
+
+        (blockinherit sys.sysctl_file.obj_template)
     )
 
     ;
