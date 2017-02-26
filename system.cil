@@ -19,6 +19,7 @@
 ;       Sys kcore_proc name space
 ;       Sys kernel_sysctl name space
 ;       Sys kmsg_proc name space
+;       Sys latency_stats_proc name space
 ;       Sys load_kernel_init_module name space
 ;       Sys load_kernel_module name space
 ;       Sys mdstat_proc name space
@@ -4163,6 +4164,95 @@
                         )
                     )
         )
+
+        (allow unconfined_subj_type_attribute proc_file
+            (file
+                (
+                    mounton
+                )
+            )
+        )
+    )
+
+    ;
+    ; Sys latency_stats_proc name space
+    ;
+
+    (block latency_stats_proc
+
+        ;
+        ; latency_stats_proc contexts
+        ;
+
+        (genfscon "proc" "/latency_stats" proc_file_context)
+
+        ;
+        ; latency_stats_proc macros
+        ;
+
+        (macro append_files ((type ARG1))
+            (allow ARG1 proc_file append_file_perms)
+        )
+
+        (macro getattr_files ((type ARG1))
+            (allow ARG1 proc_file
+                (file
+                    (
+                        getattr
+                    )
+                )
+            )
+        )
+
+        (macro mounton_files ((type ARG1))
+            (allow ARG1 proc_file
+                (file
+                    (
+                        mounton
+                    )
+                )
+            )
+        )
+
+        (macro read_files ((type ARG1))
+            (allow ARG1 proc_file read_file_perms)
+        )
+
+        (macro relabel_files ((type ARG1))
+            (allow ARG1 proc_file relabel_file_perms)
+        )
+
+        (macro relabelfrom_files ((type ARG1))
+            (allow ARG1 proc_file relabelfrom_file_perms)
+        )
+
+        (macro relabelto_files ((type ARG1))
+            (allow ARG1 proc_file relabelto_file_perms)
+        )
+
+        (macro rw_files ((type ARG1))
+            (allow ARG1 proc_file rw_file_perms)
+        )
+
+        (macro setattr_files ((type ARG1))
+            (allow ARG1 proc_file
+                (file
+                    (
+                        setattr
+                    )
+                )
+            )
+        )
+
+        (macro write_files ((type ARG1))
+            (allow ARG1 proc_file write_file_perms)
+        )
+
+        ;
+        ; latency_stats_proc policy
+        ;
+
+        (blockinherit sys.proc_file.obj_stub)
 
         (allow unconfined_subj_type_attribute proc_file
             (file
