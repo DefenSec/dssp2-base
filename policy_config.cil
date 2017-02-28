@@ -21,4 +21,5 @@
 ;
 
 ; (policycap "always_check_network")
+; (policycap "cgroup_secclass")
 ; (policycap "extended_socket_class")
