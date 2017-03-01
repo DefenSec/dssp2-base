@@ -535,6 +535,11 @@
             isid
         )
     )
+    (call dev.modem.devtmpfs_obj_type_transition
+        (
+            isid
+        )
+    )
     (call dev.mouse.devtmpfs_obj_type_transition
         (
             isid

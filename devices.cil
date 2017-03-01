@@ -1194,6 +1194,28 @@
         (filecon "/dev/cdc-wdm([0-9]+)?" char dev_file_context)
 
         ;
+        ; modem macros
+        ;
+
+        (macro devtmpfs_obj_type_transition ((type ARG1))
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "cdc-wdm0"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "cdc-wdm1"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "cdc-wdm2"
+                )
+            )
+        )
+
+        ;
         ; modem policy
         ;
 
