@@ -66,6 +66,10 @@
         )
     )
 
+    (macro dontaudit_search_except ((type ARG1))
+        (dontaudit ARG1 except_obj_type_attribute search_dir_perms)
+    )
+
     (macro add_entries_except ((type ARG1))
         (allow ARG1 except_obj_type_attribute add_entry_dir_perms)
     )
