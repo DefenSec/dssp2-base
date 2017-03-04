@@ -58,7 +58,7 @@
 
     (macro dontaudit_relabel_except ((type ARG1))
         (dontaudit ARG1 except_obj_type_attribute
-            (file_except_blk_and_chr
+            (files_except_blk_and_chr
                 (
                     relabel
                 )
