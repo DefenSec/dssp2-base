@@ -352,6 +352,17 @@
         )
     )
 
+    (macro unix_stream_socket_connectto ((type ARG1))
+        (allow ARG1 self create_unix_stream_socket_perms)
+        (allow ARG1 isid
+            (unix_stream_socket
+                (
+                    connectto
+                )
+            )
+        )
+    )
+
     (macro use_fd ((type ARG1))
         (allow ARG1 isid
             (fd
