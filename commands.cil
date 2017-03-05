@@ -1350,6 +1350,17 @@
         ; shell macros
         ;
 
+        (macro audit_execute_access ((type ARG1))
+            (allow ARG1 cmd_file
+                (file
+                    (
+                        getattr
+                        execute
+                    )
+                )
+            )
+        )
+
         (macro mmap_inherited_files ((type ARG1))
             (allow ARG1 cmd_file mmap_inherited_file_perms)
         )
