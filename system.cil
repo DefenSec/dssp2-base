@@ -700,14 +700,6 @@
         )
     )
 
-    (optional sys_optional_coredump
-        (call coredump.auto_subj_type_transition
-            (
-                isid
-            )
-        )
-    )
-
     (optional sys_optional_dracut_initramfs
         (call dracut_initramfs.runtime.list
             (
@@ -788,6 +780,14 @@
         (call plymouthd.var_lib.manage_files
             (
                 subj
+            )
+        )
+    )
+
+    (optional sys_optional_sd_coredump
+        (call sd_coredump.auto_subj_type_transition
+            (
+                isid
             )
         )
     )
