@@ -363,6 +363,21 @@
         )
     )
 
+    (macro write_inherited_unix_dgram_sockets ((type ARG1))
+        (allow ARG1 isid
+            (unix_dgram_socket
+                (
+                    write
+                )
+            )
+        )
+        (call use_fd
+            (
+                ARG1
+            )
+        )
+    )
+
     (macro use_fd ((type ARG1))
         (allow ARG1 isid
             (fd
