@@ -2506,7 +2506,7 @@
                     )
                 )
                 (allow ARG1 obj_type_attribute create_blk_file_perms)
-                (call fs.devtmpfs.rw_dirs
+                (call fs.devtmpfs.add_entries
                     (
                         ARG1
                     )
@@ -2522,7 +2522,7 @@
                     )
                 )
                 (allow ARG1 obj_type_attribute create_chr_file_perms)
-                (call fs.devtmpfs.rw_dirs
+                (call fs.devtmpfs.add_entries
                     (
                         ARG1
                     )
@@ -2544,7 +2544,7 @@
 
             (macro delete_blk_files ((type ARG1))
                 (allow ARG1 obj_type_attribute delete_blk_file_perms)
-                (call fs.devtmpfs.rw_dirs
+                (call fs.devtmpfs.del_entries
                     (
                         ARG1
                     )
@@ -2553,7 +2553,7 @@
 
             (macro delete_chr_files ((type ARG1))
                 (allow ARG1 obj_type_attribute delete_chr_file_perms)
-                (call fs.devtmpfs.rw_dirs
+                (call fs.devtmpfs.del_entries
                     (
                         ARG1
                     )
@@ -3046,6 +3046,92 @@
             ;
             ; stor.stor_file.obj_template macros
             ;
+
+            (macro create ((type ARG1))
+                (call create_blk_files
+                    (
+                        ARG1
+                    )
+                )
+                (call create_chr_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro create_blk_files ((type ARG1))
+                (allow ARG1 stor_file
+                    (blk_file
+                        (
+                            create
+                        )
+                    )
+                )
+                (call fs.devtmpfs.add_entries
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro create_chr_files ((type ARG1))
+                (allow ARG1 stor_file
+                    (chr_file
+                        (
+                            create
+                        )
+                    )
+                )
+                (call fs.devtmpfs.add_entries
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro delete ((type ARG1))
+                (call delete_blk_files
+                    (
+                        ARG1
+                    )
+                )
+                (call delete_chr_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro delete_blk_files ((type ARG1))
+                (allow ARG1 stor_file
+                    (blk_file
+                        (
+                            delete
+                        )
+                    )
+                )
+                (call fs.devtmpfs.del_entries
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro delete_chr_files ((type ARG1))
+                (allow ARG1 stor_file
+                    (chr_file
+                        (
+                            delete
+                        )
+                    )
+                )
+                (call fs.devtmpfs.del_entries
+                    (
+                        ARG1
+                    )
+                )
+            )
 
             (macro getattr ((type ARG1))
                 (call getattr_blk_files
