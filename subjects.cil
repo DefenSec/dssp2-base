@@ -1053,8 +1053,8 @@
                 )
             )
 
-            (optional common_subj_optional_mcstransd
-                (call mcstransd.client_subj_type
+            (optional common_subj_optional_mcstrans
+                (call mcstrans.client_subj_type
                     (
                         subj_type_attribute
                     )
