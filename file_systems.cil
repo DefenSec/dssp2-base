@@ -20949,6 +20949,24 @@
             )
         )
 
+        (macro append_blk_files ((type ARG1))
+            (allow ARG1 fs append_blk_file_perms)
+            (call search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro append_chr_files ((type ARG1))
+            (allow ARG1 fs append_chr_file_perms)
+            (call search
+                (
+                    ARG1
+                )
+            )
+        )
+
         (macro append_fifo_files ((type ARG1))
             (allow ARG1 fs append_fifo_file_perms)
             (call search
@@ -20969,7 +20987,37 @@
 
         (macro create ((type ARG1))
             (allow ARG1 fs
-                (files_except_blk_and_chr
+                (all_files
+                    (
+                        create
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro create_blk_files ((type ARG1))
+            (allow ARG1 fs
+                (blk_files
+                    (
+                        create
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro create_chr_files ((type ARG1))
+            (allow ARG1 fs
+                (chr_files
                     (
                         create
                     )
@@ -21068,7 +21116,37 @@
 
         (macro delete ((type ARG1))
             (allow ARG1 fs
-                (files_except_blk_and_chr
+                (all_files
+                    (
+                        delete
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro delete_blk_files ((type ARG1))
+            (allow ARG1 fs
+                (blk_files
+                    (
+                        delete
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro delete_chr_files ((type ARG1))
+            (allow ARG1 fs
+                (chr_files
                     (
                         delete
                     )
@@ -21167,7 +21245,37 @@
 
         (macro getattr ((type ARG1))
             (allow ARG1 fs
-                (files_except_blk_and_chr
+                (all_files
+                    (
+                        getattr
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro getattr_blk_files ((type ARG1))
+            (allow ARG1 fs
+                (blk_files
+                    (
+                        getattr
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro getattr_chr_files ((type ARG1))
+            (allow ARG1 fs
+                (chr_files
                     (
                         getattr
                     )
@@ -21266,7 +21374,37 @@
 
         (macro manage ((type ARG1))
             (allow ARG1 fs
-                (files_except_blk_and_chr
+                (all_files
+                    (
+                        manage
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro manage_blk_files ((type ARG1))
+            (allow ARG1 fs
+                (blk_files
+                    (
+                        manage
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro manage_chr_files ((type ARG1))
+            (allow ARG1 fs
+                (chr_files
                     (
                         manage
                     )
@@ -21374,7 +21512,37 @@
 
         (macro read ((type ARG1))
             (allow ARG1 fs
-                (files_except_blk_and_chr
+                (all_files
+                    (
+                        read
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro read_blk_files ((type ARG1))
+            (allow ARG1 fs
+                (blk_files
+                    (
+                        read
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro read_chr_files ((type ARG1))
+            (allow ARG1 fs
+                (chr_files
                     (
                         read
                     )
@@ -21449,7 +21617,37 @@
 
         (macro relabel ((type ARG1))
             (allow ARG1 fs
-                (files_except_blk_and_chr
+                (all_files
+                    (
+                        relabel
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabel_blk_files ((type ARG1))
+            (allow ARG1 fs
+                (blk_files
+                    (
+                        relabel
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabel_chr_files ((type ARG1))
+            (allow ARG1 fs
+                (chr_files
                     (
                         relabel
                     )
@@ -21539,7 +21737,37 @@
 
         (macro relabelfrom ((type ARG1))
             (allow ARG1 fs
-                (files_except_blk_and_chr
+                (all_files
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelfrom_blk_files ((type ARG1))
+            (allow ARG1 fs
+                (blk_files
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelfrom_chr_files ((type ARG1))
+            (allow ARG1 fs
+                (chr_files
                     (
                         relabelfrom
                     )
@@ -21629,7 +21857,37 @@
 
         (macro relabelto ((type ARG1))
             (allow ARG1 fs
-                (files_except_blk_and_chr
+                (all_files
+                    (
+                        relabelto
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelto_blk_files ((type ARG1))
+            (allow ARG1 fs
+                (blk_files
+                    (
+                        relabelto
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelto_chr_files ((type ARG1))
+            (allow ARG1 fs
+                (chr_files
                     (
                         relabelto
                     )
@@ -21719,7 +21977,37 @@
 
         (macro rename ((type ARG1))
             (allow ARG1 fs
-                (files_except_blk_and_chr
+                (all_files
+                    (
+                        rename
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rename_blk_files ((type ARG1))
+            (allow ARG1 fs
+                (blk_files
+                    (
+                        rename
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rename_chr_files ((type ARG1))
+            (allow ARG1 fs
+                (chr_files
                     (
                         rename
                     )
@@ -21809,7 +22097,37 @@
 
         (macro rw ((type ARG1))
             (allow ARG1 fs
-                (files_except_blk_and_chr
+                (all_files
+                    (
+                        rw
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rw_blk_files ((type ARG1))
+            (allow ARG1 fs
+                (blk_files
+                    (
+                        rw
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rw_chr_files ((type ARG1))
+            (allow ARG1 fs
+                (chr_files
                     (
                         rw
                     )
@@ -21908,7 +22226,37 @@
 
         (macro setattr ((type ARG1))
             (allow ARG1 fs
-                (files_except_blk_and_chr
+                (all_files
+                    (
+                        setattr
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro setattr_blk_files ((type ARG1))
+            (allow ARG1 fs
+                (blk_files
+                    (
+                        setattr
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro setattr_chr_files ((type ARG1))
+            (allow ARG1 fs
+                (chr_files
                     (
                         setattr
                     )
@@ -21998,7 +22346,37 @@
 
         (macro write ((type ARG1))
             (allow ARG1 fs
-                (files_except_blk_and_chr
+                (all_files
+                    (
+                        write
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro write_blk_files ((type ARG1))
+            (allow ARG1 fs
+                (blk_files
+                    (
+                        write
+                    )
+                )
+            )
+            (call devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro write_chr_files ((type ARG1))
+            (allow ARG1 fs
+                (chr_files
                     (
                         write
                     )
