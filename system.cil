@@ -971,39 +971,6 @@
 
         (macro append_files ((type ARG1))
             (allow ARG1 sysfs_file append_file_perms)
-            (call search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro getattr ((type ARG1))
-            (call getattr_dirs
-                (
-                    ARG1
-                )
-            )
-            (call getattr_files
-                (
-                    ARG1
-                )
-            )
-            (call getattr_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro getattr_dirs ((type ARG1))
-            (allow ARG1 sysfs_file
-                (dirs
-                    (
-                        getattr
-                    )
-                )
-            )
             (call cpu_sysfs.search
                 (
                     ARG1
@@ -1026,101 +993,11 @@
             )
         )
 
-        (macro getattr_lnk_files ((type ARG1))
-            (allow ARG1 sysfs_file
-                (lnk_files
-                    (
-                        getattr
-                    )
-                )
-            )
-            (call cpu_sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro list ((type ARG1))
-            (allow ARG1 sysfs_file list_dir_perms)
-            (call cpu_sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro read ((type ARG1))
-            (call list
-                (
-                    ARG1
-                )
-            )
-            (call read_files
-                (
-                    ARG1
-                )
-            )
-            (call read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
         (macro read_files ((type ARG1))
             (allow ARG1 sysfs_file
                 (files
                     (
                         read
-                    )
-                )
-            )
-            (call cpu_sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro read_lnk_files ((type ARG1))
-            (allow ARG1 sysfs_file
-                (lnk_files
-                    (
-                        read
-                    )
-                )
-            )
-            (call cpu_sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabel ((type ARG1))
-            (call relabel_dirs
-                (
-                    ARG1
-                )
-            )
-            (call relabel_files
-                (
-                    ARG1
-                )
-            )
-            (call relabel_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabel_dirs ((type ARG1))
-            (allow ARG1 sysfs_file
-                (dirs
-                    (
-                        relabel
                     )
                 )
             )
@@ -1146,107 +1023,11 @@
             )
         )
 
-        (macro relabel_lnk_files ((type ARG1))
-            (allow ARG1 sysfs_file
-                (lnk_files
-                    (
-                        relabel
-                    )
-                )
-            )
-            (call cpu_sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabelfrom ((type ARG1))
-            (call relabelfrom_dirs
-                (
-                    ARG1
-                )
-            )
-            (call relabelfrom_files
-                (
-                    ARG1
-                )
-            )
-            (call relabelfrom_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabelfrom_dirs ((type ARG1))
-            (allow ARG1 sysfs_file
-                (dirs
-                    (
-                        relabelfrom
-                    )
-                )
-            )
-            (call cpu_sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
         (macro relabelfrom_files ((type ARG1))
             (allow ARG1 sysfs_file
                 (files
                     (
                         relabelfrom
-                    )
-                )
-            )
-            (call cpu_sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabelfrom_lnk_files ((type ARG1))
-            (allow ARG1 sysfs_file
-                (lnk_files
-                    (
-                        relabelfrom
-                    )
-                )
-            )
-            (call cpu_sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabelto ((type ARG1))
-            (call relabelto_dirs
-                (
-                    ARG1
-                )
-            )
-            (call relabelto_files
-                (
-                    ARG1
-                )
-            )
-            (call relabelto_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabelto_dirs ((type ARG1))
-            (allow ARG1 sysfs_file
-                (dirs
-                    (
-                        relabelto
                     )
                 )
             )
@@ -1272,116 +1053,11 @@
             )
         )
 
-        (macro relabelto_lnk_files ((type ARG1))
-            (allow ARG1 sysfs_file
-                (lnk_files
-                    (
-                        relabelto
-                    )
-                )
-            )
-            (call cpu_sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro rw ((type ARG1))
-            (call rw_dirs
-                (
-                    ARG1
-                )
-            )
-            (call rw_files
-                (
-                    ARG1
-                )
-            )
-            (call rw_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro rw_dirs ((type ARG1))
-            (allow ARG1 sysfs_file
-                (dirs
-                    (
-                        rw
-                    )
-                )
-            )
-            (call cpu_sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
         (macro rw_files ((type ARG1))
             (allow ARG1 sysfs_file
                 (files
                     (
                         rw
-                    )
-                )
-            )
-            (call cpu_sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro rw_lnk_files ((type ARG1))
-            (allow ARG1 sysfs_file
-                (lnk_files
-                    (
-                        rw
-                    )
-                )
-            )
-            (call cpu_sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro search ((type ARG1))
-            (allow ARG1 sysfs_file search_dir_perms)
-            (call cpu_sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro setattr ((type ARG1))
-            (call setattr_dirs
-                (
-                    ARG1
-                )
-            )
-            (call setattr_files
-                (
-                    ARG1
-                )
-            )
-            (call setattr_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro setattr_dirs ((type ARG1))
-            (allow ARG1 sysfs_file
-                (dirs
-                    (
-                        setattr
                     )
                 )
             )
@@ -1407,72 +1083,9 @@
             )
         )
 
-        (macro setattr_lnk_files ((type ARG1))
-            (allow ARG1 sysfs_file
-                (lnk_files
-                    (
-                        setattr
-                    )
-                )
-            )
-            (call cpu_sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro write ((type ARG1))
-            (call write_dirs
-                (
-                    ARG1
-                )
-            )
-            (call write_files
-                (
-                    ARG1
-                )
-            )
-            (call write_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro write_dirs ((type ARG1))
-            (allow ARG1 sysfs_file
-                (dirs
-                    (
-                        write
-                    )
-                )
-            )
-            (call cpu_sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
         (macro write_files ((type ARG1))
             (allow ARG1 sysfs_file
                 (files
-                    (
-                        write
-                    )
-                )
-            )
-            (call cpu_sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro write_lnk_files ((type ARG1))
-            (allow ARG1 sysfs_file
-                (lnk_files
                     (
                         write
                     )
@@ -5506,39 +5119,6 @@
 
         (macro append_files ((type ARG1))
             (allow ARG1 sysfs_file append_file_perms)
-            (call search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro getattr ((type ARG1))
-            (call getattr_dirs
-                (
-                    ARG1
-                )
-            )
-            (call getattr_files
-                (
-                    ARG1
-                )
-            )
-            (call getattr_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro getattr_dirs ((type ARG1))
-            (allow ARG1 sysfs_file
-                (dirs
-                    (
-                        getattr
-                    )
-                )
-            )
             (call node_sysfs.search
                 (
                     ARG1
@@ -5561,101 +5141,11 @@
             )
         )
 
-        (macro getattr_lnk_files ((type ARG1))
-            (allow ARG1 sysfs_file
-                (lnk_files
-                    (
-                        getattr
-                    )
-                )
-            )
-            (call node_sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro list ((type ARG1))
-            (allow ARG1 sysfs_file list_dir_perms)
-            (call node_sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro read ((type ARG1))
-            (call list
-                (
-                    ARG1
-                )
-            )
-            (call read_files
-                (
-                    ARG1
-                )
-            )
-            (call read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
         (macro read_files ((type ARG1))
             (allow ARG1 sysfs_file
                 (files
                     (
                         read
-                    )
-                )
-            )
-            (call node_sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro read_lnk_files ((type ARG1))
-            (allow ARG1 sysfs_file
-                (lnk_files
-                    (
-                        read
-                    )
-                )
-            )
-            (call node_sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabel ((type ARG1))
-            (call relabel_dirs
-                (
-                    ARG1
-                )
-            )
-            (call relabel_files
-                (
-                    ARG1
-                )
-            )
-            (call relabel_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabel_dirs ((type ARG1))
-            (allow ARG1 sysfs_file
-                (dirs
-                    (
-                        relabel
                     )
                 )
             )
@@ -5681,107 +5171,11 @@
             )
         )
 
-        (macro relabel_lnk_files ((type ARG1))
-            (allow ARG1 sysfs_file
-                (lnk_files
-                    (
-                        relabel
-                    )
-                )
-            )
-            (call node_sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabelfrom ((type ARG1))
-            (call relabelfrom_dirs
-                (
-                    ARG1
-                )
-            )
-            (call relabelfrom_files
-                (
-                    ARG1
-                )
-            )
-            (call relabelfrom_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabelfrom_dirs ((type ARG1))
-            (allow ARG1 sysfs_file
-                (dirs
-                    (
-                        relabelfrom
-                    )
-                )
-            )
-            (call node_sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
         (macro relabelfrom_files ((type ARG1))
             (allow ARG1 sysfs_file
                 (files
                     (
                         relabelfrom
-                    )
-                )
-            )
-            (call node_sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabelfrom_lnk_files ((type ARG1))
-            (allow ARG1 sysfs_file
-                (lnk_files
-                    (
-                        relabelfrom
-                    )
-                )
-            )
-            (call node_sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabelto ((type ARG1))
-            (call relabelto_dirs
-                (
-                    ARG1
-                )
-            )
-            (call relabelto_files
-                (
-                    ARG1
-                )
-            )
-            (call relabelto_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabelto_dirs ((type ARG1))
-            (allow ARG1 sysfs_file
-                (dirs
-                    (
-                        relabelto
                     )
                 )
             )
@@ -5807,116 +5201,11 @@
             )
         )
 
-        (macro relabelto_lnk_files ((type ARG1))
-            (allow ARG1 sysfs_file
-                (lnk_files
-                    (
-                        relabelto
-                    )
-                )
-            )
-            (call node_sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro rw ((type ARG1))
-            (call rw_dirs
-                (
-                    ARG1
-                )
-            )
-            (call rw_files
-                (
-                    ARG1
-                )
-            )
-            (call rw_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro rw_dirs ((type ARG1))
-            (allow ARG1 sysfs_file
-                (dirs
-                    (
-                        rw
-                    )
-                )
-            )
-            (call node_sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
         (macro rw_files ((type ARG1))
             (allow ARG1 sysfs_file
                 (files
                     (
                         rw
-                    )
-                )
-            )
-            (call node_sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro rw_lnk_files ((type ARG1))
-            (allow ARG1 sysfs_file
-                (lnk_files
-                    (
-                        rw
-                    )
-                )
-            )
-            (call node_sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro search ((type ARG1))
-            (allow ARG1 sysfs_file search_dir_perms)
-            (call node_sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro setattr ((type ARG1))
-            (call setattr_dirs
-                (
-                    ARG1
-                )
-            )
-            (call setattr_files
-                (
-                    ARG1
-                )
-            )
-            (call setattr_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro setattr_dirs ((type ARG1))
-            (allow ARG1 sysfs_file
-                (dirs
-                    (
-                        setattr
                     )
                 )
             )
@@ -5942,72 +5231,9 @@
             )
         )
 
-        (macro setattr_lnk_files ((type ARG1))
-            (allow ARG1 sysfs_file
-                (lnk_files
-                    (
-                        setattr
-                    )
-                )
-            )
-            (call node_sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro write ((type ARG1))
-            (call write_dirs
-                (
-                    ARG1
-                )
-            )
-            (call write_files
-                (
-                    ARG1
-                )
-            )
-            (call write_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro write_dirs ((type ARG1))
-            (allow ARG1 sysfs_file
-                (dirs
-                    (
-                        write
-                    )
-                )
-            )
-            (call node_sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
         (macro write_files ((type ARG1))
             (allow ARG1 sysfs_file
                 (files
-                    (
-                        write
-                    )
-                )
-            )
-            (call node_sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro write_lnk_files ((type ARG1))
-            (allow ARG1 sysfs_file
-                (lnk_files
                     (
                         write
                     )
