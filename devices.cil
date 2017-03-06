@@ -377,8 +377,26 @@
                 )
             )
 
+            (macro relabel_chr_files ((type ARG1))
+                (allow ARG1 obj_type_attribute relabel_chr_file_perms)
+                (call fs.devtmpfs.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
             (macro relabelfrom_chr_files ((type ARG1))
                 (allow ARG1 obj_type_attribute relabelfrom_chr_file_perms)
+                (call fs.devtmpfs.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro relabelto_chr_files ((type ARG1))
+                (allow ARG1 obj_type_attribute relabelto_chr_file_perms)
                 (call fs.devtmpfs.search
                     (
                         ARG1
