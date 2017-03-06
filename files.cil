@@ -10997,12 +10997,6 @@
             (blockabstract obj_template)
 
             (blockinherit files.file.obj_stub)
-
-            (call files.obj_type
-                (
-                    obj_type_attribute
-                )
-            )
         )
     )
 
