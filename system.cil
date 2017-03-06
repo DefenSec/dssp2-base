@@ -8108,7 +8108,13 @@
             ;
 
             (macro append_files ((type ARG1))
-                (allow ARG1 sysctl_file append_file_perms)
+                (allow ARG1 sysctl_file
+                    (files
+                        (
+                            append
+                        )
+                    )
+                )
                 (call generic_sysctl.search
                     (
                         ARG1
@@ -8136,7 +8142,7 @@
 
             (macro getattr_dirs ((type ARG1))
                 (allow ARG1 sysctl_file
-                    (dir
+                    (dirs
                         (
                             getattr
                         )
@@ -8151,7 +8157,7 @@
 
             (macro getattr_files ((type ARG1))
                 (allow ARG1 sysctl_file
-                    (file
+                    (files
                         (
                             getattr
                         )
@@ -8166,7 +8172,7 @@
 
             (macro getattr_lnk_files ((type ARG1))
                 (allow ARG1 sysctl_file
-                    (lnk_file
+                    (lnk_files
                         (
                             getattr
                         )
@@ -8207,7 +8213,13 @@
             )
 
             (macro read_files ((type ARG1))
-                (allow ARG1 sysctl_file read_file_perms)
+                (allow ARG1 sysctl_file
+                    (files
+                        (
+                            read
+                        )
+                    )
+                )
                 (call generic_sysctl.search
                     (
                         ARG1
@@ -8216,7 +8228,13 @@
             )
 
             (macro read_lnk_files ((type ARG1))
-                (allow ARG1 sysctl_file read_lnk_file_perms)
+                (allow ARG1 sysctl_file
+                    (lnk_files
+                        (
+                            read
+                        )
+                    )
+                )
                 (call generic_sysctl.search
                     (
                         ARG1
@@ -8243,7 +8261,13 @@
             )
 
             (macro relabel_dirs ((type ARG1))
-                (allow ARG1 sysctl_file relabel_dir_perms)
+                (allow ARG1 sysctl_file
+                    (dirs
+                        (
+                            relabel
+                        )
+                    )
+                )
                 (call generic_sysctl.search
                     (
                         ARG1
@@ -8252,7 +8276,13 @@
             )
 
             (macro relabel_files ((type ARG1))
-                (allow ARG1 sysctl_file relabel_file_perms)
+                (allow ARG1 sysctl_file
+                    (files
+                        (
+                            relabel
+                        )
+                    )
+                )
                 (call generic_sysctl.search
                     (
                         ARG1
@@ -8261,7 +8291,13 @@
             )
 
             (macro relabel_lnk_files ((type ARG1))
-                (allow ARG1 sysctl_file relabel_lnk_file_perms)
+                (allow ARG1 sysctl_file
+                    (lnk_files
+                        (
+                            relabel
+                        )
+                    )
+                )
                 (call generic_sysctl.search
                     (
                         ARG1
@@ -8288,7 +8324,13 @@
             )
 
             (macro relabelfrom_dirs ((type ARG1))
-                (allow ARG1 sysctl_file relabelfrom_dir_perms)
+                (allow ARG1 sysctl_file
+                    (dirs
+                        (
+                            relabelfrom
+                        )
+                    )
+                )
                 (call generic_sysctl.search
                     (
                         ARG1
@@ -8297,7 +8339,13 @@
             )
 
             (macro relabelfrom_files ((type ARG1))
-                (allow ARG1 sysctl_file relabelfrom_file_perms)
+                (allow ARG1 sysctl_file
+                    (files
+                        (
+                            relabelfrom
+                        )
+                    )
+                )
                 (call generic_sysctl.search
                     (
                         ARG1
@@ -8306,7 +8354,13 @@
             )
 
             (macro relabelfrom_lnk_files ((type ARG1))
-                (allow ARG1 sysctl_file relabelfrom_lnk_file_perms)
+                (allow ARG1 sysctl_file
+                    (lnk_files
+                        (
+                            relabelfrom
+                        )
+                    )
+                )
                 (call generic_sysctl.search
                     (
                         ARG1
@@ -8333,7 +8387,13 @@
             )
 
             (macro relabelto_dirs ((type ARG1))
-                (allow ARG1 sysctl_file relabelto_dir_perms)
+                (allow ARG1 sysctl_file
+                    (dirs
+                        (
+                            relabelto
+                        )
+                    )
+                )
                 (call generic_sysctl.search
                     (
                         ARG1
@@ -8342,7 +8402,13 @@
             )
 
             (macro relabelto_files ((type ARG1))
-                (allow ARG1 sysctl_file relabelto_file_perms)
+                (allow ARG1 sysctl_file
+                    (files
+                        (
+                            relabelto
+                        )
+                    )
+                )
                 (call generic_sysctl.search
                     (
                         ARG1
@@ -8351,7 +8417,13 @@
             )
 
             (macro relabelto_lnk_files ((type ARG1))
-                (allow ARG1 sysctl_file relabelto_lnk_file_perms)
+                (allow ARG1 sysctl_file
+                    (lnk_files
+                        (
+                            relabelto
+                        )
+                    )
+                )
                 (call generic_sysctl.search
                     (
                         ARG1
@@ -8387,7 +8459,13 @@
             )
 
             (macro rw_files ((type ARG1))
-                (allow ARG1 sysctl_file rw_file_perms)
+                (allow ARG1 sysctl_file
+                    (files
+                        (
+                            rw
+                        )
+                    )
+                )
                 (call generic_sysctl.search
                     (
                         ARG1
@@ -8396,7 +8474,13 @@
             )
 
             (macro rw_lnk_files ((type ARG1))
-                (allow ARG1 sysctl_file rw_lnk_file_perms)
+                (allow ARG1 sysctl_file
+                    (lnk_files
+                        (
+                            rw
+                        )
+                    )
+                )
                 (call generic_sysctl.search
                     (
                         ARG1
@@ -8433,7 +8517,7 @@
 
             (macro setattr_dirs ((type ARG1))
                 (allow ARG1 sysctl_file
-                    (dir
+                    (dirs
                         (
                             setattr
                         )
@@ -8448,7 +8532,7 @@
 
             (macro setattr_files ((type ARG1))
                 (allow ARG1 sysctl_file
-                    (file
+                    (files
                         (
                             setattr
                         )
@@ -8463,7 +8547,7 @@
 
             (macro setattr_lnk_files ((type ARG1))
                 (allow ARG1 sysctl_file
-                    (lnk_file
+                    (lnk_files
                         (
                             setattr
                         )
@@ -8495,7 +8579,13 @@
             )
 
             (macro write_dirs ((type ARG1))
-                (allow ARG1 sysctl_file write_dir_perms)
+                (allow ARG1 sysctl_file
+                    (dirs
+                        (
+                            write
+                        )
+                    )
+                )
                 (call generic_sysctl.search
                     (
                         ARG1
@@ -8504,7 +8594,13 @@
             )
 
             (macro write_files ((type ARG1))
-                (allow ARG1 sysctl_file write_file_perms)
+                (allow ARG1 sysctl_file
+                    (files
+                        (
+                            write
+                        )
+                    )
+                )
                 (call generic_sysctl.search
                     (
                         ARG1
@@ -8513,7 +8609,13 @@
             )
 
             (macro write_lnk_files ((type ARG1))
-                (allow ARG1 sysctl_file write_lnk_file_perms)
+                (allow ARG1 sysctl_file
+                    (lnk_files
+                        (
+                            write
+                        )
+                    )
+                )
                 (call generic_sysctl.search
                     (
                         ARG1
