@@ -14551,7 +14551,7 @@
         )
 
         (macro read_files ((type ARG1))
-            (allow ARG1 rumtime_file
+            (allow ARG1 runtime_file
                 (files
                     (
                         read
