@@ -3257,7 +3257,7 @@
         ; auth_file macros
         ;
 
-        (blockinherit files.obj_all_macro_template)
+        (blockinherit obj_all_macro_template)
 
         ;
         ; auth policy
@@ -10024,7 +10024,7 @@
         ; file macros
         ;
 
-        (blockinherit files.obj_all_macro_template)
+        (blockinherit obj_all_macro_template)
 
         ;
         ; file policy
@@ -32933,7 +32933,7 @@
         ; sec_file macros
         ;
 
-        (blockinherit files.obj_all_macro_template)
+        (blockinherit obj_all_macro_template)
 
         ;
         ; sec_file policy
