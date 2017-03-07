@@ -1551,24 +1551,6 @@
             )
         )
 
-        (optional set_fscreate_optional_seutils
-            (call seutils.config.read_files
-                (
-                    set_fscreate_subj_type_attribute
-                )
-            )
-            (call seutils.file_context.read_files
-                (
-                    set_fscreate_subj_type_attribute
-                )
-            )
-            (call seutils.file_context.search
-                (
-                    set_fscreate_subj_type_attribute
-                )
-            )
-        )
-
         (allow set_secparam_subj_type_attribute isid
             (security
                 (
