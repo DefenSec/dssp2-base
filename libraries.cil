@@ -1257,7 +1257,7 @@
 
         (typeattribute obj_type_attribute)
 
-        (call files.file.obj_type
+        (call files.obj_type
             (
                 obj_type_attribute
             )
