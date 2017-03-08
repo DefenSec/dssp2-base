@@ -201,26 +201,6 @@
     (roleattributeset role_attribute sys.role)
 
     (roletype role_attribute subj)
-
-    (call subj.use_interactive_fd_subj_type
-        (
-            subj
-        )
-    )
-
-    (call term.generic_serial.rw_inherited_chr_files
-        (
-            subj
-        )
-    )
-
-    (optional hybrid_agent_template_optional_users
-        (call users.terminals.rw_inherited_chr_files
-            (
-                subj
-            )
-        )
-    )
 )
 
 ;
@@ -417,24 +397,4 @@
     (roleattribute role_attribute)
 
     (roletype role_attribute subj)
-
-    (call subj.use_interactive_fd_subj_type
-        (
-            subj
-        )
-    )
-
-    (call term.generic_serial.rw_inherited_chr_files
-        (
-            subj
-        )
-    )
-
-    (optional user_agent_template_optional_users
-        (call users.terminals.rw_inherited_chr_files
-            (
-                subj
-            )
-        )
-    )
 )
