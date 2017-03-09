@@ -376,6 +376,10 @@
             )
         )
 
+        (macro mmap_inherited_files ((type ARG1))
+            (allow ARG1 cmd_file mmap_inherited_file_perms)
+        )
+
         (macro obj_type_transition ((type ARG1)(type ARG2)(class ARG3)(name ARG4))
             (typetransition ARG1 cmd_file ARG3 ARG4 ARG2)
             (call rw_dirs
