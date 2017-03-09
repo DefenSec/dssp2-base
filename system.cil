@@ -628,6 +628,11 @@
         )
     )
 
+    (call fs.tracefs.search
+        (
+            isid
+        )
+    )
     (call fs.devtmpfs.manage_blk_files
         (
             isid
@@ -694,7 +699,7 @@
     (optional sys_optional_bluetooth
         (call bluetooth.daemon.write_inherited_sockets
             (
-                subj
+                isid
             )
         )
     )
