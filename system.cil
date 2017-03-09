@@ -691,8 +691,8 @@
         )
     )
 
-    (optional sys_optional_bluetoothd
-        (call bluetoothd.write_inherited_bluetooth_sockets
+    (optional sys_optional_bluetooth
+        (call bluetooth.daemon.write_inherited_bluetooth_sockets
             (
                 subj
             )
