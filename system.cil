@@ -513,6 +513,13 @@
             )
         )
     )
+    (allow isid self
+        (unix_dgram_socket
+            (
+                sendto
+            )
+        )
+    )
     (allow isid self create_unix_stream_socket_perms)
 
     (call change_ring_buffer_level
