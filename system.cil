@@ -788,7 +788,7 @@
     (optional sys_optional_nspawn
         (call nspawn.use_fd
             (
-                ARG1
+                isid
             )
         )
     )
@@ -796,17 +796,17 @@
     (optional sys_optional_plymouth
         (call plymouth.config.read
             (
-                subj
+                isid
             )
         )
-        (call plymouthd.runtime.manage_files
+        (call plymouth.runtime.manage_files
             (
-                subj
+                isid
             )
         )
-        (call plymouthd.var_lib.manage_files
+        (call plymouth.var_lib.manage_files
             (
-                subj
+                isid
             )
         )
     )
