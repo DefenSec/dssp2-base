@@ -799,12 +799,12 @@
                 isid
             )
         )
-        (call plymouth.runtime.manage_files
+        (call plymouth.runtime.manage
             (
                 isid
             )
         )
-        (call plymouth.var_lib.manage_files
+        (call plymouth.var_lib.manage
             (
                 isid
             )
