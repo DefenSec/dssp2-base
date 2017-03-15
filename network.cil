@@ -5,15 +5,15 @@
 ; 1. Net initial security identifier declarations
 ; 2. Net name space
 ;       Net ephemeral_port name space
-;       Net generic_ephemeral name space
-;       Net generic_hi_reserved name space
+;       Net generic_ephemeral_port name space
+;       Net generic_hi_reserved_port name space
 ;       Net generic_if name space
 ;       Net generic_node name space
 ;       Net generic_packet name space
 ;       Net generic_peer name space
 ;       Net generic_port name space
-;       Net generic_reserved name space
-;       Net generic_unreserved name space
+;       Net generic_reserved_port name space
+;       Net generic_unreserved_port name space
 ;       Net hi_reserved_port name space
 ;       Net if name space
 ;       Net node name space
@@ -253,13 +253,13 @@
     )
 
     ;
-    ; Net generic_ephemeral name space
+    ; Net generic_ephemeral_port name space
     ;
 
-    (block generic_ephemeral
+    (block generic_ephemeral_port
 
         ;
-        ; generic_ephemeral contexts
+        ; generic_ephemeral_port contexts
         ;
 
         (portcon "dccp"
@@ -287,20 +287,20 @@
         )
 
         ;
-        ; generic_ephemeral policy
+        ; generic_ephemeral_port policy
         ;
 
         (blockinherit ephemeral_port.obj_template)
     )
 
     ;
-    ; Net generic_hi_reserved name space
+    ; Net generic_hi_reserved_port name space
     ;
 
-    (block generic_hi_reserved
+    (block generic_hi_reserved_port
 
         ;
-        ; generic_hi_reserved contexts
+        ; generic_hi_reserved_port contexts
         ;
 
         (portcon "dccp"
@@ -328,7 +328,7 @@
         )
 
         ;
-        ; generic_hi_reserved policy
+        ; generic_hi_reserved_port policy
         ;
 
         (blockinherit hi_reserved_port.obj_template)
@@ -662,13 +662,13 @@
     )
 
     ;
-    ; Net generic_reserved name space
+    ; Net generic_reserved_port name space
     ;
 
-    (block generic_reserved
+    (block generic_reserved_port
 
         ;
-        ; generic_reserved contexts
+        ; generic_reserved_port contexts
         ;
 
         (portcon "dccp"
@@ -696,17 +696,17 @@
         )
 
         ;
-        ; generic_reserved policy
+        ; generic_reserved_port policy
         ;
 
         (blockinherit reserved_port.obj_template)
     )
 
     ;
-    ; Net generic_unreserved name space
+    ; Net generic_unreserved_port name space
     ;
 
-    (block generic_unreserved
+    (block generic_unreserved_port
 
         ;
         ; generic_unreserved contexts
@@ -761,7 +761,7 @@
         )
 
         ;
-        ; generic_unreserved policy
+        ; generic_unreserved_port policy
         ;
 
         (blockinherit unreserved_port.obj_template)
