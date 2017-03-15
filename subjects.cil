@@ -622,11 +622,6 @@
                         )
                     )
                 )
-                (call subj.dyntransition_subj_type
-                    (
-                        ARG1
-                    )
-                )
             )
 
             (macro getattr ((type ARG1))
@@ -1183,11 +1178,6 @@
                         (
                             dyntransition
                         )
-                    )
-                )
-                (call subj.dyntransition_subj_type
-                    (
-                        ARG1
                     )
                 )
             )

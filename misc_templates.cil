@@ -149,6 +149,22 @@
             )
         )
 
+        (call dontaudit_noatsecure
+            (
+                ARG1
+            )
+        )
+        (call dontaudit_siginh
+            (
+                ARG1
+            )
+        )
+        (call dontaudit_rlimitinh
+            (
+                ARG1
+            )
+        )
+
         (allow subj ARG1
             (process
                 (
