@@ -149,22 +149,6 @@
             )
         )
 
-        (call dontaudit_noatsecure
-            (
-                ARG1
-            )
-        )
-        (call dontaudit_siginh
-            (
-                ARG1
-            )
-        )
-        (call dontaudit_rlimitinh
-            (
-                ARG1
-            )
-        )
-
         (allow subj ARG1
             (process
                 (
@@ -174,14 +158,6 @@
                 )
             )
         )
-        (allow subj ARG1
-            (fd
-                (
-                    use
-                )
-            )
-        )
-        (allow subj ARG1 rw_inherited_fifo_file_perms)
 
         (call dyntransition
             (
