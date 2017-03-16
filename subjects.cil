@@ -593,16 +593,6 @@
                 )
             )
 
-            (macro append_inherited_unix_stream_sockets ((type ARG1))
-                (allow ARG1 subj_type_attribute
-                    append_inherited_unix_stream_socket_perms)
-                (call use_fd
-                    (
-                        ARG1
-                    )
-                )
-            )
-
             (macro create_keyring ((type ARG1))
                 (allow ARG1 self
                     (process
@@ -738,34 +728,14 @@
                 )
             )
 
-            (macro rw_inherited_tcp_sockets ((type ARG1))
+            (macro rw_tcp_sockets ((type ARG1))
                 (allow ARG1 subj_type_attribute
-                    rw_inherited_tcp_socket_perms)
-                (call use_fd
-                    (
-                        ARG1
-                    )
-                )
+                    rw_tcp_socket_perms)
             )
 
-            (macro rw_inherited_unix_dgram_sockets ((type ARG1))
+            (macro rw_unix_dgram_sockets ((type ARG1))
                 (allow ARG1 subj_type_attribute
-                    rw_inherited_unix_dgram_socket_perms)
-                (call use_fd
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro rw_inherited_unix_stream_sockets ((type ARG1))
-                (allow ARG1 subj_type_attribute
-                    rw_inherited_unix_stream_socket_perms)
-                (call use_fd
-                    (
-                        ARG1
-                    )
-                )
+                    rw_unix_dgram_socket_perms)
             )
 
             (macro rw_unix_stream_sockets ((type ARG1))
@@ -1160,15 +1130,6 @@
                 )
             )
 
-            (macro append_inherited_unix_stream_sockets ((type ARG1))
-                (allow ARG1 subj append_inherited_unix_stream_socket_perms)
-                (call use_fd
-                    (
-                        ARG1
-                    )
-                )
-            )
-
             (macro create_keyring ((type ARG1))
                 (allow ARG1 self
                     (process
@@ -1297,31 +1258,12 @@
                 )
             )
 
-            (macro rw_inherited_tcp_sockets ((type ARG1))
-                (allow ARG1 subj rw_inherited_tcp_socket_perms)
-                (call use_fd
-                    (
-                        ARG1
-                    )
-                )
+            (macro rw_tcp_sockets ((type ARG1))
+                (allow ARG1 subj rw_tcp_socket_perms)
             )
 
-            (macro rw_inherited_unix_dgram_sockets ((type ARG1))
-                (allow ARG1 subj rw_inherited_unix_dgram_socket_perms)
-                (call use_fd
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro rw_inherited_unix_stream_sockets ((type ARG1))
-                (allow ARG1 subj rw_inherited_unix_stream_socket_perms)
-                (call use_fd
-                    (
-                        ARG1
-                    )
-                )
+            (macro rw_unix_dgram_sockets ((type ARG1))
+                (allow ARG1 subj rw_unix_dgram_socket_perms)
             )
 
             (macro rw_unix_stream_sockets ((type ARG1))

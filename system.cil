@@ -243,30 +243,8 @@
         (roleattributeset roleallow_role_attribute ARG1)
     )
 
-    (macro rw_inherited_netlink_audit_sockets ((type ARG1))
-        (allow ARG1 isid
-            (netlink_audit_socket
-                (
-                    getattr
-                    read
-                    write
-                )
-            )
-        )
-        (call use_fd
-            (
-                ARG1
-            )
-        )
-    )
-
-    (macro rw_inherited_unix_stream_sockets ((type ARG1))
-        (allow ARG1 isid rw_inherited_unix_stream_socket_perms)
-        (call use_fd
-            (
-                ARG1
-            )
-        )
+    (macro rw_netlink_audit_sockets ((type ARG1))
+        (allow ARG1 isid rw_netlink_audit_socket_perms)
     )
 
     (macro rw_unix_dgram_sockets ((type ARG1))
@@ -359,21 +337,6 @@
                 (
                     connectto
                 )
-            )
-        )
-    )
-
-    (macro write_inherited_unix_dgram_sockets ((type ARG1))
-        (allow ARG1 isid
-            (unix_dgram_socket
-                (
-                    write
-                )
-            )
-        )
-        (call use_fd
-            (
-                ARG1
             )
         )
     )
@@ -704,7 +667,7 @@
     )
 
     (optional sys_optional_bluetooth
-        (call bluetooth.daemon.write_inherited_sockets
+        (call bluetooth.daemon.rw_sockets
             (
                 isid
             )
