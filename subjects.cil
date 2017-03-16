@@ -1072,6 +1072,14 @@
                 )
             )
 
+            (optional common_subj_optional_seutils
+                (call seutils.libselinux_linked_subj_type
+                    (
+                        subj_type_attribute
+                    )
+                )
+            )
+
             (optional common_subj_optional_systemd
                 (call systemd.system.sigchld
                     (
