@@ -3472,10 +3472,22 @@
 (constrain
     (tcp_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
             listen
             lock
+            read
             recvfrom
             sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -3490,43 +3502,6 @@
             (eq t1 rbacsep_exemption_subj_type_attribute)
         )
         (eq t2 rbacsep_exemption_subj_type_attribute)
-    )
-)
-
-(constrain
-    (tcp_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-    (or
-        (or
-            (or
-                (or
-                    (eq r1 r2)
-                    (eq r1 rbacsep_exemption_role_attribute)
-                )
-                (eq t1 rbacsep_exemption_subj_type_attribute)
-            )
-            (and
-                (eq r2 rbacsep_exemption_role_attribute)
-                (neq t2 rbacsep_target_subj_type_attribute)
-            )
-        )
-        (and
-            (eq t1 rbacsep_rw_tcp_sockets_source_subj_type_attribute)
-            (eq t2 rbacsep_rw_tcp_sockets_target_subj_type_attribute)
-        )
     )
 )
 
@@ -3745,10 +3720,21 @@
     (unix_dgram_socket
         (
             accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
             listen
             lock
+            read
             recvfrom
             sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -3763,43 +3749,6 @@
             (eq t1 rbacsep_exemption_subj_type_attribute)
         )
         (eq t2 rbacsep_exemption_subj_type_attribute)
-    )
-)
-
-(constrain
-    (unix_dgram_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-    (or
-        (or
-            (or
-                (or
-                    (eq r1 r2)
-                    (eq r1 rbacsep_exemption_role_attribute)
-                )
-                (eq t1 rbacsep_exemption_subj_type_attribute)
-            )
-            (and
-                (eq r2 rbacsep_exemption_role_attribute)
-                (neq t2 rbacsep_target_subj_type_attribute)
-            )
-        )
-        (and
-            (eq t1 rbacsep_rw_unix_dgram_sockets_source_subj_type_attribute)
-            (eq t2 rbacsep_rw_unix_dgram_sockets_target_subj_type_attribute)
-        )
     )
 )
 
@@ -3832,11 +3781,22 @@
     (unix_stream_socket
         (
             accept
+            append
+            bind
+            connect
             connectto
+            getattr
+            getopt
+            ioctl
             listen
             lock
+            read
             recvfrom
             sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -3851,43 +3811,6 @@
             (eq t1 rbacsep_exemption_subj_type_attribute)
         )
         (eq t2 rbacsep_exemption_subj_type_attribute)
-    )
-)
-
-(constrain
-    (unix_stream_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-    (or
-        (or
-            (or
-                (or
-                    (eq r1 r2)
-                    (eq r1 rbacsep_exemption_role_attribute)
-                )
-                (eq t1 rbacsep_exemption_subj_type_attribute)
-            )
-            (and
-                (eq r2 rbacsep_exemption_role_attribute)
-                (neq t2 rbacsep_target_subj_type_attribute)
-            )
-        )
-        (and
-            (eq t1 rbacsep_rw_unix_stream_sockets_source_subj_type_attribute)
-            (eq t2 rbacsep_rw_unix_stream_sockets_target_subj_type_attribute)
-        )
     )
 )
 
@@ -4058,30 +3981,6 @@
     (typeattributeset rbacsep_read_state_target_subj_type_attribute ARG1)
 )
 
-(macro rbacsep_rw_tcp_sockets_source_subj_type ((type ARG1))
-    (typeattributeset rbacsep_rw_tcp_sockets_source_subj_type_attribute ARG1)
-)
-
-(macro rbacsep_rw_tcp_sockets_target_subj_type ((type ARG1))
-    (typeattributeset rbacsep_rw_tcp_sockets_target_subj_type_attribute ARG1)
-)
-
-(macro rbacsep_rw_unix_dgram_sockets_source_subj_type ((type ARG1))
-    (typeattributeset rbacsep_rw_unix_dgram_sockets_source_subj_type_attribute ARG1)
-)
-
-(macro rbacsep_rw_unix_dgram_sockets_target_subj_type ((type ARG1))
-    (typeattributeset rbacsep_rw_unix_dgram_sockets_target_subj_type_attribute ARG1)
-)
-
-(macro rbacsep_rw_unix_stream_sockets_source_subj_type ((type ARG1))
-    (typeattributeset rbacsep_rw_unix_stream_sockets_source_subj_type_attribute ARG1)
-)
-
-(macro rbacsep_rw_unix_stream_sockets_target_subj_type ((type ARG1))
-    (typeattributeset rbacsep_rw_unix_stream_sockets_target_subj_type_attribute ARG1)
-)
-
 (macro rbacsep_target_subj_type ((type ARG1))
     (typeattributeset rbacsep_target_subj_type_attribute ARG1)
 )
@@ -4096,12 +3995,6 @@
 (typeattribute rbacsep_exemption_subj_type_attribute)
 (typeattribute rbacsep_read_state_source_subj_type_attribute)
 (typeattribute rbacsep_read_state_target_subj_type_attribute)
-(typeattribute rbacsep_rw_tcp_sockets_source_subj_type_attribute)
-(typeattribute rbacsep_rw_tcp_sockets_target_subj_type_attribute)
-(typeattribute rbacsep_rw_unix_dgram_sockets_source_subj_type_attribute)
-(typeattribute rbacsep_rw_unix_dgram_sockets_target_subj_type_attribute)
-(typeattribute rbacsep_rw_unix_stream_sockets_source_subj_type_attribute)
-(typeattribute rbacsep_rw_unix_stream_sockets_target_subj_type_attribute)
 (typeattribute rbacsep_target_subj_type_attribute)
 
 (defaultrole blk_file source)
