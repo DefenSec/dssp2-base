@@ -243,8 +243,8 @@
         (roleattributeset roleallow_role_attribute ARG1)
     )
 
-    (macro rw_netlink_audit_sockets ((type ARG1))
-        (allow ARG1 isid rw_netlink_audit_socket_perms)
+    (macro r_netlink_audit_sockets ((type ARG1))
+        (allow ARG1 isid r_netlink_audit_socket_perms)
     )
 
     (macro rw_unix_dgram_sockets ((type ARG1))
