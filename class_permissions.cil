@@ -24,8 +24,6 @@
 
 (classpermission create_alg_socket_perms)
 (classpermission rw_alg_socket_perms)
-(classpermission rw_inherited_alg_socket_perms)
-(classpermission write_inherited_alg_socket_perms)
 
 ;
 ; appletalk_socket class permissions
@@ -40,8 +38,6 @@
 
 (classpermission create_atmpvc_socket_perms)
 (classpermission rw_atmpvc_socket_perms)
-(classpermission rw_inherited_atmpvc_socket_perms)
-(classpermission write_inherited_atmpvc_socket_perms)
 
 ;
 ; atmsvc_socket class permissions
@@ -49,8 +45,6 @@
 
 (classpermission create_atmsvc_socket_perms)
 (classpermission rw_atmsvc_socket_perms)
-(classpermission rw_inherited_atmsvc_socket_perms)
-(classpermission write_inherited_atmsvc_socket_perms)
 
 ;
 ; ax25_socket class permissions
@@ -58,8 +52,6 @@
 
 (classpermission create_ax25_socket_perms)
 (classpermission rw_ax25_socket_perms)
-(classpermission rw_inherited_ax25_socket_perms)
-(classpermission write_inherited_ax25_socket_perms)
 
 ;
 ; blk_file class permissions
@@ -89,8 +81,6 @@
 
 (classpermission create_bluetooth_socket_perms)
 (classpermission rw_bluetooth_socket_perms)
-(classpermission rw_inherited_bluetooth_socket_perms)
-(classpermission write_inherited_bluetooth_socket_perms)
 
 ;
 ; caif_socket class permissions
@@ -98,8 +88,6 @@
 
 (classpermission create_caif_socket_perms)
 (classpermission rw_caif_socket_perms)
-(classpermission rw_inherited_caif_socket_perms)
-(classpermission write_inherited_caif_socket_perms)
 
 ;
 ; can_socket class permissions
@@ -107,8 +95,6 @@
 
 (classpermission create_can_socket_perms)
 (classpermission rw_can_socket_perms)
-(classpermission rw_inherited_can_socket_perms)
-(classpermission write_inherited_can_socket_perms)
 
 ;
 ; chr_file class permissions
@@ -147,8 +133,6 @@
 
 (classpermission create_decnet_socket_perms)
 (classpermission rw_decnet_socket_perms)
-(classpermission rw_inherited_decnet_socket_perms)
-(classpermission write_inherited_decnet_socket_perms)
 
 ;
 ; dir class permissions
@@ -231,8 +215,6 @@
 
 (classpermission create_ieee802154_socket_perms)
 (classpermission rw_ieee802154_socket_perms)
-(classpermission rw_inherited_ieee802154_socket_perms)
-(classpermission write_inherited_ieee802154_socket_perms)
 
 ;
 ; ipx_socket class permissions
@@ -240,8 +222,6 @@
 
 (classpermission create_ipx_socket_perms)
 (classpermission rw_ipx_socket_perms)
-(classpermission rw_inherited_ipx_socket_perms)
-(classpermission write_inherited_ipx_socket_perms)
 
 ;
 ; irda_socket class permissions
@@ -249,8 +229,6 @@
 
 (classpermission create_irda_socket_perms)
 (classpermission rw_irda_socket_perms)
-(classpermission rw_inherited_irda_socket_perms)
-(classpermission write_inherited_irda_socket_perms)
 
 ;
 ; isdn_socket class permissions
@@ -258,8 +236,6 @@
 
 (classpermission create_isdn_socket_perms)
 (classpermission rw_isdn_socket_perms)
-(classpermission rw_inherited_isdn_socket_perms)
-(classpermission write_inherited_isdn_socket_perms)
 
 ;
 ; iucv_socket class permissions
@@ -267,8 +243,6 @@
 
 (classpermission create_iucv_socket_perms)
 (classpermission rw_iucv_socket_perms)
-(classpermission rw_inherited_iucv_socket_perms)
-(classpermission write_inherited_iucv_socket_perms)
 
 ;
 ; kcm_socket class permissions
@@ -276,8 +250,6 @@
 
 (classpermission create_kcm_socket_perms)
 (classpermission rw_kcm_socket_perms)
-(classpermission rw_inherited_kcm_socket_perms)
-(classpermission write_inherited_kcm_socket_perms)
 
 ;
 ; key class permissions
@@ -303,8 +275,6 @@
 
 (classpermission create_llc_socket_perms)
 (classpermission rw_llc_socket_perms)
-(classpermission rw_inherited_llc_socket_perms)
-(classpermission write_inherited_llc_socket_perms)
 
 ;
 ; lnk_file class permissions
@@ -449,8 +419,6 @@
 
 (classpermission create_netrom_socket_perms)
 (classpermission rw_netrom_socket_perms)
-(classpermission rw_inherited_netrom_socket_perms)
-(classpermission write_inherited_netrom_socket_perms)
 
 ;
 ; nfc_socket class permissions
@@ -458,8 +426,6 @@
 
 (classpermission create_nfc_socket_perms)
 (classpermission rw_nfc_socket_perms)
-(classpermission rw_inherited_nfc_socket_perms)
-(classpermission write_inherited_nfc_socket_perms)
 
 ;
 ; packet_socket class permissions
@@ -474,8 +440,6 @@
 
 (classpermission create_phonet_socket_perms)
 (classpermission rw_phonet_socket_perms)
-(classpermission rw_inherited_phonet_socket_perms)
-(classpermission write_inherited_phonet_socket_perms)
 
 ;
 ; pppox_socket class permissions
@@ -483,8 +447,6 @@
 
 (classpermission create_pppox_socket_perms)
 (classpermission rw_pppox_socket_perms)
-(classpermission rw_inherited_pppox_socket_perms)
-(classpermission write_inherited_pppox_socket_perms)
 
 ;
 ; qipcrtr_socket class permissions
@@ -492,8 +454,6 @@
 
 (classpermission create_qipcrtr_socket_perms)
 (classpermission rw_qipcrtr_socket_perms)
-(classpermission rw_inherited_qipcrtr_socket_perms)
-(classpermission write_inherited_qipcrtr_socket_perms)
 
 ;
 ; rawip_socket class permissions
@@ -508,8 +468,6 @@
 
 (classpermission create_rds_socket_perms)
 (classpermission rw_rds_socket_perms)
-(classpermission rw_inherited_rds_socket_perms)
-(classpermission write_inherited_rds_socket_perms)
 
 ;
 ; rose_socket class permissions
@@ -517,8 +475,6 @@
 
 (classpermission create_rose_socket_perms)
 (classpermission rw_rose_socket_perms)
-(classpermission rw_inherited_rose_socket_perms)
-(classpermission write_inherited_rose_socket_perms)
 
 ;
 ; rxrpc_socket class permissions
@@ -526,8 +482,6 @@
 
 (classpermission create_rxrpc_socket_perms)
 (classpermission rw_rxrpc_socket_perms)
-(classpermission rw_inherited_rxrpc_socket_perms)
-(classpermission write_inherited_rxrpc_socket_perms)
 
 ;
 ; sctp_socket class permissions
@@ -578,8 +532,6 @@
 
 (classpermission create_socket_perms)
 (classpermission rw_socket_perms)
-(classpermission rw_inherited_socket_perms)
-(classpermission write_inherited_socket_perms)
 
 ;
 ; term class permissions
@@ -596,7 +548,6 @@
 (classpermission create_tcp_stream_socket_perms)
 (classpermission rw_tcp_socket_perms)
 (classpermission rw_tcp_stream_socket_perms)
-(classpermission rw_inherited_tcp_socket_perms)
 
 ;
 ; tipc_socket class permissions
@@ -604,8 +555,6 @@
 
 (classpermission create_tipc_socket_perms)
 (classpermission rw_tipc_socket_perms)
-(classpermission rw_inherited_tipc_socket_perms)
-(classpermission write_inherited_tipc_socket_perms)
 
 ;
 ; tun_socket class permissions
@@ -620,7 +569,6 @@
 
 (classpermission create_udp_socket_perms)
 (classpermission rw_udp_socket_perms)
-(classpermission rw_inherited_udp_socket_perms)
 
 ;
 ; unix_dgram_socket class permissions
@@ -628,7 +576,6 @@
 
 (classpermission create_unix_dgram_socket_perms)
 (classpermission rw_unix_dgram_socket_perms)
-(classpermission rw_inherited_unix_dgram_socket_perms)
 
 ;
 ; unix_stream_socket class permissions
@@ -638,7 +585,6 @@
 (classpermission create_unix_stream_stream_socket_perms)
 (classpermission rw_unix_stream_socket_perms)
 (classpermission rw_unix_stream_stream_socket_perms)
-(classpermission rw_inherited_unix_stream_socket_perms)
 
 ;
 ; vsock_socket class permissions
@@ -646,8 +592,6 @@
 
 (classpermission create_vsock_socket_perms)
 (classpermission rw_vsock_socket_perms)
-(classpermission rw_inherited_vsock_socket_perms)
-(classpermission write_inherited_vsock_socket_perms)
 
 ;
 ; x25_socket class permissions
@@ -655,8 +599,6 @@
 
 (classpermission create_x25_socket_perms)
 (classpermission rw_x25_socket_perms)
-(classpermission rw_inherited_x25_socket_perms)
-(classpermission write_inherited_x25_socket_perms)
 
 ;
 ; Class permission sets
@@ -789,27 +731,6 @@
     )
 )
 
-(classpermissionset rw_inherited_alg_socket_perms
-    (alg_socket
-        (
-            getattr
-            ioctl
-            read
-            write
-        )
-    )
-)
-
-(classpermissionset write_inherited_alg_socket_perms
-    (alg_socket
-        (
-            getattr
-            ioctl
-            write
-        )
-    )
-)
-
 ;
 ; appletalk_socket class permission sets
 ;
@@ -892,27 +813,6 @@
     )
 )
 
-(classpermissionset rw_inherited_atmpvc_socket_perms
-    (atmpvc_socket
-        (
-            getattr
-            ioctl
-            read
-            write
-        )
-    )
-)
-
-(classpermissionset write_inherited_atmpvc_socket_perms
-    (atmpvc_socket
-        (
-            getattr
-            ioctl
-            write
-        )
-    )
-)
-
 ;
 ; atmsvc_socket class permission sets
 ;
@@ -954,27 +854,6 @@
     )
 )
 
-(classpermissionset rw_inherited_atmsvc_socket_perms
-    (atmsvc_socket
-        (
-            getattr
-            ioctl
-            read
-            write
-        )
-    )
-)
-
-(classpermissionset write_inherited_atmsvc_socket_perms
-    (atmsvc_socket
-        (
-            getattr
-            ioctl
-            write
-        )
-    )
-)
-
 ;
 ; ax25_socket class permission sets
 ;
@@ -1011,27 +890,6 @@
             setattr
             setopt
             shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset rw_inherited_ax25_socket_perms
-    (ax25_socket
-        (
-            getattr
-            ioctl
-            read
-            write
-        )
-    )
-)
-
-(classpermissionset write_inherited_ax25_socket_perms
-    (ax25_socket
-        (
-            getattr
-            ioctl
             write
         )
     )
@@ -1276,27 +1134,6 @@
     )
 )
 
-(classpermissionset rw_inherited_bluetooth_socket_perms
-    (bluetooth_socket
-        (
-            getattr
-            ioctl
-            read
-            write
-        )
-    )
-)
-
-(classpermissionset write_inherited_bluetooth_socket_perms
-    (bluetooth_socket
-        (
-            getattr
-            ioctl
-            write
-        )
-    )
-)
-
 ;
 ; caif_socket class permission sets
 ;
@@ -1338,27 +1175,6 @@
     )
 )
 
-(classpermissionset rw_inherited_caif_socket_perms
-    (caif_socket
-        (
-            getattr
-            ioctl
-            read
-            write
-        )
-    )
-)
-
-(classpermissionset write_inherited_caif_socket_perms
-    (caif_socket
-        (
-            getattr
-            ioctl
-            write
-        )
-    )
-)
-
 ;
 ; can_socket class permission sets
 ;
@@ -1395,27 +1211,6 @@
             setattr
             setopt
             shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset rw_inherited_can_socket_perms
-    (can_socket
-        (
-            getattr
-            ioctl
-            read
-            write
-        )
-    )
-)
-
-(classpermissionset write_inherited_can_socket_perms
-    (can_socket
-        (
-            getattr
-            ioctl
             write
         )
     )
@@ -1737,27 +1532,6 @@
             setattr
             setopt
             shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset rw_inherited_decnet_socket_perms
-    (decnet_socket
-        (
-            getattr
-            ioctl
-            read
-            write
-        )
-    )
-)
-
-(classpermissionset write_inherited_decnet_socket_perms
-    (decnet_socket
-        (
-            getattr
-            ioctl
             write
         )
     )
@@ -2490,27 +2264,6 @@
     )
 )
 
-(classpermissionset rw_inherited_ieee802154_socket_perms
-    (ieee802154_socket
-        (
-            getattr
-            ioctl
-            read
-            write
-        )
-    )
-)
-
-(classpermissionset write_inherited_ieee802154_socket_perms
-    (ieee802154_socket
-        (
-            getattr
-            ioctl
-            write
-        )
-    )
-)
-
 ;
 ; ipx_socket class permission sets
 ;
@@ -2547,27 +2300,6 @@
             setattr
             setopt
             shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset rw_inherited_ipx_socket_perms
-    (ipx_socket
-        (
-            getattr
-            ioctl
-            read
-            write
-        )
-    )
-)
-
-(classpermissionset write_inherited_ipx_socket_perms
-    (ipx_socket
-        (
-            getattr
-            ioctl
             write
         )
     )
@@ -2614,27 +2346,6 @@
     )
 )
 
-(classpermissionset rw_inherited_irda_socket_perms
-    (irda_socket
-        (
-            getattr
-            ioctl
-            read
-            write
-        )
-    )
-)
-
-(classpermissionset write_inherited_irda_socket_perms
-    (irda_socket
-        (
-            getattr
-            ioctl
-            write
-        )
-    )
-)
-
 ;
 ; isdn_socket class permission sets
 ;
@@ -2671,27 +2382,6 @@
             setattr
             setopt
             shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset rw_inherited_isdn_socket_perms
-    (isdn_socket
-        (
-            getattr
-            ioctl
-            read
-            write
-        )
-    )
-)
-
-(classpermissionset write_inherited_isdn_socket_perms
-    (isdn_socket
-        (
-            getattr
-            ioctl
             write
         )
     )
@@ -2738,27 +2428,6 @@
     )
 )
 
-(classpermissionset rw_inherited_iucv_socket_perms
-    (iucv_socket
-        (
-            getattr
-            ioctl
-            read
-            write
-        )
-    )
-)
-
-(classpermissionset write_inherited_iucv_socket_perms
-    (iucv_socket
-        (
-            getattr
-            ioctl
-            write
-        )
-    )
-)
-
 ;
 ; kcm_socket class permission sets
 ;
@@ -2795,27 +2464,6 @@
             setattr
             setopt
             shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset rw_inherited_kcm_socket_perms
-    (kcm_socket
-        (
-            getattr
-            ioctl
-            read
-            write
-        )
-    )
-)
-
-(classpermissionset write_inherited_kcm_socket_perms
-    (kcm_socket
-        (
-            getattr
-            ioctl
             write
         )
     )
@@ -2966,27 +2614,6 @@
             setattr
             setopt
             shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset rw_inherited_llc_socket_perms
-    (llc_socket
-        (
-            getattr
-            ioctl
-            read
-            write
-        )
-    )
-)
-
-(classpermissionset write_inherited_llc_socket_perms
-    (llc_socket
-        (
-            getattr
-            ioctl
             write
         )
     )
@@ -3885,27 +3512,6 @@
     )
 )
 
-(classpermissionset rw_inherited_netrom_socket_perms
-    (netrom_socket
-        (
-            getattr
-            ioctl
-            read
-            write
-        )
-    )
-)
-
-(classpermissionset write_inherited_netrom_socket_perms
-    (netrom_socket
-        (
-            getattr
-            ioctl
-            write
-        )
-    )
-)
-
 ;
 ; nfc_socket class permission sets
 ;
@@ -3942,27 +3548,6 @@
             setattr
             setopt
             shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset rw_inherited_nfc_socket_perms
-    (nfc_socket
-        (
-            getattr
-            ioctl
-            read
-            write
-        )
-    )
-)
-
-(classpermissionset write_inherited_nfc_socket_perms
-    (nfc_socket
-        (
-            getattr
-            ioctl
             write
         )
     )
@@ -4050,27 +3635,6 @@
     )
 )
 
-(classpermissionset rw_inherited_phonet_socket_perms
-    (phonet_socket
-        (
-            getattr
-            ioctl
-            read
-            write
-        )
-    )
-)
-
-(classpermissionset write_inherited_phonet_socket_perms
-    (phonet_socket
-        (
-            getattr
-            ioctl
-            write
-        )
-    )
-)
-
 ;
 ; pppox_socket class permission sets
 ;
@@ -4112,27 +3676,6 @@
     )
 )
 
-(classpermissionset rw_inherited_pppox_socket_perms
-    (pppox_socket
-        (
-            getattr
-            ioctl
-            read
-            write
-        )
-    )
-)
-
-(classpermissionset write_inherited_pppox_socket_perms
-    (pppox_socket
-        (
-            getattr
-            ioctl
-            write
-        )
-    )
-)
-
 ;
 ; qipcrtr_socket class permission sets
 ;
@@ -4169,27 +3712,6 @@
             setattr
             setopt
             shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset rw_inherited_qipcrtr_socket_perms
-    (qipcrtr_socket
-        (
-            getattr
-            ioctl
-            read
-            write
-        )
-    )
-)
-
-(classpermissionset write_inherited_qipcrtr_socket_perms
-    (qipcrtr_socket
-        (
-            getattr
-            ioctl
             write
         )
     )
@@ -4277,27 +3799,6 @@
     )
 )
 
-(classpermissionset rw_inherited_rds_socket_perms
-    (rds_socket
-        (
-            getattr
-            ioctl
-            read
-            write
-        )
-    )
-)
-
-(classpermissionset write_inherited_rds_socket_perms
-    (rds_socket
-        (
-            getattr
-            ioctl
-            write
-        )
-    )
-)
-
 ;
 ; rose_socket class permission sets
 ;
@@ -4339,27 +3840,6 @@
     )
 )
 
-(classpermissionset rw_inherited_rose_socket_perms
-    (rose_socket
-        (
-            getattr
-            ioctl
-            read
-            write
-        )
-    )
-)
-
-(classpermissionset write_inherited_rose_socket_perms
-    (rose_socket
-        (
-            getattr
-            ioctl
-            write
-        )
-    )
-)
-
 ;
 ; rxrpc_socket class permission sets
 ;
@@ -4396,27 +3876,6 @@
             setattr
             setopt
             shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset rw_inherited_rxrpc_socket_perms
-    (rxrpc_socket
-        (
-            getattr
-            ioctl
-            read
-            write
-        )
-    )
-)
-
-(classpermissionset write_inherited_rxrpc_socket_perms
-    (rxrpc_socket
-        (
-            getattr
-            ioctl
             write
         )
     )
@@ -4769,27 +4228,6 @@
     )
 )
 
-(classpermissionset rw_inherited_socket_perms
-    (socket
-        (
-            getattr
-            ioctl
-            read
-            write
-        )
-    )
-)
-
-(classpermissionset write_inherited_socket_perms
-    (socket
-        (
-            getattr
-            ioctl
-            write
-        )
-    )
-)
-
 ;
 ; term class permission sets
 ;
@@ -4901,17 +4339,6 @@
     )
 )
 
-(classpermissionset rw_inherited_tcp_socket_perms
-    (tcp_socket
-        (
-            getattr
-            ioctl
-            read
-            write
-        )
-    )
-)
-
 ;
 ; tipc_socket class permission sets
 ;
@@ -4948,27 +4375,6 @@
             setattr
             setopt
             shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset rw_inherited_tipc_socket_perms
-    (tipc_socket
-        (
-            getattr
-            ioctl
-            read
-            write
-        )
-    )
-)
-
-(classpermissionset write_inherited_tipc_socket_perms
-    (tipc_socket
-        (
-            getattr
-            ioctl
             write
         )
     )
@@ -5056,17 +4462,6 @@
     )
 )
 
-(classpermissionset rw_inherited_udp_socket_perms
-    (udp_socket
-        (
-            getattr
-            ioctl
-            read
-            write
-        )
-    )
-)
-
 ;
 ; unix_dgram_socket class permission sets
 ;
@@ -5103,17 +4498,6 @@
             setattr
             setopt
             shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset rw_inherited_unix_dgram_socket_perms
-    (unix_dgram_socket
-        (
-            getattr
-            ioctl
-            read
             write
         )
     )
@@ -5201,17 +4585,6 @@
     )
 )
 
-(classpermissionset rw_inherited_unix_stream_socket_perms
-    (unix_stream_socket
-        (
-            getattr
-            ioctl
-            read
-            write
-        )
-    )
-)
-
 ;
 ; vsock_socket class permission sets
 ;
@@ -5253,27 +4626,6 @@
     )
 )
 
-(classpermissionset rw_inherited_vsock_socket_perms
-    (vsock_socket
-        (
-            getattr
-            ioctl
-            read
-            write
-        )
-    )
-)
-
-(classpermissionset write_inherited_vsock_socket_perms
-    (vsock_socket
-        (
-            getattr
-            ioctl
-            write
-        )
-    )
-)
-
 ;
 ; x25_socket class permission sets
 ;
@@ -5310,27 +4662,6 @@
             setattr
             setopt
             shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset rw_inherited_x25_socket_perms
-    (x25_socket
-        (
-            getattr
-            ioctl
-            read
-            write
-        )
-    )
-)
-
-(classpermissionset write_inherited_x25_socket_perms
-    (x25_socket
-        (
-            getattr
-            ioctl
             write
         )
     )
