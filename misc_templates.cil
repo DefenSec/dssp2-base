@@ -327,6 +327,11 @@
                 ARG1
             )
         )
+        (call signal
+            (
+                ARG1
+            )
+        )
         (call signull
             (
                 ARG1
