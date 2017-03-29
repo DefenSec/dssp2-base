@@ -16711,6 +16711,16 @@
             )
         )
 
+        (macro mounton_files ((type ARG1))
+            (allow ARG1 fs
+                (file
+                    (
+                        mounton
+                    )
+                )
+            )
+        )
+
         (macro read ((type ARG1))
             (call list
                 (
