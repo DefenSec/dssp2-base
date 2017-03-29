@@ -9166,6 +9166,10 @@
         ; usermodehelper_sysctl macros
         ;
 
+        (macro dontaudit_write_files ((type ARG1))
+            (dontaudit ARG1 sysctl_file write_file_perms)
+        )
+
         (macro append_files ((type ARG1))
             (allow ARG1 sysctl_file append_file_perms)
             (call search
