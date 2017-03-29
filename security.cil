@@ -566,6 +566,14 @@
         ; securityfs macros
         ;
 
+        (macro dontaudit_list ((type ARG1))
+            (dontaudit ARG1 isid list_dir_perms)
+        )
+
+        (macro dontaudit_write_files ((type ARG1))
+            (dontaudit ARG1 isid write_file_perms)
+        )
+
         (macro add_entries ((type ARG1))
             (allow ARG1 isid add_entry_dir_perms)
             (call fs.sysfs.search
