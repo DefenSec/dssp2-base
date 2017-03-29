@@ -4211,6 +4211,10 @@
                 (dontaudit ARG1 obj_type_attribute list_dir_perms)
             )
 
+            (macro dontaudit_setattr_dirs ((type ARG1))
+                (dontaudit ARG1 obj_type_attribute setattr_dir_perms)
+            )
+
             (macro add_entries ((type ARG1))
                 (allow ARG1 obj_type_attribute add_entry_dir_perms)
             )
