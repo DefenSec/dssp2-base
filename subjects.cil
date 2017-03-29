@@ -474,7 +474,7 @@
         )
     )
 
-	(allow use_interactive_fd_subj_type_attribute
+    (allow use_interactive_fd_subj_type_attribute
         interactive_fd_subj_type_attribute
             (fd
                 (
