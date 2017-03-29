@@ -81,6 +81,10 @@
     ; Macros
     ;
 
+    (macro dontaudit_link_keyring ((type ARG1))
+        (dontaudit ARG1 isid link_key_perms)
+    )
+
     (macro audit_client ((type ARG1))
         (allow ARG1 self
             (capability
