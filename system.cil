@@ -3710,6 +3710,16 @@
             )
         )
 
+        (macro mounton_files ((type ARG1))
+            (allow ARG1 sysctl_file
+                (file
+                    (
+                        mounton
+                    )
+                )
+            )
+        )
+
         ;
         ; kernel_sysctl policy
         ;
