@@ -11411,7 +11411,6 @@
 
         (filecon "/fastboot" file boot_flag_file_context)
         (filecon "/forcefsck" file boot_flag_file_context)
-        (filecon "/forcequotacheck" file boot_flag_file_context)
 
         ;
         ; generic_boot_flag macros
@@ -11426,11 +11425,6 @@
             (call fs.rootfs.obj_type_transition
                 (
                     ARG1 boot_flag_file file "forcefsck"
-                )
-            )
-            (call fs.rootfs.obj_type_transition
-                (
-                    ARG1 boot_flag_file file "forcequotacheck"
                 )
             )
         )
