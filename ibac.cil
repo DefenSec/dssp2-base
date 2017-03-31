@@ -1239,6 +1239,30 @@
 )
 
 ;
+; IBAC scm_socket constraints
+;
+
+(constrain
+    (scm_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq u1 u2)
+                (and
+                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)
+                )
+        )
+        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
+    )
+)
+
+;
 ; IBAC sctp_socket constraints
 ;
 

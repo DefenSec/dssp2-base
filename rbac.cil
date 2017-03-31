@@ -1239,6 +1239,30 @@
 )
 
 ;
+; RBAC scm_socket constraints
+;
+
+(constrain
+    (scm_socket
+        (
+            create
+            relabelfrom
+            relabelto
+        )
+    )
+    (or
+        (or
+            (eq r1 r2)
+                (and
+                    (eq t1 rbac_obj_sys_role_change_exemption_subj_type_attribute)
+                    (eq r2 rbac_sys_role_attribute)
+                )
+        )
+        (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
+    )
+)
+
+;
 ; RBAC sctp_socket constraints
 ;
 

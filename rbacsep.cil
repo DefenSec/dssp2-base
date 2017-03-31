@@ -3283,6 +3283,67 @@
 )
 
 ;
+; RBACsep scm_socket constraints
+;
+
+(constrain
+    (scm_socket
+        (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (scm_socket
+        (
+            name_bind
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (eq r1 rbacsep_exemption_role_attribute)
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_obj_type_attribute)
+    )
+)
+
+;
 ; RBACsep sctp_socket constraints
 ;
 

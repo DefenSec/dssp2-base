@@ -1742,6 +1742,33 @@
 )
 
 (classmapping all_sockets common_socket_perms
+    (scm_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
+            name_bind
+            read
+            recvfrom
+            relabelfrom
+            relabelto
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classmapping all_sockets common_socket_perms
     (sctp_socket
         (
             accept

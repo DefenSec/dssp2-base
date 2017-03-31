@@ -484,6 +484,13 @@
 (classpermission rw_rxrpc_socket_perms)
 
 ;
+; scm_socket class permissions
+;
+
+(classpermission create_scm_socket_perms)
+(classpermission rw_scm_socket_perms)
+
+;
 ; sctp_socket class permissions
 ;
 
@@ -3865,6 +3872,47 @@
 
 (classpermissionset rw_rxrpc_socket_perms
     (rxrpc_socket
+        (
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            read
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+;
+; scm_socket class permission sets
+;
+
+(classpermissionset create_scm_socket_perms
+    (scm_socket
+        (
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            read
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classpermissionset rw_scm_socket_perms
+    (scm_socket
         (
             append
             bind
