@@ -484,13 +484,6 @@
 (classpermission rw_rxrpc_socket_perms)
 
 ;
-; scm_socket class permissions
-;
-
-(classpermission create_scm_socket_perms)
-(classpermission rw_scm_socket_perms)
-
-;
 ; sctp_socket class permissions
 ;
 
@@ -512,6 +505,13 @@
 (classpermission create_shm_perms)
 (classpermission r_shm_perms)
 (classpermission rw_shm_perms)
+
+;
+; smc_socket class permissions
+;
+
+(classpermission create_smc_socket_perms)
+(classpermission rw_smc_socket_perms)
 
 ;
 ; sock_file class permissions
@@ -3889,47 +3889,6 @@
 )
 
 ;
-; scm_socket class permission sets
-;
-
-(classpermissionset create_scm_socket_perms
-    (scm_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset rw_scm_socket_perms
-    (scm_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-;
 ; sctp_socket class permission sets
 ;
 
@@ -4055,6 +4014,47 @@
             read
             unix_read
             unix_write
+            write
+        )
+    )
+)
+
+;
+; smc_socket class permission sets
+;
+
+(classpermissionset create_smc_socket_perms
+    (smc_socket
+        (
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            read
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classpermissionset rw_smc_socket_perms
+    (smc_socket
+        (
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            read
+            setattr
+            setopt
+            shutdown
             write
         )
     )

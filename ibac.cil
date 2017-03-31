@@ -1239,11 +1239,11 @@
 )
 
 ;
-; IBAC scm_socket constraints
+; IBAC sctp_socket constraints
 ;
 
 (constrain
-    (scm_socket
+    (sctp_socket
         (
             create
             relabelfrom
@@ -1263,11 +1263,11 @@
 )
 
 ;
-; IBAC sctp_socket constraints
+; IBAC smc_socket constraints
 ;
 
 (constrain
-    (sctp_socket
+    (smc_socket
         (
             create
             relabelfrom

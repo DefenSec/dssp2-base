@@ -1239,11 +1239,11 @@
 )
 
 ;
-; RBAC scm_socket constraints
+; RBAC sctp_socket constraints
 ;
 
 (constrain
-    (scm_socket
+    (sctp_socket
         (
             create
             relabelfrom
@@ -1263,11 +1263,11 @@
 )
 
 ;
-; RBAC sctp_socket constraints
+; RBAC smc_socket constraints
 ;
 
 (constrain
-    (sctp_socket
+    (smc_socket
         (
             create
             relabelfrom

@@ -890,13 +890,6 @@
 (classcommon rxrpc_socket common_socket)
 
 ;
-; scm_socket class
-;
-
-(class scm_socket ())
-(classcommon scm_socket common_socket)
-
-;
 ; sctp_socket class
 ;
 
@@ -906,6 +899,13 @@
     )
 )
 (classcommon sctp_socket common_socket)
+
+;
+; smc_socket class
+;
+
+(class smc_socket ())
+(classcommon smc_socket common_socket)
 
 ;
 ; tipc_socket class
@@ -958,8 +958,8 @@
         rds_socket
         rose_socket
         rxrpc_socket
-        scm_socket
         sctp_socket
+        smc_socket
         tipc_socket
         vsock_socket
         x25_socket

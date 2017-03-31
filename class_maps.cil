@@ -1742,7 +1742,7 @@
 )
 
 (classmapping all_sockets common_socket_perms
-    (scm_socket
+    (sctp_socket
         (
             accept
             append
@@ -1769,7 +1769,7 @@
 )
 
 (classmapping all_sockets common_socket_perms
-    (sctp_socket
+    (smc_socket
         (
             accept
             append
@@ -1794,6 +1794,7 @@
         )
     )
 )
+
 (classmapping all_sockets common_socket_perms
     (socket
         (
