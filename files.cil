@@ -3257,6 +3257,10 @@
         ; auth_file macros
         ;
 
+        (macro dontaudit_read_files ((type ARG1))
+            (dontaudit ARG1 obj_type_attribute read_file_perms)
+        )
+
         (blockinherit obj_all_macro_template)
 
         ;
@@ -32926,6 +32930,18 @@
         ;
         ; sec_file macros
         ;
+
+        (macro dontaudit_list ((type ARG1))
+            (dontaudit ARG1 obj_type_attribute list_dir_perms)
+        )
+
+        (macro dontaudit_read_files ((type ARG1))
+            (dontaudit ARG1 obj_type_attribute read_file_perms)
+        )
+
+        (macro dontaudit_read_sock_files ((type ARG1))
+            (dontaudit ARG1 obj_type_attribute read_sock_file_perms)
+        )
 
         (blockinherit obj_all_macro_template)
 
