@@ -9029,6 +9029,16 @@
             )
         )
 
+        (macro mounton_dirs ((type ARG1))
+            (allow ARG1 isid
+                (dir
+                    (
+                        mounton
+                    )
+                )
+            )
+        )
+
         (macro rawip_recvfrom ((type ARG1))
             (allow ARG1 isid
                 (rawip_socket
