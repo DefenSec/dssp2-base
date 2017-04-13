@@ -1352,6 +1352,7 @@
         ;
 
         (filecon "/usr/bin/bash" file cmd_file_context)
+        (filecon "/usr/bin/dash" file cmd_file_context)
         (filecon "/usr/sbin/nologin" file cmd_file_context)
 
         ;
