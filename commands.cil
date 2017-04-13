@@ -26,6 +26,7 @@
         (filecon "/etc/profile\.d(/.*)?" file cmd_file_context)
         (filecon "/etc/rc\.d/init\.d(/.*)?" file cmd_file_context)
         (filecon "/etc/rc\.d/rc\.local" file cmd_file_context)
+        (filecon "/etc/update-motd\.d(/.*)?" file cmd_file_context)
         (filecon "/usr/bin(/.*)?" any cmd_file_context)
         (filecon "/usr/lib/jvm/java-.*-openjdk-.*/jre/bin(/.*)?"
             any cmd_file_context)
