@@ -568,6 +568,9 @@
 ;
 
 (classpermission create_tun_socket_perms)
+(classpermission relabel_tun_socket_perms)
+(classpermission relabelfrom_tun_socket_perms)
+(classpermission relabelto_tun_socket_perms)
 (classpermission rw_tun_socket_perms)
 
 ;
@@ -4447,6 +4450,34 @@
             setopt
             shutdown
             write
+        )
+    )
+)
+
+(classpermissionset relabel_tun_socket_perms
+    (tun_socket
+        (
+            getattr
+            relabelfrom
+            relabelto
+        )
+    )
+)
+
+(classpermissionset relabelfrom_tun_socket_perms
+    (tun_socket
+        (
+            getattr
+            relabelfrom
+        )
+    )
+)
+
+(classpermissionset relabelto_tun_socket_perms
+    (tun_socket
+        (
+            getattr
+            relabelto
         )
     )
 )
