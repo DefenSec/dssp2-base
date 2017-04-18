@@ -25072,6 +25072,14 @@
             )
         )
 
+        (macro generic_runtime_obj_type_transition ((type ARG1))
+            (call generic_runtime.obj_type_transition
+                (
+                    ARG1 file dir "media"
+                )
+            )
+        )
+
         (macro getattr_dirs ((type ARG1))
             (allow ARG1 file
                 (dirs
