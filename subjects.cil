@@ -624,16 +624,6 @@
                 )
             )
 
-            (macro getattr ((type ARG1))
-                (allow ARG1 subj_type_attribute
-                    (process
-                        (
-                            getattr
-                        )
-                    )
-                )
-            )
-
             (macro getpgid ((type ARG1))
                 (allow ARG1 subj_type_attribute
                     (process
@@ -1166,16 +1156,6 @@
                     (process
                         (
                             dyntransition
-                        )
-                    )
-                )
-            )
-
-            (macro getattr ((type ARG1))
-                (allow ARG1 subj
-                    (process
-                        (
-                            getattr
                         )
                     )
                 )
