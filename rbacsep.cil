@@ -38,7 +38,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -62,7 +62,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -105,7 +105,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -129,7 +129,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -172,7 +172,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -196,7 +196,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -239,7 +239,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -263,7 +263,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -306,7 +306,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -330,7 +330,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -373,7 +373,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -416,7 +416,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -440,7 +440,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -483,7 +483,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -507,7 +507,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -550,7 +550,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -574,7 +574,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -617,7 +617,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -660,7 +660,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -686,7 +686,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -729,7 +729,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -753,7 +753,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -795,7 +795,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -825,7 +825,7 @@
                         (eq r1 r2)
                         (and
                             (eq r1 rbacsep_exemption_role_attribute)
-                            (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                            (neq t1 rbacsep_constrained_subj_type_attribute)
                         )
                     )
                     (eq t1 rbacsep_exemption_subj_type_attribute)
@@ -861,7 +861,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -897,7 +897,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -928,7 +928,7 @@
                         (eq r1 r2)
                         (and
                             (eq r1 rbacsep_exemption_role_attribute)
-                            (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                            (neq t1 rbacsep_constrained_subj_type_attribute)
                         )
                     )
                     (eq r2 rbacsep_exemption_role_attribute)
@@ -968,7 +968,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -997,7 +997,7 @@
                         (eq r1 r2)
                         (and
                             (eq r1 rbacsep_exemption_role_attribute)
-                            (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                            (neq t1 rbacsep_constrained_subj_type_attribute)
                         )
                     )
                     (eq t1 rbacsep_exemption_subj_type_attribute)
@@ -1048,7 +1048,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -1073,7 +1073,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -1116,7 +1116,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -1140,7 +1140,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -1172,7 +1172,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -1215,7 +1215,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -1239,7 +1239,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -1282,7 +1282,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -1306,7 +1306,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -1349,7 +1349,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -1373,7 +1373,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -1416,7 +1416,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -1440,7 +1440,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -1483,7 +1483,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -1507,7 +1507,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -1541,7 +1541,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -1579,7 +1579,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -1608,7 +1608,7 @@
                         (eq r1 r2)
                         (and
                             (eq r1 rbacsep_exemption_role_attribute)
-                            (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                            (neq t1 rbacsep_constrained_subj_type_attribute)
                         )
                     )
                     (eq t1 rbacsep_exemption_subj_type_attribute)
@@ -1659,7 +1659,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -1683,7 +1683,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -1715,7 +1715,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -1744,7 +1744,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -1792,7 +1792,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -1816,7 +1816,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -1859,7 +1859,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -1883,7 +1883,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -1926,7 +1926,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -1950,7 +1950,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -1993,7 +1993,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -2017,7 +2017,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -2060,7 +2060,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -2084,7 +2084,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -2127,7 +2127,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -2151,7 +2151,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -2194,7 +2194,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -2218,7 +2218,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -2261,7 +2261,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -2285,7 +2285,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -2328,7 +2328,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -2352,7 +2352,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -2395,7 +2395,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -2419,7 +2419,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -2462,7 +2462,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -2486,7 +2486,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -2531,7 +2531,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -2555,7 +2555,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -2598,7 +2598,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -2622,7 +2622,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -2665,7 +2665,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -2689,7 +2689,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -2734,7 +2734,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -2758,7 +2758,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -2803,7 +2803,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -2827,7 +2827,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -2870,7 +2870,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -2894,7 +2894,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -2937,7 +2937,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -2961,7 +2961,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -2990,7 +2990,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -3018,7 +3018,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -3061,7 +3061,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -3085,7 +3085,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -3128,7 +3128,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -3152,7 +3152,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -3195,7 +3195,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -3219,7 +3219,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -3252,7 +3252,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -3295,7 +3295,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -3319,7 +3319,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -3362,7 +3362,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -3387,7 +3387,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -3430,7 +3430,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -3454,7 +3454,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -3497,7 +3497,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -3521,7 +3521,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -3564,7 +3564,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -3588,7 +3588,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -3631,7 +3631,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -3656,7 +3656,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -3688,7 +3688,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -3720,7 +3720,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -3763,7 +3763,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -3787,7 +3787,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -3823,7 +3823,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -3854,7 +3854,7 @@
                         (eq r1 r2)
                         (and
                             (eq r1 rbacsep_exemption_role_attribute)
-                            (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                            (neq t1 rbacsep_constrained_subj_type_attribute)
                         )
                     )
                     (eq r2 rbacsep_exemption_role_attribute)
@@ -3899,7 +3899,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -3925,7 +3925,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -3968,7 +3968,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -3992,7 +3992,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -4035,7 +4035,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -4059,7 +4059,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -4102,7 +4102,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -4127,7 +4127,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -4170,7 +4170,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -4194,7 +4194,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -4238,7 +4238,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -4262,7 +4262,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -4305,7 +4305,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -4329,7 +4329,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -4372,7 +4372,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -4396,7 +4396,7 @@
                     (eq r1 r2)
                     (and
                         (eq r1 rbacsep_exemption_role_attribute)
-                        (eq t1 not_rbacsep_constrained_subj_type_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
                     )
                 )
                 (eq r2 rbacsep_exemption_role_attribute)
@@ -4446,21 +4446,11 @@
 (roleattribute rbacsep_exemption_role_attribute)
 
 (typeattribute rbacsep_constrained_subj_type_attribute)
-(typeattribute not_rbacsep_constrained_subj_type_attribute)
-
 (typeattribute rbacsep_exemption_obj_type_attribute)
 (typeattribute rbacsep_exemption_subj_type_attribute)
 (typeattribute rbacsep_read_state_source_subj_type_attribute)
 (typeattribute rbacsep_read_state_target_subj_type_attribute)
 (typeattribute rbacsep_target_subj_type_attribute)
-
-(typeattributeset not_rbacsep_constrained_subj_type_attribute
-    (not
-        (   
-            rbacsep_constrained_subj_type_attribute
-        ) 
-    )
-)
 
 (defaultrole blk_file source)
 (defaultrole chr_file source)
