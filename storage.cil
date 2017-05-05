@@ -2458,7 +2458,7 @@
         (typeattribute obj_type_attribute)
 
         (allow unconfined_subj_type_attribute obj_type_attribute
-            blk_file_except_execmod_and_mounton)
+            blk_file_except_execmod_map_and_mounton)
         (allow unconfined_subj_type_attribute obj_type_attribute
             chr_file_except_execmod_and_mounton)
 

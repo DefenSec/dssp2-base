@@ -59,8 +59,8 @@
 
 (classpermission append_blk_file_perms)
 (classpermission append_inherited_blk_file_perms)
-(classpermission blk_file_except_execmod)
-(classpermission blk_file_except_execmod_and_mounton)
+(classpermission blk_file_except_execmod_and_map)
+(classpermission blk_file_except_execmod_map_and_mounton)
 (classpermission create_blk_file_perms)
 (classpermission delete_blk_file_perms)
 (classpermission manage_blk_file_perms)
@@ -142,7 +142,7 @@
 (classpermission create_dir_perms)
 (classpermission del_entry_dir_perms)
 (classpermission delete_dir_perms)
-(classpermission dir_except_execmod)
+(classpermission dir_except_execmod_and_map)
 (classpermission list_dir_perms)
 (classpermission list_inherited_dir_perms)
 (classpermission manage_dir_perms)
@@ -162,8 +162,8 @@
 (classpermission append_inherited_fifo_file_perms)
 (classpermission create_fifo_file_perms)
 (classpermission delete_fifo_file_perms)
-(classpermission fifo_file_except_execmod)
-(classpermission fifo_file_except_execmod_and_mounton)
+(classpermission fifo_file_except_execmod_and_map)
+(classpermission fifo_file_except_execmod_map_and_mounton)
 (classpermission manage_fifo_file_perms)
 (classpermission read_fifo_file_perms)
 (classpermission read_inherited_fifo_file_perms)
@@ -282,8 +282,8 @@
 
 (classpermission create_lnk_file_perms)
 (classpermission delete_lnk_file_perms)
-(classpermission lnk_file_except_execmod)
-(classpermission lnk_file_except_execmod_and_mounton)
+(classpermission lnk_file_except_execmod_and_map)
+(classpermission lnk_file_except_execmod_map_and_mounton)
 (classpermission manage_lnk_file_perms)
 (classpermission read_lnk_file_perms)
 (classpermission relabel_lnk_file_perms)
@@ -528,8 +528,8 @@
 (classpermission rename_sock_file_perms)
 (classpermission rw_sock_file_perms)
 (classpermission rw_inherited_sock_file_perms)
-(classpermission sock_file_except_execmod)
-(classpermission sock_file_except_execmod_and_mounton)
+(classpermission sock_file_except_execmod_and_map)
+(classpermission sock_file_except_execmod_map_and_mounton)
 (classpermission write_sock_file_perms)
 (classpermission write_inherited_sock_file_perms)
 
@@ -932,21 +932,23 @@
     )
 )
 
-(classpermissionset blk_file_except_execmod
+(classpermissionset blk_file_except_execmod_and_map
     (blk_file
         (not
             (
                 execmod
+                map
             )
         )
     )
 )
 
-(classpermissionset blk_file_except_execmod_and_mounton
+(classpermissionset blk_file_except_execmod_map_and_mounton
     (blk_file
         (not
             (
                 execmod
+                map
                 mounton
             )
         )
@@ -1604,11 +1606,12 @@
     )
 )
 
-(classpermissionset dir_except_execmod
+(classpermissionset dir_except_execmod_and_map
     (dir
         (not
             (
                 execmod
+                map
             )
         )
     )
@@ -1785,21 +1788,23 @@
     )
 )
 
-(classpermissionset fifo_file_except_execmod
+(classpermissionset fifo_file_except_execmod_and_map
     (fifo_file
         (not
             (
                 execmod
+                map
             )
         )
     )
 )
 
-(classpermissionset fifo_file_except_execmod_and_mounton
+(classpermissionset fifo_file_except_execmod_map_and_mounton
     (fifo_file
         (not
             (
                 execmod
+                map
                 mounton
             )
         )
@@ -2664,21 +2669,23 @@
     )
 )
 
-(classpermissionset lnk_file_except_execmod
+(classpermissionset lnk_file_except_execmod_and_map
     (lnk_file
         (not
             (
                 execmod
+                map
             )
         )
     )
 )
 
-(classpermissionset lnk_file_except_execmod_and_mounton
+(classpermissionset lnk_file_except_execmod_map_and_mounton
     (lnk_file
         (not
             (
                 execmod
+                map
                 mounton
             )
         )
@@ -4204,21 +4211,23 @@
     )
 )
 
-(classpermissionset sock_file_except_execmod
+(classpermissionset sock_file_except_execmod_and_map
     (sock_file
         (not
             (
                 execmod
+                map
             )
         )
     )
 )
 
-(classpermissionset sock_file_except_execmod_and_mounton
+(classpermissionset sock_file_except_execmod_map_and_mounton
     (sock_file
         (not
             (
                 execmod
+                map
                 mounton
             )
         )

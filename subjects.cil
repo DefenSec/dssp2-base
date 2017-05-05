@@ -325,7 +325,7 @@
     )
 
     (allow unconfined_subj_type_attribute subj_type_attribute
-        fifo_file_except_execmod_and_mounton)
+        fifo_file_except_execmod_map_and_mounton)
 
     (allow unconfined_subj_type_attribute subj_type_attribute
         rw_file_perms)
