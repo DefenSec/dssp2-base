@@ -13103,6 +13103,16 @@
             )
         )
 
+        (macro mounton_dirs ((type ARG1))
+            (allow ARG1 modules_file
+                (dir
+                    (
+                        mounton
+                    )
+                )
+            )
+        )
+
         (macro obj_type_transition ((type ARG1)(type ARG2)(class ARG3)(name ARG4))
             (typetransition ARG1 modules_file ARG3 ARG4 ARG2)
             (call rw_dirs
