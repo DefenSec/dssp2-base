@@ -1027,6 +1027,7 @@
         ioctl
         lock
         link
+        map
         mounton
         quotaon
         read
@@ -1065,6 +1066,7 @@
         ioctl
         listen
         lock
+        map
         name_bind
         read
         recvfrom
