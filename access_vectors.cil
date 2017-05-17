@@ -473,6 +473,7 @@
         getattr
         getcap
         getpgid
+        getrlimit
         getsched
         getsession
         noatsecure
