@@ -23,6 +23,7 @@
 ;
 
 (classpermission create_alg_socket_perms)
+(classpermission create_alg_stream_socket_perms)
 (classpermission rw_alg_socket_perms)
 
 ;
@@ -715,6 +716,27 @@
             getattr
             getopt
             ioctl
+            read
+            setattr
+            setopt
+            shutdown
+            write
+        )
+    )
+)
+
+(classpermissionset create_alg_stream_socket_perms
+    (alg_socket
+        (
+            accept
+            append
+            bind
+            connect
+            create
+            getattr
+            getopt
+            ioctl
+            listen
             read
             setattr
             setopt
