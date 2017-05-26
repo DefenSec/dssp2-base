@@ -13,6 +13,7 @@
 ; Enabled policy capabilities
 ;
 
+(policycap "extended_socket_class")
 (policycap "network_peer_controls")
 (policycap "open_perms")
 
@@ -22,4 +23,3 @@
 
 ; (policycap "always_check_network")
 ; (policycap "cgroup_seclabel")
-; (policycap "extended_socket_class")
