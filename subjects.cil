@@ -525,6 +525,10 @@
         ; common_subj macros
         ;
 
+        (macro roletype_role ((role ARG1))
+            (roletype ARG1 subj_type_attribute)
+        )
+
         (blockinherit subj_all_macro_template)
 
         ;
@@ -1052,6 +1056,29 @@
 
             (optional common_subj_optional_systemd
                 (call systemd.system.sigchld
+                    (
+                        subj_type_attribute
+                    )
+                )
+            )
+
+            (optional common_subj_optional_unconfined_user
+                (call unconfined.user.rw_inherited_fifo_files
+                    (
+                        subj_type_attribute
+                    )
+                )
+                (call unconfined.user.sigchld
+                    (
+                        subj_type_attribute
+                    )
+                )
+                (call unconfined.user.signal
+                    (
+                        subj_type_attribute
+                    )
+                )
+                (call unconfined.user.signull
                     (
                         subj_type_attribute
                     )
