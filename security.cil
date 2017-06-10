@@ -25,6 +25,7 @@
     ;
 
     (macro compute_access_vector ((type ARG1))
+        (allow ARG1 self create_netlink_selinux_socket_perms)
         (allow ARG1 securityfs.isid
             (security
                 (
