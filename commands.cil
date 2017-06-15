@@ -939,6 +939,16 @@
                 )
             )
 
+            (macro dontaudit_getattr_files ((type ARG1))
+                (dontaudit ARG1 obj_type_attribute
+                    (file
+                        (
+                            getattr
+                        )
+                    )
+                )
+            )
+
             (macro append_files ((type ARG1))
                 (allow ARG1 obj_type_attribute append_file_perms)
                 (call cmd.generic_commands.read_lnk_files
