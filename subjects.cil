@@ -202,7 +202,6 @@
     (allow execstack_subj_type_attribute self
         (process
             (
-                execmem
                 execstack
             )
         )
