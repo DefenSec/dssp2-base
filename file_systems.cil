@@ -23377,6 +23377,8 @@
         (fsuse task "pipefs" isid_context)
         (fsuse task "sockfs" isid_context)
 
+        (fsuse xattr "ext2" isid_context)
+        (fsuse xattr "ext3" isid_context)
         (fsuse xattr "ext4" isid_context)
         (fsuse xattr "xfs" isid_context)
         (fsuse xattr "btrfs" isid_context)
