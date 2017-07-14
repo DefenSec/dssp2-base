@@ -186,6 +186,26 @@
 )
 
 ;
+; infiniband_endport
+;
+
+(class infiniband_endport
+    (
+        manage_subnet
+    )
+)
+
+;
+; infiniband_pkey
+;
+
+(class infiniband_pkey
+    (
+        access
+    )
+)
+
+;
 ; ipc class
 ;
 
@@ -709,6 +729,8 @@
         netlink_crypto_socket
         cap_userns
         cap2_userns
+        infiniband_pkey
+        infiniband_endport
     )
 )
 
