@@ -57,6 +57,17 @@
             unconfined_subj_type_attribute
         )
     )
+
+    (call sys.unlabeled.infiniband_endport_manage_subnet
+        (
+            unconfined_subj_type_attribute
+        )
+    )
+    (call sys.unlabeled.infiniband_pkey_access
+        (
+            unconfined_subj_type_attribute
+        )
+    )
     (call sys.unlabeled.icmp_recvfrom
         (
             unconfined_subj_type_attribute
