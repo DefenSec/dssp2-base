@@ -8,6 +8,8 @@
 ;       Net generic_ephemeral_port name space
 ;       Net generic_hi_reserved_port name space
 ;       Net generic_if name space
+;       Net generic_infiniband_endport name space
+;       Net generic_infiniband_pkey name space
 ;       Net generic_node name space
 ;       Net generic_packet name space
 ;       Net generic_peer name space
@@ -16,6 +18,8 @@
 ;       Net generic_unreserved_port name space
 ;       Net hi_reserved_port name space
 ;       Net if name space
+;       Net infiniband_endport name space
+;       Net infiniband_pkey name space
 ;       Net node name space
 ;       Net packet name space
 ;       Net peer name space
@@ -392,6 +396,32 @@
                 isid
             )
         )
+    )
+
+    ;
+    ; Net generic_infiniband_endport name space
+    ;
+
+    (block generic_infiniband_endport
+
+        ;
+        ; generic_infiniband_endport policy
+        ;
+
+        (blockinherit infiniband_endport.obj_template)
+    )
+
+    ;
+    ; Net generic_infiniband_pkey name space
+    ;
+
+    (block generic_infiniband_pkey
+
+        ;
+        ; generic_infiniband_pkey policy
+        ;
+
+        (blockinherit infiniband_pkey.obj_template)
     )
 
     ;
@@ -1123,6 +1153,248 @@
             (blockabstract obj_template)
 
             (blockinherit net.if.obj_stub)
+        )
+    )
+
+    ;
+    ; Net infiniband_endport name space
+    ;
+
+    (block infiniband_endport
+
+        ;
+        ; infiniband_endport macros
+        ;
+
+        (blockinherit obj_all_macro_template)
+
+        ;
+        ; infiniband_endport policy
+        ;
+
+        (typeattribute obj_type_attribute)
+
+        (allow unconfined_subj_type_attribute obj_type_attribute
+            (infiniband_endport
+                (
+                    manage_subnet
+                )
+            )
+        )
+
+        (call sys.obj_type
+            (
+                obj_type_attribute
+            )
+        )
+
+        ;
+        ; infiniband_endport templates
+        ;
+
+        (block obj_all_macro_template
+
+            ;
+            ; net.infiniband_endport.obj_all_macro_template macros
+            ;
+
+            (macro manage_subnet ((type ARG1))
+                (allow ARG1 obj_type_attribute
+                    (infiniband_endport
+                        (
+                            manage_subnet
+                        )
+                    )
+                )
+            )
+
+            (macro obj_type ((type ARG1))
+                (typeattributeset obj_type_attribute ARG1)
+            )
+
+            ;
+            ; net.infiniband_endport.obj_all_macro_template policy
+            ;
+
+            (blockabstract obj_all_macro_template)
+        )
+
+        (block obj_stub
+
+            ;
+            ; net.infiniband_endport.obj_stub contexts
+            ;
+
+            (context infiniband_endport_context
+                (
+                    sys.id
+                    sys.role
+                    infiniband_endport
+                        (
+                            systemlow
+                            systemlow
+                        )
+                )
+            )
+
+            ;
+            ; net.infiniband_endport.obj_stub policy
+            ;
+
+            (blockabstract obj_stub)
+
+            (type infiniband_endport)
+            (call net.infiniband_endport.obj_type
+                (
+                    infiniband_endport
+                )
+            )
+        )
+
+        (block obj_template
+
+            ;
+            ; net.infiniband_endport.obj_template macros
+            ;
+
+            (macro manage_subnet ((type ARG1))
+                (allow ARG1 infiniband_endport
+                    (infiniband_endport
+                        (
+                            manage_subnet
+                        )
+                    )
+                )
+            )
+
+            ;
+            ; net.infiniband_endport.obj_template policy
+            ;
+
+            (blockabstract obj_template)
+
+            (blockinherit net.infiniband_endport.obj_stub)
+        )
+    )
+
+    ;
+    ; Net infiniband_pkey name space
+    ;
+
+    (block infiniband_pkey
+
+        ;
+        ; infiniband_pkey macros
+        ;
+
+        (blockinherit obj_all_macro_template)
+
+        ;
+        ; infiniband_pkey policy
+        ;
+
+        (typeattribute obj_type_attribute)
+
+        (allow unconfined_subj_type_attribute obj_type_attribute
+            (infiniband_pkey
+                (
+                    access
+                )
+            )
+        )
+
+        (call sys.obj_type
+            (
+                obj_type_attribute
+            )
+        )
+
+        ;
+        ; infiniband_pkey templates
+        ;
+
+        (block obj_all_macro_template
+
+            ;
+            ; net.infiniband_pkey.obj_all_macro_template macros
+            ;
+
+            (macro access ((type ARG1))
+                (allow ARG1 obj_type_attribute
+                    (infiniband_pkey
+                        (
+                            access
+                        )
+                    )
+                )
+            )
+
+            (macro obj_type ((type ARG1))
+                (typeattributeset obj_type_attribute ARG1)
+            )
+
+            ;
+            ; net.infiniband_pkey.obj_all_macro_template policy
+            ;
+
+            (blockabstract obj_all_macro_template)
+        )
+
+        (block obj_stub
+
+            ;
+            ; net.infiniband_pkey.obj_stub contexts
+            ;
+
+            (context infiniband_pkey_context
+                (
+                    sys.id
+                    sys.role
+                    infiniband_pkey
+                        (
+                            systemlow
+                            systemlow
+                        )
+                )
+            )
+
+            ;
+            ; net.infiniband_pkey.obj_stub policy
+            ;
+
+            (blockabstract obj_stub)
+
+            (type infiniband_pkey)
+            (call net.infiniband_pkey.obj_type
+                (
+                    infiniband_pkey
+                )
+            )
+        )
+
+        (block obj_template
+
+            ;
+            ; net.infiniband_pkey.obj_template macros
+            ;
+
+            (macro access ((type ARG1))
+                (allow ARG1 infiniband_pkey
+                    (infiniband_pkey
+                        (
+                            access
+                        )
+                    )
+                )
+            )
+
+            ;
+            ; net.infiniband_pkey.obj_template policy
+            ;
+
+            (blockabstract obj_template)
+
+            (blockinherit net.infiniband_pkey.obj_stub)
         )
     )
 
