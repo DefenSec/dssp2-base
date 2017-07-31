@@ -434,6 +434,14 @@
     )
 
     (allow unconfined_subj_type_attribute subj_type_attribute
+        (process2
+            (
+                all
+            )
+        )
+    )
+
+    (allow unconfined_subj_type_attribute subj_type_attribute
         (sem
             (
                 all

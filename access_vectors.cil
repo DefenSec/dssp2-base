@@ -520,6 +520,17 @@
 )
 
 ;
+; process2 class
+;
+
+(class process2
+    (
+        nnp_transition
+        nosuid_transition
+    )
+)
+
+;
 ; rawip_socket class
 ;
 
@@ -731,6 +742,7 @@
         cap2_userns
         infiniband_pkey
         infiniband_endport
+        process2
     )
 )
 
