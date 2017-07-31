@@ -249,6 +249,15 @@
         )
     )
 
+    (neverallow subj_type_attribute not_subj_type_attribute
+        (process2
+            (
+                nnp_transition
+                nosuid_transition
+            )
+        )
+    )
+
     (typeattributeset
         not_sys_ptrace_subj_type_or_unconfined_subj_type_attribute
             (not
@@ -669,12 +678,31 @@
                 (allow ARG1 subj_type_attribute link_key_perms)
             )
 
+            (macro nnp_transition ((type ARG1))
+                (allow ARG1 subj_type_attribute
+                    (process2
+                        (
+                            nnp_transition
+                        )
+                    )
+                )
+            )
 
             (macro noatsecure ((type ARG1))
                 (allow ARG1 subj_type_attribute
                     (process
                         (
                             noatsecure
+                        )
+                    )
+                )
+            )
+
+            (macro nosuid_transition ((type ARG1))
+                (allow ARG1 subj_type_attribute
+                    (process2
+                        (
+                            nosuid_transition
                         )
                     )
                 )
@@ -1229,11 +1257,31 @@
                 (allow ARG1 subj link_key_perms)
             )
 
+            (macro nnp_transition ((type ARG1))
+                (allow ARG1 subj
+                    (process2
+                        (
+                            nnp_transition
+                        )
+                    )
+                )
+            )
+
             (macro noatsecure ((type ARG1))
                 (allow ARG1 subj
                     (process
                         (
                             noatsecure
+                        )
+                    )
+                )
+            )
+
+            (macro nosuid_transition ((type ARG1))
+                (allow ARG1 subj
+                    (process2
+                        (
+                            nosuid_transition
                         )
                     )
                 )
