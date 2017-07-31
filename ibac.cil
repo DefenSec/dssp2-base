@@ -1119,6 +1119,35 @@
 )
 
 ;
+; IBAC process2 constraints
+;
+
+(constrain
+    (process2
+        (
+            nnp_transition
+            nosuid_transition
+        )
+    )
+    (or
+        (or
+            (or
+                (eq u1 u2)
+                    (and
+                        (eq t1 ibac_id_change_exemption_subj_type_attribute)
+                        (eq t2 ibac_user_exemption_target_subj_type_attribute)
+                    )
+            )
+            (and
+                (eq t1 ibac_sys_id_change_exemption_subj_type_attribute)
+                (eq u2 ibac_sys_id_attribute)
+            )
+        )
+        (eq t1 ibac_uncond_exemption_subj_type_attribute)
+    )
+)
+
+;
 ; IBAC qipcrtr_socket constraints
 ;
 

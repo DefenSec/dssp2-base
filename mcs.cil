@@ -423,6 +423,23 @@
 )
 
 ;
+; MCS process2 constraints
+;
+
+(mlsconstrain
+    (process2
+        (
+            nnp_transition
+            nosuid_transition
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
+
+;
 ; MCS rawip_socket constraints
 ;
 

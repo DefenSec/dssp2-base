@@ -1119,6 +1119,35 @@
 )
 
 ;
+; RBAC process2 constraints
+;
+
+(constrain
+    (process2
+        (
+            nnp_transition
+            nosuid_transition
+        )
+    )
+    (or
+        (or
+            (or
+                (eq r1 r2)
+                    (and
+                        (eq t1 rbac_role_change_exemption_subj_type_attribute)
+                        (eq t2 rbac_user_exemption_target_subj_type_attribute)
+                    )
+            )
+            (and
+                (eq t1 rbac_sys_role_change_exemption_subj_type_attribute)
+                (eq r2 rbac_sys_role_attribute)
+            )
+        )
+        (eq t1 rbac_uncond_exemption_subj_type_attribute)
+    )
+)
+
+;
 ; RBAC qipcrtr_socket constraints
 ;
 
