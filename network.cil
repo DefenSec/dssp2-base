@@ -572,7 +572,7 @@
         ; generic_peer macros
         ;
 
-        (macro recv ((type ARG1))
+        (macro peer_recv ((type ARG1))
             (allow ARG1 isid
                 (peer
                     (
