@@ -1781,7 +1781,27 @@
             )
         )
 
-        (macro recv ((type ARG1))
+        (macro packet_recv ((type ARG1))
+            (allow ARG1 isid
+                (packet
+                    (
+                        recv
+                    )
+                )
+            )
+        )
+
+        (macro packet_send ((type ARG1))
+            (allow ARG1 isid
+                (packet
+                    (
+                        send
+                    )
+                )
+            )
+        )
+
+        (macro peer_recv ((type ARG1))
             (allow ARG1 isid
                 (peer
                     (

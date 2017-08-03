@@ -56,48 +56,58 @@
 
     (typeattribute unconfined_subj_type_attribute)
 
-    (call sys.unlabeled.dccp_recvfrom
+    (call sys.invalid.dccp_recvfrom
         (
             unconfined_subj_type_attribute
         )
     )
 
-    (call sys.unlabeled.infiniband_endport_manage_subnet
+    (call sys.invalid.infiniband_endport_manage_subnet
         (
             unconfined_subj_type_attribute
         )
     )
-    (call sys.unlabeled.infiniband_pkey_access
+    (call sys.invalid.infiniband_pkey_access
         (
             unconfined_subj_type_attribute
         )
     )
-    (call sys.unlabeled.icmp_recvfrom
+    (call sys.invalid.icmp_recvfrom
         (
             unconfined_subj_type_attribute
         )
     )
-    (call sys.unlabeled.rawip_recvfrom
+    (call sys.invalid.rawip_recvfrom
         (
             unconfined_subj_type_attribute
         )
     )
-    (call sys.unlabeled.recv
+    (call sys.invalid.packet_recv
         (
             unconfined_subj_type_attribute
         )
     )
-    (call sys.unlabeled.sctp_recvfrom
+    (call sys.invalid.packet_send
         (
             unconfined_subj_type_attribute
         )
     )
-    (call sys.unlabeled.tcp_recvfrom
+    (call sys.invalid.peer_recv
         (
             unconfined_subj_type_attribute
         )
     )
-    (call sys.unlabeled.udp_recvfrom
+    (call sys.invalid.sctp_recvfrom
+        (
+            unconfined_subj_type_attribute
+        )
+    )
+    (call sys.invalid.tcp_recvfrom
+        (
+            unconfined_subj_type_attribute
+        )
+    )
+    (call sys.invalid.udp_recvfrom
         (
             unconfined_subj_type_attribute
         )
