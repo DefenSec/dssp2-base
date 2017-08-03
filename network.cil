@@ -1782,7 +1782,7 @@
                 (typeattributeset obj_type_attribute ARG1)
             )
 
-           (macro recv ((type ARG1))
+           (macro packet_recv ((type ARG1))
                 (allow ARG1 obj_type_attribute
                     (packet
                         (
@@ -1802,7 +1802,7 @@
                 )
             )
 
-            (macro send ((type ARG1))
+            (macro packet_send ((type ARG1))
                 (allow ARG1 obj_type_attribute
                     (packet
                         (
@@ -1877,7 +1877,7 @@
                 )
             )
 
-            (macro recv ((type ARG1))
+            (macro packet_recv ((type ARG1))
                 (allow ARG1 packet
                     (packet
                         (
@@ -1897,7 +1897,7 @@
                 )
             )
 
-            (macro send ((type ARG1))
+            (macro packet_send ((type ARG1))
                 (allow ARG1 packet
                     (packet
                         (
@@ -1963,7 +1963,7 @@
                 (typeattributeset obj_type_attribute ARG1)
             )
 
-            (macro recv ((type ARG1))
+            (macro peer_recv ((type ARG1))
                 (allow ARG1 obj_type_attribute
                     (peer
                         (
@@ -2018,7 +2018,7 @@
             ; net.peer.obj_template macros
             ;
 
-            (macro recv ((type ARG1))
+            (macro peer_recv ((type ARG1))
                 (allow ARG1 peer
                     (peer
                         (
