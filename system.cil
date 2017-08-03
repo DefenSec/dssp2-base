@@ -1721,11 +1721,81 @@
 
         (blockinherit obj_all_macro_template)
 
+        (macro dccp_recvfrom ((type ARG1))
+            (allow ARG1 isid
+                (dccp_socket
+                    (
+                        recvfrom
+                    )
+                )
+            )
+        )
+
+        (macro infiniband_endport_manage_subnet ((type ARG1))
+            (allow ARG1 isid
+                (infiniband_endport
+                    (
+                        manage_subnet
+                    )
+                )
+            )
+        )
+
+        (macro infiniband_pkey_access ((type ARG1))
+            (allow ARG1 isid
+                (infiniband_pkey
+                    (
+                        access
+                    )
+                )
+            )
+        )
+
+        (macro icmp_recvfrom ((type ARG1))
+            (allow ARG1 isid
+                (icmp_socket
+                    (
+                        recvfrom
+                    )
+                )
+            )
+        )
+
+        (macro rawip_recvfrom ((type ARG1))
+            (allow ARG1 isid
+                (rawip_socket
+                    (
+                        recvfrom
+                    )
+                )
+            )
+        )
+
         (macro read_state ((type ARG1))
             (allow ARG1 isid
                 (process_state
                     (
                         read
+                    )
+                )
+            )
+        )
+
+        (macro recv ((type ARG1))
+            (allow ARG1 isid
+                (peer
+                    (
+                        recv
+                    )
+                )
+            )
+        )
+
+        (macro sctp_recvfrom ((type ARG1))
+            (allow ARG1 isid
+                (sctp_socket
+                    (
+                        recvfrom
                     )
                 )
             )
@@ -1766,6 +1836,26 @@
                 (process
                     (
                         sigstop
+                    )
+                )
+            )
+        )
+
+        (macro tcp_recvfrom ((type ARG1))
+            (allow ARG1 isid
+                (tcp_socket
+                    (
+                        recvfrom
+                    )
+                )
+            )
+        )
+
+        (macro udp_recvfrom ((type ARG1))
+            (allow ARG1 isid
+                (udp_socket
+                    (
+                        recvfrom
                     )
                 )
             )
@@ -9019,101 +9109,11 @@
             )
         )
 
-        (macro dccp_recvfrom ((type ARG1))
-            (allow ARG1 isid
-                (dccp_socket
-                    (
-                        recvfrom
-                    )
-                )
-            )
-        )
-
-        (macro infiniband_endport_manage_subnet ((type ARG1))
-            (allow ARG1 isid
-                (infiniband_endport
-                    (
-                        manage_subnet
-                    )
-                )
-            )
-        )
-
-        (macro infiniband_pkey_access ((type ARG1))
-            (allow ARG1 isid
-                (infiniband_pkey
-                    (
-                        access
-                    )
-                )
-            )
-        )
-
-        (macro icmp_recvfrom ((type ARG1))
-            (allow ARG1 isid
-                (icmp_socket
-                    (
-                        recvfrom
-                    )
-                )
-            )
-        )
-
         (macro mounton_dirs ((type ARG1))
             (allow ARG1 isid
                 (dir
                     (
                         mounton
-                    )
-                )
-            )
-        )
-
-        (macro rawip_recvfrom ((type ARG1))
-            (allow ARG1 isid
-                (rawip_socket
-                    (
-                        recvfrom
-                    )
-                )
-            )
-        )
-
-        (macro recv ((type ARG1))
-            (allow ARG1 isid
-                (peer
-                    (
-                        recv
-                    )
-                )
-            )
-        )
-
-        (macro sctp_recvfrom ((type ARG1))
-            (allow ARG1 isid
-                (sctp_socket
-                    (
-                        recvfrom
-                    )
-                )
-            )
-        )
-
-        (macro tcp_recvfrom ((type ARG1))
-            (allow ARG1 isid
-                (tcp_socket
-                    (
-                        recvfrom
-                    )
-                )
-            )
-        )
-
-        (macro udp_recvfrom ((type ARG1))
-            (allow ARG1 isid
-                (udp_socket
-                    (
-                        recvfrom
                     )
                 )
             )
