@@ -1822,22 +1822,6 @@
         (block obj_stub
 
             ;
-            ; net.packet.obj_stub contexts
-            ;
-
-            (context packet_context
-                (
-                    sys.id
-                    sys.role
-                    packet
-                        (
-                            systemlow
-                            systemlow
-                        )
-                )
-            )
-
-            ;
             ; net.packet.obj_stub policy
             ;
 
@@ -1981,22 +1965,6 @@
         )
 
         (block obj_stub
-
-            ;
-            ; net.peer.obj_stub contexts
-            ;
-
-            (context peer_context
-                (
-                    sys.id
-                    sys.role
-                    peer
-                        (
-                            systemlow
-                            systemlow
-                        )
-                )
-            )
 
             ;
             ; net.peer.obj_stub policy
