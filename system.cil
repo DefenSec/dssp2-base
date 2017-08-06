@@ -1944,7 +1944,7 @@
         (allow unconfined_subj_type_attribute isid
             chr_file_except_execmod_and_mounton)
         (allow unconfined_subj_type_attribute isid
-            dir_except_execmod_and_map)
+            dir_except_execmod)
         (allow unconfined_subj_type_attribute isid
             fifo_file_except_execmod_map_and_mounton)
         (allow unconfined_subj_type_attribute isid
@@ -9160,7 +9160,7 @@
         (allow unconfined_subj_type_attribute isid
             chr_file_except_execmod_and_mounton)
         (allow unconfined_subj_type_attribute isid
-            dir_except_execmod_and_map)
+            dir_except_execmod)
         (allow unconfined_subj_type_attribute isid
             fifo_file_except_execmod_map_and_mounton)
         (allow unconfined_subj_type_attribute isid

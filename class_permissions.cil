@@ -144,7 +144,7 @@
 (classpermission create_dir_perms)
 (classpermission del_entry_dir_perms)
 (classpermission delete_dir_perms)
-(classpermission dir_except_execmod_and_map)
+(classpermission dir_except_execmod)
 (classpermission list_dir_perms)
 (classpermission list_inherited_dir_perms)
 (classpermission manage_dir_perms)
@@ -1609,6 +1609,7 @@
             getattr
             ioctl
             lock
+            map
             open
             read
             search
@@ -1632,6 +1633,7 @@
             getattr
             ioctl
             lock
+            map
             open
             read
             remove_name
@@ -1650,12 +1652,11 @@
     )
 )
 
-(classpermissionset dir_except_execmod_and_map
+(classpermissionset dir_except_execmod
     (dir
         (not
             (
                 execmod
-                map
             )
         )
     )
@@ -1667,6 +1668,7 @@
             getattr
             ioctl
             lock
+            map
             open
             read
             search
@@ -1680,6 +1682,7 @@
             getattr
             ioctl
             lock
+            map
             read
             search
         )
@@ -1695,6 +1698,7 @@
             ioctl
             link
             lock
+            map
             open
             read
             setattr
@@ -1753,6 +1757,7 @@
             getattr
             ioctl
             lock
+            map
             open
             read
             remove_name
@@ -1779,6 +1784,7 @@
             getattr
             ioctl
             lock
+            map
             open
             remove_name
             search

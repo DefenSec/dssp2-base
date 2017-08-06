@@ -2461,7 +2461,7 @@
     (allow unconfined_subj_type_attribute except_obj_type_attribute
         chr_file_except_execmod)
     (allow unconfined_subj_type_attribute except_obj_type_attribute
-        dir_except_execmod_and_map)
+        dir_except_execmod)
     (allow unconfined_subj_type_attribute except_obj_type_attribute
         fifo_file_except_execmod_and_map)
     (allow unconfined_subj_type_attribute except_obj_type_attribute
