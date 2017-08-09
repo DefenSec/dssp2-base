@@ -120,6 +120,7 @@
         delete
         getattr
         manage
+        map
         read
         relabel
         relabelfrom
@@ -141,6 +142,7 @@
         delete
         getattr
         manage
+        map
         relabel
         relabelfrom
         relabelto
@@ -181,6 +183,7 @@
         delete
         getattr
         manage
+        map
         read
         relabel
         relabelfrom
@@ -2208,6 +2211,9 @@
 (classmapping chr_files manage rw_dir_perms)
 (classmapping chr_files manage manage_chr_file_perms)
 
+(classmapping chr_files map search_dir_perms)
+(classmapping chr_files map map_chr_file_perms)
+
 (classmapping chr_files read search_dir_perms)
 (classmapping chr_files read read_chr_file_perms)
 
@@ -2258,6 +2264,9 @@
 
 (classmapping dirs manage search_dir_perms)
 (classmapping dirs manage manage_dir_perms)
+
+(classmapping dirs map search_dir_perms)
+(classmapping dirs map map_dir_perms)
 
 (classmapping dirs relabel search_dir_perms)
 (classmapping dirs relabel relabel_dir_perms)
@@ -2356,6 +2365,9 @@
 
 (classmapping files manage rw_dir_perms)
 (classmapping files manage manage_file_perms)
+
+(classmapping files map search_dir_perms)
+(classmapping files map map_file_perms)
 
 (classmapping files read search_dir_perms)
 (classmapping files read read_file_perms)
