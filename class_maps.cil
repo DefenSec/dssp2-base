@@ -142,7 +142,6 @@
         delete
         getattr
         manage
-        map
         relabel
         relabelfrom
         relabelto
@@ -2264,9 +2263,6 @@
 
 (classmapping dirs manage search_dir_perms)
 (classmapping dirs manage manage_dir_perms)
-
-(classmapping dirs map search_dir_perms)
-(classmapping dirs map map_dir_perms)
 
 (classmapping dirs relabel search_dir_perms)
 (classmapping dirs relabel relabel_dir_perms)

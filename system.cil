@@ -1944,7 +1944,7 @@
         (allow unconfined_subj_type_attribute isid
             chr_file_except_execmod_and_mounton)
         (allow unconfined_subj_type_attribute isid
-            dir_except_execmod)
+            dir_except_execmod_and_map)
         (allow unconfined_subj_type_attribute isid
             fifo_file_except_execmod_map_and_mounton)
         (allow unconfined_subj_type_attribute isid
@@ -2352,6 +2352,16 @@
                     (files
                         (
                             manage
+                        )
+                    )
+                )
+            )
+
+            (macro map_files ((type ARG1))
+                (allow ARG1 isid
+                    (files
+                        (
+                            map
                         )
                     )
                 )
@@ -9160,7 +9170,7 @@
         (allow unconfined_subj_type_attribute isid
             chr_file_except_execmod_and_mounton)
         (allow unconfined_subj_type_attribute isid
-            dir_except_execmod)
+            dir_except_execmod_and_map)
         (allow unconfined_subj_type_attribute isid
             fifo_file_except_execmod_map_and_mounton)
         (allow unconfined_subj_type_attribute isid

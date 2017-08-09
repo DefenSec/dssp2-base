@@ -778,7 +778,6 @@
             execmod
             execute
             link
-            map
             mounton
             quotaon
             remove_name

@@ -145,11 +145,10 @@
 (classpermission create_dir_perms)
 (classpermission del_entry_dir_perms)
 (classpermission delete_dir_perms)
-(classpermission dir_except_execmod)
+(classpermission dir_except_execmod_and_map)
 (classpermission list_dir_perms)
 (classpermission list_inherited_dir_perms)
 (classpermission manage_dir_perms)
-(classpermission map_dir_perms)
 (classpermission relabel_dir_perms)
 (classpermission relabelfrom_dir_perms)
 (classpermission relabelto_dir_perms)
@@ -1654,11 +1653,12 @@
     )
 )
 
-(classpermissionset dir_except_execmod
+(classpermissionset dir_except_execmod_and_map
     (dir
         (not
             (
                 execmod
+                map
             )
         )
     )
@@ -1708,14 +1708,6 @@
             rmdir
             search
             write
-        )
-    )
-)
-
-(classpermissionset map_dir_perms
-    (dir
-        (
-            map
         )
     )
 )

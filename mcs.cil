@@ -108,7 +108,6 @@
             append
             ioctl
             lock
-            map
             read
             relabelfrom
             remove_name

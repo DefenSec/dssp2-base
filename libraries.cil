@@ -328,21 +328,6 @@
             )
         )
 
-        (macro map_dirs ((type ARG1))
-            (allow ARG1 lib_file
-                (dirs
-                    (
-                        map
-                    )
-                )
-            )
-            (call read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
         (macro map_files ((type ARG1))
             (allow ARG1 lib_file
                 (files

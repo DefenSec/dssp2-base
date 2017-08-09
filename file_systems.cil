@@ -76,7 +76,7 @@
     (allow unconfined_subj_type_attribute obj_type_attribute
         chr_file_except_execmod_and_mounton)
     (allow unconfined_subj_type_attribute obj_type_attribute
-        dir_except_execmod)
+        dir_except_execmod_and_map)
     (allow unconfined_subj_type_attribute obj_type_attribute
         fifo_file_except_execmod_map_and_mounton)
     (allow unconfined_subj_type_attribute obj_type_attribute
@@ -358,16 +358,6 @@
                 (lnk_files
                     (
                         manage
-                    )
-                )
-            )
-        )
-
-        (macro map_dirs ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (dirs
-                    (
-                        map
                     )
                 )
             )
@@ -1254,16 +1244,6 @@
             )
         )
 
-        (macro map_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        map
-                    )
-                )
-            )
-        )
-
         (macro map_files ((type ARG1))
             (allow ARG1 fs
                 (files
@@ -1906,16 +1886,6 @@
             )
         )
 
-        (macro map_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        map
-                    )
-                )
-            )
-        )
-
         (macro map_files ((type ARG1))
             (allow ARG1 fs
                 (files
@@ -2553,16 +2523,6 @@
                 (lnk_files
                     (
                         manage
-                    )
-                )
-            )
-        )
-
-        (macro map_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        map
                     )
                 )
             )
@@ -3211,16 +3171,6 @@
                 (lnk_files
                     (
                         manage
-                    )
-                )
-            )
-        )
-
-        (macro map_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        map
                     )
                 )
             )
@@ -3933,21 +3883,6 @@
                 (lnk_files
                     (
                         manage
-                    )
-                )
-            )
-            (call sys.fs_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro map_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        map
                     )
                 )
             )
@@ -4867,26 +4802,6 @@
                 (lnk_files
                     (
                         manage
-                    )
-                )
-            )
-            (call sysfs.search
-                (
-                    ARG1
-                )
-            )
-            (call tmpfs.read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro map_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        map
                     )
                 )
             )
@@ -5868,16 +5783,6 @@
             )
         )
 
-        (macro map_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        map
-                    )
-                )
-            )
-        )
-
         (macro map_files ((type ARG1))
             (allow ARG1 fs
                 (files
@@ -6687,21 +6592,6 @@
                 (lnk_files
                     (
                         manage
-                    )
-                )
-            )
-            (call sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro map_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        map
                     )
                 )
             )
@@ -7560,21 +7450,6 @@
             )
         )
 
-        (macro map_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        map
-                    )
-                )
-            )
-            (call sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
         (macro map_files ((type ARG1))
             (allow ARG1 fs
                 (files
@@ -8262,16 +8137,6 @@
             )
         )
 
-        (macro map_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        map
-                    )
-                )
-            )
-        )
-
         (macro obj_type_transition ((type ARG1)(type ARG2)(class ARG3)(name ARG4))
             (typetransition ARG1 fs ARG3 ARG4 ARG2)
             (call rw_dirs
@@ -8952,16 +8817,6 @@
             )
             (allow ARG1 fs
                 (chr_files
-                    (
-                        map
-                    )
-                )
-            )
-        )
-
-        (macro map_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
                     (
                         map
                     )
@@ -9953,16 +9808,6 @@
             )
         )
 
-        (macro map_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        map
-                    )
-                )
-            )
-        )
-
         (macro map_files ((type ARG1))
             (allow ARG1 fs
                 (files
@@ -10713,16 +10558,6 @@
             )
         )
 
-        (macro map_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        map
-                    )
-                )
-            )
-        )
-
         (macro map_files ((type ARG1))
             (allow ARG1 fs
                 (files
@@ -11430,21 +11265,6 @@
                 (lnk_files
                     (
                         manage
-                    )
-                )
-            )
-            (call sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro map_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        map
                     )
                 )
             )
@@ -12412,21 +12232,6 @@
                 (sock_files
                     (
                         manage
-                    )
-                )
-            )
-            (call sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro map_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        map
                     )
                 )
             )
@@ -13502,21 +13307,6 @@
             )
         )
 
-        (macro map_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        map
-                    )
-                )
-            )
-            (call devtmpfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
         (macro map_files ((type ARG1))
             (allow ARG1 fs
                 (files
@@ -14353,16 +14143,6 @@
             )
         )
 
-        (macro map_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        map
-                    )
-                )
-            )
-        )
-
         (macro map_files ((type ARG1))
             (allow ARG1 fs
                 (files
@@ -15168,16 +14948,6 @@
             )
         )
 
-        (macro map_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        map
-                    )
-                )
-            )
-        )
-
         (macro map_files ((type ARG1))
             (allow ARG1 fs
                 (files
@@ -15922,16 +15692,6 @@
             )
         )
 
-        (macro map_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        map
-                    )
-                )
-            )
-        )
-
         (macro map_files ((type ARG1))
             (allow ARG1 fs
                 (files
@@ -16580,16 +16340,6 @@
             )
         )
 
-        (macro map_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        map
-                    )
-                )
-            )
-        )
-
         (macro map_files ((type ARG1))
             (allow ARG1 fs
                 (files
@@ -17231,16 +16981,6 @@
                 (lnk_files
                     (
                         manage
-                    )
-                )
-            )
-        )
-
-        (macro map_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        map
                     )
                 )
             )
@@ -17985,21 +17725,6 @@
                 (lnk_files
                     (
                         manage
-                    )
-                )
-            )
-            (call sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro map_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        map
                     )
                 )
             )
@@ -18834,16 +18559,6 @@
             )
         )
 
-        (macro map_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        map
-                    )
-                )
-            )
-        )
-
         (macro map_files ((type ARG1))
             (allow ARG1 fs
                 (files
@@ -19595,16 +19310,6 @@
                 (lnk_files
                     (
                         manage
-                    )
-                )
-            )
-        )
-
-        (macro map_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        map
                     )
                 )
             )
@@ -20374,21 +20079,6 @@
                 (lnk_files
                     (
                         manage
-                    )
-                )
-            )
-            (call files.generic_runtime.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro map_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        map
                     )
                 )
             )
@@ -21191,16 +20881,6 @@
                 (lnk_files
                     (
                         manage
-                    )
-                )
-            )
-        )
-
-        (macro map_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        map
                     )
                 )
             )
@@ -22209,21 +21889,6 @@
         (macro map_chr_files ((type ARG1))
             (allow ARG1 fs
                 (chr_files
-                    (
-                        map
-                    )
-                )
-            )
-            (call devtmpfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro map_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
                     (
                         map
                     )
@@ -23549,21 +23214,6 @@
                 (lnk_files
                     (
                         manage
-                    )
-                )
-            )
-            (call debugfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro map_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        map
                     )
                 )
             )

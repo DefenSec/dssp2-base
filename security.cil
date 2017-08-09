@@ -892,21 +892,6 @@
             )
         )
 
-        (macro map_dirs ((type ARG1))
-            (allow ARG1 isid
-                (dirs
-                    (
-                        map
-                    )
-                )
-            )
-            (call fs.sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
         (macro map_files ((type ARG1))
             (allow ARG1 isid
                 (files
