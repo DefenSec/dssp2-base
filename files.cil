@@ -895,6 +895,66 @@
         )
     )
 
+    (macro map_dirs_except ((type ARG1))
+        (allow ARG1 except_obj_type_attribute
+            (dirs
+                (
+                    map
+                )
+            )
+        )
+    )
+
+    (macro map_dirs_except_auth ((type ARG1))
+        (allow ARG1 except_auth_obj_type_attribute
+            (dirs
+                (
+                    map
+                )
+            )
+        )
+    )
+
+    (macro map_dirs_except_sec ((type ARG1))
+        (allow ARG1 except_sec_obj_type_attribute
+            (dirs
+                (
+                    map
+                )
+            )
+        )
+    )
+
+    (macro map_files_except ((type ARG1))
+        (allow ARG1 except_obj_type_attribute
+            (files
+                (
+                    map
+                )
+            )
+        )
+    )
+
+    (macro map_files_except_auth ((type ARG1))
+        (allow ARG1 except_auth_obj_type_attribute
+            (files
+                (
+                    map
+                )
+            )
+        )
+    )
+
+    (macro map_files_except_sec ((type ARG1))
+        (allow ARG1 except_sec_obj_type_attribute
+            (files
+                (
+                    map
+                )
+            )
+        )
+    )
+
     (macro mmap_except ((type ARG1))
         (allow ARG1 except_obj_type_attribute mmap_file_perms)
     )
@@ -2758,6 +2818,26 @@
             )
         )
 
+        (macro map_dirs ((type ARG1))
+            (allow ARG1 obj_type_attribute
+                (dirs
+                    (
+                        map
+                    )
+                )
+            )
+        )
+
+        (macro map_files ((type ARG1))
+            (allow ARG1 obj_type_attribute
+                (files
+                    (
+                        map
+                    )
+                )
+            )
+        )
+
         (macro mmap ((type ARG1))
             (allow ARG1 obj_type_attribute mmap_file_perms)
         )
@@ -3497,6 +3577,14 @@
                 (allow ARG1 auth_file manage_sock_file_perms)
             )
 
+            (macro map_dirs ((type ARG1))
+                (allow ARG1 auth_file map_dir_perms)
+            )
+
+            (macro map_files ((type ARG1))
+                (allow ARG1 auth_file map_file_perms)
+            )
+
             (macro mmap ((type ARG1))
                 (allow ARG1 auth_file mmap_file_perms)
             )
@@ -4060,6 +4148,24 @@
 
             (macro manage_lnk_files ((type ARG1))
                 (allow ARG1 boot_file manage_lnk_file_perms)
+                (call boot.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_dirs ((type ARG1))
+                (allow ARG1 boot_file map_dir_perms)
+                (call boot.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_files ((type ARG1))
+                (allow ARG1 boot_file map_file_perms)
                 (call boot.search
                     (
                         ARG1
@@ -4703,6 +4809,24 @@
 
             (macro manage_lnk_files ((type ARG1))
                 (allow ARG1 obj_type_attribute manage_lnk_file_perms)
+                (call files.generic_boot.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_dirs ((type ARG1))
+                (allow ARG1 obj_type_attribute map_dir_perms)
+                (call fs.rootfs.read_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_files ((type ARG1))
+                (allow ARG1 obj_type_attribute map_file_perms)
                 (call files.generic_boot.search
                     (
                         ARG1
@@ -5389,6 +5513,24 @@
                 )
             )
 
+            (macro map_dirs ((type ARG1))
+                (allow ARG1 boot_file map_dir_perms)
+                (call files.generic_boot.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_files ((type ARG1))
+                (allow ARG1 boot_file map_file_perms)
+                (call files.generic_boot.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
             (macro mmap ((type ARG1))
                 (allow ARG1 boot_file mmap_file_perms)
                 (call files.generic_boot.search
@@ -5855,6 +5997,10 @@
                 (allow ARG1 obj_type_attribute manage_file_perms)
             )
 
+            (macro map_files ((type ARG1))
+                (allow ARG1 obj_type_attribute map_file_perms)
+            )
+
             (macro obj_type ((type ARG1))
                 (typeattributeset obj_type_attribute ARG1)
             )
@@ -5966,6 +6112,10 @@
 
             (macro manage_files ((type ARG1))
                 (allow ARG1 boot_flag_file manage_file_perms)
+            )
+
+            (macro map_files ((type ARG1))
+                (allow ARG1 boot_flag_file map_file_perms)
             )
 
             (macro read_files ((type ARG1))
@@ -6286,6 +6436,24 @@
 
             (macro manage_lnk_files ((type ARG1))
                 (allow ARG1 config_file manage_lnk_file_perms)
+                (call config.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_dirs ((type ARG1))
+                (allow ARG1 config_file map_dir_perms)
+                (call config.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_files ((type ARG1))
+                (allow ARG1 config_file map_file_perms)
                 (call config.search
                     (
                         ARG1
@@ -6909,6 +7077,19 @@
 
             (macro manage_lnk_files ((type ARG1))
                 (allow ARG1 obj_type_attribute manage_lnk_file_perms)
+                (call files.generic_config.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_dirs ((type ARG1))
+                (allow ARG1 obj_type_attribute map_dir_perms)
+            )
+
+            (macro map_files ((type ARG1))
+                (allow ARG1 obj_type_attribute map_file_perms)
                 (call files.generic_config.search
                     (
                         ARG1
@@ -7573,6 +7754,24 @@
 
             (macro manage_lnk_files ((type ARG1))
                 (allow ARG1 config_file manage_lnk_file_perms)
+                (call files.generic_config.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_dirs ((type ARG1))
+                (allow ARG1 config_file map_dir_perms)
+                (call files.generic_config.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_files ((type ARG1))
+                (allow ARG1 config_file map_file_perms)
                 (call files.generic_config.search
                     (
                         ARG1
@@ -8264,6 +8463,24 @@
                 )
             )
 
+            (macro map_dirs ((type ARG1))
+                (allow ARG1 data_file map_dir_perms)
+                (call data.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_files ((type ARG1))
+                (allow ARG1 data_file map_file_perms)
+                (call data.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
             (macro mmap ((type ARG1))
                 (allow ARG1 data_file mmap_file_perms)
                 (call data.search
@@ -8880,6 +9097,19 @@
 
             (macro manage_lnk_files ((type ARG1))
                 (allow ARG1 obj_type_attribute manage_lnk_file_perms)
+                (call files.generic_data.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_dirs ((type ARG1))
+                (allow ARG1 obj_type_attribute map_dir_perms)
+            )
+
+            (macro map_files ((type ARG1))
+                (allow ARG1 obj_type_attribute map_file_perms)
                 (call files.generic_data.search
                     (
                         ARG1
@@ -9544,6 +9774,24 @@
 
             (macro manage_lnk_files ((type ARG1))
                 (allow ARG1 data_file manage_lnk_file_perms)
+                (call files.generic_data.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_dirs ((type ARG1))
+                (allow ARG1 data_file map_dir_perms)
+                (call files.generic_data.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_files ((type ARG1))
+                (allow ARG1 data_file map_file_perms)
                 (call files.generic_data.search
                     (
                         ARG1
@@ -10258,6 +10506,14 @@
                 (allow ARG1 file manage_sock_file_perms)
             )
 
+            (macro map_dirs ((type ARG1))
+                (allow ARG1 file map_dir_perms)
+            )
+
+            (macro map_files ((type ARG1))
+                (allow ARG1 file map_file_perms)
+            )
+
             (macro mmap ((type ARG1))
                 (allow ARG1 file mmap_file_perms)
             )
@@ -10854,6 +11110,36 @@
                 (lnk_files
                     (
                         manage
+                    )
+                )
+            )
+            (call fs.rootfs.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro map_dirs ((type ARG1))
+            (allow ARG1 boot_file
+                (dirs
+                    (
+                        map
+                    )
+                )
+            )
+            (call fs.rootfs.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro map_files ((type ARG1))
+            (allow ARG1 boot_file
+                (files
+                    (
+                        map
                     )
                 )
             )
@@ -11699,6 +11985,26 @@
             )
         )
 
+        (macro map_dirs ((type ARG1))
+            (allow ARG1 config_file
+                (dirs
+                    (
+                        map
+                    )
+                )
+            )
+        )
+
+        (macro map_files ((type ARG1))
+            (allow ARG1 config_file
+                (files
+                    (
+                        map
+                    )
+                )
+            )
+        )
+
         (macro mmap ((type ARG1))
             (allow ARG1 config_file mmap_file_perms)
             (call search
@@ -12352,6 +12658,26 @@
                 (lnk_files
                     (
                         manage
+                    )
+                )
+            )
+        )
+
+        (macro map_dirs ((type ARG1))
+            (allow ARG1 data_file
+                (dirs
+                    (
+                        map
+                    )
+                )
+            )
+        )
+
+        (macro map_files ((type ARG1))
+            (allow ARG1 data_file
+                (files
+                    (
+                        map
                     )
                 )
             )
@@ -13084,6 +13410,36 @@
                 (lnk_files
                     (
                         manage
+                    )
+                )
+            )
+            (call lib.generic_libraries.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro map_dirs ((type ARG1))
+            (allow ARG1 modules_file
+                (dirs
+                    (
+                        map
+                    )
+                )
+            )
+            (call lib.generic_libraries.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro map_files ((type ARG1))
+            (allow ARG1 modules_file
+                (files
+                    (
+                        map
                     )
                 )
             )
@@ -14047,6 +14403,36 @@
                 (sock_files
                     (
                         manage
+                    )
+                )
+            )
+            (call generic_var.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro map_dirs ((type ARG1))
+            (allow ARG1 runtime_file
+                (dirs
+                    (
+                        map
+                    )
+                )
+            )
+            (call generic_var.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro map_files ((type ARG1))
+            (allow ARG1 runtime_file
+                (files
+                    (
+                        map
                     )
                 )
             )
@@ -15123,6 +15509,36 @@
             )
         )
 
+        (macro map_dirs ((type ARG1))
+            (allow ARG1 runtime_config_file
+                (dirs
+                    (
+                        map
+                    )
+                )
+            )
+            (call generic_runtime.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro map_files ((type ARG1))
+            (allow ARG1 runtime_config_file
+                (files
+                    (
+                        map
+                    )
+                )
+            )
+            (call generic_runtime.search
+                (
+                    ARG1
+                )
+            )
+        )
+
         (macro mmap ((type ARG1))
             (allow ARG1 runtime_config_file mmap_file_perms)
             (call search
@@ -15973,6 +16389,36 @@
             )
         )
 
+        (macro map_dirs ((type ARG1))
+            (allow ARG1 runtime_lock_file
+                (dirs
+                    (
+                        map
+                    )
+                )
+            )
+            (call generic_runtime.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro map_files ((type ARG1))
+            (allow ARG1 runtime_lock_file
+                (files
+                    (
+                        map
+                    )
+                )
+            )
+            (call generic_runtime.search
+                (
+                    ARG1
+                )
+            )
+        )
+
         (macro mmap ((type ARG1))
             (allow ARG1 runtime_lock_file mmap_file_perms)
             (call search
@@ -16804,6 +17250,26 @@
                 (sock_files
                     (
                         manage
+                    )
+                )
+            )
+        )
+
+        (macro map_dirs ((type ARG1))
+            (allow ARG1 var_file
+                (dirs
+                    (
+                        map
+                    )
+                )
+            )
+        )
+
+        (macro map_files ((type ARG1))
+            (allow ARG1 var_file
+                (files
+                    (
+                        map
                     )
                 )
             )
@@ -17729,6 +18195,36 @@
                 (sock_files
                     (
                         manage
+                    )
+                )
+            )
+            (call generic_var.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro map_dirs ((type ARG1))
+            (allow ARG1 var_cache_file
+                (dirs
+                    (
+                        map
+                    )
+                )
+            )
+            (call generic_var.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro map_files ((type ARG1))
+            (allow ARG1 var_cache_file
+                (files
+                    (
+                        map
                     )
                 )
             )
@@ -18797,6 +19293,36 @@
             )
         )
 
+        (macro map_dirs ((type ARG1))
+            (allow ARG1 var_db_file
+                (dirs
+                    (
+                        map
+                    )
+                )
+            )
+            (call generic_var.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro map_files ((type ARG1))
+            (allow ARG1 var_db_file
+                (files
+                    (
+                        map
+                    )
+                )
+            )
+            (call generic_var.search
+                (
+                    ARG1
+                )
+            )
+        )
+
         (macro mmap ((type ARG1))
             (allow ARG1 var_db_file mmap_file_perms)
             (call search
@@ -19746,6 +20272,36 @@
                 (sock_files
                     (
                         manage
+                    )
+                )
+            )
+            (call generic_var.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro map_dirs ((type ARG1))
+            (allow ARG1 var_lib_file
+                (dirs
+                    (
+                        map
+                    )
+                )
+            )
+            (call generic_var.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro map_files ((type ARG1))
+            (allow ARG1 var_lib_file
+                (files
+                    (
+                        map
                     )
                 )
             )
@@ -20814,6 +21370,36 @@
             )
         )
 
+        (macro map_dirs ((type ARG1))
+            (allow ARG1 var_log_file
+                (dirs
+                    (
+                        map
+                    )
+                )
+            )
+            (call generic_var.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro map_files ((type ARG1))
+            (allow ARG1 var_log_file
+                (files
+                    (
+                        map
+                    )
+                )
+            )
+            (call generic_var.search
+                (
+                    ARG1
+                )
+            )
+        )
+
         (macro mmap ((type ARG1))
             (allow ARG1 var_log_file mmap_file_perms)
             (call search
@@ -21763,6 +22349,36 @@
                 (sock_files
                     (
                         manage
+                    )
+                )
+            )
+            (call generic_var.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro map_dirs ((type ARG1))
+            (allow ARG1 var_spool_file
+                (dirs
+                    (
+                        map
+                    )
+                )
+            )
+            (call generic_var.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro map_files ((type ARG1))
+            (allow ARG1 var_spool_file
+                (files
+                    (
+                        map
                     )
                 )
             )
@@ -23083,6 +23699,46 @@
             )
         )
 
+        (macro map_dirs ((type ARG1))
+            (allow ARG1 var_tmp_file
+                (dirs
+                    (
+                        map
+                    )
+                )
+            )
+            (call generic_data.read_lnk_files
+                (
+                    ARG1
+                )
+            ) 
+            (call generic_var.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro map_files ((type ARG1))
+            (allow ARG1 var_tmp_file
+                (files
+                    (
+                        map
+                    )
+                )
+            )
+            (call generic_data.read_lnk_files
+                (
+                    ARG1
+                )
+            ) 
+            (call generic_var.search
+                (
+                    ARG1
+                )
+            )
+        )
+
         (macro mmap ((type ARG1))
             (allow ARG1 var_tmp_file mmap_file_perms)
             (call search
@@ -24167,6 +24823,16 @@
             )
         )
 
+        (macro map_dirs ((type ARG1))
+            (allow ARG1 file
+                (dirs
+                    (
+                        map
+                    )
+                )
+            )
+        )
+
         (macro manage_lnk_files ((type ARG1))
             (allow ARG1 file
                 (lnk_files
@@ -24612,6 +25278,36 @@
                 (files
                     (
                         manage
+                    )
+                )
+            )
+            (call sys.mountpoint.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro map_dirs ((type ARG1))
+            (allow ARG1 file
+                (dirs
+                    (
+                        map
+                    )
+                )
+            )
+            (call sys.mountpoint.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro map_files ((type ARG1))
+            (allow ARG1 file
+                (files
+                    (
+                        map
                     )
                 )
             )
@@ -25159,6 +25855,21 @@
             )
         )
 
+        (macro map_dirs ((type ARG1))
+            (allow ARG1 file
+                (dirs
+                    (
+                        map
+                    )
+                )
+            )
+            (call generic_runtime.search
+                (
+                    ARG1
+                )
+            )
+        )
+
         (macro obj_type_transition ((type ARG1)(type ARG2)(class ARG3)(name ARG4))
             (typetransition ARG1 file ARG3 ARG4 ARG2)
             (call rw_dirs
@@ -25536,6 +26247,15 @@
                 )
             )
 
+            (macro map_files ((type ARG1))
+                (allow ARG1 obj_type_attribute map_file_perms)
+                (call files.generic_modules.read_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
             (macro mmap ((type ARG1))
                 (allow ARG1 obj_type_attribute mmap_file_perms)
                 (call files.generic_modules.read_lnk_files
@@ -25740,6 +26460,15 @@
 
             (macro manage_files ((type ARG1))
                 (allow ARG1 modules_file manage_file_perms)
+                (call files.generic_modules.read_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_files ((type ARG1))
+                (allow ARG1 modules_file map_file_perms)
                 (call files.generic_modules.read_lnk_files
                     (
                         ARG1
@@ -26201,6 +26930,24 @@
 
             (macro manage_sock_files ((type ARG1))
                 (allow ARG1 runtime_file manage_sock_file_perms)
+                (call runtime.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_dirs ((type ARG1))
+                (allow ARG1 runtime_file map_dir_perms)
+                (call runtime.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_files ((type ARG1))
+                (allow ARG1 runtime_file map_file_perms)
                 (call runtime.search
                     (
                         ARG1
@@ -27057,6 +27804,24 @@
 
             (macro manage_sock_files ((type ARG1))
                 (allow ARG1 obj_type_attribute manage_sock_file_perms)
+                (call files.generic_runtime.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_dirs ((type ARG1))
+                (allow ARG1 obj_type_attribute map_dir_perms)
+                (call files.generic_var.read_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_files ((type ARG1))
+                (allow ARG1 obj_type_attribute map_file_perms)
                 (call files.generic_runtime.search
                     (
                         ARG1
@@ -27956,6 +28721,24 @@
                 )
             )
 
+            (macro map_dirs ((type ARG1))
+                (allow ARG1 runtime_file map_dir_perms)
+                (call files.generic_runtime.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_files ((type ARG1))
+                (allow ARG1 runtime_file map_file_perms)
+                (call files.generic_runtime.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
             (macro mmap ((type ARG1))
                 (allow ARG1 runtime_file mmap_file_perms)
                 (call files.generic_runtime.search
@@ -28771,6 +29554,24 @@
                 )
             )
 
+            (macro map_dirs ((type ARG1))
+                (allow ARG1 runtime_config_file map_dir_perms)
+                (call runtime_config.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_files ((type ARG1))
+                (allow ARG1 runtime_config_file map_file_perms)
+                (call runtime_config.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
             (macro mmap ((type ARG1))
                 (allow ARG1 runtime_config_file mmap_file_perms)
                 (call runtime_config.search
@@ -29407,6 +30208,24 @@
 
             (macro manage_lnk_files ((type ARG1))
                 (allow ARG1 obj_type_attribute manage_lnk_file_perms)
+                (call files.generic_runtime_config.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_dirs ((type ARG1))
+                (allow ARG1 obj_type_attribute map_dir_perms)
+                (call files.generic_runtime.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_files ((type ARG1))
+                (allow ARG1 obj_type_attribute map_file_perms)
                 (call files.generic_runtime_config.search
                     (
                         ARG1
@@ -30086,6 +30905,24 @@
 
             (macro manage_lnk_files ((type ARG1))
                 (allow ARG1 runtime_config_file manage_lnk_file_perms)
+                (call files.generic_runtime_config.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_dirs ((type ARG1))
+                (allow ARG1 runtime_config_file map_dir_perms)
+                (call files.generic_runtime_config.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_files ((type ARG1))
+                (allow ARG1 runtime_config_file map_file_perms)
                 (call files.generic_runtime_config.search
                     (
                         ARG1
@@ -30776,6 +31613,24 @@
                 )
             )
 
+            (macro map_dirs ((type ARG1))
+                (allow ARG1 runtime_lock_file map_dir_perms)
+                (call runtime_lock.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_files ((type ARG1))
+                (allow ARG1 runtime_lock_file map_file_perms)
+                (call runtime_lock.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
             (macro mmap ((type ARG1))
                 (allow ARG1 runtime_lock_file mmap_file_perms)
                 (call runtime_lock.search
@@ -31412,6 +32267,24 @@
 
             (macro manage_lnk_files ((type ARG1))
                 (allow ARG1 obj_type_attribute manage_lnk_file_perms)
+                (call files.generic_runtime_lock.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_dirs ((type ARG1))
+                (allow ARG1 obj_type_attribute map_dir_perms)
+                (call files.generic_runtime.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_files ((type ARG1))
+                (allow ARG1 obj_type_attribute map_file_perms)
                 (call files.generic_runtime_lock.search
                     (
                         ARG1
@@ -32098,6 +32971,24 @@
                 )
             )
 
+            (macro map_dirs ((type ARG1))
+                (allow ARG1 runtime_lock_file map_dir_perms)
+                (call files.generic_runtime_lock.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_files ((type ARG1))
+                (allow ARG1 runtime_lock_file map_file_perms)
+                (call files.generic_runtime_lock.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
             (macro mmap ((type ARG1))
                 (allow ARG1 runtime_lock_file mmap_file_perms)
                 (call files.generic_runtime_lock.search
@@ -32668,6 +33559,21 @@
             )
         )
 
+        (macro map_dirs ((type ARG1))
+            (allow ARG1 runtime_file
+                (dirs
+                    (
+                        map
+                    )
+                )
+            )
+            (call generic_runtime.search
+                (
+                    ARG1
+                )
+            )
+        )
+
         (macro mounton_dirs ((type ARG1))
             (allow ARG1 runtime_file
                 (dir
@@ -33195,6 +34101,14 @@
 
             (macro manage_sock_files ((type ARG1))
                 (allow ARG1 sec_file manage_sock_file_perms)
+            )
+
+            (macro map_dirs ((type ARG1))
+                (allow ARG1 sec_file map_dir_perms)
+            )
+
+            (macro map_files ((type ARG1))
+                (allow ARG1 sec_file map_file_perms)
             )
 
             (macro mmap ((type ARG1))
@@ -33847,6 +34761,24 @@
 
             (macro manage_sock_files ((type ARG1))
                 (allow ARG1 tmpfs_file manage_sock_file_perms)
+                (call tmpfs.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_dirs ((type ARG1))
+                (allow ARG1 tmpfs_file map_dir_perms)
+                (call tmpfs.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_files ((type ARG1))
+                (allow ARG1 tmpfs_file manage_file_perms)
                 (call tmpfs.search
                     (
                         ARG1
@@ -34703,6 +35635,24 @@
 
             (macro manage_sock_files ((type ARG1))
                 (allow ARG1 obj_type_attribute manage_sock_file_perms)
+                (call fs.tmpfs.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_dirs ((type ARG1))
+                (allow ARG1 obj_type_attribute map_dir_perms)
+                (call fs.tmpfs.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_files ((type ARG1))
+                (allow ARG1 obj_type_attribute map_file_perms)
                 (call fs.tmpfs.search
                     (
                         ARG1
@@ -35602,6 +36552,24 @@
                 )
             )
 
+            (macro map_dirs ((type ARG1))
+                (allow ARG1 tmpfs_file map_dir_perms)
+                (call fs.tmpfs.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_files ((type ARG1))
+                (allow ARG1 tmpfs_file map_file_perms)
+                (call fs.tmpfs.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
             (macro mmap ((type ARG1))
                 (allow ARG1 tmpfs_file mmap_file_perms)
                 (call fs.tmpfs.search
@@ -36329,6 +37297,14 @@
             (allow ARG1 file manage_sock_file_perms)
         )
 
+        (macro map_dirs ((type ARG1))
+            (allow ARG1 file map_dir_perms)
+        )
+
+        (macro map_files ((type ARG1))
+            (allow ARG1 file map_file_perms)
+        )
+
         (macro mmap ((type ARG1))
             (allow ARG1 file mmap_file_perms)
         )
@@ -36995,6 +37971,24 @@
 
             (macro manage_sock_files ((type ARG1))
                 (allow ARG1 var_file manage_sock_file_perms)
+                (call var.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_dirs ((type ARG1))
+                (allow ARG1 var_file map_dir_perms)
+                (call var.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_files ((type ARG1))
+                (allow ARG1 var_file map_file_perms)
                 (call var.search
                     (
                         ARG1
@@ -37811,6 +38805,19 @@
 
             (macro manage_sock_files ((type ARG1))
                 (allow ARG1 obj_type_attribute manage_sock_file_perms)
+                (call files.generic_var.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_dirs ((type ARG1))
+                (allow ARG1 obj_type_attribute map_dir_perms)
+            )
+
+            (macro map_files ((type ARG1))
+                (allow ARG1 obj_type_attribute map_file_perms)
                 (call files.generic_var.search
                     (
                         ARG1
@@ -38648,6 +39655,24 @@
 
             (macro manage_sock_files ((type ARG1))
                 (allow ARG1 var_file manage_sock_file_perms)
+                (call files.generic_var.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_dirs ((type ARG1))
+                (allow ARG1 var_file map_dir_perms)
+                (call files.generic_var.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_files ((type ARG1))
+                (allow ARG1 var_file map_file_perms)
                 (call files.generic_var.search
                     (
                         ARG1
@@ -39551,6 +40576,24 @@
                 )
             )
 
+            (macro map_dirs ((type ARG1))
+                (allow ARG1 var_cache_file map_dir_perms)
+                (call var_cache.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_files ((type ARG1))
+                (allow ARG1 var_cache_file map_file_perms)
+                (call var_cache.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
             (macro mmap ((type ARG1))
                 (allow ARG1 var_cache_file mmap_file_perms)
                 (call var_cache.search
@@ -40400,6 +41443,24 @@
 
             (macro manage_sock_files ((type ARG1))
                 (allow ARG1 obj_type_attribute manage_sock_file_perms)
+                (call files.generic_var_cache.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_dirs ((type ARG1))
+                (allow ARG1 obj_type_attribute map_dir_perms)
+                (call files.generic_var.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_files ((type ARG1))
+                (allow ARG1 obj_type_attribute map_file_perms)
                 (call files.generic_var_cache.search
                     (
                         ARG1
@@ -41299,6 +42360,24 @@
                 )
             )
 
+            (macro map_dirs ((type ARG1))
+                (allow ARG1 var_cache_file map_dir_perms)
+                (call files.generic_var_cache.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_files ((type ARG1))
+                (allow ARG1 var_cache_file map_file_perms)
+                (call files.generic_var_cache.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
             (macro mmap ((type ARG1))
                 (allow ARG1 var_cache_file mmap_file_perms)
                 (call files.generic_var_cache.search
@@ -42114,6 +43193,24 @@
                 )
             )
 
+            (macro map_dirs ((type ARG1))
+                (allow ARG1 var_db_file map_dir_perms)
+                (call var_db.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_files ((type ARG1))
+                (allow ARG1 var_db_file map_file_perms)
+                (call var_db.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
             (macro mmap ((type ARG1))
                 (allow ARG1 var_db_file mmap_file_perms)
                 (call var_db.search
@@ -42750,6 +43847,24 @@
 
             (macro manage_lnk_files ((type ARG1))
                 (allow ARG1 obj_type_attribute manage_lnk_file_perms)
+                (call files.generic_var_db.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_dirs ((type ARG1))
+                (allow ARG1 obj_type_attribute map_dir_perms)
+                (call files.generic_var.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_files ((type ARG1))
+                (allow ARG1 obj_type_attribute map_file_perms)
                 (call files.generic_var_db.search
                     (
                         ARG1
@@ -43429,6 +44544,24 @@
 
             (macro manage_lnk_files ((type ARG1))
                 (allow ARG1 var_db_file manage_lnk_file_perms)
+                (call files.generic_var_db.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_dirs ((type ARG1))
+                (allow ARG1 var_db_file map_dir_perms)
+                (call files.generic_var_db.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_files ((type ARG1))
+                (allow ARG1 var_db_file map_file_perms)
                 (call files.generic_var_db.search
                     (
                         ARG1
@@ -44193,6 +45326,24 @@
 
             (macro manage_sock_files ((type ARG1))
                 (allow ARG1 var_lib_file manage_sock_file_perms)
+                (call var_lib.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_dirs ((type ARG1))
+                (allow ARG1 var_lib_file map_dir_perms)
+                (call var_lib.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_files ((type ARG1))
+                (allow ARG1 var_lib_file map_file_perms)
                 (call var_lib.search
                     (
                         ARG1
@@ -45049,6 +46200,24 @@
 
             (macro manage_sock_files ((type ARG1))
                 (allow ARG1 obj_type_attribute manage_sock_file_perms)
+                (call files.generic_var_lib.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_dirs ((type ARG1))
+                (allow ARG1 obj_type_attribute map_dir_perms)
+                (call files.generic_var.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_files ((type ARG1))
+                (allow ARG1 obj_type_attribute map_file_perms)
                 (call files.generic_var_lib.search
                     (
                         ARG1
@@ -45948,6 +47117,24 @@
                 )
             )
 
+            (macro map_dirs ((type ARG1))
+                (allow ARG1 var_lib_file map_dir_perms)
+                (call files.generic_var_lib.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_files ((type ARG1))
+                (allow ARG1 var_lib_file map_file_perms)
+                (call files.generic_var_lib.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
             (macro mmap ((type ARG1))
                 (allow ARG1 var_lib_file mmap_file_perms)
                 (call files.generic_var_lib.search
@@ -46763,6 +47950,24 @@
                 )
             )
 
+            (macro map_dirs ((type ARG1))
+                (allow ARG1 var_log_file map_dir_perms)
+                (call var_log.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_files ((type ARG1))
+                (allow ARG1 var_log_file map_file_perms)
+                (call var_log.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
             (macro mmap ((type ARG1))
                 (allow ARG1 var_log_file mmap_file_perms)
                 (call var_log.search
@@ -47399,6 +48604,24 @@
 
             (macro manage_lnk_files ((type ARG1))
                 (allow ARG1 obj_type_attribute manage_lnk_file_perms)
+                (call files.generic_var_log.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_dirs ((type ARG1))
+                (allow ARG1 obj_type_attribute map_dir_perms)
+                (call files.generic_var.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_files ((type ARG1))
+                (allow ARG1 obj_type_attribute map_file_perms)
                 (call files.generic_var_log.search
                     (
                         ARG1
@@ -48078,6 +49301,24 @@
 
             (macro manage_lnk_files ((type ARG1))
                 (allow ARG1 var_log_file manage_lnk_file_perms)
+                (call files.generic_var_log.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_dirs ((type ARG1))
+                (allow ARG1 var_log_file map_dir_perms)
+                (call files.generic_var_log.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_files ((type ARG1))
+                (allow ARG1 var_log_file map_file_perms)
                 (call files.generic_var_log.search
                     (
                         ARG1
@@ -48842,6 +50083,24 @@
 
             (macro manage_sock_files ((type ARG1))
                 (allow ARG1 var_spool_file manage_sock_file_perms)
+                (call var_spool.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_dirs ((type ARG1))
+                (allow ARG1 var_spool_file map_dir_perms)
+                (call var_spool.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_files ((type ARG1))
+                (allow ARG1 var_spool_file map_file_perms)
                 (call var_spool.search
                     (
                         ARG1
@@ -49698,6 +50957,24 @@
 
             (macro manage_sock_files ((type ARG1))
                 (allow ARG1 obj_type_attribute manage_sock_file_perms)
+                (call files.generic_var_spool.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_dirs ((type ARG1))
+                (allow ARG1 obj_type_attribute map_dir_perms)
+                (call files.generic_var.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_files ((type ARG1))
+                (allow ARG1 obj_type_attribute map_file_perms)
                 (call files.generic_var_spool.search
                     (
                         ARG1
@@ -50590,6 +51867,24 @@
 
             (macro manage_sock_files ((type ARG1))
                 (allow ARG1 var_spool_file manage_sock_file_perms)
+                (call files.generic_var_spool.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_dirs ((type ARG1))
+                (allow ARG1 var_spool_file map_dir_perms)
+                (call files.generic_var_spool.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_files ((type ARG1))
+                (allow ARG1 var_spool_file map_file_perms)
                 (call files.generic_var_spool.search
                     (
                         ARG1
@@ -51493,6 +52788,24 @@
                 )
             )
 
+            (macro map_dirs ((type ARG1))
+                (allow ARG1 var_tmp_file map_dir_perms)
+                (call var_tmp.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_files ((type ARG1))
+                (allow ARG1 var_tmp_file map_file_perms)
+                (call var_tmp.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
             (macro mmap ((type ARG1))
                 (allow ARG1 var_tmp_file mmap_file_perms)
                 (call var_tmp.search
@@ -52382,6 +53695,29 @@
 
             (macro manage_sock_files ((type ARG1))
                 (allow ARG1 obj_type_attribute manage_sock_file_perms)
+                (call files.generic_var_tmp.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_dirs ((type ARG1))
+                (allow ARG1 obj_type_attribute map_dir_perms)
+                (call files.generic_data.read_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+                (call files.generic_var.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_files ((type ARG1))
+                (allow ARG1 obj_type_attribute map_file_perms)
                 (call files.generic_var_tmp.search
                     (
                         ARG1
@@ -53329,6 +54665,24 @@
 
             (macro manage_sock_files ((type ARG1))
                 (allow ARG1 var_tmp_file manage_sock_file_perms)
+                (call files.generic_var_tmp.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_dirs ((type ARG1))
+                (allow ARG1 var_tmp_file map_dir_perms)
+                (call files.generic_var_tmp.search
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_files ((type ARG1))
+                (allow ARG1 var_tmp_file map_file_perms)
                 (call files.generic_var_tmp.search
                     (
                         ARG1

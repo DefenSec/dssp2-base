@@ -600,6 +600,7 @@
             ioctl
             lock
             link
+            map
             mounton
             open
             quotaon
@@ -777,6 +778,7 @@
             execmod
             execute
             link
+            map
             mounton
             quotaon
             remove_name
@@ -953,6 +955,7 @@
             execmod
             execute
             link
+            map
             mounton
             quotaon
             rename

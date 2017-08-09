@@ -52,6 +52,7 @@
         (
             getattr
             ioctl
+            map
             read
             relabelfrom
             setattr
@@ -107,6 +108,7 @@
             append
             ioctl
             lock
+            map
             read
             relabelfrom
             remove_name
@@ -184,6 +186,7 @@
             execute_no_trans
             ioctl
             lock
+            map
             read
             relabelfrom
             rename

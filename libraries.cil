@@ -328,6 +328,36 @@
             )
         )
 
+        (macro map_dirs ((type ARG1))
+            (allow ARG1 lib_file
+                (dirs
+                    (
+                        map
+                    )
+                )
+            )
+            (call read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro map_files ((type ARG1))
+            (allow ARG1 lib_file
+                (files
+                    (
+                        map
+                    )
+                )
+            )
+            (call read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
         (macro mmap ((type ARG1))
             (allow ARG1 lib_file mmap_file_perms)
             (call search
@@ -932,6 +962,15 @@
             )
         )
 
+        (macro map_files ((type ARG1))
+            (allow ARG1 file map_file_perms)
+            (call generic_libraries.read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
         (macro mmap ((type ARG1))
             (allow ARG1 file mmap_file_perms)
             (call generic_libraries.read_lnk_files
@@ -1115,6 +1154,15 @@
 
         (macro manage_files ((type ARG1))
             (allow ARG1 file manage_file_perms)
+            (call files.generic_config.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro map_files ((type ARG1))
+            (allow ARG1 file map_file_perms)
             (call files.generic_config.search
                 (
                     ARG1
@@ -1333,6 +1381,15 @@
                 )
             )
 
+            (macro map_files ((type ARG1))
+                (allow ARG1 obj_type_attribute map_file_perms)
+                (call lib.generic_libraries.read_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
             (macro mmap ((type ARG1))
                 (allow ARG1 obj_type_attribute mmap_file_perms)
                 (call lib.generic_libraries.read_lnk_files
@@ -1522,6 +1579,15 @@
 
             (macro manage_files ((type ARG1))
                 (allow ARG1 lib_file manage_file_perms)
+                (call lib.generic_libraries.read_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_files ((type ARG1))
+                (allow ARG1 lib_file map_file_perms)
                 (call lib.generic_libraries.read_lnk_files
                     (
                         ARG1

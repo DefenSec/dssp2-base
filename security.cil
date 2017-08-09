@@ -892,6 +892,36 @@
             )
         )
 
+        (macro map_dirs ((type ARG1))
+            (allow ARG1 isid
+                (dirs
+                    (
+                        map
+                    )
+                )
+            )
+            (call fs.sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro map_files ((type ARG1))
+            (allow ARG1 isid
+                (files
+                    (
+                        map
+                    )
+                )
+            )
+            (call fs.sysfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
         (macro mmap ((type ARG1))
             (allow ARG1 isid mmap_file_perms)
             (call search

@@ -362,6 +362,36 @@
             )
         )
 
+        (macro map_dirs ((type ARG1))
+            (allow ARG1 cmd_file
+                (dirs
+                    (
+                        map
+                    )
+                )
+            )
+            (call read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro map_files ((type ARG1))
+            (allow ARG1 cmd_file
+                (files
+                    (
+                        map
+                    )
+                )
+            )
+            (call read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
         (macro mmap ((type ARG1))
             (allow ARG1 cmd_file mmap_file_perms)
             (call search
@@ -1030,6 +1060,15 @@
                 )
             )
 
+            (macro map_files ((type ARG1))
+                (allow ARG1 obj_type_attribute map_file_perms)
+                (call cmd.generic_commands.read_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
             (macro mmap ((type ARG1))
                 (allow ARG1 obj_type_attribute mmap_file_perms)
                 (call cmd.generic_commands.read_lnk_files
@@ -1248,6 +1287,15 @@
 
             (macro manage_files ((type ARG1))
                 (allow ARG1 cmd_file manage_file_perms)
+                (call cmd.generic_commands.read_lnk_files
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_files ((type ARG1))
+                (allow ARG1 cmd_file map_file_perms)
                 (call cmd.generic_commands.read_lnk_files
                     (
                         ARG1

@@ -1607,6 +1607,21 @@
             )
         )
 
+        (macro map_chr_files ((type ARG1))
+            (allow ARG1 stor_file
+                (chr_file
+                    (
+                        map
+                    )
+                )
+            )
+            (call fs.devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
         (macro read ((type ARG1))
             (call read_blk_files
                 (
@@ -2306,6 +2321,21 @@
             )
         )
 
+        (macro map_chr_files ((type ARG1))
+            (allow ARG1 stor_file
+                (chr_file
+                    (
+                        map
+                    )
+                )
+            )
+            (call fs.devtmpfs.search
+                (
+                    ARG1
+                )
+            )
+        )
+
         (macro read_chr_files ((type ARG1))
             (allow ARG1 stor_file read_chr_file_perms)
             (call read_scsi_generic_subj_type
@@ -2672,6 +2702,21 @@
                     )
                 )
                 (call fs.devtmpfs.rw_dirs
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_chr_files ((type ARG1))
+                (allow ARG1 obj_type_attribute
+                    (chr_file
+                        (
+                            map
+                        )
+                    )
+                )
+                (call fs.devtmpfs.search
                     (
                         ARG1
                     )
@@ -3215,6 +3260,21 @@
                 )
                 (allow ARG1 stor_file manage_chr_file_perms)
                 (call fs.devtmpfs.rw_dirs
+                    (
+                        ARG1
+                    )
+                )
+            )
+
+            (macro map_chr_files ((type ARG1))
+                (allow ARG1 stor_file
+                    (chr_file
+                        (
+                            map
+                        )
+                    )
+                )
+                (call fs.devtmpfs.search
                     (
                         ARG1
                     )
