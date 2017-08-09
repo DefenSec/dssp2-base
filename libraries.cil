@@ -1061,7 +1061,12 @@
                     ARG1
                 )
             )
-		    (call ld_so_cache.read_files
+            (call ld_so_cache.map_files
+                (
+                    ARG1
+                )
+            )
+            (call ld_so_cache.read_files
                 (
                     ARG1
                 )
