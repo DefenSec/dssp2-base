@@ -1020,6 +1020,11 @@
                     subj_type_attribute
                 )
             )
+            (call dev.zero.map_chr_files
+                (
+                    subj_type_attribute
+                )
+            )
             (call dev.zero.rw_chr_files
                 (
                     subj_type_attribute
