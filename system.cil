@@ -744,6 +744,14 @@
         )
     )
 
+    (optional sys_optional_mkosi
+        (call mkosi.use_fd
+            (
+                isid
+            )
+        )
+    )
+
     (optional sys_optional_mount
         (call mount.use_fd
             (
