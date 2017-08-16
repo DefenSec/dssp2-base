@@ -154,6 +154,7 @@
 (classpermission relabelto_dir_perms)
 (classpermission rename_dir_perms)
 (classpermission rw_dir_perms)
+(classpermission rw_inherited_dir_perms)
 (classpermission search_dir_perms)
 (classpermission write_dir_perms)
 
@@ -1757,6 +1758,21 @@
             ioctl
             lock
             open
+            read
+            remove_name
+            search
+            write
+        )
+    )
+)
+
+(classpermissionset rw_inherited_dir_perms
+    (dir
+        (
+            add_name
+            getattr
+            ioctl
+            lock
             read
             remove_name
             search

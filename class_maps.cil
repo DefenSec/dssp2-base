@@ -212,6 +212,7 @@
         relabelto
         rename
         rw
+        rw_inherited
         setattr
         write
     )
@@ -2544,6 +2545,16 @@
 (classmapping files_except_blk_and_chr rw rw_file_perms)
 (classmapping files_except_blk_and_chr rw rw_lnk_file_perms)
 (classmapping files_except_blk_and_chr rw rw_sock_file_perms)
+
+(classmapping files_except_blk_and_chr rw_inherited
+    rw_inherited_dir_perms)
+(classmapping files_except_blk_and_chr rw_inherited
+    rw_inherited_fifo_file_perms)
+(classmapping files_except_blk_and_chr rw_inherited
+    rw_inherited_file_perms)
+(classmapping files_except_blk_and_chr rw_inherited rw_lnk_file_perms)
+(classmapping files_except_blk_and_chr rw_inherited
+    rw_inherited_sock_file_perms)
 
 (classmapping files_except_blk_and_chr setattr search_dir_perms)
 (classmapping files_except_blk_and_chr setattr

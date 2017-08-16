@@ -1867,6 +1867,37 @@
         )
     )
 
+    (macro rw_inherited_except ((type ARG1))
+        (allow ARG1 except_obj_type_attribute
+            (files_except_blk_and_chr
+                (
+                    rw_inherited
+                )
+            )
+        )
+    )
+
+    (macro rw_inherited_except_auth ((type ARG1))
+        (allow ARG1 except_auth_obj_type_attribute
+            (files_except_blk_and_chr
+                (
+                    rw_inherited
+                )
+            )
+        )
+    )
+
+    (macro rw_inherited_except_sec ((type ARG1))
+        (allow ARG1 except_sec_obj_type_attribute
+            (files_except_blk_and_chr
+                (
+                    rw_inherited
+                )
+            )
+        )
+    )
+
+
     (macro rw_except ((type ARG1))
         (allow ARG1 except_obj_type_attribute
             (files_except_blk_and_chr
