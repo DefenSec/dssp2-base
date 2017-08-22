@@ -1,63 +1,69 @@
 ; -*- mode: CIL; fill-column: 75; indent-tabs-mode: nil; tab-width: 4 -*-
 
-; System policy
-;
-; 1. Sys initial security identifier declarations
-; 2. Sys name space
-;       Sys abi_sysctl name space
-;       Sys cpu_sysfs name space
-;       Sys cpu_online_sysfs name space
-;       Sys cpuinfo_proc name space
-;       Sys crypto_sysctl name space
-;       Sys debug_sysctl name space
-;       Sys dev_sysctl name space
-;       Sys fs_sysctl name space
-;       Sys generic_sysctl name space
-;       Sys invalid name space
-;       Sys iomem_proc name space
-;       Sys irq_sysctl name space
-;       Sys isid name space
-;       Sys kallsyms_proc name space
-;       Sys kcore_proc name space
-;       Sys kernel_sysctl name space
-;       Sys kmsg_proc name space
-;       Sys latency_stats_proc name space
-;       Sys load_kernel_init_module name space
-;       Sys load_kernel_module name space
-;       Sys mdstat_proc name space
-;       Sys meminfo_proc name space
-;       Sys memory_sysfs name space
-;       Sys mountpoint name space
-;       Sys mtrr_proc name space
-;       Sys net_proc name space
-;       Sys net_sysctl name space
-;       Sys net_unix_sysctl name space
-;       Sys node_sysfs name space
-;       Sys node_online_sysfs name space
-;       Sys proc_file name space
-;       Sys security_sysctl name space
-;       Sys sysctl_file name space
-;       Sys sysfs_file name space
-;       Sys sysrq_proc name space
-;       Sys unlabeled name space
-;       Sys user_sysctl name space
-;       Sys usermodehelper_sysctl name space
-;       Sys var_log name space
-;       Sys vm_sysctl name space
-;       Sys vm_overcommit_sysctl name space
+; sys
+;     abi_sysctl
+;     cpu_sysfs
+;     cpu_online_sysfs
+;     cpuinfo_proc
+;     crypto_sysctl
+;     debug_sysctl
+;     dev_sysctl
+;     fs_sysctl
+;     generic_sysctl
+;     invalid
+;         obj_all_macro_template
+;     iomem_proc
+;     irq_sysctl
+;     isid
+;         stub
+;     kallsyms_proc
+;     kcore_proc
+;     kernel_sysctl
+;     kmsg_proc
+;     latency_stats_proc
+;     load_kernel_init_module
+;     load_kernel_module
+;     mdstat_proc
+;     meminfo_proc
+;     memory_sysfs
+;     mountpoint
+;         obj_all_macro_template
+;     mtrr_proc
+;     net_proc
+;     net_sysctl
+;     net_unix_sysctl
+;     node_sysfs
+;     node_online_sysfs
+;     proc_file
+;         obj_all_macro_template
+;         obj_stub
+;         obj_template
+;     security_sysctl
+;     sysctl_file
+;         obj_all_macro_template
+;         obj_stub
+;         obj_template
+;     sysfs_file
+;         obj_all_macro_template
+;         obj_stub
+;         obj_template
+;     sysrq_proc
+;     timer_proc
+;     unlabeled
+;     user_sysctl
+;     usermodehelper_sysctl
+;     var_log
+;     vm_sysctl
+;     vm_overcommit_sysctl
 
 ;
-; Sys initial security identifier declarations
+; Policy
 ;
 
 (sid file)
 (sid kernel)
 (sid sysctl)
 (sid unlabeled)
-
-;
-; Sys name space
-;
 
 (block sys
 
@@ -912,58 +918,46 @@
             )
     )
 
-    ;
-    ; Sys abi_sysctl name space
-    ;
-
     (block abi_sysctl
 
         ;
-        ; abi_sysctl contexts
+        ; Contexts
         ;
 
         (genfscon "proc" "/sys/abi" sysctl_file_context)
 
         ;
-        ; abi_sysctl policy
+        ; Policy
         ;
 
         (blockinherit sys.sysctl_file.obj_template)
     )
 
-    ;
-    ; Sys cpu_sysfs name space
-    ;
-
     (block cpu_sysfs
 
         ;
-        ; cpu_sysfs contexts
+        ; Contexts
         ;
 
         (genfscon "sysfs" "/devices/system/cpu" sysfs_file_context)
 
         ;
-        ; cpu_sysfs policy
+        ; Policy
         ;
 
         (blockinherit sys.sysfs_file.obj_template)
     )
 
-    ;
-    ; Sys cpu_online_sysfs name space
-    ;
-
     (block cpu_online_sysfs
 
         ;
-        ; cpu_online_sysfs contexts
+        ; Contexts
         ;
 
         (genfscon "sysfs" "/devices/system/cpu/online" sysfs_file_context)
 
         ;
-        ; cpu_online_sysfs macros
+        ; Macros
         ;
 
         (macro append_files ((type ARG1))
@@ -1096,26 +1090,22 @@
         )
 
         ;
-        ; cpu_online_sysfs policy
+        ; Policy
         ;
 
         (blockinherit sys.sysfs_file.obj_stub)
     )
 
-    ;
-    ; Sys cpuinfo_proc name space
-    ;
-
     (block cpuinfo_proc
 
         ;
-        ; cpuinfo_proc contexts
+        ; Contexts
         ;
 
         (genfscon "proc" "/cpuinfo" proc_file_context)
 
         ;
-        ; cpuinfo_proc macros
+        ; Macros
         ;
 
         (macro append_files ((type ARG1))
@@ -1167,83 +1157,67 @@
         )
 
         ;
-        ; cpuinfo_proc policy
+        ; Policy
         ;
 
         (blockinherit sys.proc_file.obj_stub)
     )
 
-    ;
-    ; Sys crypto_sysctl name space
-    ;
-
     (block crypto_sysctl
 
         ;
-        ; crypto_sysctl contexts
+        ; Contexts
         ;
 
         (genfscon "proc" "/sys/crypto" sysctl_file_context)
 
         ;
-        ; crypto_sysctl policy
+        ; Policy
         ;
 
         (blockinherit sys.sysctl_file.obj_template)
     )
 
-    ;
-    ; Sys debug_sysctl name space
-    ;
-
     (block debug_sysctl
 
         ;
-        ; debug_sysctl contexts
+        ; Contexts
         ;
 
         (genfscon "proc" "/sys/debug" sysctl_file_context)
 
         ;
-        ; debug_sysctl policy
+        ; Policy
         ;
 
         (blockinherit sys.sysctl_file.obj_template)
     )
 
-    ;
-    ; Sys dev_sysctl name space
-    ;
-
     (block dev_sysctl
 
         ;
-        ; dev_sysctl contexts
+        ; Contexts
         ;
 
         (genfscon "proc" "/sys/dev" sysctl_file_context)
 
         ;
-        ; dev_sysctl policy
+        ; Policy
         ;
 
         (blockinherit sys.sysctl_file.obj_template)
     )
 
-    ;
-    ; Sys fs_sysctl name space
-    ;
-
     (block fs_sysctl
 
         ;
-        ; fs_sysctl contexts
+        ; Contexts
         ;
 
         (genfscon "proc" "/sys/fs" sysctl_file_context)
 
         ;
-        ; fs_sysctl macros
+        ; Macros
         ;
 
         (macro mounton_dirs ((type ARG1))
@@ -1257,7 +1231,7 @@
         )
 
         ;
-        ; fs_sysctl policy
+        ; Policy
         ;
 
         (blockinherit sys.sysctl_file.obj_template)
@@ -1271,14 +1245,10 @@
         )
     )
 
-    ;
-    ; Sys generic_sysctl name space
-    ;
-
     (block generic_sysctl
 
         ;
-        ; generic_sysctl contexts
+        ; Contexts
         ;
 
         (genfscon "proc" "/sys" isid_context)
@@ -1286,7 +1256,7 @@
         (sidcontext sysctl isid_context)
 
         ;
-        ; generic_sysctl macros
+        ; Macros
         ;
 
         (macro append_files ((type ARG1))
@@ -1691,7 +1661,7 @@
         )
 
         ;
-        ; generic_sysctl policy
+        ; Policy
         ;
 
         (blockinherit isid.stub)
@@ -1711,20 +1681,16 @@
         )
     )
 
-    ;
-    ; Sys invalid name space
-    ;
-
     (block invalid
 
         ;
-        ; invalid contexts
+        ; Contexts
         ;
 
         (sidcontext unlabeled isid_context)
 
         ;
-        ; invalid macros
+        ; Macros
         ;
 
         (blockinherit obj_all_macro_template)
@@ -1890,7 +1856,7 @@
         )
 
         ;
-        ; invalid policy
+        ; Policy
         ;
 
         (blockinherit isid.stub)
@@ -1979,13 +1945,13 @@
             sock_file_except_execmod_map_and_mounton)
 
         ;
-        ; invalid templates
+        ; Templates
         ;
 
         (block obj_all_macro_template
 
             ;
-            ; sys.invalid.obj_all_macro_template macros
+            ; Macros
             ;
 
             (macro add_entries ((type ARG1))
@@ -3100,27 +3066,23 @@
             )
 
             ;
-            ; sys.invalid.obj_all_macro_template policy
+            ; Policy
             ;
 
             (blockabstract obj_all_macro_template)
         )
     )
 
-    ;
-    ; Sys iomem_proc name space
-    ;
-
     (block iomem_proc
 
         ;
-        ; iomem_proc contexts
+        ; Contexts
         ;
 
         (genfscon "proc" "/iomem" proc_file_context)
 
         ;
-        ; iomem_proc macros
+        ; Macros
         ;
 
         (macro append_files ((type ARG1))
@@ -3172,26 +3134,22 @@
         )
 
         ;
-        ; iomem_proc policy
+        ; Policy
         ;
 
         (blockinherit sys.proc_file.obj_stub)
     )
 
-    ;
-    ; Sys irq_sysctl name space
-    ;
-
     (block irq_sysctl
 
         ;
-        ; irq_sysctl contexts
+        ; Contexts
         ;
 
         (genfscon "proc" "/irq" sysctl_file_context)
 
         ;
-        ; irq macros
+        ; Macros
         ;
 
         (macro append_files ((type ARG1))
@@ -3596,7 +3554,7 @@
         )
 
         ;
-        ; irq_sysctl policy
+        ; Policy
         ;
 
         (blockinherit sys.sysctl_file.obj_stub)
@@ -3610,20 +3568,16 @@
         )
     )
 
-    ;
-    ; Sys isid name space
-    ;
-
     (block isid
 
         ;
-        ; isid templates
+        ; Templates
         ;
 
         (block stub
 
             ;
-            ; sys.isid.stub contexts
+            ; Contexts
             ;
 
             (context isid_context
@@ -3639,7 +3593,7 @@
             )
 
             ;
-            ; sys.isid.stub policy
+            ; Policy
             ;
 
             (blockabstract stub)
@@ -3648,20 +3602,16 @@
         )
     )
 
-    ;
-    ; Sys kallsyms_proc name space
-    ;
-
     (block kallsyms_proc
 
         ;
-        ; kallsyms_proc contexts
+        ; Contexts
         ;
 
         (genfscon "proc" "/kallsyms" proc_file_context)
 
         ;
-        ; kallsyms_proc macros
+        ; Macros
         ;
 
         (macro append_files ((type ARG1))
@@ -3713,26 +3663,22 @@
         )
 
         ;
-        ; kallsyms_proc policy
+        ; Policy
         ;
 
         (blockinherit sys.proc_file.obj_stub)
     )
 
-    ;
-    ; Sys kcore_proc name space
-    ;
-
     (block kcore_proc
 
         ;
-        ; kcore_proc contexts
+        ; Contexts
         ;
 
         (genfscon "proc" "/kcore" proc_file_context)
 
         ;
-        ; kcore_proc macros
+        ; Macros
         ;
 
         (macro append_files ((type ARG1))
@@ -3804,7 +3750,7 @@
         )
 
         ;
-        ; kcore_proc policy
+        ; Policy
         ;
 
         (blockinherit sys.proc_file.obj_stub)
@@ -3822,20 +3768,16 @@
         )
     )
 
-    ;
-    ; Sys kernel_sysctl name space
-    ;
-
     (block kernel_sysctl
 
         ;
-        ; kernel_sysctl contexts
+        ; Contexts
         ;
 
         (genfscon "proc" "/sys/kernel" sysctl_file_context)
 
         ;
-        ; kernel_sysctl macros
+        ; Macros
         ;
 
         (macro mounton_dirs ((type ARG1))
@@ -3859,26 +3801,22 @@
         )
 
         ;
-        ; kernel_sysctl policy
+        ; Policy
         ;
 
         (blockinherit sys.sysctl_file.obj_template)
     )
 
-    ;
-    ; Sys kmsg_proc name space
-    ;
-
     (block kmsg_proc
 
         ;
-        ; kmsg_proc contexts
+        ; Contexts
         ;
 
         (genfscon "proc" "/kmsg" proc_file_context)
 
         ;
-        ; kmsg_proc macros
+        ; Macros
         ;
 
         (macro append_files ((type ARG1))
@@ -3960,7 +3898,7 @@
         )
 
         ;
-        ; kmsg_proc policy
+        ; Policy
         ;
 
         (blockinherit sys.proc_file.obj_stub)
@@ -3986,20 +3924,16 @@
         )
     )
 
-    ;
-    ; Sys latency_stats_proc name space
-    ;
-
     (block latency_stats_proc
 
         ;
-        ; latency_stats_proc contexts
+        ; Contexts
         ;
 
         (genfscon "proc" "/latency_stats" proc_file_context)
 
         ;
-        ; latency_stats_proc macros
+        ; Macros
         ;
 
         (macro append_files ((type ARG1))
@@ -4061,7 +3995,7 @@
         )
 
         ;
-        ; latency_stats_proc policy
+        ; Policy
         ;
 
         (blockinherit sys.proc_file.obj_stub)
@@ -4075,21 +4009,17 @@
         )
     )
 
-    ;
-    ; Sys load_kernel_init_module name space
-    ;
-
     (block load_kernel_init_module
 
         ;
-        ; load_kernel_init_module contexts
+        ; Contexts
         ;
 
         (genfscon "selinuxfs" "/booleans/sys.load_kernel_init_module"
             bool_file_context)
 
         ;
-        ; load_kernel_init_module policy
+        ; Policy
         ;
 
         (blockinherit sec.bool_file.obj_template)
@@ -4114,14 +4044,14 @@
     (block load_kernel_module
 
         ;
-        ; load_kernel_module contexts
+        ; Contexts
         ;
 
         (genfscon "selinuxfs" "/booleans/sys.load_kernel_module"
             bool_file_context)
 
         ;
-        ; load_kernel_module policy
+        ; Policy
         ;
 
         (blockinherit sec.bool_file.obj_template)
@@ -4147,20 +4077,16 @@
         )
     )
 
-    ;
-    ; Sys mdstat_proc name space
-    ;
-
     (block mdstat_proc
 
         ;
-        ; mdstat_proc contexts
+        ; Contexts
         ;
 
         (genfscon "proc" "/mdstat" proc_file_context)
 
         ;
-        ; mdstat_proc macros
+        ; Macros
         ;
 
         (macro append_files ((type ARG1))
@@ -4212,26 +4138,22 @@
         )
 
         ;
-        ; mdstat_proc policy
+        ; Policy
         ;
 
         (blockinherit sys.proc_file.obj_stub)
     )
 
-    ;
-    ; Sys meminfo_proc name space
-    ;
-
     (block meminfo_proc
 
         ;
-        ; meminfo_proc contexts
+        ; Contexts
         ;
 
         (genfscon "proc" "/meminfo" proc_file_context)
 
         ;
-        ; meminfo_proc macros
+        ; Macros
         ;
 
         (macro append_files ((type ARG1))
@@ -4283,46 +4205,37 @@
         )
 
         ;
-        ; meminfo_proc policy
+        ; Policy
         ;
 
         (blockinherit sys.proc_file.obj_stub)
     )
 
-    ;
-    ; Sys memory_sysfs name space
-    ;
-
-
     (block memory_sysfs
 
         ;
-        ; memory_sysfs contexts
+        ; Contexts
         ;
 
         (genfscon "sysfs" "/devices/system/memory" sysfs_file_context)
 
         ;
-        ; memory_sysfs policy
+        ; Policy
         ;
 
         (blockinherit sys.sysfs_file.obj_template)
     )
 
-    ;
-    ; Sys mountpoint name space
-    ;
-
     (block mountpoint
 
         ;
-        ; mountpoint macros
+        ; Macros
         ;
 
         (blockinherit obj_all_macro_template)
 
         ;
-        ; mountpoint policy
+        ; Policy
         ;
 
         (typeattribute obj_type_attribute)
@@ -4336,13 +4249,13 @@
         )
 
         ;
-        ; mountpoint templates
+        ; Templates
         ;
 
         (block obj_all_macro_template
 
             ;
-            ; sys.mountpoint.obj_all_macro_template macros
+            ; Macros
             ;
 
             (macro dontaudit_audit_access_dirs ((type ARG1))
@@ -4530,27 +4443,23 @@
             )
 
             ;
-            ; sys.mountpoint.obj_all_macro_template policy
+            ; Policy
             ;
 
             (blockabstract obj_all_macro_template)
         )
     )
 
-    ;
-    ; Sys mtrr_proc name space
-    ;
-
     (block mtrr_proc
 
         ;
-        ; mtrr_proc contexts
+        ; Contexts
         ;
 
         (genfscon "proc" "/mtrr" proc_file_context)
 
         ;
-        ; mtrr_proc macros
+        ; Macros
         ;
 
         (macro append_files ((type ARG1))
@@ -4612,7 +4521,7 @@
         )
 
         ;
-        ; mtrr_proc policy
+        ; Policy
         ;
 
         (blockinherit sys.proc_file.obj_stub)
@@ -4626,40 +4535,31 @@
         )
     )
 
-    ;
-    ; Sys net_proc name space
-    ;
-
-
     (block net_proc
 
         ;
-        ; net_proc contexts
+        ; Contexts
         ;
 
         (genfscon "proc" "/net" proc_file_context)
 
         ;
-        ; net_proc policy
+        ; Policy
         ;
 
         (blockinherit sys.proc_file.obj_template)
     )
 
-    ;
-    ; Sys net_sysctl name space
-    ;
-
     (block net_sysctl
 
         ;
-        ; net_sysctl contexts
+        ; Contexts
         ;
 
         (genfscon "proc" "/sys/net" sysctl_file_context)
 
         ;
-        ; net_sysctl macros
+        ; Macros
         ;
 
         (macro mounton_dirs ((type ARG1))
@@ -4673,26 +4573,22 @@
         )
 
         ;
-        ; net_sysctl policy
+        ; Policy
         ;
 
         (blockinherit sys.sysctl_file.obj_template)
     )
 
-    ;
-    ; Sys net_unix_sysctl name space
-    ;
-
     (block net_unix_sysctl
 
         ;
-        ; net_unix_sysctl contexts
+        ; Contexts
         ;
 
         (genfscon "proc" "/sys/net/unix" sysctl_file_context)
 
         ;
-        ; net_unix_sysctl macros
+        ; Macros
         ;
 
         (macro append_files ((type ARG1))
@@ -5212,46 +5108,37 @@
         )
 
         ;
-        ; net_unix_sysctl policy
+        ; Policy
         ;
 
         (blockinherit sys.sysctl_file.obj_stub)
     )
 
-    ;
-    ; Sys node_sysfs name space
-    ;
-
-
     (block node_sysfs
 
         ;
-        ; node_sysfs contexts
+        ; Contexts
         ;
 
         (genfscon "sysfs" "/devices/system/node" sysfs_file_context)
 
         ;
-        ; node_sysfs policy
+        ; Policy
         ;
 
         (blockinherit sys.sysfs_file.obj_template)
     )
 
-    ;
-    ; Sys node_online_sysfs name space
-    ;
-
     (block node_online_sysfs
 
         ;
-        ; node_online_sysfs contexts
+        ; Contexts
         ;
 
         (genfscon "sysfs" "/devices/system/node/online" sysfs_file_context)
 
         ;
-        ; node_online_sysfs macros
+        ; Macros
         ;
 
         (macro append_files ((type ARG1))
@@ -5384,26 +5271,22 @@
         )
 
         ;
-        ; node_online_sysfs policy
+        ; Policy
         ;
 
         (blockinherit sys.sysfs_file.obj_stub)
     )
 
-    ;
-    ; Sys proc_file name space
-    ;
-
     (block proc_file
 
         ;
-        ; proc_file macros
+        ; Macros
         ;
 
         (blockinherit obj_all_macro_template)
 
         ;
-        ; proc_file policy
+        ; Policy
         ;
 
         (typeattribute obj_type_attribute)
@@ -5422,13 +5305,13 @@
             rw_file_perms)
 
         ;
-        ; proc_file templates
+        ; Templates
         ;
 
         (block obj_all_macro_template
 
             ;
-            ; sys.proc_file.obj_all_macro_template macros
+            ; Macros
             ;
 
             (macro dontaudit_read_files ((type ARG1))
@@ -5754,7 +5637,7 @@
             )
 
             ;
-            ; sys.proc_file.obj_all_macro_template policy
+            ; Policy
             ;
 
             (blockabstract obj_all_macro_template)
@@ -5763,7 +5646,7 @@
         (block obj_stub
 
             ;
-            ; sys.proc_file.obj_stub contexts
+            ; Contexts
             ;
 
             (context proc_file_context
@@ -5779,7 +5662,7 @@
             )
 
             ;
-            ; sys.proc_file.obj_stub policy
+            ; Policy
             ;
 
             (blockabstract obj_stub)
@@ -5795,7 +5678,7 @@
         (block obj_template
 
             ;
-            ; sys.proc_file.obj_template macros
+            ; Macros
             ;
 
             (macro append_files ((type ARG1))
@@ -6083,7 +5966,7 @@
             )
 
             ;
-            ; sys.proc_file.obj_template policy
+            ; Policy
             ;
 
             (blockabstract obj_template)
@@ -6092,14 +5975,10 @@
         )
     )
 
-    ;
-    ; Sys security_sysctl name space
-    ;
-
     (block security_sysctl
 
         ;
-        ; security_sysctl contexts
+        ; Contexts
         ;
 
         (genfscon "proc" "/sys/fs/protected_hardlinks" sysctl_file_context)
@@ -6115,7 +5994,7 @@
         (genfscon "proc" "/sys/vm/mmap_min_addr" sysctl_file_context)
 
         ;
-        ; security_sysctl macros
+        ; Macros
         ;
 
         (macro append_files ((type ARG1))
@@ -6900,7 +6779,7 @@
         )
 
         ;
-        ; security_sysctl policy
+        ; Policy
         ;
 
         (blockinherit sys.sysctl_file.obj_stub)
@@ -6918,20 +6797,16 @@
 
     )
 
-    ;
-    ; Sys sysctl_file name space
-    ;
-
     (block sysctl_file
 
         ;
-        ; sysctl_file macros
+        ; Macros
         ;
 
         (blockinherit obj_all_macro_template)
 
         ;
-        ; sysctl_file policy
+        ; Policy
         ;
 
         (typeattribute obj_type_attribute)
@@ -6943,13 +6818,13 @@
         )
 
         ;
-        ; sysctl_file templates
+        ; Templates
         ;
 
         (block obj_all_macro_template
 
             ;
-            ;
+            ; Macros
             ;
 
             (macro dontaudit_read ((type ARG1))
@@ -7407,7 +7282,7 @@
             )
 
             ;
-            ; sys.sysctl_file.obj_all_macro_template policy
+            ; Policy
             ;
 
             (blockabstract obj_all_macro_template)
@@ -7416,7 +7291,7 @@
         (block obj_stub
 
             ;
-            ; sys.sysctl_file.obj_stub contexts
+            ; Contexts
             ;
 
             (context sysctl_file_context
@@ -7432,7 +7307,7 @@
             )
 
             ;
-            ; sys.sysctl_file.obj_stub policy
+            ; Policy
             ;
 
             (blockabstract obj_stub)
@@ -7461,13 +7336,13 @@
         )
 
         ;
-        ; sysctl_file templates
+        ; Templates
         ;
 
         (block obj_template
 
             ;
-            ; sys.sysctl_file.obj_template macros
+            ; Macros
             ;
 
             (macro append_files ((type ARG1))
@@ -7987,7 +7862,7 @@
             )
 
             ;
-            ; sys.sysctl_file.obj_template policy
+            ; Policy
             ;
 
             (blockabstract obj_template)
@@ -7996,20 +7871,16 @@
         )
     )
 
-    ;
-    ; Sys sysfs_file name space
-    ;
-
     (block sysfs_file
 
         ;
-        ; sysfs_file macros
+        ; Macros
         ;
 
         (blockinherit obj_all_macro_template)
 
         ;
-        ; sysfs_file policy
+        ; Policy
         ;
 
         (typeattribute obj_type_attribute)
@@ -8028,13 +7899,13 @@
             rw_file_perms)
 
         ;
-        ; sysfs_file templates
+        ; Templates
         ;
 
         (block obj_all_macro_template
 
             ;
-            ; sys.sysfs_file.obj_all_macro_template macros
+            ; Macros
             ;
 
             (macro dontaudit_read ((type ARG1))
@@ -8462,7 +8333,7 @@
             )
 
             ;
-            ; sys.sysfs_file.obj_all_macro_template policy
+            ; Policy
             ;
 
             (blockabstract obj_all_macro_template)
@@ -8471,7 +8342,7 @@
         (block obj_stub
 
             ;
-            ; sys.sysfs_file.obj_stub contexts
+            ; Contexts
             ;
 
             (context sysfs_file_context
@@ -8487,7 +8358,7 @@
             )
 
             ;
-            ; sys.sysfs_file.obj_stub policy
+            ; Policy
             ;
 
             (blockabstract obj_stub)
@@ -8503,7 +8374,7 @@
         (block obj_template
 
             ;
-            ; sys.sysfs_file.obj_template macros
+            ; Macros
             ;
 
             (macro append_files ((type ARG1))
@@ -8921,7 +8792,7 @@
             )
 
             ;
-            ; sys.sysfs_file.obj_template policy
+            ; Policy
             ;
 
             (blockabstract obj_template)
@@ -8930,20 +8801,16 @@
         )
     )
 
-    ;
-    ; Sys sysrq_proc name space
-    ;
-
     (block sysrq_proc
 
         ;
-        ; sysrq_proc contexts
+        ; Contexts
         ;
 
         (genfscon "proc" "/sysrq-trigger" proc_file_context)
 
         ;
-        ; sysrq_proc macros
+        ; Macros
         ;
 
         (macro append_files ((type ARG1))
@@ -9005,7 +8872,7 @@
         )
 
         ;
-        ; sysrq_proc policy
+        ; Policy
         ;
 
         (blockinherit sys.proc_file.obj_stub)
@@ -9019,21 +8886,17 @@
         )
     )
 
-    ;
-    ; Sys timer_proc name space
-    ;
-
     (block timer_proc
 
         ;
-        ; timer_proc contexts
+        ; Contexts
         ;
 
         (genfscon "proc" "/timer_list" proc_file_context)
         (genfscon "proc" "/timer_stats" proc_file_context)
 
         ;
-        ; timer_proc macros
+        ; Macros
         ;
 
         (macro append_files ((type ARG1))
@@ -9095,7 +8958,7 @@
         )
 
         ;
-        ; timer_proc policy
+        ; Policy
         ;
 
         (blockinherit sys.proc_file.obj_stub)
@@ -9109,20 +8972,16 @@
         )
     )
 
-    ;
-    ; Sys unlabeled name space
-    ;
-
     (block unlabeled
 
         ;
-        ; unlabeled contexts
+        ; Contexts
         ;
 
         (sidcontext file isid_context)
 
         ;
-        ; unlabeled macros
+        ; Macros
         ;
 
         (blockinherit invalid.obj_all_macro_template)
@@ -9158,7 +9017,7 @@
         )
 
         ;
-        ; unlabeled policy
+        ; Policy
         ;
 
         (blockinherit isid.stub)
@@ -9206,33 +9065,25 @@
             sock_file_except_execmod_map_and_mounton)
     )
 
-    ;
-    ; Sys user_sysctl name space
-    ;
-
     (block user_sysctl
 
         ;
-        ; user_sysctl contexts
+        ; Contexts
         ;
 
         (genfscon "proc" "/sys/user" sysctl_file_context)
 
         ;
-        ; user_sysctl policy
+        ; Policy
         ;
 
         (blockinherit sys.sysctl_file.obj_template)
     )
 
-    ;
-    ; Sys usermodehelper_sysctl name space
-    ;
-
     (block usermodehelper_sysctl
 
         ;
-        ; usermodehelper_sysctl contexts
+        ; Contexts
         ;
 
         (genfscon "proc" "/sys/kernel/core_pattern" sysctl_file_context)
@@ -9241,7 +9092,7 @@
         (genfscon "proc" "/sys/kernel/usermodehelper" sysctl_file_context)
 
         ;
-        ; usermodehelper_sysctl macros
+        ; Macros
         ;
 
         (macro dontaudit_write_files ((type ARG1))
@@ -9775,7 +9626,7 @@
         )
 
         ;
-        ; usermodehelper_sysctl policy
+        ; Policy
         ;
 
         (blockinherit sys.sysctl_file.obj_stub)
@@ -9796,13 +9647,13 @@
     (block var_log
 
         ;
-        ; var_log contexts
+        ; Contexts
         ;
 
         (filecon "/var/log/boot\.log.*" file var_log_file_context)
 
         ;
-        ; var_log macros
+        ; Macros
         ;
 
         (macro generic_var_log_obj_type_transition ((type ARG1))
@@ -9814,7 +9665,7 @@
         )
 
         ;
-        ; var_log policy
+        ; Policy
         ;
 
         (blockinherit files.var_log_file.obj_template)
@@ -9832,39 +9683,31 @@
         )
     )
 
-    ;
-    ; Sys vm_sysctl name space
-    ;
-
     (block vm_sysctl
 
         ;
-        ; vm_sysctl contexts
+        ; Contexts
         ;
 
         (genfscon "proc" "/sys/vm" sysctl_file_context)
 
         ;
-        ; vm_sysctl policy
+        ; Policy
         ;
 
         (blockinherit sys.sysctl_file.obj_template)
     )
 
-    ;
-    ; Sys vm_overcommit_sysctl name space
-    ;
-
     (block vm_overcommit_sysctl
 
         ;
-        ; vm_overcommit_sysctl contexts
+        ; Contexts
         ;
 
         (genfscon "proc" "/sys/vm/overcommit_memory" sysctl_file_context)
 
         ;
-        ; vm_overcommit_sysctl macros
+        ; Macros
         ;
 
         (macro append_files ((type ARG1))
@@ -9961,7 +9804,7 @@
         )
 
         ;
-        ; vm_overcommit_sysctl policy
+        ; Policy
         ;
 
         (blockinherit sys.sysctl_file.obj_stub)

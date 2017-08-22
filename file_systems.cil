@@ -1,48 +1,44 @@
 ; -*- mode: CIL; fill-column: 75; indent-tabs-mode: nil; tab-width: 4 -*-
 
-; FS policy
-;
-; 1. FS initial security identifier declarations
-; 2. FS name space
-;       FS aio name space
-;       FS anon_inodefs name space
-;       FS autofs name space
-;       FS bdev name space
-;       FS binfmt_misc name space
-;       FS cifs name space
-;       FS cgroup name space
-;       FS configfs name space
-;       FS debugfs name space
-;       FS devpts name space
-;       FS devtmpfs name space
-;       FS dosfs name space
-;       FS drm name space
-;       FS efivarfs name space
-;       FS fuse name space
-;       FS hugetlbfs name space
-;       FS iso9660 name space
-;       FS nfs name space
-;       FS nfsd name space
-;       FS nsfs name space
-;       FS proc name space
-;       FS pstore name space
-;       FS removable name space
-;       FS rootfs name space
-;       FS rpc_pipefs name space
-;       FS sysfs name space
-;       FS tmpfs name space
-;       FS tracefs name space
-;       FS xattr name space
+; fs
+;     obj_all_macro_template
+;     obj_stub
+;     obj_template
+;     aio
+;     anon_inodefs
+;     autofs
+;     bdev
+;     binfmt_misc
+;     cgroup
+;     cifs
+;     configfs
+;     debugfs
+;     devpts
+;     devtmpfs
+;     dosfs
+;     drm
+;     efivarfs
+;     fuse
+;     hugetlbfs
+;     iso9660
+;     nfs
+;     nfsd
+;     nsfs
+;     proc
+;     pstore
+;     removable
+;     rootfs
+;     rpc_pipefs
+;     sysfs
+;     tmpfs
+;     tracefs
+;     xattr
 
 ;
-; FS initial security identifier declarations
+; Policy
 ;
 
 (sid fs)
-
-;
-; FS name space
-;
 
 (block fs
 
@@ -108,7 +104,7 @@
     (block obj_all_macro_template
 
         ;
-        ; fs.obj_all_macro_template macros
+        ; Macros
         ;
 
         (macro dontaudit_getattr_fs ((type ARG1))
@@ -849,7 +845,7 @@
         )
 
         ;
-        ; fs.obj_all_macro_template policy
+        ; Policy
         ;
 
         (blockabstract obj_all_macro_template)
@@ -858,7 +854,7 @@
     (block obj_stub
 
         ;
-        ; fs.obj_stub contexts
+        ; Contexts
         ;
 
         (context fs_context
@@ -874,7 +870,7 @@
         )
 
         ;
-        ; fs.obj_stub policy
+        ; Policy
         ;
 
         (blockabstract obj_stub)
@@ -890,7 +886,7 @@
     (block obj_template
 
         ;
-        ; fs.obj_template macros
+        ; Macros
         ;
 
         (macro associate ((type ARG1))
@@ -998,7 +994,7 @@
         )
 
         ;
-        ; fs.obj_template policy
+        ; Policy
         ;
 
         (blockabstract obj_template)
@@ -1006,20 +1002,16 @@
         (blockinherit fs.obj_stub)
     )
 
-    ;
-    ; FS aio name space
-    ;
-
     (block aio
 
         ;
-        ; aio contexts
+        ; Contexts
         ;
 
         (genfscon "aio" "/" fs_context)
 
         ;
-        ; aio macros
+        ; Macros
         ;
 
         (macro add_entries ((type ARG1))
@@ -1642,26 +1634,22 @@
         )
 
         ;
-        ; aio policy
+        ; Policy
         ;
 
         (blockinherit fs.obj_template)
     )
 
-    ;
-    ; FS anon_inodefs name space
-    ;
-
     (block anon_inodefs
 
         ;
-        ; anon_inodefs contexts
+        ; Contexts
         ;
 
         (genfscon "anon_inodefs" "/" fs_context)
 
         ;
-        ; anon_inodefs macros
+        ; Macros
         ;
 
         (macro add_entries ((type ARG1))
@@ -2284,26 +2272,22 @@
         )
 
         ;
-        ; anon_inodefs policy
+        ; Policy
         ;
 
         (blockinherit fs.obj_template)
     )
 
-    ;
-    ; FS autofs name space
-    ;
-
     (block autofs
 
         ;
-        ; autofs contexts
+        ; Contexts
         ;
 
         (genfscon "autofs" "/" fs_context)
 
         ;
-        ; autofs macros
+        ; Macros
         ;
 
         (macro add_entries ((type ARG1))
@@ -2926,7 +2910,7 @@
         )
 
         ;
-        ; autofs policy
+        ; Policy
         ;
 
         (blockinherit fs.obj_template)
@@ -2938,20 +2922,16 @@
         )
     )
 
-    ;
-    ; FS bdev name space
-    ;
-
     (block bdev
 
         ;
-        ; bdev contexts
+        ; Contexts
         ;
 
         (genfscon "bdev" "/" fs_context)
 
         ;
-        ; bdev macros
+        ; Macros
         ;
 
         (macro add_entries ((type ARG1))
@@ -3574,26 +3554,22 @@
         )
 
         ;
-        ; bdev policy
+        ; Policy
         ;
 
         (blockinherit fs.obj_template)
     )
 
-    ;
-    ; FS binfmt_misc name space
-    ;
-
     (block binfmt_misc
 
         ;
-        ; binfmt_misc contexts
+        ; Contexts
         ;
 
         (genfscon "binfmt_misc" "/" fs_context)
 
         ;
-        ; binfmt_misc macros
+        ; Macros
         ;
 
         (macro add_entries ((type ARG1))
@@ -4416,7 +4392,7 @@
         )
 
         ;
-        ; binfmt_misc policy
+        ; Policy
         ;
 
         (blockinherit fs.obj_template)
@@ -4428,21 +4404,17 @@
         )
     )
 
-    ;
-    ; FS cgroup name space
-    ;
-
     (block cgroup
 
         ;
-        ; cgroup contexts
+        ; Contexts
         ;
 
         (genfscon "cgroup" "/" fs_context)
         (genfscon "cgroup2" "/" fs_context)
 
         ;
-        ; cgroup macros
+        ; Macros
         ;
 
         (macro add_entries ((type ARG1))
@@ -5475,7 +5447,7 @@
         )
 
         ;
-        ; cgroup policy
+        ; Policy
         ;
 
         (blockinherit fs.obj_template)
@@ -5487,21 +5459,17 @@
         )
     )
 
-    ;
-    ; FS cifs name space
-    ;
-
     (block cifs
 
         ;
-        ; cifs contexts
+        ; Contexts
         ;
 
         (genfscon "cifs" "/" fs_context)
         (genfscon "smbfs" "/" fs_context)
 
         ;
-        ; cifs macros
+        ; Macros
         ;
 
         (macro add_entries ((type ARG1))
@@ -6277,7 +6245,7 @@
         )
 
         ;
-        ; cifs policy
+        ; Policy
         ;
 
         (blockinherit fs.obj_template)
@@ -6289,20 +6257,16 @@
         )
     )
 
-    ;
-    ; FS configfs name space
-    ;
-
     (block configfs
 
         ;
-        ; configfs contexts
+        ; Contexts
         ;
 
         (genfscon "configfs" "/" fs_context)
 
         ;
-        ; configfs macros
+        ; Macros
         ;
 
         (macro add_entries ((type ARG1))
@@ -7125,7 +7089,7 @@
         )
 
         ;
-        ; configfs policy
+        ; Policy
         ;
 
         (blockinherit fs.obj_template)
@@ -7137,20 +7101,16 @@
         )
     )
 
-    ;
-    ; FS debugfs name space
-    ;
-
     (block debugfs
 
         ;
-        ; debugfs contexts
+        ; Contexts
         ;
 
         (genfscon "debugfs" "/" fs_context)
 
         ;
-        ; debugfs macros
+        ; Macros
         ;
 
         (macro add_entries ((type ARG1))
@@ -7973,7 +7933,7 @@
         )
 
         ;
-        ; debugfs policy
+        ; Policy
         ;
 
         (blockinherit fs.obj_template)
@@ -7985,14 +7945,10 @@
         )
     )
 
-    ;
-    ; FS devpts name space
-    ;
-
     (block devpts
 
         ;
-        ; devpts contexts
+        ; Contexts
         ;
 
         (fsuse trans "devpts" fs_context)
@@ -8000,7 +7956,7 @@
         (genfscon "devpts" "/" fs_context)
 
         ;
-        ; devpts macros
+        ; Macros
         ;
 
         (macro add_entries ((type ARG1))
@@ -8389,7 +8345,7 @@
         )
 
         ;
-        ; devpts policy
+        ; Policy
         ;
 
         (blockinherit fs.obj_template)
@@ -8401,14 +8357,10 @@
         )
     )
 
-    ;
-    ; FS devtmpfs name space
-    ;
-
     (block devtmpfs
 
         ;
-        ; devtmpfs contexts
+        ; Contexts
         ;
 
         (filecon "/dev" dir fs_context)
@@ -8417,7 +8369,7 @@
         (fsuse trans "devtmpfs" fs_context)
 
         ;
-        ; devtmpfs macros
+        ; Macros
         ;
 
         (macro add_entries ((type ARG1))
@@ -9492,7 +9444,7 @@
         )
 
         ;
-        ; devtmpfs policy
+        ; Policy
         ;
 
         (blockinherit fs.obj_template)
@@ -9510,14 +9462,10 @@
         )
     )
 
-    ;
-    ; FS dosfs name space
-    ;
-
     (block dosfs
 
         ;
-        ; dosfs contexts
+        ; Contexts
         ;
 
         (filecon "/efi(/.*)?" any fs_context)
@@ -9526,7 +9474,7 @@
         (genfscon "vfat" "/" fs_context)
 
         ;
-        ; dosfs macros
+        ; Macros
         ;
 
         (macro add_entries ((type ARG1))
@@ -10302,7 +10250,7 @@
         )
 
         ;
-        ; dosfs policy
+        ; Policy
         ;
 
         (blockinherit fs.obj_template)
@@ -10320,20 +10268,16 @@
         )
     )
 
-    ;
-    ; FS drm name space
-    ;
-
     (block drm
 
         ;
-        ; drm contexts
+        ; Contexts
         ;
 
         (genfscon "drm" "/" fs_context)
 
         ;
-        ; drm macros
+        ; Macros
         ;
 
         (macro add_entries ((type ARG1))
@@ -10956,26 +10900,22 @@
         )
 
         ;
-        ; drm policy
+        ; Policy
         ;
 
         (blockinherit fs.obj_template)
     )
 
-    ;
-    ; FS efivarfs name space
-    ;
-
     (block efivarfs
 
         ;
-        ; efivarfs contexts
+        ; Contexts
         ;
 
         (genfscon "efivarfs" "/" fs_context)
 
         ;
-        ; efivarfs macros
+        ; Macros
         ;
 
         (macro add_entries ((type ARG1))
@@ -11798,7 +11738,7 @@
         )
 
         ;
-        ; efivarfs policy
+        ; Policy
         ;
 
         (blockinherit fs.obj_template)
@@ -11810,14 +11750,10 @@
         )
     )
 
-    ;
-    ; FS fuse name space
-    ;
-
     (block fuse
 
         ;
-        ; fuse contexts
+        ; Contexts
         ;
 
         (genfscon "fuse" "/" fs_context)
@@ -11825,7 +11761,7 @@
         (genfscon "fusectl" "/" fs_context)
 
         ;
-        ; fuse macros
+        ; Macros
         ;
 
         (macro add_entries ((type ARG1))
@@ -12981,7 +12917,7 @@
         )
 
         ;
-        ; fuse policy
+        ; Policy
         ;
 
         (blockinherit fs.obj_template)
@@ -12994,20 +12930,16 @@
         )
     )
 
-    ;
-    ; FS hugetlbfs name space
-    ;
-
     (block hugetlbfs
 
         ;
-        ; hugetlbfs contexts
+        ; Contexts
         ;
 
         (fsuse trans "hugetlbfs" fs_context)
 
         ;
-        ; hugetlbfs macros
+        ; Macros
         ;
 
         (macro add_entries ((type ARG1))
@@ -13835,11 +13767,10 @@
         )
 
         ;
-        ; hugetlbfs policy
+        ; Policy
         ;
 
         (blockinherit fs.obj_template)
-
 
         (call sys.mountpoint.obj_type
             (
@@ -13848,20 +13779,16 @@
         )
     )
 
-    ;
-    ; FS iso9660 name space
-    ;
-
     (block iso9660
 
         ;
-        ; iso9660 contexts
+        ; Contexts
         ;
 
         (genfscon "iso9660" "/" fs_context)
 
         ;
-        ; iso9660 macros
+        ; Macros
         ;
 
         (macro add_entries ((type ARG1))
@@ -14637,11 +14564,10 @@
         )
 
         ;
-        ; iso9660 policy
+        ; Policy
         ;
 
         (blockinherit fs.obj_template)
-
 
         (call sys.mountpoint.obj_type
             (
@@ -14650,14 +14576,10 @@
         )
     )
 
-    ;
-    ; FS nfs name space
-    ;
-
     (block nfs
 
         ;
-        ; nfs contexts
+        ; Contexts
         ;
 
         (genfscon "afs" "/" fs_context)
@@ -14666,7 +14588,7 @@
         (genfscon "nfs4" "/" fs_context)
 
         ;
-        ; nfs macros
+        ; Macros
         ;
 
         (macro add_entries ((type ARG1))
@@ -15442,7 +15364,7 @@
         )
 
         ;
-        ; nfs policy
+        ; Policy
         ;
 
         (blockinherit fs.obj_template)
@@ -15454,20 +15376,16 @@
         )
     )
 
-    ;
-    ; FS nfsd name space
-    ;
-
     (block nfsd
 
         ;
-        ; nfsd contexts
+        ; Contexts
         ;
 
         (genfscon "nfsd" "/" fs_context)
 
         ;
-        ; nfsd macros
+        ; Macros
         ;
 
         (macro add_entries ((type ARG1))
@@ -16090,7 +16008,7 @@
         )
 
         ;
-        ; nfsd policy
+        ; Policy
         ;
 
         (blockinherit fs.obj_template)
@@ -16102,20 +16020,16 @@
         )
     )
 
-    ;
-    ; FS nsfs name space
-    ;
-
     (block nsfs
 
         ;
-        ; nsfs contexts
+        ; Contexts
         ;
 
         (genfscon "nsfs" "/" fs_context)
 
         ;
-        ; nsfs macros
+        ; Macros
         ;
 
         (macro add_entries ((type ARG1))
@@ -16738,20 +16652,16 @@
         )
 
         ;
-        ; nsfs policy
+        ; Policy
         ;
 
         (blockinherit fs.obj_template)
     )
 
-    ;
-    ; FS proc name space
-    ;
-
     (block proc
 
         ;
-        ; proc contexts
+        ; Contexts
         ;
 
         (filecon "/proc" dir fs_context)
@@ -16761,7 +16671,7 @@
         (genfscon "proc" "/sysvipc" fs_context)
 
         ;
-        ; proc macros
+        ; Macros
         ;
 
         (macro add_entries ((type ARG1))
@@ -17404,7 +17314,7 @@
         )
 
         ;
-        ; proc policy
+        ; Policy
         ;
 
         (blockinherit fs.obj_template)
@@ -17422,20 +17332,16 @@
         )
     )
 
-    ;
-    ; FS pstore name space
-    ;
-
     (block pstore
 
         ;
-        ; pstore contexts
+        ; Contexts
         ;
 
         (genfscon "pstore" "/" fs_context)
 
         ;
-        ; pstore macros
+        ; Macros
         ;
 
         (macro add_entries ((type ARG1))
@@ -18258,7 +18164,7 @@
         )
 
         ;
-        ; pstore policy
+        ; Policy
         ;
 
         (blockinherit fs.obj_template)
@@ -18270,14 +18176,10 @@
         )
     )
 
-    ;
-    ; FS removable name space
-    ;
-
     (block removable
 
         ;
-        ; removable macros
+        ; Macros
         ;
 
         (macro add_entries ((type ARG1))
@@ -19053,20 +18955,16 @@
         )
 
         ;
-        ; removable policy
+        ; Policy
         ;
 
         (blockinherit fs.obj_template)
     )
 
-    ;
-    ; FS rootfs name space
-    ;
-
     (block rootfs
 
         ;
-        ; rootfs contexts
+        ; Contexts
         ;
 
         (filecon "/" dir fs_context)
@@ -19079,7 +18977,7 @@
         (genfscon "rootfs" "/" fs_context)
 
         ;
-        ; rootfs macros
+        ; Macros
         ;
 
         (macro add_entries ((type ARG1))
@@ -19733,7 +19631,7 @@
         )
 
         ;
-        ; rootfs policy
+        ; Policy
         ;
 
         (blockinherit fs.obj_template)
@@ -19774,14 +19672,10 @@
         )
     )
 
-    ;
-    ; FS rpc_pipefs name space
-    ;
-
     (block rpc_pipefs
 
         ;
-        ; rpc_pipefs contexts
+        ; Contexts
         ;
 
         (filecon "/run/rpc_pipefs(/.*)?" any ())
@@ -19789,7 +19683,7 @@
         (genfscon "rpc_pipefs" "/" fs_context)
 
         ;
-        ; rpc_pipefs macros
+        ; Macros
         ;
 
         (macro add_entries ((type ARG1))
@@ -20612,7 +20506,7 @@
         )
 
         ;
-        ; rpc_pipefs policy
+        ; Policy
         ;
 
         (blockinherit fs.obj_template)
@@ -20624,14 +20518,10 @@
         )
     )
 
-    ;
-    ; FS sysfs name space
-    ;
-
     (block sysfs
 
         ;
-        ; sysfs contexts
+        ; Contexts
         ;
 
         (filecon "/sys" dir fs_context)
@@ -20640,7 +20530,7 @@
         (genfscon "sysfs" "/" fs_context)
 
         ;
-        ; sysfs macros
+        ; Macros
         ;
 
         (macro dontaudit_audit_access_dirs ((type ARG1))
@@ -21294,7 +21184,7 @@
         )
 
         ;
-        ; sysfs policy
+        ; Policy
         ;
 
         (blockinherit fs.obj_template)
@@ -21312,14 +21202,10 @@
         )
     )
 
-    ;
-    ; FS tmpfs name space
-    ;
-
     (block tmpfs
 
         ;
-        ; tmpfs contexts
+        ; Contexts
         ;
 
         (filecon "/tmp" dir fs_context)
@@ -21331,7 +21217,7 @@
         (fsuse trans "tmpfs" fs_context)
 
         ;
-        ; tmpfs macros
+        ; Macros
         ;
 
         (macro add_entries ((type ARG1))
@@ -22893,7 +22779,7 @@
         )
 
         ;
-        ; tmpfs policy
+        ; Policy
         ;
 
         (blockinherit fs.obj_template)
@@ -22911,20 +22797,16 @@
         )
     )
 
-    ;
-    ; FS tracefs name space
-    ;
-
     (block tracefs
 
         ;
-        ; tracefs contexts
+        ; Contexts
         ;
 
         (genfscon "tracefs" "/" fs_context)
 
         ;
-        ; tracefs macros
+        ; Macros
         ;
 
         (macro add_entries ((type ARG1))
@@ -23747,20 +23629,16 @@
         )
 
         ;
-        ; tracefs policy
+        ; Policy
         ;
 
         (blockinherit fs.obj_template)
     )
 
-    ;
-    ; FS xattr name space
-    ;
-
     (block xattr
 
         ;
-        ; xattr contexts
+        ; Contexts
         ;
 
         (fsuse task "pipefs" isid_context)
@@ -23775,7 +23653,7 @@
         (sidcontext fs isid_context)
 
         ;
-        ; xattr macros
+        ; Macros
         ;
 
         (macro associate ((type ARG1))
@@ -23883,7 +23761,7 @@
         )
 
         ;
-        ; xattr policy
+        ; Policy
         ;
 
         (blockinherit sys.isid.stub)

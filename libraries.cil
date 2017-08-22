@@ -1,34 +1,27 @@
 ; -*- mode: CIL; fill-column: 75; indent-tabs-mode: nil; tab-width: 4 -*-
 
-; Lib policy
-;
-; 1. Lib name space
-; 2.    Lib generic_libraries name space
-; 3.    Lib ld_so name space
-; 4.    Lib ld_so_cache name space
-; 5.    Lib lib_file name space
-; 6.    Lib textrel file name space
-
-;
-; Lib name space
-;
+; lib
+;     generic_libraries
+;     ld_so
+;     ld_so_cache
+;     lib_file
+;         obj_all_macro_template
+;         obj_stub
+;         obj_template
+;     textrel
 
 (block lib
-
-    ;
-    ; Lib generic_libraries name space
-    ;
 
     (block generic_libraries
 
         ;
-        ; generic_libraries contexts
+        ; Contexts
         ;
 
         (filecon "/usr/lib(/.*)?" any lib_file_context)
 
         ;
-        ; generic_libraries macros
+        ; Macros
         ;
 
         (macro add_entries ((type ARG1))
@@ -860,26 +853,22 @@
         )
 
         ;
-        ; generic_libraries policy
+        ; Policy
         ;
 
         (blockinherit lib_file.obj_stub)
     )
 
-    ;
-    ; Lib ld_so name space
-    ;
-
     (block ld_so
 
         ;
-        ; ld_so contexts
+        ; Contexts
         ;
 
         (filecon "/usr/lib/ld-[^/]*\.so(\.[^/]*)*" file file_context)
 
         ;
-        ; ld_so macros
+        ; Macros
         ;
 
         (macro append_files ((type ARG1))
@@ -1068,27 +1057,23 @@
         )
 
         ;
-        ; ld_so policy
+        ; Policy
         ;
 
         (blockinherit files.file.obj_stub)
     )
 
-    ;
-    ; Lib ld_so_cache name space
-    ;
-
     (block ld_so_cache
 
         ;
-        ; ld_so_cache contexts
+        ; Contexts
         ;
 
         (filecon "/etc/ld\.so\.cache.*" file file_context)
         (filecon "/etc/ld\.so\.preload.*" file file_context)
 
         ;
-        ; ld_so_cache macros
+        ; Macros
         ;
 
         (macro append_files ((type ARG1))
@@ -1271,26 +1256,22 @@
         )
 
         ;
-        ; ld_so_cache policy
+        ; Policy
         ;
 
         (blockinherit files.file.obj_stub)
     )
 
-    ;
-    ; Lib lib_file name space
-    ;
-
     (block lib_file
 
         ;
-        ; lib_file macros
+        ; Macros
         ;
 
         (blockinherit obj_all_macro_template)
 
         ;
-        ; lib_file policy
+        ; Policy
         ;
 
         (typeattribute obj_type_attribute)
@@ -1302,13 +1283,13 @@
         )
 
         ;
-        ; lib_file templates
+        ; Templates
         ;
 
         (block obj_all_macro_template
 
             ;
-            ; lib.lib_file.obj_all_macro_template macros
+            ; Macros
             ;
 
             (macro append_files ((type ARG1))
@@ -1472,7 +1453,7 @@
             )
 
             ;
-            ; lib.lib_file.obj_all_macro_template policy
+            ; Policy
             ;
 
             (blockabstract obj_all_macro_template)
@@ -1481,7 +1462,7 @@
         (block obj_stub
 
             ;
-            ; lib.lib_file.obj_stub contexts
+            ; Contexts
             ;
 
             (context lib_file_context
@@ -1497,7 +1478,7 @@
             )
 
             ;
-            ; lib.lib_file.obj_stub policy
+            ; Policy
             ;
 
             (blockabstract obj_stub)
@@ -1513,7 +1494,7 @@
         (block obj_template
 
             ;
-            ; lib.lib_file.obj_template macros
+            ; Macros
             ;
 
             (macro append_files ((type ARG1))
@@ -1673,7 +1654,7 @@
             )
 
             ;
-            ; lib.lib_file.obj_template policy
+            ; Policy
             ;
 
             (blockabstract obj_template)
@@ -1682,14 +1663,10 @@
         )
     )
 
-    ;
-    ; Lib textrel name space
-    ;
-
     (block textrel
 
         ;
-        ; textrel macros
+        ; Macros
         ;
 
         (macro execmod ((type ARG1))
@@ -1703,7 +1680,7 @@
         )
 
         ;
-        ; textrel policy
+        ; Policy
         ;
 
         (blockinherit lib_file.obj_template)

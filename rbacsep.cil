@@ -1,13 +1,7 @@
 ; -*- mode: CIL; fill-column: 75; indent-tabs-mode: nil; tab-width: 4 -*-
 
-; Role-based access control separation security model
-
 ;
-; RBACsep constraints
-;
-
-;
-; RBACsep alg_socket constraints
+; Constraints
 ;
 
 (constrain
@@ -73,10 +67,6 @@
     )
 )
 
-;
-; RBACsep appletalk_socket constraints
-;
-
 (constrain
     (appletalk_socket
         (
@@ -139,10 +129,6 @@
         (eq t2 rbacsep_exemption_obj_type_attribute)
     )
 )
-
-;
-; RBACsep atmpvc_socket constraints
-;
 
 (constrain
     (atmpvc_socket
@@ -207,10 +193,6 @@
     )
 )
 
-;
-; RBACsep atmsvc_socket constraints
-;
-
 (constrain
     (atmsvc_socket
         (
@@ -274,10 +256,6 @@
     )
 )
 
-;
-; RBACsep ax25_socket constraints
-;
-
 (constrain
     (ax25_socket
         (
@@ -340,10 +318,6 @@
         (eq t2 rbacsep_exemption_obj_type_attribute)
     )
 )
-
-;
-; RBACsep blk_file constraints
-;
 
 (constrain
     (blk_file
@@ -384,10 +358,6 @@
     )
 )
 
-;
-; RBACsep bluetooth_socket constraints
-;
-
 (constrain
     (bluetooth_socket
         (
@@ -450,10 +420,6 @@
         (eq t2 rbacsep_exemption_obj_type_attribute)
     )
 )
-
-;
-; RBACsep caif_socket constraints
-;
 
 (constrain
     (caif_socket
@@ -518,10 +484,6 @@
     )
 )
 
-;
-; RBACsep can_socket constraints
-;
-
 (constrain
     (can_socket
         (
@@ -584,10 +546,6 @@
         (eq t2 rbacsep_exemption_obj_type_attribute)
     )
 )
-
-;
-; RBACsep chr_file constraints
-;
 
 (constrain
     (chr_file
@@ -628,10 +586,6 @@
         (eq t2 rbacsep_exemption_obj_type_attribute)
     )
 )
-
-;
-; RBACsep dccp_socket constraints
-;
 
 (constrain
     (dccp_socket
@@ -698,10 +652,6 @@
     )
 )
 
-;
-; RBACsep decnet_socket constraints
-;
-
 (constrain
     (decnet_socket
         (
@@ -764,10 +714,6 @@
         (eq t2 rbacsep_exemption_obj_type_attribute)
     )
 )
-
-;
-; RBACsep dir constraints
-;
 
 (constrain
     (dir
@@ -845,10 +791,6 @@
     )
 )
 
-;
-; RBACsep fd constraints
-;
-
 (constrain
     (fd
         (
@@ -872,10 +814,6 @@
         (eq t2 rbacsep_exemption_subj_type_attribute)
     )
 )
-
-;
-; RBACsep fifo_file constraints
-;
 
 (constrain
     (fifo_file
@@ -941,10 +879,6 @@
         (eq t2 rbacsep_exemption_subj_type_attribute)
     )
 )
-
-;
-; RBACsep file constraints
-;
 
 (constrain
     (file
@@ -1018,10 +952,6 @@
     )
 )
 
-;
-; RBACsep icmp_socket constraints
-;
-
 (constrain
     (icmp_socket
         (
@@ -1086,10 +1016,6 @@
     )
 )
 
-;
-; RBACsep ieee802154_socket constraints
-;
-
 (constrain
     (ieee802154_socket
         (
@@ -1152,10 +1078,6 @@
         (eq t2 rbacsep_exemption_obj_type_attribute)
     )
 )
-
-;
-; RBACsep ipc constraints
-;
 
 (constrain
     (ipc
@@ -1185,10 +1107,6 @@
     )
 )
 
-;
-; RBACsep ipx_socket constraints
-;
-
 (constrain
     (ipx_socket
         (
@@ -1251,10 +1169,6 @@
         (eq t2 rbacsep_exemption_obj_type_attribute)
     )
 )
-
-;
-; RBACsep irda_socket constraints
-;
 
 (constrain
     (irda_socket
@@ -1319,10 +1233,6 @@
     )
 )
 
-;
-; RBACsep isdn_socket constraints
-;
-
 (constrain
     (isdn_socket
         (
@@ -1385,10 +1295,6 @@
         (eq t2 rbacsep_exemption_obj_type_attribute)
     )
 )
-
-;
-; RBACsep iucv_socket constraints
-;
 
 (constrain
     (iucv_socket
@@ -1453,10 +1359,6 @@
     )
 )
 
-;
-; RBACsep kcm_socket constraints
-;
-
 (constrain
     (kcm_socket
         (
@@ -1519,10 +1421,6 @@
         (eq t2 rbacsep_exemption_obj_type_attribute)
     )
 )
-
-;
-; RBACsep key constraints
-;
 
 (constrain
     (key
@@ -1553,10 +1451,6 @@
         (eq t2 rbacsep_exemption_subj_type_attribute)
     )
 )
-
-;
-; RBACsep lnk_file constraints
-;
 
 (constrain
     (lnk_file
@@ -1629,10 +1523,6 @@
     )
 )
 
-;
-; RBACsep llc_socket constraints
-;
-
 (constrain
     (llc_socket
         (
@@ -1696,10 +1586,6 @@
     )
 )
 
-;
-; RBACsep msgq constraints
-;
-
 (constrain
     (msgq
         (
@@ -1728,10 +1614,6 @@
     )
 )
 
-;
-; RBACsep netif constraints
-;
-
 (constrain
     (netif
         (
@@ -1756,10 +1638,6 @@
         (eq t2 rbacsep_exemption_obj_type_attribute)
     )
 )
-
-;
-; RBACsep netlink_audit_socket constraints
-;
 
 (constrain
     (netlink_audit_socket
@@ -1829,10 +1707,6 @@
     )
 )
 
-;
-; RBACsep netlink_connector_socket constraints
-;
-
 (constrain
     (netlink_connector_socket
         (
@@ -1895,10 +1769,6 @@
         (eq t2 rbacsep_exemption_obj_type_attribute)
     )
 )
-
-;
-; RBACsep netlink_crypto_socket constraints
-;
 
 (constrain
     (netlink_crypto_socket
@@ -1963,10 +1833,6 @@
     )
 )
 
-;
-; RBACsep netlink_dnrt_socket constraints
-;
-
 (constrain
     (netlink_dnrt_socket
         (
@@ -2029,10 +1895,6 @@
         (eq t2 rbacsep_exemption_obj_type_attribute)
     )
 )
-
-;
-; RBACsep netlink_fib_lookup_socket constraints
-;
 
 (constrain
     (netlink_fib_lookup_socket
@@ -2097,10 +1959,6 @@
     )
 )
 
-;
-; RBACsep netlink_generic_socket constraints
-;
-
 (constrain
     (netlink_generic_socket
         (
@@ -2163,10 +2021,6 @@
         (eq t2 rbacsep_exemption_obj_type_attribute)
     )
 )
-
-;
-; RBACsep netlink_iscsi_socket constraints
-;
 
 (constrain
     (netlink_iscsi_socket
@@ -2231,10 +2085,6 @@
     )
 )
 
-;
-; RBACsep netlink_kobject_uevent_socket constraints
-;
-
 (constrain
     (netlink_kobject_uevent_socket
         (
@@ -2297,10 +2147,6 @@
         (eq t2 rbacsep_exemption_obj_type_attribute)
     )
 )
-
-;
-; RBACsep netlink_netfilter_socket constraints
-;
 
 (constrain
     (netlink_netfilter_socket
@@ -2365,10 +2211,6 @@
     )
 )
 
-;
-; RBACsep netlink_nflog_socket constraints
-;
-
 (constrain
     (netlink_nflog_socket
         (
@@ -2432,10 +2274,6 @@
     )
 )
 
-;
-; RBACsep netlink_rdma_socket constraints
-;
-
 (constrain
     (netlink_rdma_socket
         (
@@ -2498,10 +2336,6 @@
         (eq t2 rbacsep_exemption_obj_type_attribute)
     )
 )
-
-;
-; RBACsep netlink_route_socket constraints
-;
 
 (constrain
     (netlink_route_socket
@@ -2568,10 +2402,6 @@
     )
 )
 
-;
-; RBACsep netlink_scsitransport_socket constraints
-;
-
 (constrain
     (netlink_scsitransport_socket
         (
@@ -2635,10 +2465,6 @@
     )
 )
 
-;
-; RBACsep netlink_selinux_socket constraints
-;
-
 (constrain
     (netlink_selinux_socket
         (
@@ -2701,10 +2527,6 @@
         (eq t2 rbacsep_exemption_obj_type_attribute)
     )
 )
-
-;
-; RBACsep netlink_tcpdiag_socket constraints
-;
 
 (constrain
     (netlink_tcpdiag_socket
@@ -2771,10 +2593,6 @@
     )
 )
 
-;
-; RBACsep netlink_xfrm_socket constaints
-;
-
 (constrain
     (netlink_xfrm_socket
         (
@@ -2840,10 +2658,6 @@
     )
 )
 
-;
-; RBACsep netrom_socket constraints
-;
-
 (constrain
     (netrom_socket
         (
@@ -2907,10 +2721,6 @@
     )
 )
 
-;
-; RBACsep nfc_socket constaints
-;
-
 (constrain
     (nfc_socket
         (
@@ -2973,10 +2783,6 @@
         (eq t2 rbacsep_exemption_obj_type_attribute)
     )
 )
-
-;
-; RBACsep node constraints
-;
 
 (constrain
     (node
@@ -3003,10 +2809,6 @@
     )
 )
 
-;
-; RBACsep packet constraints
-;
-
 (constrain
     (packet
         (
@@ -3031,10 +2833,6 @@
     )
 )
 
-;
-; RBACsep packet socket constraints
-;
-
 (constrain
     (packet_socket
         (
@@ -3097,10 +2895,6 @@
         (eq t2 rbacsep_exemption_obj_type_attribute)
     )
 )
-
-;
-; RBACsep phonet_socket constraints
-;
 
 (constrain
     (phonet_socket
@@ -3165,10 +2959,6 @@
     )
 )
 
-;
-; RBACsep pppox_socket constraints
-;
-
 (constrain
     (pppox_socket
         (
@@ -3231,10 +3021,6 @@
         (eq t2 rbacsep_exemption_obj_type_attribute)
     )
 )
-
-;
-; RBACsep process constraints
-;
 
 (constrain
     (process
@@ -3265,10 +3051,6 @@
     )
 )
 
-;
-; RBACsep qipcrtr_socket constraints
-;
-
 (constrain
     (qipcrtr_socket
         (
@@ -3331,10 +3113,6 @@
         (eq t2 rbacsep_exemption_obj_type_attribute)
     )
 )
-
-;
-; RBACsep rawip_socket constraints
-;
 
 (constrain
     (rawip_socket
@@ -3400,10 +3178,6 @@
     )
 )
 
-;
-; RBACsep rds_socket constraints
-;
-
 (constrain
     (rds_socket
         (
@@ -3466,10 +3240,6 @@
         (eq t2 rbacsep_exemption_obj_type_attribute)
     )
 )
-
-;
-; RBACsep rose_socket constraints
-;
 
 (constrain
     (rose_socket
@@ -3534,10 +3304,6 @@
     )
 )
 
-;
-; RBACsep rxrpc_socket constraints
-;
-
 (constrain
     (rxrpc_socket
         (
@@ -3600,10 +3366,6 @@
         (eq t2 rbacsep_exemption_obj_type_attribute)
     )
 )
-
-;
-; RBACsep sctp_socket constraints
-;
 
 (constrain
     (sctp_socket
@@ -3668,10 +3430,6 @@
         (eq t2 rbacsep_exemption_obj_type_attribute)
     )
 )
-
-;
-; RBACsep sem constraints
-;
 
 (constrain
     (sem
@@ -3701,10 +3459,6 @@
     )
 )
 
-;
-; RBACsep shm constraints
-;
-
 (constrain
     (shm
         (
@@ -3732,10 +3486,6 @@
         (eq t2 rbacsep_exemption_subj_type_attribute)
     )
 )
-
-;
-; RBACsep smc_socket constraints
-;
 
 (constrain
     (smc_socket
@@ -3799,10 +3549,6 @@
         (eq t2 rbacsep_exemption_obj_type_attribute)
     )
 )
-
-;
-; RBACsep sock_file constraints
-;
 
 (constrain
     (sock_file
@@ -3869,10 +3615,6 @@
     )
 )
 
-;
-; RBACsep tcp_socket constraints
-;
-
 (constrain
     (tcp_socket
         (
@@ -3938,10 +3680,6 @@
     )
 )
 
-;
-; RBACsep tipc_socket constraints
-;
-
 (constrain
     (tipc_socket
         (
@@ -4005,10 +3743,6 @@
     )
 )
 
-;
-; RBACsep tun_socket constraints
-;
-
 (constrain
     (tun_socket
         (
@@ -4071,10 +3805,6 @@
         (eq t2 rbacsep_exemption_obj_type_attribute)
     )
 )
-
-;
-; RBACsep udp_socket constraints
-;
 
 (constrain
     (udp_socket
@@ -4140,10 +3870,6 @@
     )
 )
 
-;
-; RBACsep unix_dgram_socket constraints
-;
-
 (constrain
     (unix_dgram_socket
         (
@@ -4206,10 +3932,6 @@
         (eq t2 rbacsep_exemption_obj_type_attribute)
     )
 )
-
-;
-; RBACsep unix_stream_socket constraints
-;
 
 (constrain
     (unix_stream_socket
@@ -4275,10 +3997,6 @@
     )
 )
 
-;
-; RBACsep vsock_socket constraints
-;
-
 (constrain
     (vsock_socket
         (
@@ -4341,10 +4059,6 @@
         (eq t2 rbacsep_exemption_obj_type_attribute)
     )
 )
-
-;
-; RBACsep x25_socket constraints
-;
 
 (constrain
     (x25_socket
@@ -4410,7 +4124,7 @@
 )
 
 ;
-; RBACsep macros
+; Macros
 ;
 
 (macro rbacsep_constrained_subj_type ((type ARG1))
@@ -4442,7 +4156,7 @@
 )
 
 ;
-; RBACsep policy
+; Policy
 ;
 
 (roleattribute rbacsep_exemption_role_attribute)

@@ -1,40 +1,7 @@
 ; -*- mode: CIL; fill-column: 75; indent-tabs-mode: nil; tab-width: 4 -*-
 
-; Class maps
-;
-; 1. Class map declarations
-;       all_files class map declarations
-;       all_sockets class map declarations
-;       blk_and_chr_files class map declarations
-;       blk_files class map declarations
-;       chr_files class map declarations
-;       dirs class map declarations
-;       fifo_files class map declarations
-;       files class map declarations
-;       files_except_blk_and_chr class map declarations
-;       process_state class map declarations
-;       lnk_files class map declarations
-;       sock_files class map declarations
-; 2. Class mappings
-;       all_files class mappings
-;       all_sockets class mappings
-;       blk_and_chr_files class mappings
-;       blk_files class mappings
-;       chr_files class mappings
-;       dirs class mappings
-;       fifo_files class mappings
-;       files class mappings
-;       files_except_blk_and_chr class mappings
-;       process_state class mappings
-;       lnk_files class mappings
-;       sock_files class mappings
-
 ;
 ; Class map declarations
-;
-
-;
-; all_files class map declarations
 ;
 
 (classmap all_files
@@ -56,19 +23,11 @@
     )
 )
 
-;
-; all_sockets class map declarations
-;
-
 (classmap all_sockets
     (
         common_socket_perms
     )
 )
-
-;
-; blk_and_chr_files class map declarations
-;
 
 (classmap blk_and_chr_files
     (
@@ -89,10 +48,6 @@
     )
 )
 
-;
-; blk_files class map declarations
-;
-
 (classmap blk_files
     (
         create
@@ -109,10 +64,6 @@
         write
     )
 )
-
-;
-; chr_files class map declarations
-;
 
 (classmap chr_files
     (
@@ -132,10 +83,6 @@
     )
 )
 
-;
-; dirs class map declarations
-;
-
 (classmap dirs
     (
         create
@@ -150,10 +97,6 @@
         setattr
     )
 )
-
-;
-; fifo_files class map declarations
-;
 
 (classmap fifo_files
     (
@@ -172,10 +115,6 @@
     )
 )
 
-;
-; files class map declarations
-;
-
 (classmap files
     (
         create
@@ -193,10 +132,6 @@
         write
     )
 )
-
-;
-; files_except_blk_and_chr class map declarations
-;
 
 (classmap files_except_blk_and_chr
     (
@@ -218,20 +153,12 @@
     )
 )
 
-;
-; process_state class map declarations
-;
-
 (classmap process_state
     (
         ps
         read
     )
 )
-
-;
-; lnk_files class map declarations
-;
 
 (classmap lnk_files
     (
@@ -249,10 +176,6 @@
         write
     )
 )
-
-;
-; sock_files class map declarations
-;
 
 (classmap sock_files
     (
@@ -273,10 +196,6 @@
 
 ;
 ; Class mappings
-;
-
-;
-; all_files class mappings
 ;
 
 (classmapping all_files create add_entry_dir_perms)
@@ -524,10 +443,6 @@
 (classmapping all_files write write_file_perms)
 (classmapping all_files write write_lnk_file_perms)
 (classmapping all_files write write_sock_file_perms)
-
-;
-; all_sockets class mappings
-;
 
 (classmapping all_sockets common_socket_perms
     (alg_socket
@@ -2041,10 +1956,6 @@
     )
 )
 
-;
-; blk_and_chr_files class mappings
-;
-
 (classmapping blk_and_chr_files create add_entry_dir_perms)
 (classmapping blk_and_chr_files create create_blk_file_perms)
 (classmapping blk_and_chr_files create create_chr_file_perms)
@@ -2137,10 +2048,6 @@
 (classmapping blk_and_chr_files write write_blk_file_perms)
 (classmapping blk_and_chr_files write write_chr_file_perms)
 
-;
-; blk_files class mappings
-;
-
 (classmapping blk_files create add_entry_dir_perms)
 (classmapping blk_files create create_blk_file_perms)
 
@@ -2188,10 +2095,6 @@
 
 (classmapping blk_files write search_dir_perms)
 (classmapping blk_files write write_blk_file_perms)
-
-;
-; chr_files class mappings
-;
 
 (classmapping chr_files create add_entry_dir_perms)
 (classmapping chr_files create create_chr_file_perms)
@@ -2244,10 +2147,6 @@
 (classmapping chr_files write search_dir_perms)
 (classmapping chr_files write write_chr_file_perms)
 
-;
-; dirs class mappings
-;
-
 (classmapping dirs create add_entry_dir_perms)
 (classmapping dirs create create_dir_perms)
 
@@ -2288,10 +2187,6 @@
         )
     )
 )
-
-;
-; fifo_files class mappings
-;
 
 (classmapping fifo_files create add_entry_dir_perms)
 (classmapping fifo_files create create_fifo_file_perms)
@@ -2340,10 +2235,6 @@
 
 (classmapping fifo_files write search_dir_perms)
 (classmapping fifo_files write write_fifo_file_perms)
-
-;
-; files class mappings
-;
 
 (classmapping files create add_entry_dir_perms)
 (classmapping files create create_file_perms)
@@ -2395,10 +2286,6 @@
 
 (classmapping files write search_dir_perms)
 (classmapping files write write_file_perms)
-
-;
-; files_except_blk_and_chr class mappings
-;
 
 (classmapping files_except_blk_and_chr create add_entry_dir_perms)
 (classmapping files_except_blk_and_chr create create_dir_perms)
@@ -2599,10 +2486,6 @@
 (classmapping files_except_blk_and_chr write write_lnk_file_perms)
 (classmapping files_except_blk_and_chr write write_sock_file_perms)
 
-;
-; lnk_files class mappings
-;
-
 (classmapping lnk_files create add_entry_dir_perms)
 (classmapping lnk_files create create_lnk_file_perms)
 
@@ -2651,10 +2534,6 @@
 (classmapping lnk_files write search_dir_perms)
 (classmapping lnk_files write write_lnk_file_perms)
 
-;
-; process_state class mappings
-;
-
 (classmapping process_state ps list_dir_perms)
 (classmapping process_state ps
         (process
@@ -2669,10 +2548,6 @@
 (classmapping process_state read list_dir_perms)
 (classmapping process_state read read_file_perms)
 (classmapping process_state read read_lnk_file_perms)
-
-;
-; sock_files class mappings
-;
 
 (classmapping sock_files create add_entry_dir_perms)
 (classmapping sock_files create create_sock_file_perms)

@@ -1,22 +1,18 @@
 ; -*- mode: CIL; fill-column: 75; indent-tabs-mode: nil; tab-width: 4 -*-
 
-; Sec policy
-;
-; 1. Sec initial security identifier declarations
-; 2. Sec name space
-;       Sec bool_file name space
-;       Sec load_policy name space
-;       Sec securityfs name space
+; sec
+;     bool_file
+;         obj_all_macro_template
+;         obj_stub
+;         obj_template
+;     load_policy
+;     securityfs
 
 ;
-; Sec initial security identifier declarations
+; Policy
 ;
 
 (sid security)
-
-;
-; Sec name space
-;
 
 (block sec
 
@@ -268,20 +264,16 @@
             )
     )
 
-    ;
-    ; Sec bool_file name space
-    ;
-
     (block bool_file
 
         ;
-        ; bool_file macros
+        ; Macros
         ;
 
         (blockinherit obj_all_macro_template)
 
         ;
-        ; bool_file policy
+        ; Policy
         ;
 
         (typeattribute obj_type_attribute)
@@ -321,13 +313,13 @@
         )
         
         ;
-        ; bool_file templates
+        ; Templates
         ;
 
         (block obj_all_macro_template
 
             ;
-            ; sec.bool_file.obj_all_macro_template macros
+            ; Macros
             ;
 
             (macro get ((type ARG1))
@@ -390,7 +382,7 @@
             )
 
             ;
-            ; sec.bool_file.obj_all_macro_template policy
+            ; Policy
             ;
 
             (blockabstract obj_all_macro_template)
@@ -399,7 +391,7 @@
         (block obj_stub
 
             ;
-            ; sec.bool_file.obj_stub context
+            ; Contexts
             ;
 
             (context bool_file_context
@@ -415,7 +407,7 @@
             )
 
             ;
-            ; sec.bool_file.obj_stub policy
+            ; Policy
             ;
 
             (blockabstract obj_stub)
@@ -431,7 +423,7 @@
         (block obj_template
 
             ;
-            ; sec.bool_file.obj_template macros
+            ; Macros
             ;
 
             (macro get ((type ARG1))
@@ -465,7 +457,7 @@
             )
 
             ;
-            ; sec.bool_file.obj_template policy
+            ; Policy
             ;
 
             (blockabstract obj_template)
@@ -474,21 +466,17 @@
         )
     )
 
-    ;
-    ; Sec load_policy name space
-    ;
-
     (block load_policy
 
         ;
-        ; load_policy contexts
+        ; Contexts
         ;
 
         (genfscon "selinuxfs" "/booleans/sec.load_policy"
             bool_file_context)
 
         ;
-        ; load_policy macros
+        ; Macros
         ;
 
         (macro get ((type ARG1))
@@ -529,7 +517,7 @@
         )
 
         ;
-        ; load_policy policy
+        ; Policy
         ;
 
         (blockinherit sec.bool_file.obj_stub)
@@ -548,14 +536,10 @@
         )
     )
 
-    ;
-    ; Sec securityfs name space
-    ;
-
     (block securityfs
 
         ;
-        ; securityfs contexts
+        ; Contexts
         ;
 
         (genfscon "securityfs" "/" isid_context)
@@ -564,7 +548,7 @@
         (sidcontext security isid_context)
 
         ;
-        ; securityfs macros
+        ; Macros
         ;
 
         (macro dontaudit_list ((type ARG1))
@@ -1514,7 +1498,7 @@
         )
 
         ;
-        ; securityfs policy
+        ; Policy
         ;
 
         (blockinherit sys.isid.stub)

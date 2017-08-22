@@ -1,11 +1,5 @@
 ; -*- mode: CIL; fill-column: 75; indent-tabs-mode: nil; tab-width: 4 -*-
 
-; Policy configuration
-;
-; 1. Policy configuration
-; 2. Enabled policy capabilities
-; 3. Disabled policy capabilities
-
 (handleunknown deny)
 (mls true)
 

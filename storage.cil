@@ -1,17 +1,14 @@
 ; -*- mode: CIL; fill-column: 75; indent-tabs-mode: nil; tab-width: 4 -*-
 
-; Stor policy
-;
-; 1. Stor name space
-;       Stor fixed_disk name space
-;       Stor fuse name space
-;       Stor removable name space
-;       Stor scsi_generic name space
-;       Stor stor_file name space
-
-;
-; Stor name space
-;
+; stor
+;     fixed_disk
+;     fuse
+;     removable
+;     scsi_generic
+;     stor_file
+;         obj_all_macro_template
+;         obj_stub
+;         obj_template
 
 (block stor
 
@@ -101,14 +98,10 @@
             )
     )
 
-    ;
-    ; Dev fixed_disk space
-    ;
-
     (block fixed_disk
 
         ;
-        ; fixed_disk contexts
+        ; Contexts
         ;
 
         (filecon "/dev/dm-[0-9]+" block stor_file_context)
@@ -117,7 +110,7 @@
         (filecon "/dev/[shmxv]d[^/]*" block stor_file_context)
 
         ;
-        ; fixed_disk macros
+        ; Macros
         ;
 
         (macro devtmpfs_obj_type_transition ((type ARG1))
@@ -1923,7 +1916,7 @@
         )
 
         ;
-        ; fixed disk policy
+        ; Policy
         ;
 
         (blockinherit stor_file.obj_stub)
@@ -1977,33 +1970,25 @@
         )
     )
 
-    ;
-    ; Stor fuse name space
-    ;
-
     (block fuse
 
         ;
-        ; fuse contexts
+        ; Contexts
         ;
 
         (filecon "/dev/fuse" char stor_file_context)
 
         ;
-        ; fuse policy
+        ; Policy
         ;
 
         (blockinherit stor_file.obj_template)
     )
 
-    ;
-    ; Stor removable name space
-    ;
-
     (block removable
 
         ;
-        ; removable contexts
+        ; Contexts
         ;
 
         (filecon "/dev/mmcblk.+" block stor_file_context)
@@ -2011,7 +1996,7 @@
         (filecon "/dev/sr[0-9]+" block stor_file_context)
 
         ;
-        ; removable macros
+        ; Macros
         ;
 
         (macro devtmpfs_obj_type_transition ((type ARG1))
@@ -2118,7 +2103,7 @@
         )
 
         ;
-        ; removable policy
+        ; Policy
         ;
 
         (blockinherit stor_file.obj_template)
@@ -2130,21 +2115,17 @@
         )
     )
 
-    ;
-    ; Stor scsi_generic name space
-    ;
-
     (block scsi_generic
 
         ;
-        ; scsi_generic contexts
+        ; Contexts
         ;
 
         (filecon "/dev/bsg/.+" char stor_file_context)
         (filecon "/dev/sg[0-9]+" char stor_file_context)
 
         ;
-        ; scsi_generic macros
+        ; Macros
         ;
 
         (macro devtmpfs_obj_type_transition ((type ARG1))
@@ -2436,7 +2417,7 @@
         )
 
         ;
-        ; scsi_generic policy
+        ; Policy
         ;
 
         (blockinherit stor_file.obj_stub)
@@ -2469,20 +2450,16 @@
         )
     )
 
-    ;
-    ; Stor stor_file name space
-    ;
-
     (block stor_file
 
         ;
-        ; stor_file macros
+        ; Macros
         ;
 
         (blockinherit obj_all_macro_template)
 
         ;
-        ; stor_file policy
+        ; Policy
         ;
 
         (typeattribute obj_type_attribute)
@@ -2505,13 +2482,13 @@
         )
 
         ;
-        ; stor_file templates
+        ; Templates
         ;
 
         (block obj_all_macro_template
 
             ;
-            ; stor.stor_file.obj_all_macro_template macros
+            ; Macros
             ;
 
             (macro create ((type ARG1))
@@ -3048,7 +3025,7 @@
             )
 
             ;
-            ; stor.stor_file.obj_all_macro_template policy
+            ; Policy
             ;
 
             (blockabstract obj_all_macro_template)
@@ -3057,7 +3034,7 @@
         (block obj_stub
 
             ;
-            ; stor.stor_file.obj_stub contexts
+            ; Contexts
             ;
 
             (context stor_file_context
@@ -3073,7 +3050,7 @@
             )
 
             ;
-            ; stor.stor_file.obj_stub policy
+            ; Policy
             ;
 
             (blockabstract obj_stub)
@@ -3089,7 +3066,7 @@
         (block obj_template
 
             ;
-            ; stor.stor_file.obj_template macros
+            ; Macros
             ;
 
             (macro create ((type ARG1))
@@ -3511,7 +3488,7 @@
             )
 
             ;
-            ; stor.stor_file.obj_template policy
+            ; Policy
             ;
 
             (blockabstract obj_template)

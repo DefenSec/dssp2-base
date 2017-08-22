@@ -1,10 +1,5 @@
 ; -*- mode: CIL; fill-column: 75; indent-tabs-mode: nil; tab-width: 4 -*-
 
-; Class permissions
-;
-; 1. Class permission declarations
-; 2. Class permission sets
-
 ;
 ; Class permission declarations
 ;
@@ -18,45 +13,21 @@
 (classpermission signal_perms)
 (classpermission system_except_module_load)
 
-;
-; alg_socket class permissions
-;
-
 (classpermission create_alg_socket_perms)
 (classpermission create_alg_stream_socket_perms)
 (classpermission rw_alg_socket_perms)
 
-;
-; appletalk_socket class permissions
-;
-
 (classpermission create_appletalk_socket_perms)
 (classpermission rw_appletalk_socket_perms)
-
-;
-; atmpvc_socket class permissions
-;
 
 (classpermission create_atmpvc_socket_perms)
 (classpermission rw_atmpvc_socket_perms)
 
-;
-; atmsvc_socket class permissions
-;
-
 (classpermission create_atmsvc_socket_perms)
 (classpermission rw_atmsvc_socket_perms)
 
-;
-; ax25_socket class permissions
-;
-
 (classpermission create_ax25_socket_perms)
 (classpermission rw_ax25_socket_perms)
-
-;
-; blk_file class permissions
-;
 
 (classpermission append_blk_file_perms)
 (classpermission append_inherited_blk_file_perms)
@@ -76,31 +47,15 @@
 (classpermission write_blk_file_perms)
 (classpermission write_inherited_blk_file_perms)
 
-;
-; bluetooth_socket class permissions
-;
-
 (classpermission create_bluetooth_socket_perms)
 (classpermission create_bluetooth_stream_socket_perms)
 (classpermission rw_bluetooth_socket_perms)
 
-;
-; caif_socket class permissions
-;
-
 (classpermission create_caif_socket_perms)
 (classpermission rw_caif_socket_perms)
 
-;
-; can_socket class permissions
-;
-
 (classpermission create_can_socket_perms)
 (classpermission rw_can_socket_perms)
-
-;
-; chr_file class permissions
-;
 
 (classpermission append_chr_file_perms)
 (classpermission append_inherited_chr_file_perms)
@@ -121,25 +76,13 @@
 (classpermission write_chr_file_perms)
 (classpermission write_inherited_chr_file_perms)
 
-;
-; dccp_socket class permissions
-;
-
 (classpermission create_dccp_socket_perms)
 (classpermission create_dccp_stream_socket_perms)
 (classpermission rw_dccp_socket_perms)
 (classpermission rw_dccp_stream_socket_perms)
 
-;
-; decnet_socket class permissions
-;
-
 (classpermission create_decnet_socket_perms)
 (classpermission rw_decnet_socket_perms)
-
-;
-; dir class permissions
-;
 
 (classpermission add_entry_dir_perms)
 (classpermission create_dir_perms)
@@ -158,10 +101,6 @@
 (classpermission search_dir_perms)
 (classpermission write_dir_perms)
 
-;
-; fifo_file class permissions
-;
-
 (classpermission append_fifo_file_perms)
 (classpermission append_inherited_fifo_file_perms)
 (classpermission create_fifo_file_perms)
@@ -179,10 +118,6 @@
 (classpermission rw_inherited_fifo_file_perms)
 (classpermission write_fifo_file_perms)
 (classpermission write_inherited_fifo_file_perms)
-
-;
-; file class permmissions
-;
 
 (classpermission append_file_perms)
 (classpermission append_inherited_file_perms)
@@ -207,58 +142,26 @@
 (classpermission write_file_perms)
 (classpermission write_inherited_file_perms)
 
-;
-; icmp_socket class permissions
-;
-
 (classpermission create_icmp_socket_perms)
 (classpermission rw_icmp_socket_perms)
-
-;
-; ieee802154_socket class permissions
-;
 
 (classpermission create_ieee802154_socket_perms)
 (classpermission rw_ieee802154_socket_perms)
 
-;
-; ipx_socket class permissions
-;
-
 (classpermission create_ipx_socket_perms)
 (classpermission rw_ipx_socket_perms)
-
-;
-; irda_socket class permissions
-;
 
 (classpermission create_irda_socket_perms)
 (classpermission rw_irda_socket_perms)
 
-;
-; isdn_socket class permissions
-;
-
 (classpermission create_isdn_socket_perms)
 (classpermission rw_isdn_socket_perms)
-
-;
-; iucv_socket class permissions
-;
 
 (classpermission create_iucv_socket_perms)
 (classpermission rw_iucv_socket_perms)
 
-;
-; kcm_socket class permissions
-;
-
 (classpermission create_kcm_socket_perms)
 (classpermission rw_kcm_socket_perms)
-
-;
-; key class permissions
-;
 
 (classpermission create_key_perms)
 (classpermission link_key_perms)
@@ -267,23 +170,11 @@
 (classpermission setattr_key_perms)
 (classpermission write_key_perms)
 
-;
-; key_socket
-;
-
 (classpermission create_key_socket_perms)
 (classpermission rw_key_socket_perms)
 
-;
-; llc_socket class permissions
-;
-
 (classpermission create_llc_socket_perms)
 (classpermission rw_llc_socket_perms)
-
-;
-; lnk_file class permissions
-;
 
 (classpermission create_lnk_file_perms)
 (classpermission delete_lnk_file_perms)
@@ -298,229 +189,101 @@
 (classpermission rw_lnk_file_perms)
 (classpermission write_lnk_file_perms)
 
-;
-; msgq class permissions
-;
-
 (classpermission create_msgq_perms)
 (classpermission r_msgq_perms)
 (classpermission rw_msgq_perms)
 
-;
-; netlink_audit_socket class permissions
-;
-
 (classpermission create_netlink_audit_socket_perms)
 (classpermission r_netlink_audit_socket_perms)
-
-;
-; netlink_connector_socket class permissions
-;
 
 (classpermission create_netlink_connector_socket_perms)
 (classpermission rw_netlink_connector_socket_perms)
 
-;
-; netlink_crypto_socket class permissions
-;
-
 (classpermission create_netlink_crypto_socket_perms)
 (classpermission rw_netlink_crypto_socket_perms)
-
-;
-; netlink_dnrt_socket class permissions
-;
 
 (classpermission create_netlink_dnrt_socket_perms)
 (classpermission rw_netlink_dnrt_socket_perms)
 
-;
-; netlink_fib_lookup_socket class permissions
-;
-
 (classpermission create_netlink_fib_lookup_socket_perms)
 (classpermission rw_netlink_fib_lookup_socket_perms)
-
-;
-; netlink_generic_socket class permissions
-;
 
 (classpermission create_netlink_generic_socket_perms)
 (classpermission rw_netlink_generic_socket_perms)
 
-;
-; netlink_iscsi_socket class permissions
-;
-
 (classpermission create_netlink_iscsi_socket_perms)
 (classpermission rw_netlink_iscsi_socket_perms)
-
-;
-; netlink_kobject_uevent_socket class permissions
-;
 
 (classpermission create_netlink_kobject_uevent_socket_perms)
 (classpermission rw_netlink_kobject_uevent_socket_perms)
 
-;
-; netlink_netfilter_socket class permissions
-;
-
 (classpermission create_netlink_netfilter_socket_perms)
 (classpermission rw_netlink_netfilter_socket_perms)
-
-;
-; netlink_nflog_socket class permissions
-;
 
 (classpermission create_netlink_nflog_socket_perms)
 (classpermission rw_netlink_nflog_socket_perms)
 
-;
-; netlink_rdma_socket class permissions
-;
-
 (classpermission create_netlink_rdma_socket_perms)
 (classpermission rw_netlink_rdma_socket_perms)
-
-;
-; netlink_route_socket class permissions
-;
 
 (classpermission create_netlink_route_socket_perms)
 (classpermission r_netlink_route_socket_perms)
 
-;
-; netlink_scsitransport_socket class permissions
-;
-
 (classpermission create_netlink_scsitransport_socket_perms)
 (classpermission rw_netlink_scsitransport_socket_perms)
-
-;
-; netlink_selinux_socket class permissions
-;
 
 (classpermission create_netlink_selinux_socket_perms)
 (classpermission rw_netlink_selinux_socket_perms)
 
-;
-; netlink_tcpdiag_socket class permissions
-;
-
 (classpermission create_netlink_tcpdiag_socket_perms)
 (classpermission r_netlink_tcpdiag_socket_perms)
-
-;
-; netlink_xfrm_socket class permissions
-;
 
 (classpermission create_netlink_xfrm_socket_perms)
 (classpermission r_netlink_xfrm_socket_perms)
 
-;
-; netrom_socket class permissions
-;
-
 (classpermission create_netrom_socket_perms)
 (classpermission rw_netrom_socket_perms)
-
-;
-; nfc_socket class permissions
-;
 
 (classpermission create_nfc_socket_perms)
 (classpermission rw_nfc_socket_perms)
 
-;
-; packet_socket class permissions
-;
-
 (classpermission create_packet_socket_perms)
 (classpermission rw_packet_socket_perms)
-
-;
-; phonet_socket class permissions
-;
 
 (classpermission create_phonet_socket_perms)
 (classpermission rw_phonet_socket_perms)
 
-;
-; pppox_socket class permissions
-;
-
 (classpermission create_pppox_socket_perms)
 (classpermission rw_pppox_socket_perms)
-
-;
-; qipcrtr_socket class permissions
-;
 
 (classpermission create_qipcrtr_socket_perms)
 (classpermission rw_qipcrtr_socket_perms)
 
-;
-; rawip_socket class permissions
-;
-
 (classpermission create_rawip_socket_perms)
 (classpermission rw_rawip_socket_perms)
-
-;
-; rds_socket class permissions
-;
 
 (classpermission create_rds_socket_perms)
 (classpermission rw_rds_socket_perms)
 
-;
-; rose_socket class permissions
-;
-
 (classpermission create_rose_socket_perms)
 (classpermission rw_rose_socket_perms)
-
-;
-; rxrpc_socket class permissions
-;
 
 (classpermission create_rxrpc_socket_perms)
 (classpermission rw_rxrpc_socket_perms)
 
-;
-; sctp_socket class permissions
-;
-
 (classpermission create_sctp_socket_perms)
 (classpermission rw_sctp_socket_perms)
-
-;
-; sem class permissions
-;
 
 (classpermission create_sem_perms)
 (classpermission r_sem_perms)
 (classpermission rw_sem_perms)
 
-;
-; shm class permissions
-;
-
 (classpermission create_shm_perms)
 (classpermission r_shm_perms)
 (classpermission rw_shm_perms)
 
-;
-; smc_socket class permissions
-;
-
 (classpermission create_smc_socket_perms)
 (classpermission rw_smc_socket_perms)
-
-;
-; sock_file class permissions
-;
 
 (classpermission create_sock_file_perms)
 (classpermission delete_sock_file_perms)
@@ -538,39 +301,19 @@
 (classpermission write_sock_file_perms)
 (classpermission write_inherited_sock_file_perms)
 
-;
-; socket class permissions
-;
-
 (classpermission create_socket_perms)
 (classpermission rw_socket_perms)
 
-;
-; term class permissions
-;
-
 (classpermission rw_term_perms)
 (classpermission rw_inherited_term_perms)
-
-;
-; tcp_socket class permissions
-;
 
 (classpermission create_tcp_socket_perms)
 (classpermission create_tcp_stream_socket_perms)
 (classpermission rw_tcp_socket_perms)
 (classpermission rw_tcp_stream_socket_perms)
 
-;
-; tipc_socket class permissions
-;
-
 (classpermission create_tipc_socket_perms)
 (classpermission rw_tipc_socket_perms)
-
-;
-; tun_socket class permissions
-;
 
 (classpermission create_tun_socket_perms)
 (classpermission relabel_tun_socket_perms)
@@ -578,39 +321,19 @@
 (classpermission relabelto_tun_socket_perms)
 (classpermission rw_tun_socket_perms)
 
-;
-; udp_socket class permissions
-;
-
 (classpermission create_udp_socket_perms)
 (classpermission rw_udp_socket_perms)
 
-;
-; unix_dgram_socket class permissions
-;
-
 (classpermission create_unix_dgram_socket_perms)
 (classpermission rw_unix_dgram_socket_perms)
-
-;
-; unix_stream_socket class permissions
-;
 
 (classpermission create_unix_stream_socket_perms)
 (classpermission create_unix_stream_stream_socket_perms)
 (classpermission rw_unix_stream_socket_perms)
 (classpermission rw_unix_stream_stream_socket_perms)
 
-;
-; vsock_socket class permissions
-;
-
 (classpermission create_vsock_socket_perms)
 (classpermission rw_vsock_socket_perms)
-
-;
-; x25_socket class permissions
-;
 
 (classpermission create_x25_socket_perms)
 (classpermission rw_x25_socket_perms)
@@ -705,10 +428,6 @@
     )
 )
 
-;
-; alg_socket class permission sets
-;
-
 (classpermissionset create_alg_socket_perms
     (alg_socket
         (
@@ -767,10 +486,6 @@
     )
 )
 
-;
-; appletalk_socket class permission sets
-;
-
 (classpermissionset create_appletalk_socket_perms
     (appletalk_socket
         (
@@ -807,10 +522,6 @@
         )
     )
 )
-
-;
-; atmpvc_socket class permission sets
-;
 
 (classpermissionset create_atmpvc_socket_perms
     (atmpvc_socket
@@ -849,10 +560,6 @@
     )
 )
 
-;
-; atmsvc_socket class permission sets
-;
-
 (classpermissionset create_atmsvc_socket_perms
     (atmsvc_socket
         (
@@ -890,10 +597,6 @@
     )
 )
 
-;
-; ax25_socket class permission sets
-;
-
 (classpermissionset create_ax25_socket_perms
     (ax25_socket
         (
@@ -930,10 +633,6 @@
         )
     )
 )
-
-;
-; blk_file class permission sets
-;
 
 (classpermissionset append_blk_file_perms
     (blk_file
@@ -1130,10 +829,6 @@
     )
 )
 
-;
-; bluetooth_socket class permission sets
-;
-
 (classpermissionset create_bluetooth_socket_perms
     (bluetooth_socket
         (
@@ -1192,10 +887,6 @@
     )
 )
 
-;
-; caif_socket class permission sets
-;
-
 (classpermissionset create_caif_socket_perms
     (caif_socket
         (
@@ -1233,10 +924,6 @@
     )
 )
 
-;
-; can_socket class permission sets
-;
-
 (classpermissionset create_can_socket_perms
     (can_socket
         (
@@ -1273,10 +960,6 @@
         )
     )
 )
-
-;
-; chr_file class permission sets
-;
 
 (classpermissionset append_chr_file_perms
     (chr_file
@@ -1479,10 +1162,6 @@
     )
 )
 
-;
-; dccp_socket class permission sets
-;
-
 (classpermissionset create_dccp_socket_perms
     (dccp_socket
         (
@@ -1561,10 +1240,6 @@
     )
 )
 
-;
-; decnet_socket class permission sets
-;
-
 (classpermissionset create_decnet_socket_perms
     (decnet_socket
         (
@@ -1601,10 +1276,6 @@
         )
     )
 )
-
-;
-; dir class permission sets
-;
 
 (classpermissionset add_entry_dir_perms
     (dir
@@ -1806,10 +1477,6 @@
     )
 )
 
-;
-; fifo_file class permission sets
-;
-
 (classpermissionset append_fifo_file_perms
     (fifo_file
         (
@@ -2005,10 +1672,6 @@
         )
     )
 )
-
-;
-; file class permmission sets
-;
 
 (classpermissionset append_file_perms
     (file
@@ -2273,10 +1936,6 @@
     )
 )
 
-;
-; icmp_socket class permission sets
-;
-
 (classpermissionset create_icmp_socket_perms
     (icmp_socket
         (
@@ -2313,10 +1972,6 @@
         )
     )
 )
-
-;
-; ieee802154_socket class permission sets
-;
 
 (classpermissionset create_ieee802154_socket_perms
     (ieee802154_socket
@@ -2355,10 +2010,6 @@
     )
 )
 
-;
-; ipx_socket class permission sets
-;
-
 (classpermissionset create_ipx_socket_perms
     (ipx_socket
         (
@@ -2395,10 +2046,6 @@
         )
     )
 )
-
-;
-; irda_socket class permission sets
-;
 
 (classpermissionset create_irda_socket_perms
     (irda_socket
@@ -2437,10 +2084,6 @@
     )
 )
 
-;
-; isdn_socket class permission sets
-;
-
 (classpermissionset create_isdn_socket_perms
     (isdn_socket
         (
@@ -2477,10 +2120,6 @@
         )
     )
 )
-
-;
-; iucv_socket class permission sets
-;
 
 (classpermissionset create_iucv_socket_perms
     (iucv_socket
@@ -2519,10 +2158,6 @@
     )
 )
 
-;
-; kcm_socket class permission sets
-;
-
 (classpermissionset create_kcm_socket_perms
     (kcm_socket
         (
@@ -2559,10 +2194,6 @@
         )
     )
 )
-
-;
-; key class permission sets
-;
 
 (classpermissionset create_key_perms
     (key
@@ -2628,10 +2259,6 @@
     )
 )
 
-;
-; key_socket class permission sets
-;
-
 (classpermissionset create_key_socket_perms
     (key_socket
         (
@@ -2669,10 +2296,6 @@
     )
 )
 
-;
-; llc_socket class permission sets
-;
-
 (classpermissionset create_llc_socket_perms
     (llc_socket
         (
@@ -2709,10 +2332,6 @@
         )
     )
 )
-
-;
-; lnk_file class permission sets
-;
 
 (classpermissionset create_lnk_file_perms
     (lnk_file
@@ -2846,10 +2465,6 @@
     )
 )
 
-;
-; msgq class permission sets
-;
-
 (classpermissionset create_msgq_perms
     (msgq
         (
@@ -2892,10 +2507,6 @@
     )
 )
 
-;
-; netlink_audit_socket class permission sets
-;
-
 (classpermissionset create_netlink_audit_socket_perms
     (netlink_audit_socket
         (
@@ -2937,10 +2548,6 @@
     )
 )
 
-;
-; netlink_connector_socket class permission sets
-;
-
 (classpermissionset create_netlink_connector_socket_perms
     (netlink_connector_socket
         (
@@ -2977,10 +2584,6 @@
         )
     )
 )
-
-;
-; netlink_crypto_socket class permission sets
-;
 
 (classpermissionset create_netlink_crypto_socket_perms
     (netlink_crypto_socket
@@ -3019,10 +2622,6 @@
     )
 )
 
-;
-; netlink_dnrt_socket class permission sets
-;
-
 (classpermissionset create_netlink_dnrt_socket_perms
     (netlink_dnrt_socket
         (
@@ -3059,10 +2658,6 @@
         )
     )
 )
-
-;
-; netlink_fib_lookup_socket class permission sets
-;
 
 (classpermissionset create_netlink_fib_lookup_socket_perms
     (netlink_fib_lookup_socket
@@ -3101,10 +2696,6 @@
     )
 )
 
-;
-; netlink_generic_socket class permission sets
-;
-
 (classpermissionset create_netlink_generic_socket_perms
     (netlink_generic_socket
         (
@@ -3141,10 +2732,6 @@
         )
     )
 )
-
-;
-; netlink_iscsi_socket class permission sets
-;
 
 (classpermissionset create_netlink_iscsi_socket_perms
     (netlink_iscsi_socket
@@ -3183,10 +2770,6 @@
     )
 )
 
-;
-; netlink_kobject_uevent_socket class permission sets
-;
-
 (classpermissionset create_netlink_kobject_uevent_socket_perms
     (netlink_kobject_uevent_socket
         (
@@ -3223,10 +2806,6 @@
         )
     )
 )
-
-;
-; netlink_netfilter_socket class permission sets
-;
 
 (classpermissionset create_netlink_netfilter_socket_perms
     (netlink_netfilter_socket
@@ -3265,10 +2844,6 @@
     )
 )
 
-;
-; netlink_nflog_socket class permission sets
-;
-
 (classpermissionset create_netlink_nflog_socket_perms
     (netlink_nflog_socket
         (
@@ -3306,10 +2881,6 @@
     )
 )
 
-;
-; netlink_rdma_socket class permission sets
-;
-
 (classpermissionset create_netlink_rdma_socket_perms
     (netlink_rdma_socket
         (
@@ -3346,10 +2917,6 @@
         )
     )
 )
-
-;
-; netlink_route_socket class permission sets
-;
 
 (classpermissionset create_netlink_route_socket_perms
     (netlink_route_socket
@@ -3392,10 +2959,6 @@
     )
 )
 
-;
-; netlink_scsitransport_socket class permission sets
-;
-
 (classpermissionset create_netlink_scsitransport_socket_perms
     (netlink_scsitransport_socket
         (
@@ -3433,10 +2996,6 @@
     )
 )
 
-;
-; netlink_selinux_socket class permission sets
-;
-
 (classpermissionset create_netlink_selinux_socket_perms
     (netlink_selinux_socket
         (
@@ -3473,10 +3032,6 @@
         )
     )
 )
-
-;
-; netlink_tcpdiag_socket class permission sets
-;
 
 (classpermissionset create_netlink_tcpdiag_socket_perms
     (netlink_tcpdiag_socket
@@ -3519,10 +3074,6 @@
     )
 )
 
-;
-; netlink_xfrm_socket class permission sets
-;
-
 (classpermissionset create_netlink_xfrm_socket_perms
     (netlink_xfrm_socket
         (
@@ -3564,10 +3115,6 @@
     )
 )
 
-;
-; netrom_socket class permission sets
-;
-
 (classpermissionset create_netrom_socket_perms
     (netrom_socket
         (
@@ -3604,10 +3151,6 @@
         )
     )
 )
-
-;
-; nfc_socket class permission sets
-;
 
 (classpermissionset create_nfc_socket_perms
     (nfc_socket
@@ -3646,10 +3189,6 @@
     )
 )
 
-;
-; packet_socket class permission sets
-;
-
 (classpermissionset create_packet_socket_perms
     (packet_socket
         (
@@ -3686,10 +3225,6 @@
         )
     )
 )
-
-;
-; phonet_socket class permission sets
-;
 
 (classpermissionset create_phonet_socket_perms
     (phonet_socket
@@ -3728,10 +3263,6 @@
     )
 )
 
-;
-; pppox_socket class permission sets
-;
-
 (classpermissionset create_pppox_socket_perms
     (pppox_socket
         (
@@ -3768,10 +3299,6 @@
         )
     )
 )
-
-;
-; qipcrtr_socket class permission sets
-;
 
 (classpermissionset create_qipcrtr_socket_perms
     (qipcrtr_socket
@@ -3810,10 +3337,6 @@
     )
 )
 
-;
-; packet_socket class permission sets
-;
-
 (classpermissionset create_rawip_socket_perms
     (rawip_socket
         (
@@ -3850,10 +3373,6 @@
         )
     )
 )
-
-;
-; rds_socket class permission sets
-;
 
 (classpermissionset create_rds_socket_perms
     (rds_socket
@@ -3892,10 +3411,6 @@
     )
 )
 
-;
-; rose_socket class permission sets
-;
-
 (classpermissionset create_rose_socket_perms
     (rose_socket
         (
@@ -3932,10 +3447,6 @@
         )
     )
 )
-
-;
-; rxrpc_socket class permission sets
-;
 
 (classpermissionset create_rxrpc_socket_perms
     (rxrpc_socket
@@ -3974,10 +3485,6 @@
     )
 )
 
-;
-; sctp_socket class permission sets
-;
-
 (classpermissionset create_sctp_socket_perms
     (sctp_socket
         (
@@ -4014,10 +3521,6 @@
         )
     )
 )
-
-;
-; sem class permission sets
-;
 
 (classpermissionset create_sem_perms
     (sem
@@ -4058,10 +3561,6 @@
         )
     )
 )
-
-;
-; shm class permission sets
-;
 
 (classpermissionset create_shm_perms
     (shm
@@ -4105,10 +3604,6 @@
     )
 )
 
-;
-; smc_socket class permission sets
-;
-
 (classpermissionset create_smc_socket_perms
     (smc_socket
         (
@@ -4145,10 +3640,6 @@
         )
     )
 )
-
-;
-; sock_file class permission sets
-;
 
 (classpermissionset create_sock_file_perms
     (sock_file
@@ -4322,10 +3813,6 @@
     )
 )
 
-;
-; socket class permission sets
-;
-
 (classpermissionset create_socket_perms
     (socket
         (
@@ -4363,10 +3850,6 @@
     )
 )
 
-;
-; term class permission sets
-;
-
 (classpermissionset rw_term_perms
     (chr_file
         (
@@ -4391,10 +3874,6 @@
         )
     )
 )
-
-;
-; tcp_socket class permission sets
-;
 
 (classpermissionset create_tcp_socket_perms
     (tcp_socket
@@ -4474,10 +3953,6 @@
     )
 )
 
-;
-; tipc_socket class permission sets
-;
-
 (classpermissionset create_tipc_socket_perms
     (tipc_socket
         (
@@ -4514,10 +3989,6 @@
         )
     )
 )
-
-;
-; tun_socket class permission sets
-;
 
 (classpermissionset create_tun_socket_perms
     (tun_socket
@@ -4584,10 +4055,6 @@
     )
 )
 
-;
-; udp_socket class permission sets
-;
-
 (classpermissionset create_udp_socket_perms
     (udp_socket
         (
@@ -4625,10 +4092,6 @@
     )
 )
 
-;
-; unix_dgram_socket class permission sets
-;
-
 (classpermissionset create_unix_dgram_socket_perms
     (unix_dgram_socket
         (
@@ -4665,10 +4128,6 @@
         )
     )
 )
-
-;
-; unix_stream_socket class permission sets
-;
 
 (classpermissionset create_unix_stream_socket_perms
     (unix_stream_socket
@@ -4748,10 +4207,6 @@
     )
 )
 
-;
-; vsock_socket class permission sets
-;
-
 (classpermissionset create_vsock_socket_perms
     (vsock_socket
         (
@@ -4788,10 +4243,6 @@
         )
     )
 )
-
-;
-; x25_socket class permission sets
-;
 
 (classpermissionset create_x25_socket_perms
     (x25_socket

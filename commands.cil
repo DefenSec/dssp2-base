@@ -1,26 +1,19 @@
 ; -*- mode: CIL; fill-column: 75; indent-tabs-mode: nil; tab-width: 4 -*-
 
-; CMD policy
-;
-; 1. CMD name space
-; 2.    CMD generic_commands name space
-; 3.    CMD cmd_file name space
-; 4.    CMD shell name space
-
-;
-; CMD name space
-;
+; cmd
+;     generic_commands
+;     cmd_file
+;         obj_all_macro_template
+;         obj_stub
+;         obj_template
+;     shell
 
 (block cmd
-
-    ;
-    ; CMD generic_commands name space
-    ;
 
     (block generic_commands
 
         ;
-        ; generic_commands contexts
+        ; Contexts
         ;
 
         (filecon "/etc/profile\.d(/.*)?" file cmd_file_context)
@@ -34,7 +27,7 @@
         (filecon "/usr/sbin(/.*)?" any cmd_file_context)
 
         ;
-        ; generic_commands macros
+        ; Macros
         ;
 
         (macro add_entries ((type ARG1))
@@ -898,26 +891,22 @@
         )
 
         ;
-        ; generic_commands policy
+        ; Policy
         ;
 
         (blockinherit cmd_file.obj_stub)
     )
 
-    ;
-    ; CMD cmd_file name space
-    ;
-
     (block cmd_file
 
         ;
-        ; cmd_file macros
+        ; Macros
         ;
 
         (blockinherit obj_all_macro_template)
 
         ;
-        ; cmd_file policy
+        ; Policy
         ;
 
         (typeattribute obj_type_attribute)
@@ -935,13 +924,13 @@
         )
 
         ;
-        ; cmd_file templates
+        ; Templates
         ;
 
         (block obj_all_macro_template
 
             ;
-            ; cmd.cmd_file.obj_all_macro_template macros
+            ; Macros
             ;
 
             (macro dontaudit_audit_access_files ((type ARG1))
@@ -1146,7 +1135,7 @@
             )
 
             ;
-            ; cmd.cmd_file.obj_all_macro_template policy
+            ; Policy
             ;
 
             (blockabstract obj_all_macro_template)
@@ -1156,7 +1145,7 @@
         (block obj_stub
 
             ;
-            ; cmd.cmd_file.obj_stub contexts
+            ; Contexts
             ;
 
             (context cmd_file_context
@@ -1172,7 +1161,7 @@
             )
 
             ;
-            ; cmd.cmd_file.obj_stub policy
+            ; Policy
             ;
 
             (blockabstract obj_stub)
@@ -1188,7 +1177,7 @@
         (block obj_template
 
             ;
-            ; cmd.cmd_file.obj_template macros
+            ; Macros
             ;
 
             (macro append_files ((type ARG1))
@@ -1376,7 +1365,7 @@
             )
 
             ;
-            ; cmd.cmd_file.obj_template policy
+            ; Policy
             ;
 
             (blockabstract obj_template)
@@ -1385,14 +1374,10 @@
         )
     )
 
-    ;
-    ; CMD shell name space
-    ;
-
     (block shell
 
         ;
-        ; shell contexts
+        ; Contexts
         ;
 
         (filecon "/usr/bin/bash" file cmd_file_context)
@@ -1400,7 +1385,7 @@
         (filecon "/usr/sbin/nologin" file cmd_file_context)
 
         ;
-        ; shell macros
+        ; Macros
         ;
 
         (macro audit_execute_access ((type ARG1))
@@ -1419,7 +1404,7 @@
         )
 
         ;
-        ; shell policy
+        ; Policy
         ;
 
         (blockinherit cmd_file.obj_template)

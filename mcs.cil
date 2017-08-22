@@ -1,13 +1,7 @@
 ; -*- mode: CIL; fill-column: 75; indent-tabs-mode: nil; tab-width: 4 -*-
 
-; Multi-category access control security model
-
 ;
-; MCS constraints
-;
-
-;
-; MCS blk_file constraints
+; Constraints
 ;
 
 (mlsconstrain
@@ -42,10 +36,6 @@
             )
     )
 )
-
-;
-; MCS chr_file constraints
-;
 
 (mlsconstrain
     (chr_file
@@ -81,10 +71,6 @@
     )
 )
 
-;
-; MCS dccp_socket constraints
-;
-
 (mlsconstrain
     (dccp_socket
         (
@@ -96,10 +82,6 @@
         (neq t1 mcs_constrained_subj_type_attribute)
     )
 )
-
-;
-; MCS dir constraints
-;
 
 (mlsconstrain
     (dir
@@ -140,10 +122,6 @@
     )
 )
 
-;
-; MCS fifo_file constraints
-;
-
 (mlsconstrain
     (fifo_file
         (
@@ -172,10 +150,6 @@
             )
     )
 )
-
-;
-; MCS file constraints
-;
 
 (mlsconstrain
     (file
@@ -216,10 +190,6 @@
     )
 )
 
-;
-; MCS icmp_socket constraints
-;
-
 (mlsconstrain
     (icmp_socket
         (
@@ -231,10 +201,6 @@
         (neq t1 mcs_constrained_subj_type_attribute)
     )
 )
-
-;
-; MCS ipc constraints
-;
 
 (mlsconstrain
     (ipc
@@ -274,10 +240,6 @@
     )
 )
 
-;
-; MCS lnk_file constraints
-;
-
 (mlsconstrain
     (lnk_file
         (
@@ -311,10 +273,6 @@
     )
 )
 
-;
-; MCS msgq constraints
-;
-
 (mlsconstrain
     (msgq
         (
@@ -331,10 +289,6 @@
     )
 )
 
-;
-; MCS netif constraints
-;
-
 (mlsconstrain
     (netif
         (
@@ -348,10 +302,6 @@
     )
 )
 
-;
-; MCS node constraints
-;
-
 (mlsconstrain
     (node
         (
@@ -364,10 +314,6 @@
         (neq t1 mcs_constrained_subj_type_attribute)
     )
 )
-
-;
-; MCS packet constraints
-;
 
 (mlsconstrain
     (packet
@@ -384,10 +330,6 @@
     )
 )
 
-;
-; MCS peer constraints
-;
-
 (mlsconstrain
     (peer
         (
@@ -402,10 +344,6 @@
             )
     )
 )
-
-;
-; MCS process constraints
-;
 
 (mlsconstrain
     (process
@@ -424,10 +362,6 @@
     )
 )
 
-;
-; MCS process2 constraints
-;
-
 (mlsconstrain
     (process2
         (
@@ -441,10 +375,6 @@
     )
 )
 
-;
-; MCS rawip_socket constraints
-;
-
 (mlsconstrain
     (rawip_socket
         (
@@ -457,10 +387,6 @@
     )
 )
 
-;
-; MCS sctp_socket constraints
-;
-
 (mlsconstrain
     (sctp_socket
         (
@@ -472,10 +398,6 @@
         (neq t1 mcs_constrained_subj_type_attribute)
     )
 )
-
-;
-; MCS sem constraints
-;
 
 (mlsconstrain
     (sem
@@ -493,10 +415,6 @@
     )
 )
 
-;
-; MCS shm constraints
-;
-
 (mlsconstrain
     (shm
         (
@@ -512,10 +430,6 @@
         (neq t1 mcs_constrained_subj_type_attribute)
     )
 )
-
-;
-; MCS sock_file constraints
-;
 
 (mlsconstrain
     (sock_file
@@ -550,10 +464,6 @@
     )
 )
 
-;
-; MCS tcp_socket constraints
-;
-
 (mlsconstrain
     (tcp_socket
         (
@@ -565,10 +475,6 @@
         (neq t1 mcs_constrained_subj_type_attribute)
     )
 )
-
-;
-; MCS udp_socket constraints
-;
 
 (mlsconstrain
     (udp_socket
@@ -583,7 +489,7 @@
 )
 
 ;
-; MCS macros
+; Macros
 ;
 
 (macro mcs_constrained_subj_type ((type ARG1))
@@ -591,7 +497,7 @@
 )
 
 ;
-; MCS policy
+; Policy
 ;
 
 (typeattribute mcs_constrained_subj_type_attribute)

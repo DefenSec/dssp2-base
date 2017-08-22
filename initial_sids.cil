@@ -1,11 +1,5 @@
 ; -*- mode: CIL; fill-column: 75; indent-tabs-mode: nil; tab-width: 4 -*-
 
-; Unused initial security identifiers
-;
-; 1. Unused initial security identifier declarations
-; 2. Unused initial security identifier context specifications
-; 3. Sid order of all initial security identifiers
-
 ;
 ; Unused initial security identifier declarations
 ;

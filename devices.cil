@@ -1,59 +1,55 @@
 ; -*- mode: CIL; fill-column: 75; indent-tabs-mode: nil; tab-width: 4 -*-
 
-; Dev policy
-;
-; 1. Dev initial security identifier declarations
-; 2. Dev name space
-;       Dev apm name space
-;       Dev autofs name space
-;       Dev clock name space
-;       Dev cpu name space
-;       Dev cuse name space
-;       Dev dev_file name space
-;       Dev devtty name space
-;       Dev dpaux name space
-;       Dev dri name space
-;       Dev event name space
-;       Dev framebuf name space
-;       Dev kmsg name space
-;       Dev kvm name space
-;       Dev loop_control name space
-;       Dev lvm_control name space
-;       Dev mei_misc name space
-;       Dev memory name space
-;       Dev modem name space
-;       Dev mouse name space
-;       Dev null name space
-;       Dev nvram name space
-;       Dev pm_qos_misc name space
-;       Dev ppp name space
-;       Dev printer name space
-;       Dev ptmx name space
-;       Dev random name space
-;       Dev sound name space
-;       Dev tpm name space
-;       Dev tun_tap name space
-;       Dev uhid name space
-;       Dev urandom name space
-;       Dev usb name space
-;       Dev usbmon name space
-;       Dev v4l name space
-;       Dev vfio name space
-;       Dev vhost name space
-;       Dev watchdog name space
-;       Dev wireless name space
-;       Dev xserver_misc name space
-;       Dev zero name space
+; dev
+;     apm
+;     autofs
+;     clock
+;     cpu
+;     cuse
+;     dev_file
+;         obj_all_macro_template
+;         obj_stub
+;         obj_template
+;     devtty
+;     dpaux
+;     dri
+;     event
+;     framebuf
+;     kmsg
+;     kvm
+;     loop_control
+;     lvm_control
+;     mei_misc
+;     memory
+;     modem
+;     mouse
+;     null
+;     nvram
+;     pm_qos_misc
+;     ppp
+;     printer
+;     ptmx
+;     random
+;     sound
+;     tpm
+;     tun_tap
+;     uhid
+;     urandom
+;     usb
+;     usbmon
+;     v4l
+;     vfio
+;     vhost
+;     watchdog
+;     wireless
+;     xserver_misc
+;     zero
 
 ;
-; Dev initial security identifier declarations
+; Policy
 ;
 
 (sid devnull)
-
-;
-; Dev name space
-;
 
 (block dev
 
@@ -107,52 +103,40 @@
             )
     )
 
-    ;
-    ; Dev apm name space
-    ;
-
     (block apm
 
         ;
-        ; apm contexts
+        ; Contexts
         ;
 
         (filecon "/dev/snapshot" char dev_file_context)
 
         ;
-        ; apm policy
+        ; Policy
         ;
 
         (blockinherit dev_file.obj_template)
     )
 
-    ;
-    ; Dev autofs name space
-    ;
-
     (block autofs
 
         ;
-        ; autofs contexts
+        ; Contexts
         ;
 
         (filecon "/dev/autofs" char dev_file_context)
 
         ;
-        ; autofs policy
+        ; Policy
         ;
 
         (blockinherit dev_file.obj_template)
     )
 
-    ;
-    ; Dev clock name space
-    ;
-
     (block clock
 
         ;
-        ; clock contexts
+        ; Contexts
         ;
 
         (filecon "/dev/hpet" char dev_file_context)
@@ -160,7 +144,7 @@
         (filecon "/dev/rtc([0-9]+)?" char dev_file_context)
 
         ;
-        ; clock macros
+        ; Macros
         ;
 
         (macro devtmpfs_obj_type_transition ((type ARG1))
@@ -182,7 +166,7 @@
         )
 
         ;
-        ; clock policy
+        ; Policy
         ;
 
         (blockinherit dev_file.obj_template)
@@ -194,39 +178,31 @@
         )
     )
 
-    ;
-    ; Dev cpu name space
-    ;
-
     (block cpu
 
         ;
-        ; cpu contexts
+        ; Contexts
         ;
 
         (filecon "/dev/cpu/.+" char dev_file_context)
 
         ;
-        ; cpu policy
+        ; Policy
         ;
 
         (blockinherit dev_file.obj_template)
     )
 
-    ;
-    ; Dev cuse name space
-    ;
-
     (block cuse
 
         ;
-        ; cuse contexts
+        ; Contexts
         ;
 
         (filecon "/dev/cuse" char dev_file_context)
 
         ;
-        ; cuse macros
+        ; Macros
         ;
 
         (macro devtmpfs_obj_type_transition ((type ARG1))
@@ -238,7 +214,7 @@
         )
 
         ;
-        ; cuse policy
+        ; Policy
         ;
 
         (blockinherit dev_file.obj_template)
@@ -250,20 +226,16 @@
         )
     )
 
-    ;
-    ; Dev dev_file name space
-    ;
-
     (block dev_file
 
         ;
-        ; dev_file macros
+        ; Macros
         ;
 
         (blockinherit obj_all_macro_template)
 
         ;
-        ; dev_file policy
+        ; Policy
         ;
 
         (typeattribute obj_type_attribute)
@@ -284,13 +256,13 @@
         )
 
         ;
-        ; dev_file templates
+        ; Templates
         ;
 
         (block obj_all_macro_template
 
             ;
-            ; dev.dev_file.obj_all_macro_template macros
+            ; Macros
             ;
 
             (macro create_chr_files ((type ARG1))
@@ -471,7 +443,7 @@
             )
 
             ;
-            ; dev.dev_file.obj_all_macro_template policy
+            ; Policy
             ;
 
             (blockabstract obj_all_macro_template)
@@ -480,7 +452,7 @@
         (block obj_stub
 
             ;
-            ; dev.dev_file.obj_stub contexts
+            ; Contexts
             ;
 
             (context dev_file_context
@@ -496,7 +468,7 @@
             )
 
             ;
-            ; dev.dev_file.obj_stub policy
+            ; Policy
             ;
 
             (blockabstract obj_stub)
@@ -512,7 +484,7 @@
         (block obj_template
 
             ;
-            ; dev.dev_file.obj_template macros
+            ; Macros
             ;
 
             (macro create_chr_files ((type ARG1))
@@ -650,7 +622,7 @@
             )
 
             ;
-            ; dev.dev_file.obj_template policy
+            ; Policy
             ;
 
             (blockabstract obj_template)
@@ -659,20 +631,16 @@
         )
     )
 
-    ;
-    ; Dev devtty name space
-    ;
-
     (block devtty
 
         ;
-        ; devtty contexts
+        ; Contexts
         ;
 
         (filecon "/dev/tty" char dev_file_context)
 
         ;
-        ; devtty macros
+        ; Macros
         ;
 
         (macro tmpfs_obj_type_transition ((type ARG1))
@@ -684,7 +652,7 @@
         )
 
         ;
-        ; devtty policy
+        ; Policy
         ;
 
         (blockinherit dev_file.obj_template)
@@ -702,39 +670,31 @@
         )
     )
 
-    ;
-    ; Dev dpaux name space
-    ;
-
     (block dpaux
 
         ;
-        ; dpaux contexts
+        ; Contexts
         ;
 
         (filecon "/dev/drm_dp_aux[0-9]+" char dev_file_context)
 
         ;
-        ; dpaux policy
+        ; Policy
         ;
 
         (blockinherit dev_file.obj_template)
     )
 
-    ;
-    ; Dev dri name space
-    ;
-
     (block dri
 
         ;
-        ; dri contexts
+        ; Contexts
         ;
 
         (filecon "/dev/dri/.+" char dev_file_context)
 
         ;
-        ; dri macros
+        ; Macros
         ;
 
         (macro rw_inherited_chr_files ((type ARG1))
@@ -742,27 +702,23 @@
         )
 
         ;
-        ; dri policy
+        ; Policy
         ;
 
         (blockinherit dev_file.obj_template)
     )
 
-    ;
-    ; Dev event name space
-    ;
-
     (block event
 
         ;
-        ; event contexts
+        ; Contexts
         ;
 
         (filecon "/dev/input/event([0-9]+)?" char dev_file_context)
         (filecon "/dev/uinput" char dev_file_context)
 
         ;
-        ; event macros
+        ; Macros
         ;
 
         (macro devtmpfs_obj_type_transition ((type ARG1))
@@ -878,7 +834,7 @@
         )
 
         ;
-        ; event policy
+        ; Policy
         ;
 
         (blockinherit dev_file.obj_template)
@@ -890,59 +846,47 @@
         )
     )
 
-    ;
-    ; Dev framebuf name space
-    ;
-
     (block framebuf
 
         ;
-        ; framebuf contexts
+        ; Contexts
         ;
 
         (filecon "/dev/fb([0-9]+)?" char dev_file_context)
 
         ;
-        ; framebuf policy
+        ; Policy
         ;
 
         (blockinherit dev_file.obj_template)
     )
 
-    ;
-    ; Dev kmsg name space
-    ;
-
     (block kmsg
 
         ;
-        ; kmsg contexts
+        ; Contexts
         ;
 
         (filecon "/dev/kmsg" char dev_file_context)
         (filecon "/dev/mcelog" char dev_file_context)
 
         ;
-        ; kmsg policy
+        ; Policy
         ;
 
         (blockinherit dev_file.obj_template)
     )
 
-    ;
-    ; Dev kvm name space
-    ;
-
     (block kvm
 
         ;
-        ; kvm contexts
+        ; Contexts
         ;
 
         (filecon "/dev/kvm" char dev_file_context)
 
         ;
-        ; kvm macros
+        ; Macros
         ;
 
         (macro devtmpfs_obj_type_transition ((type ARG1))
@@ -954,7 +898,7 @@
         )
 
         ;
-        ; kvm policy
+        ; Policy
         ;
 
         (blockinherit dev_file.obj_template)
@@ -966,59 +910,47 @@
         )
     )
 
-    ;
-    ; Dev loop_control name space
-    ;
-
     (block loop_control
 
         ;
-        ; loop_control contexts
+        ; Contexts
         ;
 
         (filecon "/dev/loop-control" char dev_file_context)
 
         ;
-        ; loop_control policy
+        ; Policy
         ;
 
         (blockinherit dev_file.obj_template)
     )
 
-    ;
-    ; Dev lvm_control name space
-    ;
-
     (block lvm_control
 
         ;
-        ; lvm_control contexts
+        ; Contexts
         ;
 
         (filecon "/dev/btrfs-control" char dev_file_context)
         (filecon "/dev/mapper/control" char dev_file_context)
 
         ;
-        ; lvm_control policy
+        ; Policy
         ;
 
         (blockinherit dev_file.obj_template)
     )
 
-    ;
-    ; Dev mei_misc name space
-    ;
-
     (block mei_misc
 
         ;
-        ; mei_misc contexts
+        ; Contexts
         ;
 
         (filecon "/dev/mei([0-9]+)?" char dev_file_context)
 
         ;
-        ; mei_misc macros
+        ; Macros
         ;
 
         (macro devtmpfs_obj_type_transition ((type ARG1))
@@ -1030,7 +962,7 @@
         )
 
         ;
-        ; mei_misc policy
+        ; Policy
         ;
 
         (blockinherit dev_file.obj_template)
@@ -1042,21 +974,17 @@
         )
     )
 
-    ;
-    ; Dev memory name space
-    ;
-
     (block memory
 
         ;
-        ; memory contexts
+        ; Contexts
         ;
 
         (filecon "/dev/mem" char dev_file_context)
         (filecon "/dev/port" char dev_file_context)
 
         ;
-        ; memory macros
+        ; Macros
         ;
 
         (macro getattr_chr_files ((type ARG1))
@@ -1199,7 +1127,7 @@
         )
 
         ;
-        ; memory policy
+        ; Policy
         ;
 
         (blockinherit dev_file.obj_stub)
@@ -1226,20 +1154,16 @@
         )
     )
 
-    ;
-    ; Dev modem name space
-    ;
-
     (block modem
 
         ;
-        ; modem contexts
+        ; Contexts
         ;
 
         (filecon "/dev/cdc-wdm([0-9]+)?" char dev_file_context)
 
         ;
-        ; modem macros
+        ; Macros
         ;
 
         (macro devtmpfs_obj_type_transition ((type ARG1))
@@ -1261,20 +1185,16 @@
         )
 
         ;
-        ; modem policy
+        ; Policy
         ;
 
         (blockinherit dev_file.obj_template)
     )
 
-    ;
-    ; Dev mouse name space
-    ;
-
     (block mouse
 
         ;
-        ; mouse contexts
+        ; Contexts
         ;
 
         (filecon "/dev/psaux" char dev_file_context)
@@ -1283,7 +1203,7 @@
         (filecon "/dev/input/mouse([0-9]+)?" char dev_file_context)
 
         ;
-        ; mouse macros
+        ; Macros
         ;
 
         (macro devtmpfs_obj_type_transition ((type ARG1))
@@ -1320,7 +1240,7 @@
         )
 
         ;
-        ; mouse policy
+        ; Policy
         ;
 
         (blockinherit dev_file.obj_template)
@@ -1332,14 +1252,10 @@
         )
     )
 
-    ;
-    ; Dev null name space
-    ;
-
     (block null
 
         ;
-        ; null contexts
+        ; Contexts
         ;
 
         (filecon "/dev/full" char isid_context)
@@ -1348,7 +1264,7 @@
         (sidcontext devnull isid_context)
 
         ;
-        ; null macros
+        ; Macros
         ;
 
         (macro control_client_subj_type ((type ARG1))
@@ -1503,7 +1419,7 @@
         )
 
         ;
-        ; null policy
+        ; Policy
         ;
 
         (blockinherit sys.isid.stub)
@@ -1539,34 +1455,26 @@
         )
     )
 
-    ;
-    ; Dev nvram name space
-    ;
-
     (block nvram
 
         ;
-        ; nvram contexts
+        ; Contexts
         ;
 
         (filecon "/dev/ndctl([0-9]+)?" char dev_file_context)
         (filecon "/dev/nvram" char dev_file_context)
 
         ;
-        ; nvram policy
+        ; Policy
         ;
 
         (blockinherit dev_file.obj_template)
     )
 
-    ;
-    ; Dev pm_qos_mic name space
-    ;
-
     (block pm_qos_misc
 
         ;
-        ; pm_qos_misc contexts
+        ; Contexts
         ;
 
         (filecon "/dev/cpu_dma_latency" char dev_file_context)
@@ -1575,65 +1483,53 @@
         (filecon "/dev/network_throughput" char dev_file_context)
 
         ;
-        ; pm_qos_misc policy
+        ; Policy
         ;
 
         (blockinherit dev_file.obj_template)
     )
 
-    ;
-    ; Dev ppp name space
-    ;
-
     (block ppp
 
         ;
-        ; ppp contexts
+        ; Contexts
         ;
 
         (filecon "/dev/ppp" char dev_file_context)
 
         ;
-        ; ppp policy
+        ; Policy
         ;
 
         (blockinherit dev_file.obj_template)
     )
 
-    ;
-    ; Dev printer name space
-    ;
-
     (block printer
 
         ;
-        ; printer contexts
+        ; Contexts
         ;
 
         (filecon "/dev/lp([0-9]+)?" char dev_file_context)
         (filecon "/dev/parport([0-9]+)?" char dev_file_context)
 
         ;
-        ; printer policy
+        ; Policy
         ;
 
         (blockinherit dev_file.obj_template)
     )
 
-    ;
-    ; Dev ptmx name space
-    ;
-
     (block ptmx
 
         ;
-        ; ptmx contexts
+        ; Contexts
         ;
 
         (filecon "/dev/ptmx" char dev_file_context)
 
         ;
-        ; ptmx macros
+        ; Macros
         ;
 
         (macro rw_inherited_chr_files ((type ARG1))
@@ -1641,27 +1537,23 @@
         )
 
         ;
-        ; ptmx policy
+        ; Policy
         ;
 
         (blockinherit dev_file.obj_template)
     )
 
-    ;
-    ; Dev random name space
-    ;
-
     (block random
 
         ;
-        ; random contexts
+        ; Contexts
         ;
 
         (filecon "/dev/hwrng" char dev_file_context)
         (filecon "/dev/random" char dev_file_context)
 
         ;
-        ; random macros
+        ; Macros
         ;
 
         (macro tmpfs_obj_type_transition ((type ARG1))
@@ -1678,7 +1570,7 @@
         )
 
         ;
-        ; random policy
+        ; Policy
         ;
 
         (blockinherit dev_file.obj_template)
@@ -1696,20 +1588,16 @@
         )
     )
 
-    ;
-    ; Dev sound name space
-    ;
-
     (block sound
 
         ;
-        ; sound contexts
+        ; Contexts
         ;
 
         (filecon "/dev/snd/.+" char dev_file_context)
 
         ;
-        ; sound macros
+        ; Macros
         ;
 
         (macro devtmpfs_obj_type_transition ((type ARG1))
@@ -1816,7 +1704,7 @@
         )
 
         ;
-        ; sound policy
+        ; Policy
         ;
 
         (blockinherit dev_file.obj_template)
@@ -1828,20 +1716,16 @@
         )
     )
 
-    ;
-    ; Dev tpm name space
-    ;
-
     (block tpm
 
         ;
-        ; tpm contexts
+        ; Contexts
         ;
 
         (filecon "/dev/tpm([0-9]+)?" char dev_file_context)
 
         ;
-        ; tpm macros
+        ; Macros
         ;
 
         (macro devtmpfs_obj_type_transition ((type ARG1))
@@ -1853,7 +1737,7 @@
         )
 
         ;
-        ; tpm policy
+        ; Policy
         ;
 
         (blockinherit dev_file.obj_template)
@@ -1865,58 +1749,46 @@
         )
     )
 
-    ;
-    ; Dev tun_tap name space
-    ;
-
     (block tun_tap
 
         ;
-        ; tun_tap contexts
+        ; Contexts
         ;
 
         (filecon "/dev/net/tun" char dev_file_context)
 
         ;
-        ; tun_tap policy
+        ; Policy
         ;
 
         (blockinherit dev_file.obj_template)
     )
 
-    ;
-    ; Dev uhid name space
-    ;
-
     (block uhid
 
         ;
-        ; uhid contexts
+        ; Contexts
         ;
 
         (filecon "/dev/uhid" char dev_file_context)
 
         ;
-        ; uhid policy
+        ; Policy
         ;
 
         (blockinherit dev_file.obj_template)
     )
 
-    ;
-    ; Dev urandom name space
-    ;
-
     (block urandom
 
         ;
-        ; urandom contexts
+        ; Contexts
         ;
 
         (filecon "/dev/urandom" char dev_file_context)
 
         ;
-        ; urandom macros
+        ; Macros
         ;
 
         (macro tmpfs_obj_type_transition ((type ARG1))
@@ -1928,7 +1800,7 @@
         )
 
         ;
-        ; urandom policy
+        ; Policy
         ;
 
         (blockinherit dev_file.obj_template)
@@ -1946,14 +1818,10 @@
         )
     )
 
-    ;
-    ; Dev usb name space
-    ;
-
     (block usb
 
         ;
-        ; usb contexts
+        ; Contexts
         ;
 
         (filecon "/dev/bus/usb/.+" char dev_file_context)
@@ -1961,7 +1829,7 @@
         (filecon "/dev/usb.+" char dev_file_context)
 
         ;
-        ; usb macros
+        ; Macros
         ;
 
         (macro devtmpfs_obj_type_transition ((type ARG1))
@@ -2253,7 +2121,7 @@
         )
 
         ;
-        ; usb policy
+        ; Policy
         ;
 
         (blockinherit dev_file.obj_template)
@@ -2265,40 +2133,32 @@
         )
     )
 
-    ;
-    ; Dev usbmon name space
-    ;
-
     (block usbmon
 
         ;
-        ; usbmon contexts
+        ; Contexts
         ;
 
         (filecon "/dev/usbmon[0-9]+" char dev_file_context)
 
         ;
-        ; usbmon policy
+        ; Policy
         ;
 
         (blockinherit dev_file.obj_template)
     )
 
-    ;
-    ; Dev v4l name space
-    ;
-
     (block v4l
 
         ;
-        ; v4l contexts
+        ; Contexts
         ;
 
         (filecon "/dev/media([0-9]+)?" char dev_file_context)
         (filecon "/dev/video([0-9]+)?" char dev_file_context)
 
         ;
-        ; v4l macros
+        ; Macros
         ;
 
         (macro devtmpfs_obj_type_transition ((type ARG1))
@@ -2335,7 +2195,7 @@
         )
 
         ;
-        ; v4l policy
+        ; Policy
         ;
 
         (blockinherit dev_file.obj_template)
@@ -2347,33 +2207,25 @@
         )
     )
 
-    ;
-    ; Dev vfio name space
-    ;
-
     (block vfio
 
         ;
-        ; vfio contexts
+        ; Contexts
         ;
 
         (filecon "/dev/vfio/.+" char dev_file_context)
 
         ;
-        ; vfio policy
+        ; Policy
         ;
 
         (blockinherit dev_file.obj_template)
     )
 
-    ;
-    ; Dev vhost name space
-    ;
-
     (block vhost
 
         ;
-        ; vhost contexts
+        ; Contexts
         ;
 
         (filecon "/dev/vhci" char dev_file_context)
@@ -2381,26 +2233,22 @@
         (filecon "/dev/vhost-vsock" char dev_file_context)
 
         ;
-        ; vhost policy
+        ; Policy
         ;
 
         (blockinherit dev_file.obj_template)
     )
 
-    ;
-    ; Dev watchdog name space
-    ;
-
     (block watchdog
 
         ;
-        ; watchdog contexts
+        ; Contexts
         ;
 
         (filecon "/dev/watchdog([0-9]+)?" char dev_file_context)
 
         ;
-        ; watchdog macros
+        ; Macros
         ;
 
         (macro devtmpfs_obj_type_transition ((type ARG1))
@@ -2422,7 +2270,7 @@
         )
 
         ;
-        ; watchdog policy
+        ; Policy
         ;
 
         (blockinherit dev_file.obj_template)
@@ -2434,20 +2282,16 @@
         )
     )
 
-    ;
-    ; Dev wireless name space
-    ;
-
     (block wireless
 
         ;
-        ; wireless contexts
+        ; Contexts
         ;
 
         (filecon "/dev/rfkill" char dev_file_context)
 
         ;
-        ; wireless macros
+        ; Macros
         ;
 
         (macro devtmpfs_obj_type_transition ((type ARG1))
@@ -2463,7 +2307,7 @@
         )
 
         ;
-        ; wireless policy
+        ; Policy
         ;
 
         (blockinherit dev_file.obj_template)
@@ -2475,39 +2319,31 @@
         )
     )
 
-    ;
-    ; Dev xserver_misc name space
-    ;
-
     (block xserver_misc
 
         ;
-        ; xserver_misc contexts
+        ; Contexts
         ;
 
         (filecon "/dev/vga_arbiter" char dev_file_context)
 
         ;
-        ; xserver_misc policy
+        ; Policy
         ;
 
         (blockinherit dev_file.obj_template)
     )
 
-    ;
-    ; Dev zero name space
-    ;
-
     (block zero
 
         ;
-        ; zero contexts
+        ; Contexts
         ;
 
         (filecon "/dev/zero" char dev_file_context)
 
         ;
-        ; zero macros
+        ; Macros
         ;
 
         (macro tmpfs_obj_type_transition ((type ARG1))
@@ -2519,7 +2355,7 @@
         )
 
         ;
-        ; zero policy
+        ; Policy
         ;
 
         (blockinherit dev_file.obj_template)

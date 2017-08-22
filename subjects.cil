@@ -1,14 +1,13 @@
 ; -*- mode: CIL; fill-column: 75; indent-tabs-mode: nil; tab-width: 4 -*-
 
-; Subj policy
-;
-; 1. Subj name space
-;       Subj common_subj name space
-;       Subj mmap_low name space
-
-;
-; Subj name space
-;
+; subj
+;     common_subj
+;         subj_all_macro_template
+;         subj_policy_template
+;         subj_stub
+;         subj_template
+;     mmap_low
+;     recv_and_send_invalid_packets
 
 (block subj
 
@@ -532,14 +531,10 @@
         )
     )
 
-    ;
-    ; Subj common_subj name space
-    ;
-
     (block common_subj
 
         ;
-        ; common_subj macros
+        ; Macros
         ;
 
         (macro roletype_role ((role ARG1))
@@ -549,19 +544,19 @@
         (blockinherit subj_all_macro_template)
 
         ;
-        ; common_subj policy
+        ; Policy
         ;
 
         (blockinherit subj_policy_template)
 
         ;
-        ; common_subj templates
+        ; Templates
         ;
 
         (block subj_all_macro_template
 
             ;
-            ; subj.common_subj.subj_all_macro_template macros
+            ; Macros
             ;
 
             (macro dontaudit_noatsecure ((type ARG1))
@@ -947,7 +942,7 @@
             )
 
             ;
-            ; subj.common_subj.subj_all_macro_template policy
+            ; Policy
             ;
 
             (blockabstract subj_all_macro_template)
@@ -956,7 +951,7 @@
         (block subj_policy_template
 
             ;
-            ; subj.common_subj.subj_policy_template policy
+            ; Policy
             ;
 
             (blockabstract subj_policy_template)
@@ -1130,7 +1125,7 @@
         (block subj_stub
 
             ;
-            ; subj.common_subj.subj_stub policy
+            ; Policy
             ;
 
             (blockabstract subj_stub)
@@ -1146,7 +1141,7 @@
         (block subj_template
 
             ;
-            ; subj.common_subj.subj_template macros
+            ; Macros
             ;
 
             (macro dontaudit_noatsecure ((type ARG1))
@@ -1511,7 +1506,7 @@
             )
 
             ;
-            ; subj.common_subj.subj_template policy
+            ; Policy
             ;
 
             (blockabstract subj_template)
@@ -1520,21 +1515,17 @@
         )
     )
 
-    ;
-    ; Subj mmap_low name space
-    ;
-
     (block mmap_low
 
         ;
-        ; mmap_low contexts
+        ; Contexts
         ;
 
         (genfscon "selinuxfs" "/booleans/subj.mmap_low"
             bool_file_context)
 
         ;
-        ; mmap_low policy
+        ; Policy
         ;
 
         (blockinherit sec.bool_file.obj_template)
@@ -1553,21 +1544,17 @@
         )
     )
 
-    ;
-    ; Subj recv_and_send_invalid_packets name space
-    ;
-
     (block recv_and_send_invalid_packets
 
         ;
-        ; recv_and_send_invalid_packets contexts
+        ; Contexts
         ;
 
         (genfscon "selinuxfs" "/booleans/subj.recv_and_send_invalid_packets"
             bool_file_context)
 
         ;
-        ; recv_and_send_invalid_packets policy
+        ; Policy
         ;
 
         (blockinherit sec.bool_file.obj_template)

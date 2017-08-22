@@ -1,27 +1,11 @@
 ; -*- mode: CIL; fill-column: 75; indent-tabs-mode: nil; tab-width: 4 -*-
 
-; Linux access vectors
-;
-; 1. Ordered Linux access vector declarations
-; 2. Class order of ordered Linux access vectors
-; 3. Unordered Linux access vector declarations
-; 4. Class order of unordered Linux access vectors
-; 5. Common Linux access vector permission declarations
-
 ;
 ; Ordered Linux access vector declarations
 ;
 
-;
-; appletalk_socket class
-;
-
 (class appletalk_socket ())
 (classcommon appletalk_socket common_socket)
-
-;
-; association class
-;
 
 (class association
     (
@@ -32,10 +16,6 @@
     )
 )
 
-;
-; binder class
-;
-
 (class binder
     (
         call
@@ -44,10 +24,6 @@
         transfer
     )
 )
-
-;
-; blk_file class
-;
 
 (class blk_file
     (
@@ -58,37 +34,17 @@
 )
 (classcommon blk_file common_file)
 
-;
-; cap_userns class
-;
-
 (class cap_userns ())
 (classcommon cap_userns common_capability)
-
-;
-; cap2_userns class
-;
 
 (class cap2_userns ())
 (classcommon cap2_userns common_capability2)
 
-;
-; capability class
-;
-
 (class capability ())
 (classcommon capability common_capability)
 
-;
-; capability2 class
-;
-
 (class capability2 ())
 (classcommon capability2 common_capability2)
-
-;
-; chr_file class
-;
 
 (class chr_file
     (
@@ -99,10 +55,6 @@
 )
 (classcommon chr_file common_file)
 
-;
-; dccp_socket class
-;
-
 (class dccp_socket
     (
         name_connect
@@ -110,10 +62,6 @@
     )
 )
 (classcommon dccp_socket common_socket)
-
-;
-; dir class
-;
 
 (class dir
     (
@@ -129,19 +77,11 @@
 )
 (classcommon dir common_file)
 
-;
-; fd class
-;
-
 (class fd
     (
         use
     )
 )
-
-;
-; fifo_file class
-;
 
 (class fifo_file
     (
@@ -151,10 +91,6 @@
     )
 )
 (classcommon fifo_file common_file)
-
-;
-; file class
-;
 
 (class file
     (
@@ -166,10 +102,6 @@
     )
 )
 (classcommon file common_file)
-
-;
-; filesystem class
-;
 
 (class filesystem
     (
@@ -185,19 +117,11 @@
     )
 )
 
-;
-; infiniband_endport
-;
-
 (class infiniband_endport
     (
         manage_subnet
     )
 )
-
-;
-; infiniband_pkey
-;
 
 (class infiniband_pkey
     (
@@ -205,16 +129,8 @@
     )
 )
 
-;
-; ipc class
-;
-
 (class ipc ())
 (classcommon ipc common_ipc)
-
-;
-; kernel_service class
-;
 
 (class kernel_service
     (
@@ -222,10 +138,6 @@
         use_as_override
     )
 )
-
-;
-; key class
-;
 
 (class key
     (
@@ -239,16 +151,8 @@
     )
 )
 
-;
-; key_socket class
-;
-
 (class key_socket ())
 (classcommon key_socket common_socket)
-
-;
-; lnk_file class
-;
 
 (class lnk_file
     (
@@ -259,19 +163,11 @@
 )
 (classcommon lnk_file common_file)
 
-;
-; memprotect class
-;
-
 (class memprotect
     (
         mmap_zero
     )
 )
-
-;
-; msg class
-;
 
 (class msg
     (
@@ -280,10 +176,6 @@
     )
 )
 
-;
-; msgq class
-;
-
 (class msgq
     (
         enqueue
@@ -291,20 +183,12 @@
 )
 (classcommon msgq common_ipc)
 
-;
-; netif class
-;
-
 (class netif
     (
         egress
         ingress
     )
 )
-
-;
-; netlink_audit_socket class
-;
 
 (class netlink_audit_socket
     (
@@ -317,79 +201,35 @@
 )
 (classcommon netlink_audit_socket common_socket)
 
-;
-; netlink_connector_socket class
-;
-
 (class netlink_connector_socket ())
 (classcommon netlink_connector_socket common_socket)
-
-;
-; netlink_crypto_socket class
-;
 
 (class netlink_crypto_socket ())
 (classcommon netlink_crypto_socket common_socket)
 
-;
-; netlink_dnrt_socket class
-;
-
 (class netlink_dnrt_socket ())
 (classcommon netlink_dnrt_socket common_socket)
-
-;
-; netlink_fib_lookup_socket class
-;
 
 (class netlink_fib_lookup_socket ())
 (classcommon netlink_fib_lookup_socket common_socket)
 
-;
-; netlink_generic_socket class
-;
-
 (class netlink_generic_socket ())
 (classcommon netlink_generic_socket common_socket)
-
-;
-; netlink_iscsi_socket class
-;
 
 (class netlink_iscsi_socket ())
 (classcommon netlink_iscsi_socket common_socket)
 
-;
-; netlink_kobject_uevent_socket class
-;
-
 (class netlink_kobject_uevent_socket ())
 (classcommon netlink_kobject_uevent_socket common_socket)
-
-;
-; netlink_netfilter_socket class
-;
 
 (class netlink_netfilter_socket ())
 (classcommon netlink_netfilter_socket common_socket)
 
-;
-; netlink_nflog_socket class
-;
-
 (class netlink_nflog_socket ())
 (classcommon netlink_nflog_socket common_socket)
 
-;
-; netlink_rdma_socket class
-;
-
 (class netlink_rdma_socket ())
 (classcommon netlink_rdma_socket common_socket)
-
-;
-; netlink_route_socket class
-;
 
 (class netlink_route_socket
     (
@@ -399,23 +239,11 @@
 )
 (classcommon netlink_route_socket common_socket)
 
-;
-; netlink_scsitransport_socket class
-;
-
 (class netlink_scsitransport_socket ())
 (classcommon netlink_scsitransport_socket common_socket)
 
-;
-; netlink_selinux_socket class
-;
-
 (class netlink_selinux_socket ())
 (classcommon netlink_selinux_socket common_socket)
-
-;
-; netlink_tcpdiag_socket class
-;
 
 (class netlink_tcpdiag_socket
     (
@@ -425,10 +253,6 @@
 )
 (classcommon netlink_tcpdiag_socket common_socket)
 
-;
-; netlink_xfrm_socket class
-;
-
 (class netlink_xfrm_socket
     (
         nlmsg_read
@@ -437,20 +261,12 @@
 )
 (classcommon netlink_xfrm_socket common_socket)
 
-;
-; node class
-;
-
 (class node
     (
         recvfrom
         sendto
     )
 )
-
-;
-; packet class
-;
 
 (class packet
     (
@@ -462,26 +278,14 @@
     )
 )
 
-;
-; packet_socket class
-;
-
 (class packet_socket ())
 (classcommon packet_socket common_socket)
-
-;
-; peer class
-;
 
 (class peer
     (
         recv
     )
 )
-
-;
-; process class
-;
 
 (class process
     (
@@ -519,10 +323,6 @@
     )
 )
 
-;
-; process2 class
-;
-
 (class process2
     (
         nnp_transition
@@ -530,20 +330,12 @@
     )
 )
 
-;
-; rawip_socket class
-;
-
 (class rawip_socket
     (
         node_bind
     )
 )
 (classcommon rawip_socket common_socket)
-
-;
-; security class
-;
 
 (class security
     (
@@ -563,16 +355,8 @@
     )
 )
 
-;
-; sem class
-;
-
 (class sem ())
 (classcommon sem common_ipc)
-
-;
-; shm class
-;
 
 (class shm
     (
@@ -580,10 +364,6 @@
     )
 )
 (classcommon shm common_ipc)
-
-;
-; sock_file class
-;
 
 (class sock_file
     (
@@ -594,16 +374,8 @@
 )
 (classcommon sock_file common_file)
 
-;
-; socket class
-;
-
 (class socket ())
 (classcommon socket common_socket)
-
-;
-; system class
-;
 
 (class system
     (
@@ -625,10 +397,6 @@
     )
 )
 
-;
-; tcp_socket class
-;
-
 (class tcp_socket
     (
         name_connect
@@ -637,20 +405,12 @@
 )
 (classcommon tcp_socket common_socket)
 
-;
-; tun_socket class
-;
-
 (class tun_socket
     (
         attach_queue
     )
 )
 (classcommon tun_socket common_socket)
-
-;
-; udp_socket class
-;
 
 (class udp_socket
     (
@@ -659,16 +419,8 @@
 )
 (classcommon udp_socket common_socket)
 
-;
-; unix_dgram_socket class
-;
-
 (class unix_dgram_socket ())
 (classcommon unix_dgram_socket common_socket)
-
-;
-; unix_stream_socket class
-;
 
 (class unix_stream_socket
     (
@@ -750,67 +502,29 @@
 ; Unordered Linux access vector declarations
 ;
 
-; extended_socket_class policy capability related access vectors
-
-;
-; alg_socket class
-;
-
 (class alg_socket ())
 (classcommon alg_socket common_socket)
-
-;
-; atmpvc_socket class
-;
 
 (class atmpvc_socket ())
 (classcommon atmpvc_socket common_socket)
 
-;
-; atmsvc_socket class
-;
-
 (class atmsvc_socket ())
 (classcommon atmsvc_socket common_socket)
-
-;
-; ax25_socket class
-;
 
 (class ax25_socket ())
 (classcommon ax25_socket common_socket)
 
-;
-; bluetooth_socket class
-;
-
 (class bluetooth_socket ())
 (classcommon bluetooth_socket common_socket)
-
-;
-; caif_socket class
-;
 
 (class caif_socket ())
 (classcommon caif_socket common_socket)
 
-;
-; can_socket class
-;
-
 (class can_socket ())
 (classcommon can_socket common_socket)
 
-;
-; decnet_socket class
-;
-
 (class decnet_socket ())
 (classcommon decnet_socket common_socket)
-
-;
-; icmp_socket class
-;
 
 (class icmp_socket
     (
@@ -819,114 +533,50 @@
 )
 (classcommon icmp_socket common_socket)
 
-;
-; ieee802154_socket class
-;
-
 (class ieee802154_socket ())
 (classcommon ieee802154_socket common_socket)
-
-;
-; ipx_socket class
-;
 
 (class ipx_socket ())
 (classcommon ipx_socket common_socket)
 
-;
-; irda_socket class
-;
-
 (class irda_socket ())
 (classcommon irda_socket common_socket)
-
-;
-; isdn_socket class
-;
 
 (class isdn_socket ())
 (classcommon isdn_socket common_socket)
 
-;
-; iucv_socket class
-;
-
 (class iucv_socket ())
 (classcommon iucv_socket common_socket)
-
-;
-; kcm_socket class
-;
 
 (class kcm_socket ())
 (classcommon kcm_socket common_socket)
 
-;
-; llc_socket class
-;
-
 (class llc_socket ())
 (classcommon llc_socket common_socket)
-
-;
-; netrom_socket class
-;
 
 (class netrom_socket ())
 (classcommon netrom_socket common_socket)
 
-;
-; nfc_socket class
-;
-
 (class nfc_socket ())
 (classcommon nfc_socket common_socket)
-
-;
-; phonet_socket class
-;
 
 (class phonet_socket ())
 (classcommon phonet_socket common_socket)
 
-;
-; pppox_socket class
-;
-
 (class pppox_socket ())
 (classcommon pppox_socket common_socket)
-
-;
-; qipcrtr_socket class
-;
 
 (class qipcrtr_socket ())
 (classcommon qipcrtr_socket common_socket)
 
-;
-; rds_socket class
-;
-
 (class rds_socket ())
 (classcommon rds_socket common_socket)
-
-;
-; rose_socket class
-;
 
 (class rose_socket ())
 (classcommon rose_socket common_socket)
 
-;
-; rxrpc_socket class
-;
-
 (class rxrpc_socket ())
 (classcommon rxrpc_socket common_socket)
-
-;
-; sctp_socket class
-;
 
 (class sctp_socket
     (
@@ -935,30 +585,14 @@
 )
 (classcommon sctp_socket common_socket)
 
-;
-; smc_socket class
-;
-
 (class smc_socket ())
 (classcommon smc_socket common_socket)
-
-;
-; tipc_socket class
-;
 
 (class tipc_socket ())
 (classcommon tipc_socket common_socket)
 
-;
-; vsock_socket class
-;
-
 (class vsock_socket ())
 (classcommon vsock_socket common_socket)
-
-;
-; x25_socket class
-;
 
 (class x25_socket ())
 (classcommon x25_socket common_socket)

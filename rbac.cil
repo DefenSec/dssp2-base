@@ -1,13 +1,7 @@
 ; -*- mode: CIL; fill-column: 75; indent-tabs-mode: nil; tab-width: 4 -*-
 
-; Role-based access control security model
-
 ;
-; RBAC constraints
-;
-
-;
-; RBAC alg_socket constraints
+; Constraints
 ;
 
 (constrain
@@ -30,10 +24,6 @@
     )
 )
 
-;
-; RBAC appletalk_socket constraints
-;
-
 (constrain
     (appletalk_socket
         (
@@ -53,10 +43,6 @@
         (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
     )
 )
-
-;
-; RBAC atmpvc_socket constraints
-;
 
 (constrain
     (atmpvc_socket
@@ -78,10 +64,6 @@
     )
 )
 
-;
-; RBAC atmsvc_socket constraints
-;
-
 (constrain
     (atmsvc_socket
         (
@@ -101,10 +83,6 @@
         (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
     )
 )
-
-;
-; RBAC ax25_socket constraints
-;
 
 (constrain
     (ax25_socket
@@ -126,10 +104,6 @@
     )
 )
 
-;
-; RBAC blk_file constraints
-;
-
 (constrain
     (blk_file
         (
@@ -149,10 +123,6 @@
         (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
     )
 )
-
-;
-; RBAC bluetooth_socket constraints
-;
 
 (constrain
     (bluetooth_socket
@@ -174,10 +144,6 @@
     )
 )
 
-;
-; RBAC caif_socket constraints
-;
-
 (constrain
     (caif_socket
         (
@@ -197,10 +163,6 @@
         (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
     )
 )
-
-;
-; RBAC can_socket constraints
-;
 
 (constrain
     (can_socket
@@ -222,10 +184,6 @@
     )
 )
 
-;
-; RBAC chr_file constraints
-;
-
 (constrain
     (chr_file
         (
@@ -245,10 +203,6 @@
         (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
     )
 )
-
-;
-; RBAC dccp_socket constraints
-;
 
 (constrain
     (dccp_socket
@@ -270,10 +224,6 @@
     )
 )
 
-;
-; RBAC decnet_socket constraints
-;
-
 (constrain
     (decnet_socket
         (
@@ -293,10 +243,6 @@
         (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
     )
 )
-
-;
-; RBAC dir constraints
-;
 
 (constrain
     (dir
@@ -318,10 +264,6 @@
     )
 )
 
-;
-; RBAC fifo_file constraints
-;
-
 (constrain
     (fifo_file
         (
@@ -341,10 +283,6 @@
         (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
     )
 )
-
-;
-; RBAC file constraints
-;
 
 (constrain
     (file
@@ -366,10 +304,6 @@
     )
 )
 
-;
-; RBAC icmp_socket constraints
-;
-
 (constrain
     (icmp_socket
         (
@@ -389,10 +323,6 @@
         (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
     )
 )
-
-;
-; RBAC ieee802154_socket constraints
-;
 
 (constrain
     (ieee802154_socket
@@ -414,10 +344,6 @@
     )
 )
 
-;
-; RBAC ipx_socket constraints
-;
-
 (constrain
     (ipx_socket
         (
@@ -437,10 +363,6 @@
         (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
     )
 )
-
-;
-; RBAC irda_socket constraints
-;
 
 (constrain
     (irda_socket
@@ -462,10 +384,6 @@
     )
 )
 
-;
-; RBAC isdn_socket constraints
-;
-
 (constrain
     (isdn_socket
         (
@@ -485,10 +403,6 @@
         (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
     )
 )
-
-;
-; RBAC iucv_socket constraints
-;
 
 (constrain
     (iucv_socket
@@ -510,10 +424,6 @@
     )
 )
 
-;
-; RBAC kcm_socket constraints
-;
-
 (constrain
     (kcm_socket
         (
@@ -533,10 +443,6 @@
         (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
     )
 )
-
-;
-; RBAC lnk_file constraints
-;
 
 (constrain
     (lnk_file
@@ -558,10 +464,6 @@
     )
 )
 
-;
-; RBAC llc_socket constraints
-;
-
 (constrain
     (llc_socket
         (
@@ -581,10 +483,6 @@
         (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
     )
 )
-
-;
-; RBAC netlink_audit_socket constraints
-;
 
 (constrain
     (netlink_audit_socket
@@ -606,10 +504,6 @@
     )
 )
 
-;
-; RBAC netlink_connector_socket constraints
-;
-
 (constrain
     (netlink_connector_socket
         (
@@ -629,10 +523,6 @@
         (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
     )
 )
-
-;
-; RBAC netlink_crypto_socket constraints
-;
 
 (constrain
     (netlink_crypto_socket
@@ -654,10 +544,6 @@
     )
 )
 
-;
-; RBAC netlink_dnrt_socket constraints
-;
-
 (constrain
     (netlink_dnrt_socket
         (
@@ -677,10 +563,6 @@
         (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
     )
 )
-
-;
-; RBAC netlink_fib_lookup_socket constraints
-;
 
 (constrain
     (netlink_fib_lookup_socket
@@ -702,10 +584,6 @@
     )
 )
 
-;
-; RBAC netlink_generic_socket constraints
-;
-
 (constrain
     (netlink_generic_socket
         (
@@ -725,10 +603,6 @@
         (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
     )
 )
-
-;
-; RBAC netlink_iscsi_socket constraints
-;
 
 (constrain
     (netlink_iscsi_socket
@@ -750,10 +624,6 @@
     )
 )
 
-;
-; RBAC netlink_kobject_uevent_socket constraints
-;
-
 (constrain
     (netlink_kobject_uevent_socket
         (
@@ -773,10 +643,6 @@
         (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
     )
 )
-
-;
-; RBAC netlink_netfilter_socket constraints
-;
 
 (constrain
     (netlink_netfilter_socket
@@ -798,10 +664,6 @@
     )
 )
 
-;
-; RBAC netlink_nflog_socket constraints
-;
-
 (constrain
     (netlink_nflog_socket
         (
@@ -821,10 +683,6 @@
         (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
     )
 )
-
-;
-; RBAC netlink_rdma_socket constraints
-;
 
 (constrain
     (netlink_rdma_socket
@@ -846,10 +704,6 @@
     )
 )
 
-;
-; RBAC netlink_route_socket constraints
-;
-
 (constrain
     (netlink_route_socket
         (
@@ -869,10 +723,6 @@
         (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
     )
 )
-
-;
-; RBAC netlink_scsitransport_socket constraints
-;
 
 (constrain
     (netlink_scsitransport_socket
@@ -894,10 +744,6 @@
     )
 )
 
-;
-; RBAC netlink_selinux_socket constraints
-;
-
 (constrain
     (netlink_selinux_socket
         (
@@ -917,10 +763,6 @@
         (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
     )
 )
-
-;
-; RBAC netlink_tcpdiag_socket constraints
-;
 
 (constrain
     (netlink_tcpdiag_socket
@@ -942,10 +784,6 @@
     )
 )
 
-;
-; RBAC netlink_xfrm_socket constaints
-;
-
 (constrain
     (netlink_xfrm_socket
         (
@@ -965,10 +803,6 @@
         (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
     )
 )
-
-;
-; RBAC netrom_socket constraints
-;
 
 (constrain
     (netrom_socket
@@ -990,10 +824,6 @@
     )
 )
 
-;
-; RBAC nfc_socket constaints
-;
-
 (constrain
     (nfc_socket
         (
@@ -1013,10 +843,6 @@
         (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
     )
 )
-
-;
-; RBAC packet socket constraints
-;
 
 (constrain
     (packet_socket
@@ -1038,10 +864,6 @@
     )
 )
 
-;
-; RBAC phonet_socket constraints
-;
-
 (constrain
     (phonet_socket
         (
@@ -1062,10 +884,6 @@
     )
 )
 
-;
-; RBAC pppox_socket constraints
-;
-
 (constrain
     (pppox_socket
         (
@@ -1085,10 +903,6 @@
         (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
     )
 )
-
-;
-; RBAC process constraints
-;
 
 (constrain
     (process
@@ -1118,10 +932,6 @@
     )
 )
 
-;
-; RBAC process2 constraints
-;
-
 (constrain
     (process2
         (
@@ -1147,10 +957,6 @@
     )
 )
 
-;
-; RBAC qipcrtr_socket constraints
-;
-
 (constrain
     (qipcrtr_socket
         (
@@ -1170,10 +976,6 @@
         (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
     )
 )
-
-;
-; RBAC rawip_socket constraints
-;
 
 (constrain
     (rawip_socket
@@ -1195,10 +997,6 @@
     )
 )
 
-;
-; RBAC rds_socket constraints
-;
-
 (constrain
     (rds_socket
         (
@@ -1218,10 +1016,6 @@
         (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
     )
 )
-
-;
-; RBAC rose_socket constraints
-;
 
 (constrain
     (rose_socket
@@ -1243,10 +1037,6 @@
     )
 )
 
-;
-; RBAC rxrpc_socket constraints
-;
-
 (constrain
     (rxrpc_socket
         (
@@ -1266,10 +1056,6 @@
         (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
     )
 )
-
-;
-; RBAC sctp_socket constraints
-;
 
 (constrain
     (sctp_socket
@@ -1291,10 +1077,6 @@
     )
 )
 
-;
-; RBAC smc_socket constraints
-;
-
 (constrain
     (smc_socket
         (
@@ -1314,10 +1096,6 @@
         (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
     )
 )
-
-;
-; RBAC sock_file constraints
-;
 
 (constrain
     (sock_file
@@ -1339,10 +1117,6 @@
     )
 )
 
-;
-; RBAC tcp_socket constraints
-;
-
 (constrain
     (tcp_socket
         (
@@ -1362,10 +1136,6 @@
         (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
     )
 )
-
-;
-; RBAC tipc_socket constraints
-;
 
 (constrain
     (tipc_socket
@@ -1387,10 +1157,6 @@
     )
 )
 
-;
-; RBAC tun_socket constraints
-;
-
 (constrain
     (tun_socket
         (
@@ -1410,10 +1176,6 @@
         (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
     )
 )
-
-;
-; RBAC udp_socket constraints
-;
 
 (constrain
     (udp_socket
@@ -1435,10 +1197,6 @@
     )
 )
 
-;
-; RBAC unix_dgram_socket constraints
-;
-
 (constrain
     (unix_dgram_socket
         (
@@ -1458,10 +1216,6 @@
         (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
     )
 )
-
-;
-; RBAC unix_stream_socket constraints
-;
 
 (constrain
     (unix_stream_socket
@@ -1483,10 +1237,6 @@
     )
 )
 
-;
-; RBAC vsock_socket constraints
-;
-
 (constrain
     (vsock_socket
         (
@@ -1506,10 +1256,6 @@
         (eq t1 rbac_obj_role_change_exemption_subj_type_attribute)
     )
 )
-
-;
-; RBAC x25_socket constraints
-;
 
 (constrain
     (x25_socket
@@ -1532,7 +1278,7 @@
 )
 
 ;
-; RBAC macros
+; Macros
 ;
 
 (macro rbac_obj_role_change_exemption_subj_type ((type ARG1))
@@ -1565,7 +1311,7 @@
 )
 
 ;
-; RBAC policy
+; Policy
 ;
 
 (roleattribute rbac_sys_role_attribute)

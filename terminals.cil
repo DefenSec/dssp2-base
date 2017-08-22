@@ -1,15 +1,21 @@
 ; -*- mode: CIL; fill-column: 75; indent-tabs-mode: nil; tab-width: 4 -*-
 
-; Term policy
-;
-; 1. Term name space
-;       Term console name space
-;       Term console_login name space
-;       Term generic_serial name space
-;       Term login_pty_file name space
-;       Term pty_file name space
-;       Term serial_file name space
-;       Term virtio name space
+; term
+;     console
+;     console_login
+;     generic_serial
+;     login_pty_file
+;         obj_stub
+;         obj_template
+;     pty_file
+;         obj_all_macro_template
+;         obj_stub
+;         obj_template
+;     serial_file
+;         obj_all_macro_template
+;         obj_stub
+;         obj_template
+;     virtio
 
 (block term
 
@@ -44,13 +50,13 @@
     (block console
 
         ;
-        ; console contexts
+        ; Contexts
         ;
 
         (filecon "/dev/console" char dev_file_context)
 
         ;
-        ; console macros
+        ; Macros
         ;
 
         (macro dontaudit_rw_chr_files ((type ARG1))
@@ -62,7 +68,7 @@
         )
 
         ;
-        ; console policy
+        ; Policy
         ;
 
         (blockinherit dev.dev_file.obj_template)
@@ -71,14 +77,14 @@
     (block console_login
 
         ;
-        ; console_login contexts
+        ; Contexts
         ;
 
         (genfscon "selinuxfs" "/booleans/term.console_login"
             bool_file_context)
 
         ;
-        ; console_login policy
+        ; Policy
         ;
 
         (blockinherit sec.bool_file.obj_template)
@@ -87,7 +93,7 @@
     (block generic_serial
 
         ;
-        ; generic_serial policy
+        ; Contexts
         ;
 
         (filecon "/dev/hvc[0-9]+" char serial_file_context)
@@ -95,7 +101,7 @@
         (filecon "/dev/vcs[^/]*" char serial_file_context)
 
         ;
-        ; generic_serial macros
+        ; Macros
         ;
 
         (macro dontaudit_rw_chr_files ((type ARG1))
@@ -195,7 +201,7 @@
         )
 
         ;
-        ; generic_serial policy
+        ; Policy
         ;
 
         (blockinherit serial_file.obj_template)
@@ -210,7 +216,7 @@
     (block login_pty_file
 
         ;
-        ; login_pty_file macros
+        ; Macros
         ;
 
         (blockinherit pty_file.obj_all_macro_template)
@@ -220,7 +226,7 @@
         )
 
         ;
-        ; login_pty_file policy
+        ; Policy
         ;
 
         (typeattribute obj_type_attribute)
@@ -232,13 +238,13 @@
         )
 
         ;
-        ; login_pty_file templates
+        ; Templates
         ;
 
         (block obj_stub
 
             ;
-            ; term.login_pty_file.obj_stub policy
+            ; Policy
             ;
 
             (blockabstract obj_stub)
@@ -254,7 +260,7 @@
         (block obj_template
 
             ;
-            ; term.login_pty_file.obj_template macros
+            ; Macros
             ;
 
             (macro create_chr_files ((type ARG1))
@@ -355,7 +361,7 @@
             )
 
             ;
-            ; term.login_pty_file.obj_template policy
+            ; Policy
             ;
 
             (blockabstract obj_template)
@@ -367,7 +373,7 @@
     (block pty_file
 
         ;
-        ; pty_file macros
+        ; Macros
         ;
 
         (blockinherit obj_all_macro_template)
@@ -391,7 +397,7 @@
         )
 
         ;
-        ; pty_file policy
+        ; Policy
         ;
 
         (typeattribute obj_type_attribute)
@@ -409,13 +415,13 @@
         )
 
         ;
-        ; pty_file templates
+        ; Templates
         ;
 
         (block obj_all_macro_template
 
             ;
-            ; term.pty_file.obj_all_macro_template macros
+            ; Macros
             ;
 
             (macro create_chr_files ((type ARG1))
@@ -547,7 +553,7 @@
             )
 
             ;
-            ; term.pty_file.obj_all_macro_template policy
+            ; Policy
             ;
 
             (blockabstract obj_all_macro_template)
@@ -556,7 +562,7 @@
         (block obj_stub
 
             ;
-            ; term.pty_file.obj_stub policy
+            ; Policy
             ;
 
             (blockabstract obj_stub)
@@ -572,7 +578,7 @@
         (block obj_template
 
             ;
-            ; term.pty_file,obj_template macros
+            ; Macros
             ;
 
             (macro create_chr_files ((type ARG1))
@@ -700,7 +706,7 @@
             )
 
             ;
-            ; term.pty_file.obj_template policy
+            ; Policy
             ;
 
             (blockabstract obj_template)
@@ -712,13 +718,13 @@
     (block serial_file
 
         ;
-        ; serial_file macros
+        ; Macros
         ;
 
         (blockinherit obj_all_macro_template)
 
         ;
-        ; serial_file policy
+        ; Policy
         ;
 
         (typeattribute obj_type_attribute)
@@ -736,13 +742,13 @@
         )
 
         ;
-        ; serial_file templates
+        ; Templates
         ;
 
         (block obj_all_macro_template
 
             ;
-            ; term.serial_file.obj_all_macro_template macros
+            ; Macros
             ;
 
             (macro create_chr_files ((type ARG1))
@@ -894,7 +900,7 @@
             )
 
             ;
-            ; term.serial_file.obj_all_macro_template policy
+            ; Policy
             ;
 
             (blockabstract obj_all_macro_template)
@@ -903,7 +909,7 @@
         (block obj_stub
 
             ;
-            ; term.serial_file.obj_stub contexts
+            ; Contexts
             ;
 
             (context serial_file_context
@@ -919,7 +925,7 @@
             )
 
             ;
-            ; term.serial_file.obj_stub policy
+            ; Policy
             ;
 
             (blockabstract obj_stub)
@@ -935,7 +941,7 @@
         (block obj_template
 
             ;
-            ; term.serial_file.obj_template macros
+            ; Macros
             ;
 
             (macro create_chr_files ((type ARG1))
@@ -1083,7 +1089,7 @@
             )
 
             ;
-            ; term.serial_file.obj_template policy
+            ; Policy
             ;
 
             (blockabstract obj_template)
@@ -1095,13 +1101,13 @@
     (block virtio
 
         ;
-        ; virtio contexts
+        ; Contexts
         ;
 
         (filecon "/dev/vport[0-9]p[0-9]+" char serial_file_context)
 
         ;
-        ; virtio policy
+        ; Policy
         ;
 
         (blockinherit serial_file.obj_template)
