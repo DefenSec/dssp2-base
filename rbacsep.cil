@@ -56,7 +56,6 @@
     (alg_socket
         (
             name_bind
-            node_bind
         )
     )
     (or
@@ -81,7 +80,6 @@
     (appletalk_socket
         (
             name_bind
-            node_bind
         )
     )
     (or
@@ -106,7 +104,6 @@
     (atmpvc_socket
         (
             name_bind
-            node_bind
         )
     )
     (or
@@ -131,7 +128,6 @@
     (atmsvc_socket
         (
             name_bind
-            node_bind
         )
     )
     (or
@@ -156,7 +152,6 @@
     (ax25_socket
         (
             name_bind
-            node_bind
         )
     )
     (or
@@ -222,7 +217,6 @@
     (bluetooth_socket
         (
             name_bind
-            node_bind
         )
     )
     (or
@@ -247,7 +241,6 @@
     (caif_socket
         (
             name_bind
-            node_bind
         )
     )
     (or
@@ -272,7 +265,6 @@
     (can_socket
         (
             name_bind
-            node_bind
         )
     )
     (or
@@ -365,7 +357,6 @@
     (decnet_socket
         (
             name_bind
-            node_bind
         )
     )
     (or
@@ -658,7 +649,6 @@
     (ieee802154_socket
         (
             name_bind
-            node_bind
         )
     )
     (or
@@ -711,7 +701,6 @@
     (ipx_socket
         (
             name_bind
-            node_bind
         )
     )
     (or
@@ -736,7 +725,6 @@
     (irda_socket
         (
             name_bind
-            node_bind
         )
     )
     (or
@@ -761,7 +749,6 @@
     (isdn_socket
         (
             name_bind
-            node_bind
         )
     )
     (or
@@ -786,7 +773,6 @@
     (iucv_socket
         (
             name_bind
-            node_bind
         )
     )
     (or
@@ -811,7 +797,6 @@
     (kcm_socket
         (
             name_bind
-            node_bind
         )
     )
     (or
@@ -939,7 +924,6 @@
     (llc_socket
         (
             name_bind
-            node_bind
         )
     )
     (or
@@ -1022,7 +1006,6 @@
             nlmsg_relay
             nlmsg_tty_audit
             nlmsg_write
-            node_bind
         )
     )
     (or
@@ -1047,7 +1030,6 @@
     (netlink_connector_socket
         (
             name_bind
-            node_bind
         )
     )
     (or
@@ -1072,7 +1054,6 @@
     (netlink_crypto_socket
         (
             name_bind
-            node_bind
         )
     )
     (or
@@ -1097,7 +1078,6 @@
     (netlink_dnrt_socket
         (
             name_bind
-            node_bind
         )
     )
     (or
@@ -1122,7 +1102,6 @@
     (netlink_fib_lookup_socket
         (
             name_bind
-            node_bind
         )
     )
     (or
@@ -1147,7 +1126,6 @@
     (netlink_generic_socket
         (
             name_bind
-            node_bind
         )
     )
     (or
@@ -1172,7 +1150,6 @@
     (netlink_iscsi_socket
         (
             name_bind
-            node_bind
         )
     )
     (or
@@ -1197,7 +1174,6 @@
     (netlink_kobject_uevent_socket
         (
             name_bind
-            node_bind
         )
     )
     (or
@@ -1222,7 +1198,6 @@
     (netlink_netfilter_socket
         (
             name_bind
-            node_bind
         )
     )
     (or
@@ -1247,7 +1222,6 @@
     (netlink_nflog_socket
         (
             name_bind
-            node_bind
         )
     )
     (or
@@ -1272,7 +1246,6 @@
     (netlink_rdma_socket
         (
             name_bind
-            node_bind
         )
     )
     (or
@@ -1299,7 +1272,6 @@
             name_bind
             nlmsg_read
             nlmsg_write
-            node_bind
         )
     )
     (or
@@ -1324,7 +1296,6 @@
     (netlink_scsitransport_socket
         (
             name_bind
-            node_bind
         )
     )
     (or
@@ -1349,7 +1320,6 @@
     (netlink_selinux_socket
         (
             name_bind
-            node_bind
         )
     )
     (or
@@ -1374,7 +1344,6 @@
     (netlink_tcpdiag_socket
         (
             name_bind
-            node_bind
         )
     )
     (or
@@ -1401,7 +1370,6 @@
             name_bind
             nlmsg_read
             nlmsg_write
-            node_bind
         )
     )
     (or
@@ -1426,7 +1394,6 @@
     (netrom_socket
         (
             name_bind
-            node_bind
         )
     )
     (or
@@ -1451,7 +1418,6 @@
     (nfc_socket
         (
             name_bind
-            node_bind
         )
     )
     (or
@@ -1525,7 +1491,6 @@
     (packet_socket
         (
             name_bind
-            node_bind
         )
     )
     (or
@@ -1550,7 +1515,6 @@
     (phonet_socket
         (
             name_bind
-            node_bind
         )
     )
     (or
@@ -1575,7 +1539,6 @@
     (pppox_socket
         (
             name_bind
-            node_bind
         )
     )
     (or
@@ -1656,7 +1619,6 @@
     (qipcrtr_socket
         (
             name_bind
-            node_bind
         )
     )
     (or
@@ -1706,7 +1668,6 @@
     (rds_socket
         (
             name_bind
-            node_bind
         )
     )
     (or
@@ -1731,7 +1692,6 @@
     (rose_socket
         (
             name_bind
-            node_bind
         )
     )
     (or
@@ -1756,7 +1716,6 @@
     (rxrpc_socket
         (
             name_bind
-            node_bind
         )
     )
     (or
@@ -1862,7 +1821,6 @@
     (smc_socket
         (
             name_bind
-            node_bind
         )
     )
     (or
@@ -1980,7 +1938,6 @@
     (tipc_socket
         (
             name_bind
-            node_bind
         )
     )
     (or
@@ -2005,7 +1962,6 @@
     (tun_socket
         (
             name_bind
-            node_bind
         )
     )
     (or
@@ -2055,7 +2011,6 @@
     (unix_dgram_socket
         (
             name_bind
-            node_bind
         )
     )
     (or
@@ -2080,7 +2035,6 @@
     (unix_stream_socket
         (
             name_bind
-            node_bind
         )
     )
     (or
@@ -2105,7 +2059,6 @@
     (vsock_socket
         (
             name_bind
-            node_bind
         )
     )
     (or
@@ -2130,7 +2083,6 @@
     (x25_socket
         (
             name_bind
-            node_bind
         )
     )
     (or
