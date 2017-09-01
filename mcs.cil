@@ -5,13 +5,113 @@
 ;
 
 (mlsconstrain
+    (all_sockets
+        (
+            common_socket_perms
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
+
+(mlsconstrain
+    (all_sockets
+        (
+            map
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
+
+(mlsconstrain
+    (alg_socket
+        (
+            name_bind
+            node_bind
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
+
+(mlsconstrain
+    (appletalk_socket
+        (
+            name_bind
+            node_bind
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
+
+(mlsconstrain
+    (atmpvc_socket
+        (
+            name_bind
+            node_bind
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
+
+(mlsconstrain
+    (atmsvc_socket
+        (
+            name_bind
+            node_bind
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
+
+(mlsconstrain
+    (ax25_socket
+        (
+            name_bind
+            node_bind
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
+
+(mlsconstrain
     (blk_file
         (
+            append
+            audit_access
+            execmod
+            execute
             getattr
             ioctl
+            lock
+            link
+            mounton
+            open
+            quotaon
             read
+            rename
             relabelfrom
             setattr
+            unlink
             write
         )
     )
@@ -38,14 +138,64 @@
 )
 
 (mlsconstrain
+    (bluetooth_socket
+        (
+            name_bind
+            node_bind
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
+
+(mlsconstrain
+    (caif_socket
+        (
+            name_bind
+            node_bind
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
+
+(mlsconstrain
+    (can_socket
+        (
+            name_bind
+            node_bind
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
+
+(mlsconstrain
     (chr_file
         (
+            append
+            audit_access
+            execmod
+            execute
             getattr
             ioctl
+            lock
+            link
             map
+            mounton
+            open
+            quotaon
             read
             relabelfrom
+            rename
             setattr
+            unlink
             write
         )
     )
@@ -74,6 +224,21 @@
 (mlsconstrain
     (dccp_socket
         (
+            name_bind
+            name_connect
+            node_bind
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
+
+(mlsconstrain
+    (decnet_socket
+        (
+            name_bind
             node_bind
         )
     )
@@ -88,11 +253,18 @@
         (
             add_name
             append
+            audit_access
+            execmod
+            execute
+            getattr
             ioctl
             lock
+            link
+            mounton
+            open
+            quotaon
             read
             relabelfrom
-            remove_name
             rename
             search
             setattr
@@ -123,10 +295,37 @@
 )
 
 (mlsconstrain
+    (fd
+        (
+            use
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
+
+(mlsconstrain
     (fifo_file
         (
+            append
+            audit_access
+            execmod
+            execute
+            getattr
+            ioctl
+            lock
+            link
+            mounton
             open
+            quotaon
+            read
             relabelfrom
+            rename
+            setattr
+            unlink
+            write
         )
     )
     (or
@@ -155,11 +354,18 @@
     (file
         (
             append
+            audit_access
+            execmod
             execute
             execute_no_trans
+            getattr
             ioctl
             lock
+            link
             map
+            mounton
+            open
+            quotaon
             read
             relabelfrom
             rename
@@ -193,6 +399,20 @@
 (mlsconstrain
     (icmp_socket
         (
+            name_bind
+            node_bind
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
+
+(mlsconstrain
+    (ieee802154_socket
+        (
+            name_bind
             node_bind
         )
     )
@@ -218,9 +438,70 @@
     )
 )
 
-;
-; MCS key constraints
-;
+(mlsconstrain
+    (ipx_socket
+        (
+            name_bind
+            node_bind
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
+
+(mlsconstrain
+    (irda_socket
+        (
+            name_bind
+            node_bind
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
+
+(mlsconstrain
+    (isdn_socket
+        (
+            name_bind
+            node_bind
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
+
+(mlsconstrain
+    (iucv_socket
+        (
+            name_bind
+            node_bind
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
+
+(mlsconstrain
+    (kcm_socket
+        (
+            name_bind
+            node_bind
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
 
 (mlsconstrain
     (key
@@ -243,11 +524,22 @@
 (mlsconstrain
     (lnk_file
         (
+            append
+            audit_access
+            execmod
+            execute
             getattr
             ioctl
+            lock
+            link
+            mounton
+            open
+            quotaon
             read
             relabelfrom
+            rename
             setattr
+            unlink
             write
         )
     )
@@ -274,6 +566,19 @@
 )
 
 (mlsconstrain
+    (llc_socket
+        (
+            name_bind
+            node_bind
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
+
+(mlsconstrain
     (msgq
         (
             create
@@ -294,6 +599,249 @@
         (
             egress
             ingress
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
+
+(mlsconstrain
+    (netlink_audit_socket
+        (
+            name_bind
+            nlmsg_read
+            nlmsg_readpriv
+            nlmsg_relay
+            nlmsg_tty_audit
+            nlmsg_write
+            node_bind
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
+
+(mlsconstrain
+    (netlink_connector_socket
+        (
+            name_bind
+            node_bind
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
+
+(mlsconstrain
+    (netlink_crypto_socket
+        (
+            name_bind
+            node_bind
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
+
+(mlsconstrain
+    (netlink_dnrt_socket
+        (
+            name_bind
+            node_bind
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
+
+(mlsconstrain
+    (netlink_fib_lookup_socket
+        (
+            name_bind
+            node_bind
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
+
+(mlsconstrain
+    (netlink_generic_socket
+        (
+            name_bind
+            node_bind
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
+
+(mlsconstrain
+    (netlink_iscsi_socket
+        (
+            name_bind
+            node_bind
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
+
+(mlsconstrain
+    (netlink_kobject_uevent_socket
+        (
+            name_bind
+            node_bind
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
+
+(mlsconstrain
+    (netlink_netfilter_socket
+        (
+            name_bind
+            node_bind
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
+
+(mlsconstrain
+    (netlink_nflog_socket
+        (
+            name_bind
+            node_bind
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
+
+(mlsconstrain
+    (netlink_rdma_socket
+        (
+            name_bind
+            node_bind
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
+
+(mlsconstrain
+    (netlink_route_socket
+        (
+            name_bind
+            nlmsg_read
+            nlmsg_write
+            node_bind
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
+
+(mlsconstrain
+    (netlink_scsitransport_socket
+        (
+            name_bind
+            node_bind
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
+
+(mlsconstrain
+    (netlink_selinux_socket
+        (
+            name_bind
+            node_bind
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
+
+(mlsconstrain
+    (netlink_tcpdiag_socket
+        (
+            name_bind
+            node_bind
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
+
+(mlsconstrain
+    (netlink_xfrm_socket
+        (
+            name_bind
+            nlmsg_read
+            nlmsg_write
+            node_bind
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
+
+(mlsconstrain
+    (netrom_socket
+        (
+            name_bind
+            node_bind
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
+
+(mlsconstrain
+    (nfc_socket
+        (
+            name_bind
+            node_bind
         )
     )
     (or
@@ -331,6 +879,19 @@
 )
 
 (mlsconstrain
+    (packet_socket
+        (
+            name_bind
+            node_bind
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
+
+(mlsconstrain
     (peer
         (
             recv
@@ -342,6 +903,32 @@
                 (neq t1 mcs_constrained_subj_type_attribute)
                 (neq t2 mcs_constrained_subj_type_attribute)
             )
+    )
+)
+
+(mlsconstrain
+    (phonet_socket
+        (
+            name_bind
+            node_bind
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
+
+(mlsconstrain
+    (pppox_socket
+        (
+            name_bind
+            node_bind
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
     )
 )
 
@@ -376,8 +963,61 @@
 )
 
 (mlsconstrain
+    (qipcrtr_socket
+        (
+            name_bind
+            node_bind
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
+
+(mlsconstrain
     (rawip_socket
         (
+            name_bind
+            node_bind
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
+
+(mlsconstrain
+    (rds_socket
+        (
+            name_bind
+            node_bind
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
+
+(mlsconstrain
+    (rose_socket
+        (
+            name_bind
+            node_bind
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
+
+(mlsconstrain
+    (rxrpc_socket
+        (
+            name_bind
             node_bind
         )
     )
@@ -390,6 +1030,7 @@
 (mlsconstrain
     (sctp_socket
         (
+            name_bind
             node_bind
         )
     )
@@ -432,13 +1073,37 @@
 )
 
 (mlsconstrain
+    (smc_socket
+        (
+            name_bind
+            node_bind
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
+
+(mlsconstrain
     (sock_file
         (
+            append
+            audit_access
+            execmod
+            execute
             getattr
             ioctl
+            lock
+            link
+            mounton
+            open
+            quotaon
             read
+            rename
             relabelfrom
             setattr
+            unlink
             write
         )
     )
@@ -467,6 +1132,34 @@
 (mlsconstrain
     (tcp_socket
         (
+            name_bind
+            name_connect
+            node_bind
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
+
+(mlsconstrain
+    (tipc_socket
+        (
+            name_bind
+            node_bind
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
+
+(mlsconstrain
+    (tun_socket
+        (
+            name_bind
             node_bind
         )
     )
@@ -479,6 +1172,59 @@
 (mlsconstrain
     (udp_socket
         (
+            name_bind
+            node_bind
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
+
+(mlsconstrain
+    (unix_dgram_socket
+        (
+            name_bind
+            node_bind
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
+
+(mlsconstrain
+    (unix_stream_socket
+        (
+            name_bind
+            node_bind
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
+
+(mlsconstrain
+    (vsock_socket
+        (
+            name_bind
+            node_bind
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
+
+(mlsconstrain
+    (x25_socket
+        (
+            name_bind
             node_bind
         )
     )

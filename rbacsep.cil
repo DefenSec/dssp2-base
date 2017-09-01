@@ -56,6 +56,7 @@
     (alg_socket
         (
             name_bind
+            node_bind
         )
     )
     (or
@@ -80,6 +81,7 @@
     (appletalk_socket
         (
             name_bind
+            node_bind
         )
     )
     (or
@@ -104,6 +106,7 @@
     (atmpvc_socket
         (
             name_bind
+            node_bind
         )
     )
     (or
@@ -128,6 +131,7 @@
     (atmsvc_socket
         (
             name_bind
+            node_bind
         )
     )
     (or
@@ -152,6 +156,7 @@
     (ax25_socket
         (
             name_bind
+            node_bind
         )
     )
     (or
@@ -187,6 +192,8 @@
             open
             quotaon
             read
+            relabelfrom
+            relabelto
             rename
             setattr
             unlink
@@ -215,6 +222,7 @@
     (bluetooth_socket
         (
             name_bind
+            node_bind
         )
     )
     (or
@@ -239,6 +247,7 @@
     (caif_socket
         (
             name_bind
+            node_bind
         )
     )
     (or
@@ -263,6 +272,7 @@
     (can_socket
         (
             name_bind
+            node_bind
         )
     )
     (or
@@ -299,6 +309,8 @@
             open
             quotaon
             read
+            relabelfrom
+            relabelto
             rename
             setattr
             unlink
@@ -353,6 +365,7 @@
     (decnet_socket
         (
             name_bind
+            node_bind
         )
     )
     (or
@@ -384,6 +397,8 @@
             link
             mounton
             quotaon
+            relabelfrom
+            relabelto
             remove_name
             rename
             reparent
@@ -482,6 +497,8 @@
             link
             mounton
             quotaon
+            relabelfrom
+            relabelto
             rename
             setattr
             unlink
@@ -549,6 +566,8 @@
             map
             mounton
             quotaon
+            relabelfrom
+            relabelto
             rename
             setattr
             unlink
@@ -639,6 +658,7 @@
     (ieee802154_socket
         (
             name_bind
+            node_bind
         )
     )
     (or
@@ -691,6 +711,7 @@
     (ipx_socket
         (
             name_bind
+            node_bind
         )
     )
     (or
@@ -715,6 +736,7 @@
     (irda_socket
         (
             name_bind
+            node_bind
         )
     )
     (or
@@ -739,6 +761,7 @@
     (isdn_socket
         (
             name_bind
+            node_bind
         )
     )
     (or
@@ -763,6 +786,7 @@
     (iucv_socket
         (
             name_bind
+            node_bind
         )
     )
     (or
@@ -787,6 +811,7 @@
     (kcm_socket
         (
             name_bind
+            node_bind
         )
     )
     (or
@@ -847,6 +872,8 @@
             link
             mounton
             quotaon
+            relabelfrom
+            relabelto
             rename
             setattr
             unlink
@@ -912,6 +939,7 @@
     (llc_socket
         (
             name_bind
+            node_bind
         )
     )
     (or
@@ -988,11 +1016,13 @@
 (constrain
     (netlink_audit_socket
         (
+            name_bind
             nlmsg_read
             nlmsg_readpriv
             nlmsg_relay
             nlmsg_tty_audit
             nlmsg_write
+            node_bind
         )
     )
     (or
@@ -1014,33 +1044,10 @@
 )
 
 (constrain
-    (netlink_audit_socket
-        (
-            name_bind
-        )
-    )
-    (or
-        (or
-            (or
-                (or
-                    (eq r1 r2)
-                    (and
-                        (eq r1 rbacsep_exemption_role_attribute)
-                        (neq t1 rbacsep_constrained_subj_type_attribute)
-                    )
-                )
-                (eq r2 rbacsep_exemption_role_attribute)
-            )
-            (eq t1 rbacsep_exemption_subj_type_attribute)
-        )
-        (eq t2 rbacsep_exemption_obj_type_attribute)
-    )
-)
-
-(constrain
     (netlink_connector_socket
         (
             name_bind
+            node_bind
         )
     )
     (or
@@ -1065,6 +1072,7 @@
     (netlink_crypto_socket
         (
             name_bind
+            node_bind
         )
     )
     (or
@@ -1089,6 +1097,7 @@
     (netlink_dnrt_socket
         (
             name_bind
+            node_bind
         )
     )
     (or
@@ -1113,6 +1122,7 @@
     (netlink_fib_lookup_socket
         (
             name_bind
+            node_bind
         )
     )
     (or
@@ -1137,6 +1147,7 @@
     (netlink_generic_socket
         (
             name_bind
+            node_bind
         )
     )
     (or
@@ -1161,6 +1172,7 @@
     (netlink_iscsi_socket
         (
             name_bind
+            node_bind
         )
     )
     (or
@@ -1185,6 +1197,7 @@
     (netlink_kobject_uevent_socket
         (
             name_bind
+            node_bind
         )
     )
     (or
@@ -1209,6 +1222,7 @@
     (netlink_netfilter_socket
         (
             name_bind
+            node_bind
         )
     )
     (or
@@ -1233,6 +1247,7 @@
     (netlink_nflog_socket
         (
             name_bind
+            node_bind
         )
     )
     (or
@@ -1257,6 +1272,7 @@
     (netlink_rdma_socket
         (
             name_bind
+            node_bind
         )
     )
     (or
@@ -1280,8 +1296,10 @@
 (constrain
     (netlink_route_socket
         (
+            name_bind
             nlmsg_read
             nlmsg_write
+            node_bind
         )
     )
     (or
@@ -1303,33 +1321,10 @@
 )
 
 (constrain
-    (netlink_route_socket
-        (
-            name_bind
-        )
-    )
-    (or
-        (or
-            (or
-                (or
-                    (eq r1 r2)
-                    (and
-                        (eq r1 rbacsep_exemption_role_attribute)
-                        (neq t1 rbacsep_constrained_subj_type_attribute)
-                    )
-                )
-                (eq r2 rbacsep_exemption_role_attribute)
-            )
-            (eq t1 rbacsep_exemption_subj_type_attribute)
-        )
-        (eq t2 rbacsep_exemption_obj_type_attribute)
-    )
-)
-
-(constrain
     (netlink_scsitransport_socket
         (
             name_bind
+            node_bind
         )
     )
     (or
@@ -1354,6 +1349,7 @@
     (netlink_selinux_socket
         (
             name_bind
+            node_bind
         )
     )
     (or
@@ -1378,6 +1374,7 @@
     (netlink_tcpdiag_socket
         (
             name_bind
+            node_bind
         )
     )
     (or
@@ -1401,8 +1398,10 @@
 (constrain
     (netlink_xfrm_socket
         (
+            name_bind
             nlmsg_read
             nlmsg_write
+            node_bind
         )
     )
     (or
@@ -1424,33 +1423,10 @@
 )
 
 (constrain
-    (netlink_xfrm_socket
-        (
-            name_bind
-        )
-    )
-    (or
-        (or
-            (or
-                (or
-                    (eq r1 r2)
-                    (and
-                        (eq r1 rbacsep_exemption_role_attribute)
-                        (neq t1 rbacsep_constrained_subj_type_attribute)
-                    )
-                )
-                (eq r2 rbacsep_exemption_role_attribute)
-            )
-            (eq t1 rbacsep_exemption_subj_type_attribute)
-        )
-        (eq t2 rbacsep_exemption_obj_type_attribute)
-    )
-)
-
-(constrain
     (netrom_socket
         (
             name_bind
+            node_bind
         )
     )
     (or
@@ -1475,6 +1451,7 @@
     (nfc_socket
         (
             name_bind
+            node_bind
         )
     )
     (or
@@ -1548,6 +1525,7 @@
     (packet_socket
         (
             name_bind
+            node_bind
         )
     )
     (or
@@ -1572,6 +1550,7 @@
     (phonet_socket
         (
             name_bind
+            node_bind
         )
     )
     (or
@@ -1596,6 +1575,7 @@
     (pppox_socket
         (
             name_bind
+            node_bind
         )
     )
     (or
@@ -1619,12 +1599,39 @@
 (constrain
     (process
         (
+            dyntransition
             ptrace
             sigchld
             sigkill
             sigstop
             signull
             signal
+            transition
+        )
+    )
+    (or
+        (or
+            (or
+                (or
+                    (eq r1 r2)
+                    (and
+                        (eq r1 rbacsep_exemption_role_attribute)
+                        (neq t1 rbacsep_constrained_subj_type_attribute)
+                    )
+                )
+                (eq r2 rbacsep_exemption_role_attribute)
+            )
+            (eq t1 rbacsep_exemption_subj_type_attribute)
+        )
+        (eq t2 rbacsep_exemption_subj_type_attribute)
+    )
+)
+
+(constrain
+    (process2
+        (
+            nnp_transition
+            nosuid_transition
         )
     )
     (or
@@ -1649,6 +1656,7 @@
     (qipcrtr_socket
         (
             name_bind
+            node_bind
         )
     )
     (or
@@ -1698,6 +1706,7 @@
     (rds_socket
         (
             name_bind
+            node_bind
         )
     )
     (or
@@ -1722,6 +1731,7 @@
     (rose_socket
         (
             name_bind
+            node_bind
         )
     )
     (or
@@ -1746,6 +1756,7 @@
     (rxrpc_socket
         (
             name_bind
+            node_bind
         )
     )
     (or
@@ -1851,6 +1862,7 @@
     (smc_socket
         (
             name_bind
+            node_bind
         )
     )
     (or
@@ -1880,6 +1892,8 @@
             link
             mounton
             quotaon
+            relabelfrom
+            relabelto
             rename
             setattr
             unlink
@@ -1966,6 +1980,7 @@
     (tipc_socket
         (
             name_bind
+            node_bind
         )
     )
     (or
@@ -1990,6 +2005,7 @@
     (tun_socket
         (
             name_bind
+            node_bind
         )
     )
     (or
@@ -2039,6 +2055,7 @@
     (unix_dgram_socket
         (
             name_bind
+            node_bind
         )
     )
     (or
@@ -2063,6 +2080,7 @@
     (unix_stream_socket
         (
             name_bind
+            node_bind
         )
     )
     (or
@@ -2087,6 +2105,7 @@
     (vsock_socket
         (
             name_bind
+            node_bind
         )
     )
     (or
@@ -2111,6 +2130,7 @@
     (x25_socket
         (
             name_bind
+            node_bind
         )
     )
     (or
