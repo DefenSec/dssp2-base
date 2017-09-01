@@ -26,6 +26,7 @@
 (classmap all_sockets
     (
         common_socket_perms
+        map
     )
 )
 
@@ -1952,6 +1953,454 @@
             setopt
             shutdown
             write
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (alg_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (appletalk_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (atmpvc_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (atmsvc_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (ax25_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (bluetooth_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (caif_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (can_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (dccp_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (decnet_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (icmp_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (ieee802154_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (ipx_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (irda_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (isdn_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (iucv_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (kcm_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (key_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (llc_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (netlink_audit_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (netlink_connector_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (netlink_crypto_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (netlink_dnrt_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (netlink_fib_lookup_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (netlink_generic_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (netlink_iscsi_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (netlink_kobject_uevent_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (netlink_netfilter_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (netlink_nflog_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (netlink_rdma_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (netlink_route_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (netlink_scsitransport_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (netlink_selinux_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (netlink_tcpdiag_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (netlink_xfrm_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (netrom_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (nfc_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (packet_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (phonet_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (pppox_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (qipcrtr_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (rawip_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (rds_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (rose_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (rxrpc_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (sctp_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (smc_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (tcp_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (tipc_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (tun_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (udp_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (unix_dgram_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (unix_stream_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (vsock_socket
+        (
+            map
+        )
+    )
+)
+
+(classmapping all_sockets map
+    (x25_socket
+        (
+            map
         )
     )
 )

@@ -292,6 +292,13 @@
             )
         )
     )
+    (allow unconfined_subj_type_attribute subj_type_attribute
+        (all_sockets
+            (
+                map
+            )
+        )
+    )
 
     (allow unconfined_subj_type_attribute subj_type_attribute
         (association

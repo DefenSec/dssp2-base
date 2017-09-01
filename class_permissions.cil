@@ -15,18 +15,23 @@
 
 (classpermission create_alg_socket_perms)
 (classpermission create_alg_stream_socket_perms)
+(classpermission map_alg_socket_perms)
 (classpermission rw_alg_socket_perms)
 
 (classpermission create_appletalk_socket_perms)
+(classpermission map_appletalk_socket_perms)
 (classpermission rw_appletalk_socket_perms)
 
 (classpermission create_atmpvc_socket_perms)
+(classpermission map_atmpvc_socket_perms)
 (classpermission rw_atmpvc_socket_perms)
 
 (classpermission create_atmsvc_socket_perms)
+(classpermission map_atmsvc_socket_perms)
 (classpermission rw_atmsvc_socket_perms)
 
 (classpermission create_ax25_socket_perms)
+(classpermission map_ax25_socket_perms)
 (classpermission rw_ax25_socket_perms)
 
 (classpermission append_blk_file_perms)
@@ -49,12 +54,15 @@
 
 (classpermission create_bluetooth_socket_perms)
 (classpermission create_bluetooth_stream_socket_perms)
+(classpermission map_bluetooth_socket_perms)
 (classpermission rw_bluetooth_socket_perms)
 
 (classpermission create_caif_socket_perms)
+(classpermission map_caif_socket_perms)
 (classpermission rw_caif_socket_perms)
 
 (classpermission create_can_socket_perms)
+(classpermission map_can_socket_perms)
 (classpermission rw_can_socket_perms)
 
 (classpermission append_chr_file_perms)
@@ -78,10 +86,12 @@
 
 (classpermission create_dccp_socket_perms)
 (classpermission create_dccp_stream_socket_perms)
+(classpermission map_dccp_socket_perms)
 (classpermission rw_dccp_socket_perms)
 (classpermission rw_dccp_stream_socket_perms)
 
 (classpermission create_decnet_socket_perms)
+(classpermission map_decnet_socket_perms)
 (classpermission rw_decnet_socket_perms)
 
 (classpermission add_entry_dir_perms)
@@ -143,24 +153,31 @@
 (classpermission write_inherited_file_perms)
 
 (classpermission create_icmp_socket_perms)
+(classpermission map_icmp_socket_perms)
 (classpermission rw_icmp_socket_perms)
 
 (classpermission create_ieee802154_socket_perms)
+(classpermission map_ieee802154_socket_perms)
 (classpermission rw_ieee802154_socket_perms)
 
 (classpermission create_ipx_socket_perms)
+(classpermission map_ipx_socket_perms)
 (classpermission rw_ipx_socket_perms)
 
 (classpermission create_irda_socket_perms)
+(classpermission map_irda_socket_perms)
 (classpermission rw_irda_socket_perms)
 
 (classpermission create_isdn_socket_perms)
+(classpermission map_isdn_socket_perms)
 (classpermission rw_isdn_socket_perms)
 
 (classpermission create_iucv_socket_perms)
+(classpermission map_iucv_socket_perms)
 (classpermission rw_iucv_socket_perms)
 
 (classpermission create_kcm_socket_perms)
+(classpermission map_kcm_socket_perms)
 (classpermission rw_kcm_socket_perms)
 
 (classpermission create_key_perms)
@@ -171,9 +188,11 @@
 (classpermission write_key_perms)
 
 (classpermission create_key_socket_perms)
+(classpermission map_key_socket_perms)
 (classpermission rw_key_socket_perms)
 
 (classpermission create_llc_socket_perms)
+(classpermission map_llc_socket_perms)
 (classpermission rw_llc_socket_perms)
 
 (classpermission create_lnk_file_perms)
@@ -194,84 +213,111 @@
 (classpermission rw_msgq_perms)
 
 (classpermission create_netlink_audit_socket_perms)
+(classpermission map_netlink_audit_socket_perms)
 (classpermission r_netlink_audit_socket_perms)
 
 (classpermission create_netlink_connector_socket_perms)
+(classpermission map_netlink_connector_socket_perms)
 (classpermission rw_netlink_connector_socket_perms)
 
 (classpermission create_netlink_crypto_socket_perms)
+(classpermission map_netlink_crypto_socket_perms)
 (classpermission rw_netlink_crypto_socket_perms)
 
 (classpermission create_netlink_dnrt_socket_perms)
+(classpermission map_netlink_dnrt_socket_perms)
 (classpermission rw_netlink_dnrt_socket_perms)
 
 (classpermission create_netlink_fib_lookup_socket_perms)
+(classpermission map_netlink_fib_lookup_socket_perms)
 (classpermission rw_netlink_fib_lookup_socket_perms)
 
 (classpermission create_netlink_generic_socket_perms)
+(classpermission map_netlink_generic_socket_perms)
 (classpermission rw_netlink_generic_socket_perms)
 
 (classpermission create_netlink_iscsi_socket_perms)
+(classpermission map_netlink_iscsi_socket_perms)
 (classpermission rw_netlink_iscsi_socket_perms)
 
 (classpermission create_netlink_kobject_uevent_socket_perms)
+(classpermission map_netlink_kobject_uevent_socket_perms)
 (classpermission rw_netlink_kobject_uevent_socket_perms)
 
 (classpermission create_netlink_netfilter_socket_perms)
+(classpermission map_netlink_netfilter_socket_perms)
 (classpermission rw_netlink_netfilter_socket_perms)
 
 (classpermission create_netlink_nflog_socket_perms)
+(classpermission map_netlink_nflog_socket_perms)
 (classpermission rw_netlink_nflog_socket_perms)
 
 (classpermission create_netlink_rdma_socket_perms)
+(classpermission map_netlink_rdma_socket_perms)
 (classpermission rw_netlink_rdma_socket_perms)
 
 (classpermission create_netlink_route_socket_perms)
+(classpermission map_netlink_route_socket_perms)
 (classpermission r_netlink_route_socket_perms)
 
 (classpermission create_netlink_scsitransport_socket_perms)
+(classpermission map_netlink_scsitransport_socket_perms)
 (classpermission rw_netlink_scsitransport_socket_perms)
 
 (classpermission create_netlink_selinux_socket_perms)
+(classpermission map_netlink_selinux_socket_perms)
 (classpermission rw_netlink_selinux_socket_perms)
 
 (classpermission create_netlink_tcpdiag_socket_perms)
+(classpermission map_netlink_tcpdiag_socket_perms)
 (classpermission r_netlink_tcpdiag_socket_perms)
 
 (classpermission create_netlink_xfrm_socket_perms)
+(classpermission map_netlink_xfrm_socket_perms)
 (classpermission r_netlink_xfrm_socket_perms)
 
 (classpermission create_netrom_socket_perms)
+(classpermission map_netrom_socket_perms)
 (classpermission rw_netrom_socket_perms)
 
 (classpermission create_nfc_socket_perms)
+(classpermission map_nfc_socket_perms)
 (classpermission rw_nfc_socket_perms)
 
 (classpermission create_packet_socket_perms)
+(classpermission map_packet_socket_perms)
 (classpermission rw_packet_socket_perms)
 
 (classpermission create_phonet_socket_perms)
+(classpermission map_phonet_socket_perms)
 (classpermission rw_phonet_socket_perms)
 
 (classpermission create_pppox_socket_perms)
+(classpermission map_pppox_socket_perms)
 (classpermission rw_pppox_socket_perms)
 
 (classpermission create_qipcrtr_socket_perms)
+(classpermission map_qipcrtr_socket_perms)
 (classpermission rw_qipcrtr_socket_perms)
 
 (classpermission create_rawip_socket_perms)
+(classpermission map_rawip_socket_perms)
 (classpermission rw_rawip_socket_perms)
 
 (classpermission create_rds_socket_perms)
+(classpermission map_rds_socket_perms)
 (classpermission rw_rds_socket_perms)
 
 (classpermission create_rose_socket_perms)
+(classpermission map_rose_socket_perms)
 (classpermission rw_rose_socket_perms)
 
 (classpermission create_rxrpc_socket_perms)
+(classpermission map_rxrpc_socket_perms)
 (classpermission rw_rxrpc_socket_perms)
 
 (classpermission create_sctp_socket_perms)
+(classpermission map_sctp_socket_perms)
 (classpermission rw_sctp_socket_perms)
 
 (classpermission create_sem_perms)
@@ -283,6 +329,7 @@
 (classpermission rw_shm_perms)
 
 (classpermission create_smc_socket_perms)
+(classpermission map_smc_socket_perms)
 (classpermission rw_smc_socket_perms)
 
 (classpermission create_sock_file_perms)
@@ -302,6 +349,7 @@
 (classpermission write_inherited_sock_file_perms)
 
 (classpermission create_socket_perms)
+(classpermission map_socket_perms)
 (classpermission rw_socket_perms)
 
 (classpermission rw_term_perms)
@@ -309,33 +357,41 @@
 
 (classpermission create_tcp_socket_perms)
 (classpermission create_tcp_stream_socket_perms)
+(classpermission map_tcp_socket_perms)
 (classpermission rw_tcp_socket_perms)
 (classpermission rw_tcp_stream_socket_perms)
 
 (classpermission create_tipc_socket_perms)
+(classpermission map_tipc_socket_perms)
 (classpermission rw_tipc_socket_perms)
 
 (classpermission create_tun_socket_perms)
+(classpermission map_tun_socket_perms)
 (classpermission relabel_tun_socket_perms)
 (classpermission relabelfrom_tun_socket_perms)
 (classpermission relabelto_tun_socket_perms)
 (classpermission rw_tun_socket_perms)
 
 (classpermission create_udp_socket_perms)
+(classpermission map_udp_socket_perms)
 (classpermission rw_udp_socket_perms)
 
 (classpermission create_unix_dgram_socket_perms)
+(classpermission map_unix_dgram_socket_perms)
 (classpermission rw_unix_dgram_socket_perms)
 
 (classpermission create_unix_stream_socket_perms)
 (classpermission create_unix_stream_stream_socket_perms)
+(classpermission map_unix_stream_socket_perms)
 (classpermission rw_unix_stream_socket_perms)
 (classpermission rw_unix_stream_stream_socket_perms)
 
 (classpermission create_vsock_socket_perms)
+(classpermission map_vsock_socket_perms)
 (classpermission rw_vsock_socket_perms)
 
 (classpermission create_x25_socket_perms)
+(classpermission map_x25_socket_perms)
 (classpermission rw_x25_socket_perms)
 
 ;
@@ -468,6 +524,14 @@
     )
 )
 
+(classpermissionset map_alg_socket_perms
+    (alg_socket
+        (
+            map
+        )
+    )
+)
+
 (classpermissionset rw_alg_socket_perms
     (alg_socket
         (
@@ -501,6 +565,14 @@
             setopt
             shutdown
             write
+        )
+    )
+)
+
+(classpermissionset map_appletalk_socket_perms
+    (appletalk_socket
+        (
+            map
         )
     )
 )
@@ -542,6 +614,14 @@
     )
 )
 
+(classpermissionset map_atmpvc_socket_perms
+    (atmpvc_socket
+        (
+            map
+        )
+    )
+)
+
 (classpermissionset rw_atmpvc_socket_perms
     (atmpvc_socket
         (
@@ -579,6 +659,14 @@
     )
 )
 
+(classpermissionset map_atmsvc_socket_perms
+    (atmsvc_socket
+        (
+            map
+        )
+    )
+)
+
 (classpermissionset rw_atmsvc_socket_perms
     (atmsvc_socket
         (
@@ -612,6 +700,14 @@
             setopt
             shutdown
             write
+        )
+    )
+)
+
+(classpermissionset map_ax25_socket_perms
+    (ax25_socket
+        (
+            map
         )
     )
 )
@@ -869,6 +965,14 @@
     )
 )
 
+(classpermissionset map_bluetooth_socket_perms
+    (bluetooth_socket
+        (
+            map
+        )
+    )
+)
+
 (classpermissionset rw_bluetooth_socket_perms
     (bluetooth_socket
         (
@@ -906,6 +1010,14 @@
     )
 )
 
+(classpermissionset map_caif_socket_perms
+    (caif_socket
+        (
+            map
+        )
+    )
+)
+
 (classpermissionset rw_caif_socket_perms
     (caif_socket
         (
@@ -939,6 +1051,14 @@
             setopt
             shutdown
             write
+        )
+    )
+)
+
+(classpermissionset map_can_socket_perms
+    (can_socket
+        (
+            map
         )
     )
 )
@@ -1202,6 +1322,14 @@
     )
 )
 
+(classpermissionset map_dccp_socket_perms
+    (dccp_socket
+        (
+            map
+        )
+    )
+)
+
 (classpermissionset rw_dccp_socket_perms
     (dccp_socket
         (
@@ -1255,6 +1383,14 @@
             setopt
             shutdown
             write
+        )
+    )
+)
+
+(classpermissionset map_decnet_socket_perms
+    (decnet_socket
+        (
+            map
         )
     )
 )
@@ -1955,6 +2091,14 @@
     )
 )
 
+(classpermissionset map_icmp_socket_perms
+    (icmp_socket
+        (
+            map
+        )
+    )
+)
+
 (classpermissionset rw_icmp_socket_perms
     (icmp_socket
         (
@@ -1988,6 +2132,14 @@
             setopt
             shutdown
             write
+        )
+    )
+)
+
+(classpermissionset map_ieee802154_socket_perms
+    (ieee802154_socket
+        (
+            map
         )
     )
 )
@@ -2029,6 +2181,14 @@
     )
 )
 
+(classpermissionset map_ipx_socket_perms
+    (ipx_socket
+        (
+            map
+        )
+    )
+)
+
 (classpermissionset rw_ipx_socket_perms
     (ipx_socket
         (
@@ -2062,6 +2222,14 @@
             setopt
             shutdown
             write
+        )
+    )
+)
+
+(classpermissionset map_irda_socket_perms
+    (irda_socket
+        (
+            map
         )
     )
 )
@@ -2103,6 +2271,14 @@
     )
 )
 
+(classpermissionset map_isdn_socket_perms
+    (isdn_socket
+        (
+            map
+        )
+    )
+)
+
 (classpermissionset rw_isdn_socket_perms
     (isdn_socket
         (
@@ -2140,6 +2316,14 @@
     )
 )
 
+(classpermissionset map_iucv_socket_perms
+    (iucv_socket
+        (
+            map
+        )
+    )
+)
+
 (classpermissionset rw_iucv_socket_perms
     (iucv_socket
         (
@@ -2173,6 +2357,14 @@
             setopt
             shutdown
             write
+        )
+    )
+)
+
+(classpermissionset map_kcm_socket_perms
+    (kcm_socket
+        (
+            map
         )
     )
 )
@@ -2278,6 +2470,14 @@
     )
 )
 
+(classpermissionset map_key_socket_perms
+    (key_socket
+        (
+            map
+        )
+    )
+)
+
 (classpermissionset rw_key_socket_perms
     (key_socket
         (
@@ -2311,6 +2511,14 @@
             setopt
             shutdown
             write
+        )
+    )
+)
+
+(classpermissionset map_llc_socket_perms
+    (llc_socket
+        (
+            map
         )
     )
 )
@@ -2528,6 +2736,14 @@
     )
 )
 
+(classpermissionset map_netlink_audit_socket_perms
+    (netlink_audit_socket
+        (
+            map
+        )
+    )
+)
+
 (classpermissionset r_netlink_audit_socket_perms
     (netlink_audit_socket
         (
@@ -2563,6 +2779,14 @@
             setopt
             shutdown
             write
+        )
+    )
+)
+
+(classpermissionset map_netlink_connector_socket_perms
+    (netlink_connector_socket
+        (
+            map
         )
     )
 )
@@ -2604,6 +2828,14 @@
     )
 )
 
+(classpermissionset map_netlink_crypto_socket_perms
+    (netlink_crypto_socket
+        (
+            map
+        )
+    )
+)
+
 (classpermissionset rw_netlink_crypto_socket_perms
     (netlink_crypto_socket
         (
@@ -2637,6 +2869,14 @@
             setopt
             shutdown
             write
+        )
+    )
+)
+
+(classpermissionset map_netlink_dnrt_socket_perms
+    (netlink_dnrt_socket
+        (
+            map
         )
     )
 )
@@ -2678,6 +2918,14 @@
     )
 )
 
+(classpermissionset map_netlink_fib_lookup_socket_perms
+    (netlink_fib_lookup_socket
+        (
+            map
+        )
+    )
+)
+
 (classpermissionset rw_netlink_fib_lookup_socket_perms
     (netlink_fib_lookup_socket
         (
@@ -2711,6 +2959,14 @@
             setopt
             shutdown
             write
+        )
+    )
+)
+
+(classpermissionset map_netlink_generic_socket_perms
+    (netlink_generic_socket
+        (
+            map
         )
     )
 )
@@ -2752,6 +3008,14 @@
     )
 )
 
+(classpermissionset map_netlink_iscsi_socket_perms
+    (netlink_iscsi_socket
+        (
+            map
+        )
+    )
+)
+
 (classpermissionset rw_netlink_iscsi_socket_perms
     (netlink_iscsi_socket
         (
@@ -2785,6 +3049,14 @@
             setopt
             shutdown
             write
+        )
+    )
+)
+
+(classpermissionset map_netlink_kobject_uevent_socket_perms
+    (netlink_kobject_uevent_socket
+        (
+            map
         )
     )
 )
@@ -2826,6 +3098,14 @@
     )
 )
 
+(classpermissionset map_netlink_netfilter_socket_perms
+    (netlink_netfilter_socket
+        (
+            map
+        )
+    )
+)
+
 (classpermissionset rw_netlink_netfilter_socket_perms
     (netlink_netfilter_socket
         (
@@ -2863,6 +3143,14 @@
     )
 )
 
+(classpermissionset map_netlink_nflog_socket_perms
+    (netlink_nflog_socket
+        (
+            map
+        )
+    )
+)
+
 (classpermissionset rw_netlink_nflog_socket_perms
     (netlink_nflog_socket
         (
@@ -2896,6 +3184,14 @@
             setopt
             shutdown
             write
+        )
+    )
+)
+
+(classpermissionset map_netlink_rdma_socket_perms
+    (netlink_rdma_socket
+        (
+            map
         )
     )
 )
@@ -2939,6 +3235,14 @@
     )
 )
 
+(classpermissionset map_netlink_route_socket_perms
+    (netlink_route_socket
+        (
+            map
+        )
+    )
+)
+
 (classpermissionset r_netlink_route_socket_perms
     (netlink_route_socket
         (
@@ -2974,6 +3278,14 @@
             setopt
             shutdown
             write
+        )
+    )
+)
+
+(classpermissionset map_netlink_scsitransport_socket_perms
+    (netlink_scsitransport_socket
+        (
+            map
         )
     )
 )
@@ -3015,6 +3327,14 @@
     )
 )
 
+(classpermissionset map_netlink_selinux_socket_perms
+    (netlink_selinux_socket
+        (
+            map
+        )
+    )
+)
+
 (classpermissionset rw_netlink_selinux_socket_perms
     (netlink_selinux_socket
         (
@@ -3050,6 +3370,14 @@
             setopt
             shutdown
             write
+        )
+    )
+)
+
+(classpermissionset map_netlink_tcpdiag_socket_perms
+    (netlink_tcpdiag_socket
+        (
+            map
         )
     )
 )
@@ -3095,6 +3423,14 @@
     )
 )
 
+(classpermissionset map_netlink_xfrm_socket_perms
+    (netlink_xfrm_socket
+        (
+            map
+        )
+    )
+)
+
 (classpermissionset r_netlink_xfrm_socket_perms
     (netlink_xfrm_socket
         (
@@ -3130,6 +3466,14 @@
             setopt
             shutdown
             write
+        )
+    )
+)
+
+(classpermissionset map_netrom_socket_perms
+    (netrom_socket
+        (
+            map
         )
     )
 )
@@ -3171,6 +3515,14 @@
     )
 )
 
+(classpermissionset map_nfc_socket_perms
+    (nfc_socket
+        (
+            map
+        )
+    )
+)
+
 (classpermissionset rw_nfc_socket_perms
     (nfc_socket
         (
@@ -3204,6 +3556,14 @@
             setopt
             shutdown
             write
+        )
+    )
+)
+
+(classpermissionset map_packet_socket_perms
+    (packet_socket
+        (
+            map
         )
     )
 )
@@ -3245,6 +3605,14 @@
     )
 )
 
+(classpermissionset map_phonet_socket_perms
+    (phonet_socket
+        (
+            map
+        )
+    )
+)
+
 (classpermissionset rw_phonet_socket_perms
     (phonet_socket
         (
@@ -3278,6 +3646,14 @@
             setopt
             shutdown
             write
+        )
+    )
+)
+
+(classpermissionset map_pppox_socket_perms
+    (pppox_socket
+        (
+            map
         )
     )
 )
@@ -3319,6 +3695,14 @@
     )
 )
 
+(classpermissionset map_qipcrtr_socket_perms
+    (qipcrtr_socket
+        (
+            map
+        )
+    )
+)
+
 (classpermissionset rw_qipcrtr_socket_perms
     (qipcrtr_socket
         (
@@ -3352,6 +3736,14 @@
             setopt
             shutdown
             write
+        )
+    )
+)
+
+(classpermissionset map_rawip_socket_perms
+    (rawip_socket
+        (
+            map
         )
     )
 )
@@ -3393,6 +3785,14 @@
     )
 )
 
+(classpermissionset map_rds_socket_perms
+    (rds_socket
+        (
+            map
+        )
+    )
+)
+
 (classpermissionset rw_rds_socket_perms
     (rds_socket
         (
@@ -3426,6 +3826,14 @@
             setopt
             shutdown
             write
+        )
+    )
+)
+
+(classpermissionset map_rose_socket_perms
+    (rose_socket
+        (
+            map
         )
     )
 )
@@ -3467,6 +3875,14 @@
     )
 )
 
+(classpermissionset map_rxrpc_socket_perms
+    (rxrpc_socket
+        (
+            map
+        )
+    )
+)
+
 (classpermissionset rw_rxrpc_socket_perms
     (rxrpc_socket
         (
@@ -3500,6 +3916,14 @@
             setopt
             shutdown
             write
+        )
+    )
+)
+
+(classpermissionset map_sctp_socket_perms
+    (sctp_socket
+        (
+            map
         )
     )
 )
@@ -3619,6 +4043,14 @@
             setopt
             shutdown
             write
+        )
+    )
+)
+
+(classpermissionset map_smc_socket_perms
+    (smc_socket
+        (
+            map
         )
     )
 )
@@ -3832,6 +4264,14 @@
     )
 )
 
+(classpermissionset map_socket_perms
+    (socket
+        (
+            map
+        )
+    )
+)
+
 (classpermissionset rw_socket_perms
     (socket
         (
@@ -3915,6 +4355,14 @@
     )
 )
 
+(classpermissionset map_tcp_socket_perms
+    (tcp_socket
+        (
+            map
+        )
+    )
+)
+
 (classpermissionset rw_tcp_socket_perms
     (tcp_socket
         (
@@ -3972,6 +4420,14 @@
     )
 )
 
+(classpermissionset map_tipc_socket_perms
+    (tipc_socket
+        (
+            map
+        )
+    )
+)
+
 (classpermissionset rw_tipc_socket_perms
     (tipc_socket
         (
@@ -4005,6 +4461,14 @@
             setopt
             shutdown
             write
+        )
+    )
+)
+
+(classpermissionset map_tun_socket_perms
+    (tun_socket
+        (
+            map
         )
     )
 )
@@ -4074,6 +4538,14 @@
     )
 )
 
+(classpermissionset map_udp_socket_perms
+    (udp_socket
+        (
+            map
+        )
+    )
+)
+
 (classpermissionset rw_udp_socket_perms
     (udp_socket
         (
@@ -4107,6 +4579,14 @@
             setopt
             shutdown
             write
+        )
+    )
+)
+
+(classpermissionset map_unix_dgram_socket_perms
+    (unix_dgram_socket
+        (
+            map
         )
     )
 )
@@ -4169,6 +4649,14 @@
     )
 )
 
+(classpermissionset map_unix_stream_socket_perms
+    (unix_stream_socket
+        (
+            map
+        )
+    )
+)
+
 (classpermissionset rw_unix_stream_socket_perms
     (unix_stream_socket
         (
@@ -4226,6 +4714,14 @@
     )
 )
 
+(classpermissionset map_vsock_socket_perms
+    (vsock_socket
+        (
+            map
+        )
+    )
+)
+
 (classpermissionset rw_vsock_socket_perms
     (vsock_socket
         (
@@ -4259,6 +4755,14 @@
             setopt
             shutdown
             write
+        )
+    )
+)
+
+(classpermissionset map_x25_socket_perms
+    (x25_socket
+        (
+            map
         )
     )
 )
