@@ -7,30 +7,6 @@
 (constrain
     (all_sockets
         (
-            common_socket_perms
-        )
-    )
-    (or
-        (or
-            (or
-                (or
-                    (eq r1 r2)
-                    (and
-                        (eq r1 rbacsep_exemption_role_attribute)
-                        (neq t1 rbacsep_constrained_subj_type_attribute)
-                    )
-                )
-                (eq r2 rbacsep_exemption_role_attribute)
-            )
-            (eq t1 rbacsep_exemption_subj_type_attribute)
-        )
-        (eq t2 rbacsep_exemption_subj_type_attribute)
-    )
-)
-
-(constrain
-    (all_sockets
-        (
             map
         )
     )
@@ -55,7 +31,23 @@
 (constrain
     (alg_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -79,7 +71,23 @@
 (constrain
     (appletalk_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -103,7 +111,23 @@
 (constrain
     (atmpvc_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -127,7 +151,23 @@
 (constrain
     (atmsvc_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -151,7 +191,23 @@
 (constrain
     (ax25_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -187,8 +243,6 @@
             open
             quotaon
             read
-            relabelfrom
-            relabelto
             rename
             setattr
             unlink
@@ -216,7 +270,23 @@
 (constrain
     (bluetooth_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -240,7 +310,23 @@
 (constrain
     (caif_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -264,7 +350,23 @@
 (constrain
     (can_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -301,8 +403,6 @@
             open
             quotaon
             read
-            relabelfrom
-            relabelto
             rename
             setattr
             unlink
@@ -330,9 +430,25 @@
 (constrain
     (dccp_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
             name_connect
             node_bind
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -356,7 +472,23 @@
 (constrain
     (decnet_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -388,8 +520,6 @@
             link
             mounton
             quotaon
-            relabelfrom
-            relabelto
             remove_name
             rename
             reparent
@@ -488,8 +618,6 @@
             link
             mounton
             quotaon
-            relabelfrom
-            relabelto
             rename
             setattr
             unlink
@@ -557,8 +685,6 @@
             map
             mounton
             quotaon
-            relabelfrom
-            relabelto
             rename
             setattr
             unlink
@@ -623,8 +749,24 @@
 (constrain
     (icmp_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
             node_bind
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -648,7 +790,23 @@
 (constrain
     (ieee802154_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -700,7 +858,23 @@
 (constrain
     (ipx_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -724,7 +898,23 @@
 (constrain
     (irda_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -748,7 +938,23 @@
 (constrain
     (isdn_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -772,7 +978,23 @@
 (constrain
     (iucv_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -796,7 +1018,23 @@
 (constrain
     (kcm_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -857,8 +1095,6 @@
             link
             mounton
             quotaon
-            relabelfrom
-            relabelto
             rename
             setattr
             unlink
@@ -923,7 +1159,23 @@
 (constrain
     (llc_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -1000,12 +1252,28 @@
 (constrain
     (netlink_audit_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
             nlmsg_read
             nlmsg_readpriv
             nlmsg_relay
             nlmsg_tty_audit
             nlmsg_write
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -1029,7 +1297,23 @@
 (constrain
     (netlink_connector_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -1053,7 +1337,23 @@
 (constrain
     (netlink_crypto_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -1077,7 +1377,23 @@
 (constrain
     (netlink_dnrt_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -1101,7 +1417,23 @@
 (constrain
     (netlink_fib_lookup_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -1125,7 +1457,23 @@
 (constrain
     (netlink_generic_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -1149,7 +1497,23 @@
 (constrain
     (netlink_iscsi_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -1173,7 +1537,23 @@
 (constrain
     (netlink_kobject_uevent_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -1197,7 +1577,23 @@
 (constrain
     (netlink_netfilter_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -1221,7 +1617,23 @@
 (constrain
     (netlink_nflog_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -1245,7 +1657,23 @@
 (constrain
     (netlink_rdma_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -1269,9 +1697,25 @@
 (constrain
     (netlink_route_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
             nlmsg_read
             nlmsg_write
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -1295,7 +1739,23 @@
 (constrain
     (netlink_scsitransport_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -1319,7 +1779,23 @@
 (constrain
     (netlink_selinux_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -1343,7 +1819,23 @@
 (constrain
     (netlink_tcpdiag_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -1367,9 +1859,25 @@
 (constrain
     (netlink_xfrm_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
             nlmsg_read
             nlmsg_write
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -1393,7 +1901,23 @@
 (constrain
     (netrom_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -1417,7 +1941,23 @@
 (constrain
     (nfc_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -1490,7 +2030,23 @@
 (constrain
     (packet_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -1514,7 +2070,23 @@
 (constrain
     (phonet_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -1538,7 +2110,23 @@
 (constrain
     (pppox_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -1562,39 +2150,12 @@
 (constrain
     (process
         (
-            dyntransition
             ptrace
             sigchld
             sigkill
             sigstop
             signull
             signal
-            transition
-        )
-    )
-    (or
-        (or
-            (or
-                (or
-                    (eq r1 r2)
-                    (and
-                        (eq r1 rbacsep_exemption_role_attribute)
-                        (neq t1 rbacsep_constrained_subj_type_attribute)
-                    )
-                )
-                (eq r2 rbacsep_exemption_role_attribute)
-            )
-            (eq t1 rbacsep_exemption_subj_type_attribute)
-        )
-        (eq t2 rbacsep_exemption_subj_type_attribute)
-    )
-)
-
-(constrain
-    (process2
-        (
-            nnp_transition
-            nosuid_transition
         )
     )
     (or
@@ -1618,7 +2179,23 @@
 (constrain
     (qipcrtr_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -1642,8 +2219,24 @@
 (constrain
     (rawip_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
             node_bind
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -1667,7 +2260,23 @@
 (constrain
     (rds_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -1691,7 +2300,23 @@
 (constrain
     (rose_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -1715,7 +2340,23 @@
 (constrain
     (rxrpc_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -1739,8 +2380,24 @@
 (constrain
     (sctp_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
             node_bind
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -1820,7 +2477,23 @@
 (constrain
     (smc_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -1850,8 +2523,6 @@
             link
             mounton
             quotaon
-            relabelfrom
-            relabelto
             rename
             setattr
             unlink
@@ -1911,9 +2582,25 @@
 (constrain
     (tcp_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
             name_connect
             node_bind
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -1937,7 +2624,23 @@
 (constrain
     (tipc_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -1961,7 +2664,23 @@
 (constrain
     (tun_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -1985,8 +2704,24 @@
 (constrain
     (udp_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
             node_bind
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -2010,7 +2745,23 @@
 (constrain
     (unix_dgram_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -2034,7 +2785,23 @@
 (constrain
     (unix_stream_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -2058,7 +2825,23 @@
 (constrain
     (vsock_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
@@ -2082,7 +2865,23 @@
 (constrain
     (x25_socket
         (
+            accept
+            append
+            bind
+            connect
+            getattr
+            getopt
+            ioctl
+            listen
+            lock
             name_bind
+            read
+            recvfrom
+            sendto
+            setattr
+            setopt
+            shutdown
+            write
         )
     )
     (or
