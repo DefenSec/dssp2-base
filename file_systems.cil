@@ -7990,6 +7990,10 @@
             )
         )
 
+        (macro del_entries ((type ARG1))
+            (allow ARG1 fs del_entry_dir_perms)
+        )
+
         (macro delete_chr_files ((type ARG1))
             (allow ARG1 fs
                 (chr_files
