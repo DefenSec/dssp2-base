@@ -413,6 +413,30 @@
 )
 
 (mlsconstrain
+    (infiniband_endport
+        (
+            manage_subnet
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
+
+(mlsconstrain
+    (infiniband_pkey
+        (
+            access
+        )
+    )
+    (or
+        (dom h1 h2)
+        (neq t1 mcs_constrained_subj_type_attribute)
+    )
+)
+
+(mlsconstrain
     (ipc
         (
             create
