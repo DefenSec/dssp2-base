@@ -322,6 +322,10 @@
             ; Macros
             ;
 
+            (macro dontaudit_get ((type ARG1))
+                (dontaudit ARG1 obj_type_attribute read_file_perms)
+            )
+
             (macro get ((type ARG1))
                 (allow ARG1 obj_type_attribute read_file_perms)
                 (call sec.securityfs.list
@@ -425,6 +429,10 @@
             ;
             ; Macros
             ;
+
+            (macro dontaudit_get ((type ARG1))
+                (dontaudit ARG1 bool_file read_file_perms)
+            )
 
             (macro get ((type ARG1))
                 (allow ARG1 bool_file read_file_perms)
