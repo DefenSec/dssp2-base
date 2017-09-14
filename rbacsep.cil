@@ -2198,7 +2198,10 @@
 (constrain
     (process
         (
+            getsched
             ptrace
+            setrlimit
+            setsched
             sigchld
             sigkill
             sigstop
