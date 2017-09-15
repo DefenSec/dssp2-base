@@ -2198,15 +2198,32 @@
 (constrain
     (process
         (
+            execheap
+            execmem
+            execstack
+            fork
+            getattr
+            getcap
+            getpgid
+            getrlimit
             getsched
+            getsession
             ptrace
+            setcurrent
+            setcap
+            setexec
+            setfscreate
+            setkeycreate
+            setpgid
             setrlimit
             setsched
+            setsockcreate
+            share
             sigchld
             sigkill
-            sigstop
-            signull
             signal
+            signull
+            sigstop
         )
     )
     (or
