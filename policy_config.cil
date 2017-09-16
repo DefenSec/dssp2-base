@@ -7,8 +7,10 @@
 ; Enabled policy capabilities
 ;
 
+(policycap "cgroup_seclabel")
 (policycap "extended_socket_class")
 (policycap "network_peer_controls")
+(policycap "nnp_nosuid_transition")
 (policycap "open_perms")
 
 ;
@@ -16,5 +18,3 @@
 ;
 
 ; (policycap "always_check_network")
-; (policycap "cgroup_seclabel")
-; (policycap "nnp_nosuid_transition")
