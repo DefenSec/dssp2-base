@@ -276,12 +276,22 @@
 
         (roleattributeset role_attribute ARG2)
 
+        (call getrlimit
+            (
+                ARG1
+            )
+        )
         (call ps
             (
                 ARG1
             )
         )
         (call ptrace
+            (
+                ARG1
+            )
+        )
+        (call setrlimit
             (
                 ARG1
             )
