@@ -657,6 +657,16 @@
                 )
             )
 
+            (macro getrlimit ((type ARG1))
+                (allow ARG1 subj_type_attribute
+                    (process
+                        (
+                            getrlimit
+                        )
+                    )
+                )
+            )
+
             (macro getsched ((type ARG1))
                 (allow ARG1 subj_type_attribute
                     (process
@@ -1236,6 +1246,16 @@
                     (process
                         (
                             getpgid
+                        )
+                    )
+                )
+            )
+
+            (macro getrlimit ((type ARG1))
+                (allow ARG1 subj
+                    (process
+                        (
+                            getrlimit
                         )
                     )
                 )
