@@ -281,6 +281,11 @@
                 ARG1
             )
         )
+        (call getsched
+            (
+                ARG1
+            )
+        )
         (call ps
             (
                 ARG1
@@ -292,6 +297,11 @@
             )
         )
         (call setrlimit
+            (
+                ARG1
+            )
+        )
+        (call setsched
             (
                 ARG1
             )
