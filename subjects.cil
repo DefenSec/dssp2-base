@@ -616,6 +616,16 @@
                 )
             )
 
+            (macro dontaudit_use_fd ((type ARG1))
+                (dontaudit ARG1 subj_type_attribute
+                    (fd
+                        (
+                            use
+                        )
+                    )
+                )
+            )
+
             (macro append_inherited_fifo_files ((type ARG1))
                 (allow ARG1 subj_type_attribute
                     append_inherited_fifo_file_perms)
@@ -1206,6 +1216,16 @@
                     (process
                         (
                             signull
+                        )
+                    )
+                )
+            )
+
+            (macro dontaudit_use_fd ((type ARG1))
+                (dontaudit ARG1 subj
+                    (fd
+                        (
+                            use
                         )
                     )
                 )
