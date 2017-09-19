@@ -2261,6 +2261,16 @@
                 )
             )
 
+            (macro dontaudit_tcp_connect ((type ARG1))
+                (dontaudit ARG1 obj_type_attribute
+                    (tcp_socket
+                        (
+                            name_connect
+                        )
+                    )
+                )
+            )
+
             (macro tcp_connect ((type ARG1))
                 (allow ARG1 self create_tcp_socket_perms)
                 (allow ARG1 obj_type_attribute
