@@ -726,6 +726,22 @@
         )
     )
 
+    (optional sys_optional_gssproxy
+        (call gssproxy.unix_stream_socket_connectto
+            (
+                isid
+            )
+        )
+    )
+
+    (optional sys_optional_keyutils
+        (call keyutils.request_key.auto_subj_type_transition
+            (
+                isid
+            )
+        )
+    )
+
     (optional sys_optional_kmod
         (call kmod.auto_subj_type_transition
             (
@@ -781,6 +797,14 @@
         )
     )
 
+    (optional sys_optional_nfs
+        (call nfs.client.auto_subj_type_transition
+            (
+                isid
+            )
+        )
+    )
+
     (optional sys_optional_nspawn
         (call nspawn.use_fd
             (
@@ -801,6 +825,14 @@
             )
         )
         (call plymouth.var_lib.manage
+            (
+                isid
+            )
+        )
+    )
+
+    (optional sys_optional_rpcbind
+        (call rpcbind.daemon.unix_stream_socket_connectto
             (
                 isid
             )
