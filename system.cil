@@ -893,6 +893,14 @@
         )
     )
 
+    (optional sys_optional_udev
+        (call udev.client_subj_type
+            (
+                isid
+            )
+        )
+    )
+
     (typeattributeset
         not_dump_kernel_subj_type_or_unconfined_subj_type_attribute
             (not
