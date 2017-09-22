@@ -1939,6 +1939,11 @@
             )
         )
 
+        (call fs.nfs.associate
+            (
+                isid
+            )
+        )
         (call fs.proc.search
             (
                 isid

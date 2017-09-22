@@ -2601,6 +2601,11 @@
         )
     )
 
+    (call fs.nfs.associate
+        (
+            obj_type_attribute
+        )
+    )
     (call fs.xattr.associate
         (
             obj_type_attribute
