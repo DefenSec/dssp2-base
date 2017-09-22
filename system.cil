@@ -803,6 +803,11 @@
                 isid
             )
         )
+        (call nfs.rpcnfsd.read_tcp_sockets
+            (
+                isid
+            )
+        )
     )
 
     (optional sys_optional_nspawn
