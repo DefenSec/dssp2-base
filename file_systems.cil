@@ -19699,6 +19699,15 @@
             )
         )
 
+        (macro append_fifo_files ((type ARG1))
+            (allow ARG1 fs append_fifo_file_perms)
+            (call search
+                (
+                    ARG1
+                )
+            )
+        )
+
         (macro append_files ((type ARG1))
             (allow ARG1 fs append_file_perms)
             (call search
@@ -19710,6 +19719,11 @@
 
         (macro create ((type ARG1))
             (call create_dirs
+                (
+                    ARG1
+                )
+            )
+            (call create_fifo_files
                 (
                     ARG1
                 )
@@ -19729,6 +19743,21 @@
         (macro create_dirs ((type ARG1))
             (allow ARG1 fs
                 (dirs
+                    (
+                        create
+                    )
+                )
+            )
+            (call files.generic_runtime.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro create_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
                     (
                         create
                     )
@@ -19786,6 +19815,11 @@
                     ARG1
                 )
             )
+            (call delete_fifo_files
+                (
+                    ARG1
+                )
+            )
             (call delete_files
                 (
                     ARG1
@@ -19801,6 +19835,21 @@
         (macro delete_dirs ((type ARG1))
             (allow ARG1 fs
                 (dirs
+                    (
+                        delete
+                    )
+                )
+            )
+            (call files.generic_runtime.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro delete_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
                     (
                         delete
                     )
@@ -19858,6 +19907,11 @@
                     ARG1
                 )
             )
+            (call getattr_fifo_files
+                (
+                    ARG1
+                )
+            )
             (call getattr_files
                 (
                     ARG1
@@ -19873,6 +19927,21 @@
         (macro getattr_dirs ((type ARG1))
             (allow ARG1 fs
                 (dirs
+                    (
+                        getattr
+                    )
+                )
+            )
+            (call files.generic_runtime.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro getattr_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
                     (
                         getattr
                     )
@@ -19930,6 +19999,11 @@
                     ARG1
                 )
             )
+            (call manage_fifo_files
+                (
+                    ARG1
+                )
+            )
             (call manage_files
                 (
                     ARG1
@@ -19945,6 +20019,21 @@
         (macro manage_dirs ((type ARG1))
             (allow ARG1 fs
                 (dirs
+                    (
+                        manage
+                    )
+                )
+            )
+            (call files.generic_runtime.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro manage_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
                     (
                         manage
                     )
@@ -20017,12 +20106,32 @@
                     ARG1
                 )
             )
+            (call read_fifo_files
+                (
+                    ARG1
+                )
+            )
             (call read_files
                 (
                     ARG1
                 )
             )
             (call read_lnk_files
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro read_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
+                    (
+                        read
+                    )
+                )
+            )
+            (call files.generic_runtime.search
                 (
                     ARG1
                 )
@@ -20065,6 +20174,11 @@
                     ARG1
                 )
             )
+            (call relabel_fifo_files
+                (
+                    ARG1
+                )
+            )
             (call relabel_files
                 (
                     ARG1
@@ -20080,6 +20194,21 @@
         (macro relabel_dirs ((type ARG1))
             (allow ARG1 fs
                 (dirs
+                    (
+                        relabel
+                    )
+                )
+            )
+            (call files.generic_runtime.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabel_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
                     (
                         relabel
                     )
@@ -20128,6 +20257,11 @@
                     ARG1
                 )
             )
+            (call relabelfrom_fifo_files
+                (
+                    ARG1
+                )
+            )
             (call relabelfrom_files
                 (
                     ARG1
@@ -20143,6 +20277,21 @@
         (macro relabelfrom_dirs ((type ARG1))
             (allow ARG1 fs
                 (dirs
+                    (
+                        relabelfrom
+                    )
+                )
+            )
+            (call files.generic_runtime.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelfrom_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
                     (
                         relabelfrom
                     )
@@ -20191,6 +20340,11 @@
                     ARG1
                 )
             )
+            (call relabelto_fifo_files
+                (
+                    ARG1
+                )
+            )
             (call relabelto_files
                 (
                     ARG1
@@ -20206,6 +20360,21 @@
         (macro relabelto_dirs ((type ARG1))
             (allow ARG1 fs
                 (dirs
+                    (
+                        relabelto
+                    )
+                )
+            )
+            (call files.generic_runtime.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro relabelto_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
                     (
                         relabelto
                     )
@@ -20254,6 +20423,11 @@
                     ARG1
                 )
             )
+            (call rename_fifo_files
+                (
+                    ARG1
+                )
+            )
             (call rename_files
                 (
                     ARG1
@@ -20269,6 +20443,21 @@
         (macro rename_dirs ((type ARG1))
             (allow ARG1 fs
                 (dirs
+                    (
+                        rename
+                    )
+                )
+            )
+            (call files.generic_runtime.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rename_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
                     (
                         rename
                     )
@@ -20317,6 +20506,11 @@
                     ARG1
                 )
             )
+            (call rw_fifo_files
+                (
+                    ARG1
+                )
+            )
             (call rw_files
                 (
                     ARG1
@@ -20332,6 +20526,21 @@
         (macro rw_dirs ((type ARG1))
             (allow ARG1 fs
                 (dirs
+                    (
+                        rw
+                    )
+                )
+            )
+            (call files.generic_runtime.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro rw_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
                     (
                         rw
                     )
@@ -20389,6 +20598,11 @@
                     ARG1
                 )
             )
+            (call setattr_fifo_files
+                (
+                    ARG1
+                )
+            )
             (call setattr_files
                 (
                     ARG1
@@ -20404,6 +20618,21 @@
         (macro setattr_dirs ((type ARG1))
             (allow ARG1 fs
                 (dirs
+                    (
+                        setattr
+                    )
+                )
+            )
+            (call files.generic_runtime.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro setattr_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
                     (
                         setattr
                     )
@@ -20452,6 +20681,11 @@
                     ARG1
                 )
             )
+            (call write_fifo_files
+                (
+                    ARG1
+                )
+            )
             (call write_files
                 (
                     ARG1
@@ -20467,6 +20701,21 @@
         (macro write_dirs ((type ARG1))
             (allow ARG1 fs
                 (dirs
+                    (
+                        write
+                    )
+                )
+            )
+            (call files.generic_runtime.search
+                (
+                    ARG1
+                )
+            )
+        )
+
+        (macro write_fifo_files ((type ARG1))
+            (allow ARG1 fs
+                (fifo_files
                     (
                         write
                     )
