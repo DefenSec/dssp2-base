@@ -386,7 +386,7 @@
 
     (boolean load_kernel_init_module true)
     (boolean load_kernel_module true)
-    (boolean manage_files_except false)
+    (boolean manage_files_except true)
 
     (roleattribute role_attribute)
     (roleattribute roleallow_role_attribute)
