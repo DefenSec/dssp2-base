@@ -25757,6 +25757,12 @@
 
         (blockinherit file.obj_stub)
 
+        (call generic_runtime_obj_type_transition
+            (
+                unconfined_subj_type_attribute
+            )
+        )
+
         (call sys.mountpoint.obj_type
             (
                 file
