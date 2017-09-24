@@ -23912,10 +23912,10 @@
         (fsuse xattr "lustre" isid_context)
         (fsuse xattr "ocfs2" isid_context)
         (fsuse xattr "overlay" isid_context)
+        (fsuse xattr "shiftfs" isid_context)
         (fsuse xattr "squashfs" isid_context)
         (fsuse xattr "xfs" isid_context)
         (fsuse xattr "zfs" isid_context)
-        (fsuse xattr "shiftfs" isid_context)
 
         (sidcontext fs isid_context)
 
