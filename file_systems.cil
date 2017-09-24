@@ -9475,6 +9475,12 @@
         (filecon "/efi(/.*)?" any fs_context)
         (filecon "/boot/efi(/.*)?" any fs_context)
 
+        (genfscon "fat" "/" fs_context)
+        (genfscon "hfs" "/" fs_context)
+        (genfscon "hfsplus" "/" fs_context)
+        (genfscon "msdos" "/" fs_context)
+        (genfscon "ntfs" "/" fs_context)
+        (genfscon "ntfs-3g" "/" fs_context)
         (genfscon "vfat" "/" fs_context)
 
         ;
