@@ -897,6 +897,14 @@
             )
         )
 
+        (macro tmpfs_obj_type_transition ((type ARG1))
+            (call fs.tmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "kvm"
+                )
+            )
+        )
+
         ;
         ; Policy
         ;
@@ -1658,6 +1666,14 @@
             (call fs.devpts.search
                 (
                     ARG1
+                )
+            )
+        )
+
+        (macro tmpfs_obj_type_transition ((type ARG1))
+            (call fs.tmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "ptmx"
                 )
             )
         )
