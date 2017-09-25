@@ -163,6 +163,49 @@
                     ARG1 dev_file chr_file "ptp3"
                 )
             )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "rtc"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "rtc0"
+                )
+            )
+        )
+
+        (macro tmpfs_obj_type_transition ((type ARG1))
+            (call fs.tmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "ptp0"
+                )
+            )
+            (call fs.tmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "ptp1"
+                )
+            )
+            (call fs.tmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "ptp2"
+                )
+            )
+            (call fs.tmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "ptp3"
+                )
+            )
+            (call fs.tmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "rtc"
+                )
+            )
+            (call fs.tmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "rtc0"
+                )
+            )
         )
 
         ;
@@ -174,6 +217,18 @@
         (call devtmpfs_obj_type_transition
             (
                 unconfined_subj_type_attribute
+            )
+        )
+
+        (call tmpfs_obj_type_transition
+            (
+                unconfined_subj_type_attribute
+            )
+        )
+
+        (call fs.tmpfs.associate
+            (
+                dev_file
             )
         )
     )
@@ -476,7 +531,7 @@
             (type dev_file)
             (call dev.dev_file.obj_type
                 (
-                dev_file
+                    dev_file
                 )
             )
         )
@@ -912,6 +967,12 @@
         (blockinherit dev_file.obj_template)
 
         (call devtmpfs_obj_type_transition
+            (
+                unconfined_subj_type_attribute
+            )
+        )
+
+        (call tmpfs_obj_type_transition
             (
                 unconfined_subj_type_attribute
             )
@@ -1698,6 +1759,12 @@
         ;
 
         (blockinherit dev_file.obj_stub)
+
+        (call tmpfs_obj_type_transition
+            (
+                unconfined_subj_type_attribute
+            )
+        )
 
         (call fs.tmpfs.associate
             (
