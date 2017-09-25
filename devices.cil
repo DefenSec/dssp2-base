@@ -916,6 +916,12 @@
                 unconfined_subj_type_attribute
             )
         )
+
+        (call fs.tmpfs.associate
+            (
+                dev_file
+            )
+        )
     )
 
     (block loop_control
@@ -1692,6 +1698,12 @@
         ;
 
         (blockinherit dev_file.obj_stub)
+
+        (call fs.tmpfs.associate
+            (
+                dev_file
+            )
+        )
     )
 
     (block random
