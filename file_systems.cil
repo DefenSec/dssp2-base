@@ -9453,6 +9453,11 @@
 
         (blockinherit fs.obj_template)
 
+        (call tmpfs.associate
+            (
+                fs
+            )
+        )
         (call xattr.associate
             (
                 fs

@@ -150,6 +150,11 @@
         (macro devtmpfs_obj_type_transition ((type ARG1))
             (call fs.devtmpfs.obj_type_transition
                 (
+                    ARG1 dev_file chr_file "hpet"
+                )
+            )
+            (call fs.devtmpfs.obj_type_transition
+                (
                     ARG1 dev_file chr_file "ptp0"
                 )
             )
@@ -165,17 +170,17 @@
             )
             (call fs.devtmpfs.obj_type_transition
                 (
-                    ARG1 dev_file chr_file "rtc"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
                     ARG1 dev_file chr_file "rtc0"
                 )
             )
         )
 
         (macro tmpfs_obj_type_transition ((type ARG1))
+            (call fs.tmpfs.obj_type_transition
+                (
+                    ARG1 dev_file chr_file "hpet"
+                )
+            )
             (call fs.tmpfs.obj_type_transition
                 (
                     ARG1 dev_file chr_file "ptp0"
@@ -194,11 +199,6 @@
             (call fs.tmpfs.obj_type_transition
                 (
                     ARG1 dev_file chr_file "ptp3"
-                )
-            )
-            (call fs.tmpfs.obj_type_transition
-                (
-                    ARG1 dev_file chr_file "rtc"
                 )
             )
             (call fs.tmpfs.obj_type_transition
