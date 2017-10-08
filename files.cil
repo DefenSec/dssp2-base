@@ -6869,7 +6869,7 @@
 
             (macro append_files ((type ARG1))
                 (allow ARG1 obj_type_attribute append_file_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -6896,7 +6896,7 @@
 
             (macro create_dirs ((type ARG1))
                 (allow ARG1 obj_type_attribute create_dir_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -6905,7 +6905,7 @@
 
             (macro create_files ((type ARG1))
                 (allow ARG1 obj_type_attribute create_file_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -6914,7 +6914,7 @@
 
             (macro create_lnk_files ((type ARG1))
                 (allow ARG1 obj_type_attribute create_lnk_file_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -6945,7 +6945,7 @@
 
             (macro delete_dirs ((type ARG1))
                 (allow ARG1 obj_type_attribute delete_dir_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -6954,7 +6954,7 @@
 
             (macro delete_files ((type ARG1))
                 (allow ARG1 obj_type_attribute delete_file_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -6963,7 +6963,7 @@
 
             (macro delete_lnk_files ((type ARG1))
                 (allow ARG1 obj_type_attribute delete_lnk_file_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -6972,7 +6972,7 @@
 
             (macro execute ((type ARG1))
                 (allow ARG1 obj_type_attribute exec_file_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7005,7 +7005,7 @@
                         )
                     )
                 )
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7020,7 +7020,7 @@
                         )
                     )
                 )
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7035,7 +7035,7 @@
                         )
                     )
                 )
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7070,7 +7070,7 @@
 
             (macro manage_files ((type ARG1))
                 (allow ARG1 obj_type_attribute manage_file_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7079,7 +7079,7 @@
 
             (macro manage_lnk_files ((type ARG1))
                 (allow ARG1 obj_type_attribute manage_lnk_file_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7088,7 +7088,7 @@
 
             (macro map_files ((type ARG1))
                 (allow ARG1 obj_type_attribute map_file_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7097,7 +7097,7 @@
 
             (macro mmap ((type ARG1))
                 (allow ARG1 obj_type_attribute mmap_file_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7128,7 +7128,7 @@
 
             (macro read_files ((type ARG1))
                 (allow ARG1 obj_type_attribute read_file_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7137,7 +7137,7 @@
 
             (macro read_lnk_files ((type ARG1))
                 (allow ARG1 obj_type_attribute read_lnk_file_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7164,7 +7164,7 @@
 
             (macro relabel_dirs ((type ARG1))
                 (allow ARG1 obj_type_attribute relabel_dir_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7173,7 +7173,7 @@
 
             (macro relabel_files ((type ARG1))
                 (allow ARG1 obj_type_attribute relabel_file_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7182,7 +7182,7 @@
 
             (macro relabel_lnk_files ((type ARG1))
                 (allow ARG1 obj_type_attribute relabel_lnk_file_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7209,7 +7209,7 @@
 
             (macro relabelfrom_dirs ((type ARG1))
                 (allow ARG1 obj_type_attribute relabelfrom_dir_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7218,7 +7218,7 @@
 
             (macro relabelfrom_files ((type ARG1))
                 (allow ARG1 obj_type_attribute relabelfrom_file_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7227,7 +7227,7 @@
 
             (macro relabelfrom_lnk_files ((type ARG1))
                 (allow ARG1 obj_type_attribute relabelfrom_lnk_file_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7254,7 +7254,7 @@
 
             (macro relabelto_dirs ((type ARG1))
                 (allow ARG1 obj_type_attribute relabelto_dir_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7263,7 +7263,7 @@
 
             (macro relabelto_files ((type ARG1))
                 (allow ARG1 obj_type_attribute relabelto_file_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7272,7 +7272,7 @@
 
             (macro relabelto_lnk_files ((type ARG1))
                 (allow ARG1 obj_type_attribute relabelto_lnk_file_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7299,7 +7299,7 @@
 
             (macro rename_dirs ((type ARG1))
                 (allow ARG1 obj_type_attribute rename_dir_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7308,7 +7308,7 @@
 
             (macro rename_files ((type ARG1))
                 (allow ARG1 obj_type_attribute rename_file_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7317,7 +7317,7 @@
 
             (macro rename_lnk_files ((type ARG1))
                 (allow ARG1 obj_type_attribute rename_lnk_file_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7348,7 +7348,7 @@
 
             (macro rw_files ((type ARG1))
                 (allow ARG1 obj_type_attribute rw_file_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7357,7 +7357,7 @@
 
             (macro rw_lnk_files ((type ARG1))
                 (allow ARG1 obj_type_attribute rw_lnk_file_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7394,7 +7394,7 @@
                         )
                     )
                 )
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7409,7 +7409,7 @@
                         )
                     )
                 )
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7424,7 +7424,7 @@
                         )
                     )
                 )
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7455,7 +7455,7 @@
 
             (macro write_files ((type ARG1))
                 (allow ARG1 obj_type_attribute write_file_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7464,7 +7464,7 @@
 
             (macro write_lnk_files ((type ARG1))
                 (allow ARG1 obj_type_attribute write_lnk_file_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7518,7 +7518,7 @@
 
             (macro add_entries ((type ARG1))
                 (allow ARG1 config_file add_entry_dir_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7527,7 +7527,7 @@
 
             (macro append_files ((type ARG1))
                 (allow ARG1 config_file append_file_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7554,7 +7554,7 @@
 
             (macro create_dirs ((type ARG1))
                 (allow ARG1 config_file create_dir_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7563,7 +7563,7 @@
 
             (macro create_files ((type ARG1))
                 (allow ARG1 config_file create_file_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7572,7 +7572,7 @@
 
             (macro create_lnk_files ((type ARG1))
                 (allow ARG1 config_file create_lnk_file_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7581,7 +7581,7 @@
 
             (macro del_entries ((type ARG1))
                 (allow ARG1 config_file del_entry_dir_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7608,7 +7608,7 @@
 
             (macro delete_dirs ((type ARG1))
                 (allow ARG1 config_file delete_dir_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7617,7 +7617,7 @@
 
             (macro delete_files ((type ARG1))
                 (allow ARG1 config_file delete_file_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7626,7 +7626,7 @@
 
             (macro delete_lnk_files ((type ARG1))
                 (allow ARG1 config_file delete_lnk_file_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7635,7 +7635,7 @@
 
             (macro execute ((type ARG1))
                 (allow ARG1 config_file exec_file_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7668,7 +7668,7 @@
                         )
                     )
                 )
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7683,7 +7683,7 @@
                         )
                     )
                 )
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7698,7 +7698,7 @@
                         )
                     )
                 )
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7707,7 +7707,7 @@
 
             (macro list ((type ARG1))
                 (allow ARG1 config_file list_dir_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7734,7 +7734,7 @@
 
             (macro manage_dirs ((type ARG1))
                 (allow ARG1 config_file manage_dir_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7743,7 +7743,7 @@
 
             (macro manage_files ((type ARG1))
                 (allow ARG1 config_file manage_file_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7752,7 +7752,7 @@
 
             (macro manage_lnk_files ((type ARG1))
                 (allow ARG1 config_file manage_lnk_file_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7761,7 +7761,7 @@
 
             (macro map_files ((type ARG1))
                 (allow ARG1 config_file map_file_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7770,7 +7770,7 @@
 
             (macro mmap ((type ARG1))
                 (allow ARG1 config_file mmap_file_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7806,7 +7806,7 @@
 
             (macro read_files ((type ARG1))
                 (allow ARG1 config_file read_file_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7815,7 +7815,7 @@
 
             (macro read_lnk_files ((type ARG1))
                 (allow ARG1 config_file read_lnk_file_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7842,7 +7842,7 @@
 
             (macro relabel_dirs ((type ARG1))
                 (allow ARG1 config_file relabel_dir_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7851,7 +7851,7 @@
 
             (macro relabel_files ((type ARG1))
                 (allow ARG1 config_file relabel_file_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7860,7 +7860,7 @@
 
             (macro relabel_lnk_files ((type ARG1))
                 (allow ARG1 config_file relabel_lnk_file_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7887,7 +7887,7 @@
 
             (macro relabelfrom_dirs ((type ARG1))
                 (allow ARG1 config_file relabelfrom_dir_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7896,7 +7896,7 @@
 
             (macro relabelfrom_files ((type ARG1))
                 (allow ARG1 config_file relabelfrom_file_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7905,7 +7905,7 @@
 
             (macro relabelfrom_lnk_files ((type ARG1))
                 (allow ARG1 config_file relabelfrom_lnk_file_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7932,7 +7932,7 @@
 
             (macro relabelto_dirs ((type ARG1))
                 (allow ARG1 config_file relabelto_dir_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7941,7 +7941,7 @@
 
             (macro relabelto_files ((type ARG1))
                 (allow ARG1 config_file relabelto_file_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7950,7 +7950,7 @@
 
             (macro relabelto_lnk_files ((type ARG1))
                 (allow ARG1 config_file relabelto_lnk_file_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7977,7 +7977,7 @@
 
             (macro rename_dirs ((type ARG1))
                 (allow ARG1 config_file rename_dir_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7986,7 +7986,7 @@
 
             (macro rename_files ((type ARG1))
                 (allow ARG1 config_file rename_file_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -7995,7 +7995,7 @@
 
             (macro rename_lnk_files ((type ARG1))
                 (allow ARG1 config_file rename_lnk_file_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -8022,7 +8022,7 @@
 
             (macro rw_dirs ((type ARG1))
                 (allow ARG1 config_file rw_dir_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -8031,7 +8031,7 @@
 
             (macro rw_files ((type ARG1))
                 (allow ARG1 config_file rw_file_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -8040,7 +8040,7 @@
 
             (macro rw_lnk_files ((type ARG1))
                 (allow ARG1 config_file rw_lnk_file_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -8049,7 +8049,7 @@
 
             (macro search ((type ARG1))
                 (allow ARG1 config_file search_dir_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -8082,7 +8082,7 @@
                         )
                     )
                 )
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -8097,7 +8097,7 @@
                         )
                     )
                 )
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -8112,7 +8112,7 @@
                         )
                     )
                 )
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -8139,7 +8139,7 @@
 
             (macro write_dirs ((type ARG1))
                 (allow ARG1 config_file write_dir_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -8148,7 +8148,7 @@
 
             (macro write_files ((type ARG1))
                 (allow ARG1 config_file write_file_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -8157,7 +8157,7 @@
 
             (macro write_lnk_files ((type ARG1))
                 (allow ARG1 config_file write_lnk_file_perms)
-                (call files.generic_config.search
+                (call files.generic_config.read_lnk_files
                     (
                         ARG1
                     )
@@ -40571,7 +40571,7 @@
 
             (macro add_entries ((type ARG1))
                 (allow ARG1 obj_type_attribute add_entry_dir_perms)
-                (call files.generic_var.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -40580,7 +40580,7 @@
 
             (macro append_fifo_files ((type ARG1))
                 (allow ARG1 obj_type_attribute append_fifo_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -40589,7 +40589,7 @@
 
             (macro append_files ((type ARG1))
                 (allow ARG1 obj_type_attribute append_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -40604,7 +40604,7 @@
                         )
                     )
                 )
-                (call files.generic_var.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -40613,7 +40613,7 @@
 
             (macro create_dirs ((type ARG1))
                 (allow ARG1 obj_type_attribute create_dir_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -40622,7 +40622,7 @@
 
             (macro create_fifo_files ((type ARG1))
                 (allow ARG1 obj_type_attribute create_fifo_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -40631,7 +40631,7 @@
 
             (macro create_files ((type ARG1))
                 (allow ARG1 obj_type_attribute create_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -40640,7 +40640,7 @@
 
             (macro create_lnk_files ((type ARG1))
                 (allow ARG1 obj_type_attribute create_lnk_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -40649,7 +40649,7 @@
 
             (macro create_sock_files ((type ARG1))
                 (allow ARG1 obj_type_attribute create_sock_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -40658,7 +40658,7 @@
 
             (macro del_entries ((type ARG1))
                 (allow ARG1 obj_type_attribute del_entry_dir_perms)
-                (call files.generic_var.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -40673,7 +40673,7 @@
                         )
                     )
                 )
-                (call files.generic_var.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -40682,7 +40682,7 @@
 
             (macro delete_dirs ((type ARG1))
                 (allow ARG1 obj_type_attribute delete_dir_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -40691,7 +40691,7 @@
 
             (macro delete_fifo_files ((type ARG1))
                 (allow ARG1 obj_type_attribute delete_fifo_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -40700,7 +40700,7 @@
 
             (macro delete_files ((type ARG1))
                 (allow ARG1 obj_type_attribute delete_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -40709,7 +40709,7 @@
 
             (macro delete_lnk_files ((type ARG1))
                 (allow ARG1 obj_type_attribute delete_lnk_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -40718,7 +40718,7 @@
 
             (macro delete_sock_files ((type ARG1))
                 (allow ARG1 obj_type_attribute delete_sock_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -40727,7 +40727,7 @@
 
             (macro execute ((type ARG1))
                 (allow ARG1 obj_type_attribute exec_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -40742,7 +40742,7 @@
                         )
                     )
                 )
-                (call files.generic_var.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -40757,7 +40757,7 @@
                         )
                     )
                 )
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -40772,7 +40772,7 @@
                         )
                     )
                 )
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -40787,7 +40787,7 @@
                         )
                     )
                 )
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -40802,7 +40802,7 @@
                         )
                     )
                 )
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -40817,7 +40817,7 @@
                         )
                     )
                 )
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -40826,7 +40826,7 @@
 
             (macro list ((type ARG1))
                 (allow ARG1 obj_type_attribute list_dir_perms)
-                (call files.generic_var.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -40841,7 +40841,7 @@
                         )
                     )
                 )
-                (call files.generic_var.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -40850,7 +40850,7 @@
 
             (macro manage_dirs ((type ARG1))
                 (allow ARG1 obj_type_attribute manage_dir_perms)
-                (call files.generic_var.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -40859,7 +40859,7 @@
 
             (macro manage_fifo_files ((type ARG1))
                 (allow ARG1 obj_type_attribute manage_fifo_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -40868,7 +40868,7 @@
 
             (macro manage_files ((type ARG1))
                 (allow ARG1 obj_type_attribute manage_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -40877,7 +40877,7 @@
 
             (macro manage_lnk_files ((type ARG1))
                 (allow ARG1 obj_type_attribute manage_lnk_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -40886,7 +40886,7 @@
 
             (macro manage_sock_files ((type ARG1))
                 (allow ARG1 obj_type_attribute manage_sock_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -40895,7 +40895,7 @@
 
             (macro map_files ((type ARG1))
                 (allow ARG1 obj_type_attribute map_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -40904,7 +40904,7 @@
 
             (macro mmap ((type ARG1))
                 (allow ARG1 obj_type_attribute mmap_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -40923,7 +40923,7 @@
                         )
                     )
                 )
-                (call files.generic_var.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -40932,7 +40932,7 @@
 
             (macro read_fifo_files ((type ARG1))
                 (allow ARG1 obj_type_attribute read_fifo_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -40941,7 +40941,7 @@
 
             (macro read_files ((type ARG1))
                 (allow ARG1 obj_type_attribute read_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -40950,7 +40950,7 @@
 
             (macro read_lnk_files ((type ARG1))
                 (allow ARG1 obj_type_attribute read_lnk_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -40959,7 +40959,7 @@
 
             (macro read_sock_files ((type ARG1))
                 (allow ARG1 obj_type_attribute read_sock_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -40974,7 +40974,7 @@
                         )
                     )
                 )
-                (call files.generic_var.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -40983,7 +40983,7 @@
 
             (macro relabel_dirs ((type ARG1))
                 (allow ARG1 obj_type_attribute relabel_dir_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -40992,7 +40992,7 @@
 
             (macro relabel_fifo_files ((type ARG1))
                 (allow ARG1 obj_type_attribute relabel_fifo_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41001,7 +41001,7 @@
 
             (macro relabel_files ((type ARG1))
                 (allow ARG1 obj_type_attribute relabel_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41010,7 +41010,7 @@
 
             (macro relabel_lnk_files ((type ARG1))
                 (allow ARG1 obj_type_attribute relabel_lnk_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41019,7 +41019,7 @@
 
             (macro relabel_sock_files ((type ARG1))
                 (allow ARG1 obj_type_attribute relabel_sock_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41034,7 +41034,7 @@
                         )
                     )
                 )
-                (call files.generic_var.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41043,7 +41043,7 @@
 
             (macro relabelfrom_dirs ((type ARG1))
                 (allow ARG1 obj_type_attribute relabelfrom_dir_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41052,7 +41052,7 @@
 
             (macro relabelfrom_fifo_files ((type ARG1))
                 (allow ARG1 obj_type_attribute relabelfrom_fifo_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41061,7 +41061,7 @@
 
             (macro relabelfrom_files ((type ARG1))
                 (allow ARG1 obj_type_attribute relabelfrom_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41070,7 +41070,7 @@
 
             (macro relabelfrom_lnk_files ((type ARG1))
                 (allow ARG1 obj_type_attribute relabelfrom_lnk_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41079,7 +41079,7 @@
 
             (macro relabelfrom_sock_files ((type ARG1))
                 (allow ARG1 obj_type_attribute relabelfrom_sock_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41094,7 +41094,7 @@
                         )
                     )
                 )
-                (call files.generic_var.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41103,7 +41103,7 @@
 
             (macro relabelto_dirs ((type ARG1))
                 (allow ARG1 obj_type_attribute relabelto_dir_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41112,7 +41112,7 @@
 
             (macro relabelto_fifo_files ((type ARG1))
                 (allow ARG1 obj_type_attribute relabelto_fifo_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41121,7 +41121,7 @@
 
             (macro relabelto_files ((type ARG1))
                 (allow ARG1 obj_type_attribute relabelto_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41130,7 +41130,7 @@
 
             (macro relabelto_lnk_files ((type ARG1))
                 (allow ARG1 obj_type_attribute relabelto_lnk_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41139,7 +41139,7 @@
 
             (macro relabelto_sock_files ((type ARG1))
                 (allow ARG1 obj_type_attribute relabelto_sock_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41154,7 +41154,7 @@
                         )
                     )
                 )
-                (call files.generic_var.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41163,7 +41163,7 @@
 
             (macro rename_dirs ((type ARG1))
                 (allow ARG1 obj_type_attribute rename_dir_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41172,7 +41172,7 @@
 
             (macro rename_fifo_files ((type ARG1))
                 (allow ARG1 obj_type_attribute rename_fifo_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41181,7 +41181,7 @@
 
             (macro rename_files ((type ARG1))
                 (allow ARG1 obj_type_attribute rename_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41190,7 +41190,7 @@
 
             (macro rename_lnk_files ((type ARG1))
                 (allow ARG1 obj_type_attribute rename_lnk_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41199,7 +41199,7 @@
 
             (macro rename_sock_files ((type ARG1))
                 (allow ARG1 obj_type_attribute rename_sock_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41214,7 +41214,7 @@
                         )
                     )
                 )
-                (call files.generic_var.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41223,7 +41223,7 @@
 
             (macro rw_dirs ((type ARG1))
                 (allow ARG1 obj_type_attribute rw_dir_perms)
-                (call files.generic_var.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41232,7 +41232,7 @@
 
             (macro rw_fifo_files ((type ARG1))
                 (allow ARG1 obj_type_attribute rw_fifo_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41241,7 +41241,7 @@
 
             (macro rw_files ((type ARG1))
                 (allow ARG1 obj_type_attribute rw_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41250,7 +41250,7 @@
 
             (macro rw_lnk_files ((type ARG1))
                 (allow ARG1 obj_type_attribute rw_lnk_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41259,7 +41259,7 @@
 
             (macro rw_sock_files ((type ARG1))
                 (allow ARG1 obj_type_attribute rw_sock_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41268,7 +41268,7 @@
 
             (macro search ((type ARG1))
                 (allow ARG1 obj_type_attribute search_dir_perms)
-                (call files.generic_var.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41283,7 +41283,7 @@
                         )
                     )
                 )
-                (call files.generic_var.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41298,7 +41298,7 @@
                         )
                     )
                 )
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41313,7 +41313,7 @@
                         )
                     )
                 )
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41328,7 +41328,7 @@
                         )
                     )
                 )
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41343,7 +41343,7 @@
                         )
                     )
                 )
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41358,7 +41358,7 @@
                         )
                     )
                 )
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41373,7 +41373,7 @@
                         )
                     )
                 )
-                (call files.generic_var.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41382,7 +41382,7 @@
 
             (macro write_dirs ((type ARG1))
                 (allow ARG1 obj_type_attribute write_dir_perms)
-                (call files.generic_var.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41391,7 +41391,7 @@
 
             (macro write_fifo_files ((type ARG1))
                 (allow ARG1 obj_type_attribute write_fifo_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41400,7 +41400,7 @@
 
             (macro write_files ((type ARG1))
                 (allow ARG1 obj_type_attribute write_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41409,7 +41409,7 @@
 
             (macro write_lnk_files ((type ARG1))
                 (allow ARG1 obj_type_attribute write_lnk_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41418,7 +41418,7 @@
 
             (macro write_sock_files ((type ARG1))
                 (allow ARG1 obj_type_attribute write_sock_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41472,7 +41472,7 @@
 
             (macro add_entries ((type ARG1))
                 (allow ARG1 var_cache_file add_entry_dir_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41481,7 +41481,7 @@
 
             (macro append_fifo_files ((type ARG1))
                 (allow ARG1 var_cache_file append_fifo_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41490,7 +41490,7 @@
 
             (macro append_files ((type ARG1))
                 (allow ARG1 var_cache_file append_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41505,7 +41505,7 @@
                         )
                     )
                 )
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41514,7 +41514,7 @@
 
             (macro create_dirs ((type ARG1))
                 (allow ARG1 var_cache_file create_dir_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41523,7 +41523,7 @@
 
             (macro create_fifo_files ((type ARG1))
                 (allow ARG1 var_cache_file create_fifo_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41532,7 +41532,7 @@
 
             (macro create_files ((type ARG1))
                 (allow ARG1 var_cache_file create_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41541,7 +41541,7 @@
 
             (macro create_lnk_files ((type ARG1))
                 (allow ARG1 var_cache_file create_lnk_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41550,7 +41550,7 @@
 
             (macro create_sock_files ((type ARG1))
                 (allow ARG1 var_cache_file create_sock_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41559,7 +41559,7 @@
 
             (macro del_entries ((type ARG1))
                 (allow ARG1 var_cache_file del_entry_dir_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41574,7 +41574,7 @@
                         )
                     )
                 )
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41583,7 +41583,7 @@
 
             (macro delete_dirs ((type ARG1))
                 (allow ARG1 var_cache_file delete_dir_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41592,7 +41592,7 @@
 
             (macro delete_fifo_files ((type ARG1))
                 (allow ARG1 var_cache_file delete_fifo_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41601,7 +41601,7 @@
 
             (macro delete_files ((type ARG1))
                 (allow ARG1 var_cache_file delete_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41610,7 +41610,7 @@
 
             (macro delete_lnk_files ((type ARG1))
                 (allow ARG1 var_cache_file delete_lnk_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41619,7 +41619,7 @@
 
             (macro delete_sock_files ((type ARG1))
                 (allow ARG1 var_cache_file delete_sock_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41628,7 +41628,7 @@
 
             (macro execute ((type ARG1))
                 (allow ARG1 var_cache_file exec_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41643,7 +41643,7 @@
                         )
                     )
                 )
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41658,7 +41658,7 @@
                         )
                     )
                 )
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41673,7 +41673,7 @@
                         )
                     )
                 )
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41688,7 +41688,7 @@
                         )
                     )
                 )
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41703,7 +41703,7 @@
                         )
                     )
                 )
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41718,7 +41718,7 @@
                         )
                     )
                 )
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41727,7 +41727,7 @@
 
             (macro list ((type ARG1))
                 (allow ARG1 var_cache_file list_dir_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41742,7 +41742,7 @@
                         )
                     )
                 )
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41751,7 +41751,7 @@
 
             (macro manage_dirs ((type ARG1))
                 (allow ARG1 var_cache_file manage_dir_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41760,7 +41760,7 @@
 
             (macro manage_fifo_files ((type ARG1))
                 (allow ARG1 var_cache_file manage_fifo_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41769,7 +41769,7 @@
 
             (macro manage_files ((type ARG1))
                 (allow ARG1 var_cache_file manage_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41778,7 +41778,7 @@
 
             (macro manage_lnk_files ((type ARG1))
                 (allow ARG1 var_cache_file manage_lnk_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41787,7 +41787,7 @@
 
             (macro manage_sock_files ((type ARG1))
                 (allow ARG1 var_cache_file manage_sock_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41796,7 +41796,7 @@
 
             (macro map_files ((type ARG1))
                 (allow ARG1 var_cache_file map_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41805,7 +41805,7 @@
 
             (macro mmap ((type ARG1))
                 (allow ARG1 var_cache_file mmap_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41829,7 +41829,7 @@
                         )
                     )
                 )
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41838,7 +41838,7 @@
 
             (macro read_fifo_files ((type ARG1))
                 (allow ARG1 var_cache_file read_fifo_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41847,7 +41847,7 @@
 
             (macro read_files ((type ARG1))
                 (allow ARG1 var_cache_file read_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41856,7 +41856,7 @@
 
             (macro read_lnk_files ((type ARG1))
                 (allow ARG1 var_cache_file read_lnk_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41865,7 +41865,7 @@
 
             (macro read_sock_files ((type ARG1))
                 (allow ARG1 var_cache_file read_sock_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41880,7 +41880,7 @@
                         )
                     )
                 )
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41889,7 +41889,7 @@
 
             (macro relabel_dirs ((type ARG1))
                 (allow ARG1 var_cache_file relabel_dir_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41898,7 +41898,7 @@
 
             (macro relabel_fifo_files ((type ARG1))
                 (allow ARG1 var_cache_file relabel_fifo_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41907,7 +41907,7 @@
 
             (macro relabel_files ((type ARG1))
                 (allow ARG1 var_cache_file relabel_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41916,7 +41916,7 @@
 
             (macro relabel_lnk_files ((type ARG1))
                 (allow ARG1 var_cache_file relabel_lnk_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41925,7 +41925,7 @@
 
             (macro relabel_sock_files ((type ARG1))
                 (allow ARG1 var_cache_file relabel_sock_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41940,7 +41940,7 @@
                         )
                     )
                 )
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41949,7 +41949,7 @@
 
             (macro relabelfrom_dirs ((type ARG1))
                 (allow ARG1 var_cache_file relabelfrom_dir_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41958,7 +41958,7 @@
 
             (macro relabelfrom_fifo_files ((type ARG1))
                 (allow ARG1 var_cache_file relabelfrom_fifo_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41967,7 +41967,7 @@
 
             (macro relabelfrom_files ((type ARG1))
                 (allow ARG1 var_cache_file relabelfrom_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41976,7 +41976,7 @@
 
             (macro relabelfrom_lnk_files ((type ARG1))
                 (allow ARG1 var_cache_file relabelfrom_lnk_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -41985,7 +41985,7 @@
 
             (macro relabelfrom_sock_files ((type ARG1))
                 (allow ARG1 var_cache_file relabelfrom_sock_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -42000,7 +42000,7 @@
                         )
                     )
                 )
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -42009,7 +42009,7 @@
 
             (macro relabelto_dirs ((type ARG1))
                 (allow ARG1 var_cache_file relabelto_dir_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -42018,7 +42018,7 @@
 
             (macro relabelto_fifo_files ((type ARG1))
                 (allow ARG1 var_cache_file relabelto_fifo_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -42027,7 +42027,7 @@
 
             (macro relabelto_files ((type ARG1))
                 (allow ARG1 var_cache_file relabelto_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -42036,7 +42036,7 @@
 
             (macro relabelto_lnk_files ((type ARG1))
                 (allow ARG1 var_cache_file relabelto_lnk_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -42045,7 +42045,7 @@
 
             (macro relabelto_sock_files ((type ARG1))
                 (allow ARG1 var_cache_file relabelto_sock_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -42060,7 +42060,7 @@
                         )
                     )
                 )
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -42069,7 +42069,7 @@
 
             (macro rename_dirs ((type ARG1))
                 (allow ARG1 var_cache_file rename_dir_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -42078,7 +42078,7 @@
 
             (macro rename_fifo_files ((type ARG1))
                 (allow ARG1 var_cache_file rename_fifo_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -42087,7 +42087,7 @@
 
             (macro rename_files ((type ARG1))
                 (allow ARG1 var_cache_file rename_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -42096,7 +42096,7 @@
 
             (macro rename_lnk_files ((type ARG1))
                 (allow ARG1 var_cache_file rename_lnk_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -42105,7 +42105,7 @@
 
             (macro rename_sock_files ((type ARG1))
                 (allow ARG1 var_cache_file rename_sock_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -42120,7 +42120,7 @@
                         )
                     )
                 )
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -42129,7 +42129,7 @@
 
             (macro rw_dirs ((type ARG1))
                 (allow ARG1 var_cache_file rw_dir_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -42138,7 +42138,7 @@
 
             (macro rw_fifo_files ((type ARG1))
                 (allow ARG1 var_cache_file rw_fifo_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -42147,7 +42147,7 @@
 
             (macro rw_files ((type ARG1))
                 (allow ARG1 var_cache_file rw_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -42156,7 +42156,7 @@
 
             (macro rw_lnk_files ((type ARG1))
                 (allow ARG1 var_cache_file rw_lnk_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -42165,7 +42165,7 @@
 
             (macro rw_sock_files ((type ARG1))
                 (allow ARG1 var_cache_file rw_sock_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -42174,7 +42174,7 @@
 
             (macro search ((type ARG1))
                 (allow ARG1 var_cache_file search_dir_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -42189,7 +42189,7 @@
                         )
                     )
                 )
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -42204,7 +42204,7 @@
                         )
                     )
                 )
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -42219,7 +42219,7 @@
                         )
                     )
                 )
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -42234,7 +42234,7 @@
                         )
                     )
                 )
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -42249,7 +42249,7 @@
                         )
                     )
                 )
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -42264,7 +42264,7 @@
                         )
                     )
                 )
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -42279,7 +42279,7 @@
                         )
                     )
                 )
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -42288,7 +42288,7 @@
 
             (macro write_dirs ((type ARG1))
                 (allow ARG1 var_cache_file write_dir_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -42297,7 +42297,7 @@
 
             (macro write_fifo_files ((type ARG1))
                 (allow ARG1 var_cache_file write_fifo_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -42306,7 +42306,7 @@
 
             (macro write_files ((type ARG1))
                 (allow ARG1 var_cache_file write_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -42315,7 +42315,7 @@
 
             (macro write_lnk_files ((type ARG1))
                 (allow ARG1 var_cache_file write_lnk_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -42324,7 +42324,7 @@
 
             (macro write_sock_files ((type ARG1))
                 (allow ARG1 var_cache_file write_sock_file_perms)
-                (call files.generic_var_cache.search
+                (call files.generic_var_cache.read_lnk_files
                     (
                         ARG1
                     )
@@ -45266,7 +45266,7 @@
 
             (macro add_entries ((type ARG1))
                 (allow ARG1 obj_type_attribute add_entry_dir_perms)
-                (call files.generic_var.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45275,7 +45275,7 @@
 
             (macro append_fifo_files ((type ARG1))
                 (allow ARG1 obj_type_attribute append_fifo_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45284,7 +45284,7 @@
 
             (macro append_files ((type ARG1))
                 (allow ARG1 obj_type_attribute append_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45299,7 +45299,7 @@
                         )
                     )
                 )
-                (call files.generic_var.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45308,7 +45308,7 @@
 
             (macro create_dirs ((type ARG1))
                 (allow ARG1 obj_type_attribute create_dir_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45317,7 +45317,7 @@
 
             (macro create_fifo_files ((type ARG1))
                 (allow ARG1 obj_type_attribute create_fifo_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45326,7 +45326,7 @@
 
             (macro create_files ((type ARG1))
                 (allow ARG1 obj_type_attribute create_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45335,7 +45335,7 @@
 
             (macro create_lnk_files ((type ARG1))
                 (allow ARG1 obj_type_attribute create_lnk_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45344,7 +45344,7 @@
 
             (macro create_sock_files ((type ARG1))
                 (allow ARG1 obj_type_attribute create_sock_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45353,7 +45353,7 @@
 
             (macro del_entries ((type ARG1))
                 (allow ARG1 obj_type_attribute del_entry_dir_perms)
-                (call files.generic_var.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45368,7 +45368,7 @@
                         )
                     )
                 )
-                (call files.generic_var.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45377,7 +45377,7 @@
 
             (macro delete_dirs ((type ARG1))
                 (allow ARG1 obj_type_attribute delete_dir_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45386,7 +45386,7 @@
 
             (macro delete_fifo_files ((type ARG1))
                 (allow ARG1 obj_type_attribute delete_fifo_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45395,7 +45395,7 @@
 
             (macro delete_files ((type ARG1))
                 (allow ARG1 obj_type_attribute delete_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45404,7 +45404,7 @@
 
             (macro delete_lnk_files ((type ARG1))
                 (allow ARG1 obj_type_attribute delete_lnk_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45413,7 +45413,7 @@
 
             (macro delete_sock_files ((type ARG1))
                 (allow ARG1 obj_type_attribute delete_sock_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45422,7 +45422,7 @@
 
             (macro execute ((type ARG1))
                 (allow ARG1 obj_type_attribute exec_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45437,7 +45437,7 @@
                         )
                     )
                 )
-                (call files.generic_var.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45452,7 +45452,7 @@
                         )
                     )
                 )
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45467,7 +45467,7 @@
                         )
                     )
                 )
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45482,7 +45482,7 @@
                         )
                     )
                 )
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45497,7 +45497,7 @@
                         )
                     )
                 )
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45512,7 +45512,7 @@
                         )
                     )
                 )
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45521,7 +45521,7 @@
 
             (macro list ((type ARG1))
                 (allow ARG1 obj_type_attribute list_dir_perms)
-                (call files.generic_var.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45536,7 +45536,7 @@
                         )
                     )
                 )
-                (call files.generic_var.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45545,7 +45545,7 @@
 
             (macro manage_dirs ((type ARG1))
                 (allow ARG1 obj_type_attribute manage_dir_perms)
-                (call files.generic_var.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45554,7 +45554,7 @@
 
             (macro manage_fifo_files ((type ARG1))
                 (allow ARG1 obj_type_attribute manage_fifo_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45563,7 +45563,7 @@
 
             (macro manage_files ((type ARG1))
                 (allow ARG1 obj_type_attribute manage_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45572,7 +45572,7 @@
 
             (macro manage_lnk_files ((type ARG1))
                 (allow ARG1 obj_type_attribute manage_lnk_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45581,7 +45581,7 @@
 
             (macro manage_sock_files ((type ARG1))
                 (allow ARG1 obj_type_attribute manage_sock_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45590,7 +45590,7 @@
 
             (macro map_files ((type ARG1))
                 (allow ARG1 obj_type_attribute map_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45599,7 +45599,7 @@
 
             (macro mmap ((type ARG1))
                 (allow ARG1 obj_type_attribute mmap_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45618,7 +45618,7 @@
                         )
                     )
                 )
-                (call files.generic_var.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45627,7 +45627,7 @@
 
             (macro read_fifo_files ((type ARG1))
                 (allow ARG1 obj_type_attribute read_fifo_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45636,7 +45636,7 @@
 
             (macro read_files ((type ARG1))
                 (allow ARG1 obj_type_attribute read_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45645,7 +45645,7 @@
 
             (macro read_lnk_files ((type ARG1))
                 (allow ARG1 obj_type_attribute read_lnk_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45654,7 +45654,7 @@
 
             (macro read_sock_files ((type ARG1))
                 (allow ARG1 obj_type_attribute read_sock_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45669,7 +45669,7 @@
                         )
                     )
                 )
-                (call files.generic_var.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45678,7 +45678,7 @@
 
             (macro relabel_dirs ((type ARG1))
                 (allow ARG1 obj_type_attribute relabel_dir_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45687,7 +45687,7 @@
 
             (macro relabel_fifo_files ((type ARG1))
                 (allow ARG1 obj_type_attribute relabel_fifo_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45696,7 +45696,7 @@
 
             (macro relabel_files ((type ARG1))
                 (allow ARG1 obj_type_attribute relabel_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45705,7 +45705,7 @@
 
             (macro relabel_lnk_files ((type ARG1))
                 (allow ARG1 obj_type_attribute relabel_lnk_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45714,7 +45714,7 @@
 
             (macro relabel_sock_files ((type ARG1))
                 (allow ARG1 obj_type_attribute relabel_sock_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45729,7 +45729,7 @@
                         )
                     )
                 )
-                (call files.generic_var.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45738,7 +45738,7 @@
 
             (macro relabelfrom_dirs ((type ARG1))
                 (allow ARG1 obj_type_attribute relabelfrom_dir_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45747,7 +45747,7 @@
 
             (macro relabelfrom_fifo_files ((type ARG1))
                 (allow ARG1 obj_type_attribute relabelfrom_fifo_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45756,7 +45756,7 @@
 
             (macro relabelfrom_files ((type ARG1))
                 (allow ARG1 obj_type_attribute relabelfrom_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45765,7 +45765,7 @@
 
             (macro relabelfrom_lnk_files ((type ARG1))
                 (allow ARG1 obj_type_attribute relabelfrom_lnk_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45774,7 +45774,7 @@
 
             (macro relabelfrom_sock_files ((type ARG1))
                 (allow ARG1 obj_type_attribute relabelfrom_sock_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45789,7 +45789,7 @@
                         )
                     )
                 )
-                (call files.generic_var.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45798,7 +45798,7 @@
 
             (macro relabelto_dirs ((type ARG1))
                 (allow ARG1 obj_type_attribute relabelto_dir_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45807,7 +45807,7 @@
 
             (macro relabelto_fifo_files ((type ARG1))
                 (allow ARG1 obj_type_attribute relabelto_fifo_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45816,7 +45816,7 @@
 
             (macro relabelto_files ((type ARG1))
                 (allow ARG1 obj_type_attribute relabelto_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45825,7 +45825,7 @@
 
             (macro relabelto_lnk_files ((type ARG1))
                 (allow ARG1 obj_type_attribute relabelto_lnk_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45834,7 +45834,7 @@
 
             (macro relabelto_sock_files ((type ARG1))
                 (allow ARG1 obj_type_attribute relabelto_sock_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45849,7 +45849,7 @@
                         )
                     )
                 )
-                (call files.generic_var.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45858,7 +45858,7 @@
 
             (macro rename_dirs ((type ARG1))
                 (allow ARG1 obj_type_attribute rename_dir_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45867,7 +45867,7 @@
 
             (macro rename_fifo_files ((type ARG1))
                 (allow ARG1 obj_type_attribute rename_fifo_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45876,7 +45876,7 @@
 
             (macro rename_files ((type ARG1))
                 (allow ARG1 obj_type_attribute rename_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45885,7 +45885,7 @@
 
             (macro rename_lnk_files ((type ARG1))
                 (allow ARG1 obj_type_attribute rename_lnk_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45894,7 +45894,7 @@
 
             (macro rename_sock_files ((type ARG1))
                 (allow ARG1 obj_type_attribute rename_sock_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45909,7 +45909,7 @@
                         )
                     )
                 )
-                (call files.generic_var.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45918,7 +45918,7 @@
 
             (macro rw_dirs ((type ARG1))
                 (allow ARG1 obj_type_attribute rw_dir_perms)
-                (call files.generic_var.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45927,7 +45927,7 @@
 
             (macro rw_fifo_files ((type ARG1))
                 (allow ARG1 obj_type_attribute rw_fifo_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45936,7 +45936,7 @@
 
             (macro rw_files ((type ARG1))
                 (allow ARG1 obj_type_attribute rw_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45945,7 +45945,7 @@
 
             (macro rw_lnk_files ((type ARG1))
                 (allow ARG1 obj_type_attribute rw_lnk_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45954,7 +45954,7 @@
 
             (macro rw_sock_files ((type ARG1))
                 (allow ARG1 obj_type_attribute rw_sock_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45963,7 +45963,7 @@
 
             (macro search ((type ARG1))
                 (allow ARG1 obj_type_attribute search_dir_perms)
-                (call files.generic_var.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45978,7 +45978,7 @@
                         )
                     )
                 )
-                (call files.generic_var.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -45993,7 +45993,7 @@
                         )
                     )
                 )
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46008,7 +46008,7 @@
                         )
                     )
                 )
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46023,7 +46023,7 @@
                         )
                     )
                 )
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46038,7 +46038,7 @@
                         )
                     )
                 )
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46053,7 +46053,7 @@
                         )
                     )
                 )
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46068,7 +46068,7 @@
                         )
                     )
                 )
-                (call files.generic_var.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46077,7 +46077,7 @@
 
             (macro write_dirs ((type ARG1))
                 (allow ARG1 obj_type_attribute write_dir_perms)
-                (call files.generic_var.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46086,7 +46086,7 @@
 
             (macro write_fifo_files ((type ARG1))
                 (allow ARG1 obj_type_attribute write_fifo_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46095,7 +46095,7 @@
 
             (macro write_files ((type ARG1))
                 (allow ARG1 obj_type_attribute write_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46104,7 +46104,7 @@
 
             (macro write_lnk_files ((type ARG1))
                 (allow ARG1 obj_type_attribute write_lnk_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46113,7 +46113,7 @@
 
             (macro write_sock_files ((type ARG1))
                 (allow ARG1 obj_type_attribute write_sock_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46167,7 +46167,7 @@
 
             (macro add_entries ((type ARG1))
                 (allow ARG1 var_lib_file add_entry_dir_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46176,7 +46176,7 @@
 
             (macro append_fifo_files ((type ARG1))
                 (allow ARG1 var_lib_file append_fifo_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46185,7 +46185,7 @@
 
             (macro append_files ((type ARG1))
                 (allow ARG1 var_lib_file append_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46200,7 +46200,7 @@
                         )
                     )
                 )
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46209,7 +46209,7 @@
 
             (macro create_dirs ((type ARG1))
                 (allow ARG1 var_lib_file create_dir_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46218,7 +46218,7 @@
 
             (macro create_fifo_files ((type ARG1))
                 (allow ARG1 var_lib_file create_fifo_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46227,7 +46227,7 @@
 
             (macro create_files ((type ARG1))
                 (allow ARG1 var_lib_file create_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46236,7 +46236,7 @@
 
             (macro create_lnk_files ((type ARG1))
                 (allow ARG1 var_lib_file create_lnk_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46245,7 +46245,7 @@
 
             (macro create_sock_files ((type ARG1))
                 (allow ARG1 var_lib_file create_sock_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46254,7 +46254,7 @@
 
             (macro del_entries ((type ARG1))
                 (allow ARG1 var_lib_file del_entry_dir_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46269,7 +46269,7 @@
                         )
                     )
                 )
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46278,7 +46278,7 @@
 
             (macro delete_dirs ((type ARG1))
                 (allow ARG1 var_lib_file delete_dir_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46287,7 +46287,7 @@
 
             (macro delete_fifo_files ((type ARG1))
                 (allow ARG1 var_lib_file delete_fifo_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46296,7 +46296,7 @@
 
             (macro delete_files ((type ARG1))
                 (allow ARG1 var_lib_file delete_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46305,7 +46305,7 @@
 
             (macro delete_lnk_files ((type ARG1))
                 (allow ARG1 var_lib_file delete_lnk_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46314,7 +46314,7 @@
 
             (macro delete_sock_files ((type ARG1))
                 (allow ARG1 var_lib_file delete_sock_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46323,7 +46323,7 @@
 
             (macro execute ((type ARG1))
                 (allow ARG1 var_lib_file exec_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46338,7 +46338,7 @@
                         )
                     )
                 )
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46353,7 +46353,7 @@
                         )
                     )
                 )
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46368,7 +46368,7 @@
                         )
                     )
                 )
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46383,7 +46383,7 @@
                         )
                     )
                 )
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46398,7 +46398,7 @@
                         )
                     )
                 )
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46413,7 +46413,7 @@
                         )
                     )
                 )
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46422,7 +46422,7 @@
 
             (macro list ((type ARG1))
                 (allow ARG1 var_lib_file list_dir_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46437,7 +46437,7 @@
                         )
                     )
                 )
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46446,7 +46446,7 @@
 
             (macro manage_dirs ((type ARG1))
                 (allow ARG1 var_lib_file manage_dir_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46455,7 +46455,7 @@
 
             (macro manage_fifo_files ((type ARG1))
                 (allow ARG1 var_lib_file manage_fifo_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46464,7 +46464,7 @@
 
             (macro manage_files ((type ARG1))
                 (allow ARG1 var_lib_file manage_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46473,7 +46473,7 @@
 
             (macro manage_lnk_files ((type ARG1))
                 (allow ARG1 var_lib_file manage_lnk_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46482,7 +46482,7 @@
 
             (macro manage_sock_files ((type ARG1))
                 (allow ARG1 var_lib_file manage_sock_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46491,7 +46491,7 @@
 
             (macro map_files ((type ARG1))
                 (allow ARG1 var_lib_file map_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46500,7 +46500,7 @@
 
             (macro mmap ((type ARG1))
                 (allow ARG1 var_lib_file mmap_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46524,7 +46524,7 @@
                         )
                     )
                 )
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46533,7 +46533,7 @@
 
             (macro read_fifo_files ((type ARG1))
                 (allow ARG1 var_lib_file read_fifo_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46542,7 +46542,7 @@
 
             (macro read_files ((type ARG1))
                 (allow ARG1 var_lib_file read_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46551,7 +46551,7 @@
 
             (macro read_lnk_files ((type ARG1))
                 (allow ARG1 var_lib_file read_lnk_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46560,7 +46560,7 @@
 
             (macro read_sock_files ((type ARG1))
                 (allow ARG1 var_lib_file read_sock_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46575,7 +46575,7 @@
                         )
                     )
                 )
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46584,7 +46584,7 @@
 
             (macro relabel_dirs ((type ARG1))
                 (allow ARG1 var_lib_file relabel_dir_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46593,7 +46593,7 @@
 
             (macro relabel_fifo_files ((type ARG1))
                 (allow ARG1 var_lib_file relabel_fifo_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46602,7 +46602,7 @@
 
             (macro relabel_files ((type ARG1))
                 (allow ARG1 var_lib_file relabel_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46611,7 +46611,7 @@
 
             (macro relabel_lnk_files ((type ARG1))
                 (allow ARG1 var_lib_file relabel_lnk_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46620,7 +46620,7 @@
 
             (macro relabel_sock_files ((type ARG1))
                 (allow ARG1 var_lib_file relabel_sock_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46635,7 +46635,7 @@
                         )
                     )
                 )
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46644,7 +46644,7 @@
 
             (macro relabelfrom_dirs ((type ARG1))
                 (allow ARG1 var_lib_file relabelfrom_dir_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46653,7 +46653,7 @@
 
             (macro relabelfrom_fifo_files ((type ARG1))
                 (allow ARG1 var_lib_file relabelfrom_fifo_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46662,7 +46662,7 @@
 
             (macro relabelfrom_files ((type ARG1))
                 (allow ARG1 var_lib_file relabelfrom_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46671,7 +46671,7 @@
 
             (macro relabelfrom_lnk_files ((type ARG1))
                 (allow ARG1 var_lib_file relabelfrom_lnk_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46680,7 +46680,7 @@
 
             (macro relabelfrom_sock_files ((type ARG1))
                 (allow ARG1 var_lib_file relabelfrom_sock_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46695,7 +46695,7 @@
                         )
                     )
                 )
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46704,7 +46704,7 @@
 
             (macro relabelto_dirs ((type ARG1))
                 (allow ARG1 var_lib_file relabelto_dir_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46713,7 +46713,7 @@
 
             (macro relabelto_fifo_files ((type ARG1))
                 (allow ARG1 var_lib_file relabelto_fifo_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46722,7 +46722,7 @@
 
             (macro relabelto_files ((type ARG1))
                 (allow ARG1 var_lib_file relabelto_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46731,7 +46731,7 @@
 
             (macro relabelto_lnk_files ((type ARG1))
                 (allow ARG1 var_lib_file relabelto_lnk_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46740,7 +46740,7 @@
 
             (macro relabelto_sock_files ((type ARG1))
                 (allow ARG1 var_lib_file relabelto_sock_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46755,7 +46755,7 @@
                         )
                     )
                 )
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46764,7 +46764,7 @@
 
             (macro rename_dirs ((type ARG1))
                 (allow ARG1 var_lib_file rename_dir_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46773,7 +46773,7 @@
 
             (macro rename_fifo_files ((type ARG1))
                 (allow ARG1 var_lib_file rename_fifo_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46782,7 +46782,7 @@
 
             (macro rename_files ((type ARG1))
                 (allow ARG1 var_lib_file rename_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46791,7 +46791,7 @@
 
             (macro rename_lnk_files ((type ARG1))
                 (allow ARG1 var_lib_file rename_lnk_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46800,7 +46800,7 @@
 
             (macro rename_sock_files ((type ARG1))
                 (allow ARG1 var_lib_file rename_sock_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46815,7 +46815,7 @@
                         )
                     )
                 )
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46824,7 +46824,7 @@
 
             (macro rw_dirs ((type ARG1))
                 (allow ARG1 var_lib_file rw_dir_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46833,7 +46833,7 @@
 
             (macro rw_fifo_files ((type ARG1))
                 (allow ARG1 var_lib_file rw_fifo_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46842,7 +46842,7 @@
 
             (macro rw_files ((type ARG1))
                 (allow ARG1 var_lib_file rw_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46851,7 +46851,7 @@
 
             (macro rw_lnk_files ((type ARG1))
                 (allow ARG1 var_lib_file rw_lnk_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46860,7 +46860,7 @@
 
             (macro rw_sock_files ((type ARG1))
                 (allow ARG1 var_lib_file rw_sock_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46869,7 +46869,7 @@
 
             (macro search ((type ARG1))
                 (allow ARG1 var_lib_file search_dir_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46884,7 +46884,7 @@
                         )
                     )
                 )
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46899,7 +46899,7 @@
                         )
                     )
                 )
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46914,7 +46914,7 @@
                         )
                     )
                 )
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46929,7 +46929,7 @@
                         )
                     )
                 )
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46944,7 +46944,7 @@
                         )
                     )
                 )
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46959,7 +46959,7 @@
                         )
                     )
                 )
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46974,7 +46974,7 @@
                         )
                     )
                 )
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46983,7 +46983,7 @@
 
             (macro write_dirs ((type ARG1))
                 (allow ARG1 var_lib_file write_dir_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -46992,7 +46992,7 @@
 
             (macro write_fifo_files ((type ARG1))
                 (allow ARG1 var_lib_file write_fifo_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -47001,7 +47001,7 @@
 
             (macro write_files ((type ARG1))
                 (allow ARG1 var_lib_file write_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -47010,7 +47010,7 @@
 
             (macro write_lnk_files ((type ARG1))
                 (allow ARG1 var_lib_file write_lnk_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -47019,7 +47019,7 @@
 
             (macro write_sock_files ((type ARG1))
                 (allow ARG1 var_lib_file write_sock_file_perms)
-                (call files.generic_var_lib.search
+                (call files.generic_var_lib.read_lnk_files
                     (
                         ARG1
                     )
@@ -47720,7 +47720,7 @@
 
             (macro add_entries ((type ARG1))
                 (allow ARG1 obj_type_attribute add_entry_dir_perms)
-                (call files.generic_var.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -47729,7 +47729,7 @@
 
             (macro append_files ((type ARG1))
                 (allow ARG1 obj_type_attribute append_file_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -47756,7 +47756,7 @@
 
             (macro create_dirs ((type ARG1))
                 (allow ARG1 obj_type_attribute create_dir_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -47765,7 +47765,7 @@
 
             (macro create_files ((type ARG1))
                 (allow ARG1 obj_type_attribute create_file_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -47774,7 +47774,7 @@
 
             (macro create_lnk_files ((type ARG1))
                 (allow ARG1 obj_type_attribute create_lnk_file_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -47783,7 +47783,7 @@
 
             (macro del_entries ((type ARG1))
                 (allow ARG1 obj_type_attribute del_entry_dir_perms)
-                (call files.generic_var.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -47810,7 +47810,7 @@
 
             (macro delete_dirs ((type ARG1))
                 (allow ARG1 obj_type_attribute delete_dir_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -47819,7 +47819,7 @@
 
             (macro delete_files ((type ARG1))
                 (allow ARG1 obj_type_attribute delete_file_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -47828,7 +47828,7 @@
 
             (macro delete_lnk_files ((type ARG1))
                 (allow ARG1 obj_type_attribute delete_lnk_file_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -47837,7 +47837,7 @@
 
             (macro execute ((type ARG1))
                 (allow ARG1 obj_type_attribute exec_file_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -47870,7 +47870,7 @@
                         )
                     )
                 )
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -47885,7 +47885,7 @@
                         )
                     )
                 )
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -47900,7 +47900,7 @@
                         )
                     )
                 )
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -47909,7 +47909,7 @@
 
             (macro list ((type ARG1))
                 (allow ARG1 obj_type_attribute list_dir_perms)
-                (call files.generic_var.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -47936,7 +47936,7 @@
 
             (macro manage_dirs ((type ARG1))
                 (allow ARG1 obj_type_attribute manage_dir_perms)
-                (call files.generic_var.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -47945,7 +47945,7 @@
 
             (macro manage_files ((type ARG1))
                 (allow ARG1 obj_type_attribute manage_file_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -47954,7 +47954,7 @@
 
             (macro manage_lnk_files ((type ARG1))
                 (allow ARG1 obj_type_attribute manage_lnk_file_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -47963,7 +47963,7 @@
 
             (macro map_files ((type ARG1))
                 (allow ARG1 obj_type_attribute map_file_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -47972,7 +47972,7 @@
 
             (macro mmap ((type ARG1))
                 (allow ARG1 obj_type_attribute mmap_file_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48003,7 +48003,7 @@
 
             (macro read_files ((type ARG1))
                 (allow ARG1 obj_type_attribute read_file_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48012,7 +48012,7 @@
 
             (macro read_lnk_files ((type ARG1))
                 (allow ARG1 obj_type_attribute read_lnk_file_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48039,7 +48039,7 @@
 
             (macro relabel_dirs ((type ARG1))
                 (allow ARG1 obj_type_attribute relabel_dir_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48048,7 +48048,7 @@
 
             (macro relabel_files ((type ARG1))
                 (allow ARG1 obj_type_attribute relabel_file_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48057,7 +48057,7 @@
 
             (macro relabel_lnk_files ((type ARG1))
                 (allow ARG1 obj_type_attribute relabel_lnk_file_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48084,7 +48084,7 @@
 
             (macro relabelfrom_dirs ((type ARG1))
                 (allow ARG1 obj_type_attribute relabelfrom_dir_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48093,7 +48093,7 @@
 
             (macro relabelfrom_files ((type ARG1))
                 (allow ARG1 obj_type_attribute relabelfrom_file_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48102,7 +48102,7 @@
 
             (macro relabelfrom_lnk_files ((type ARG1))
                 (allow ARG1 obj_type_attribute relabelfrom_lnk_file_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48129,7 +48129,7 @@
 
             (macro relabelto_dirs ((type ARG1))
                 (allow ARG1 obj_type_attribute relabelto_dir_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48138,7 +48138,7 @@
 
             (macro relabelto_files ((type ARG1))
                 (allow ARG1 obj_type_attribute relabelto_file_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48147,7 +48147,7 @@
 
             (macro relabelto_lnk_files ((type ARG1))
                 (allow ARG1 obj_type_attribute relabelto_lnk_file_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48174,7 +48174,7 @@
 
             (macro rename_dirs ((type ARG1))
                 (allow ARG1 obj_type_attribute rename_dir_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48183,7 +48183,7 @@
 
             (macro rename_files ((type ARG1))
                 (allow ARG1 obj_type_attribute rename_file_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48192,7 +48192,7 @@
 
             (macro rename_lnk_files ((type ARG1))
                 (allow ARG1 obj_type_attribute rename_lnk_file_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48219,7 +48219,7 @@
 
             (macro rw_dirs ((type ARG1))
                 (allow ARG1 obj_type_attribute rw_dir_perms)
-                (call files.generic_var.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48228,7 +48228,7 @@
 
             (macro rw_files ((type ARG1))
                 (allow ARG1 obj_type_attribute rw_file_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48237,7 +48237,7 @@
 
             (macro rw_lnk_files ((type ARG1))
                 (allow ARG1 obj_type_attribute rw_lnk_file_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48246,7 +48246,7 @@
 
             (macro search ((type ARG1))
                 (allow ARG1 obj_type_attribute search_dir_perms)
-                (call files.generic_var.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48279,7 +48279,7 @@
                         )
                     )
                 )
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48294,7 +48294,7 @@
                         )
                     )
                 )
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48309,7 +48309,7 @@
                         )
                     )
                 )
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48336,7 +48336,7 @@
 
             (macro write_dirs ((type ARG1))
                 (allow ARG1 obj_type_attribute write_dir_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48345,7 +48345,7 @@
 
             (macro write_files ((type ARG1))
                 (allow ARG1 obj_type_attribute write_file_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48354,7 +48354,7 @@
 
             (macro write_lnk_files ((type ARG1))
                 (allow ARG1 obj_type_attribute write_lnk_file_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48408,7 +48408,7 @@
 
             (macro add_entries ((type ARG1))
                 (allow ARG1 var_log_file add_entry_dir_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48417,7 +48417,7 @@
 
             (macro append_files ((type ARG1))
                 (allow ARG1 var_log_file append_file_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48444,7 +48444,7 @@
 
             (macro create_dirs ((type ARG1))
                 (allow ARG1 var_log_file create_dir_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48453,7 +48453,7 @@
 
             (macro create_files ((type ARG1))
                 (allow ARG1 var_log_file create_file_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48462,7 +48462,7 @@
 
             (macro create_lnk_files ((type ARG1))
                 (allow ARG1 var_log_file create_lnk_file_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48471,7 +48471,7 @@
 
             (macro del_entries ((type ARG1))
                 (allow ARG1 var_log_file del_entry_dir_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48498,7 +48498,7 @@
 
             (macro delete_dirs ((type ARG1))
                 (allow ARG1 var_log_file delete_dir_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48507,7 +48507,7 @@
 
             (macro delete_files ((type ARG1))
                 (allow ARG1 var_log_file delete_file_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48516,7 +48516,7 @@
 
             (macro delete_lnk_files ((type ARG1))
                 (allow ARG1 var_log_file delete_lnk_file_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48525,7 +48525,7 @@
 
             (macro execute ((type ARG1))
                 (allow ARG1 var_log_file exec_file_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48558,7 +48558,7 @@
                         )
                     )
                 )
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48573,7 +48573,7 @@
                         )
                     )
                 )
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48588,7 +48588,7 @@
                         )
                     )
                 )
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48597,7 +48597,7 @@
 
             (macro list ((type ARG1))
                 (allow ARG1 var_log_file list_dir_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48624,7 +48624,7 @@
 
             (macro manage_dirs ((type ARG1))
                 (allow ARG1 var_log_file manage_dir_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48633,7 +48633,7 @@
 
             (macro manage_files ((type ARG1))
                 (allow ARG1 var_log_file manage_file_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48642,7 +48642,7 @@
 
             (macro manage_lnk_files ((type ARG1))
                 (allow ARG1 var_log_file manage_lnk_file_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48651,7 +48651,7 @@
 
             (macro map_files ((type ARG1))
                 (allow ARG1 var_log_file map_file_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48660,7 +48660,7 @@
 
             (macro mmap ((type ARG1))
                 (allow ARG1 var_log_file mmap_file_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48696,7 +48696,7 @@
 
             (macro read_files ((type ARG1))
                 (allow ARG1 var_log_file read_file_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48705,7 +48705,7 @@
 
             (macro read_lnk_files ((type ARG1))
                 (allow ARG1 var_log_file read_lnk_file_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48732,7 +48732,7 @@
 
             (macro relabel_dirs ((type ARG1))
                 (allow ARG1 var_log_file relabel_dir_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48741,7 +48741,7 @@
 
             (macro relabel_files ((type ARG1))
                 (allow ARG1 var_log_file relabel_file_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48750,7 +48750,7 @@
 
             (macro relabel_lnk_files ((type ARG1))
                 (allow ARG1 var_log_file relabel_lnk_file_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48777,7 +48777,7 @@
 
             (macro relabelfrom_dirs ((type ARG1))
                 (allow ARG1 var_log_file relabelfrom_dir_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48786,7 +48786,7 @@
 
             (macro relabelfrom_files ((type ARG1))
                 (allow ARG1 var_log_file relabelfrom_file_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48795,7 +48795,7 @@
 
             (macro relabelfrom_lnk_files ((type ARG1))
                 (allow ARG1 var_log_file relabelfrom_lnk_file_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48822,7 +48822,7 @@
 
             (macro relabelto_dirs ((type ARG1))
                 (allow ARG1 var_log_file relabelto_dir_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48831,7 +48831,7 @@
 
             (macro relabelto_files ((type ARG1))
                 (allow ARG1 var_log_file relabelto_file_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48840,7 +48840,7 @@
 
             (macro relabelto_lnk_files ((type ARG1))
                 (allow ARG1 var_log_file relabelto_lnk_file_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48867,7 +48867,7 @@
 
             (macro rename_dirs ((type ARG1))
                 (allow ARG1 var_log_file rename_dir_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48876,7 +48876,7 @@
 
             (macro rename_files ((type ARG1))
                 (allow ARG1 var_log_file rename_file_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48885,7 +48885,7 @@
 
             (macro rename_lnk_files ((type ARG1))
                 (allow ARG1 var_log_file rename_lnk_file_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48912,7 +48912,7 @@
 
             (macro rw_dirs ((type ARG1))
                 (allow ARG1 var_log_file rw_dir_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48921,7 +48921,7 @@
 
             (macro rw_files ((type ARG1))
                 (allow ARG1 var_log_file rw_file_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48930,7 +48930,7 @@
 
             (macro rw_lnk_files ((type ARG1))
                 (allow ARG1 var_log_file rw_lnk_file_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48939,7 +48939,7 @@
 
             (macro search ((type ARG1))
                 (allow ARG1 var_log_file search_dir_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48972,7 +48972,7 @@
                         )
                     )
                 )
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -48987,7 +48987,7 @@
                         )
                     )
                 )
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -49002,7 +49002,7 @@
                         )
                     )
                 )
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -49029,7 +49029,7 @@
 
             (macro write_dirs ((type ARG1))
                 (allow ARG1 var_log_file write_dir_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -49038,7 +49038,7 @@
 
             (macro write_files ((type ARG1))
                 (allow ARG1 var_log_file write_file_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
@@ -49047,7 +49047,7 @@
 
             (macro write_lnk_files ((type ARG1))
                 (allow ARG1 var_log_file write_lnk_file_perms)
-                (call files.generic_var_log.search
+                (call files.generic_var_log.read_lnk_files
                     (
                         ARG1
                     )
