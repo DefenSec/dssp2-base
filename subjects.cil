@@ -544,6 +544,46 @@
         ; Macros
         ;
 
+        (macro dontaudit_getattr_all_sockets ((type ARG1))
+            (dontaudit ARG1 subj_type_attribute
+                (all_sockets
+                    (
+                        getattr
+                    )
+                )
+            )
+        )
+
+        (macro dontaudit_getattr_fifo_files ((type ARG1))
+            (dontaudit ARG1 subj_type_attribute
+                (fifo_file
+                    (
+                        getattr
+                    )
+                )
+            )
+        )
+
+        (macro getattr_all_sockets ((type ARG1))
+            (allow ARG1 subj_type_attribute
+                (all_sockets
+                    (
+                        getattr
+                    )
+                )
+            )
+        )
+
+        (macro getattr_fifo_files ((type ARG1))
+            (allow ARG1 subj_type_attribute
+                (fifo_file
+                    (
+                        getattr
+                    )
+                )
+            )
+        )
+
         (macro roletype_role ((role ARG1))
             (roletype ARG1 subj_type_attribute)
         )

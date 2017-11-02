@@ -26,6 +26,7 @@
 (classmap all_sockets
     (
         common_socket_perms
+        getattr
         map
     )
 )
@@ -1953,6 +1954,454 @@
             setopt
             shutdown
             write
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (alg_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (appletalk_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (atmpvc_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (atmsvc_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (ax25_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (bluetooth_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (caif_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (can_socket
+        (
+           getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (dccp_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (decnet_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (icmp_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (ieee802154_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (ipx_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (irda_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (isdn_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (iucv_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (kcm_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (key_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (llc_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (netlink_audit_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (netlink_connector_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (netlink_crypto_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (netlink_dnrt_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (netlink_fib_lookup_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (netlink_generic_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (netlink_iscsi_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (netlink_kobject_uevent_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (netlink_netfilter_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (netlink_nflog_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (netlink_rdma_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (netlink_route_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (netlink_scsitransport_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (netlink_selinux_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (netlink_tcpdiag_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (netlink_xfrm_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (netrom_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (nfc_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (packet_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (phonet_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (pppox_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (qipcrtr_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (rawip_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (rds_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (rose_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (rxrpc_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (sctp_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (smc_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (tcp_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (tipc_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (tun_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (udp_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (unix_dgram_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (unix_stream_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (vsock_socket
+        (
+            getattr
+        )
+    )
+)
+
+(classmapping all_sockets getattr
+    (x25_socket
+        (
+            getattr
         )
     )
 )
