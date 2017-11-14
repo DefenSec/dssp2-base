@@ -1071,6 +1071,7 @@
 
         (filecon "/etc/ld\.so\.cache.*" file file_context)
         (filecon "/etc/ld\.so\.preload.*" file file_context)
+        (filecon "/etc/ld-musl-[^/]*\.path.*" file file_context)
 
         ;
         ; Macros
