@@ -309,6 +309,14 @@
     )
 
     (allow unconfined_subj_type_attribute subj_type_attribute
+        (bpf
+            (
+                all
+            )
+        )
+    )
+
+    (allow unconfined_subj_type_attribute subj_type_attribute
         (binder
             (
                 all

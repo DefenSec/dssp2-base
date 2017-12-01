@@ -16,6 +16,16 @@
     )
 )
 
+(class bpf
+    (
+        map_create
+        map_read
+        map_write
+        prog_load
+        prog_run
+    )
+)
+
 (class binder
     (
         call
@@ -495,6 +505,7 @@
         infiniband_pkey
         infiniband_endport
         process2
+        bpf
     )
 )
 
