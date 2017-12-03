@@ -1,4 +1,5 @@
 ; -*- mode: CIL; fill-column: 75; indent-tabs-mode: nil; tab-width: 4 -*-
+; SPDX-License-Identifier: Unlicense
 
 ; agent_base_template
 ; auto_subj_type_transition_base_template
