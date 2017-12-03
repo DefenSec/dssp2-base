@@ -2236,7 +2236,7 @@
             )
 
             (macro getattr ((type ARG1))
-                (allow ARG1 isid_file
+                (allow ARG1 isid
                     (all_files
                         (
                             getattr
