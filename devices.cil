@@ -16,6 +16,7 @@
 ;     dri
 ;     event
 ;     framebuf
+;     infiniband
 ;     kmsg
 ;     kvm
 ;     loop_control
@@ -900,6 +901,21 @@
                 unconfined_subj_type_attribute
             )
         )
+    )
+
+    (block infiniband
+
+        ;
+        ; Contexts
+        ;
+
+        (filecon "/dev/infiniband/.+" char dev_file_context)
+
+        ;
+        ; Policy
+        ;
+
+        (blockinherit dev_file.obj_template)
     )
 
     (block framebuf
