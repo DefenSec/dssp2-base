@@ -1783,6 +1783,11 @@
             )
         )
 
+        (call fs.devpts.associate
+            (
+                dev_file
+            )
+        )
         (call fs.tmpfs.associate
             (
                 dev_file
