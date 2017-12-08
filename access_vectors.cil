@@ -1,48 +1,18 @@
-; -*- mode: CIL; fill-column: 75; indent-tabs-mode: nil; tab-width: 4 -*-
-; SPDX-License-Identifier: Unlicense
+;; -*- mode: CIL; fill-column: 79; indent-tabs-mode: nil; -*-
+;; SPDX-License-Identifier: Unlicense
 
-;
-; Ordered Linux access vector declarations
-;
+;;
+;; Ordered Linux access vector declarations
+;;
 
 (class appletalk_socket ())
 (classcommon appletalk_socket common_socket)
 
-(class association
-    (
-        polmatch
-        recvfrom
-        sendto
-        setcontext
-    )
-)
+(class association (polmatch recvfrom sendto setcontext))
+(class bpf (map_create map_read map_write prog_load prog_run))
+(class binder (call impersonate set_context_mgr transfer))
 
-(class bpf
-    (
-        map_create
-        map_read
-        map_write
-        prog_load
-        prog_run
-    )
-)
-
-(class binder
-    (
-        call
-        impersonate
-        set_context_mgr
-        transfer
-    )
-)
-
-(class blk_file
-    (
-        audit_access
-        execmod
-        open
-    )
-)
+(class blk_file (audit_access execmod open))
 (classcommon blk_file common_file)
 
 (class cap_userns ())
@@ -57,159 +27,52 @@
 (class capability2 ())
 (classcommon capability2 common_capability2)
 
-(class chr_file
-    (
-        audit_access
-        execmod
-        open
-    )
-)
+(class chr_file (audit_access execmod open))
 (classcommon chr_file common_file)
 
-(class dccp_socket
-    (
-        name_connect
-        node_bind
-    )
-)
+(class dccp_socket (name_connect node_bind))
 (classcommon dccp_socket common_socket)
 
 (class dir
-    (
-        add_name
-        audit_access
-        execmod
-        open
-        remove_name
-        reparent
-        rmdir
-        search
-    )
-)
+       (add_name audit_access execmod open remove_name reparent rmdir search))
 (classcommon dir common_file)
 
-(class fd
-    (
-        use
-    )
-)
+(class fd (use))
 
-(class fifo_file
-    (
-        audit_access
-        execmod
-        open
-    )
-)
+(class fifo_file (audit_access execmod open))
 (classcommon fifo_file common_file)
 
-(class file
-    (
-        audit_access
-        entrypoint
-        execmod
-        execute_no_trans
-        open
-    )
-)
+(class file (audit_access entrypoint execmod execute_no_trans open))
 (classcommon file common_file)
 
 (class filesystem
-    (
-        associate
-        getattr
-        mount
-        quotaget
-        quotamod
-        relabelfrom
-        relabelto
-        remount
-        unmount
-    )
-)
-
-(class infiniband_endport
-    (
-        manage_subnet
-    )
-)
-
-(class infiniband_pkey
-    (
-        access
-    )
-)
+       (associate getattr mount quotaget quotamod relabelfrom relabelto remount
+                  unmount))
+(class infiniband_endport (manage_subnet))
+(class infiniband_pkey (access))
 
 (class ipc ())
 (classcommon ipc common_ipc)
 
-(class kernel_service
-    (
-        create_files_as
-        use_as_override
-    )
-)
-
-(class key
-    (
-        create
-        link
-        read
-        search
-        setattr
-        view
-        write
-    )
-)
+(class kernel_service (create_files_as use_as_override))
+(class key (create link read search setattr view write))
 
 (class key_socket ())
 (classcommon key_socket common_socket)
 
-(class lnk_file
-    (
-        audit_access
-        execmod
-        open
-    )
-)
+(class lnk_file (audit_access execmod open))
 (classcommon lnk_file common_file)
 
-(class memprotect
-    (
-        mmap_zero
-    )
-)
+(class memprotect (mmap_zero))
+(class msg (receive send))
 
-(class msg
-    (
-        receive
-        send
-    )
-)
-
-(class msgq
-    (
-        enqueue
-    )
-)
+(class msgq (enqueue))
 (classcommon msgq common_ipc)
 
-(class netif
-    (
-        egress
-        ingress
-    )
-)
+(class netif (egress ingress))
 
 (class netlink_audit_socket
-    (
-        nlmsg_read
-        nlmsg_readpriv
-        nlmsg_relay
-        nlmsg_tty_audit
-        nlmsg_write
-    )
-)
+       (nlmsg_read nlmsg_readpriv nlmsg_relay nlmsg_tty_audit nlmsg_write))
 (classcommon netlink_audit_socket common_socket)
 
 (class netlink_connector_socket ())
@@ -242,12 +105,7 @@
 (class netlink_rdma_socket ())
 (classcommon netlink_rdma_socket common_socket)
 
-(class netlink_route_socket
-    (
-        nlmsg_read
-        nlmsg_write
-    )
-)
+(class netlink_route_socket (nlmsg_read nlmsg_write))
 (classcommon netlink_route_socket common_socket)
 
 (class netlink_scsitransport_socket ())
@@ -256,263 +114,91 @@
 (class netlink_selinux_socket ())
 (classcommon netlink_selinux_socket common_socket)
 
-(class netlink_tcpdiag_socket
-    (
-        nlmsg_read
-        nlmsg_write
-    )
-)
+(class netlink_tcpdiag_socket (nlmsg_read nlmsg_write))
 (classcommon netlink_tcpdiag_socket common_socket)
 
-(class netlink_xfrm_socket
-    (
-        nlmsg_read
-        nlmsg_write
-    )
-)
+(class netlink_xfrm_socket (nlmsg_read nlmsg_write))
 (classcommon netlink_xfrm_socket common_socket)
 
-(class node
-    (
-        recvfrom
-        sendto
-    )
-)
-
-(class packet
-    (
-        forward_in
-        forward_out
-        recv
-        relabelto
-        send
-    )
-)
+(class node (recvfrom sendto))
+(class packet (forward_in forward_out recv relabelto send))
 
 (class packet_socket ())
 (classcommon packet_socket common_socket)
 
-(class peer
-    (
-        recv
-    )
-)
+(class peer (recv))
 
 (class process
-    (
-        dyntransition
-        execheap
-        execmem
-        execstack
-        fork
-        getattr
-        getcap
-        getpgid
-        getrlimit
-        getsched
-        getsession
-        noatsecure
-        ptrace
-        rlimitinh
-        setexec
-        setcap
-        setcurrent
-        setfscreate
-        setkeycreate
-        setpgid
-        setrlimit
-        setsched
-        setsockcreate
-        share
-        sigchld
-        siginh
-        sigkill
-        signal
-        signull
-        sigstop
-        transition
-    )
-)
+       (dyntransition execheap execmem execstack fork getattr getcap getpgid
+                      getrlimit getsched getsession noatsecure ptrace rlimitinh
+                      setexec setcap setcurrent setfscreate setkeycreate
+                      setpgid setrlimit setsched setsockcreate share sigchld
+                      siginh sigkill signal signull sigstop transition))
+(class process2 (nnp_transition nosuid_transition))
 
-(class process2
-    (
-        nnp_transition
-        nosuid_transition
-    )
-)
-
-(class rawip_socket
-    (
-        node_bind
-    )
-)
+(class rawip_socket (node_bind))
 (classcommon rawip_socket common_socket)
 
 (class security
-    (
-        check_context
-        compute_av
-        compute_create
-        compute_member
-        compute_relabel
-        compute_user
-        load_policy
-        read_policy
-        setbool
-        setcheckreqprot
-        setenforce
-        setsecparam
-        validate_trans
-    )
-)
+       (check_context compute_av compute_create compute_member compute_relabel
+                      compute_user load_policy read_policy setbool
+                      setcheckreqprot setenforce setsecparam validate_trans))
 
 (class sem ())
 (classcommon sem common_ipc)
 
-(class shm
-    (
-        lock
-    )
-)
+(class shm (lock))
 (classcommon shm common_ipc)
 
-(class sock_file
-    (
-        audit_access
-        execmod
-        open
-    )
-)
+(class sock_file (audit_access execmod open))
 (classcommon sock_file common_file)
 
 (class socket ())
 (classcommon socket common_socket)
 
 (class system
-    (
-        disable
-        enable
-        halt
-        ipc_info
-        module_load
-        module_request
-        reboot
-        reload
-        start
-        status
-        stop
-        syslog_console
-        syslog_mod
-        syslog_read
-        undefined
-    )
-)
+       (disable enable halt ipc_info module_load module_request reboot reload
+                start status stop syslog_console syslog_mod syslog_read
+                undefined))
 
-(class tcp_socket
-    (
-        name_connect
-        node_bind
-    )
-)
+(class tcp_socket (name_connect node_bind))
 (classcommon tcp_socket common_socket)
 
-(class tun_socket
-    (
-        attach_queue
-    )
-)
+(class tun_socket (attach_queue))
 (classcommon tun_socket common_socket)
 
-(class udp_socket
-    (
-        node_bind
-    )
-)
+(class udp_socket (node_bind))
 (classcommon udp_socket common_socket)
 
 (class unix_dgram_socket ())
 (classcommon unix_dgram_socket common_socket)
 
-(class unix_stream_socket
-    (
-        connectto
-    )
-)
+(class unix_stream_socket (connectto))
 (classcommon unix_stream_socket common_socket)
 
-;
-; Class order of ordered Linux access vectors
-;
+;;
+;; Class order of ordered Linux access vectors
+;;
 
 (classorder
-    (
-        security
-        process
-        system
-        capability
-        filesystem
-        file
-        dir
-        fd
-        lnk_file
-        chr_file
-        blk_file
-        sock_file
-        fifo_file
-        socket
-        tcp_socket
-        udp_socket
-        rawip_socket
-        node
-        netif
-        packet_socket
-        key_socket
-        unix_stream_socket
-        unix_dgram_socket
-        sem
-        msg
-        msgq
-        shm
-        ipc
-        netlink_route_socket
-        netlink_tcpdiag_socket
-        netlink_nflog_socket
-        netlink_xfrm_socket
-        netlink_selinux_socket
-        netlink_audit_socket
-        netlink_dnrt_socket
-        association
-        netlink_kobject_uevent_socket
-        appletalk_socket
-        packet
-        key
-        dccp_socket
-        memprotect
-        peer
-        capability2
-        kernel_service
-        tun_socket
-        binder
-        netlink_iscsi_socket
-        netlink_fib_lookup_socket
-        netlink_connector_socket
-        netlink_netfilter_socket
-        netlink_generic_socket
-        netlink_scsitransport_socket
-        netlink_rdma_socket
-        netlink_crypto_socket
-        cap_userns
-        cap2_userns
-        infiniband_pkey
-        infiniband_endport
-        process2
-        bpf
-    )
-)
+ (security process system capability filesystem file dir fd lnk_file chr_file
+           blk_file sock_file fifo_file socket tcp_socket udp_socket
+           rawip_socket node netif packet_socket key_socket unix_stream_socket
+           unix_dgram_socket sem msg msgq shm ipc netlink_route_socket
+           netlink_tcpdiag_socket netlink_nflog_socket netlink_xfrm_socket
+           netlink_selinux_socket netlink_audit_socket
+           netlink_dnrt_socket association netlink_kobject_uevent_socket
+           appletalk_socket packet key dccp_socket memprotect peer capability2
+           kernel_service tun_socket binder netlink_iscsi_socket
+           netlink_fib_lookup_socket netlink_connector_socket
+           netlink_netfilter_socket netlink_generic_socket
+           netlink_scsitransport_socket netlink_rdma_socket
+           netlink_crypto_socket cap_userns cap2_userns infiniband_pkey
+           infiniband_endport process2 bpf))
 
-;
-; Unordered Linux access vector declarations
-;
+;;
+;; Unordered Linux access vector declarations
+;;
 
 (class alg_socket ())
 (classcommon alg_socket common_socket)
@@ -538,11 +224,7 @@
 (class decnet_socket ())
 (classcommon decnet_socket common_socket)
 
-(class icmp_socket
-    (
-        node_bind
-    )
-)
+(class icmp_socket (node_bind))
 (classcommon icmp_socket common_socket)
 
 (class ieee802154_socket ())
@@ -590,11 +272,7 @@
 (class rxrpc_socket ())
 (classcommon rxrpc_socket common_socket)
 
-(class sctp_socket
-    (
-        node_bind
-    )
-)
+(class sctp_socket (node_bind))
 (classcommon sctp_socket common_socket)
 
 (class smc_socket ())
@@ -609,154 +287,38 @@
 (class x25_socket ())
 (classcommon x25_socket common_socket)
 
-;
-; Class order of unordered Linux access vectors
-;
+;;
+;; Class order of unordered Linux access vectors
+;;
 
 (classorder
-    (unordered
-        alg_socket
-        atmpvc_socket
-        atmsvc_socket
-        ax25_socket
-        bluetooth_socket
-        caif_socket
-        can_socket
-        decnet_socket
-        icmp_socket
-        ieee802154_socket
-        ipx_socket
-        irda_socket
-        isdn_socket
-        iucv_socket
-        kcm_socket
-        llc_socket
-        netrom_socket
-        nfc_socket
-        phonet_socket
-        pppox_socket
-        qipcrtr_socket
-        rds_socket
-        rose_socket
-        rxrpc_socket
-        sctp_socket
-        smc_socket
-        tipc_socket
-        vsock_socket
-        x25_socket
-    )
-)
+ (unordered alg_socket atmpvc_socket atmsvc_socket ax25_socket bluetooth_socket
+            caif_socket can_socket decnet_socket icmp_socket ieee802154_socket
+            ipx_socket irda_socket isdn_socket iucv_socket kcm_socket
+            llc_socket netrom_socket nfc_socket phonet_socket pppox_socket
+            qipcrtr_socket rds_socket rose_socket rxrpc_socket sctp_socket
+            smc_socket tipc_socket vsock_socket x25_socket))
 
-;
-; Common Linux access vector permission declarations
-;
+;;
+;; Common Linux access vector permission declarations
+;;
 
 (common common_capability
-    (
-        audit_control
-        audit_write
-        chown
-        dac_read_search
-        dac_override
-        fowner
-        fsetid
-        ipc_lock
-        ipc_owner
-        kill
-        linux_immutable
-        lease
-        mknod
-        net_admin
-        net_bind_service
-        net_broadcast
-        net_raw
-        setfcap
-        setgid
-        setpcap
-        setuid
-        sys_admin
-        sys_boot
-        sys_chroot
-        sys_module
-        sys_nice
-        sys_pacct
-        sys_ptrace
-        sys_rawio
-        sys_resource
-        sys_time
-        sys_tty_config
-    )
-)
-
+        (audit_control audit_write chown dac_read_search dac_override fowner
+                       fsetid ipc_lock ipc_owner kill linux_immutable lease
+                       mknod net_admin net_bind_service net_broadcast net_raw
+                       setfcap setgid setpcap setuid sys_admin sys_boot
+                       sys_chroot sys_module sys_nice sys_pacct sys_ptrace
+                       sys_rawio sys_resource sys_time sys_tty_config))
 (common common_capability2
-    (
-        audit_read
-        block_suspend
-        mac_admin
-        mac_override
-        syslog
-        wake_alarm
-    )
-)
-
+        (audit_read block_suspend mac_admin mac_override syslog wake_alarm))
 (common common_file
-    (
-        append
-        create
-        execute
-        getattr
-        ioctl
-        lock
-        link
-        map
-        mounton
-        quotaon
-        read
-        relabelfrom
-        relabelto
-        rename
-        setattr
-        unlink
-        write
-    )
-)
-
+        (append create execute getattr ioctl lock link map mounton quotaon read
+                relabelfrom relabelto rename setattr unlink write))
 (common common_ipc
-    (
-        associate
-        create
-        destroy
-        getattr
-        read
-        setattr
-        unix_read
-        unix_write
-        write
-    )
-)
-
+        (associate create destroy getattr read setattr unix_read
+                   unix_write write))
 (common common_socket
-    (
-        accept
-        append
-        bind
-        connect
-        create
-        getattr
-        getopt
-        ioctl
-        listen
-        lock
-        map
-        name_bind
-        read
-        recvfrom
-        relabelfrom
-        relabelto
-        sendto
-        setattr
-        setopt
-        shutdown
-        write
-    )
-)
+        (accept append bind connect create getattr getopt ioctl listen lock map
+                name_bind read recvfrom relabelfrom relabelto sendto setattr
+                setopt shutdown write))
