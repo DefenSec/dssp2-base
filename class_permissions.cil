@@ -1,9 +1,9 @@
-; -*- mode: CIL; fill-column: 75; indent-tabs-mode: nil; tab-width: 4 -*-
-; SPDX-License-Identifier: Unlicense
+;; -*- mode: CIL; fill-column: 79; indent-tabs-mode: nil; -*-
+;; SPDX-License-Identifier: Unlicense
 
-;
-; Class permission declarations
-;
+;;
+;; Class permission declarations
+;;
 
 (classpermission cap_userns_except_sys_module)
 (classpermission cap2_userns_except_mac_admin_and_mac_override)
@@ -395,4393 +395,896 @@
 (classpermission map_x25_socket_perms)
 (classpermission rw_x25_socket_perms)
 
-;
-; Class permission sets
-;
+;;
+;; Class permission sets
+;;
 
-(classpermissionset cap_userns_except_sys_module
-    (cap_userns
-        (not
-            (
-                sys_module
-            )
-        )
-    )
-)
-
+(classpermissionset cap_userns_except_sys_module (cap_userns (not
+                                                              (sys_module))))
 (classpermissionset cap2_userns_except_mac_admin_and_mac_override
-    (cap2_userns
-        (not
-            (
-                mac_admin
-                mac_override
-            )
-        )
-    )
-)
-
-(classpermissionset capability_except_sys_module
-    (capability
-        (not
-            (
-                sys_module
-            )
-        )
-    )
-)
-
+                    (cap2_userns (not (mac_admin mac_override))))
+(classpermissionset capability_except_sys_module (capability (not
+                                                              (sys_module))))
 (classpermissionset capability2_except_mac_admin_and_mac_override
-    (capability2
-        (not
-            (
-                mac_admin
-                mac_override
-            )
-        )
-    )
-)
-
-(classpermissionset mount_fs_perms
-    (filesystem
-        (
-            getattr
-            mount
-            remount
-            unmount
-        )
-    )
-)
-
+                    (capability2 (not (mac_admin mac_override))))
+(classpermissionset mount_fs_perms (filesystem (getattr mount remount
+                                                        unmount)))
 (classpermissionset security_except_load_policy_and_setenforce
-    (security
-        (not
-            (
-                load_policy
-                setenforce
-            )
-        )
-    )
-)
-
-(classpermissionset signal_perms
-    (process
-        (
-            sigchld
-            sigkill
-            signal
-            signull
-            sigstop
-        )
-    )
-)
-
-(classpermissionset system_except_module_load
-    (system
-        (not
-            (
-                module_load
-            )
-        )
-    )
-)
+                    (security (not (load_policy setenforce))))
+(classpermissionset signal_perms (process (sigchld sigkill signal signull
+                                                   sigstop)))
+(classpermissionset system_except_module_load (system (not (module_load))))
 
 (classpermissionset create_alg_socket_perms
-    (alg_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
+                    (alg_socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
 (classpermissionset create_alg_stream_socket_perms
-    (alg_socket
-        (
-            accept
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            listen
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset map_alg_socket_perms
-    (alg_socket
-        (
-            map
-        )
-    )
-)
-
+                    (alg_socket
+                     (accept append bind connect create getattr getopt ioctl
+                             listen read setattr setopt shutdown write)))
+(classpermissionset map_alg_socket_perms (alg_socket (map)))
 (classpermissionset rw_alg_socket_perms
-    (alg_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (alg_socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))
 
 (classpermissionset create_appletalk_socket_perms
-    (appletalk_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset map_appletalk_socket_perms
-    (appletalk_socket
-        (
-            map
-        )
-    )
-)
-
+                    (appletalk_socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
+(classpermissionset map_appletalk_socket_perms (appletalk_socket (map)))
 (classpermissionset rw_appletalk_socket_perms
-    (appletalk_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (appletalk_socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))
 
 (classpermissionset create_atmpvc_socket_perms
-    (atmpvc_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset map_atmpvc_socket_perms
-    (atmpvc_socket
-        (
-            map
-        )
-    )
-)
-
+                    (atmpvc_socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
+(classpermissionset map_atmpvc_socket_perms (atmpvc_socket (map)))
 (classpermissionset rw_atmpvc_socket_perms
-    (atmpvc_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (atmpvc_socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))
 
 (classpermissionset create_atmsvc_socket_perms
-    (atmsvc_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset map_atmsvc_socket_perms
-    (atmsvc_socket
-        (
-            map
-        )
-    )
-)
-
+                    (atmsvc_socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
+(classpermissionset map_atmsvc_socket_perms (atmsvc_socket (map)))
 (classpermissionset rw_atmsvc_socket_perms
-    (atmsvc_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (atmsvc_socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))
 
 (classpermissionset create_ax25_socket_perms
-    (ax25_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset map_ax25_socket_perms
-    (ax25_socket
-        (
-            map
-        )
-    )
-)
-
+                    (ax25_socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
+(classpermissionset map_ax25_socket_perms (ax25_socket (map)))
 (classpermissionset rw_ax25_socket_perms
-    (ax25_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (ax25_socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))
 
-(classpermissionset append_blk_file_perms
-    (blk_file
-        (
-            append
-            getattr
-            ioctl
-            lock
-            open
-        )
-    )
-)
-
+(classpermissionset append_blk_file_perms (blk_file
+                                           (append getattr ioctl lock open)))
 (classpermissionset append_inherited_blk_file_perms
-    (blk_file
-        (
-            append
-            getattr
-            ioctl
-            lock
-        )
-    )
-)
-
+                    (blk_file (append getattr ioctl lock)))
 (classpermissionset blk_file_except_execmod_and_map
-    (blk_file
-        (not
-            (
-                execmod
-                map
-            )
-        )
-    )
-)
-
+                    (blk_file (not (execmod map))))
 (classpermissionset blk_file_except_execmod_map_and_mounton
-    (blk_file
-        (not
-            (
-                execmod
-                map
-                mounton
-            )
-        )
-    )
-)
-
-(classpermissionset create_blk_file_perms
-    (blk_file
-        (
-            create
-            getattr
-        )
-    )
-)
-
-(classpermissionset delete_blk_file_perms
-    (blk_file
-        (
-            getattr
-            unlink
-        )
-    )
-)
-
+                    (blk_file (not (execmod map mounton))))
+(classpermissionset create_blk_file_perms (blk_file (create getattr)))
+(classpermissionset delete_blk_file_perms (blk_file (getattr unlink)))
 (classpermissionset manage_blk_file_perms
-    (blk_file
-        (
-            append
-            create
-            getattr
-            ioctl
-            link
-            lock
-            open
-            read
-            rename
-            setattr
-            unlink
-            write
-        )
-    )
-)
-
-(classpermissionset read_blk_file_perms
-    (blk_file
-        (
-            getattr
-            ioctl
-            lock
-            open
-            read
-        )
-    )
-)
-
-(classpermissionset read_inherited_blk_file_perms
-    (blk_file
-        (
-            getattr
-            ioctl
-            lock
-            read
-        )
-    )
-)
-
-(classpermissionset relabel_blk_file_perms
-    (blk_file
-        (
-            getattr
-            relabelfrom
-            relabelto
-        )
-    )
-)
-
-(classpermissionset relabelfrom_blk_file_perms
-    (blk_file
-        (
-            getattr
-            relabelfrom
-        )
-    )
-)
-
-(classpermissionset relabelto_blk_file_perms
-    (blk_file
-        (
-            getattr
-            relabelto
-        )
-    )
-)
-
-(classpermissionset rename_blk_file_perms
-    (blk_file
-        (
-            getattr
-            rename
-        )
-    )
-)
-
-(classpermissionset rw_blk_file_perms
-    (blk_file
-        (
-            append
-            getattr
-            ioctl
-            lock
-            open
-            read
-            write
-        )
-    )
-)
-
-(classpermissionset rw_inherited_blk_file_perms
-    (blk_file
-        (
-            append
-            getattr
-            ioctl
-            lock
-            read
-            write
-        )
-    )
-)
-
-(classpermissionset write_blk_file_perms
-    (blk_file
-        (
-            append
-            getattr
-            ioctl
-            lock
-            open
-            write
-        )
-    )
-)
-
-(classpermissionset write_inherited_blk_file_perms
-    (blk_file
-        (
-            append
-            getattr
-            ioctl
-            lock
-            write
-        )
-    )
-)
+                    (blk_file
+                     (append create getattr ioctl link lock open read rename
+                             setattr unlink write)))
+(classpermissionset read_blk_file_perms (blk_file
+                                         (getattr ioctl lock open read)))
+(classpermissionset read_inherited_blk_file_perms (blk_file
+                                                   (getattr ioctl lock read)))
+(classpermissionset relabel_blk_file_perms (blk_file
+                                            (getattr relabelfrom relabelto)))
+(classpermissionset relabelfrom_blk_file_perms (blk_file (getattr
+                                                          relabelfrom)))
+(classpermissionset relabelto_blk_file_perms (blk_file (getattr relabelto)))
+(classpermissionset rename_blk_file_perms (blk_file (getattr rename)))
+(classpermissionset rw_blk_file_perms (blk_file (append getattr ioctl lock open
+                                                        read write)))
+(classpermissionset rw_inherited_blk_file_perms (blk_file
+                                                 (append getattr ioctl lock
+                                                         read write)))
+(classpermissionset write_blk_file_perms (blk_file (append getattr ioctl lock
+                                                           open write)))
+(classpermissionset write_inherited_blk_file_perms (blk_file
+                                                    (append getattr ioctl lock
+                                                            write)))
 
 (classpermissionset create_bluetooth_socket_perms
-    (bluetooth_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
+                    (bluetooth_socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
 (classpermissionset create_bluetooth_stream_socket_perms
-    (bluetooth_socket
-        (
-            accept
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            listen
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset map_bluetooth_socket_perms
-    (bluetooth_socket
-        (
-            map
-        )
-    )
-)
-
+                    (bluetooth_socket
+                     (accept append bind connect create getattr getopt ioctl
+                             listen read setattr setopt shutdown write)))
+(classpermissionset map_bluetooth_socket_perms (bluetooth_socket (map)))
 (classpermissionset rw_bluetooth_socket_perms
-    (bluetooth_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (bluetooth_socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))
 
 (classpermissionset create_caif_socket_perms
-    (caif_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset map_caif_socket_perms
-    (caif_socket
-        (
-            map
-        )
-    )
-)
-
+                    (caif_socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
+(classpermissionset map_caif_socket_perms (caif_socket (map)))
 (classpermissionset rw_caif_socket_perms
-    (caif_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (caif_socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))
 
 (classpermissionset create_can_socket_perms
-    (can_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset map_can_socket_perms
-    (can_socket
-        (
-            map
-        )
-    )
-)
-
+                    (can_socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
+(classpermissionset map_can_socket_perms (can_socket (map)))
 (classpermissionset rw_can_socket_perms
-    (can_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (can_socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))
 
-(classpermissionset append_chr_file_perms
-    (chr_file
-        (
-            append
-            getattr
-            ioctl
-            lock
-            open
-        )
-    )
-)
-
-(classpermissionset append_inherited_chr_file_perms
-    (chr_file
-        (
-            append
-            getattr
-            ioctl
-            lock
-        )
-    )
-)
-
-(classpermissionset chr_file_except_execmod
-    (chr_file
-        (not
-            (
-                execmod
-            )
-        )
-    )
-)
-
+(classpermissionset append_chr_file_perms (chr_file
+                                           (append getattr ioctl lock open)))
+(classpermissionset append_inherited_chr_file_perms (chr_file
+                                                     (append getattr ioctl
+                                                             lock)))
+(classpermissionset chr_file_except_execmod (chr_file (not (execmod))))
 (classpermissionset chr_file_except_execmod_and_mounton
-    (chr_file
-        (not
-            (
-                execmod
-                mounton
-            )
-        )
-    )
-)
-
-(classpermissionset create_chr_file_perms
-    (chr_file
-        (
-            create
-            getattr
-        )
-    )
-)
-
-(classpermissionset delete_chr_file_perms
-    (chr_file
-        (
-            getattr
-            unlink
-        )
-    )
-)
-
+                    (chr_file (not (execmod mounton))))
+(classpermissionset create_chr_file_perms (chr_file (create getattr)))
+(classpermissionset delete_chr_file_perms (chr_file (getattr unlink)))
 (classpermissionset manage_chr_file_perms
-    (chr_file
-        (
-            append
-            create
-            getattr
-            ioctl
-            link
-            lock
-            open
-            read
-            rename
-            setattr
-            unlink
-            write
-        )
-    )
-)
-
-(classpermissionset map_chr_file_perms
-    (chr_file
-        (
-            map
-        )
-    )
-)
-
-(classpermissionset read_chr_file_perms
-    (chr_file
-        (
-            getattr
-            ioctl
-            lock
-            open
-            read
-        )
-    )
-)
-
-(classpermissionset read_inherited_chr_file_perms
-    (chr_file
-        (
-            getattr
-            ioctl
-            lock
-            read
-        )
-    )
-)
-
-(classpermissionset relabel_chr_file_perms
-    (chr_file
-        (
-            getattr
-            relabelfrom
-            relabelto
-        )
-    )
-)
-
-(classpermissionset relabelfrom_chr_file_perms
-    (chr_file
-        (
-            getattr
-            relabelfrom
-        )
-    )
-)
-
-(classpermissionset relabelto_chr_file_perms
-    (chr_file
-        (
-            getattr
-            relabelto
-        )
-    )
-)
-
-(classpermissionset rename_chr_file_perms
-    (chr_file
-        (
-            getattr
-            rename
-        )
-    )
-)
-
-(classpermissionset rw_chr_file_perms
-    (chr_file
-        (
-            append
-            getattr
-            ioctl
-            lock
-            open
-            read
-            write
-        )
-    )
-)
-
-(classpermissionset rw_inherited_chr_file_perms
-    (chr_file
-        (
-            append
-            getattr
-            ioctl
-            lock
-            read
-            write
-        )
-    )
-)
-
-(classpermissionset write_chr_file_perms
-    (chr_file
-        (
-            append
-            getattr
-            ioctl
-            lock
-            open
-            write
-        )
-    )
-)
-
-(classpermissionset write_inherited_chr_file_perms
-    (chr_file
-        (
-            append
-            getattr
-            ioctl
-            lock
-            write
-        )
-    )
-)
+                    (chr_file
+                     (append create getattr ioctl link lock open read rename
+                             setattr unlink write)))
+(classpermissionset map_chr_file_perms (chr_file (map)))
+(classpermissionset read_chr_file_perms (chr_file (getattr ioctl lock open
+                                                           read)))
+(classpermissionset read_inherited_chr_file_perms (chr_file
+                                                   (getattr ioctl lock read)))
+(classpermissionset relabel_chr_file_perms (chr_file
+                                            (getattr relabelfrom relabelto)))
+(classpermissionset relabelfrom_chr_file_perms (chr_file (getattr
+                                                          relabelfrom)))
+(classpermissionset relabelto_chr_file_perms (chr_file (getattr relabelto)))
+(classpermissionset rename_chr_file_perms (chr_file (getattr rename)))
+(classpermissionset rw_chr_file_perms (chr_file (append getattr ioctl lock
+                                                        open read write)))
+(classpermissionset rw_inherited_chr_file_perms (chr_file
+                                                 (append getattr ioctl lock
+                                                         read write)))
+(classpermissionset write_chr_file_perms (chr_file
+                                          (append getattr ioctl lock open
+                                                  write)))
+(classpermissionset write_inherited_chr_file_perms (chr_file
+                                                    (append getattr ioctl
+                                                            lock write)))
 
 (classpermissionset create_dccp_socket_perms
-    (dccp_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
+                    (dccp_socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
 (classpermissionset create_dccp_stream_socket_perms
-    (dccp_socket
-        (
-            accept
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            listen
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset map_dccp_socket_perms
-    (dccp_socket
-        (
-            map
-        )
-    )
-)
-
+                    (dccp_socket
+                     (accept append bind connect create getattr getopt ioctl
+                             listen read setattr setopt shutdown write)))
+(classpermissionset map_dccp_socket_perms (dccp_socket (map)))
 (classpermissionset rw_dccp_socket_perms
-    (dccp_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
+                    (dccp_socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))
 (classpermissionset rw_dccp_stream_socket_perms
-    (dccp_socket
-        (
-            accept
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            listen
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (dccp_socket
+                     (accept append bind connect getattr getopt ioctl listen
+                             read setattr setopt shutdown write)))
 
 (classpermissionset create_decnet_socket_perms
-    (decnet_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset map_decnet_socket_perms
-    (decnet_socket
-        (
-            map
-        )
-    )
-)
-
+                    (decnet_socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
+(classpermissionset map_decnet_socket_perms (decnet_socket (map)))
 (classpermissionset rw_decnet_socket_perms
-    (decnet_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (decnet_socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))
 
-(classpermissionset add_entry_dir_perms
-    (dir
-        (
-            add_name
-            getattr
-            ioctl
-            lock
-            open
-            read
-            search
-            write
-        )
-    )
-)
-
-(classpermissionset create_dir_perms
-    (dir
-        (
-            create
-            getattr
-        )
-    )
-)
-
-(classpermissionset del_entry_dir_perms
-    (dir
-        (
-            getattr
-            ioctl
-            lock
-            open
-            read
-            remove_name
-            search
-            write
-        )
-    )
-)
-
-(classpermissionset delete_dir_perms
-    (dir
-        (
-            getattr
-            rmdir
-        )
-    )
-)
-
-(classpermissionset dir_except_execmod_and_map
-    (dir
-        (not
-            (
-                execmod
-                map
-            )
-        )
-    )
-)
-
-(classpermissionset list_dir_perms
-    (dir
-        (
-            getattr
-            ioctl
-            lock
-            open
-            read
-            search
-        )
-    )
-)
-
-(classpermissionset list_inherited_dir_perms
-    (dir
-        (
-            getattr
-            ioctl
-            lock
-            read
-            search
-        )
-    )
-)
-
+(classpermissionset add_entry_dir_perms (dir
+                                         (add_name getattr ioctl lock open
+                                                   read search write)))
+(classpermissionset create_dir_perms (dir (create getattr)))
+(classpermissionset del_entry_dir_perms (dir
+                                         (getattr ioctl lock open read
+                                                  remove_name search write)))
+(classpermissionset delete_dir_perms (dir (getattr rmdir)))
+(classpermissionset dir_except_execmod_and_map (dir (not (execmod map))))
+(classpermissionset list_dir_perms (dir (getattr ioctl lock open read search)))
+(classpermissionset list_inherited_dir_perms (dir (getattr ioctl lock read
+                                                           search)))
 (classpermissionset manage_dir_perms
-    (dir
-        (
-            add_name
-            create
-            getattr
-            ioctl
-            link
-            lock
-            open
-            read
-            setattr
-            unlink
-            remove_name
-            rename
-            reparent
-            rmdir
-            search
-            write
-        )
-    )
-)
-
-(classpermissionset relabel_dir_perms
-    (dir
-        (
-            getattr
-            relabelfrom
-            relabelto
-        )
-    )
-)
-
-(classpermissionset relabelfrom_dir_perms
-    (dir
-        (
-            getattr
-            relabelfrom
-        )
-    )
-)
-
-(classpermissionset relabelto_dir_perms
-    (dir
-        (
-            getattr
-            relabelto
-        )
-    )
-)
-
-(classpermissionset rename_dir_perms
-    (dir
-        (
-            getattr
-            rename
-        )
-    )
-)
-
-(classpermissionset rw_dir_perms
-    (dir
-        (
-            add_name
-            getattr
-            ioctl
-            lock
-            open
-            read
-            remove_name
-            search
-            write
-        )
-    )
-)
-
+                    (dir (add_name create getattr ioctl link lock open read
+                                   setattr unlink remove_name rename reparent
+                                   rmdir search write)))
+(classpermissionset relabel_dir_perms (dir (getattr relabelfrom relabelto)))
+(classpermissionset relabelfrom_dir_perms (dir (getattr relabelfrom)))
+(classpermissionset relabelto_dir_perms (dir (getattr relabelto)))
+(classpermissionset rename_dir_perms (dir (getattr rename)))
+(classpermissionset rw_dir_perms (dir (add_name getattr ioctl lock open read
+                                                remove_name search write)))
 (classpermissionset rw_inherited_dir_perms
-    (dir
-        (
-            add_name
-            getattr
-            ioctl
-            lock
-            read
-            remove_name
-            search
-            write
-        )
-    )
-)
+                    (dir (add_name getattr ioctl lock read remove_name search
+                                   write)))
+(classpermissionset search_dir_perms (dir (getattr open search)))
+(classpermissionset write_dir_perms (dir (add_name getattr ioctl lock open
+                                                   remove_name search write)))
 
-(classpermissionset search_dir_perms
-    (dir
-        (
-            getattr
-            open
-            search
-        )
-    )
-)
-
-(classpermissionset write_dir_perms
-    (dir
-        (
-            add_name
-            getattr
-            ioctl
-            lock
-            open
-            remove_name
-            search
-            write
-        )
-    )
-)
-
-(classpermissionset append_fifo_file_perms
-    (fifo_file
-        (
-            append
-            getattr
-            ioctl
-            lock
-            open
-        )
-    )
-)
-
+(classpermissionset append_fifo_file_perms (fifo_file
+                                            (append getattr ioctl lock open)))
 (classpermissionset append_inherited_fifo_file_perms
-    (fifo_file
-        (
-            append
-            getattr
-            ioctl
-            lock
-        )
-    )
-)
-
-(classpermissionset create_fifo_file_perms
-    (fifo_file
-        (
-            create
-            getattr
-        )
-    )
-)
-
-(classpermissionset delete_fifo_file_perms
-    (fifo_file
-        (
-            getattr
-            unlink
-        )
-    )
-)
-
-(classpermissionset fifo_file_except_execmod_and_map
-    (fifo_file
-        (not
-            (
-                execmod
-                map
-            )
-        )
-    )
-)
-
+                    (fifo_file (append getattr ioctl lock)))
+(classpermissionset create_fifo_file_perms (fifo_file (create getattr)))
+(classpermissionset delete_fifo_file_perms (fifo_file (getattr unlink)))
+(classpermissionset fifo_file_except_execmod_and_map (fifo_file (not (execmod
+                                                                      map))))
 (classpermissionset fifo_file_except_execmod_map_and_mounton
-    (fifo_file
-        (not
-            (
-                execmod
-                map
-                mounton
-            )
-        )
-    )
-)
-
+                    (fifo_file (not (execmod map mounton))))
 (classpermissionset manage_fifo_file_perms
-    (fifo_file
-        (
-            append
-            create
-            getattr
-            ioctl
-            link
-            lock
-            open
-            read
-            rename
-            setattr
-            unlink
-            write
-        )
-    )
-)
+                    (fifo_file
+                     (append create getattr ioctl link lock open read rename
+                             setattr unlink write)))
+(classpermissionset read_fifo_file_perms (fifo_file
+                                          (getattr ioctl lock open read)))
+(classpermissionset read_inherited_fifo_file_perms (fifo_file
+                                                    (getattr ioctl lock read)))
+(classpermissionset relabel_fifo_file_perms (fifo_file (getattr relabelfrom
+                                                                relabelto)))
+(classpermissionset relabelfrom_fifo_file_perms (fifo_file (getattr
+                                                            relabelfrom)))
+(classpermissionset relabelto_fifo_file_perms (fifo_file (getattr relabelto)))
+(classpermissionset rename_fifo_file_perms (fifo_file (getattr rename)))
+(classpermissionset rw_fifo_file_perms (fifo_file (append getattr ioctl lock
+                                                          open read write)))
+(classpermissionset rw_inherited_fifo_file_perms (fifo_file
+                                                  (append getattr ioctl lock
+                                                          read write)))
+(classpermissionset write_fifo_file_perms (fifo_file (append getattr ioctl lock
+                                                             open write)))
+(classpermissionset write_inherited_fifo_file_perms (fifo_file
+                                                     (append getattr ioctl
+                                                             lock write)))
 
-(classpermissionset read_fifo_file_perms
-    (fifo_file
-        (
-            getattr
-            ioctl
-            lock
-            open
-            read
-        )
-    )
-)
-
-(classpermissionset read_inherited_fifo_file_perms
-    (fifo_file
-        (
-            getattr
-            ioctl
-            lock
-            read
-        )
-    )
-)
-
-
-(classpermissionset relabel_fifo_file_perms
-    (fifo_file
-        (
-            getattr
-            relabelfrom
-            relabelto
-        )
-    )
-)
-
-(classpermissionset relabelfrom_fifo_file_perms
-    (fifo_file
-        (
-            getattr
-            relabelfrom
-        )
-    )
-)
-
-(classpermissionset relabelto_fifo_file_perms
-    (fifo_file
-        (
-            getattr
-            relabelto
-        )
-    )
-)
-
-(classpermissionset rename_fifo_file_perms
-    (fifo_file
-        (
-            getattr
-            rename
-        )
-    )
-)
-
-(classpermissionset rw_fifo_file_perms
-    (fifo_file
-        (
-            append
-            getattr
-            ioctl
-            lock
-            open
-            read
-            write
-        )
-    )
-)
-
-(classpermissionset rw_inherited_fifo_file_perms
-    (fifo_file
-        (
-            append
-            getattr
-            ioctl
-            lock
-            read
-            write
-        )
-    )
-)
-
-(classpermissionset write_fifo_file_perms
-    (fifo_file
-        (
-            append
-            getattr
-            ioctl
-            lock
-            open
-            write
-        )
-    )
-)
-
-(classpermissionset write_inherited_fifo_file_perms
-    (fifo_file
-        (
-            append
-            getattr
-            ioctl
-            lock
-            write
-        )
-    )
-)
-
-(classpermissionset append_file_perms
-    (file
-        (
-            append
-            getattr
-            ioctl
-            lock
-            open
-        )
-    )
-)
-
-(classpermissionset append_inherited_file_perms
-    (file
-        (
-            append
-            getattr
-            ioctl
-            lock
-        )
-    )
-)
-
-(classpermissionset create_file_perms
-    (file
-        (
-            create
-            getattr
-        )
-    )
-)
-
-(classpermissionset delete_file_perms
-    (file
-        (
-            getattr
-            unlink
-        )
-    )
-)
-
-(classpermissionset exec_file_perms
-    (file
-        (
-            execute
-            execute_no_trans
-            getattr
-            ioctl
-            map
-            open
-            read
-        )
-    )
-)
-
-(classpermissionset file_except_getattr
-    (file
-        (not
-            (
-                getattr
-            )
-        )
-    )
-)
-
-(classpermissionset file_except_entrypoint_and_execmod
-    (file
-        (not
-            (
-                entrypoint
-                execmod
-            )
-        )
-    )
-)
-
+(classpermissionset append_file_perms (file (append getattr ioctl lock open)))
+(classpermissionset append_inherited_file_perms (file (append getattr ioctl
+                                                              lock)))
+(classpermissionset create_file_perms (file (create getattr)))
+(classpermissionset delete_file_perms (file (getattr unlink)))
+(classpermissionset exec_file_perms (file (execute execute_no_trans getattr
+                                                   ioctl map open read)))
+(classpermissionset file_except_getattr (file (not (getattr))))
+(classpermissionset file_except_entrypoint_and_execmod (file (not (entrypoint
+                                                                   execmod))))
 (classpermissionset file_except_entrypoint_execmod_and_mounton
-    (file
-        (not
-            (
-                entrypoint
-                execmod
-                mounton
-            )
-        )
-    )
-)
-
+                    (file (not (entrypoint execmod mounton))))
 (classpermissionset manage_file_perms
-    (file
-        (
-            append
-            create
-            getattr
-            ioctl
-            link
-            lock
-            open
-            read
-            rename
-            setattr
-            unlink
-            write
-        )
-    )
-)
-
-(classpermissionset map_file_perms
-    (file
-        (
-            map
-        )
-    )
-)
-
-(classpermissionset mmap_file_perms
-    (file
-        (
-            execute
-            getattr
-            ioctl
-            map
-            open
-            read
-        )
-    )
-)
-
-(classpermissionset mmap_inherited_file_perms
-    (file
-        (
-            execute
-            getattr
-            ioctl
-            map
-            read
-        )
-    )
-)
-
-(classpermissionset read_file_perms
-    (file
-        (
-            getattr
-            ioctl
-            lock
-            open
-            read
-        )
-    )
-)
-
-(classpermissionset read_inherited_file_perms
-    (file
-        (
-            getattr
-            ioctl
-            lock
-            read
-        )
-    )
-)
-
-(classpermissionset read_inherited_file_perms
-    (file
-        (
-            getattr
-            ioctl
-            lock
-            read
-        )
-    )
-)
-
-(classpermissionset relabel_file_perms
-    (file
-        (
-            getattr
-            relabelfrom
-            relabelto
-        )
-    )
-)
-
-(classpermissionset relabelfrom_file_perms
-    (file
-        (
-            getattr
-            relabelfrom
-        )
-    )
-)
-
-(classpermissionset relabelto_file_perms
-    (file
-        (
-            getattr
-            relabelto
-        )
-    )
-)
-
-(classpermissionset rename_file_perms
-    (file
-        (
-            getattr
-            rename
-        )
-    )
-)
-
-(classpermissionset rw_file_perms
-    (file
-        (
-            append
-            getattr
-            ioctl
-            lock
-            open
-            read
-            write
-        )
-    )
-)
-
-(classpermissionset rw_inherited_file_perms
-    (file
-        (
-            append
-            getattr
-            ioctl
-            lock
-            read
-            write
-        )
-    )
-)
-
-(classpermissionset write_file_perms
-    (file
-        (
-            append
-            getattr
-            ioctl
-            lock
-            open
-            write
-        )
-    )
-)
-
-(classpermissionset write_inherited_file_perms
-    (file
-        (
-            append
-            getattr
-            ioctl
-            lock
-            write
-        )
-    )
-)
+                    (file (append create getattr ioctl link lock open read
+                                  rename setattr unlink write)))
+(classpermissionset map_file_perms (file (map)))
+(classpermissionset mmap_file_perms (file (execute getattr ioctl map open
+                                                   read)))
+(classpermissionset mmap_inherited_file_perms (file (execute getattr ioctl map
+                                                             read)))
+(classpermissionset read_file_perms (file (getattr ioctl lock open read)))
+(classpermissionset read_inherited_file_perms (file (getattr ioctl lock read)))
+(classpermissionset relabel_file_perms (file (getattr relabelfrom relabelto)))
+(classpermissionset relabelfrom_file_perms (file (getattr relabelfrom)))
+(classpermissionset relabelto_file_perms (file (getattr relabelto)))
+(classpermissionset rename_file_perms (file (getattr rename)))
+(classpermissionset rw_file_perms (file (append getattr ioctl lock open read
+                                                write)))
+(classpermissionset rw_inherited_file_perms (file (append getattr ioctl lock
+                                                          read write)))
+(classpermissionset write_file_perms (file (append getattr ioctl lock open
+                                                   write)))
+(classpermissionset write_inherited_file_perms (file (append getattr ioctl
+                                                             lock write)))
 
 (classpermissionset create_icmp_socket_perms
-    (icmp_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset map_icmp_socket_perms
-    (icmp_socket
-        (
-            map
-        )
-    )
-)
-
+                    (icmp_socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
+(classpermissionset map_icmp_socket_perms (icmp_socket (map)))
 (classpermissionset rw_icmp_socket_perms
-    (icmp_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (icmp_socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))
 
 (classpermissionset create_ieee802154_socket_perms
-    (ieee802154_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset map_ieee802154_socket_perms
-    (ieee802154_socket
-        (
-            map
-        )
-    )
-)
-
+                    (ieee802154_socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
+(classpermissionset map_ieee802154_socket_perms (ieee802154_socket (map)))
 (classpermissionset rw_ieee802154_socket_perms
-    (ieee802154_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (ieee802154_socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))
 
 (classpermissionset create_ipx_socket_perms
-    (ipx_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset map_ipx_socket_perms
-    (ipx_socket
-        (
-            map
-        )
-    )
-)
-
+                    (ipx_socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
+(classpermissionset map_ipx_socket_perms (ipx_socket (map)))
 (classpermissionset rw_ipx_socket_perms
-    (ipx_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (ipx_socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))
 
 (classpermissionset create_irda_socket_perms
-    (irda_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset map_irda_socket_perms
-    (irda_socket
-        (
-            map
-        )
-    )
-)
-
+                    (irda_socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
+(classpermissionset map_irda_socket_perms (irda_socket (map)))
 (classpermissionset rw_irda_socket_perms
-    (irda_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (irda_socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))
 
 (classpermissionset create_isdn_socket_perms
-    (isdn_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset map_isdn_socket_perms
-    (isdn_socket
-        (
-            map
-        )
-    )
-)
-
+                    (isdn_socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
+(classpermissionset map_isdn_socket_perms (isdn_socket (map)))
 (classpermissionset rw_isdn_socket_perms
-    (isdn_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (isdn_socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))
 
 (classpermissionset create_iucv_socket_perms
-    (iucv_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset map_iucv_socket_perms
-    (iucv_socket
-        (
-            map
-        )
-    )
-)
-
+                    (iucv_socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
+(classpermissionset map_iucv_socket_perms (iucv_socket (map)))
 (classpermissionset rw_iucv_socket_perms
-    (iucv_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (iucv_socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))
 
 (classpermissionset create_kcm_socket_perms
-    (kcm_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset map_kcm_socket_perms
-    (kcm_socket
-        (
-            map
-        )
-    )
-)
-
+                    (kcm_socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
+(classpermissionset map_kcm_socket_perms (kcm_socket (map)))
 (classpermissionset rw_kcm_socket_perms
-    (kcm_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (kcm_socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))
 
-(classpermissionset create_key_perms
-    (key
-        (
-            create
-            link
-            search
-            write
-        )
-    )
-)
-
-(classpermissionset link_key_perms
-    (key
-        (
-            link
-            search
-        )
-    )
-)
-
-(classpermissionset read_key_perms
-    (key
-        (
-            link
-            read
-            search
-            view
-        )
-    )
-)
-
-(classpermissionset rw_key_perms
-    (key
-        (
-            link
-            read
-            search
-            view
-            write
-        )
-    )
-)
-
-(classpermissionset setattr_key_perms
-    (key
-        (
-            link
-            search
-            setattr
-            write
-        )
-    )
-)
-
-(classpermissionset write_key_perms
-    (key
-        (
-            link
-            search
-            write
-        )
-    )
-)
+(classpermissionset create_key_perms (key (create link search write)))
+(classpermissionset link_key_perms (key (link search)))
+(classpermissionset read_key_perms (key (link read search view)))
+(classpermissionset rw_key_perms (key (link read search view write)))
+(classpermissionset setattr_key_perms (key (link search setattr write)))
+(classpermissionset write_key_perms (key (link search write)))
 
 (classpermissionset create_key_socket_perms
-    (key_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset map_key_socket_perms
-    (key_socket
-        (
-            map
-        )
-    )
-)
-
+                    (key_socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
+(classpermissionset map_key_socket_perms (key_socket (map)))
 (classpermissionset rw_key_socket_perms
-    (key_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (key_socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))
 
 (classpermissionset create_llc_socket_perms
-    (llc_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset map_llc_socket_perms
-    (llc_socket
-        (
-            map
-        )
-    )
-)
-
+                    (llc_socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
+(classpermissionset map_llc_socket_perms (llc_socket (map)))
 (classpermissionset rw_llc_socket_perms
-    (llc_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (llc_socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))
 
-(classpermissionset create_lnk_file_perms
-    (lnk_file
-        (
-            create
-            getattr
-        )
-    )
-)
-
-(classpermissionset delete_lnk_file_perms
-    (lnk_file
-        (
-            getattr
-            unlink
-        )
-    )
-)
-
-(classpermissionset lnk_file_except_execmod_and_map
-    (lnk_file
-        (not
-            (
-                execmod
-                map
-            )
-        )
-    )
-)
-
+(classpermissionset create_lnk_file_perms (lnk_file (create getattr)))
+(classpermissionset delete_lnk_file_perms (lnk_file (getattr unlink)))
+(classpermissionset lnk_file_except_execmod_and_map (lnk_file (not (execmod
+                                                                    map))))
 (classpermissionset lnk_file_except_execmod_map_and_mounton
-    (lnk_file
-        (not
-            (
-                execmod
-                map
-                mounton
-            )
-        )
-    )
-)
-
+                    (lnk_file (not (execmod map mounton))))
 (classpermissionset manage_lnk_file_perms
-    (lnk_file
-        (
-            append
-            create
-            getattr
-            ioctl
-            link
-            lock
-            read
-            rename
-            setattr
-            unlink
-            write
-        )
-    )
-)
-
-(classpermissionset read_lnk_file_perms
-    (lnk_file
-        (
-            getattr
-            ioctl
-            lock
-            read
-        )
-    )
-)
-
-(classpermissionset relabel_lnk_file_perms
-    (lnk_file
-        (
-            getattr
-            relabelfrom
-            relabelto
-        )
-    )
-)
-
-(classpermissionset relabelfrom_lnk_file_perms
-    (lnk_file
-        (
-            getattr
-            relabelfrom
-        )
-    )
-)
-
-(classpermissionset relabelto_lnk_file_perms
-    (lnk_file
-        (
-            getattr
-            relabelto
-        )
-    )
-)
-
-(classpermissionset rename_lnk_file_perms
-    (lnk_file
-        (
-            getattr
-            rename
-        )
-    )
-)
-
-(classpermissionset rw_lnk_file_perms
-    (lnk_file
-        (
-            append
-            getattr
-            ioctl
-            lock
-            read
-            write
-        )
-    )
-)
-
-(classpermissionset write_lnk_file_perms
-    (lnk_file
-        (
-            append
-            getattr
-            ioctl
-            lock
-            write
-        )
-    )
-)
+                    (lnk_file (append create getattr ioctl link lock read
+                                      rename setattr unlink write)))
+(classpermissionset read_lnk_file_perms (lnk_file (getattr ioctl lock read)))
+(classpermissionset relabel_lnk_file_perms (lnk_file (getattr relabelfrom
+                                                              relabelto)))
+(classpermissionset relabelfrom_lnk_file_perms (lnk_file (getattr
+                                                          relabelfrom)))
+(classpermissionset relabelto_lnk_file_perms (lnk_file (getattr relabelto)))
+(classpermissionset rename_lnk_file_perms (lnk_file (getattr rename)))
+(classpermissionset rw_lnk_file_perms (lnk_file (append getattr ioctl lock
+                                                        read write)))
+(classpermissionset write_lnk_file_perms (lnk_file (append getattr ioctl lock
+                                                           write)))
 
 (classpermissionset create_msgq_perms
-    (msgq
-        (
-            associate
-            create
-            destroy
-            enqueue
-            getattr
-            read
-            setattr
-            unix_read
-            unix_write
-            write
-        )
-    )
-)
-
-(classpermissionset r_msgq_perms
-    (msgq
-        (
-            associate
-            getattr
-            read
-            unix_read
-        )
-    )
-)
-
-(classpermissionset rw_msgq_perms
-    (msgq
-        (
-            associate
-            enqueue
-            getattr
-            read
-            unix_read
-            unix_write
-            write
-        )
-    )
-)
+                    (msgq (associate create destroy enqueue getattr read
+                                     setattr unix_read unix_write write)))
+(classpermissionset r_msgq_perms (msgq (associate getattr read unix_read)))
+(classpermissionset rw_msgq_perms (msgq
+                                   (associate enqueue getattr read unix_read
+                                              unix_write write)))
 
 (classpermissionset create_netlink_audit_socket_perms
-    (netlink_audit_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            nlmsg_read
-            nlmsg_write
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset map_netlink_audit_socket_perms
-    (netlink_audit_socket
-        (
-            map
-        )
-    )
-)
-
+                    (netlink_audit_socket
+                     (append bind connect create getattr getopt ioctl
+                             nlmsg_read nlmsg_write read setattr setopt
+                             shutdown write)))
+(classpermissionset map_netlink_audit_socket_perms (netlink_audit_socket
+                                                    (map)))
 (classpermissionset r_netlink_audit_socket_perms
-    (netlink_audit_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            nlmsg_read
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (netlink_audit_socket
+                     (append bind connect create getattr getopt ioctl
+                             nlmsg_read read setattr setopt shutdown write)))
 
 (classpermissionset create_netlink_connector_socket_perms
-    (netlink_connector_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
+                    (netlink_connector_socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
 (classpermissionset map_netlink_connector_socket_perms
-    (netlink_connector_socket
-        (
-            map
-        )
-    )
-)
-
+                    (netlink_connector_socket (map)))
 (classpermissionset rw_netlink_connector_socket_perms
-    (netlink_connector_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (netlink_connector_socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))
 
 (classpermissionset create_netlink_crypto_socket_perms
-    (netlink_crypto_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset map_netlink_crypto_socket_perms
-    (netlink_crypto_socket
-        (
-            map
-        )
-    )
-)
-
+                    (netlink_crypto_socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
+(classpermissionset map_netlink_crypto_socket_perms (netlink_crypto_socket
+                                                     (map)))
 (classpermissionset rw_netlink_crypto_socket_perms
-    (netlink_crypto_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (netlink_crypto_socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))
 
 (classpermissionset create_netlink_dnrt_socket_perms
-    (netlink_dnrt_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset map_netlink_dnrt_socket_perms
-    (netlink_dnrt_socket
-        (
-            map
-        )
-    )
-)
-
+                    (netlink_dnrt_socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
+(classpermissionset map_netlink_dnrt_socket_perms (netlink_dnrt_socket (map)))
 (classpermissionset rw_netlink_dnrt_socket_perms
-    (netlink_dnrt_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (netlink_dnrt_socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))
 
 (classpermissionset create_netlink_fib_lookup_socket_perms
-    (netlink_fib_lookup_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
+                    (netlink_fib_lookup_socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
 (classpermissionset map_netlink_fib_lookup_socket_perms
-    (netlink_fib_lookup_socket
-        (
-            map
-        )
-    )
-)
-
+                    (netlink_fib_lookup_socket (map)))
 (classpermissionset rw_netlink_fib_lookup_socket_perms
-    (netlink_fib_lookup_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (netlink_fib_lookup_socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))
 
 (classpermissionset create_netlink_generic_socket_perms
-    (netlink_generic_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset map_netlink_generic_socket_perms
-    (netlink_generic_socket
-        (
-            map
-        )
-    )
-)
-
+                    (netlink_generic_socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
+(classpermissionset map_netlink_generic_socket_perms (netlink_generic_socket
+                                                      (map)))
 (classpermissionset rw_netlink_generic_socket_perms
-    (netlink_generic_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (netlink_generic_socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))
 
 (classpermissionset create_netlink_iscsi_socket_perms
-    (netlink_iscsi_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset map_netlink_iscsi_socket_perms
-    (netlink_iscsi_socket
-        (
-            map
-        )
-    )
-)
-
+                    (netlink_iscsi_socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
+(classpermissionset map_netlink_iscsi_socket_perms (netlink_iscsi_socket
+                                                    (map)))
 (classpermissionset rw_netlink_iscsi_socket_perms
-    (netlink_iscsi_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (netlink_iscsi_socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))
 
 (classpermissionset create_netlink_kobject_uevent_socket_perms
-    (netlink_kobject_uevent_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
+                    (netlink_kobject_uevent_socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
 (classpermissionset map_netlink_kobject_uevent_socket_perms
-    (netlink_kobject_uevent_socket
-        (
-            map
-        )
-    )
-)
-
+                    (netlink_kobject_uevent_socket (map)))
 (classpermissionset rw_netlink_kobject_uevent_socket_perms
-    (netlink_kobject_uevent_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (netlink_kobject_uevent_socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))
 
 (classpermissionset create_netlink_netfilter_socket_perms
-    (netlink_netfilter_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
+                    (netlink_netfilter_socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
 (classpermissionset map_netlink_netfilter_socket_perms
-    (netlink_netfilter_socket
-        (
-            map
-        )
-    )
-)
-
+                    (netlink_netfilter_socket (map)))
 (classpermissionset rw_netlink_netfilter_socket_perms
-    (netlink_netfilter_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (netlink_netfilter_socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))
 
 (classpermissionset create_netlink_nflog_socket_perms
-    (netlink_nflog_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset map_netlink_nflog_socket_perms
-    (netlink_nflog_socket
-        (
-            map
-        )
-    )
-)
-
+                    (netlink_nflog_socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
+(classpermissionset map_netlink_nflog_socket_perms (netlink_nflog_socket
+                                                    (map)))
 (classpermissionset rw_netlink_nflog_socket_perms
-    (netlink_nflog_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (netlink_nflog_socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))
 
 (classpermissionset create_netlink_rdma_socket_perms
-    (netlink_rdma_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset map_netlink_rdma_socket_perms
-    (netlink_rdma_socket
-        (
-            map
-        )
-    )
-)
-
+                    (netlink_rdma_socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
+(classpermissionset map_netlink_rdma_socket_perms (netlink_rdma_socket (map)))
 (classpermissionset rw_netlink_rdma_socket_perms
-    (netlink_rdma_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (netlink_rdma_socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))
 
 (classpermissionset create_netlink_route_socket_perms
-    (netlink_route_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            nlmsg_read
-            nlmsg_write
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset map_netlink_route_socket_perms
-    (netlink_route_socket
-        (
-            map
-        )
-    )
-)
-
+                    (netlink_route_socket
+                     (append bind connect create getattr getopt ioctl
+                             nlmsg_read nlmsg_write read setattr setopt
+                             shutdown write)))
+(classpermissionset map_netlink_route_socket_perms (netlink_route_socket
+                                                    (map)))
 (classpermissionset r_netlink_route_socket_perms
-    (netlink_route_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            nlmsg_read
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (netlink_route_socket
+                     (append bind connect create getattr getopt ioctl
+                             nlmsg_read read setattr setopt shutdown write)))
 
 (classpermissionset create_netlink_scsitransport_socket_perms
-    (netlink_scsitransport_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
+                    (netlink_scsitransport_socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
 (classpermissionset map_netlink_scsitransport_socket_perms
-    (netlink_scsitransport_socket
-        (
-            map
-        )
-    )
-)
-
+                    (netlink_scsitransport_socket (map)))
 (classpermissionset rw_netlink_scsitransport_socket_perms
-    (netlink_scsitransport_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (netlink_scsitransport_socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))
 
 (classpermissionset create_netlink_selinux_socket_perms
-    (netlink_selinux_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset map_netlink_selinux_socket_perms
-    (netlink_selinux_socket
-        (
-            map
-        )
-    )
-)
-
+                    (netlink_selinux_socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
+(classpermissionset map_netlink_selinux_socket_perms (netlink_selinux_socket
+                                                      (map)))
 (classpermissionset rw_netlink_selinux_socket_perms
-    (netlink_selinux_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (netlink_selinux_socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))
 
 (classpermissionset create_netlink_tcpdiag_socket_perms
-    (netlink_tcpdiag_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            nlmsg_read
-            nlmsg_write
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset map_netlink_tcpdiag_socket_perms
-    (netlink_tcpdiag_socket
-        (
-            map
-        )
-    )
-)
-
+                    (netlink_tcpdiag_socket
+                     (append bind connect create getattr getopt ioctl
+                             nlmsg_read nlmsg_write read setattr setopt
+                             shutdown write)))
+(classpermissionset map_netlink_tcpdiag_socket_perms (netlink_tcpdiag_socket
+                                                      (map)))
 (classpermissionset r_netlink_tcpdiag_socket_perms
-    (netlink_tcpdiag_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            nlmsg_read
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (netlink_tcpdiag_socket
+                     (append bind connect create getattr getopt ioctl
+                             nlmsg_read read setattr setopt shutdown write)))
 
 (classpermissionset create_netlink_xfrm_socket_perms
-    (netlink_xfrm_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            nlmsg_read
-            nlmsg_write
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset map_netlink_xfrm_socket_perms
-    (netlink_xfrm_socket
-        (
-            map
-        )
-    )
-)
-
+                    (netlink_xfrm_socket
+                     (append bind connect create getattr getopt ioctl
+                             nlmsg_read nlmsg_write read setattr setopt
+                             shutdown write)))
+(classpermissionset map_netlink_xfrm_socket_perms (netlink_xfrm_socket (map)))
 (classpermissionset r_netlink_xfrm_socket_perms
-    (netlink_xfrm_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            nlmsg_read
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (netlink_xfrm_socket
+                     (append bind connect create getattr getopt ioctl
+                             nlmsg_read read setattr setopt shutdown write)))
 
 (classpermissionset create_netrom_socket_perms
-    (netrom_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset map_netrom_socket_perms
-    (netrom_socket
-        (
-            map
-        )
-    )
-)
-
+                    (netrom_socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
+(classpermissionset map_netrom_socket_perms (netrom_socket (map)))
 (classpermissionset rw_netrom_socket_perms
-    (netrom_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (netrom_socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))
 
 (classpermissionset create_nfc_socket_perms
-    (nfc_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset map_nfc_socket_perms
-    (nfc_socket
-        (
-            map
-        )
-    )
-)
-
+                    (nfc_socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
+(classpermissionset map_nfc_socket_perms (nfc_socket (map)))
 (classpermissionset rw_nfc_socket_perms
-    (nfc_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (nfc_socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))
 
 (classpermissionset create_packet_socket_perms
-    (packet_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset map_packet_socket_perms
-    (packet_socket
-        (
-            map
-        )
-    )
-)
-
+                    (packet_socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
+(classpermissionset map_packet_socket_perms (packet_socket (map)))
 (classpermissionset rw_packet_socket_perms
-    (packet_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (packet_socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))
 
 (classpermissionset create_phonet_socket_perms
-    (phonet_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset map_phonet_socket_perms
-    (phonet_socket
-        (
-            map
-        )
-    )
-)
-
+                    (phonet_socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
+(classpermissionset map_phonet_socket_perms (phonet_socket (map)))
 (classpermissionset rw_phonet_socket_perms
-    (phonet_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (phonet_socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))
 
 (classpermissionset create_pppox_socket_perms
-    (pppox_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset map_pppox_socket_perms
-    (pppox_socket
-        (
-            map
-        )
-    )
-)
-
+                    (pppox_socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
+(classpermissionset map_pppox_socket_perms (pppox_socket (map)))
 (classpermissionset rw_pppox_socket_perms
-    (pppox_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (pppox_socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))
 
 (classpermissionset create_qipcrtr_socket_perms
-    (qipcrtr_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset map_qipcrtr_socket_perms
-    (qipcrtr_socket
-        (
-            map
-        )
-    )
-)
-
+                    (qipcrtr_socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
+(classpermissionset map_qipcrtr_socket_perms (qipcrtr_socket (map)))
 (classpermissionset rw_qipcrtr_socket_perms
-    (qipcrtr_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (qipcrtr_socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))
 
 (classpermissionset create_rawip_socket_perms
-    (rawip_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset map_rawip_socket_perms
-    (rawip_socket
-        (
-            map
-        )
-    )
-)
-
+                    (rawip_socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
+(classpermissionset map_rawip_socket_perms (rawip_socket (map)))
 (classpermissionset rw_rawip_socket_perms
-    (rawip_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (rawip_socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))
 
 (classpermissionset create_rds_socket_perms
-    (rds_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset map_rds_socket_perms
-    (rds_socket
-        (
-            map
-        )
-    )
-)
-
+                    (rds_socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
+(classpermissionset map_rds_socket_perms (rds_socket (map)))
 (classpermissionset rw_rds_socket_perms
-    (rds_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (rds_socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))
 
 (classpermissionset create_rose_socket_perms
-    (rose_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset map_rose_socket_perms
-    (rose_socket
-        (
-            map
-        )
-    )
-)
-
+                    (rose_socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
+(classpermissionset map_rose_socket_perms (rose_socket (map)))
 (classpermissionset rw_rose_socket_perms
-    (rose_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (rose_socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))
 
 (classpermissionset create_rxrpc_socket_perms
-    (rxrpc_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset map_rxrpc_socket_perms
-    (rxrpc_socket
-        (
-            map
-        )
-    )
-)
-
+                    (rxrpc_socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
+(classpermissionset map_rxrpc_socket_perms (rxrpc_socket (map)))
 (classpermissionset rw_rxrpc_socket_perms
-    (rxrpc_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (rxrpc_socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))
 
 (classpermissionset create_sctp_socket_perms
-    (sctp_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset map_sctp_socket_perms
-    (sctp_socket
-        (
-            map
-        )
-    )
-)
-
+                    (sctp_socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
+(classpermissionset map_sctp_socket_perms (sctp_socket (map)))
 (classpermissionset rw_sctp_socket_perms
-    (sctp_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (sctp_socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))
 
 (classpermissionset create_sem_perms
-    (sem
-        (
-            associate
-            create
-            destroy
-            getattr
-            read
-            setattr
-            unix_read
-            unix_write
-            write
-        )
-    )
-)
-
-(classpermissionset r_sem_perms
-    (sem
-        (
-            associate
-            getattr
-            read
-            unix_read
-        )
-    )
-)
-
-(classpermissionset rw_sem_perms
-    (sem
-        (
-            associate
-            getattr
-            read
-            unix_read
-            unix_write
-            write
-        )
-    )
-)
+                    (sem
+                     (associate create destroy getattr read setattr unix_read
+                                unix_write write)))
+(classpermissionset r_sem_perms (sem (associate getattr read unix_read)))
+(classpermissionset rw_sem_perms (sem (associate getattr read unix_read
+                                                 unix_write write)))
 
 (classpermissionset create_shm_perms
-    (shm
-        (
-            associate
-            create
-            destroy
-            getattr
-            lock
-            read
-            setattr
-            unix_read
-            unix_write
-            write
-        )
-    )
-)
-
-(classpermissionset r_shm_perms
-    (shm
-        (
-            associate
-            getattr
-            read
-            unix_read
-        )
-    )
-)
-
-(classpermissionset rw_shm_perms
-    (shm
-        (
-            associate
-            getattr
-            lock
-            read
-            unix_read
-            unix_write
-            write
-        )
-    )
-)
+                    (shm
+                     (associate create destroy getattr lock read setattr
+                                unix_read unix_write write)))
+(classpermissionset r_shm_perms (shm (associate getattr read unix_read)))
+(classpermissionset rw_shm_perms (shm (associate getattr lock read unix_read
+                                                 unix_write write)))
 
 (classpermissionset create_smc_socket_perms
-    (smc_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset map_smc_socket_perms
-    (smc_socket
-        (
-            map
-        )
-    )
-)
-
+                    (smc_socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
+(classpermissionset map_smc_socket_perms (smc_socket (map)))
 (classpermissionset rw_smc_socket_perms
-    (smc_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (smc_socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))
 
-(classpermissionset create_sock_file_perms
-    (sock_file
-        (
-            create
-            getattr
-        )
-    )
-)
-
-(classpermissionset delete_sock_file_perms
-    (sock_file
-        (
-            getattr
-            unlink
-        )
-    )
-)
-
+(classpermissionset create_sock_file_perms (sock_file (create getattr)))
+(classpermissionset delete_sock_file_perms (sock_file (getattr unlink)))
 (classpermissionset manage_sock_file_perms
-    (sock_file
-        (
-            append
-            create
-            getattr
-            ioctl
-            link
-            lock
-            open
-            read
-            rename
-            setattr
-            unlink
-            write
-        )
-    )
-)
-
-(classpermissionset read_sock_file_perms
-    (sock_file
-        (
-            getattr
-            ioctl
-            lock
-            open
-            read
-        )
-    )
-)
-
-(classpermissionset read_inherited_sock_file_perms
-    (sock_file
-        (
-            getattr
-            ioctl
-            lock
-            read
-        )
-    )
-)
-
-(classpermissionset relabel_sock_file_perms
-    (sock_file
-        (
-            getattr
-            relabelfrom
-            relabelto
-        )
-    )
-)
-
-(classpermissionset relabelfrom_sock_file_perms
-    (sock_file
-        (
-            getattr
-            relabelfrom
-        )
-    )
-)
-
-(classpermissionset relabelto_sock_file_perms
-    (sock_file
-        (
-            getattr
-            relabelto
-        )
-    )
-)
-
-(classpermissionset rename_sock_file_perms
-    (sock_file
-        (
-            getattr
-            rename
-        )
-    )
-)
-
-(classpermissionset rw_sock_file_perms
-    (sock_file
-        (
-            append
-            getattr
-            ioctl
-            lock
-            open
-            read
-            write
-        )
-    )
-)
-
-(classpermissionset rw_inherited_sock_file_perms
-    (sock_file
-        (
-            append
-            getattr
-            ioctl
-            lock
-            read
-            write
-        )
-    )
-)
-
-(classpermissionset sock_file_except_execmod_and_map
-    (sock_file
-        (not
-            (
-                execmod
-                map
-            )
-        )
-    )
-)
-
+                    (sock_file
+                     (append create getattr ioctl link lock open read rename
+                             setattr unlink write)))
+(classpermissionset read_sock_file_perms (sock_file (getattr ioctl lock open
+                                                             read)))
+(classpermissionset read_inherited_sock_file_perms (sock_file
+                                                    (getattr ioctl lock read)))
+(classpermissionset relabel_sock_file_perms (sock_file (getattr relabelfrom
+                                                                relabelto)))
+(classpermissionset relabelfrom_sock_file_perms (sock_file (getattr
+                                                            relabelfrom)))
+(classpermissionset relabelto_sock_file_perms (sock_file (getattr relabelto)))
+(classpermissionset rename_sock_file_perms (sock_file (getattr rename)))
+(classpermissionset rw_sock_file_perms (sock_file (append getattr ioctl lock
+                                                          open read write)))
+(classpermissionset rw_inherited_sock_file_perms (sock_file
+                                                  (append getattr ioctl lock
+                                                          read write)))
+(classpermissionset sock_file_except_execmod_and_map (sock_file (not (execmod
+                                                                      map))))
 (classpermissionset sock_file_except_execmod_map_and_mounton
-    (sock_file
-        (not
-            (
-                execmod
-                map
-                mounton
-            )
-        )
-    )
-)
-
-(classpermissionset write_sock_file_perms
-    (sock_file
-        (
-            append
-            getattr
-            ioctl
-            lock
-            open
-            write
-        )
-    )
-)
-
-(classpermissionset write_inherited_sock_file_perms
-    (sock_file
-        (
-            append
-            getattr
-            ioctl
-            lock
-            write
-        )
-    )
-)
+                    (sock_file (not (execmod map mounton))))
+(classpermissionset write_sock_file_perms (sock_file (append getattr ioctl lock
+                                                             open write)))
+(classpermissionset write_inherited_sock_file_perms (sock_file
+                                                     (append getattr ioctl
+                                                             lock write)))
 
 (classpermissionset create_socket_perms
-    (socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset map_socket_perms
-    (socket
-        (
-            map
-        )
-    )
-)
-
+                    (socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
+(classpermissionset map_socket_perms (socket (map)))
 (classpermissionset rw_socket_perms
-    (socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))
 
-(classpermissionset rw_term_perms
-    (chr_file
-        (
-            append
-            getattr
-            ioctl
-            open
-            read
-            write
-        )
-    )
-)
-
-(classpermissionset rw_inherited_term_perms
-    (chr_file
-        (
-            append
-            getattr
-            ioctl
-            read
-            write
-        )
-    )
-)
+(classpermissionset rw_term_perms (chr_file (append getattr ioctl open read
+                                                    write)))
+(classpermissionset rw_inherited_term_perms (chr_file (append getattr ioctl
+                                                              read write)))
 
 (classpermissionset create_tcp_socket_perms
-    (tcp_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
+                    (tcp_socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
 (classpermissionset create_tcp_stream_socket_perms
-    (tcp_socket
-        (
-            accept
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            listen
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset map_tcp_socket_perms
-    (tcp_socket
-        (
-            map
-        )
-    )
-)
-
+                    (tcp_socket
+                     (accept append bind connect create getattr getopt ioctl
+                             listen read setattr setopt shutdown write)))
+(classpermissionset map_tcp_socket_perms (tcp_socket (map)))
 (classpermissionset rw_tcp_socket_perms
-    (tcp_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
+                    (tcp_socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))
 (classpermissionset rw_tcp_stream_socket_perms
-    (tcp_socket
-        (
-            accept
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            listen
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (tcp_socket
+                     (accept append bind connect getattr getopt ioctl listen
+                             read setattr setopt shutdown write)))
 
 (classpermissionset create_tipc_socket_perms
-    (tipc_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset map_tipc_socket_perms
-    (tipc_socket
-        (
-            map
-        )
-    )
-)
-
+                    (tipc_socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
+(classpermissionset map_tipc_socket_perms (tipc_socket (map)))
 (classpermissionset rw_tipc_socket_perms
-    (tipc_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (tipc_socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))
 
 (classpermissionset create_tun_socket_perms
-    (tun_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset map_tun_socket_perms
-    (tun_socket
-        (
-            map
-        )
-    )
-)
-
-(classpermissionset relabel_tun_socket_perms
-    (tun_socket
-        (
-            getattr
-            relabelfrom
-            relabelto
-        )
-    )
-)
-
-(classpermissionset relabelfrom_tun_socket_perms
-    (tun_socket
-        (
-            getattr
-            relabelfrom
-        )
-    )
-)
-
-(classpermissionset relabelto_tun_socket_perms
-    (tun_socket
-        (
-            getattr
-            relabelto
-        )
-    )
-)
-
+                    (tun_socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
+(classpermissionset map_tun_socket_perms (tun_socket (map)))
+(classpermissionset relabel_tun_socket_perms (tun_socket (getattr relabelfrom
+                                                                  relabelto)))
+(classpermissionset relabelfrom_tun_socket_perms (tun_socket (getattr
+                                                              relabelfrom)))
+(classpermissionset relabelto_tun_socket_perms (tun_socket (getattr
+                                                            relabelto)))
 (classpermissionset rw_tun_socket_perms
-    (tun_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (tun_socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))
 
 (classpermissionset create_udp_socket_perms
-    (udp_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset map_udp_socket_perms
-    (udp_socket
-        (
-            map
-        )
-    )
-)
-
+                    (udp_socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
+(classpermissionset map_udp_socket_perms (udp_socket (map)))
 (classpermissionset rw_udp_socket_perms
-    (udp_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (udp_socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))
 
 (classpermissionset create_unix_dgram_socket_perms
-    (unix_dgram_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset map_unix_dgram_socket_perms
-    (unix_dgram_socket
-        (
-            map
-        )
-    )
-)
-
+                    (unix_dgram_socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
+(classpermissionset map_unix_dgram_socket_perms (unix_dgram_socket (map)))
 (classpermissionset rw_unix_dgram_socket_perms
-    (unix_dgram_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (unix_dgram_socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))
 
 (classpermissionset create_unix_stream_socket_perms
-    (unix_stream_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
+                    (unix_stream_socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
 (classpermissionset create_unix_stream_stream_socket_perms
-    (unix_stream_socket
-        (
-            accept
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            listen
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset map_unix_stream_socket_perms
-    (unix_stream_socket
-        (
-            map
-        )
-    )
-)
-
+                    (unix_stream_socket
+                     (accept append bind connect create getattr getopt ioctl
+                             listen read setattr setopt shutdown write)))
+(classpermissionset map_unix_stream_socket_perms (unix_stream_socket (map)))
 (classpermissionset rw_unix_stream_socket_perms
-    (unix_stream_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
+                    (unix_stream_socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))
 (classpermissionset rw_unix_stream_stream_socket_perms
-    (unix_stream_socket
-        (
-            accept
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            listen
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (unix_stream_socket
+                     (accept append bind connect getattr getopt ioctl listen
+                             read setattr setopt shutdown write)))
 
 (classpermissionset create_vsock_socket_perms
-    (vsock_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset map_vsock_socket_perms
-    (vsock_socket
-        (
-            map
-        )
-    )
-)
-
+                    (vsock_socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
+(classpermissionset map_vsock_socket_perms (vsock_socket (map)))
 (classpermissionset rw_vsock_socket_perms
-    (vsock_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (vsock_socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))
 
 (classpermissionset create_x25_socket_perms
-    (x25_socket
-        (
-            append
-            bind
-            connect
-            create
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
-
-(classpermissionset map_x25_socket_perms
-    (x25_socket
-        (
-            map
-        )
-    )
-)
-
+                    (x25_socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
+(classpermissionset map_x25_socket_perms (x25_socket (map)))
 (classpermissionset rw_x25_socket_perms
-    (x25_socket
-        (
-            append
-            bind
-            connect
-            getattr
-            getopt
-            ioctl
-            read
-            setattr
-            setopt
-            shutdown
-            write
-        )
-    )
-)
+                    (x25_socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))

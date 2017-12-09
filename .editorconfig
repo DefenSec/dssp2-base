@@ -8,4 +8,3 @@ charset = utf-8
 
 [*.cil]
 indent_style = space
-indent_size = 4
