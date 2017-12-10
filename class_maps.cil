@@ -558,7 +558,7 @@
 (classmapping all_sockets map (unix_stream_socket (map)))
 (classmapping all_sockets map (vsock_socket (map)))
 (classmapping all_sockets map (x25_socket (map)))
- 
+
 (classmapping blk_and_chr_files create add_entry_dir_perms)
 (classmapping blk_and_chr_files create create_blk_file_perms)
 (classmapping blk_and_chr_files create create_chr_file_perms)

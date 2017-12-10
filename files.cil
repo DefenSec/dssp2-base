@@ -2067,7 +2067,7 @@
                             (allow ARG1 obj_type_attribute
                                    relabelto_lnk_file_perms)
                             (call files.generic_boot.search (ARG1)))
- 
+
                      (macro rename ((type ARG1))
                             (call rename_dirs (ARG1))
                             (call rename_files (ARG1))
@@ -2080,7 +2080,7 @@
                      (macro rename_files ((type ARG1))
                             (allow ARG1 obj_type_attribute rename_file_perms)
                             (call files.generic_boot.search (ARG1)))
- 
+
                      (macro rename_lnk_files ((type ARG1))
                             (allow ARG1 obj_type_attribute
                                    rename_lnk_file_perms)
@@ -2614,7 +2614,7 @@
                      (macro create_dirs ((type ARG1))
                             (allow ARG1 config_file create_dir_perms)
                             (call config.search (ARG1)))
- 
+
                      (macro create_files ((type ARG1))
                             (allow ARG1 config_file create_file_perms)
                             (call config.search (ARG1)))
@@ -2728,11 +2728,11 @@
                             (call relabelfrom_dirs (ARG1))
                             (call relabelfrom_files (ARG1))
                             (call relabelfrom_lnk_files (ARG1)))
- 
+
                      (macro relabelfrom_dirs ((type ARG1))
                             (allow ARG1 config_file relabelfrom_dir_perms)
                             (call config.search (ARG1)))
- 
+
                      (macro relabelfrom_files ((type ARG1))
                             (allow ARG1 config_file relabelfrom_file_perms)
                             (call config.search (ARG1)))
@@ -2893,7 +2893,7 @@
                      (macro execute ((type ARG1))
                             (allow ARG1 obj_type_attribute exec_file_perms)
                             (call files.generic_config.read_lnk_files (ARG1)))
- 
+
                      (macro getattr ((type ARG1))
                             (call getattr_dirs (ARG1))
                             (call getattr_files (ARG1))
@@ -3925,7 +3925,7 @@
                      (macro create_files ((type ARG1))
                             (allow ARG1 data_file create_file_perms)
                             (call files.generic_data.search (ARG1)))
- 
+
                      (macro create_lnk_files ((type ARG1))
                             (allow ARG1 data_file create_lnk_file_perms)
                             (call files.generic_data.search (ARG1)))
@@ -5671,7 +5671,7 @@
               (macro relabel_dirs ((type ARG1))
                      (allow ARG1 runtime_file (dirs (relabel)))
                      (call generic_var.read_lnk_files (ARG1)))
- 
+
               (macro relabel_fifo_files ((type ARG1))
                      (allow ARG1 runtime_file (fifo_files (relabel)))
                      (call generic_var.read_lnk_files (ARG1)))
@@ -8260,7 +8260,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
            (call generic_var.search
                 (
                     ARG1
@@ -8298,7 +8298,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -8318,7 +8318,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -8338,7 +8338,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -8358,7 +8358,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -8378,7 +8378,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -8398,7 +8398,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -8412,7 +8412,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -8432,7 +8432,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -8452,7 +8452,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -8472,7 +8472,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -8492,7 +8492,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -8512,7 +8512,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -8532,7 +8532,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -8561,7 +8561,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -8581,7 +8581,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -8601,7 +8601,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -8621,7 +8621,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -8641,7 +8641,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -8661,7 +8661,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -8675,7 +8675,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -8695,7 +8695,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -8715,7 +8715,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -8735,7 +8735,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -8755,7 +8755,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -8775,7 +8775,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -8795,7 +8795,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -8815,7 +8815,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -8853,7 +8853,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -8873,7 +8873,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -8893,7 +8893,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -8913,7 +8913,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -8933,7 +8933,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -8953,7 +8953,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -8973,7 +8973,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -8993,7 +8993,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -9013,7 +9013,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -9033,7 +9033,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -9053,7 +9053,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -9073,7 +9073,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -9093,7 +9093,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -9113,7 +9113,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -9133,7 +9133,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -9153,7 +9153,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -9173,7 +9173,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -9193,7 +9193,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -9213,7 +9213,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -9233,7 +9233,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -9253,7 +9253,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -9273,7 +9273,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -9293,7 +9293,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -9313,7 +9313,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -9333,7 +9333,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -9353,7 +9353,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -9373,7 +9373,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -9393,7 +9393,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -9413,7 +9413,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -9433,7 +9433,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -9453,7 +9453,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -9473,7 +9473,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -9493,7 +9493,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -9513,7 +9513,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -9533,7 +9533,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -9547,7 +9547,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -9567,7 +9567,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -9587,7 +9587,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -9607,7 +9607,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -9627,7 +9627,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -9647,7 +9647,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -9667,7 +9667,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -9687,7 +9687,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -9707,7 +9707,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -9727,7 +9727,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -9747,7 +9747,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -9767,7 +9767,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
@@ -9787,7 +9787,7 @@
                 (
                     ARG1
                 )
-            ) 
+            )
             (call generic_var.search
                 (
                     ARG1
