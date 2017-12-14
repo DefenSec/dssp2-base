@@ -1,4410 +1,1492 @@
-; -*- mode: CIL; fill-column: 75; indent-tabs-mode: nil; tab-width: 4 -*-
-; SPDX-License-Identifier: Unlicense
+;; -*- mode: CIL; fill-column: 79; indent-tabs-mode: nil; -*-
+;; SPDX-License-Identifier: Unlicense
 
-; fs
-;     obj_all_macro_template
-;     obj_stub
-;     obj_template
-;     aio
-;     anon_inodefs
-;     autofs
-;     bdev
-;     binfmt_misc
-;     cgroup
-;     cifs
-;     configfs
-;     debugfs
-;     devpts
-;     devtmpfs
-;     dosfs
-;     drm
-;     efivarfs
-;     fuse
-;     hugetlbfs
-;     iso9660
-;     nfs
-;     nfsd
-;     nsfs
-;     proc
-;     pstore
-;     removable
-;     rootfs
-;     rpc_pipefs
-;     sysfs
-;     tmpfs
-;     tracefs
-;     xattr
+;; fs
+;;     obj_all_macro_template
+;;     obj_stub
+;;     obj_template
+;;     aio
+;;     anon_inodefs
+;;     autofs
+;;     bdev
+;;     binfmt_misc
+;;     cgroup
+;;     cifs
+;;     configfs
+;;     debugfs
+;;     devpts
+;;     devtmpfs
+;;     dosfs
+;;     drm
+;;     efivarfs
+;;     fuse
+;;     hugetlbfs
+;;     iso9660
+;;     nfs
+;;     nfsd
+;;     nsfs
+;;     proc
+;;     pstore
+;;     removable
+;;     rootfs
+;;     rpc_pipefs
+;;     sysfs
+;;     tmpfs
+;;     tracefs
+;;     xattr
 
-;
-; Policy
-;
+;;
+;; Policy
+;;
 
 (sid fs)
 
 (block fs
 
-    ;
-    ; Macros
-    ;
+       ;;
+       ;; Macros
+       ;;
 
-    (blockinherit obj_all_macro_template)
+       (blockinherit obj_all_macro_template)
 
-    (macro unconfined_subj_type ((type ARG1))
-        (typeattributeset unconfined_subj_type_attribute ARG1)
-    )
+       (macro unconfined_subj_type ((type ARG1))
+              (typeattributeset unconfined_subj_type_attribute ARG1))
 
-    ;
-    ; Policy
-    ;
+       ;;
+       ;; Policy
+       ;;
 
-    (typeattribute obj_type_attribute)
-    (typeattribute unconfined_subj_type_attribute)
+       (typeattribute obj_type_attribute)
+       (typeattribute unconfined_subj_type_attribute)
 
-    (allow obj_type_attribute self
-        (filesystem
-            (
-                associate
-            )
-        )
-    )
+       (allow obj_type_attribute self (filesystem (associate)))
 
-    (allow unconfined_subj_type_attribute obj_type_attribute
-        blk_file_except_execmod_map_and_mounton)
-    (allow unconfined_subj_type_attribute obj_type_attribute
-        chr_file_except_execmod_and_mounton)
-    (allow unconfined_subj_type_attribute obj_type_attribute
-        dir_except_execmod_and_map)
-    (allow unconfined_subj_type_attribute obj_type_attribute
-        fifo_file_except_execmod_map_and_mounton)
-    (allow unconfined_subj_type_attribute obj_type_attribute
-        file_except_entrypoint_execmod_and_mounton)
+       (allow unconfined_subj_type_attribute obj_type_attribute
+              blk_file_except_execmod_map_and_mounton)
+       (allow unconfined_subj_type_attribute obj_type_attribute
+              chr_file_except_execmod_and_mounton)
+       (allow unconfined_subj_type_attribute obj_type_attribute
+              dir_except_execmod_and_map)
+       (allow unconfined_subj_type_attribute obj_type_attribute
+              fifo_file_except_execmod_map_and_mounton)
+       (allow unconfined_subj_type_attribute obj_type_attribute
+              file_except_entrypoint_execmod_and_mounton)
 
-    (allow unconfined_subj_type_attribute obj_type_attribute
-        (filesystem
-            (
-                all
-            )
-        )
-    )
+       (allow unconfined_subj_type_attribute obj_type_attribute (filesystem
+                                                                 (all)))
 
-    (allow unconfined_subj_type_attribute obj_type_attribute
-        lnk_file_except_execmod_map_and_mounton)
-    (allow unconfined_subj_type_attribute obj_type_attribute
-        sock_file_except_execmod_map_and_mounton)
+       (allow unconfined_subj_type_attribute obj_type_attribute
+              lnk_file_except_execmod_map_and_mounton)
+       (allow unconfined_subj_type_attribute obj_type_attribute
+              sock_file_except_execmod_map_and_mounton)
 
-    (call sys.obj_type
-        (
-            obj_type_attribute
-        )
-    )
+       (call sys.obj_type (obj_type_attribute))
 
-    ;
-    ; Templates
-    ;
+       ;;
+       ;; Templates
+       ;;
 
-    (block obj_all_macro_template
+       (block obj_all_macro_template
 
-        ;
-        ; Macros
-        ;
+              ;;
+              ;; Macros
+              ;;
 
-        (macro dontaudit_getattr_fs ((type ARG1))
-            (dontaudit ARG1 obj_type_attribute
-                (filesystem
-                    (
-                        getattr
-                    )
-                )
-            )
-        )
+              (macro dontaudit_getattr_fs ((type ARG1))
+                     (dontaudit ARG1 obj_type_attribute (filesystem
+                                                         (getattr))))
 
-        (macro add_entries ((type ARG1))
-            (allow ARG1 obj_type_attribute add_entry_dir_perms)
-        )
+              (macro add_entries ((type ARG1))
+                     (allow ARG1 obj_type_attribute add_entry_dir_perms))
 
-        (macro append_files ((type ARG1))
-            (allow ARG1 obj_type_attribute append_file_perms)
-            (call search
-                (
-                    ARG1
-                )
-            )
-        )
+              (macro append_files ((type ARG1))
+                     (allow ARG1 obj_type_attribute append_file_perms)
+                     (call search (ARG1)))
 
-        (macro associate ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (filesystem
-                    (
-                        associate
-                    )
-                )
-            )
-        )
+              (macro associate ((type ARG1))
+                     (allow ARG1 obj_type_attribute (filesystem (associate))))
 
-        (macro create ((type ARG1))
-            (call create_dirs
-                (
-                    ARG1
-                )
-            )
-            (call create_files
-                (
-                    ARG1
-                )
-            )
-            (call create_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+              (macro create ((type ARG1))
+                     (call create_dirs (ARG1))
+                     (call create_files (ARG1))
+                     (call create_lnk_files (ARG1)))
 
-        (macro create_dirs ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (dirs
-                    (
-                        create
-                    )
-                )
-            )
-        )
+              (macro create_dirs ((type ARG1))
+                     (allow ARG1 obj_type_attribute (dirs (create))))
 
-        (macro create_files ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (files
-                    (
-                        create
-                    )
-                )
-            )
-        )
+              (macro create_files ((type ARG1))
+                     (allow ARG1 obj_type_attribute (files (create))))
 
-        (macro create_lnk_files ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (lnk_files
-                    (
-                        create
-                    )
-                )
-            )
-        )
+              (macro create_lnk_files ((type ARG1))
+                     (allow ARG1 obj_type_attribute (lnk_files (create))))
 
-        (macro del_entries ((type ARG1))
-            (allow ARG1 obj_type_attribute del_entry_dir_perms)
-        )
+              (macro del_entries ((type ARG1))
+                     (allow ARG1 obj_type_attribute del_entry_dir_perms))
 
-        (macro delete ((type ARG1))
-            (call delete_dirs
-                (
-                    ARG1
-                )
-            )
-            (call delete_files
-                (
-                    ARG1
-                )
-            )
-            (call delete_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+              (macro delete ((type ARG1))
+                     (call delete_dirs (ARG1))
+                     (call delete_files (ARG1))
+                     (call delete_lnk_files (ARG1)))
 
-        (macro delete_dirs ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (dirs
-                    (
-                        delete
-                    )
-                )
-            )
-        )
+              (macro delete_dirs ((type ARG1))
+                     (allow ARG1 obj_type_attribute (dirs (delete))))
 
-        (macro delete_files ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (files
-                    (
-                        delete
-                    )
-                )
-            )
-        )
+              (macro delete_files ((type ARG1))
+                     (allow ARG1 obj_type_attribute (files (delete))))
 
-        (macro delete_lnk_files ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (lnk_files
-                    (
-                        delete
-                    )
-                )
-            )
-        )
+              (macro delete_lnk_files ((type ARG1))
+                     (allow ARG1 obj_type_attribute (lnk_files (delete))))
 
-        (macro execute ((type ARG1))
-            (allow ARG1 obj_type_attribute exec_file_perms)
-            (call search
-                (
-                    ARG1
-                )
-            )
-        )
+              (macro execute ((type ARG1))
+                     (allow ARG1 obj_type_attribute exec_file_perms)
+                     (call search (ARG1)))
 
-        (macro getattr ((type ARG1))
-            (call getattr_dirs
-                (
-                    ARG1
-                )
-            )
-            (call getattr_files
-                (
-                    ARG1
-                )
-            )
-            (call getattr_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+              (macro getattr ((type ARG1))
+                     (call getattr_dirs (ARG1))
+                     (call getattr_files (ARG1))
+                     (call getattr_lnk_files (ARG1)))
 
-        (macro getattr_dirs ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (dirs
-                    (
-                        getattr
-                    )
-                )
-            )
-        )
+              (macro getattr_dirs ((type ARG1))
+                     (allow ARG1 obj_type_attribute (dirs (getattr))))
 
-        (macro getattr_files ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (files
-                    (
-                        getattr
-                    )
-                )
-            )
-        )
+              (macro getattr_files ((type ARG1))
+                     (allow ARG1 obj_type_attribute (files (getattr))))
 
-        (macro getattr_fs ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (filesystem
-                    (
-                        getattr
-                    )
-                )
-            )
-        )
+              (macro getattr_fs ((type ARG1))
+                     (allow ARG1 obj_type_attribute (filesystem (getattr))))
 
-        (macro getattr_lnk_files ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (lnk_files
-                    (
-                        getattr
-                    )
-                )
-            )
-        )
+              (macro getattr_lnk_files ((type ARG1))
+                     (allow ARG1 obj_type_attribute (lnk_files (getattr))))
 
-        (macro list ((type ARG1))
-            (allow ARG1 obj_type_attribute list_dir_perms)
-        )
+              (macro list ((type ARG1))
+                     (allow ARG1 obj_type_attribute list_dir_perms))
 
-        (macro manage ((type ARG1))
-            (call manage_dirs
-                (
-                    ARG1
-                )
-            )
-            (call manage_files
-                (
-                    ARG1
-                )
-            )
-            (call manage_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+              (macro manage ((type ARG1))
+                     (call manage_dirs (ARG1))
+                     (call manage_files (ARG1))
+                     (call manage_lnk_files (ARG1)))
 
-        (macro manage_dirs ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (dirs
-                    (
-                        manage
-                    )
-                )
-            )
-        )
+              (macro manage_dirs ((type ARG1))
+                     (allow ARG1 obj_type_attribute (dirs (manage))))
 
-        (macro manage_files ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (files
-                    (
-                        manage
-                    )
-                )
-            )
-        )
+              (macro manage_files ((type ARG1))
+                     (allow ARG1 obj_type_attribute (files (manage))))
 
-        (macro manage_lnk_files ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (lnk_files
-                    (
-                        manage
-                    )
-                )
-            )
-        )
+              (macro manage_lnk_files ((type ARG1))
+                     (allow ARG1 obj_type_attribute (lnk_files (manage))))
 
-        (macro map_files ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (files
-                    (
-                        map
-                    )
-                )
-            )
-        )
+              (macro map_files ((type ARG1))
+                     (allow ARG1 obj_type_attribute (files (map))))
 
-        (macro mmap ((type ARG1))
-            (allow ARG1 obj_type_attribute mmap_file_perms)
-            (call search
-                (
-                    ARG1
-                )
-            )
-        )
+              (macro mmap ((type ARG1))
+                     (allow ARG1 obj_type_attribute mmap_file_perms)
+                     (call search (ARG1)))
 
-        (macro mount ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (filesystem
-                    (
-                        mount
-                    )
-                )
-            )
-        )
+              (macro mount ((type ARG1))
+                     (allow ARG1 obj_type_attribute (filesystem (mount))))
 
-        (macro obj_type ((type ARG1))
-            (typeattributeset obj_type_attribute ARG1)
-        )
+              (macro obj_type ((type ARG1))
+                     (typeattributeset obj_type_attribute ARG1))
 
-        (macro quotaget ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (filesystem
-                    (
-                        quotaget
-                    )
-                )
-            )
-        )
+              (macro quotaget ((type ARG1))
+                     (allow ARG1 obj_type_attribute (filesystem (quotaget))))
 
-        (macro quotamod ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (filesystem
-                    (
-                        quotamod
-                    )
-                )
-            )
-        )
+              (macro quotamod ((type ARG1))
+                     (allow ARG1 obj_type_attribute (filesystem (quotamod))))
 
-        (macro read ((type ARG1))
-            (call list
-                (
-                    ARG1
-                )
-            )
-            (call read_files
-                (
-                    ARG1
-                )
-            )
-            (call read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+              (macro read ((type ARG1))
+                     (call list (ARG1))
+                     (call read_files (ARG1))
+                     (call read_lnk_files (ARG1)))
 
-        (macro read_files ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (files
-                    (
-                        read
-                    )
-                )
-            )
-        )
+              (macro read_files ((type ARG1))
+                     (allow ARG1 obj_type_attribute (files (read))))
 
-        (macro read_lnk_files ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (lnk_files
-                    (
-                        read
-                    )
-                )
-            )
-        )
+              (macro read_lnk_files ((type ARG1))
+                     (allow ARG1 obj_type_attribute (lnk_files (read))))
 
-        (macro relabel ((type ARG1))
-            (call relabel_dirs
-                (
-                    ARG1
-                )
-            )
-            (call relabel_files
-                (
-                    ARG1
-                )
-            )
-            (call relabel_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+              (macro relabel ((type ARG1))
+                     (call relabel_dirs (ARG1))
+                     (call relabel_files (ARG1))
+                     (call relabel_lnk_files (ARG1)))
     
-        (macro relabel_dirs ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (dirs
-                    (
-                        relabel
-                    )
-                )
-            )
-        )
-
-        (macro relabel_files ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (files
-                    (
-                        relabel
-                    )
-                )
-            )
-        )
-
-        (macro relabel_fs ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (filesystem
-                    (
-                        getattr
-                        relabelfrom
-                        relabelto
-                    )
-                )
-            )
-        )
-
-        (macro relabel_lnk_files ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (lnk_files
-                    (
-                        relabel
-                    )
-                )
-            )
-        )
-
-        (macro relabelfrom ((type ARG1))
-            (call relabelfrom_dirs
-                (
-                    ARG1
-                )
-            )
-            (call relabelfrom_files
-                (
-                    ARG1
-                )
-            )
-            (call relabelfrom_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabelfrom_dirs ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (dirs
-                    (
-                        relabelfrom
-                    )
-                )
-            )
-        )
-
-        (macro relabelfrom_files ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (files
-                    (
-                        relabelfrom
-                    )
-                )
-            )
-        )
-
-        (macro relabelfrom_fs ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (filesystem
-                    (
-                        getattr
-                        relabelfrom
-                    )
-                )
-            )
-        )
-
-        (macro relabelfrom_lnk_files ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (lnk_files
-                    (
-                        relabelfrom
-                    )
-                )
-            )
-        )
-
-        (macro relabelto ((type ARG1))
-            (call relabelto_dirs
-                (
-                    ARG1
-                )
-            )
-            (call relabelto_files
-                (
-                    ARG1
-                )
-            )
-            (call relabelto_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabelto_dirs ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (dirs
-                    (
-                        relabelto
-                    )
-                )
-            )
-        )
-
-        (macro relabelto_files ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (files
-                    (
-                        relabelto
-                    )
-                )
-            )
-        )
-
-        (macro relabelto_fs ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (filesystem
-                    (
-                        getattr
-                        relabelto
-                    )
-                )
-            )
-        )
-
-        (macro relabelto_lnk_files ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (lnk_files
-                    (
-                        relabelto
-                    )
-                )
-            )
-        )
-
-        (macro remount ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (filesystem
-                    (
-                        remount
-                    )
-                )
-            )
-        )
-
-        (macro rename ((type ARG1))
-            (call rename_dirs
-                (
-                    ARG1
-                )
-            )
-            (call rename_files
-                (
-                    ARG1
-                )
-            )
-            (call rename_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro rename_dirs ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (dirs
-                    (
-                        rename
-                    )
-                )
-            )
-        )
-
-        (macro rename_files ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (files
-                    (
-                        rename
-                    )
-                )
-            )
-        )
-
-        (macro rename_lnk_files ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (lnk_files
-                    (
-                        rename
-                    )
-                )
-            )
-        )
-
-        (macro rw ((type ARG1))
-            (call rw_dirs
-                (
-                    ARG1
-                )
-            )
-            (call rw_files
-                (
-                    ARG1
-                )
-            )
-            (call rw_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro rw_dirs ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (dirs
-                    (
-                        rw
-                    )
-                )
-            )
-        )
-
-        (macro rw_files ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (files
-                    (
-                        rw
-                    )
-                )
-            )
-        )
-
-        (macro rw_lnk_files ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (lnk_files
-                    (
-                        rw
-                    )
-                )
-            )
-        )
-
-        (macro search ((type ARG1))
-            (allow ARG1 obj_type_attribute search_dir_perms)
-        )
-
-        (macro setattr ((type ARG1))
-            (call setattr_dirs
-                (
-                    ARG1
-                )
-            )
-            (call setattr_files
-                (
-                    ARG1
-                )
-            )
-            (call setattr_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro setattr_dirs ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (dirs
-                    (
-                        setattr
-                    )
-                )
-            )
-        )
-
-        (macro setattr_files ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (files
-                    (
-                        setattr
-                    )
-                )
-            )
-        )
-
-        (macro setattr_lnk_files ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (lnk_files
-                    (
-                        setattr
-                    )
-                )
-            )
-        )
-
-        (macro write ((type ARG1))
-            (call write_dirs
-                (
-                    ARG1
-                )
-            )
-            (call write_files
-                (
-                    ARG1
-                )
-            )
-            (call write_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro write_dirs ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (dirs
-                    (
-                        write
-                    )
-                )
-            )
-        )
-
-        (macro write_files ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (files
-                    (
-                        write
-                    )
-                )
-            )
-        )
-
-        (macro write_lnk_files ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (lnk_files
-                    (
-                        write
-                    )
-                )
-            )
-        )
-
-        (macro unmount ((type ARG1))
-            (allow ARG1 obj_type_attribute
-                (filesystem
-                    (
-                        unmount
-                    )
-                )
-            )
-        )
-
-        ;
-        ; Policy
-        ;
-
-        (blockabstract obj_all_macro_template)
-    )
-
-    (block obj_stub
-
-        ;
-        ; Contexts
-        ;
-
-        (context fs_context
-            (
-                sys.id
-                sys.role
-                fs
-                    (
-                        systemlow
-                        systemlow
-                    )
-            )
-        )
-
-        ;
-        ; Policy
-        ;
-
-        (blockabstract obj_stub)
-
-        (type fs)
-        (call fs.obj_type
-            (
-                fs
-            )
-        )
-    )
-
-    (block obj_template
-
-        ;
-        ; Macros
-        ;
-
-        (macro associate ((type ARG1))
-            (allow ARG1 fs
-                (filesystem
-                    (
-                        associate
-                    )
-                )
-            )
-        )
-
-        (macro getattr_fs ((type ARG1))
-            (allow ARG1 fs
-                (filesystem
-                    (
-                        getattr
-                    )
-                )
-            )
-        )
-
-        (macro mount ((type ARG1))
-            (allow ARG1 fs
-                (filesystem
-                    (
-                        mount
-                    )
-                )
-            )
-        )
-
-        (macro quotaget ((type ARG1))
-            (allow ARG1 fs
-                (filesystem
-                    (
-                        quotaget
-                    )
-                )
-            )
-        )
-
-        (macro quotamod ((type ARG1))
-            (allow ARG1 fs
-                (filesystem
-                    (
-                        quotamod
-                    )
-                )
-            )
-        )
-
-        (macro relabel_fs ((type ARG1))
-            (allow ARG1 fs
-                (filesystem
-                    (
-                        getattr
-                        relabelfrom
-                        relabelto
-                    )
-                )
-            )
-        )
-
-        (macro relabelfrom_fs ((type ARG1))
-            (allow ARG1 fs
-                (filesystem
-                    (
-                        getattr
-                        relabelfrom
-                    )
-                )
-            )
-        )
-
-        (macro relabelto_fs ((type ARG1))
-            (allow ARG1 fs
-                (filesystem
-                    (
-                        getattr
-                        relabelto
-                    )
-                )
-            )
-        )
-
-        (macro remount ((type ARG1))
-            (allow ARG1 fs
-                (filesystem
-                    (
-                        remount
-                    )
-                )
-            )
-        )
-
-        (macro unmount ((type ARG1))
-            (allow ARG1 fs
-                (filesystem
-                    (
-                        unmount
-                    )
-                )
-            )
-        )
-
-        ;
-        ; Policy
-        ;
-
-        (blockabstract obj_template)
-
-        (blockinherit fs.obj_stub)
-    )
-
-    (block aio
-
-        ;
-        ; Contexts
-        ;
-
-        (genfscon "aio" "/" fs_context)
-
-        ;
-        ; Macros
-        ;
-
-        (macro add_entries ((type ARG1))
-            (allow ARG1 fs add_entry_dir_perms)
-        )
-
-        (macro append_files ((type ARG1))
-            (allow ARG1 fs append_file_perms)
-            (call search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro create ((type ARG1))
-            (call create_dirs
-                (
-                    ARG1
-                )
-            )
-            (call create_files
-                (
-                    ARG1
-                )
-            )
-            (call create_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro create_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        create
-                    )
-                )
-            )
-        )
-
-        (macro create_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        create
-                    )
-                )
-            )
-        )
-
-        (macro create_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        create
-                    )
-                )
-            )
-        )
-
-        (macro del_entries ((type ARG1))
-            (allow ARG1 fs del_entry_dir_perms)
-        )
-
-        (macro delete ((type ARG1))
-            (call delete_dirs
-                (
-                    ARG1
-                )
-            )
-            (call delete_files
-                (
-                    ARG1
-                )
-            )
-            (call delete_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro delete_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        delete
-                    )
-                )
-            )
-        )
-
-        (macro delete_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        delete
-                    )
-                )
-            )
-        )
-
-        (macro delete_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        delete
-                    )
-                )
-            )
-        )
-
-        (macro execute ((type ARG1))
-            (allow ARG1 fs exec_file_perms)
-            (call search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro getattr ((type ARG1))
-            (call getattr_dirs
-                (
-                    ARG1
-                )
-            )
-            (call getattr_files
-                (
-                    ARG1
-                )
-            )
-            (call getattr_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro getattr_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        getattr
-                    )
-                )
-            )
-        )
-
-        (macro getattr_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        getattr
-                    )
-                )
-            )
-        )
-
-        (macro getattr_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        getattr
-                    )
-                )
-            )
-        )
-
-        (macro list ((type ARG1))
-            (allow ARG1 fs list_dir_perms)
-        )
-
-        (macro manage ((type ARG1))
-            (call manage_dirs
-                (
-                    ARG1
-                )
-            )
-            (call manage_files
-                (
-                    ARG1
-                )
-            )
-            (call manage_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro manage_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        manage
-                    )
-                )
-            )
-        )
-
-        (macro manage_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        manage
-                    )
-                )
-            )
-        )
-
-        (macro manage_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        manage
-                    )
-                )
-            )
-        )
-
-        (macro map_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        map
-                    )
-                )
-            )
-        )
-
-        (macro mmap ((type ARG1))
-            (allow ARG1 fs mmap_file_perms)
-            (call search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro read ((type ARG1))
-            (call list
-                (
-                    ARG1
-                )
-            )
-            (call read_files
-                (
-                    ARG1
-                )
-            )
-            (call read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro read_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        read
-                    )
-                )
-            )
-        )
-
-        (macro read_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        read
-                    )
-                )
-            )
-        )
-
-        (macro relabel ((type ARG1))
-            (call relabel_dirs
-                (
-                    ARG1
-                )
-            )
-            (call relabel_files
-                (
-                    ARG1
-                )
-            )
-            (call relabel_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabel_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        relabel
-                    )
-                )
-            )
-        )
-
-        (macro relabel_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        relabel
-                    )
-                )
-            )
-        )
-
-        (macro relabel_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        relabel
-                    )
-                )
-            )
-        )
-
-        (macro relabelfrom ((type ARG1))
-            (call relabelfrom_dirs
-                (
-                    ARG1
-                )
-            )
-            (call relabelfrom_files
-                (
-                    ARG1
-                )
-            )
-            (call relabelfrom_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabelfrom_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        relabelfrom
-                    )
-                )
-            )
-        )
-
-        (macro relabelfrom_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        relabelfrom
-                    )
-                )
-            )
-        )
-
-        (macro relabelfrom_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        relabelfrom
-                    )
-                )
-            )
-        )
-
-        (macro relabelto ((type ARG1))
-            (call relabelto_dirs
-                (
-                    ARG1
-                )
-            )
-            (call relabelto_files
-                (
-                    ARG1
-                )
-            )
-            (call relabelto_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabelto_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        relabelto
-                    )
-                )
-            )
-        )
-
-        (macro relabelto_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        relabelto
-                    )
-                )
-            )
-        )
-
-        (macro relabelto_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        relabelto
-                    )
-                )
-            )
-        )
-
-        (macro rename ((type ARG1))
-            (call rename_dirs
-                (
-                    ARG1
-                )
-            )
-            (call rename_files
-                (
-                    ARG1
-                )
-            )
-            (call rename_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro rename_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        rename
-                    )
-                )
-            )
-        )
-
-        (macro rename_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        rename
-                    )
-                )
-            )
-        )
-
-        (macro rename_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        rename
-                    )
-                )
-            )
-        )
-
-        (macro rw ((type ARG1))
-            (call rw_dirs
-                (
-                    ARG1
-                )
-            )
-            (call rw_files
-                (
-                    ARG1
-                )
-            )
-            (call rw_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro rw_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        rw
-                    )
-                )
-            )
-        )
-
-        (macro rw_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        rw
-                    )
-                )
-            )
-        )
-
-        (macro rw_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        rw
-                    )
-                )
-            )
-        )
-
-        (macro search ((type ARG1))
-            (allow ARG1 fs search_dir_perms)
-        )
-
-        (macro setattr ((type ARG1))
-            (call setattr_dirs
-                (
-                    ARG1
-                )
-            )
-            (call setattr_files
-                (
-                    ARG1
-                )
-            )
-            (call setattr_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro setattr_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        setattr
-                    )
-                )
-            )
-        )
-
-        (macro setattr_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        setattr
-                    )
-                )
-            )
-        )
-
-        (macro setattr_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        setattr
-                    )
-                )
-            )
-        )
-
-        (macro write ((type ARG1))
-            (call write_dirs
-                (
-                    ARG1
-                )
-            )
-            (call write_files
-                (
-                    ARG1
-                )
-            )
-            (call write_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro write_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        write
-                    )
-                )
-            )
-        )
-
-        (macro write_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        write
-                    )
-                )
-            )
-        )
-
-        (macro write_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        write
-                    )
-                )
-            )
-        )
-
-        ;
-        ; Policy
-        ;
-
-        (blockinherit fs.obj_template)
-    )
-
-    (block anon_inodefs
-
-        ;
-        ; Contexts
-        ;
-
-        (genfscon "anon_inodefs" "/" fs_context)
-
-        ;
-        ; Macros
-        ;
-
-        (macro add_entries ((type ARG1))
-            (allow ARG1 fs add_entry_dir_perms)
-        )
-
-        (macro append_files ((type ARG1))
-            (allow ARG1 fs append_file_perms)
-            (call search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro create ((type ARG1))
-            (call create_dirs
-                (
-                    ARG1
-                )
-            )
-            (call create_files
-                (
-                    ARG1
-                )
-            )
-            (call create_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro create_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        create
-                    )
-                )
-            )
-        )
-
-        (macro create_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        create
-                    )
-                )
-            )
-        )
-
-        (macro create_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        create
-                    )
-                )
-            )
-        )
-
-        (macro del_entries ((type ARG1))
-            (allow ARG1 fs del_entry_dir_perms)
-        )
-
-        (macro delete ((type ARG1))
-            (call delete_dirs
-                (
-                    ARG1
-                )
-            )
-            (call delete_files
-                (
-                    ARG1
-                )
-            )
-            (call delete_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro delete_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        delete
-                    )
-                )
-            )
-        )
-
-        (macro delete_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        delete
-                    )
-                )
-            )
-        )
-
-        (macro delete_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        delete
-                    )
-                )
-            )
-        )
-
-        (macro execute ((type ARG1))
-            (allow ARG1 fs exec_file_perms)
-            (call search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro getattr ((type ARG1))
-            (call getattr_dirs
-                (
-                    ARG1
-                )
-            )
-            (call getattr_files
-                (
-                    ARG1
-                )
-            )
-            (call getattr_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro getattr_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        getattr
-                    )
-                )
-            )
-        )
-
-        (macro getattr_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        getattr
-                    )
-                )
-            )
-        )
-
-        (macro getattr_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        getattr
-                    )
-                )
-            )
-        )
-
-        (macro list ((type ARG1))
-            (allow ARG1 fs list_dir_perms)
-        )
-
-        (macro manage ((type ARG1))
-            (call manage_dirs
-                (
-                    ARG1
-                )
-            )
-            (call manage_files
-                (
-                    ARG1
-                )
-            )
-            (call manage_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro manage_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        manage
-                    )
-                )
-            )
-        )
-
-        (macro manage_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        manage
-                    )
-                )
-            )
-        )
-
-        (macro manage_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        manage
-                    )
-                )
-            )
-        )
-
-        (macro map_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        map
-                    )
-                )
-            )
-        )
-
-        (macro mmap ((type ARG1))
-            (allow ARG1 fs mmap_file_perms)
-            (call search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro read ((type ARG1))
-            (call list
-                (
-                    ARG1
-                )
-            )
-            (call read_files
-                (
-                    ARG1
-                )
-            )
-            (call read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro read_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        read
-                    )
-                )
-            )
-        )
-
-        (macro read_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        read
-                    )
-                )
-            )
-        )
-
-        (macro relabel ((type ARG1))
-            (call relabel_dirs
-                (
-                    ARG1
-                )
-            )
-            (call relabel_files
-                (
-                    ARG1
-                )
-            )
-            (call relabel_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabel_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        relabel
-                    )
-                )
-            )
-        )
-
-        (macro relabel_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        relabel
-                    )
-                )
-            )
-        )
-
-        (macro relabel_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        relabel
-                    )
-                )
-            )
-        )
-
-        (macro relabelfrom ((type ARG1))
-            (call relabelfrom_dirs
-                (
-                    ARG1
-                )
-            )
-            (call relabelfrom_files
-                (
-                    ARG1
-                )
-            )
-            (call relabelfrom_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabelfrom_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        relabelfrom
-                    )
-                )
-            )
-        )
-
-        (macro relabelfrom_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        relabelfrom
-                    )
-                )
-            )
-        )
-
-        (macro relabelfrom_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        relabelfrom
-                    )
-                )
-            )
-        )
-
-        (macro relabelto ((type ARG1))
-            (call relabelto_dirs
-                (
-                    ARG1
-                )
-            )
-            (call relabelto_files
-                (
-                    ARG1
-                )
-            )
-            (call relabelto_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabelto_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        relabelto
-                    )
-                )
-            )
-        )
-
-        (macro relabelto_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        relabelto
-                    )
-                )
-            )
-        )
-
-        (macro relabelto_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        relabelto
-                    )
-                )
-            )
-        )
-
-        (macro rename ((type ARG1))
-            (call rename_dirs
-                (
-                    ARG1
-                )
-            )
-            (call rename_files
-                (
-                    ARG1
-                )
-            )
-            (call rename_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro rename_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        rename
-                    )
-                )
-            )
-        )
-
-        (macro rename_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        rename
-                    )
-                )
-            )
-        )
-
-        (macro rename_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        rename
-                    )
-                )
-            )
-        )
-
-        (macro rw ((type ARG1))
-            (call rw_dirs
-                (
-                    ARG1
-                )
-            )
-            (call rw_files
-                (
-                    ARG1
-                )
-            )
-            (call rw_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro rw_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        rw
-                    )
-                )
-            )
-        )
-
-        (macro rw_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        rw
-                    )
-                )
-            )
-        )
-
-        (macro rw_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        rw
-                    )
-                )
-            )
-        )
-
-        (macro search ((type ARG1))
-            (allow ARG1 fs search_dir_perms)
-        )
-
-        (macro setattr ((type ARG1))
-            (call setattr_dirs
-                (
-                    ARG1
-                )
-            )
-            (call setattr_files
-                (
-                    ARG1
-                )
-            )
-            (call setattr_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro setattr_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        setattr
-                    )
-                )
-            )
-        )
-
-        (macro setattr_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        setattr
-                    )
-                )
-            )
-        )
-
-        (macro setattr_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        setattr
-                    )
-                )
-            )
-        )
-
-        (macro write ((type ARG1))
-            (call write_dirs
-                (
-                    ARG1
-                )
-            )
-            (call write_files
-                (
-                    ARG1
-                )
-            )
-            (call write_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro write_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        write
-                    )
-                )
-            )
-        )
-
-        (macro write_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        write
-                    )
-                )
-            )
-        )
-
-        (macro write_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        write
-                    )
-                )
-            )
-        )
-
-        ;
-        ; Policy
-        ;
-
-        (blockinherit fs.obj_template)
-    )
-
-    (block autofs
-
-        ;
-        ; Contexts
-        ;
-
-        (genfscon "autofs" "/" fs_context)
-
-        ;
-        ; Macros
-        ;
-
-        (macro add_entries ((type ARG1))
-            (allow ARG1 fs add_entry_dir_perms)
-        )
-
-        (macro append_files ((type ARG1))
-            (allow ARG1 fs append_file_perms)
-            (call search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro create ((type ARG1))
-            (call create_dirs
-                (
-                    ARG1
-                )
-            )
-            (call create_files
-                (
-                    ARG1
-                )
-            )
-            (call create_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro create_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        create
-                    )
-                )
-            )
-        )
-
-        (macro create_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        create
-                    )
-                )
-            )
-        )
-
-        (macro create_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        create
-                    )
-                )
-            )
-        )
-
-        (macro del_entries ((type ARG1))
-            (allow ARG1 fs del_entry_dir_perms)
-        )
-
-        (macro delete ((type ARG1))
-            (call delete_dirs
-                (
-                    ARG1
-                )
-            )
-            (call delete_files
-                (
-                    ARG1
-                )
-            )
-            (call delete_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro delete_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        delete
-                    )
-                )
-            )
-        )
-
-        (macro delete_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        delete
-                    )
-                )
-            )
-        )
-
-        (macro delete_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        delete
-                    )
-                )
-            )
-        )
-
-        (macro execute ((type ARG1))
-            (allow ARG1 fs exec_file_perms)
-            (call search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro getattr ((type ARG1))
-            (call getattr_dirs
-                (
-                    ARG1
-                )
-            )
-            (call getattr_files
-                (
-                    ARG1
-                )
-            )
-            (call getattr_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro getattr_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        getattr
-                    )
-                )
-            )
-        )
-
-        (macro getattr_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        getattr
-                    )
-                )
-            )
-        )
-
-        (macro getattr_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        getattr
-                    )
-                )
-            )
-        )
-
-        (macro list ((type ARG1))
-            (allow ARG1 fs list_dir_perms)
-        )
-
-        (macro manage ((type ARG1))
-            (call manage_dirs
-                (
-                    ARG1
-                )
-            )
-            (call manage_files
-                (
-                    ARG1
-                )
-            )
-            (call manage_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro manage_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        manage
-                    )
-                )
-            )
-        )
-
-        (macro manage_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        manage
-                    )
-                )
-            )
-        )
-
-        (macro manage_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        manage
-                    )
-                )
-            )
-        )
-
-        (macro map_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        map
-                    )
-                )
-            )
-        )
-
-        (macro mmap ((type ARG1))
-            (allow ARG1 fs mmap_file_perms)
-            (call search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro read ((type ARG1))
-            (call list
-                (
-                    ARG1
-                )
-            )
-            (call read_files
-                (
-                    ARG1
-                )
-            )
-            (call read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro read_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        read
-                    )
-                )
-            )
-        )
-
-        (macro read_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        read
-                    )
-                )
-            )
-        )
-
-        (macro relabel ((type ARG1))
-            (call relabel_dirs
-                (
-                    ARG1
-                )
-            )
-            (call relabel_files
-                (
-                    ARG1
-                )
-            )
-            (call relabel_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabel_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        relabel
-                    )
-                )
-            )
-        )
-
-        (macro relabel_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        relabel
-                    )
-                )
-            )
-        )
-
-        (macro relabel_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        relabel
-                    )
-                )
-            )
-        )
-
-        (macro relabelfrom ((type ARG1))
-            (call relabelfrom_dirs
-                (
-                    ARG1
-                )
-            )
-            (call relabelfrom_files
-                (
-                    ARG1
-                )
-            )
-            (call relabelfrom_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabelfrom_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        relabelfrom
-                    )
-                )
-            )
-        )
-
-        (macro relabelfrom_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        relabelfrom
-                    )
-                )
-            )
-        )
-
-        (macro relabelfrom_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        relabelfrom
-                    )
-                )
-            )
-        )
-
-        (macro relabelto ((type ARG1))
-            (call relabelto_dirs
-                (
-                    ARG1
-                )
-            )
-            (call relabelto_files
-                (
-                    ARG1
-                )
-            )
-            (call relabelto_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabelto_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        relabelto
-                    )
-                )
-            )
-        )
-
-        (macro relabelto_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        relabelto
-                    )
-                )
-            )
-        )
-
-        (macro relabelto_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        relabelto
-                    )
-                )
-            )
-        )
-
-        (macro rename ((type ARG1))
-            (call rename_dirs
-                (
-                    ARG1
-                )
-            )
-            (call rename_files
-                (
-                    ARG1
-                )
-            )
-            (call rename_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro rename_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        rename
-                    )
-                )
-            )
-        )
-
-        (macro rename_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        rename
-                    )
-                )
-            )
-        )
-
-        (macro rename_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        rename
-                    )
-                )
-            )
-        )
-
-        (macro rw ((type ARG1))
-            (call rw_dirs
-                (
-                    ARG1
-                )
-            )
-            (call rw_files
-                (
-                    ARG1
-                )
-            )
-            (call rw_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro rw_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        rw
-                    )
-                )
-            )
-        )
-
-        (macro rw_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        rw
-                    )
-                )
-            )
-        )
-
-        (macro rw_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        rw
-                    )
-                )
-            )
-        )
-
-        (macro search ((type ARG1))
-            (allow ARG1 fs search_dir_perms)
-        )
-
-        (macro setattr ((type ARG1))
-            (call setattr_dirs
-                (
-                    ARG1
-                )
-            )
-            (call setattr_files
-                (
-                    ARG1
-                )
-            )
-            (call setattr_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro setattr_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        setattr
-                    )
-                )
-            )
-        )
-
-        (macro setattr_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        setattr
-                    )
-                )
-            )
-        )
-
-        (macro setattr_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        setattr
-                    )
-                )
-            )
-        )
-
-        (macro write ((type ARG1))
-            (call write_dirs
-                (
-                    ARG1
-                )
-            )
-            (call write_files
-                (
-                    ARG1
-                )
-            )
-            (call write_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro write_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        write
-                    )
-                )
-            )
-        )
-
-        (macro write_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        write
-                    )
-                )
-            )
-        )
-
-        (macro write_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        write
-                    )
-                )
-            )
-        )
-
-        ;
-        ; Policy
-        ;
-
-        (blockinherit fs.obj_template)
-
-        (call sys.mountpoint.obj_type
-            (
-                fs
-            )
-        )
-    )
-
-    (block bdev
-
-        ;
-        ; Contexts
-        ;
-
-        (genfscon "bdev" "/" fs_context)
-
-        ;
-        ; Macros
-        ;
-
-        (macro add_entries ((type ARG1))
-            (allow ARG1 fs add_entry_dir_perms)
-        )
-
-        (macro append_files ((type ARG1))
-            (allow ARG1 fs append_file_perms)
-            (call search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro create ((type ARG1))
-            (call create_dirs
-                (
-                    ARG1
-                )
-            )
-            (call create_files
-                (
-                    ARG1
-                )
-            )
-            (call create_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro create_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        create
-                    )
-                )
-            )
-        )
-
-        (macro create_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        create
-                    )
-                )
-            )
-        )
-
-        (macro create_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        create
-                    )
-                )
-            )
-        )
-
-        (macro del_entries ((type ARG1))
-            (allow ARG1 fs del_entry_dir_perms)
-        )
-
-        (macro delete ((type ARG1))
-            (call delete_dirs
-                (
-                    ARG1
-                )
-            )
-            (call delete_files
-                (
-                    ARG1
-                )
-            )
-            (call delete_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro delete_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        delete
-                    )
-                )
-            )
-        )
-
-        (macro delete_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        delete
-                    )
-                )
-            )
-        )
-
-        (macro delete_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        delete
-                    )
-                )
-            )
-        )
-
-        (macro execute ((type ARG1))
-            (allow ARG1 fs exec_file_perms)
-            (call search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro getattr ((type ARG1))
-            (call getattr_dirs
-                (
-                    ARG1
-                )
-            )
-            (call getattr_files
-                (
-                    ARG1
-                )
-            )
-            (call getattr_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro getattr_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        getattr
-                    )
-                )
-            )
-        )
-
-        (macro getattr_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        getattr
-                    )
-                )
-            )
-        )
-
-        (macro getattr_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        getattr
-                    )
-                )
-            )
-        )
-
-        (macro list ((type ARG1))
-            (allow ARG1 fs list_dir_perms)
-        )
-
-        (macro manage ((type ARG1))
-            (call manage_dirs
-                (
-                    ARG1
-                )
-            )
-            (call manage_files
-                (
-                    ARG1
-                )
-            )
-            (call manage_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro manage_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        manage
-                    )
-                )
-            )
-        )
-
-        (macro manage_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        manage
-                    )
-                )
-            )
-        )
-
-        (macro manage_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        manage
-                    )
-                )
-            )
-        )
-
-        (macro map_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        map
-                    )
-                )
-            )
-        )
-
-        (macro mmap ((type ARG1))
-            (allow ARG1 fs mmap_file_perms)
-            (call search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro read ((type ARG1))
-            (call list
-                (
-                    ARG1
-                )
-            )
-            (call read_files
-                (
-                    ARG1
-                )
-            )
-            (call read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro read_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        read
-                    )
-                )
-            )
-        )
-
-        (macro read_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        read
-                    )
-                )
-            )
-        )
-
-        (macro relabel ((type ARG1))
-            (call relabel_dirs
-                (
-                    ARG1
-                )
-            )
-            (call relabel_files
-                (
-                    ARG1
-                )
-            )
-            (call relabel_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabel_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        relabel
-                    )
-                )
-            )
-        )
-
-        (macro relabel_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        relabel
-                    )
-                )
-            )
-        )
-
-        (macro relabel_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        relabel
-                    )
-                )
-            )
-        )
-
-        (macro relabelfrom ((type ARG1))
-            (call relabelfrom_dirs
-                (
-                    ARG1
-                )
-            )
-            (call relabelfrom_files
-                (
-                    ARG1
-                )
-            )
-            (call relabelfrom_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabelfrom_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        relabelfrom
-                    )
-                )
-            )
-        )
-
-        (macro relabelfrom_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        relabelfrom
-                    )
-                )
-            )
-        )
-
-        (macro relabelfrom_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        relabelfrom
-                    )
-                )
-            )
-        )
-
-        (macro relabelto ((type ARG1))
-            (call relabelto_dirs
-                (
-                    ARG1
-                )
-            )
-            (call relabelto_files
-                (
-                    ARG1
-                )
-            )
-            (call relabelto_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabelto_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        relabelto
-                    )
-                )
-            )
-        )
-
-        (macro relabelto_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        relabelto
-                    )
-                )
-            )
-        )
-
-        (macro relabelto_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        relabelto
-                    )
-                )
-            )
-        )
-
-        (macro rename ((type ARG1))
-            (call rename_dirs
-                (
-                    ARG1
-                )
-            )
-            (call rename_files
-                (
-                    ARG1
-                )
-            )
-            (call rename_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro rename_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        rename
-                    )
-                )
-            )
-        )
-
-        (macro rename_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        rename
-                    )
-                )
-            )
-        )
-
-        (macro rename_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        rename
-                    )
-                )
-            )
-        )
-
-        (macro rw ((type ARG1))
-            (call rw_dirs
-                (
-                    ARG1
-                )
-            )
-            (call rw_files
-                (
-                    ARG1
-                )
-            )
-            (call rw_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro rw_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        rw
-                    )
-                )
-            )
-        )
-
-        (macro rw_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        rw
-                    )
-                )
-            )
-        )
-
-        (macro rw_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        rw
-                    )
-                )
-            )
-        )
-
-        (macro search ((type ARG1))
-            (allow ARG1 fs search_dir_perms)
-        )
-
-        (macro setattr ((type ARG1))
-            (call setattr_dirs
-                (
-                    ARG1
-                )
-            )
-            (call setattr_files
-                (
-                    ARG1
-                )
-            )
-            (call setattr_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro setattr_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        setattr
-                    )
-                )
-            )
-        )
-
-        (macro setattr_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        setattr
-                    )
-                )
-            )
-        )
-
-        (macro setattr_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        setattr
-                    )
-                )
-            )
-        )
-
-        (macro write ((type ARG1))
-            (call write_dirs
-                (
-                    ARG1
-                )
-            )
-            (call write_files
-                (
-                    ARG1
-                )
-            )
-            (call write_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro write_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        write
-                    )
-                )
-            )
-        )
-
-        (macro write_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        write
-                    )
-                )
-            )
-        )
-
-        (macro write_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        write
-                    )
-                )
-            )
-        )
-
-        ;
-        ; Policy
-        ;
-
-        (blockinherit fs.obj_template)
-    )
+              (macro relabel_dirs ((type ARG1))
+                     (allow ARG1 obj_type_attribute (dirs (relabel))))
+
+              (macro relabel_files ((type ARG1))
+                     (allow ARG1 obj_type_attribute (files (relabel))))
+
+              (macro relabel_fs ((type ARG1))
+                     (allow ARG1 obj_type_attribute
+                            (filesystem (getattr relabelfrom relabelto))))
+
+              (macro relabel_lnk_files ((type ARG1))
+                     (allow ARG1 obj_type_attribute (lnk_files (relabel))))
+
+              (macro relabelfrom ((type ARG1))
+                     (call relabelfrom_dirs (ARG1))
+                     (call relabelfrom_files (ARG1))
+                     (call relabelfrom_lnk_files (ARG1)))
+
+              (macro relabelfrom_dirs ((type ARG1))
+                     (allow ARG1 obj_type_attribute (dirs (relabelfrom))))
+
+              (macro relabelfrom_files ((type ARG1))
+                     (allow ARG1 obj_type_attribute (files (relabelfrom))))
+
+              (macro relabelfrom_fs ((type ARG1))
+                     (allow ARG1 obj_type_attribute (filesystem
+                                                     (getattr relabelfrom))))
+
+              (macro relabelfrom_lnk_files ((type ARG1))
+                     (allow ARG1 obj_type_attribute (lnk_files (relabelfrom))))
+
+              (macro relabelto ((type ARG1))
+                     (call relabelto_dirs (ARG1))
+                     (call relabelto_files (ARG1))
+                     (call relabelto_lnk_files (ARG1)))
+
+              (macro relabelto_dirs ((type ARG1))
+                     (allow ARG1 obj_type_attribute (dirs (relabelto))))
+
+              (macro relabelto_files ((type ARG1))
+                     (allow ARG1 obj_type_attribute (files (relabelto))))
+
+              (macro relabelto_fs ((type ARG1))
+                     (allow ARG1 obj_type_attribute (filesystem
+                                                     (getattr relabelto))))
+
+              (macro relabelto_lnk_files ((type ARG1))
+                     (allow ARG1 obj_type_attribute (lnk_files (relabelto))))
+
+              (macro remount ((type ARG1))
+                     (allow ARG1 obj_type_attribute (filesystem (remount))))
+
+              (macro rename ((type ARG1))
+                     (call rename_dirs (ARG1))
+                     (call rename_files (ARG1))
+                     (call rename_lnk_files (ARG1)))
+
+              (macro rename_dirs ((type ARG1))
+                     (allow ARG1 obj_type_attribute (dirs (rename))))
+
+              (macro rename_files ((type ARG1))
+                     (allow ARG1 obj_type_attribute (files (rename))))
+
+              (macro rename_lnk_files ((type ARG1))
+                     (allow ARG1 obj_type_attribute (lnk_files (rename))))
+
+              (macro rw ((type ARG1))
+                     (call rw_dirs (ARG1))
+                     (call rw_files (ARG1))
+                     (call rw_lnk_files (ARG1)))
+
+              (macro rw_dirs ((type ARG1))
+                     (allow ARG1 obj_type_attribute (dirs (rw))))
+
+              (macro rw_files ((type ARG1))
+                     (allow ARG1 obj_type_attribute (files (rw))))
+
+              (macro rw_lnk_files ((type ARG1))
+                     (allow ARG1 obj_type_attribute (lnk_files (rw))))
+
+              (macro search ((type ARG1))
+                     (allow ARG1 obj_type_attribute search_dir_perms))
+
+              (macro setattr ((type ARG1))
+                     (call setattr_dirs (ARG1))
+                     (call setattr_files (ARG1))
+                     (call setattr_lnk_files (ARG1)))
+
+              (macro setattr_dirs ((type ARG1))
+                     (allow ARG1 obj_type_attribute (dirs (setattr))))
+
+              (macro setattr_files ((type ARG1))
+                     (allow ARG1 obj_type_attribute (files (setattr))))
+
+              (macro setattr_lnk_files ((type ARG1))
+                     (allow ARG1 obj_type_attribute (lnk_file (setattr))))
+
+              (macro write ((type ARG1))
+                     (call write_dirs (ARG1))
+                     (call write_files (ARG1))
+                     (call write_lnk_files (ARG1)))
+
+              (macro write_dirs ((type ARG1))
+                     (allow ARG1 obj_type_attribute (dirs (write))))
+
+              (macro write_files ((type ARG1))
+                     (allow ARG1 obj_type_attribute (files (write))))
+
+              (macro write_lnk_files ((type ARG1))
+                     (allow ARG1 obj_type_attribute (lnk_files (write))))
+
+              (macro unmount ((type ARG1))
+                     (allow ARG1 obj_type_attribute (filesystem (unmount))))
+
+              ;;
+              ;; Policy
+              ;;
+
+              (blockabstract obj_all_macro_template))
+
+       (block obj_stub
+
+              ;;
+              ;; Contexts
+              ;;
+
+              (context fs_context (sys.id sys.role fs (systemlow systemlow)))
+
+              ;;
+              ;; Policy
+              ;;
+
+              (blockabstract obj_stub)
+
+              (type fs)
+              (call fs.obj_type (fs)))
+
+       (block obj_template
+
+              ;;
+              ;; Macros
+              ;;
+
+              (macro associate ((type ARG1))
+                     (allow ARG1 fs (filesystem (associate))))
+
+              (macro getattr_fs ((type ARG1))
+                     (allow ARG1 fs (filesystem (getattr))))
+
+              (macro mount ((type ARG1))
+                     (allow ARG1 fs (filesystem (mount))))
+
+              (macro quotaget ((type ARG1))
+                     (allow ARG1 fs (filesystem (quotaget))))
+
+              (macro quotamod ((type ARG1))
+                     (allow ARG1 fs (filesystem (quotamod))))
+
+              (macro relabel_fs ((type ARG1))
+                     (allow ARG1 fs (filesystem (getattr relabelfrom
+                                                         relabelto))))
+
+              (macro relabelfrom_fs ((type ARG1))
+                     (allow ARG1 fs (filesystem (getattr relabelfrom))))
+
+              (macro relabelto_fs ((type ARG1))
+                     (allow ARG1 fs (filesystem (getattr relabelto))))
+
+              (macro remount ((type ARG1))
+                     (allow ARG1 fs (filesystem (remount))))
+
+              (macro unmount ((type ARG1))
+                     (allow ARG1 fs (filesystem (unmount))))
+
+              ;;
+              ;; Policy
+              ;;
+
+              (blockabstract obj_template)
+
+              (blockinherit fs.obj_stub))
+
+       (block aio
+
+              ;;
+              ;; Contexts
+              ;;
+
+              (genfscon "aio" "/" fs_context)
+
+              ;;
+              ;; Macros
+              ;;
+
+              (macro add_entries ((type ARG1))
+                     (allow ARG1 fs add_entry_dir_perms))
+
+              (macro append_files ((type ARG1))
+                     (allow ARG1 fs append_file_perms)
+                     (call search (ARG1)))
+
+              (macro create ((type ARG1))
+                     (call create_dirs (ARG1))
+                     (call create_files (ARG1))
+                     (call create_lnk_files (ARG1)))
+
+              (macro create_dirs ((type ARG1))
+                     (allow ARG1 fs (dirs (create))))
+
+              (macro create_files ((type ARG1))
+                     (allow ARG1 fs (files (create))))
+
+              (macro create_lnk_files ((type ARG1))
+                     (allow ARG1 fs (lnk_files (create))))
+
+              (macro del_entries ((type ARG1))
+                     (allow ARG1 fs del_entry_dir_perms))
+
+              (macro delete ((type ARG1))
+                     (call delete_dirs (ARG1))
+                     (call delete_files (ARG1))
+                     (call delete_lnk_files (ARG1)))
+
+              (macro delete_dirs ((type ARG1))
+                     (allow ARG1 fs (dirs (delete))))
+
+              (macro delete_files ((type ARG1))
+                     (allow ARG1 fs (files (delete))))
+
+              (macro delete_lnk_files ((type ARG1))
+                     (allow ARG1 fs (lnk_files (delete))))
+
+              (macro execute ((type ARG1))
+                     (allow ARG1 fs exec_file_perms)
+                     (call search (ARG1)))
+
+              (macro getattr ((type ARG1))
+                     (call getattr_dirs (ARG1))
+                     (call getattr_files (ARG1))
+                     (call getattr_lnk_files (ARG1)))
+
+              (macro getattr_dirs ((type ARG1))
+                     (allow ARG1 fs (dirs (getattr))))
+
+              (macro getattr_files ((type ARG1))
+                     (allow ARG1 fs (files (getattr))))
+
+              (macro getattr_lnk_files ((type ARG1))
+                     (allow ARG1 fs (lnk_files (getattr))))
+
+              (macro list ((type ARG1))
+                     (allow ARG1 fs list_dir_perms))
+
+              (macro manage ((type ARG1))
+                     (call manage_dirs (ARG1))
+                     (call manage_files (ARG1))
+                     (call manage_lnk_files (ARG1)))
+
+              (macro manage_dirs ((type ARG1))
+                     (allow ARG1 fs (dirs (manage))))
+
+              (macro manage_files ((type ARG1))
+                     (allow ARG1 fs (files (manage))))
+
+              (macro manage_lnk_files ((type ARG1))
+                     (allow ARG1 fs (lnk_files (manage))))
+
+              (macro map_files ((type ARG1))
+                     (allow ARG1 fs (files (map))))
+
+              (macro mmap ((type ARG1))
+                     (allow ARG1 fs mmap_file_perms)
+                     (call search (ARG1)))
+
+              (macro read ((type ARG1))
+                     (call list (ARG1))
+                     (call read_files (ARG1))
+                     (call read_lnk_files (ARG1)))
+
+              (macro read_files ((type ARG1))
+                     (allow ARG1 fs (files (read))))
+
+              (macro read_lnk_files ((type ARG1))
+                     (allow ARG1 fs (lnk_files (read))))
+
+              (macro relabel ((type ARG1))
+                     (call relabel_dirs (ARG1))
+                     (call relabel_files (ARG1))
+                     (call relabel_lnk_files (ARG1)))
+
+              (macro relabel_dirs ((type ARG1))
+                     (allow ARG1 fs (dirs (relabel))))
+
+              (macro relabel_files ((type ARG1))
+                     (allow ARG1 fs (files (relabel))))
+
+              (macro relabel_lnk_files ((type ARG1))
+                     (allow ARG1 fs (lnk_files (relabel))))
+
+              (macro relabelfrom ((type ARG1))
+                     (call relabelfrom_dirs (ARG1))
+                     (call relabelfrom_files (ARG1))
+                     (call relabelfrom_lnk_files (ARG1)))
+
+              (macro relabelfrom_dirs ((type ARG1))
+                     (allow ARG1 fs (dirs (relabelfrom))))
+
+              (macro relabelfrom_files ((type ARG1))
+                     (allow ARG1 fs (files (relabelfrom))))
+
+              (macro relabelfrom_lnk_files ((type ARG1))
+                     (allow ARG1 fs (lnk_files (relabelfrom))))
+
+              (macro relabelto ((type ARG1))
+                     (call relabelto_dirs (ARG1))
+                     (call relabelto_files (ARG1))
+                     (call relabelto_lnk_files (ARG1)))
+
+              (macro relabelto_dirs ((type ARG1))
+                     (allow ARG1 fs (dirs (relabelto))))
+
+              (macro relabelto_files ((type ARG1))
+                     (allow ARG1 fs (files (relabelto))))
+
+              (macro relabelto_lnk_files ((type ARG1))
+                     (allow ARG1 fs (lnk_files (relabelto))))
+
+              (macro rename ((type ARG1))
+                     (call rename_dirs (ARG1))
+                     (call rename_files (ARG1))
+                     (call rename_lnk_files (ARG1)))
+
+              (macro rename_dirs ((type ARG1))
+                     (allow ARG1 fs (dirs (rename))))
+
+              (macro rename_files ((type ARG1))
+                     (allow ARG1 fs (files (rename))))
+
+              (macro rename_lnk_files ((type ARG1))
+                     (allow ARG1 fs (lnk_files (rename))))
+
+              (macro rw ((type ARG1))
+                     (call rw_dirs (ARG1))
+                     (call rw_files (ARG1))
+                     (call rw_lnk_files (ARG1)))
+
+              (macro rw_dirs ((type ARG1))
+                     (allow ARG1 fs (dirs (rw))))
+
+              (macro rw_files ((type ARG1))
+                     (allow ARG1 fs (files (rw))))
+
+              (macro rw_lnk_files ((type ARG1))
+                     (allow ARG1 fs (lnk_files (rw))))
+
+              (macro search ((type ARG1))
+                     (allow ARG1 fs search_dir_perms))
+
+              (macro setattr ((type ARG1))
+                     (call setattr_dirs (ARG1))
+                     (call setattr_files (ARG1))
+                     (call setattr_lnk_files (ARG1)))
+
+              (macro setattr_dirs ((type ARG1))
+                     (allow ARG1 fs (dirs (setattr))))
+
+              (macro setattr_files ((type ARG1))
+                     (allow ARG1 fs (files (setattr))))
+
+              (macro setattr_lnk_files ((type ARG1))
+                     (allow ARG1 fs (lnk_files (setattr))))
+
+              (macro write ((type ARG1))
+                     (call write_dirs (ARG1))
+                     (call write_files (ARG1))
+                     (call write_lnk_files (ARG1)))
+
+              (macro write_dirs ((type ARG1))
+                     (allow ARG1 fs (dirs (write))))
+
+              (macro write_files ((type ARG1))
+                     (allow ARG1 fs (files (write))))
+
+              (macro write_lnk_files ((type ARG1))
+                     (allow ARG1 fs (lnk_files (write))))
+
+              ;;
+              ;; Policy
+              ;;
+
+              (blockinherit fs.obj_template))
+
+       (block anon_inodefs
+
+              ;;
+              ;; Contexts
+              ;;
+
+              (genfscon "anon_inodefs" "/" fs_context)
+
+              ;;
+              ;; Macros
+              ;;
+
+              (macro add_entries ((type ARG1))
+                     (allow ARG1 fs add_entry_dir_perms))
+
+              (macro append_files ((type ARG1))
+                     (allow ARG1 fs append_file_perms)
+                     (call search (ARG1)))
+
+              (macro create ((type ARG1))
+                     (call create_dirs (ARG1))
+                     (call create_files (ARG1))
+                     (call create_lnk_files (ARG1)))
+
+              (macro create_dirs ((type ARG1))
+                     (allow ARG1 fs (dirs (create))))
+
+              (macro create_files ((type ARG1))
+                     (allow ARG1 fs (files (create))))
+
+              (macro create_lnk_files ((type ARG1))
+                     (allow ARG1 fs (lnk_files (create))))
+
+              (macro del_entries ((type ARG1))
+                     (allow ARG1 fs del_entry_dir_perms))
+
+              (macro delete ((type ARG1))
+                     (call delete_dirs (ARG1))
+                     (call delete_files (ARG1))
+                     (call delete_lnk_files (ARG1)))
+
+              (macro delete_dirs ((type ARG1))
+                     (allow ARG1 fs (dirs (delete))))
+
+              (macro delete_files ((type ARG1))
+                     (allow ARG1 fs (files (delete))))
+
+              (macro delete_lnk_files ((type ARG1))
+                     (allow ARG1 fs (lnk_files (delete))))
+
+              (macro execute ((type ARG1))
+                     (allow ARG1 fs exec_file_perms)
+                     (call search (ARG1)))
+
+              (macro getattr ((type ARG1))
+                     (call getattr_dirs (ARG1))
+                     (call getattr_files (ARG1))
+                     (call getattr_lnk_files (ARG1)))
+
+              (macro getattr_dirs ((type ARG1))
+                     (allow ARG1 fs (dirs (getattr))))
+
+              (macro getattr_files ((type ARG1))
+                     (allow ARG1 fs (files (getattr))))
+
+              (macro getattr_lnk_files ((type ARG1))
+                     (allow ARG1 fs (lnk_files (getattr))))
+
+              (macro list ((type ARG1))
+                     (allow ARG1 fs list_dir_perms))
+
+              (macro manage ((type ARG1))
+                     (call manage_dirs (ARG1))
+                     (call manage_files (ARG1))
+                     (call manage_lnk_files (ARG1)))
+
+              (macro manage_dirs ((type ARG1))
+                     (allow ARG1 fs (dirs (manage))))
+
+              (macro manage_files ((type ARG1))
+                     (allow ARG1 fs (files (manage))))
+
+              (macro manage_lnk_files ((type ARG1))
+                     (allow ARG1 fs (lnk_files (manage))))
+
+              (macro map_files ((type ARG1))
+                     (allow ARG1 fs (files (map))))
+
+              (macro mmap ((type ARG1))
+                     (allow ARG1 fs mmap_file_perms)
+                     (call search (ARG1)))
+
+              (macro read ((type ARG1))
+                     (call list (ARG1))
+                     (call read_files (ARG1))
+                     (call read_lnk_files (ARG1)))
+
+              (macro read_files ((type ARG1))
+                     (allow ARG1 fs (files (read))))
+
+              (macro read_lnk_files ((type ARG1))
+                     (allow ARG1 fs (lnk_files (read))))
+
+              (macro relabel ((type ARG1))
+                     (call relabel_dirs (ARG1))
+                     (call relabel_files (ARG1))
+                     (call relabel_lnk_files (ARG1)))
+
+              (macro relabel_dirs ((type ARG1))
+                     (allow ARG1 fs (dirs (relabel))))
+
+              (macro relabel_files ((type ARG1))
+                     (allow ARG1 fs (files (relabel))))
+
+              (macro relabel_lnk_files ((type ARG1))
+                     (allow ARG1 fs (lnk_files (relabel))))
+
+              (macro relabelfrom ((type ARG1))
+                     (call relabelfrom_dirs (ARG1))
+                     (call relabelfrom_files (ARG1))
+                     (call relabelfrom_lnk_files (ARG1)))
+
+              (macro relabelfrom_dirs ((type ARG1))
+                     (allow ARG1 fs (dirs (relabelfrom))))
+
+              (macro relabelfrom_files ((type ARG1))
+                     (allow ARG1 fs (files (relabelfrom))))
+
+              (macro relabelfrom_lnk_files ((type ARG1))
+                     (allow ARG1 fs (lnk_files (relabelfrom))))
+
+              (macro relabelto ((type ARG1))
+                     (call relabelto_dirs (ARG1))
+                     (call relabelto_files (ARG1))
+                     (call relabelto_lnk_files (ARG1)))
+
+              (macro relabelto_dirs ((type ARG1))
+                     (allow ARG1 fs (dirs (relabelto))))
+
+              (macro relabelto_files ((type ARG1))
+                     (allow ARG1 fs (files (relabelto))))
+
+              (macro relabelto_lnk_files ((type ARG1))
+                     (allow ARG1 fs (lnk_files (relabelto))))
+
+              (macro rename ((type ARG1))
+                     (call rename_dirs (ARG1))
+                     (call rename_files (ARG1))
+                     (call rename_lnk_files (ARG1)))
+
+              (macro rename_dirs ((type ARG1))
+                     (allow ARG1 fs (dirs (rename))))
+
+              (macro rename_files ((type ARG1))
+                     (allow ARG1 fs (files (rename))))
+
+              (macro rename_lnk_files ((type ARG1))
+                     (allow ARG1 fs (lnk_files (rename))))
+
+              (macro rw ((type ARG1))
+                     (call rw_dirs (ARG1))
+                     (call rw_files (ARG1))
+                     (call rw_lnk_files (ARG1)))
+
+              (macro rw_dirs ((type ARG1))
+                     (allow ARG1 fs (dirs (rw))))
+
+              (macro rw_files ((type ARG1))
+                     (allow ARG1 fs (files (rw))))
+
+              (macro rw_lnk_files ((type ARG1))
+                     (allow ARG1 fs (lnk_files (rw))))
+
+              (macro search ((type ARG1))
+                     (allow ARG1 fs search_dir_perms))
+
+              (macro setattr ((type ARG1))
+                     (call setattr_dirs (ARG1))
+                     (call setattr_files (ARG1))
+                     (call setattr_lnk_files (ARG1)))
+
+              (macro setattr_dirs ((type ARG1))
+                     (allow ARG1 fs (dirs (setattr))))
+
+              (macro setattr_files ((type ARG1))
+                     (allow ARG1 fs (files (setattr))))
+
+              (macro setattr_lnk_files ((type ARG1))
+                     (allow ARG1 fs (lnk_files (setattr))))
+
+              (macro write ((type ARG1))
+                     (call write_dirs (ARG1))
+                     (call write_files (ARG1))
+                     (call write_lnk_files (ARG1)))
+
+              (macro write_dirs ((type ARG1))
+                     (allow ARG1 fs (dirs (write))))
+
+              (macro write_files ((type ARG1))
+                     (allow ARG1 fs (files (write))))
+
+              (macro write_lnk_files ((type ARG1))
+                     (allow ARG1 fs (lnk_files (write))))
+
+              ;;
+              ;; Policy
+              ;;
+
+              (blockinherit fs.obj_template))
+
+       (block autofs
+
+              ;;
+              ;; Contexts
+              ;;
+
+              (genfscon "autofs" "/" fs_context)
+
+              ;;
+              ;; Macros
+              ;;
+
+              (macro add_entries ((type ARG1))
+                     (allow ARG1 fs add_entry_dir_perms))
+
+              (macro append_files ((type ARG1))
+                     (allow ARG1 fs append_file_perms)
+                     (call search (ARG1)))
+
+              (macro create ((type ARG1))
+                     (call create_dirs (ARG1))
+                     (call create_files (ARG1))
+                     (call create_lnk_files (ARG1)))
+
+              (macro create_dirs ((type ARG1))
+                     (allow ARG1 fs (dirs (create))))
+
+              (macro create_files ((type ARG1))
+                     (allow ARG1 fs (files (create))))
+
+              (macro create_lnk_files ((type ARG1))
+                     (allow ARG1 fs (lnk_files (create))))
+
+              (macro del_entries ((type ARG1))
+                     (allow ARG1 fs del_entry_dir_perms))
+
+              (macro delete ((type ARG1))
+                     (call delete_dirs (ARG1))
+                     (call delete_files (ARG1))
+                     (call delete_lnk_files (ARG1)))
+
+              (macro delete_dirs ((type ARG1))
+                     (allow ARG1 fs (dirs (delete))))
+
+              (macro delete_files ((type ARG1))
+                     (allow ARG1 fs (files (delete))))
+
+              (macro delete_lnk_files ((type ARG1))
+                     (allow ARG1 fs (lnk_files (delete))))
+
+              (macro execute ((type ARG1))
+                     (allow ARG1 fs exec_file_perms)
+                     (call search (ARG1)))
+
+              (macro getattr ((type ARG1))
+                     (call getattr_dirs (ARG1))
+                     (call getattr_files (ARG1))
+                     (call getattr_lnk_files (ARG1)))
+
+              (macro getattr_dirs ((type ARG1))
+                     (allow ARG1 fs (dirs (getattr))))
+
+              (macro getattr_files ((type ARG1))
+                     (allow ARG1 fs (files (getattr))))
+
+              (macro getattr_lnk_files ((type ARG1))
+                     (allow ARG1 fs (lnk_files (getattr))))
+
+              (macro list ((type ARG1))
+                     (allow ARG1 fs list_dir_perms))
+
+              (macro manage ((type ARG1))
+                     (call manage_dirs (ARG1))
+                     (call manage_files (ARG1))
+                     (call manage_lnk_files (ARG1)))
+
+              (macro manage_dirs ((type ARG1))
+                     (allow ARG1 fs (dirs (manage))))
+
+              (macro manage_files ((type ARG1))
+                     (allow ARG1 fs (files (manage))))
+
+              (macro manage_lnk_files ((type ARG1))
+                     (allow ARG1 fs (lnk_files (manage))))
+
+              (macro map_files ((type ARG1))
+                     (allow ARG1 fs (files (map))))
+
+              (macro mmap ((type ARG1))
+                     (allow ARG1 fs mmap_file_perms)
+                     (call search (ARG1)))
+
+              (macro read ((type ARG1))
+                     (call list (ARG1))
+                     (call read_files (ARG1))
+                     (call read_lnk_files (ARG1)))
+
+              (macro read_files ((type ARG1))
+                     (allow ARG1 fs (files (read))))
+
+              (macro read_lnk_files ((type ARG1))
+                     (allow ARG1 fs (lnk_files (read))))
+
+              (macro relabel ((type ARG1))
+                     (call relabel_dirs (ARG1))
+                     (call relabel_files (ARG1))
+                     (call relabel_lnk_files (ARG1)))
+
+              (macro relabel_dirs ((type ARG1))
+                     (allow ARG1 fs (dirs (relabel))))
+
+              (macro relabel_files ((type ARG1))
+                     (allow ARG1 fs (files (relabel))))
+
+              (macro relabel_lnk_files ((type ARG1))
+                     (allow ARG1 fs (lnk_files (relabel))))
+
+              (macro relabelfrom ((type ARG1))
+                     (call relabelfrom_dirs (ARG1))
+                     (call relabelfrom_files (ARG1))
+                     (call relabelfrom_lnk_files (ARG1)))
+
+              (macro relabelfrom_dirs ((type ARG1))
+                     (allow ARG1 fs (dirs (relabelfrom))))
+
+              (macro relabelfrom_files ((type ARG1))
+                     (allow ARG1 fs (files (relabelfrom))))
+
+              (macro relabelfrom_lnk_files ((type ARG1))
+                     (allow ARG1 fs (lnk_files (relabelfrom))))
+
+              (macro relabelto ((type ARG1))
+                     (call relabelto_dirs (ARG1))
+                     (call relabelto_files (ARG1))
+                     (call relabelto_lnk_files (ARG1)))
+
+              (macro relabelto_dirs ((type ARG1))
+                     (allow ARG1 fs (dirs (relabelto))))
+
+              (macro relabelto_files ((type ARG1))
+                     (allow ARG1 fs (files (relabelto))))
+
+              (macro relabelto_lnk_files ((type ARG1))
+                     (allow ARG1 fs (lnk_files (relabelto))))
+
+              (macro rename ((type ARG1))
+                     (call rename_dirs (ARG1))
+                     (call rename_files (ARG1))
+                     (call rename_lnk_files (ARG1)))
+
+              (macro rename_dirs ((type ARG1))
+                     (allow ARG1 fs (dirs (rename))))
+
+              (macro rename_files ((type ARG1))
+                     (allow ARG1 fs (files (rename))))
+
+              (macro rename_lnk_files ((type ARG1))
+                     (allow ARG1 fs (lnk_files (rename))))
+
+              (macro rw ((type ARG1))
+                     (call rw_dirs (ARG1))
+                     (call rw_files (ARG1))
+                     (call rw_lnk_files (ARG1)))
+
+              (macro rw_dirs ((type ARG1))
+                     (allow ARG1 fs (dirs (rw))))
+
+              (macro rw_files ((type ARG1))
+                     (allow ARG1 fs (files (rw))))
+
+              (macro rw_lnk_files ((type ARG1))
+                     (allow ARG1 fs (lnk_files (rw))))
+
+              (macro search ((type ARG1))
+                     (allow ARG1 fs search_dir_perms))
+
+              (macro setattr ((type ARG1))
+                     (call setattr_dirs (ARG1))
+                     (call setattr_files (ARG1))
+                     (call setattr_lnk_files (ARG1)))
+
+              (macro setattr_dirs ((type ARG1))
+                     (allow ARG1 fs (dirs (setattr))))
+
+              (macro setattr_files ((type ARG1))
+                     (allow ARG1 fs (files (setattr))))
+
+              (macro setattr_lnk_files ((type ARG1))
+                     (allow ARG1 fs (lnk_files (setattr))))
+
+              (macro write ((type ARG1))
+                     (call write_dirs (ARG1))
+                     (call write_files (ARG1))
+                     (call write_lnk_files (ARG1)))
+
+              (macro write_dirs ((type ARG1))
+                     (allow ARG1 fs (dirs (write))))
+
+              (macro write_files ((type ARG1))
+                     (allow ARG1 fs (files (write))))
+
+              (macro write_lnk_files ((type ARG1))
+                     (allow ARG1 fs (lnk_files (write))))
+
+              ;;
+              ;; Policy
+              ;;
+
+              (blockinherit fs.obj_template)
+
+              (call sys.mountpoint.obj_type (fs)))
+
+       (block bdev
+
+              ;;
+              ;; Contexts
+              ;;
+
+              (genfscon "bdev" "/" fs_context)
+
+              ;;
+              ;; Macros
+              ;;
+
+              (macro add_entries ((type ARG1))
+                     (allow ARG1 fs add_entry_dir_perms))
+
+              (macro append_files ((type ARG1))
+                     (allow ARG1 fs append_file_perms)
+                     (call search (ARG1)))
+
+              (macro create ((type ARG1))
+                     (call create_dirs (ARG1))
+                     (call create_files (ARG1))
+                     (call create_lnk_files (ARG1)))
+
+              (macro create_dirs ((type ARG1))
+                     (allow ARG1 fs (dirs (create))))
+
+              (macro create_files ((type ARG1))
+                     (allow ARG1 fs (files (create))))
+
+              (macro create_lnk_files ((type ARG1))
+                     (allow ARG1 fs (lnk_files (create))))
+
+              (macro del_entries ((type ARG1))
+                     (allow ARG1 fs del_entry_dir_perms))
+
+              (macro delete ((type ARG1))
+                     (call delete_dirs (ARG1))
+                     (call delete_files (ARG1))
+                     (call delete_lnk_files (ARG1)))
+
+              (macro delete_dirs ((type ARG1))
+                     (allow ARG1 fs (dirs (delete))))
+
+              (macro delete_files ((type ARG1))
+                     (allow ARG1 fs (files (delete))))
+
+              (macro delete_lnk_files ((type ARG1))
+                     (allow ARG1 fs (lnk_files (delete))))
+
+              (macro execute ((type ARG1))
+                     (allow ARG1 fs exec_file_perms)
+                     (call search (ARG1)))
+
+              (macro getattr ((type ARG1))
+                     (call getattr_dirs (ARG1))
+                     (call getattr_files (ARG1))
+                     (call getattr_lnk_files (ARG1)))
+
+              (macro getattr_dirs ((type ARG1))
+                     (allow ARG1 fs (dirs (getattr))))
+
+              (macro getattr_files ((type ARG1))
+                     (allow ARG1 fs (files (getattr))))
+
+              (macro getattr_lnk_files ((type ARG1))
+                     (allow ARG1 fs (lnk_files (getattr))))
+
+              (macro list ((type ARG1))
+                     (allow ARG1 fs list_dir_perms))
+
+              (macro manage ((type ARG1))
+                     (call manage_dirs (ARG1))
+                     (call manage_files (ARG1))
+                     (call manage_lnk_files (ARG1)))
+
+              (macro manage_dirs ((type ARG1))
+                     (allow ARG1 fs (dirs (manage))))
+
+              (macro manage_files ((type ARG1))
+                     (allow ARG1 fs (files (manage))))
+
+              (macro manage_lnk_files ((type ARG1))
+                     (allow ARG1 fs (lnk_files (manage))))
+
+              (macro map_files ((type ARG1))
+                     (allow ARG1 fs (files (map))))
+
+              (macro mmap ((type ARG1))
+                     (allow ARG1 fs mmap_file_perms)
+                     (call search (ARG1)))
+
+              (macro read ((type ARG1))
+                     (call list (ARG1))
+                     (call read_files (ARG1))
+                     (call read_lnk_files (ARG1)))
+
+              (macro read_files ((type ARG1))
+                     (allow ARG1 fs (files (read))))
+
+              (macro read_lnk_files ((type ARG1))
+                     (allow ARG1 fs (lnk_files (read))))
+
+              (macro relabel ((type ARG1))
+                     (call relabel_dirs (ARG1))
+                     (call relabel_files (ARG1))
+                     (call relabel_lnk_files (ARG1)))
+
+              (macro relabel_dirs ((type ARG1))
+                     (allow ARG1 fs (dirs (relabel))))
+
+              (macro relabel_files ((type ARG1))
+                     (allow ARG1 fs (files (relabel))))
+
+              (macro relabel_lnk_files ((type ARG1))
+                     (allow ARG1 fs (lnk_files (relabel))))
+
+              (macro relabelfrom ((type ARG1))
+                     (call relabelfrom_dirs (ARG1))
+                     (call relabelfrom_files (ARG1))
+                     (call relabelfrom_lnk_files (ARG1)))
+
+              (macro relabelfrom_dirs ((type ARG1))
+                     (allow ARG1 fs (dirs (relabelfrom))))
+
+              (macro relabelfrom_files ((type ARG1))
+                     (allow ARG1 fs (files (relabelfrom))))
+
+              (macro relabelfrom_lnk_files ((type ARG1))
+                     (allow ARG1 fs (lnk_files (relabelfrom))))
+
+              (macro relabelto ((type ARG1))
+                     (call relabelto_dirs (ARG1))
+                     (call relabelto_files (ARG1))
+                     (call relabelto_lnk_files (ARG1)))
+
+              (macro relabelto_dirs ((type ARG1))
+                     (allow ARG1 fs (dirs (relabelto))))
+
+              (macro relabelto_files ((type ARG1))
+                     (allow ARG1 fs (files (relabelto))))
+
+              (macro relabelto_lnk_files ((type ARG1))
+                     (allow ARG1 fs (lnk_files (relabelto))))
+
+              (macro rename ((type ARG1))
+                     (call rename_dirs (ARG1))
+                     (call rename_files (ARG1))
+                     (call rename_lnk_files (ARG1)))
+
+              (macro rename_dirs ((type ARG1))
+                     (allow ARG1 fs (dirs (rename))))
+
+              (macro rename_files ((type ARG1))
+                     (allow ARG1 fs (files (rename))))
+
+              (macro rename_lnk_files ((type ARG1))
+                     (allow ARG1 fs (lnk_files (rename))))
+
+              (macro rw ((type ARG1))
+                     (call rw_dirs (ARG1))
+                     (call rw_files (ARG1))
+                     (call rw_lnk_files (ARG1)))
+
+              (macro rw_dirs ((type ARG1))
+                     (allow ARG1 fs (dirs (rw))))
+
+              (macro rw_files ((type ARG1))
+                     (allow ARG1 fs (files (rw))))
+
+              (macro rw_lnk_files ((type ARG1))
+                     (allow ARG1 fs (lnk_files (rw))))
+
+              (macro search ((type ARG1))
+                     (allow ARG1 fs search_dir_perms))
+
+              (macro setattr ((type ARG1))
+                     (call setattr_dirs (ARG1))
+                     (call setattr_files (ARG1))
+                     (call setattr_lnk_files (ARG1)))
+
+              (macro setattr_dirs ((type ARG1))
+                     (allow ARG1 fs (dirs (setattr))))
+
+              (macro setattr_files ((type ARG1))
+                     (allow ARG1 fs (files (setattr))))
+
+              (macro setattr_lnk_files ((type ARG1))
+                     (allow ARG1 fs (lnk_files (setattr))))
+
+              (macro write ((type ARG1))
+                     (call write_dirs (ARG1))
+                     (call write_files (ARG1))
+                     (call write_lnk_files (ARG1)))
+
+              (macro write_dirs ((type ARG1))
+                     (allow ARG1 fs (dirs (write))))
+
+              (macro write_files ((type ARG1))
+                     (allow ARG1 fs (files (write))))
+
+              (macro write_lnk_files ((type ARG1))
+                     (allow ARG1 fs (lnk_files (write))))
+
+              ;;
+              ;; Policy
+              ;;
+
+              (blockinherit fs.obj_template))
 
     (block binfmt_misc
 
-        ;
-        ; Contexts
-        ;
+           ;;
+           ;; Contexts
+           ;;
 
-        (genfscon "binfmt_misc" "/" fs_context)
+           (genfscon "binfmt_misc" "/" fs_context)
 
-        ;
-        ; Macros
-        ;
+           ;;
+           ;; Macros
+           ;;
 
-        (macro add_entries ((type ARG1))
-            (allow ARG1 fs add_entry_dir_perms)
-            (call sys.fs_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro add_entries ((type ARG1))
+                  (allow ARG1 fs add_entry_dir_perms)
+                  (call sys.fs_sysctl.search (ARG1)))
 
-        (macro append_files ((type ARG1))
-            (allow ARG1 fs append_file_perms)
-            (call search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro append_files ((type ARG1))
+                  (allow ARG1 fs append_file_perms)
+                  (call search (ARG1)))
 
-        (macro create ((type ARG1))
-            (call create_dirs
-                (
-                    ARG1
-                )
-            )
-            (call create_files
-                (
-                    ARG1
-                )
-            )
-            (call create_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro create ((type ARG1))
+                  (call create_dirs (ARG1))
+                  (call create_files (ARG1))
+                  (call create_lnk_files (ARG1)))
 
-        (macro create_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        create
-                    )
-                )
-            )
-            (call sys.fs_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro create_dirs ((type ARG1))
+                  (allow ARG1 fs (dirs (create)))
+                  (call sys.fs_sysctl.search (ARG1)))
 
-        (macro create_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        create
-                    )
-                )
-            )
-            (call sys.fs_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro create_files ((type ARG1))
+                  (allow ARG1 fs (files (create)))
+                  (call sys.fs_sysctl.search (ARG1)))
 
-        (macro create_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        create
-                    )
-                )
-            )
-            (call sys.fs_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro create_lnk_files ((type ARG1))
+                  (allow ARG1 fs (lnk_files (create)))
+                  (call sys.fs_sysctl.search (ARG1)))
 
-        (macro del_entries ((type ARG1))
-            (allow ARG1 fs del_entry_dir_perms)
-            (call sys.fs_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro del_entries ((type ARG1))
+                  (allow ARG1 fs del_entry_dir_perms)
+                  (call sys.fs_sysctl.search (ARG1)))
 
-        (macro delete ((type ARG1))
-            (call delete_dirs
-                (
-                    ARG1
-                )
-            )
-            (call delete_files
-                (
-                    ARG1
-                )
-            )
-            (call delete_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro delete ((type ARG1))
+                  (call delete_dirs (ARG1))
+                  (call delete_files (ARG1))
+                  (call delete_lnk_files (ARG1)))
 
-        (macro delete_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        delete
-                    )
-                )
-            )
-            (call sys.fs_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro delete_dirs ((type ARG1))
+                  (allow ARG1 fs (dirs (delete)))
+                  (call sys.fs_sysctl.search (ARG1)))
 
-        (macro delete_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        delete
-                    )
-                )
-            )
-            (call sys.fs_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro delete_files ((type ARG1))
+                  (allow ARG1 fs (files (delete)))
+                  (call sys.fs_sysctl.search (ARG1)))
 
-        (macro delete_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        delete
-                    )
-                )
-            )
-            (call sys.fs_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro delete_lnk_files ((type ARG1))
+                  (allow ARG1 fs (lnk_files (delete)))
+                  (call sys.fs_sysctl.search (ARG1)))
 
-        (macro execute ((type ARG1))
-            (allow ARG1 fs exec_file_perms)
-            (call search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro execute ((type ARG1))
+                  (allow ARG1 fs exec_file_perms)
+                  (call search (ARG1)))
 
-        (macro getattr ((type ARG1))
-            (call getattr_dirs
-                (
-                    ARG1
-                )
-            )
-            (call getattr_files
-                (
-                    ARG1
-                )
-            )
-            (call getattr_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro getattr ((type ARG1))
+                  (call getattr_dirs (ARG1))
+                  (call getattr_files (ARG1))
+                  (call getattr_lnk_files (ARG1)))
 
-        (macro getattr_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        getattr
-                    )
-                )
-            )
-            (call sys.fs_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro getattr_dirs ((type ARG1))
+                  (allow ARG1 fs (dirs (getattr)))
+                  (call sys.fs_sysctl.search (ARG1)))
 
-        (macro getattr_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        getattr
-                    )
-                )
-            )
-            (call sys.fs_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro getattr_files ((type ARG1))
+                  (allow ARG1 fs (files (getattr)))
+                  (call sys.fs_sysctl.search (ARG1)))
 
-        (macro getattr_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        getattr
-                    )
-                )
-            )
-            (call sys.fs_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro getattr_lnk_files ((type ARG1))
+                  (allow ARG1 fs (lnk_files (getattr)))
+                  (call sys.fs_sysctl.search (ARG1)))
 
-        (macro list ((type ARG1))
-            (allow ARG1 fs list_dir_perms)
-            (call sys.fs_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro list ((type ARG1))
+                  (allow ARG1 fs list_dir_perms)
+                  (call sys.fs_sysctl.search (ARG1)))
 
-        (macro manage ((type ARG1))
-            (call manage_dirs
-                (
-                    ARG1
-                )
-            )
-            (call manage_files
-                (
-                    ARG1
-                )
-            )
-            (call manage_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro manage ((type ARG1))
+                  (call manage_dirs (ARG1))
+                  (call manage_files (ARG1))
+                  (call manage_lnk_files (ARG1)))
 
-        (macro manage_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        manage
-                    )
-                )
-            )
-            (call sys.fs_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro manage_dirs ((type ARG1))
+                  (allow ARG1 fs (dirs (manage)))
+                  (call sys.fs_sysctl.search (ARG1)))
 
-        (macro manage_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        manage
-                    )
-                )
-            )
-            (call sys.fs_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro manage_files ((type ARG1))
+                  (allow ARG1 fs (files (manage)))
+                  (call sys.fs_sysctl.search (ARG1)))
 
-        (macro manage_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        manage
-                    )
-                )
-            )
-            (call sys.fs_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro manage_lnk_files ((type ARG1))
+                  (allow ARG1 fs (lnk_files (manage)))
+                  (call sys.fs_sysctl.search (ARG1)))
 
-        (macro map_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        map
-                    )
-                )
-            )
-            (call sys.fs_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro map_files ((type ARG1))
+                  (allow ARG1 fs (files (map)))
+                  (call sys.fs_sysctl.search (ARG1)))
 
-        (macro mmap ((type ARG1))
-            (allow ARG1 fs mmap_file_perms)
-            (call search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro mmap ((type ARG1))
+                  (allow ARG1 fs mmap_file_perms)
+                  (call search (ARG1)))
 
-        (macro read ((type ARG1))
-            (call list
-                (
-                    ARG1
-                )
-            )
-            (call read_files
-                (
-                    ARG1
-                )
-            )
-            (call read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro read ((type ARG1))
+                  (call list (ARG1))
+                  (call read_files (ARG1))
+                  (call read_lnk_files (ARG1)))
 
-        (macro read_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        read
-                    )
-                )
-            )
-            (call sys.fs_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro read_files ((type ARG1))
+                  (allow ARG1 fs (files (read)))
+                  (call sys.fs_sysctl.search (ARG1)))
 
-        (macro read_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        read
-                    )
-                )
-            )
-            (call sys.fs_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro read_lnk_files ((type ARG1))
+                  (allow ARG1 fs (lnk_files (read)))
+                  (call sys.fs_sysctl.search (ARG1)))
 
-        (macro relabel ((type ARG1))
-            (call relabel_dirs
-                (
-                    ARG1
-                )
-            )
-            (call relabel_files
-                (
-                    ARG1
-                )
-            )
-            (call relabel_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro relabel ((type ARG1))
+                  (call relabel_dirs (ARG1))
+                  (call relabel_files (ARG1))
+                  (call relabel_lnk_files (ARG1)))
 
-        (macro relabel_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        relabel
-                    )
-                )
-            )
-            (call sys.fs_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro relabel_dirs ((type ARG1))
+                  (allow ARG1 fs (dirs (relabel)))
+                  (call sys.fs_sysctl.search (ARG1)))
 
-        (macro relabel_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        relabel
-                    )
-                )
-            )
-            (call sys.fs_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro relabel_files ((type ARG1))
+                  (allow ARG1 fs (files (relabel)))
+                  (call sys.fs_sysctl.search (ARG1)))
 
-        (macro relabel_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        relabel
-                    )
-                )
-            )
-            (call sys.fs_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro relabel_lnk_files ((type ARG1))
+                  (allow ARG1 fs (lnk_files (relabel)))
+                  (call sys.fs_sysctl.search (ARG1)))
 
-        (macro relabelfrom ((type ARG1))
-            (call relabelfrom_dirs
-                (
-                    ARG1
-                )
-            )
-            (call relabelfrom_files
-                (
-                    ARG1
-                )
-            )
-            (call relabelfrom_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro relabelfrom ((type ARG1))
+                  (call relabelfrom_dirs (ARG1))
+                  (call relabelfrom_files (ARG1))
+                  (call relabelfrom_lnk_files (ARG1)))
 
-        (macro relabelfrom_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        relabelfrom
-                    )
-                )
-            )
-            (call sys.fs_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro relabelfrom_dirs ((type ARG1))
+                  (allow ARG1 fs (dirs (relabelfrom)))
+                  (call sys.fs_sysctl.search (ARG1)))
 
-        (macro relabelfrom_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        relabelfrom
-                    )
-                )
-            )
-            (call sys.fs_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro relabelfrom_files ((type ARG1))
+                  (allow ARG1 fs (files (relabelfrom)))
+                  (call sys.fs_sysctl.search (ARG1)))
 
-        (macro relabelfrom_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        relabelfrom
-                    )
-                )
-            )
-            (call sys.fs_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro relabelfrom_lnk_files ((type ARG1))
+                  (allow ARG1 fs (lnk_files (relabelfrom)))
+                  (call sys.fs_sysctl.search (ARG1)))
 
-        (macro relabelto ((type ARG1))
-            (call relabelto_dirs
-                (
-                    ARG1
-                )
-            )
-            (call relabelto_files
-                (
-                    ARG1
-                )
-            )
-            (call relabelto_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro relabelto ((type ARG1))
+                  (call relabelto_dirs (ARG1))
+                  (call relabelto_files (ARG1))
+                  (call relabelto_lnk_files (ARG1)))
 
-        (macro relabelto_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        relabelto
-                    )
-                )
-            )
-            (call sys.fs_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro relabelto_dirs ((type ARG1))
+                  (allow ARG1 fs (dirs (relabelto)))
+                  (call sys.fs_sysctl.search (ARG1)))
 
-        (macro relabelto_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        relabelto
-                    )
-                )
-            )
-            (call sys.fs_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro relabelto_files ((type ARG1))
+                  (allow ARG1 fs (files (relabelto)))
+                  (call sys.fs_sysctl.search (ARG1)))
 
-        (macro relabelto_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        relabelto
-                    )
-                )
-            )
-            (call sys.fs_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro relabelto_lnk_files ((type ARG1))
+                  (allow ARG1 fs (lnk_files (relabelto)))
+                  (call sys.fs_sysctl.search (ARG1)))
 
-        (macro rename ((type ARG1))
-            (call rename_dirs
-                (
-                    ARG1
-                )
-            )
-            (call rename_files
-                (
-                    ARG1
-                )
-            )
-            (call rename_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro rename ((type ARG1))
+                  (call rename_dirs (ARG1))
+                  (call rename_files (ARG1))
+                  (call rename_lnk_files (ARG1)))
 
-        (macro rename_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        rename
-                    )
-                )
-            )
-            (call sys.fs_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro rename_dirs ((type ARG1))
+                  (allow ARG1 fs (dirs (rename)))
+                  (call sys.fs_sysctl.search (ARG1)))
 
-        (macro rename_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        rename
-                    )
-                )
-            )
-            (call sys.fs_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro rename_files ((type ARG1))
+                  (allow ARG1 fs (files (rename)))
+                  (call sys.fs_sysctl.search (ARG1)))
 
-        (macro rename_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        rename
-                    )
-                )
-            )
-            (call sys.fs_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro rename_lnk_files ((type ARG1))
+                  (allow ARG1 fs (lnk_files (rename)))
+                  (call sys.fs_sysctl.search (ARG1)))
 
-        (macro rw ((type ARG1))
-            (call rw_dirs
-                (
-                    ARG1
-                )
-            )
-            (call rw_files
-                (
-                    ARG1
-                )
-            )
-            (call rw_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro rw ((type ARG1))
+                  (call rw_dirs (ARG1))
+                  (call rw_files (ARG1))
+                  (call rw_lnk_files (ARG1)))
 
-        (macro rw_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        rw
-                    )
-                )
-            )
-            (call sys.fs_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro rw_dirs ((type ARG1))
+                  (allow ARG1 fs (dirs (rw)))
+                  (call sys.fs_sysctl.search (ARG1)))
 
-        (macro rw_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        rw
-                    )
-                )
-            )
-            (call sys.fs_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro rw_files ((type ARG1))
+                  (allow ARG1 fs (files (rw)))
+                  (call sys.fs_sysctl.search (ARG1)))
 
-        (macro rw_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        rw
-                    )
-                )
-            )
-            (call sys.fs_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro rw_lnk_files ((type ARG1))
+                  (allow ARG1 fs (lnk_files (rw)))
+                  (call sys.fs_sysctl.search (ARG1)))
 
-        (macro search ((type ARG1))
-            (allow ARG1 fs search_dir_perms)
-            (call sys.fs_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro search ((type ARG1))
+                  (allow ARG1 fs search_dir_perms)
+                  (call sys.fs_sysctl.search (ARG1)))
 
-        (macro setattr ((type ARG1))
-            (call setattr_dirs
-                (
-                    ARG1
-                )
-            )
-            (call setattr_files
-                (
-                    ARG1
-                )
-            )
-            (call setattr_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro setattr ((type ARG1))
+                  (call setattr_dirs (ARG1))
+                  (call setattr_files (ARG1))
+                  (call setattr_lnk_files (ARG1)))
 
-        (macro setattr_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        setattr
-                    )
-                )
-            )
-            (call sys.fs_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro setattr_dirs ((type ARG1))
+                  (allow ARG1 fs (dirs (setattr)))
+                  (call sys.fs_sysctl.search (ARG1)))
 
-        (macro setattr_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        setattr
-                    )
-                )
-            )
-            (call sys.fs_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro setattr_files ((type ARG1))
+                  (allow ARG1 fs (files (setattr)))
+                  (call sys.fs_sysctl.search (ARG1)))
 
-        (macro setattr_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        setattr
-                    )
-                )
-            )
-            (call sys.fs_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro setattr_lnk_files ((type ARG1))
+                  (allow ARG1 fs (lnk_files (setattr)))
+                  (call sys.fs_sysctl.search (ARG1)))
 
-        (macro write ((type ARG1))
-            (call write_dirs
-                (
-                    ARG1
-                )
-            )
-            (call write_files
-                (
-                    ARG1
-                )
-            )
-            (call write_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro write ((type ARG1))
+                  (call write_dirs (ARG1))
+                  (call write_files (ARG1))
+                  (call write_lnk_files (ARG1)))
 
-        (macro write_dirs ((type ARG1))
-            (allow ARG1 fs
-                (dirs
-                    (
-                        write
-                    )
-                )
-            )
-            (call sys.fs_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro write_dirs ((type ARG1))
+                  (allow ARG1 fs (dirs (write)))
+                  (call sys.fs_sysctl.search (ARG1)))
 
-        (macro write_files ((type ARG1))
-            (allow ARG1 fs
-                (files
-                    (
-                        write
-                    )
-                )
-            )
-            (call sys.fs_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro write_files ((type ARG1))
+                  (allow ARG1 fs (files (write)))
+                  (call sys.fs_sysctl.search (ARG1)))
 
-        (macro write_lnk_files ((type ARG1))
-            (allow ARG1 fs
-                (lnk_files
-                    (
-                        write
-                    )
-                )
-            )
-            (call sys.fs_sysctl.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro write_lnk_files ((type ARG1))
+                  (allow ARG1 fs (lnk_files (write)))
+                  (call sys.fs_sysctl.search (ARG1)))
 
-        ;
-        ; Policy
-        ;
+           ;;
+           ;; Policy
+           ;;
 
-        (blockinherit fs.obj_template)
+           (blockinherit fs.obj_template)
 
-        (call sys.mountpoint.obj_type
-            (
-                fs
-            )
-        )
-    )
+           (call sys.mountpoint.obj_type (fs)))
 
+;; lispy-cil
     (block cgroup
 
         ;
