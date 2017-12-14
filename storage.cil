@@ -107,8 +107,10 @@
 
         (filecon "/dev/dm-[0-9]+" block stor_file_context)
         (filecon "/dev/loop.+" block stor_file_context)
+        (filecon "/dev/nvme[0-9]+" char stor_file_context)
+        (filecon "/dev/nvme[0-9]n[^/]+" block stor_file_context)
         (filecon "/dev/raw/.+" char stor_file_context)
-        (filecon "/dev/[shmxv]d[^/]*" block stor_file_context)
+        (filecon "/dev/[shmxv]d[^/]+" block stor_file_context)
 
         ;
         ; Macros
