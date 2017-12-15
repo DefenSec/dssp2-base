@@ -2658,7 +2658,7 @@
                   (call devtmpfs.search (ARG1)))
 
            (macro rw_dirs ((type ARG1))
-                  (allow ARG1 fs (dirs (ARG1)))
+                  (allow ARG1 fs (dirs (rw)))
                   (call devtmpfs.search (ARG1)))
 
            (macro rw_inherited_chr_files ((type ARG1))
