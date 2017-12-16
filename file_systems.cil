@@ -1998,7 +1998,7 @@
                   (allow ARG1 fs (sock_files (rw))))
 
            (macro search ((type ARG1))
-               (allow ARG1 fs search_dir_perms))
+                  (allow ARG1 fs search_dir_perms))
 
            (macro setattr ((type ARG1))
                   (allow ARG1 fs (files_except_blk_and_chr (setattr))))
@@ -3273,7 +3273,7 @@
                   (allow ARG1 fs (sock_files (rw))))
 
            (macro search ((type ARG1))
-               (allow ARG1 fs search_dir_perms))
+                  (allow ARG1 fs search_dir_perms))
 
            (macro setattr ((type ARG1))
                   (allow ARG1 fs (files_except_blk_and_chr (setattr))))
@@ -4592,7 +4592,7 @@
                   (allow ARG1 fs (sock_files (rw))))
 
            (macro search ((type ARG1))
-               (allow ARG1 fs search_dir_perms))
+                  (allow ARG1 fs search_dir_perms))
 
            (macro setattr ((type ARG1))
                   (allow ARG1 fs (files_except_blk_and_chr (setattr))))
@@ -4859,7 +4859,7 @@
                   (allow ARG1 fs (sock_files (rw))))
 
            (macro search ((type ARG1))
-               (allow ARG1 fs search_dir_perms))
+                  (allow ARG1 fs search_dir_perms))
 
            (macro setattr ((type ARG1))
                   (allow ARG1 fs (files_except_blk_and_chr (setattr))))
@@ -6102,7 +6102,7 @@
                   (allow ARG1 fs (sock_files (rw))))
 
            (macro search ((type ARG1))
-               (allow ARG1 fs search_dir_perms))
+                  (allow ARG1 fs search_dir_perms))
 
            (macro setattr ((type ARG1))
                   (allow ARG1 fs (files_except_blk_and_chr (setattr))))
