@@ -76,7 +76,7 @@
 (classmapping all_files ibac (fifo_file (create relabelfrom relabelto)))
 (classmapping all_files ibac (file (create relabelfrom relabelto)))
 (classmapping all_files ibac (lnk_file (create relabelfrom relabelto)))
-(classmapping all_files ibac (sock_file (create relabelfrom relabel)))
+(classmapping all_files ibac (sock_file (create relabelfrom relabelto)))
 
 (classmapping all_files manage manage_blk_file_perms)
 (classmapping all_files manage manage_chr_file_perms)
