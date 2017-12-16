@@ -6,9 +6,9 @@
 ;;
 
 (classmap all_files
-          (create delete getattr manage mounton read read_inherited relabel
-                  relabelfrom relabelto rename rw setattr write))
-(classmap all_sockets (common_socket_perms getattr map))
+          (create delete getattr ibac manage mounton read read_inherited
+                  relabel relabelfrom relabelto rename rw setattr write))
+(classmap all_sockets (common_socket_perms getattr ibac map))
 (classmap blk_and_chr_files
           (create delete getattr manage mounton read read_inherited relabel
                   relabelfrom relabelto rename rw setattr write))
@@ -69,6 +69,14 @@
 (classmapping all_files getattr (file (getattr)))
 (classmapping all_files getattr (lnk_file (getattr)))
 (classmapping all_files getattr (sock_file (getattr)))
+
+(classmapping all_files ibac (blk_file (create relabelfrom relabelto)))
+(classmapping all_files ibac (chr_file (create relabelfrom relabelto)))
+(classmapping all_files ibac (dir (create relabelfrom relabelto)))
+(classmapping all_files ibac (fifo_file (create relabelfrom relabelto)))
+(classmapping all_files ibac (file (create relabelfrom relabelto)))
+(classmapping all_files ibac (lnk_file (create relabelfrom relabelto)))
+(classmapping all_files ibac (sock_file (create relabelfrom relabel)))
 
 (classmapping all_files manage manage_blk_file_perms)
 (classmapping all_files manage manage_chr_file_perms)
@@ -501,6 +509,84 @@
 (classmapping all_sockets getattr (unix_stream_socket (getattr)))
 (classmapping all_sockets getattr (vsock_socket (getattr)))
 (classmapping all_sockets getattr (x25_socket (getattr)))
+
+(classmapping all_sockets ibac (alg_socket (create relabelfrom relabelto)))
+(classmapping all_sockets ibac (appletalk_socket (create relabelfrom
+                                                         relabelto)))
+(classmapping all_sockets ibac (atmpvc_socket (create relabelfrom relabelto)))
+(classmapping all_sockets ibac (atmsvc_socket (create relabelfrom relabelto)))
+(classmapping all_sockets ibac (ax25_socket (create relabelfrom relabelto)))
+(classmapping all_sockets ibac (bluetooth_socket (create relabelfrom
+                                                         relabelto)))
+(classmapping all_sockets ibac (caif_socket (create relabelfrom relabelto)))
+(classmapping all_sockets ibac (can_socket (create relabelfrom relabelto)))
+(classmapping all_sockets ibac (dccp_socket (create relabelfrom relabelto)))
+(classmapping all_sockets ibac (decnet_socket (create relabelfrom relabelto)))
+(classmapping all_sockets ibac (icmp_socket (create relabelfrom relabelto)))
+(classmapping all_sockets ibac (ieee802154_socket (create relabelfrom
+                                                          relabelto)))
+(classmapping all_sockets ibac (ipx_socket (create relabelfrom relabelto)))
+(classmapping all_sockets ibac (irda_socket (create relabelfrom relabelto)))
+(classmapping all_sockets ibac (isdn_socket (create relabelfrom relabelto)))
+(classmapping all_sockets ibac (iucv_socket (create relabelfrom relabelto)))
+(classmapping all_sockets ibac (kcm_socket (create relabelfrom relabelto)))
+(classmapping all_sockets ibac (key_socket (create relabelfrom relabelto)))
+(classmapping all_sockets ibac (llc_socket (create relabelfrom relabelto)))
+(classmapping all_sockets ibac (netlink_audit_socket (create relabelfrom
+                                                             relabelto)))
+(classmapping all_sockets ibac (netlink_connector_socket (create relabelfrom
+                                                                 relabelto)))
+(classmapping all_sockets ibac (netlink_crypto_socket (create relabelfrom
+                                                              relabelto)))
+(classmapping all_sockets ibac (netlink_dnrt_socket (create relabelfrom
+                                                            relabelto)))
+(classmapping all_sockets ibac (netlink_fib_lookup_socket (create relabelfrom
+                                                                  relabelto)))
+(classmapping all_sockets ibac (netlink_generic_socket (create relabelfrom
+                                                               relabelto)))
+(classmapping all_sockets ibac (netlink_iscsi_socket (create relabelfrom
+                                                             relabelto)))
+(classmapping all_sockets ibac (netlink_kobject_uevent_socket
+                                (create relabelfrom relabelto)))
+(classmapping all_sockets ibac (netlink_netfilter_socket (create relabelfrom
+                                                                 relabelto)))
+(classmapping all_sockets ibac (netlink_nflog_socket (create relabelfrom
+                                                             relabelto)))
+(classmapping all_sockets ibac (netlink_rdma_socket (create relabelfrom
+                                                            relabelto)))
+(classmapping all_sockets ibac (netlink_route_socket (create relabelfrom
+                                                             relabelto)))
+(classmapping all_sockets ibac (netlink_scsitransport_socket
+                                (create relabelfrom relabelto)))
+(classmapping all_sockets ibac (netlink_selinux_socket (create relabelfrom
+                                                               relabelto)))
+(classmapping all_sockets ibac (netlink_tcpdiag_socket (create relabelfrom
+                                                               relabelto)))
+(classmapping all_sockets ibac (netlink_xfrm_socket (create relabelfrom
+                                                            relabelto)))
+(classmapping all_sockets ibac (netrom_socket (create relabelfrom relabelto)))
+(classmapping all_sockets ibac (nfc_socket (create relabelfrom relabelto)))
+(classmapping all_sockets ibac (packet_socket (create relabelfrom relabelto)))
+(classmapping all_sockets ibac (phonet_socket (create relabelfrom relabelto)))
+(classmapping all_sockets ibac (pppox_socket (create relabelfrom relabelto)))
+(classmapping all_sockets ibac (qipcrtr_socket (create relabelfrom relabelto)))
+(classmapping all_sockets ibac (rawip_socket (create relabelfrom relabelto)))
+(classmapping all_sockets ibac (rds_socket (create relabelfrom relabelto)))
+(classmapping all_sockets ibac (rose_socket (create relabelfrom relabelto)))
+(classmapping all_sockets ibac (rxrpc_socket (create relabelfrom relabelto)))
+(classmapping all_sockets ibac (sctp_socket (create relabelfrom relabelto)))
+(classmapping all_sockets ibac (smc_socket (create relabelfrom relabelto)))
+(classmapping all_sockets ibac (socket (create relabelfrom relabelto)))
+(classmapping all_sockets ibac (tcp_socket (create relabelfrom relabelto)))
+(classmapping all_sockets ibac (tipc_socket (create relabelfrom relabelto)))
+(classmapping all_sockets ibac (tun_socket (create relabelfrom relabelto)))
+(classmapping all_sockets ibac (udp_socket (create relabelfrom relabelto)))
+(classmapping all_sockets ibac (unix_dgram_socket (create relabelfrom
+                                                          relabelto)))
+(classmapping all_sockets ibac (unix_stream_socket (create relabelfrom
+                                                           relabelto)))
+(classmapping all_sockets ibac (vsock_socket (create relabelfrom relabelto)))
+(classmapping all_sockets ibac (x25_socket (create relabelfrom relabelto)))
 
 (classmapping all_sockets map (alg_socket (map)))
 (classmapping all_sockets map (appletalk_socket (map)))
