@@ -72,7 +72,7 @@
 (classmapping all_files create_relabelto (blk_file (create relabelto)))
 (classmapping all_files create_relabelto (chr_file (create relabelto)))
 (classmapping all_files create_relabelto (dir (create relabelto)))
-(classmapping all_files create_relabelto (fifo_file (create_relabelto)))
+(classmapping all_files create_relabelto (fifo_file (create relabelto)))
 (classmapping all_files create_relabelto (file (create relabelto)))
 (classmapping all_files create_relabelto (lnk_file (create relabelto)))
 (classmapping all_files create_relabelto (sock_file (create relabelto)))
