@@ -1,374 +1,204 @@
-; -*- mode: CIL; fill-column: 75; indent-tabs-mode: nil; tab-width: 4 -*-
-; SPDX-License-Identifier: Unlicense
+;; -*- mode: CIL; fill-column: 79; indent-tabs-mode: nil; -*-
+;; SPDX-License-Identifier: Unlicense
 
-; agent_base_template
-; auto_subj_type_transition_base_template
-; auto_subj_type_transition_template
-; dynamic_subj_type_transition_template
-; hybrid_agent_template
-; manual_subj_type_transition_base_template
-; manual_subj_type_transition_template
-; run_template
-; system_agent_template
-; user_agent_template
+;; agent_base_template
+;; auto_subj_type_transition_base_template
+;; auto_subj_type_transition_template
+;; dynamic_subj_type_transition_template
+;; hybrid_agent_template
+;; manual_subj_type_transition_base_template
+;; manual_subj_type_transition_template
+;; run_template
+;; system_agent_template
+;; user_agent_template
 
 (block agent_base_template
 
-    ;
-    ; Policy
-    ;
+       ;;
+       ;; Policy
+       ;;
 
-    (blockabstract agent_base_template)
+       (blockabstract agent_base_template)
 
-    (blockinherit cmd.cmd_file.obj_template)
-    (blockinherit subj.common_subj.subj_template)
+       (blockinherit cmd.cmd_file.obj_template)
+       (blockinherit subj.common_subj.subj_template)
 
-    (call entry
-        (
-            subj
-        )
-    )
-)
+       (call entry (subj)))
 
 (block auto_subj_type_transition_base_template
 
-    ;
-    ; Macros
-    ;
+       ;;
+       ;; Macros
+       ;;
 
-    (macro base_auto_subj_type_transition ((type ARG1))
-        (call dontaudit_noatsecure
-            (
-                ARG1
-            )
-        )
-        (call dontaudit_siginh
-            (
-                ARG1
-            )
-        )
-        (call dontaudit_rlimitinh
-            (
-                ARG1
-            )
-        )
-        (call transition
-            (
-                ARG1
-            )
-        )
+       (macro base_auto_subj_type_transition ((type ARG1))
+              (call dontaudit_noatsecure (ARG1))
+              (call dontaudit_rlimitinh (ARG1))
+              (call dontaudit_siginh (ARG1))
+              (call cmd_file_auto_subj_type_transition (ARG1 subj))
+              (call transition (ARG1)))
 
-        (call cmd_file_auto_subj_type_transition
-            (
-                ARG1 subj
-            )
-        )
-    )
+       ;;
+       ;; Policy
+       ;;
 
-    ;
-    ; Policy
-    ;
+       (blockabstract auto_subj_type_transition_base_template)
 
-    (blockabstract auto_subj_type_transition_base_template)
-
-    (blockinherit manual_subj_type_transition_base_template)
-)
+       (blockinherit manual_subj_type_transition_base_template))
 
 (block auto_subj_type_transition_template
 
-    ;
-    ; Macros
-    ;
+       ;;
+       ;; Macros
+       ;;
 
-    (macro auto_subj_type_transition ((type ARG1))
-        (call base_auto_subj_type_transition
-            (
-                ARG1
-            )
-        )
+       (macro auto_subj_type_transition ((type ARG1))
+              (allow subj ARG1 (process (sigchld signal signull)))
+              (allow subj ARG1 (fd (use)))
+              (allow subj ARG1 rw_inherited_fifo_file_perms)
+              (call base_auto_subj_type_transition (ARG1)))
 
-        (allow subj ARG1
-            (process
-                (
-                    sigchld
-                    signal
-                    signull
-                )
-            )
-        )
-        (allow subj ARG1
-            (fd
-                (
-                    use
-                )
-            )
-        )
-        (allow subj ARG1 rw_inherited_fifo_file_perms)
-    )
+       ;;
+       ;; Policy
+       ;;
 
-    ;
-    ; Policy
-    ;
+       (blockabstract auto_subj_type_transition_template)
 
-    (blockabstract auto_subj_type_transition_template)
-
-    (blockinherit auto_subj_type_transition_base_template)
-)
+       (blockinherit auto_subj_type_transition_base_template))
 
 (block dynamic_subj_type_transition_template
 
-    ;
-    ; Macros
-    ;
+       ;;
+       ;; Macros
+       ;;
 
-    (macro dynamic_subj_type_transition ((type ARG1))
-	    (allow ARG1 self
-            (process
-                (
-                    setcurrent
-                )
-            )
-        )
+       (macro dynamic_subj_type_transition ((type ARG1))
+              (allow ARG1 self (process (setcurrent)))
+              (allow subj ARG1 (process (sigchld signal signull)))
+              (call dyntransition (ARG1)))
 
-        (allow subj ARG1
-            (process
-                (
-                    sigchld
-                    signal
-                    signull
-                )
-            )
-        )
+       ;;
+       ;; Policy
+       ;;
 
-        (call dyntransition
-            (
-                ARG1
-            )
-        )
-    )
-
-    ;
-    ; Policy
-    ;
-
-    (blockabstract dynamic_subj_type_transition_template)
-)
+       (blockabstract dynamic_subj_type_transition_template))
 
 (block hybrid_agent_template
 
-    ;
-    ; Policy
-    ;
+       ;;
+       ;; Policy
+       ;;
 
-    (blockabstract hybrid_agent_template)
+       (blockabstract hybrid_agent_template)
 
-    (blockinherit agent_base_template)
-    (blockinherit run_template)
+       (blockinherit agent_base_template)
+       (blockinherit run_template)
 
-    (roleattribute role_attribute)
+       (roleattribute role_attribute)
 
-    (roleattributeset role_attribute sys.role)
+       (roleattributeset role_attribute sys.role)
 
-    (roletype role_attribute subj)
-)
+       (roletype role_attribute subj))
 
 (block manual_subj_type_transition_base_template
 
-    ;
-    ; Macros
-    ;
+       ;;
+       ;; Macros
+       ;;
 
-    (macro base_manual_subj_type_transition ((type ARG1))
-        (call dontaudit_noatsecure
-            (
-                ARG1
-            )
-        )
-        (call dontaudit_siginh
-            (
-                ARG1
-            )
-        )
-        (call dontaudit_rlimitinh
-            (
-                ARG1
-            )
-        )
-        (call mmap
-            (
-                ARG1
-            )
-        )
-        (call transition
-            (
-                ARG1
-            )
-        )
-    )
+       (macro base_manual_subj_type_transition ((type ARG1))
+              (call dontaudit_noatsecure (ARG1))
+              (call dontaudit_siginh (ARG1))
+              (call dontaudit_rlimitinh (ARG1))
+              (call mmap (ARG1))
+              (call transition (ARG1)))
 
-    ;
-    ; Policy
-    ;
+       ;;
+       ;; Policy
+       ;;
 
-    (blockabstract manual_subj_type_transition_base_template)
-)
+       (blockabstract manual_subj_type_transition_base_template))
 
 (block manual_subj_type_transition_template
 
-    ;
-    ; Macros
-    ;
+       ;;
+       ;; Macros
+       ;;
 
-    (macro manual_subj_type_transition ((type ARG1))
-        (call base_manual_subj_type_transition
-            (
-                ARG1
-            )
-        )
+       (macro manual_subj_type_transition ((type ARG1))
+              (allow ARG1 self (process (setexec)))
+              (allow subj ARG1 (process (sigchld signal signull)))
+              (allow subj ARG1 (fd (use)))
+              (allow subj ARG1 rw_inherited_fifo_file_perms)
+              (call base_manual_subj_type_transition (ARG1)))
 
-        (allow ARG1 self
-            (process
-                (
-                    setexec
-                )
-            )
-        )
+       ;;
+       ;; Policy
+       ;;
 
-        (allow subj ARG1
-            (process
-                (
-                    sigchld
-                    signal
-                    signull
-                )
-            )
-        )
-        (allow subj ARG1
-            (fd
-                (
-                    use
-                )
-            )
-        )
-        (allow subj ARG1 rw_inherited_fifo_file_perms)
-    )
+       (blockabstract manual_subj_type_transition_template)
 
-    ;
-    ; Policy
-    ;
-
-    (blockabstract manual_subj_type_transition_template)
-
-    (blockinherit manual_subj_type_transition_base_template)
-)
+       (blockinherit manual_subj_type_transition_base_template))
 
 (block run_template
 
-    ;
-    ; Macros
-    ;
+       ;;
+       ;; Macros
+       ;;
 
-    (macro run ((type ARG1)(role ARG2))
-        (call auto_subj_type_transition
-            (
-                ARG1
-            )
-        )
+       (macro run ((type ARG1)(role ARG2))
+              (call auto_subj_type_transition (ARG1))
 
-        (roleattributeset role_attribute ARG2)
+              (roleattributeset role_attribute ARG2)
 
-        (call getrlimit
-            (
-                ARG1
-            )
-        )
-        (call getsched
-            (
-                ARG1
-            )
-        )
-        (call ps
-            (
-                ARG1
-            )
-        )
-        (call ptrace
-            (
-                ARG1
-            )
-        )
-        (call setrlimit
-            (
-                ARG1
-            )
-        )
-        (call setsched
-            (
-                ARG1
-            )
-        )
-        (call sigkill
-            (
-                ARG1
-            )
-        )
-        (call signal
-            (
-                ARG1
-            )
-        )
-        (call signull
-            (
-                ARG1
-            )
-        )
-        (call sigstop
-            (
-                ARG1
-            )
-        )
-    )
+              (call getrlimit (ARG1))
+              (call getsched (ARG1))
+              (call ps (ARG1))
+              (call ptrace (ARG1))
+              (call setrlimit (ARG1))
+              (call setsched (ARG1))
+              (call sigkill (ARG1))
+              (call signal (ARG1))
+              (call signull (ARG1))
+              (call sigstop (ARG1)))
 
-    ;
-    ; Policy
-    ;
+       ;;
+       ;; Policy
+       ;;
 
-    (blockabstract run_template)
+       (blockabstract run_template)
 
-    (blockinherit auto_subj_type_transition_template)
-    (blockinherit dynamic_subj_type_transition_template)
-    (blockinherit manual_subj_type_transition_template)
-)
+       (blockinherit auto_subj_type_transition_template)
+       (blockinherit dynamic_subj_type_transition_template)
+       (blockinherit manual_subj_type_transition_template))
 
 (block system_agent_template
 
-    ;
-    ; Policy
-    ;
+       ;;
+       ;; Policy
+       ;;
 
-    (blockabstract system_agent_template)
+       (blockabstract system_agent_template)
 
-    (blockinherit agent_base_template)
+       (blockinherit agent_base_template)
 
-    (blockinherit auto_subj_type_transition_template)
-    (blockinherit dynamic_subj_type_transition_template)
-    (blockinherit manual_subj_type_transition_template)
+       (blockinherit auto_subj_type_transition_template)
+       (blockinherit dynamic_subj_type_transition_template)
+       (blockinherit manual_subj_type_transition_template)
 
-    (roletype sys.role subj)
-)
+       (roletype sys.role subj))
 
 (block user_agent_template
 
-    ;
-    ; Policy
-    ;
+       ;;
+       ;; Policy
+       ;;
 
-    (blockabstract user_agent_template)
+       (blockabstract user_agent_template)
 
-    (blockinherit agent_base_template)
-    (blockinherit run_template)
+       (blockinherit agent_base_template)
+       (blockinherit run_template)
 
-    (roleattribute role_attribute)
+       (roleattribute role_attribute)
 
-    (roletype role_attribute subj)
-)
+       (roletype role_attribute subj))

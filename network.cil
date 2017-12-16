@@ -1,61 +1,61 @@
-; -*- mode: CIL; fill-column: 75; indent-tabs-mode: nil; tab-width: 4 -*-
-; SPDX-License-Identifier: Unlicense
+;; -*- mode: CIL; fill-column: 79; indent-tabs-mode: nil; -*-
+;; SPDX-License-Identifier: Unlicense
 
-; net
-;     ephemeral_port
-;         obj_stub
-;         obj_template
-;     generic_ephemeral_port
-;     generic_hi_reserved_port
-;     generic_if
-;     generic_infiniband_endport
-;     generic_infiniband_pkey
-;     generic_node
-;     generic_packet
-;     generic_peer
-;     generic_port
-;     generic_reserved_port
-;     generic_unreserved_port
-;     hi_reserved_port
-;         obj_stub
-;         obj_template
-;     if
-;         obj_all_macro_template
-;         obj_stub
-;         obj_template
-;     infiniband_endport
-;         obj_all_macro_template
-;         obj_stub
-;         obj_template
-;     infiniband_pkey
-;         obj_all_macro_template
-;         obj_stub
-;         obj_template
-;     node
-;         obj_all_macro_template
-;         obj_stub
-;         obj_template
-;     packet
-;         obj_all_macro_template
-;         obj_stub
-;         obj_template
-;     peer
-;         obj_all_macro_template
-;         obj_stub
-;         obj_template
-;     port
-;         obj_all_macro_template
-;     reserved_port
-;         obj_all_macro_template
-;         obj_stub
-;         obj_template
-;     unreserved_port
-;         obj_stub
-;         obj_template
+;; net
+;;     ephemeral_port
+;;         obj_stub
+;;         obj_template
+;;     generic_ephemeral_port
+;;     generic_hi_reserved_port
+;;     generic_if
+;;     generic_infiniband_endport
+;;     generic_infiniband_pkey
+;;     generic_node
+;;     generic_packet
+;;     generic_peer
+;;     generic_port
+;;     generic_reserved_port
+;;     generic_unreserved_port
+;;     hi_reserved_port
+;;         obj_stub
+;;         obj_template
+;;     if
+;;         obj_all_macro_template
+;;         obj_stub
+;;         obj_template
+;;     infiniband_endport
+;;         obj_all_macro_template
+;;         obj_stub
+;;         obj_template
+;;     infiniband_pkey
+;;         obj_all_macro_template
+;;         obj_stub
+;;         obj_template
+;;     node
+;;         obj_all_macro_template
+;;         obj_stub
+;;         obj_template
+;;     packet
+;;         obj_all_macro_template
+;;         obj_stub
+;;         obj_template
+;;     peer
+;;         obj_all_macro_template
+;;         obj_stub
+;;         obj_template
+;;     port
+;;         obj_all_macro_template
+;;     reserved_port
+;;         obj_all_macro_template
+;;         obj_stub
+;;         obj_template
+;;     unreserved_port
+;;         obj_stub
+;;         obj_template
 
-;
-; Policy
-;
+;;
+;; Policy
+;;
 
 (sid netif)
 (sid netmsg)
@@ -64,275 +64,144 @@
 
 (block net
 
-    ;
-    ; Macros
-    ;
+       ;;
+       ;; Macros
+       ;;
 
-    (macro unconfined_subj_type ((type ARG1))
-        (typeattributeset unconfined_subj_type_attribute ARG1)
-    )
+       (macro unconfined_subj_type ((type ARG1))
+              (typeattributeset unconfined_subj_type_attribute ARG1))
 
-    ;
-    ; Policy
-    ;
+       ;;
+       ;; Policy
+       ;;
 
-    (typeattribute unconfined_subj_type_attribute)
+       (typeattribute unconfined_subj_type_attribute)
 
-    (call sys.invalid.dccp_recvfrom
-        (
-            unconfined_subj_type_attribute
-        )
-    )
+       (call sys.invalid.dccp_recvfrom (unconfined_subj_type_attribute))
+       (call sys.invalid.icmp_recvfrom (unconfined_subj_type_attribute))
+       (call sys.invalid.infiniband_endport_manage_subnet
+             (unconfined_subj_type_attribute))
+       (call sys.invalid.infiniband_pkey_access
+             (unconfined_subj_type_attribute))
+       (call sys.invalid.packet_recv (unconfined_subj_type_attribute))
+       (call sys.invalid.packet_send (unconfined_subj_type_attribute))
+       (call sys.invalid.peer_recv (unconfined_subj_type_attribute))
+       (call sys.invalid.rawip_recvfrom (unconfined_subj_type_attribute))
+       (call sys.invalid.sctp_recvfrom (unconfined_subj_type_attribute))
+       (call sys.invalid.tcp_recvfrom (unconfined_subj_type_attribute))
+       (call sys.invalid.udp_recvfrom (unconfined_subj_type_attribute))
 
-    (call sys.invalid.infiniband_endport_manage_subnet
-        (
-            unconfined_subj_type_attribute
-        )
-    )
-    (call sys.invalid.infiniband_pkey_access
-        (
-            unconfined_subj_type_attribute
-        )
-    )
-    (call sys.invalid.icmp_recvfrom
-        (
-            unconfined_subj_type_attribute
-        )
-    )
-    (call sys.invalid.rawip_recvfrom
-        (
-            unconfined_subj_type_attribute
-        )
-    )
-    (call sys.invalid.packet_recv
-        (
-            unconfined_subj_type_attribute
-        )
-    )
-    (call sys.invalid.packet_send
-        (
-            unconfined_subj_type_attribute
-        )
-    )
-    (call sys.invalid.peer_recv
-        (
-            unconfined_subj_type_attribute
-        )
-    )
-    (call sys.invalid.sctp_recvfrom
-        (
-            unconfined_subj_type_attribute
-        )
-    )
-    (call sys.invalid.tcp_recvfrom
-        (
-            unconfined_subj_type_attribute
-        )
-    )
-    (call sys.invalid.udp_recvfrom
-        (
-            unconfined_subj_type_attribute
-        )
-    )
+       (block ephemeral_port
 
-    (block ephemeral_port
+              ;;
+              ;; Macros
+              ;;
 
-        ;
-        ; Macros
-        ;
+              (blockinherit port.obj_all_macro_template)
 
-        (blockinherit port.obj_all_macro_template)
+              ;;
+              ;; Policy
+              ;;
 
-        ;
-        ; Policy
-        ;
+              (typeattribute obj_type_attribute)
 
-        (typeattribute obj_type_attribute)
+              (call port.obj_type (obj_type_attribute))
 
-        (call port.obj_type
-            (
-                obj_type_attribute
-            )
-        )
+              ;;
+              ;; Templates
+              ;;
 
-        ;
-        ; Templates
-        ;
+              (block obj_stub
 
-        (block obj_stub
+                     ;;
+                     ;; Contexts
+                     ;;
 
-            ;
-            ; Contexts
-            ;
+                     (context ephemeral_port_context
+                              (sys.id sys.role ephemeral_port (systemlow
+                                                               systemlow)))
 
-            (context ephemeral_port_context
-                (
-                    sys.id
-                    sys.role
-                    ephemeral_port
-                        (
-                            systemlow
-                            systemlow
-                        )
-                )
-            )
+                     ;;
+                     ;; Policy
+                     ;;
 
-            ;
-            ; Policy
-            ;
+                     (blockabstract obj_stub)
 
-            (blockabstract obj_stub)
+                     (type ephemeral_port)
+                     (call net.ephemeral_port.obj_type (ephemeral_port)))
 
-            (type ephemeral_port)
-            (call net.ephemeral_port.obj_type
-                (
-                    ephemeral_port
-                )
-            )
-        )
+              (block obj_template
 
-        (block obj_template
+                     ;;
+                     ;; Macros
+                     ;;
 
-            ;
-            ; Macros
-            ;
+                     (macro dccp_bind ((type ARG1))
+                            (allow ARG1 self create_dccp_stream_socket_perms)
+                            (allow ARG1 ephemeral_port (dccp_socket
+                                                        (name_bind))))
 
-            (macro dccp_bind ((type ARG1))
-                (allow ARG1 self create_dccp_stream_socket_perms)
-                (allow ARG1 ephemeral_port
-                    (dccp_socket
-                        (
-                            name_bind
-                        )
-                    )
-                )
-            )
+                     (macro dccp_connect ((type ARG1))
+                            (allow ARG1 self create_dccp_socket_perms)
+                            (allow ARG1 ephemeral_port (dccp_socket
+                                                        (name_connect))))
 
-            (macro dccp_connect ((type ARG1))
-                (allow ARG1 self create_dccp_socket_perms)
-                (allow ARG1 ephemeral_port
-                    (dccp_socket
-                        (
-                            name_connect
-                        )
-                    )
-                )
-            )
+                     (macro icmp_bind ((type ARG1))
+                            (allow ARG1 self create_icmp_socket_perms)
+                            (allow ARG1 ephemeral_port (icmp_socket
+                                                        (name_bind))))
 
-            (macro icmp_bind ((type ARG1))
-                (allow ARG1 self create_icmp_socket_perms)
-                (allow ARG1 ephemeral_port
-                    (icmp_socket
-                        (
-                            name_bind
-                        )
-                    )
-                )
-            )
+                     (macro rawip_bind ((type ARG1))
+                            (allow ARG1 self create_rawip_socket_perms)
+                            (allow ARG1 ephemeral_port (rawip_socket
+                                                        (name_bind))))
 
-            (macro rawip_bind ((type ARG1))
-                (allow ARG1 self create_rawip_socket_perms)
-                (allow ARG1 ephemeral_port
-                    (rawip_socket
-                        (
-                            name_bind
-                        )
-                    )
-                )
-            )
+                     (macro sctp_bind ((type ARG1))
+                            (allow ARG1 self create_sctp_socket_perms)
+                            (allow ARG1 ephemeral_port (sctp_socket
+                                                        (name_bind))))
 
-            (macro sctp_bind ((type ARG1))
-                (allow ARG1 self create_sctp_socket_perms)
-                (allow ARG1 ephemeral_port
-                    (sctp_socket
-                        (
-                            name_bind
-                        )
-                    )
-                )
-            )
+                     (macro tcp_bind ((type ARG1))
+                            (allow ARG1 self create_tcp_stream_socket_perms)
+                            (allow ARG1 ephemeral_port (tcp_socket
+                                                        (name_bind))))
 
-            (macro tcp_bind ((type ARG1))
-                (allow ARG1 self create_tcp_stream_socket_perms)
-                (allow ARG1 ephemeral_port
-                    (tcp_socket
-                        (
-                            name_bind
-                        )
-                    )
-                )
-            )
+                     (macro tcp_connect ((type ARG1))
+                            (allow ARG1 self create_tcp_socket_perms)
+                            (allow ARG1 ephemeral_port (tcp_socket
+                                                        (name_connect))))
 
-            (macro tcp_connect ((type ARG1))
-                (allow ARG1 self create_tcp_socket_perms)
-                (allow ARG1 ephemeral_port
-                    (tcp_socket
-                        (
-                            name_connect
-                        )
-                    )
-                )
-            )
+                     (macro udp_bind ((type ARG1))
+                            (allow ARG1 self create_udp_socket_perms)
+                            (allow ARG1 ephemeral_port (udp_socket
+                                                        (name_bind))))
 
-            (macro udp_bind ((type ARG1))
-                (allow ARG1 self create_udp_socket_perms)
-                (allow ARG1 ephemeral_port
-                    (udp_socket
-                        (
-                            name_bind
-                        )
-                    )
-                )
-            )
+                     ;;
+                     ;; Policy
+                     ;;
 
-            ;
-            ; Policy
-            ;
+                     (blockabstract obj_template)
 
-            (blockabstract obj_template)
+                     (blockinherit net.ephemeral_port.obj_stub)))
 
-                (blockinherit net.ephemeral_port.obj_stub)
-        )
-    )
+       (block generic_ephemeral_port
 
-    (block generic_ephemeral_port
+              ;;
+              ;; Contexts
+              ;;
 
-        ;
-        ; Contexts
-        ;
+              (portcon "dccp" (32768 61000) ephemeral_port_context)
+              (portcon "tcp" (32768 61000) ephemeral_port_context)
+              (portcon "udp" (32768 61000) ephemeral_port_context)
 
-        (portcon "dccp"
-            (
-                32768
-                61000
-            )
-            ephemeral_port_context
-        )
+              ;;
+              ;; Policy
+              ;;
 
-        (portcon "tcp"
-            (
-                32768
-                61000
-            )
-            ephemeral_port_context
-        )
+              (blockinherit ephemeral_port.obj_template))
 
-        (portcon "udp"
-            (
-                32768
-                61000
-            )
-            ephemeral_port_context
-        )
-
-        ;
-        ; Policy
-        ;
-
-        (blockinherit ephemeral_port.obj_template)
-    )
-
-    (block generic_hi_reserved_port
+;; lispy-cil
+       (block generic_hi_reserved_port
 
         ;
         ; Contexts
