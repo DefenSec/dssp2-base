@@ -5,7 +5,7 @@
 ;; Constraints
 ;;
 
-(constrain (all_files (ibac))
+(constrain (all_files (create_relabelfrom_relabelto))
            (or (or (eq u1 u2)
                    (and
                     (eq t1
@@ -13,7 +13,7 @@
                     (eq u2 ibac_sys_id_attribute)))
                (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain (all_sockets (ibac))
+(constrain (all_sockets (create_relabelfrom_relabelto))
            (or (or (eq u1 u2)
                    (and
                     (eq t1

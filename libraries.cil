@@ -1,1690 +1,658 @@
-; -*- mode: CIL; fill-column: 75; indent-tabs-mode: nil; tab-width: 4 -*-
-; SPDX-License-Identifier: Unlicense
+;; -*- mode: CIL; fill-column: 79; indent-tabs-mode: nil; -*-
+;; SPDX-License-Identifier: Unlicense
 
-; lib
-;     generic_libraries
-;     ld_so
-;     ld_so_cache
-;     lib_file
-;         obj_all_macro_template
-;         obj_stub
-;         obj_template
-;     textrel
+;; lib
+;;     generic_libraries
+;;     ld_so
+;;     ld_so_cache
+;;     lib_file
+;;         obj_all_macro_template
+;;         obj_stub
+;;         obj_template
+;;     textrel
 
 (block lib
 
     (block generic_libraries
 
-        ;
-        ; Contexts
-        ;
+           ;;
+           ;; Contexts
+           ;;
 
-        (filecon "/usr/lib(/.*)?" any lib_file_context)
+           (filecon "/usr/lib(/.*)?" any lib_file_context)
 
-        ;
-        ; Macros
-        ;
+           ;;
+           ;; Macros
+           ;;
 
-        (macro add_entries ((type ARG1))
-            (allow ARG1 lib_file add_entry_dir_perms)
-            (call read_lnk_files
-                (
-                    ARG1
-                )
-            ) 
-        )
+           (macro add_entries ((type ARG1))
+                  (allow ARG1 lib_file add_entry_dir_perms)
+                  (call read_lnk_files (ARG1)))
 
-        (macro append_files ((type ARG1))
-            (allow ARG1 lib_file append_file_perms)
-            (call search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro append_files ((type ARG1))
+                  (allow ARG1 lib_file append_file_perms)
+                  (call search (ARG1)))
 
-        (macro create ((type ARG1))
-            (call create_dirs
-                (
-                    ARG1
-                )
-            )
-            (call create_files
-                (
-                    ARG1
-                )
-            )
-            (call create_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro create ((type ARG1))
+                  (call create_dirs (ARG1))
+                  (call create_files (ARG1))
+                  (call create_lnk_files (ARG1)))
 
-        (macro create_dirs ((type ARG1))
-            (allow ARG1 lib_file
-                (dirs
-                    (
-                        create
-                    )
-                )
-            )
-            (call read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro create_dirs ((type ARG1))
+                  (allow ARG1 lib_file (dirs (create)))
+                  (call read_lnk_files (ARG1)))
 
-        (macro create_files ((type ARG1))
-            (allow ARG1 lib_file
-                (files
-                    (
-                        create
-                    )
-                )
-            )
-            (call read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro create_files ((type ARG1))
+                  (allow ARG1 lib_file (files (create)))
+                  (call read_lnk_files (ARG1)))
 
-        (macro create_lnk_files ((type ARG1))
-            (allow ARG1 lib_file
-                (lnk_files
-                    (
-                        create
-                    )
-                )
-            )
-            (call read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro create_lnk_files ((type ARG1))
+                  (allow ARG1 lib_file (lnk_files (create)))
+                  (call read_lnk_files (ARG1)))
 
-        (macro del_entries ((type ARG1))
-            (allow ARG1 lib_file del_entry_dir_perms)
-            (call read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro del_entries ((type ARG1))
+                  (allow ARG1 lib_file del_entry_dir_perms)
+                  (call read_lnk_files (ARG1)))
 
-        (macro delete ((type ARG1))
-            (call delete_dirs
-                (
-                    ARG1
-                )
-            )
-            (call delete_files
-                (
-                    ARG1
-                )
-            )
-            (call delete_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro delete ((type ARG1))
+                  (call delete_dirs (ARG1))
+                  (call delete_files (ARG1))
+                  (call delete_lnk_files (ARG1)))
 
-        (macro delete_dirs ((type ARG1))
-            (allow ARG1 lib_file
-                (dirs
-                    (
-                        delete
-                    )
-                )
-            )
-            (call read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro delete_dirs ((type ARG1))
+                  (allow ARG1 lib_file (dirs (delete)))
+                  (call read_lnk_files (ARG1)))
 
-        (macro delete_files ((type ARG1))
-            (allow ARG1 lib_file
-                (files
-                    (
-                        delete
-                    )
-                )
-            )
-            (call read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro delete_files ((type ARG1))
+                  (allow ARG1 lib_file (files (delete)))
+                  (call read_lnk_files (ARG1)))
 
-        (macro delete_lnk_files ((type ARG1))
-            (allow ARG1 lib_file
-                (lnk_files
-                    (
-                        delete
-                    )
-                )
-            )
-            (call read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro delete_lnk_files ((type ARG1))
+                  (allow ARG1 lib_file (lnk_files (delete)))
+                  (call read_lnk_files (ARG1)))
 
-        (macro execute ((type ARG1))
-            (allow ARG1 lib_file exec_file_perms)
-            (call search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro execute ((type ARG1))
+                  (allow ARG1 lib_file exec_file_perms)
+                  (call search (ARG1)))
 
-        (macro getattr ((type ARG1))
-            (call getattr_dirs
-                (
-                    ARG1
-                )
-            )
-            (call getattr_files
-                (
-                    ARG1
-                )
-            )
-            (call getattr_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro getattr ((type ARG1))
+                  (call getattr_dirs (ARG1))
+                  (call getattr_files (ARG1))
+                  (call getattr_lnk_files (ARG1)))
 
-        (macro getattr_dirs ((type ARG1))
-            (allow ARG1 lib_file
-                (dirs
-                    (
-                        getattr
-                    )
-                )
-            )
-            (call read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro getattr_dirs ((type ARG1))
+                  (allow ARG1 lib_file (dirs (getattr)))
+                  (call read_lnk_files (ARG1)))
 
-        (macro getattr_files ((type ARG1))
-            (allow ARG1 cmd_file
-                (files
-                    (
-                        getattr
-                    )
-                )
-            )
-            (call read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro getattr_files ((type ARG1))
+                  (allow ARG1 cmd_file (files (getattr)))
+                  (call read_lnk_files (ARG1)))
 
-        (macro getattr_lnk_files ((type ARG1))
-            (allow ARG1 lib_file
-                (lnk_files
-                    (
-                        getattr
-                    )
-                )
-            )
-            (call read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro getattr_lnk_files ((type ARG1))
+                  (allow ARG1 lib_file (lnk_files (getattr)))
+                  (call read_lnk_files (ARG1)))
 
-        (macro list ((type ARG1))
-            (allow ARG1 lib_file list_dir_perms)
-            (call read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro list ((type ARG1))
+                  (allow ARG1 lib_file list_dir_perms)
+                  (call read_lnk_files (ARG1)))
 
-        (macro manage ((type ARG1))
-            (call manage_dirs
-                (
-                    ARG1
-                )
-            )
-            (call manage_files
-                (
-                    ARG1
-                )
-            )
-            (call manage_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro manage ((type ARG1))
+                  (call manage_dirs (ARG1))
+                  (call manage_files (ARG1))
+                  (call manage_lnk_files (ARG1)))
 
-        (macro manage_dirs ((type ARG1))
-            (allow ARG1 lib_file
-                (dirs
-                    (
-                        manage
-                    )
-                )
-            )
-            (call read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro manage_dirs ((type ARG1))
+                  (allow ARG1 lib_file (dirs (manage)))
+                  (call read_lnk_files (ARG1)))
 
-        (macro manage_files ((type ARG1))
-            (allow ARG1 lib_file
-                (files
-                    (
-                        manage
-                    )
-                )
-            )
-            (call read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro manage_files ((type ARG1))
+                  (allow ARG1 lib_file (files (manage)))
+                  (call read_lnk_files (ARG1)))
 
-        (macro manage_lnk_files ((type ARG1))
-            (allow ARG1 lib_file
-                (lnk_files
-                    (
-                        manage
-                    )
-                )
-            )
-            (call files.generic_data.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro manage_lnk_files ((type ARG1))
+                  (allow ARG1 lib_file (lnk_files (manage)))
+                  (call files.generic_data.search (ARG1)))
 
-        (macro map_files ((type ARG1))
-            (allow ARG1 lib_file
-                (files
-                    (
-                        map
-                    )
-                )
-            )
-            (call read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro map_files ((type ARG1))
+                  (allow ARG1 lib_file (files (map))))
 
-        (macro mmap ((type ARG1))
-            (allow ARG1 lib_file mmap_file_perms)
-            (call search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro mmap ((type ARG1))
+                  (allow ARG1 lib_file mmap_file_perms)
+                  (call search (ARG1)))
 
-        (macro obj_type_transition ((type ARG1)(type ARG2)(class ARG3)(name ARG4))
-            (typetransition ARG1 lib_file ARG3 ARG4 ARG2)
-            (call rw_dirs
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro obj_type_transition
+                  ((type ARG1)(type ARG2)(class ARG3)(name ARG4))
+                  (typetransition ARG1 lib_file ARG3 ARG4 ARG2)
+                  (call rw_dirs (ARG1)))
 
-        (macro read ((type ARG1))
-            (call list
-                (
-                    ARG1
-                )
-            )
-            (call read_files
-                (
-                    ARG1
-                )
-            )
-            (call read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro read ((type ARG1))
+                  (call list (ARG1))
+                  (call read_files (ARG1))
+                  (call read_lnk_files (ARG1)))
 
-        (macro read_files ((type ARG1))
-            (allow ARG1 lib_file
-                (files
-                    (
-                        read
-                    )
-                )
-            )
-            (call read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro read_files ((type ARG1))
+                  (allow ARG1 lib_file (files (read)))
+                  (call read_lnk_files (ARG1)))
 
-        (macro read_lnk_files ((type ARG1))
-            (allow ARG1 lib_file
-                (lnk_files
-                    (
-                        read
-                    )
-                )
-            )
-            (call files.generic_data.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro read_lnk_files ((type ARG1))
+                  (allow ARG1 lib_file (lnk_files (read)))
+                  (call files.generic_data.search (ARG1)))
 
-        (macro relabel ((type ARG1))
-            (call relabel_dirs
-                (
-                    ARG1
-                )
-            )
-            (call relabel_files
-                (
-                    ARG1
-                )
-            )
-            (call relabel_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro relabel ((type ARG1))
+                  (call relabel_dirs (ARG1))
+                  (call relabel_files (ARG1))
+                  (call relabel_lnk_files (ARG1)))
 
-        (macro relabel_dirs ((type ARG1))
-            (allow ARG1 lib_file
-                (dirs
-                    (
-                        relabel
-                    )
-                )
-            )
-            (call read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro relabel_dirs ((type ARG1))
+                  (allow ARG1 lib_file (dirs (relabel)))
+                  (call read_lnk_files (ARG1)))
 
-        (macro relabel_files ((type ARG1))
-            (allow ARG1 lib_file
-                (files
-                    (
-                        relabel
-                    )
-                )
-            )
-            (call read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro relabel_files ((type ARG1))
+                  (allow ARG1 lib_file (files (relabel)))
+                  (call read_lnk_files (ARG1)))
 
-        (macro relabel_lnk_files ((type ARG1))
-            (allow ARG1 lib_file
-                (lnk_files
-                    (
-                        relabel
-                    )
-                )
-            )
-            (call read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro relabel_lnk_files ((type ARG1))
+                  (allow ARG1 lib_file (lnk_files (relabel)))
+                  (call read_lnk_files (ARG1)))
 
-        (macro relabelfrom ((type ARG1))
-            (call relabelfrom_dirs
-                (
-                    ARG1
-                )
-            )
-            (call relabelfrom_files
-                (
-                    ARG1
-                )
-            )
-            (call relabelfrom_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro relabelfrom ((type ARG1))
+                  (call relabelfrom_dirs (ARG1))
+                  (call relabelfrom_files (ARG1))
+                  (call relabelfrom_lnk_files (ARG1)))
 
-        (macro relabelfrom_dirs ((type ARG1))
-            (allow ARG1 lib_file
-                (dirs
-                    (
-                        relabelfrom
-                    )
-                )
-            )
-            (call read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro relabelfrom_dirs ((type ARG1))
+                  (allow ARG1 lib_file (dirs (relabelfrom)))
+                  (call read_lnk_files (ARG1)))
 
-        (macro relabelfrom_files ((type ARG1))
-            (allow ARG1 lib_file
-                (files
-                    (
-                        relabelfrom
-                    )
-                )
-            )
-            (call read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro relabelfrom_files ((type ARG1))
+                  (allow ARG1 lib_file (files (relabelfrom)))
+                  (call read_lnk_files (ARG1)))
 
-        (macro relabelfrom_lnk_files ((type ARG1))
-            (allow ARG1 lib_file
-                (lnk_files
-                    (
-                        relabelfrom
-                    )
-                )
-            )
-            (call read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro relabelfrom_lnk_files ((type ARG1))
+                  (allow ARG1 lib_file (lnk_files (relabelfrom)))
+                  (call read_lnk_files (ARG1)))
 
-        (macro relabelto ((type ARG1))
-            (call relabelto_dirs
-                (
-                    ARG1
-                )
-            )
-            (call relabelto_files
-                (
-                    ARG1
-                )
-            )
-            (call relabelto_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro relabelto ((type ARG1))
+                  (call relabelto_dirs (ARG1))
+                  (call relabelto_files (ARG1))
+                  (call relabelto_lnk_files (ARG1)))
 
-        (macro relabelto_dirs ((type ARG1))
-            (allow ARG1 lib_file
-                (dirs
-                    (
-                        relabelto
-                    )
-                )
-            )
-            (call read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro relabelto_dirs ((type ARG1))
+                  (allow ARG1 lib_file (dirs (relabelto)))
+                  (call read_lnk_files (ARG1)))
 
-        (macro relabelto_files ((type ARG1))
-            (allow ARG1 lib_file
-                (files
-                    (
-                        relabelto
-                    )
-                )
-            )
-            (call read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro relabelto_files ((type ARG1))
+                  (allow ARG1 lib_file (files (relabelto)))
+                  (call read_lnk_files (ARG1)))
 
-        (macro relabelto_lnk_files ((type ARG1))
-            (allow ARG1 lib_file
-                (lnk_files
-                    (
-                        relabelto
-                    )
-                )
-            )
-            (call read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro relabelto_lnk_files ((type ARG1))
+                  (allow ARG1 lib_file (lnk_files (relabelto)))
+                  (call read_lnk_files (ARG1)))
 
-        (macro rename ((type ARG1))
-            (call rename_dirs
-                (
-                    ARG1
-                )
-            )
-            (call rename_files
-                (
-                    ARG1
-                )
-            )
-            (call rename_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro rename ((type ARG1))
+                  (call rename_dirs (ARG1))
+                  (call rename_files (ARG1))
+                  (call rename_lnk_files (ARG1)))
 
-        (macro rename_dirs ((type ARG1))
-            (allow ARG1 lib_file
-                (dirs
-                    (
-                        rename
-                    )
-                )
-            )
-            (call read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro rename_dirs ((type ARG1))
+                  (allow ARG1 lib_file (dirs (rename)))
+                  (call read_lnk_files (ARG1)))
 
-        (macro rename_files ((type ARG1))
-            (allow ARG1 lib_file
-                (files
-                    (
-                        rename
-                    )
-                )
-            )
-            (call read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro rename_files ((type ARG1))
+                  (allow ARG1 lib_file (files (rename)))
+                  (call read_lnk_files (ARG1)))
 
-        (macro rename_lnk_files ((type ARG1))
-            (allow ARG1 lib_file
-                (lnk_files
-                    (
-                        rename
-                    )
-                )
-            )
-            (call read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro rename_lnk_files ((type ARG1))
+                  (allow ARG1 lib_file (lnk_files (rename)))
+                  (call read_lnk_files (ARG1)))
 
-        (macro rw ((type ARG1))
-            (call rw_dirs
-                (
-                    ARG1
-                )
-            )
-            (call rw_files
-                (
-                    ARG1
-                )
-            )
-            (call rw_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro rw ((type ARG1))
+                  (call rw_dirs (ARG1))
+                  (call rw_files (ARG1))
+                  (call rw_lnk_files (ARG1)))
 
-        (macro rw_dirs ((type ARG1))
-            (allow ARG1 lib_file
-                (dirs
-                    (
-                        rw
-                    )
-                )
-            )
-            (call read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro rw_dirs ((type ARG1))
+                  (allow ARG1 lib_file (dirs (rw)))
+                  (call read_lnk_files (ARG1)))
 
-        (macro rw_files ((type ARG1))
-            (allow ARG1 lib_file
-                (files
-                    (
-                        rw
-                    )
-                )
-            )
-            (call read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro rw_files ((type ARG1))
+                  (allow ARG1 lib_file (files (rw)))
+                  (call read_lnk_files (ARG1)))
 
-        (macro rw_lnk_files ((type ARG1))
-            (allow ARG1 lib_file
-                (lnk_files
-                    (
-                        rw
-                    )
-                )
-            )
-            (call files.generic_data.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro rw_lnk_files ((type ARG1))
+                  (allow ARG1 lib_file (lnk_files (rw)))
+                  (call files.generic_data.search (ARG1)))
 
-        (macro search ((type ARG1))
-            (allow ARG1 lib_file search_dir_perms)
-            (call read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro search ((type ARG1))
+                  (allow ARG1 lib_file search_dir_perms)
+                  (call read_lnk_files (ARG1)))
 
-        (macro setattr ((type ARG1))
-            (call setattr_dirs
-                (
-                    ARG1
-                )
-            )
-            (call setattr_files
-                (
-                    ARG1
-                )
-            )
-            (call setattr_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro setattr ((type ARG1))
+                  (call setattr_dirs (ARG1))
+                  (call setattr_files (ARG1))
+                  (call setattr_lnk_files (ARG1)))
 
-        (macro setattr_dirs ((type ARG1))
-            (allow ARG1 lib_file
-                (dirs
-                    (
-                        setattr
-                    )
-                )
-            )
-            (call read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro setattr_dirs ((type ARG1))
+                  (allow ARG1 lib_file (dirs (setattr)))
+                  (call read_lnk_files (ARG1)))
 
-        (macro setattr_files ((type ARG1))
-            (allow ARG1 lib_file
-                (files
-                    (
-                        setattr
-                    )
-                )
-            )
-            (call read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro setattr_files ((type ARG1))
+                  (allow ARG1 lib_file (files (setattr)))
+                  (call read_lnk_files (ARG1)))
 
-        (macro setattr_lnk_files ((type ARG1))
-            (allow ARG1 lib_file
-                (lnk_files
-                    (
-                        setattr
-                    )
-                )
-            )
-            (call read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro setattr_lnk_files ((type ARG1))
+                  (allow ARG1 lib_file (lnk_files (setattr)))
+                  (call read_lnk_files (ARG1)))
 
-        (macro write ((type ARG1))
-            (call write_dirs
-                (
-                    ARG1
-                )
-            )
-            (call write_files
-                (
-                    ARG1
-                )
-            )
-            (call write_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro write ((type ARG1))
+                  (call write_dirs (ARG1))
+                  (call write_files (ARG1))
+                  (call write_lnk_files (ARG1)))
 
-        (macro write_dirs ((type ARG1))
-            (allow ARG1 lib_file
-                (dirs
-                    (
-                        write
-                    )
-                )
-            )
-            (call read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro write_dirs ((type ARG1))
+                  (allow ARG1 lib_file (dirs (write)))
+                  (call read_lnk_files (ARG1)))
 
-        (macro write_files ((type ARG1))
-            (allow ARG1 lib_file
-                (files
-                    (
-                        write
-                    )
-                )
-            )
-            (call read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro write_files ((type ARG1))
+                  (allow ARG1 lib_file (files (write)))
+                  (call read_lnk_files (ARG1)))
 
-        (macro write_lnk_files ((type ARG1))
-            (allow ARG1 lib_file
-                (lnk_files
-                    (
-                        write
-                    )
-                )
-            )
-            (call read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro write_lnk_files ((type ARG1))
+                  (allow ARG1 lib_file (lnk_files (write)))
+                  (call read_lnk_files (ARG1)))
 
-        ;
-        ; Policy
-        ;
+           ;;
+           ;; Policy
+           ;;
 
-        (blockinherit lib_file.obj_stub)
-    )
+           (blockinherit lib_file.obj_stub))
 
     (block ld_so
 
-        ;
-        ; Contexts
-        ;
+           ;;
+           ;; Contexts
+           ;;
 
-        (filecon "/usr/lib/ld-[^/]*\.so(\.[^/]*)*" file file_context)
+           (filecon "/usr/lib/ld-[^/]*\.so(\.[^/]*)*" file file_context)
 
-        ;
-        ; Macros
-        ;
+           ;;
+           ;; Macros
+           ;;
 
-        (macro append_files ((type ARG1))
-            (allow ARG1 file append_file_perms)
-            (call generic_libraries.read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro append_files ((type ARG1))
+                  (allow ARG1 file append_file_perms)
+                  (call generic_libraries.read_lnk_files (ARG1)))
 
-        (macro create_files ((type ARG1))
-            (allow ARG1 file create_file_perms)
-            (call generic_libraries.read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro create_files ((type ARG1))
+                  (allow ARG1 file create_file_perms)
+                  (call generic_libraries.read_lnk_files (ARG1)))
 
-        (macro delete_files ((type ARG1))
-            (allow ARG1 file delete_file_perms)
-            (call generic_libraries.read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro delete_files ((type ARG1))
+                  (allow ARG1 file delete_file_perms)
+                  (call generic_libraries.read_lnk_files (ARG1)))
 
-        (macro execute ((type ARG1))
-            (allow ARG1 file exec_file_perms)
-            (call generic_libraries.list
-                (
-                    ARG1
-                )
-            )
-            (call generic_libraries.read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro execute ((type ARG1))
+                  (allow ARG1 file exec_file_perms)
+                  (call generic_libraries.list (ARG1))
+                  (call generic_libraries.read_lnk_files (ARG1)))
 
-        (macro getattr_files ((type ARG1))
-            (allow ARG1 file
-                (file
-                    (
-                        getattr
-                    )
-                )
-            )
-            (call generic_libraries.read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro getattr_files ((type ARG1))
+                  (allow ARG1 file (file (getattr)))
+                  (call generic_libraries.read_lnk_files (ARG1)))
 
-        (macro manage_files ((type ARG1))
-            (allow ARG1 file manage_file_perms)
-            (call generic_libraries.read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro manage_files ((type ARG1))
+                  (allow ARG1 file manage_file_perms)
+                  (call generic_libraries.read_lnk_files (ARG1)))
 
-        (macro map_files ((type ARG1))
-            (allow ARG1 file map_file_perms)
-            (call generic_libraries.read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro map_files ((type ARG1))
+                  (allow ARG1 file map_file_perms))
 
-        (macro mmap ((type ARG1))
-            (allow ARG1 file mmap_file_perms)
-            (call generic_libraries.read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro mmap ((type ARG1))
+                  (allow ARG1 file mmap_file_perms)
+                  (call generic_libraries.read_lnk_files (ARG1)))
 
-        (macro read_files ((type ARG1))
-            (allow ARG1 file read_file_perms)
-            (call generic_libraries.read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro read_files ((type ARG1))
+                  (allow ARG1 file read_file_perms)
+                  (call generic_libraries.read_lnk_files (ARG1)))
 
-        (macro relabel_files ((type ARG1))
-            (allow ARG1 file relabel_file_perms)
-            (call generic_libraries.read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro relabel_files ((type ARG1))
+                  (allow ARG1 file relabel_file_perms)
+                  (call generic_libraries.read_lnk_files (ARG1)))
 
-        (macro relabelfrom_files ((type ARG1))
-            (allow ARG1 file relabelfrom_file_perms)
-            (call generic_libraries.read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro relabelfrom_files ((type ARG1))
+                  (allow ARG1 file relabelfrom_file_perms)
+                  (call generic_libraries.read_lnk_files (ARG1)))
 
-        (macro relabelto_files ((type ARG1))
-            (allow ARG1 file relabelto_file_perms)
-            (call generic_libraries.read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro relabelto_files ((type ARG1))
+                  (allow ARG1 file relabelto_file_perms)
+                  (call generic_libraries.read_lnk_files (ARG1)))
 
-        (macro rename_files ((type ARG1))
-            (allow ARG1 file rename_file_perms)
-            (call generic_libraries.read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro rename_files ((type ARG1))
+                  (allow ARG1 file rename_file_perms)
+                  (call generic_libraries.read_lnk_files (ARG1)))
 
-        (macro rw_files ((type ARG1))
-            (allow ARG1 file rw_file_perms)
-            (call generic_libraries.read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro rw_files ((type ARG1))
+                  (allow ARG1 file rw_file_perms)
+                  (call generic_libraries.read_lnk_files (ARG1)))
 
-        (macro setattr_files ((type ARG1))
-            (allow ARG1 file
-                (file
-                    (
-                        setattr
-                    )
-                )
-            )
-            (call generic_libraries.read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro setattr_files ((type ARG1))
+                  (allow ARG1 file (file (setattr)))
+                  (call generic_libraries.read_lnk_files (ARG1)))
 
-        (macro use_files ((type ARG1))
-            (allow ARG1 file mmap_file_perms)
-            (call generic_libraries.list
-                (
-                    ARG1
-                )
-            )
-            (call generic_libraries.read_lnk_files
-                (
-                    ARG1
-                )
-            )
-            (call ld_so_cache.map_files
-                (
-                    ARG1
-                )
-            )
-            (call ld_so_cache.read_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro use_files ((type ARG1))
+                  (allow ARG1 file mmap_file_perms)
+                  (call generic_libraries.list (ARG1))
+                  (call generic_libraries.read_lnk_files (ARG1))
+                  (call ld_so_cache.map_files (ARG1))
+                  (call ld_so_cache.read_files (ARG1)))
 
-        (macro write_files ((type ARG1))
-            (allow ARG1 file write_file_perms)
-            (call generic_libraries.read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro write_files ((type ARG1))
+                  (allow ARG1 file write_file_perms)
+                  (call generic_libraries.read_lnk_files (ARG1)))
 
-        ;
-        ; Policy
-        ;
+           ;;
+           ;; Policy
+           ;;
 
-        (blockinherit files.file.obj_stub)
-    )
+           (blockinherit files.file.obj_stub))
 
     (block ld_so_cache
 
-        ;
-        ; Contexts
-        ;
+           ;;
+           ;; Contexts
+           ;;
 
-        (filecon "/etc/ld\.so\.cache.*" file file_context)
-        (filecon "/etc/ld\.so\.preload.*" file file_context)
-        (filecon "/etc/ld-musl-[^/]*\.path.*" file file_context)
+           (filecon "/etc/ld\.so\.cache.*" file file_context)
+           (filecon "/etc/ld\.so\.preload.*" file file_context)
+           (filecon "/etc/ld-musl-[^/]*\.path.*" file file_context)
 
-        ;
-        ; Macros
-        ;
+           ;;
+           ;; Macros
+           ;;
 
-        (macro append_files ((type ARG1))
-            (allow ARG1 file append_file_perms)
-            (call files.generic_config.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro append_files ((type ARG1))
+                  (allow ARG1 file append_file_perms)
+                  (call files.generic_config.search (ARG1)))
 
-        (macro create_files ((type ARG1))
-            (allow ARG1 file create_file_perms)
-            (call files.generic_config.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro create_files ((type ARG1))
+                  (allow ARG1 file create_file_perms)
+                  (call files.generic_config.search (ARG1)))
 
-        (macro delete_files ((type ARG1))
-            (allow ARG1 file delete_file_perms)
-            (call files.generic_config.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro delete_files ((type ARG1))
+                  (allow ARG1 file delete_file_perms)
+                  (call files.generic_config.search (ARG1)))
 
-        (macro execute ((type ARG1))
-            (allow ARG1 file exec_file_perms)
-            (call files.generic_config.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro execute ((type ARG1))
+                  (allow ARG1 file exec_file_perms)
+                  (call files.generic_config.search (ARG1)))
 
-        (macro getattr_files ((type ARG1))
-            (allow ARG1 file
-                (file
-                    (
-                        getattr
-                    )
-                )
-            )
-            (call files.generic_config.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro getattr_files ((type ARG1))
+                  (allow ARG1 file (file (getattr)))
+                  (call files.generic_config.search (ARG1)))
 
-        (macro manage_files ((type ARG1))
-            (allow ARG1 file manage_file_perms)
-            (call files.generic_config.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro manage_files ((type ARG1))
+                  (allow ARG1 file manage_file_perms)
+                  (call files.generic_config.search (ARG1)))
 
-        (macro map_files ((type ARG1))
-            (allow ARG1 file map_file_perms)
-            (call files.generic_config.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro map_files ((type ARG1))
+                  (allow ARG1 file map_file_perms))
 
-        (macro mmap ((type ARG1))
-            (allow ARG1 file mmap_file_perms)
-            (call files.generic_config.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro mmap ((type ARG1))
+                  (allow ARG1 file mmap_file_perms)
+                  (call files.generic_config.search (ARG1)))
 
-        (macro generic_config_obj_type_transition ((type ARG1))
-            (call files.generic_config.obj_type_transition
-                (
-                    ARG1 file file "ld.so.cache"
-                )
-            )
-            (call files.generic_config.obj_type_transition
-                (
-                    ARG1 file file "ld.so.cache~"
-                )
-            )
-            (call files.generic_config.obj_type_transition
-                (
-                    ARG1 file file "ld.so.preload"
-                )
-            )
-            (call files.generic_config.obj_type_transition
-                (
-                    ARG1 file file "ld.so.preload~"
-                )
-            )
-        )
+           (macro generic_config_obj_type_transition ((type ARG1))
+                  (call files.generic_config.obj_type_transition
+                        (ARG1 file file "ld.so.cache"))
+                  (call files.generic_config.obj_type_transition
+                        (ARG1 file file "ld.so.cache~"))
+                  (call files.generic_config.obj_type_transition
+                        (ARG1 file file "ld.so.preload"))
+                  (call files.generic_config.obj_type_transition
+                        (ARG1 file file "ld.so.preload~")))
 
-        (macro read_files ((type ARG1))
-            (allow ARG1 file read_file_perms)
-            (call files.generic_config.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro read_files ((type ARG1))
+                  (allow ARG1 file read_file_perms)
+                  (call files.generic_config.search (ARG1)))
 
-        (macro relabel_files ((type ARG1))
-            (allow ARG1 file relabel_file_perms)
-            (call files.generic_config.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro relabel_files ((type ARG1))
+                  (allow ARG1 file relabel_file_perms)
+                  (call files.generic_config.search (ARG1)))
 
-        (macro relabelfrom_files ((type ARG1))
-            (allow ARG1 file relabelfrom_file_perms)
-            (call files.generic_config.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro relabelfrom_files ((type ARG1))
+                  (allow ARG1 file relabelfrom_file_perms)
+                  (call files.generic_config.search (ARG1)))
 
-        (macro relabelto_files ((type ARG1))
-            (allow ARG1 file relabelto_file_perms)
-            (call files.generic_config.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro relabelto_files ((type ARG1))
+                  (allow ARG1 file relabelto_file_perms)
+                  (call files.generic_config.search (ARG1)))
 
-        (macro rename_files ((type ARG1))
-            (allow ARG1 file rename_file_perms)
-            (call files.generic_config.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro rename_files ((type ARG1))
+                  (allow ARG1 file rename_file_perms)
+                  (call files.generic_config.search (ARG1)))
 
-        (macro rw_files ((type ARG1))
-            (allow ARG1 file rw_file_perms)
-            (call files.generic_config.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro rw_files ((type ARG1))
+                  (allow ARG1 file rw_file_perms)
+                  (call files.generic_config.search (ARG1)))
 
-        (macro setattr_files ((type ARG1))
-            (allow ARG1 file
-                (file
-                    (
-                        setattr
-                    )
-                )
-            )
-            (call files.generic_config.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro setattr_files ((type ARG1))
+                  (allow ARG1 file (file (setattr)))
+                  (call files.generic_config.search (ARG1)))
 
-        (macro write_files ((type ARG1))
-            (allow ARG1 file write_file_perms)
-            (call files.generic_config.search
-                (
-                    ARG1
-                )
-            )
-        )
+           (macro write_files ((type ARG1))
+                  (allow ARG1 file write_file_perms)
+                  (call files.generic_config.search (ARG1)))
 
-        ;
-        ; Policy
-        ;
+           ;;
+           ;; Policy
+           ;;
 
-        (blockinherit files.file.obj_stub)
-    )
+           (blockinherit files.file.obj_stub))
 
     (block lib_file
 
-        ;
-        ; Macros
-        ;
+           ;;
+           ;; Macros
+           ;;
 
-        (blockinherit obj_all_macro_template)
+           (blockinherit obj_all_macro_template)
 
-        ;
-        ; Policy
-        ;
+           ;;
+           ;; Policy
+           ;;
 
-        (typeattribute obj_type_attribute)
+           (typeattribute obj_type_attribute)
 
-        (call files.obj_type
-            (
-                obj_type_attribute
-            )
-        )
+           (call files.obj_type (obj_type_attribute))
 
-        ;
-        ; Templates
-        ;
+           ;;
+           ;; Templates
+           ;;
 
-        (block obj_all_macro_template
+           (block obj_all_macro_template
 
-            ;
-            ; Macros
-            ;
+                  ;;
+                  ;; Macros
+                  ;;
 
-            (macro append_files ((type ARG1))
-                (allow ARG1 obj_type_attribute append_file_perms)
-                (call lib.generic_libraries.read_lnk_files
-                    (
-                        ARG1
-                    )
-                )
-            )
+                  (macro append_files ((type ARG1))
+                         (allow ARG1 obj_type_attribute append_file_perms)
+                         (call lib.generic_libraries.read_lnk_files (ARG1)))
 
-            (macro create_files ((type ARG1))
-                (allow ARG1 obj_type_attribute create_file_perms)
-                (call lib.generic_libraries.read_lnk_files
-                    (
-                        ARG1
-                    )
-                )
-            )
+                  (macro create_files ((type ARG1))
+                         (allow ARG1 obj_type_attribute create_file_perms)
+                         (call lib.generic_libraries.read_lnk_files (ARG1)))
 
-            (macro delete_files ((type ARG1))
-                (allow ARG1 obj_type_attribute delete_file_perms)
-                (call lib.generic_libraries.read_lnk_files
-                    (
-                        ARG1
-                    )
-                )
-            )
+                  (macro delete_files ((type ARG1))
+                         (allow ARG1 obj_type_attribute delete_file_perms)
+                         (call lib.generic_libraries.read_lnk_files (ARG1)))
 
-            (macro execute ((type ARG1))
-                (allow ARG1 obj_type_attribute exec_file_perms)
-                (call lib.generic_libraries.read_lnk_files
-                    (
-                        ARG1
-                    )
-                )
-            )
+                  (macro execute ((type ARG1))
+                         (allow ARG1 obj_type_attribute exec_file_perms)
+                         (call lib.generic_libraries.read_lnk_files (ARG1)))
 
-            (macro getattr_files ((type ARG1))
-                (allow ARG1 obj_type_attribute
-                    (file
-                        (
-                            getattr
-                        )
-                    )
-                )
-                (call lib.generic_libraries.read_lnk_files
-                    (
-                        ARG1
-                    )
-                )
-            )
+                  (macro getattr_files ((type ARG1))
+                         (allow ARG1 obj_type_attribute (file (getattr)))
+                         (call lib.generic_libraries.read_lnk_files (ARG1)))
 
-            (macro manage_files ((type ARG1))
-                (allow ARG1 obj_type_attribute manage_file_perms)
-                (call lib.generic_libraries.read_lnk_files
-                    (
-                        ARG1
-                    )
-                )
-            )
+                  (macro manage_files ((type ARG1))
+                         (allow ARG1 obj_type_attribute manage_file_perms)
+                         (call lib.generic_libraries.read_lnk_files (ARG1)))
 
-            (macro map_files ((type ARG1))
-                (allow ARG1 obj_type_attribute map_file_perms)
-                (call lib.generic_libraries.read_lnk_files
-                    (
-                        ARG1
-                    )
-                )
-            )
+                  (macro map_files ((type ARG1))
+                         (allow ARG1 obj_type_attribute map_file_perms))
 
-            (macro mmap ((type ARG1))
-                (allow ARG1 obj_type_attribute mmap_file_perms)
-                (call lib.generic_libraries.read_lnk_files
-                    (
-                        ARG1
-                    )
-                )
-            )
+                  (macro mmap ((type ARG1))
+                         (allow ARG1 obj_type_attribute mmap_file_perms)
+                         (call lib.generic_libraries.read_lnk_files (ARG1)))
 
-            (macro obj_type ((type ARG1))
-                (typeattributeset obj_type_attribute ARG1)
-            )
+                  (macro obj_type ((type ARG1))
+                         (typeattributeset obj_type_attribute ARG1))
 
-            (macro read_files ((type ARG1))
-                (allow ARG1 obj_type_attribute read_file_perms)
-                (call lib.generic_libraries.read_lnk_files
-                    (
-                        ARG1
-                    )
-                )
-            )
+                  (macro read_files ((type ARG1))
+                         (allow ARG1 obj_type_attribute read_file_perms)
+                         (call lib.generic_libraries.read_lnk_files (ARG1)))
 
-            (macro relabel_files ((type ARG1))
-                (allow ARG1 obj_type_attribute relabel_file_perms)
-                (call lib.generic_libraries.read_lnk_files
-                    (
-                        ARG1
-                    )
-                )
-            )
+                  (macro relabel_files ((type ARG1))
+                         (allow ARG1 obj_type_attribute relabel_file_perms)
+                         (call lib.generic_libraries.read_lnk_files (ARG1)))
 
-            (macro relabelfrom_files ((type ARG1))
-                (allow ARG1 obj_type_attribute relabelfrom_file_perms)
-                (call lib.generic_libraries.read_lnk_files
-                    (
-                        ARG1
-                    )
-                )
-            )
+                  (macro relabelfrom_files ((type ARG1))
+                         (allow ARG1 obj_type_attribute relabelfrom_file_perms)
+                         (call lib.generic_libraries.read_lnk_files (ARG1)))
 
-            (macro relabelto_files ((type ARG1))
-                (allow ARG1 obj_type_attribute relabelto_file_perms)
-                (call lib.generic_libraries.read_lnk_files
-                    (
-                        ARG1
-                    )
-                )
-            )
+                  (macro relabelto_files ((type ARG1))
+                         (allow ARG1 obj_type_attribute relabelto_file_perms)
+                         (call lib.generic_libraries.read_lnk_files (ARG1)))
 
-            (macro rename_files ((type ARG1))
-                (allow ARG1 obj_type_attribute rename_file_perms)
-                (call lib.generic_libraries.read_lnk_files
-                    (
-                        ARG1
-                    )
-                )
-            )
+                  (macro rename_files ((type ARG1))
+                         (allow ARG1 obj_type_attribute rename_file_perms)
+                         (call lib.generic_libraries.read_lnk_files (ARG1)))
 
-            (macro rw_files ((type ARG1))
-                (allow ARG1 obj_type_attribute rw_file_perms)
-                (call lib.generic_libraries.read_lnk_files
-                    (
-                        ARG1
-                    )
-                )
-            )
+                  (macro rw_files ((type ARG1))
+                         (allow ARG1 obj_type_attribute rw_file_perms)
+                         (call lib.generic_libraries.read_lnk_files (ARG1)))
 
-            (macro setattr_files ((type ARG1))
-                (allow ARG1 obj_type_attribute
-                    (file
-                        (
-                            setattr
-                        )
-                    )
-                )
-                (call lib.generic_libraries.read_lnk_files
-                    (
-                        ARG1
-                    )
-                )
-            )
+                  (macro setattr_files ((type ARG1))
+                         (allow ARG1 obj_type_attribute (file (setattr)))
+                         (call lib.generic_libraries.read_lnk_files (ARG1)))
 
-            (macro write_files ((type ARG1))
-                (allow ARG1 obj_type_attribute write_file_perms)
-                (call lib.generic_libraries.read_lnk_files
-                    (
-                        ARG1
-                    )
-                )
-            )
+                  (macro write_files ((type ARG1))
+                         (allow ARG1 obj_type_attribute write_file_perms)
+                         (call lib.generic_libraries.read_lnk_files (ARG1)))
 
-            ;
-            ; Policy
-            ;
+                  ;;
+                  ;; Policy
+                  ;;
 
-            (blockabstract obj_all_macro_template)
-        )
+                  (blockabstract obj_all_macro_template))
 
-        (block obj_stub
+           (block obj_stub
 
-            ;
-            ; Contexts
-            ;
+                  ;;
+                  ;; Contexts
+                  ;;
 
-            (context lib_file_context
-                (
-                    sys.id
-                    sys.role
-                    lib_file
-                        (
-                            systemlow
-                            systemlow
-                        )
-                )
-            )
+                  (context lib_file_context
+                           (sys.id sys.role lib_file (systemlow systemlow)))
 
-            ;
-            ; Policy
-            ;
+                  ;;
+                  ;; Policy
+                  ;;
 
-            (blockabstract obj_stub)
+                  (blockabstract obj_stub)
 
-            (type lib_file)
-            (call lib.lib_file.obj_type
-                (
-                    lib_file
-                )
-            )
-        )
+                  (type lib_file)
+                  (call lib.lib_file.obj_type (lib_file)))
 
-        (block obj_template
+           (block obj_template
 
-            ;
-            ; Macros
-            ;
+                  ;;
+                  ;; Macros
+                  ;;
 
-            (macro append_files ((type ARG1))
-                (allow ARG1 lib_file append_file_perms)
-                (call lib.generic_libraries.read_lnk_files
-                    (
-                        ARG1
-                    )
-                )
-            )
+                  (macro append_files ((type ARG1))
+                         (allow ARG1 lib_file append_file_perms)
+                         (call lib.generic_libraries.read_lnk_files (ARG1)))
 
-            (macro create_files ((type ARG1))
-                (allow ARG1 lib_file create_file_perms)
-                (call lib.generic_libraries.read_lnk_files
-                    (
-                        ARG1
-                    )
-                )
-            )
+                  (macro create_files ((type ARG1))
+                         (allow ARG1 lib_file create_file_perms)
+                         (call lib.generic_libraries.read_lnk_files (ARG1)))
 
-            (macro delete_files ((type ARG1))
-                (allow ARG1 lib_file delete_file_perms)
-                (call lib.generic_libraries.read_lnk_files
-                    (
-                        ARG1
-                    )
-                )
-            )
+                  (macro delete_files ((type ARG1))
+                         (allow ARG1 lib_file delete_file_perms)
+                         (call lib.generic_libraries.read_lnk_files (ARG1)))
 
-            (macro execute ((type ARG1))
-                (allow ARG1 lib_file exec_file_perms)
-                (call lib.generic_libraries.read_lnk_files
-                    (
-                        ARG1
-                    )
-                )
-            )
+                  (macro execute ((type ARG1))
+                         (allow ARG1 lib_file exec_file_perms)
+                         (call lib.generic_libraries.read_lnk_files (ARG1)))
 
-            (macro getattr_files ((type ARG1))
-                (allow ARG1 lib_file
-                    (file
-                        (
-                            getattr
-                        )
-                    )
-                )
-                (call lib.generic_libraries.read_lnk_files
-                    (
-                        ARG1
-                    )
-                )
-            )
+                  (macro getattr_files ((type ARG1))
+                         (allow ARG1 lib_file (file (getattr)))
+                         (call lib.generic_libraries.read_lnk_files (ARG1)))
 
-            (macro manage_files ((type ARG1))
-                (allow ARG1 lib_file manage_file_perms)
-                (call lib.generic_libraries.read_lnk_files
-                    (
-                        ARG1
-                    )
-                )
-            )
+                  (macro manage_files ((type ARG1))
+                         (allow ARG1 lib_file manage_file_perms)
+                         (call lib.generic_libraries.read_lnk_files (ARG1)))
 
-            (macro map_files ((type ARG1))
-                (allow ARG1 lib_file map_file_perms)
-                (call lib.generic_libraries.read_lnk_files
-                    (
-                        ARG1
-                    )
-                )
-            )
+                  (macro map_files ((type ARG1))
+                         (allow ARG1 lib_file map_file_perms))
 
-            (macro mmap ((type ARG1))
-                (allow ARG1 lib_file mmap_file_perms)
-                (call lib.generic_libraries.read_lnk_files
-                    (
-                        ARG1
-                    )
-                )
-            )
+                  (macro mmap ((type ARG1))
+                         (allow ARG1 lib_file mmap_file_perms)
+                         (call lib.generic_libraries.read_lnk_files (ARG1)))
 
-            (macro read_files ((type ARG1))
-                (allow ARG1 lib_file read_file_perms)
-                (call lib.generic_libraries.read_lnk_files
-                    (
-                        ARG1
-                    )
-                )
-            )
+                  (macro read_files ((type ARG1))
+                         (allow ARG1 lib_file read_file_perms)
+                         (call lib.generic_libraries.read_lnk_files (ARG1)))
 
-            (macro relabel_files ((type ARG1))
-                (allow ARG1 lib_file relabel_file_perms)
-                (call lib.generic_libraries.read_lnk_files
-                    (
-                        ARG1
-                    )
-                )
-            )
+                  (macro relabel_files ((type ARG1))
+                         (allow ARG1 lib_file relabel_file_perms)
+                         (call lib.generic_libraries.read_lnk_files (ARG1)))
 
-            (macro relabelfrom_files ((type ARG1))
-                (allow ARG1 lib_file relabelfrom_file_perms)
-                (call lib.generic_libraries.read_lnk_files
-                    (
-                        ARG1
-                    )
-                )
-            )
+                  (macro relabelfrom_files ((type ARG1))
+                         (allow ARG1 lib_file relabelfrom_file_perms)
+                         (call lib.generic_libraries.read_lnk_files (ARG1)))
 
-            (macro relabelto_files ((type ARG1))
-                (allow ARG1 lib_file relabelto_file_perms)
-                (call lib.generic_libraries.read_lnk_files
-                    (
-                        ARG1
-                    )
-                )
-            )
+                  (macro relabelto_files ((type ARG1))
+                         (allow ARG1 lib_file relabelto_file_perms)
+                         (call lib.generic_libraries.read_lnk_files (ARG1)))
 
-            (macro rename_files ((type ARG1))
-                (allow ARG1 lib_file rename_file_perms)
-                (call lib.generic_libraries.read_lnk_files
-                    (
-                        ARG1
-                    )
-                )
-            )
+                  (macro rename_files ((type ARG1))
+                         (allow ARG1 lib_file rename_file_perms)
+                         (call lib.generic_libraries.read_lnk_files (ARG1)))
 
-            (macro rw_files ((type ARG1))
-                (allow ARG1 lib_file rw_file_perms)
-                (call lib.generic_libraries.read_lnk_files
-                    (
-                        ARG1
-                    )
-                )
-            )
+                  (macro rw_files ((type ARG1))
+                         (allow ARG1 lib_file rw_file_perms)
+                         (call lib.generic_libraries.read_lnk_files (ARG1)))
 
-            (macro setattr_files ((type ARG1))
-                (allow ARG1 lib_file
-                    (file
-                        (
-                            setattr
-                        )
-                    )
-                )
-                (call lib.generic_libraries.read_lnk_files
-                    (
-                        ARG1
-                    )
-                )
-            )
+                  (macro setattr_files ((type ARG1))
+                         (allow ARG1 lib_file (file (setattr)))
+                         (call lib.generic_libraries.read_lnk_files (ARG1)))
 
-            (macro write_files ((type ARG1))
-                (allow ARG1 lib_file write_file_perms)
-                (call lib.generic_libraries.read_lnk_files
-                    (
-                        ARG1
-                    )
-                )
-            )
+                  (macro write_files ((type ARG1))
+                         (allow ARG1 lib_file write_file_perms)
+                         (call lib.generic_libraries.read_lnk_files (ARG1)))
 
-            ;
-            ; Policy
-            ;
+                  ;;
+                  ;; Policy
+                  ;;
 
-            (blockabstract obj_template)
+                  (blockabstract obj_template)
 
-            (blockinherit lib.lib_file.obj_stub)
-        )
-    )
+                  (blockinherit lib.lib_file.obj_stub)))
 
     (block textrel
 
-        ;
-        ; Macros
-        ;
+           ;;
+           ;; Macros
+           ;;
 
-        (macro execmod ((type ARG1))
-            (allow ARG1 lib_file
-                (file
-                    (
-                        execmod
-                    )
-                )
-            )
-        )
+           (macro execmod ((type ARG1))
+                  (allow ARG1 lib_file (file (execmod))))
 
-        ;
-        ; Policy
-        ;
+           ;;
+           ;; Policy
+           ;;
 
-        (blockinherit lib_file.obj_template)
-    )
-)
+           (blockinherit lib_file.obj_template)))

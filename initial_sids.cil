@@ -1,9 +1,9 @@
-; -*- mode: CIL; fill-column: 75; indent-tabs-mode: nil; tab-width: 4 -*-
-; SPDX-License-Identifier: Unlicense
+;; -*- mode: CIL; fill-column: 79; indent-tabs-mode: nil; -*-
+;; SPDX-License-Identifier: Unlicense
 
-;
-; Unused initial security identifier declarations
-;
+;;
+;; Unused initial security identifier declarations
+;;
 
 (sid any_socket)
 (sid file_labels)
@@ -22,21 +22,12 @@
 (sid sysctl_vm)
 (sid tcp_socket)
 
-;
-; Unused initial security identifier context specifications
-;
+;;
+;; Unused initial security identifier context specifications
+;;
 
-(context unused_isid
-    (
-        sys.id
-        sys.role
-        sys.unlabeled.isid
-            (
-                systemlow
-                systemlow
-            )
-    )
-)
+(context unused_isid (sys.id sys.role sys.unlabeled.isid (systemlow
+                                                          systemlow)))
 
 (sidcontext any_socket unused_isid)
 (sidcontext file_labels unused_isid)
@@ -55,37 +46,12 @@
 (sidcontext sysctl_vm unused_isid)
 (sidcontext tcp_socket unused_isid)
 
-;
-; Sid order of all initial security identifiers
-;
+;;
+;; Sid order of all initial security identifiers
+;;
 
-(sidorder
-    (
-        kernel
-        security
-        unlabeled
-        fs
-        file
-        file_labels
-        init
-        any_socket
-        port
-        netif
-        netmsg
-        node
-        igmp_packet
-        icmp_socket
-        tcp_socket
-        sysctl_modprobe
-        sysctl
-        sysctl_fs
-        sysctl_kernel
-        sysctl_net
-        sysctl_net_unix
-        sysctl_vm
-        sysctl_dev
-        kmod policy
-        scmp_packet
-        devnull
-    )
-)
+(sidorder (kernel security unlabeled fs file file_labels init any_socket port
+                  netif netmsg node igmp_packet icmp_socket tcp_socket
+                  sysctl_modprobe sysctl sysctl_fs sysctl_kernel sysctl_net
+                  sysctl_net_unix sysctl_vm sysctl_dev kmod policy scmp_packet
+                  devnull))
