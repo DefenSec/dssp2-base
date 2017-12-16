@@ -1,1319 +1,549 @@
-; -*- mode: CIL; fill-column: 75; indent-tabs-mode: nil; tab-width: 4 -*-
-; SPDX-License-Identifier: Unlicense
+;; -*- mode: CIL; fill-column: 79; indent-tabs-mode: nil; -*-
+;; SPDX-License-Identifier: Unlicense
 
-;
-; Constraints
-;
+;;
+;; Constraints
+;;
 
-(constrain
-    (alg_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (alg_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (appletalk_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (appletalk_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (atmpvc_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (atmpvc_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (atmsvc_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (atmsvc_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (ax25_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (ax25_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (blk_file
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (blk_file (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (bluetooth_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (bluetooth_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (caif_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (caif_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (can_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (can_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (chr_file
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (chr_file (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (dccp_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (dccp_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (decnet_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (decnet_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (dir
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (dir (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (fifo_file
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (fifo_file (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (file
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (file (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (icmp_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (icmp_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (ieee802154_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (ieee802154_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (ipx_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (ipx_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (irda_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (irda_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (isdn_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (isdn_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (iucv_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (iucv_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (kcm_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (kcm_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (lnk_file
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (lnk_file (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (llc_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (llc_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (netlink_audit_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (netlink_audit_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (netlink_connector_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (netlink_connector_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (netlink_crypto_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (netlink_crypto_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (netlink_dnrt_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (netlink_dnrt_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (netlink_fib_lookup_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (netlink_fib_lookup_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (netlink_generic_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (netlink_generic_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (netlink_iscsi_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (netlink_iscsi_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (netlink_kobject_uevent_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (netlink_kobject_uevent_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (netlink_netfilter_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (netlink_netfilter_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (netlink_nflog_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (netlink_nflog_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (netlink_rdma_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (netlink_rdma_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (netlink_route_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (netlink_route_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (netlink_scsitransport_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (netlink_scsitransport_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (netlink_selinux_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (netlink_selinux_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (netlink_tcpdiag_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (netlink_tcpdiag_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (netlink_xfrm_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (netlink_xfrm_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (netrom_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (netrom_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (nfc_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (nfc_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (packet_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (packet_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (phonet_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (phonet_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (pppox_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (pppox_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (process
-        (
-            dyntransition
-            noatsecure
-            rlimitinh
-            siginh
-            transition
-        )
-    )
-    (or
-        (or
-            (or
-                (eq u1 u2)
-                    (and
+(constrain (process (dyntransition noatsecure rlimitinh siginh transition))
+           (or (or (or (eq u1 u2)
+                       (and
                         (eq t1 ibac_id_change_exemption_subj_type_attribute)
-                        (eq t2 ibac_user_exemption_target_subj_type_attribute)
-                    )
-            )
-            (and
-                (eq t1 ibac_sys_id_change_exemption_subj_type_attribute)
-                (eq u2 ibac_sys_id_attribute)
-            )
-        )
-        (eq t1 ibac_uncond_exemption_subj_type_attribute)
-    )
-)
+                        (eq
+                         t2 ibac_user_exemption_target_subj_type_attribute)))
+                   (and
+                    (eq t1 ibac_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_uncond_exemption_subj_type_attribute)))
 
-(constrain
-    (process2
-        (
-            nnp_transition
-            nosuid_transition
-        )
-    )
-    (or
-        (or
-            (or
-                (eq u1 u2)
-                    (and
+(constrain (process2 (nnp_transition nosuid_transition))
+           (or (or (or (eq u1 u2)
+                       (and
                         (eq t1 ibac_id_change_exemption_subj_type_attribute)
-                        (eq t2 ibac_user_exemption_target_subj_type_attribute)
-                    )
-            )
-            (and
-                (eq t1 ibac_sys_id_change_exemption_subj_type_attribute)
-                (eq u2 ibac_sys_id_attribute)
-            )
-        )
-        (eq t1 ibac_uncond_exemption_subj_type_attribute)
-    )
-)
+                        (eq t2
+                            ibac_user_exemption_target_subj_type_attribute)))
+                   (and
+                    (eq t1 ibac_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+        (eq t1 ibac_uncond_exemption_subj_type_attribute)))
 
-(constrain
-    (qipcrtr_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (qipcrtr_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (rawip_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (rawip_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (rds_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (rds_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (rose_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (rose_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (rxrpc_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (rxrpc_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (sctp_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (sctp_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (smc_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (smc_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (sock_file
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (sock_file (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (tcp_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (tcp_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (tipc_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (tipc_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (tun_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (tun_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (udp_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (udp_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (unix_dgram_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (unix_dgram_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (unix_stream_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (unix_stream_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (vsock_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (vsock_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-(constrain
-    (x25_socket
-        (
-            create
-            relabelfrom
-            relabelto
-        )
-    )
-    (or
-        (or
-            (eq u1 u2)
-                (and
-                    (eq t1 ibac_obj_sys_id_change_exemption_subj_type_attribute)
-                    (eq u2 ibac_sys_id_attribute)
-                )
-        )
-        (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)
-    )
-)
+(constrain (x25_socket (create relabelfrom relabelto))
+           (or (or (eq u1 u2)
+                   (and
+                    (eq t1
+                        ibac_obj_sys_id_change_exemption_subj_type_attribute)
+                    (eq u2 ibac_sys_id_attribute)))
+               (eq t1 ibac_obj_id_change_exemption_subj_type_attribute)))
 
-;
-; Macros
-;
+;;
+;; Macros
+;;
 
 (macro ibac_id_change_exemption_subj_type ((type ARG1))
-    (typeattributeset ibac_id_change_exemption_subj_type_attribute ARG1)
-)
+    (typeattributeset ibac_id_change_exemption_subj_type_attribute ARG1))
 
 (macro ibac_obj_id_change_exemption_subj_type ((type ARG1))
-    (typeattributeset ibac_obj_id_change_exemption_subj_type_attribute ARG1)
-)
+    (typeattributeset ibac_obj_id_change_exemption_subj_type_attribute ARG1))
 
 (macro ibac_obj_sys_id_change_exemption_subj_type ((type ARG1))
-    (typeattributeset
-        ibac_obj_sys_id_change_exemption_subj_type_attribute ARG1)
-)
+       (typeattributeset ibac_obj_sys_id_change_exemption_subj_type_attribute
+                         ARG1))
 
 (macro ibac_sys_id ((user ARG1))
-    (userattributeset ibac_sys_id_attribute ARG1)
-)
+    (userattributeset ibac_sys_id_attribute ARG1))
 
 (macro ibac_sys_id_change_exemption_subj_type ((type ARG1))
-    (typeattributeset ibac_sys_id_change_exemption_subj_type_attribute ARG1)
-)
+    (typeattributeset ibac_sys_id_change_exemption_subj_type_attribute ARG1))
 
 (macro ibac_uncond_exemption_subj_type ((type ARG1))
-    (typeattributeset ibac_uncond_exemption_subj_type_attribute ARG1)
-)
+    (typeattributeset ibac_uncond_exemption_subj_type_attribute ARG1))
 
 (macro ibac_user_exemption_target_subj_type ((type ARG1))
-    (typeattributeset ibac_user_exemption_target_subj_type_attribute ARG1)
-)
+    (typeattributeset ibac_user_exemption_target_subj_type_attribute ARG1))
 
-;
-; Policy
-;
+;;
+;; Policy
+;;
 
 (typeattribute ibac_id_change_exemption_subj_type_attribute)
 (typeattribute ibac_obj_id_change_exemption_subj_type_attribute)
