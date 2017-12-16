@@ -459,15 +459,15 @@
 
        (macro mounton_except ((type ARG1))
               (allow ARG1 except_obj_type_attribute (files_except_blk_and_chr
-                                                     (mounton))))
+                                                     (getattr mounton))))
 
        (macro mounton_except_auth ((type ARG1))
               (allow ARG1 except_auth_obj_type_attribute
-                     (files_except_blk_and_chr (mounton))))
+                     (files_except_blk_and_chr (getattr mounton))))
 
        (macro mounton_except_sec ((type ARG1))
               (allow ARG1 except_sec_obj_type_attribute
-                     (files_except_blk_and_chr (mounton))))
+                     (files_except_blk_and_chr (getattr mounton))))
 
        (macro read_except ((type ARG1))
               (allow ARG1 except_obj_type_attribute (files_except_blk_and_chr
@@ -4601,8 +4601,7 @@
                      (call fs.rootfs.read_lnk_files (ARG1)))
 
               (macro map_files ((type ARG1))
-                     (allow ARG1 boot_file (files (map)))
-                     (call fs.rootfs.read_lnk_files (ARG1)))
+                     (allow ARG1 boot_file (files (map))))
 
               (macro mmap ((type ARG1))
                      (allow ARG1 boot_file mmap_file_perms)
@@ -4886,7 +4885,7 @@
                      (call search (ARG1)))
 
               (macro mounton_dirs ((type ARG1))
-                     (allow ARG1 config_file (dir (mounton))))
+                     (allow ARG1 config_file (dir (getattr mounton))))
 
               (macro obj_type_transition
                      ((type ARG1)(type ARG2)(class ARG3)(name ARG4))
@@ -5336,15 +5335,14 @@
                      (call lib.generic_libraries.search (ARG1)))
 
               (macro map_files ((type ARG1))
-                     (allow ARG1 modules_file (files (map)))
-                     (call lib.generic_libraries.search (ARG1)))
+                     (allow ARG1 modules_file (files (map))))
 
               (macro mmap ((type ARG1))
                      (allow ARG1 modules_file mmap_file_perms)
                      (call search (ARG1)))
 
               (macro mounton_dirs ((type ARG1))
-                     (allow ARG1 modules_file (dir (mounton))))
+                     (allow ARG1 modules_file (dir (getattr mounton))))
 
               (macro obj_type_transition
                      ((type ARG1)(type ARG2)(class ARG3)(name ARG4))
@@ -5630,8 +5628,7 @@
                      (call generic_var.read_lnk_files (ARG1)))
 
               (macro map_files ((type ARG1))
-                     (allow ARG1 runtime_file (files (map)))
-                     (call generic_var.read_lnk_files (ARG1)))
+                     (allow ARG1 runtime_file (files (map))))
 
               (macro mmap ((type ARG1))
                      (allow ARG1 runtime_file mmap_file_perms)
@@ -5954,8 +5951,7 @@
                      (call generic_runtime.search (ARG1)))
 
               (macro map_files ((type ARG1))
-                     (allow ARG1 runtime_config_file (files (map)))
-                     (call generic_runtime.search (ARG1)))
+                     (allow ARG1 runtime_config_file (files (map))))
 
               (macro mmap ((type ARG1))
                      (allow ARG1 runtime_config_file mmap_file_perms)
@@ -6216,8 +6212,7 @@
                      (call generic_runtime.search (ARG1)))
 
               (macro map_files ((type ARG1))
-                     (allow ARG1 runtime_lock_file (files (map)))
-                     (call generic_runtime.search (ARG1)))
+                     (allow ARG1 runtime_lock_file (files (map))))
 
               (macro mmap ((type ARG1))
                      (allow ARG1 runtime_lock_file mmap_file_perms)
@@ -6794,8 +6789,7 @@
                      (call generic_var.search (ARG1)))
 
               (macro map_files ((type ARG1))
-                     (allow ARG1 var_cache_file (files (map)))
-                     (call generic_var.search (ARG1)))
+                     (allow ARG1 var_cache_file (files (map))))
 
               (macro mmap ((type ARG1))
                      (allow ARG1 var_cache_file mmap_file_perms)
@@ -7115,8 +7109,7 @@
                      (call generic_var.search (ARG1)))
 
               (macro map_files ((type ARG1))
-                     (allow ARG1 var_db_file (files (map)))
-                     (call generic_var.search (ARG1)))
+                     (allow ARG1 var_db_file (files (map))))
 
               (macro mmap ((type ARG1))
                      (allow ARG1 var_db_file mmap_file_perms)
@@ -7408,8 +7401,7 @@
                      (call generic_var.search (ARG1)))
 
               (macro map_files ((type ARG1))
-                     (allow ARG1 var_lib_file (files (map)))
-                     (call generic_var.search (ARG1)))
+                     (allow ARG1 var_lib_file (files (map))))
 
               (macro mmap ((type ARG1))
                      (allow ARG1 var_lib_file mmap_file_perms)
@@ -7728,8 +7720,7 @@
                      (call generic_var.search (ARG1)))
 
               (macro map_files ((type ARG1))
-                     (allow ARG1 var_log_file (files (map)))
-                     (call generic_var.search (ARG1)))
+                     (allow ARG1 var_log_file (files (map))))
 
               (macro mmap ((type ARG1))
                      (allow ARG1 var_log_file mmap_file_perms)
@@ -8021,8 +8012,7 @@
                      (call generic_var.search (ARG1)))
 
               (macro map_files ((type ARG1))
-                     (allow ARG1 var_spool_file (files (map)))
-                     (call generic_var.search (ARG1)))
+                     (allow ARG1 var_spool_file (files (map))))
 
               (macro mmap ((type ARG1))
                      (allow ARG1 var_spool_file mmap_file_perms)
@@ -8405,9 +8395,7 @@
                      (call generic_var.search (ARG1)))
 
               (macro map_files ((type ARG1))
-                     (allow ARG1 var_tmp_file (files (map)))
-                     (call generic_data.read_lnk_files (ARG1))
-                     (call generic_var.search (ARG1)))
+                     (allow ARG1 var_tmp_file (files (map))))
 
               (macro mmap ((type ARG1))
                      (allow ARG1 var_tmp_file mmap_file_perms)
@@ -8907,8 +8895,7 @@
                      (call sys.mountpoint.search (ARG1)))
 
               (macro map_files ((type ARG1))
-                     (allow ARG1 file (files (map)))
-                     (call sys.mountpoint.search (ARG1)))
+                     (allow ARG1 file (files (map))))
 
               (macro mountpoint_obj_type_transition ((type ARG1))
                      (call sys.mountpoint.obj_type_transition
@@ -12204,7 +12191,7 @@
                      (call generic_runtime.search (ARG1)))
 
               (macro mounton_dirs ((type ARG1))
-                     (allow ARG1 runtime_file (dir (mounton)))
+                     (allow ARG1 runtime_file (dir (getattr mounton)))
                      (call generic_runtime.search (ARG1)))
 
               (macro obj_type_transition
