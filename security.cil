@@ -1,1625 +1,614 @@
-; -*- mode: CIL; fill-column: 75; indent-tabs-mode: nil; tab-width: 4 -*-
-; SPDX-License-Identifier: Unlicense
+;; -*- mode: CIL; fill-column: 79; indent-tabs-mode: nil; -*-
+;; SPDX-License-Identifier: Unlicense
 
-; sec
-;     bool_file
-;         obj_all_macro_template
-;         obj_stub
-;         obj_template
-;     load_policy
-;     securityfs
+;; sec
+;;     bool_file
+;;         obj_all_macro_template
+;;         obj_stub
+;;         obj_template
+;;     load_policy
+;;     securityfs
 
-;
-; Policy
-;
+;;
+;; Policy
+;;
 
 (sid security)
 
 (block sec
 
-    ;
-    ; Macros
-    ;
+       ;;
+       ;; Macros
+       ;;
 
-    (macro compute_access_vector ((type ARG1))
-        (allow ARG1 self create_netlink_selinux_socket_perms)
-        (allow ARG1 securityfs.isid
-            (security
-                (
-                    compute_av
-                )
-            )
-        )
-        (call securityfs.list
-            (
-                ARG1
-            )
-        )
-        (call securityfs.rw_files
-            (
-                ARG1
-            )
-        )
-    )
+       (macro compute_access_vector ((type ARG1))
+              (allow ARG1 self create_netlink_selinux_socket_perms)
+              (allow ARG1 securityfs.isid (security (compute_av)))
+              (call securityfs.list (ARG1))
+              (call securityfs.rw_files (ARG1)))
 
-    (macro compute_create_context ((type ARG1))
-        (allow ARG1 securityfs.isid
-            (security
-                (
-                    compute_create
-                )
-            )
-        )
-        (call securityfs.list
-            (
-                ARG1
-            )
-        )
-        (call securityfs.rw_files
-            (
-                ARG1
-            )
-        )
-    )
+       (macro compute_create_context ((type ARG1))
+              (allow ARG1 securityfs.isid (security (compute_create)))
+              (call securityfs.list (ARG1))
+              (call securityfs.rw_files (ARG1)))
 
-    (macro compute_relabel_context ((type ARG1))
-        (allow ARG1 securityfs.isid
-            (security
-                (
-                    compute_relabel
-                )
-            )
-        )
-        (call securityfs.list
-            (
-                ARG1
-            )
-        )
-        (call securityfs.rw_files
-            (
-                ARG1
-            )
-        )
-    )
+       (macro compute_relabel_context ((type ARG1))
+              (allow ARG1 securityfs.isid (security (compute_relabel)))
+              (call securityfs.list (ARG1))
+              (call securityfs.rw_files (ARG1)))
 
-    (macro compute_user_context ((type ARG1))
-        (allow ARG1 securityfs.isid
-            (security
-                (
-                    compute_user
-                )
-            )
-        )
-        (call securityfs.list
-            (
-                ARG1
-            )
-        )
-        (call securityfs.rw_files
-            (
-                ARG1
-            )
-        )
-    )
+       (macro compute_user_context ((type ARG1))
+              (allow ARG1 securityfs.isid (security (compute_user)))
+              (call securityfs.list (ARG1))
+              (call securityfs.rw_files (ARG1)))
 
-    (macro load_policy_subj_type ((type ARG1))
-        (typeattributeset load_policy_subj_type_attribute ARG1)
-    )
+       (macro load_policy_subj_type ((type ARG1))
+              (typeattributeset load_policy_subj_type_attribute ARG1))
 
-    (macro read_policy ((type ARG1))
-        (allow ARG1 securityfs.isid
-            (security
-                (
-                    read_policy
-                )
-            )
-        )
-        (call securityfs.list
-            (
-                ARG1
-            )
-        )
-        (call securityfs.read_files
-            (
-                ARG1
-            )
-        )
-    )
+       (macro read_policy ((type ARG1))
+              (allow ARG1 securityfs.isid (security (read_policy)))
+              (call securityfs.list (ARG1))
+              (call securityfs.read_files (ARG1)))
 
-    (macro set_enforce_subj_type ((type ARG1))
-        (typeattributeset set_enforce_subj_type_attribute ARG1)
-    )
+       (macro set_enforce_subj_type ((type ARG1))
+              (typeattributeset set_enforce_subj_type_attribute ARG1))
 
-    (macro set_checkreqprot ((type ARG1))
-        (allow ARG1 securityfs.isid
-            (security
-                (
-                    setcheckreqprot
-                )
-            )
-        )
-        (call securityfs.list
-            (
-                ARG1
-            )
-        )
-        (call securityfs.rw_files
-            (
-                ARG1
-            )
-        )
-    )
+       (macro set_checkreqprot ((type ARG1))
+              (allow ARG1 securityfs.isid (security (setcheckreqprot)))
+              (call securityfs.list (ARG1))
+              (call securityfs.rw_files (ARG1)))
 
-    (macro set_fscreate_subj_type ((type ARG1))
-        (typeattributeset set_fscreate_subj_type_attribute ARG1)
-    )
+       (macro set_fscreate_subj_type ((type ARG1))
+              (typeattributeset set_fscreate_subj_type_attribute ARG1))
 
-    (macro set_secparam_subj_type ((type ARG1))
-        (typeattributeset set_secparam_subj_type_attribute ARG1)
-    )
+       (macro set_secparam_subj_type ((type ARG1))
+              (typeattributeset set_secparam_subj_type_attribute ARG1))
 
-    (macro unconfined_subj_type ((type ARG1))
-        (typeattributeset unconfined_subj_type_attribute ARG1)
-    )
+       (macro unconfined_subj_type ((type ARG1))
+              (typeattributeset unconfined_subj_type_attribute ARG1))
 
-    (macro validate_context ((type ARG1))
-        (allow ARG1 securityfs.isid
-            (security
-                (
-                    check_context
-                )
-            )
-        )
-        (call securityfs.list
-            (
-                ARG1
-            )
-        )
-        (call securityfs.rw_files
-            (
-                ARG1
-            )
-        )
-    )
+       (macro validate_context ((type ARG1))
+              (allow ARG1 securityfs.isid (security (check_context)))
+              (call securityfs.list (ARG1))
+              (call securityfs.rw_files (ARG1)))
 
-    ;
-    ; Policy
-    ;
+       ;;
+       ;; Policy
+       ;;
 
-    (boolean load_policy true)
+       (boolean load_policy true)
 
-    (typeattribute load_policy_subj_type_attribute)
-    (typeattribute
-        load_policy_subj_type_and_unconfined_subj_type_attribute)
-    (typeattribute
+       (typeattribute load_policy_subj_type_attribute)
+       (typeattribute load_policy_subj_type_and_unconfined_subj_type_attribute)
+       (typeattribute
         load_policy_subj_type_set_enforce_subj_type_and_set_secparam_subj_type_attribute)
-    (typeattribute
+       (typeattribute
         not_load_policy_subj_type_or_unconfined_subj_type_attribute)
 
-    (typeattribute set_enforce_subj_type_attribute)
-    (typeattribute
-        set_enforce_subj_type_and_unconfined_subj_type_attribute)
-    (typeattribute
+       (typeattribute set_enforce_subj_type_attribute)
+       (typeattribute set_enforce_subj_type_and_unconfined_subj_type_attribute)
+       (typeattribute
         not_set_enforce_subj_type_or_unconfined_subj_type_attribute)
 
-    (typeattribute set_fscreate_subj_type_attribute)
+       (typeattribute set_fscreate_subj_type_attribute)
 
-    (typeattribute set_secparam_subj_type_attribute)
-    (typeattribute
+       (typeattribute set_secparam_subj_type_attribute)
+       (typeattribute
         not_set_secparam_subj_type_or_unconfined_subj_type_attribute)
 
-    (typeattribute unconfined_subj_type_attribute)
+       (typeattribute unconfined_subj_type_attribute)
 
-    (typeattributeset
+       (typeattributeset
         load_policy_subj_type_and_unconfined_subj_type_attribute
-            (
-                load_policy_subj_type_attribute
-                unconfined_subj_type_attribute
-            )
-    )
+        (load_policy_subj_type_attribute unconfined_subj_type_attribute))
 
-    (typeattributeset
+       (typeattributeset
         load_policy_subj_type_set_enforce_subj_type_and_set_secparam_subj_type_attribute
-            (
-                load_policy_subj_type_attribute
-                set_enforce_subj_type_attribute
-                set_secparam_subj_type_attribute
-            )
-    )
+        (load_policy_subj_type_attribute set_enforce_subj_type_attribute
+                                         set_secparam_subj_type_attribute))
 
-    (typeattributeset
+       (typeattributeset
         not_load_policy_subj_type_or_unconfined_subj_type_attribute
-            (not
-                (
-                    load_policy_subj_type_attribute
-                    unconfined_subj_type_attribute
-                )
-            )
-    )
+        (not (load_policy_subj_type_attribute unconfined_subj_type_attribute)))
 
-    (typeattributeset
+       (typeattributeset
         set_enforce_subj_type_and_unconfined_subj_type_attribute
-            (
-                set_enforce_subj_type_attribute
-                unconfined_subj_type_attribute
-            )
-    )
+        (set_enforce_subj_type_attribute unconfined_subj_type_attribute))
 
-    (typeattributeset
+       (typeattributeset
         not_set_enforce_subj_type_or_unconfined_subj_type_attribute
-            (not
-                (
-                    set_enforce_subj_type_attribute
-                    unconfined_subj_type_attribute
-                )
-            )
-    )
+        (not (set_enforce_subj_type_attribute unconfined_subj_type_attribute)))
 
-    (typeattributeset
+       (typeattributeset
         not_set_secparam_subj_type_or_unconfined_subj_type_attribute
-            (not
-                (
-                    set_secparam_subj_type_attribute
-                    unconfined_subj_type_attribute
-                )
-            )
-    )
-
-    (block bool_file
-
-        ;
-        ; Macros
-        ;
-
-        (blockinherit obj_all_macro_template)
-
-        ;
-        ; Policy
-        ;
-
-        (typeattribute obj_type_attribute)
-
-        (typeattribute obj_type_except_sec_load_policy_obj_type_attribute)
-
-        (typeattributeset
-            obj_type_except_sec_load_policy_obj_type_attribute
-                (and
-                    (
-                        obj_type_attribute
-                    )
-                    (not
-                        (
-                            load_policy.bool_file
-                        )
-                    )
-                )
-        )
-
-        (allow unconfined_subj_type_attribute obj_type_attribute
-            read_file_perms)
-        (allow unconfined_subj_type_attribute
-            obj_type_except_sec_load_policy_obj_type_attribute
-                (file
-                    (
-                        append
-                        write
-                    )
-                )
-        )
-
-        (call sys.obj_type
-            (
-                obj_type_attribute
-            )
-        )
-        
-        ;
-        ; Templates
-        ;
-
-        (block obj_all_macro_template
-
-            ;
-            ; Macros
-            ;
-
-            (macro dontaudit_get ((type ARG1))
-                (dontaudit ARG1 obj_type_attribute read_file_perms)
-            )
-
-            (macro get ((type ARG1))
-                (allow ARG1 obj_type_attribute read_file_perms)
-                (call sec.securityfs.list
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-
-            (macro obj_type ((type ARG1))
-                (typeattributeset obj_type_attribute ARG1)
-            )
-
-            (macro set ((type ARG1))
-                (allow ARG1 sec.securityfs.isid
-                    (security
-                        (
-                            setbool
-                        )
-                    )
-                )
-                (allow ARG1 obj_type_attribute read_file_perms)
-                (allow ARG1
-                    sec.bool_file.obj_type_except_sec_load_policy_obj_type_attribute
-                        (file
-                            (
-                                append
-                                write
-                            )
-                        )
-                )
-                (call sec.securityfs.list
-                    (
-                        ARG1
-                    )
-                )
-                (call sec.securityfs.rw_files
-                    (
-                        ARG1
-                    )
-                )
-                (booleanif
-                    (
-                        sec.load_policy
-                    )
-                        (true
-                            (allow ARG1 sec.load_policy.bool_file
-                                (file
-                                    (
-                                        append
-                                        write
-                                    )
-                               )
-                           )
-                       )
-                )
-            )
-
-            ;
-            ; Policy
-            ;
-
-            (blockabstract obj_all_macro_template)
-        )
-
-        (block obj_stub
-
-            ;
-            ; Contexts
-            ;
-
-            (context bool_file_context
-                (
-                    sys.id
-                    sys.role
-                    bool_file
-                        (
-                            systemlow
-                            systemlow
-                        )
-                )
-            )
-
-            ;
-            ; Policy
-            ;
-
-            (blockabstract obj_stub)
-
-            (type bool_file)
-            (call sec.bool_file.obj_type
-                (
-                    bool_file
-                )
-            )
-        )
-
-        (block obj_template
-
-            ;
-            ; Macros
-            ;
-
-            (macro dontaudit_get ((type ARG1))
-                (dontaudit ARG1 bool_file read_file_perms)
-            )
-
-            (macro get ((type ARG1))
-                (allow ARG1 bool_file read_file_perms)
-                (call sec.securityfs.list
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro set ((type ARG1))
-                (allow ARG1 bool_file rw_file_perms)
-                (allow ARG1 sec.securityfs.isid
-                    (security
-                        (
-                            setbool
-                        )
-                    )
-                )
-                (call sec.securityfs.list
-                    (
-                        ARG1
-                    )
-                )
-                (call sec.securityfs.rw_files
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            ;
-            ; Policy
-            ;
-
-            (blockabstract obj_template)
-
-            (blockinherit sec.bool_file.obj_stub)
-        )
-    )
-
-    (block load_policy
-
-        ;
-        ; Contexts
-        ;
-
-        (genfscon "selinuxfs" "/booleans/sec.load_policy"
-            bool_file_context)
-
-        ;
-        ; Macros
-        ;
-
-        (macro get ((type ARG1))
-            (allow ARG1 bool_file read_file_perms)
-            (call securityfs.list
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro set ((type ARG1))
-            (allow ARG1 securityfs.isid
-                (security
-                    (
-                        setbool
-                    )
-                )
-            )
-            (call securityfs.list
-                (
-                    ARG1
-                )
-            )
-            (call securityfs.rw_files
-                (
-                    ARG1
-                )
-            )
-            (booleanif
-                (
-                    load_policy
-                )
-                    (true
-                        (allow ARG1 bool_file rw_file_perms)
-                    )
-            )
-        )
-
-        ;
-        ; Policy
-        ;
-
-        (blockinherit sec.bool_file.obj_stub)
-
-        (booleanif load_policy
-            (true
-                (allow unconfined_subj_type_attribute bool_file
-                    (file
-                        (
-                            append
-                            write
-                        )
-                    )
-                )
-            )
-        )
-    )
-
-    (block securityfs
-
-        ;
-        ; Contexts
-        ;
-
-        (genfscon "securityfs" "/" isid_context)
-        (genfscon "selinuxfs" "/" isid_context)
-
-        (sidcontext security isid_context)
-
-        ;
-        ; Macros
-        ;
-
-        (macro dontaudit_list ((type ARG1))
-            (dontaudit ARG1 isid list_dir_perms)
-        )
-
-        (macro dontaudit_write_files ((type ARG1))
-            (dontaudit ARG1 isid write_file_perms)
-        )
-
-        (macro add_entries ((type ARG1))
-            (allow ARG1 isid add_entry_dir_perms)
-            (call fs.sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro append_files ((type ARG1))
-            (allow ARG1 isid append_file_perms)
-            (call search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro associate ((type ARG1))
-            (allow ARG1 isid
-                (filesystem
-                    (
-                        associate
-                    )
-                )
-            )
-        )
-
-        (macro create ((type ARG1))
-            (call create_dirs
-                (
-                    ARG1
-                )
-            )
-            (call create_files
-                (
-                    ARG1
-                )
-            )
-            (call create_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro create_dirs ((type ARG1))
-            (allow ARG1 isid
-                (dirs
-                    (
-                        create
-                    )
-                )
-            )
-            (call fs.sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro create_files ((type ARG1))
-            (allow ARG1 isid
-                (files
-                    (
-                        create
-                    )
-                )
-            )
-            (call fs.sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro create_lnk_files ((type ARG1))
-            (allow ARG1 isid
-                (lnk_files
-                    (
-                        create
-                    )
-                )
-            )
-            (call fs.sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro del_entries ((type ARG1))
-            (allow ARG1 isid del_entry_dir_perms)
-            (call fs.sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro delete ((type ARG1))
-            (call delete_dirs
-                (
-                    ARG1
-                )
-            )
-            (call delete_files
-                (
-                    ARG1
-                )
-            )
-            (call delete_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro delete_dirs ((type ARG1))
-            (allow ARG1 isid
-                (dirs
-                    (
-                        delete
-                    )
-                )
-            )
-            (call fs.sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro delete_files ((type ARG1))
-            (allow ARG1 isid
-                (files
-                    (
-                        delete
-                    )
-                )
-            )
-            (call fs.sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro delete_lnk_files ((type ARG1))
-            (allow ARG1 isid
-                (lnk_files
-                    (
-                        delete
-                    )
-                )
-            )
-            (call fs.sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro execute ((type ARG1))
-            (allow ARG1 isid exec_file_perms)
-            (call search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro getattr ((type ARG1))
-            (call getattr_dirs
-                (
-                    ARG1
-                )
-            )
-            (call getattr_files
-                (
-                    ARG1
-                )
-            )
-            (call getattr_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro getattr_dirs ((type ARG1))
-            (allow ARG1 isid
-                (dirs
-                    (
-                        getattr
-                    )
-                )
-            )
-            (call fs.sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro getattr_files ((type ARG1))
-            (allow ARG1 isid
-                (files
-                    (
-                        getattr
-                    )
-                )
-            )
-            (call fs.sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro getattr_fs ((type ARG1))
-            (allow ARG1 isid
-                (filesystem
-                    (
-                        getattr
-                    )
-                )
-            )
-        )
-
-        (macro getattr_lnk_files ((type ARG1))
-            (allow ARG1 isid
-                (lnk_files
-                    (
-                        getattr
-                    )
-                )
-            )
-            (call fs.sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro list ((type ARG1))
-            (allow ARG1 isid list_dir_perms)
-            (call fs.sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro manage ((type ARG1))
-            (call manage_dirs
-                (
-                    ARG1
-                )
-            )
-            (call manage_files
-                (
-                    ARG1
-                )
-            )
-            (call manage_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro manage_dirs ((type ARG1))
-            (allow ARG1 isid
-                (dirs
-                    (
-                        manage
-                    )
-                )
-            )
-            (call fs.sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro manage_files ((type ARG1))
-            (allow ARG1 isid
-                (files
-                    (
-                        manage
-                    )
-                )
-            )
-            (call fs.sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro manage_lnk_files ((type ARG1))
-            (allow ARG1 isid
-                (lnk_files
-                    (
-                        manage
-                    )
-                )
-            )
-            (call fs.sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro map_files ((type ARG1))
-            (allow ARG1 isid
-                (files
-                    (
-                        map
-                    )
-                )
-            )
-            (call fs.sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro mmap ((type ARG1))
-            (allow ARG1 isid mmap_file_perms)
-            (call search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro mount ((type ARG1))
-            (allow ARG1 isid
-                (filesystem
-                    (
-                        mount
-                    )
-                )
-            )
-        )
-
-        (macro mounton_files ((type ARG1))
-            (allow ARG1 isid
-                (file
-                    (
-                        mounton
-                    )
-                )
-            )
-            (call search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro quotaget ((type ARG1))
-            (allow ARG1 isid
-                (filesystem
-                    (
-                        quotaget
-                    )
-                )
-            )
-        )
-
-        (macro quotamod ((type ARG1))
-            (allow ARG1 isid
-                (filesystem
-                    (
-                        quotamod
-                    )
-                )
-            )
-        )
-
-        (macro read ((type ARG1))
-            (call list
-                (
-                    ARG1
-                )
-            )
-            (call read_files
-                (
-                    ARG1
-                )
-            )
-            (call read_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro read_files ((type ARG1))
-            (allow ARG1 isid
-                (files
-                    (
-                        read
-                    )
-                )
-            )
-            (call fs.sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro read_lnk_files ((type ARG1))
-            (allow ARG1 isid
-                (lnk_files
-                    (
-                        read
-                    )
-                )
-            )
-            (call fs.sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabel ((type ARG1))
-            (call relabel_dirs
-                (
-                    ARG1
-                )
-            )
-            (call relabel_files
-                (
-                    ARG1
-                )
-            )
-            (call relabel_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabel_dirs ((type ARG1))
-            (allow ARG1 isid
-                (dirs
-                    (
-                        relabel
-                    )
-                )
-            )
-            (call fs.sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabel_files ((type ARG1))
-            (allow ARG1 isid
-                (files
-                    (
-                        relabel
-                    )
-                )
-            )
-            (call fs.sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabel_fs ((type ARG1))
-            (allow ARG1 isid
-                (filesystem
-                    (
-                        getattr
-                        relabelfrom
-                        relabelto
-                    )
-                )
-            )
-        )
-
-        (macro relabel_lnk_files ((type ARG1))
-            (allow ARG1 isid
-                (lnk_files
-                    (
-                        relabel
-                    )
-                )
-            )
-            (call fs.sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabelfrom ((type ARG1))
-            (call relabelfrom_dirs
-                (
-                    ARG1
-                )
-            )
-            (call relabelfrom_files
-                (
-                    ARG1
-                )
-            )
-            (call relabelfrom_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabelfrom_dirs ((type ARG1))
-            (allow ARG1 isid
-                (dirs
-                    (
-                        relabelfrom
-                    )
-                )
-            )
-            (call fs.sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabelfrom_files ((type ARG1))
-            (allow ARG1 isid
-                (files
-                    (
-                        relabelfrom
-                    )
-                )
-            )
-            (call fs.sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabelfrom_fs ((type ARG1))
-            (allow ARG1 isid
-                (filesystem
-                    (
-                        getattr
-                        relabelfrom
-                    )
-                )
-            )
-        )
-
-        (macro relabelfrom_lnk_files ((type ARG1))
-            (allow ARG1 isid
-                (lnk_files
-                    (
-                        relabelfrom
-                    )
-                )
-            )
-            (call fs.sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabelto ((type ARG1))
-            (call relabelto_dirs
-                (
-                    ARG1
-                )
-            )
-            (call relabelto_files
-                (
-                    ARG1
-                )
-            )
-            (call relabelto_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabelto_dirs ((type ARG1))
-            (allow ARG1 isid
-                (dirs
-                    (
-                        relabelto
-                    )
-                )
-            )
-            (call fs.sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabelto_files ((type ARG1))
-            (allow ARG1 isid
-                (files
-                    (
-                        relabelto
-                    )
-                )
-            )
-            (call fs.sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabelto_fs ((type ARG1))
-            (allow ARG1 isid
-                (filesystem
-                    (
-                        getattr
-                        relabelto
-                    )
-                )
-            )
-        )
-
-        (macro relabelto_lnk_files ((type ARG1))
-            (allow ARG1 isid
-                (lnk_files
-                    (
-                        relabelto
-                    )
-                )
-            )
-            (call fs.sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro remount ((type ARG1))
-            (allow ARG1 isid
-                (filesystem
-                    (
-                        remount
-                    )
-                )
-            )
-        )
-
-        (macro rename ((type ARG1))
-            (call rename_dirs
-                (
-                    ARG1
-                )
-            )
-            (call rename_files
-                (
-                    ARG1
-                )
-            )
-            (call rename_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro rename_dirs ((type ARG1))
-            (allow ARG1 isid
-                (dirs
-                    (
-                        rename
-                    )
-                )
-            )
-            (call fs.sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro rename_files ((type ARG1))
-            (allow ARG1 isid
-                (files
-                    (
-                        rename
-                    )
-                )
-            )
-            (call fs.sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro rename_lnk_files ((type ARG1))
-            (allow ARG1 isid
-                (lnk_files
-                    (
-                        rename
-                    )
-                )
-            )
-            (call fs.sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro rw ((type ARG1))
-            (call rw_dirs
-                (
-                    ARG1
-                )
-            )
-            (call rw_files
-                (
-                    ARG1
-                )
-            )
-            (call rw_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro rw_dirs ((type ARG1))
-            (allow ARG1 isid
-                (dirs
-                    (
-                        rw
-                    )
-                )
-            )
-            (call fs.sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro rw_files ((type ARG1))
-            (allow ARG1 isid
-                (files
-                    (
-                        rw
-                    )
-                )
-            )
-            (call fs.sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro rw_lnk_files ((type ARG1))
-            (allow ARG1 isid
-                (lnk_files
-                    (
-                        rw
-                    )
-                )
-            )
-            (call fs.sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro search ((type ARG1))
-            (allow ARG1 isid search_dir_perms)
-            (call fs.sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro setattr ((type ARG1))
-            (call setattr_dirs
-                (
-                    ARG1
-                )
-            )
-            (call setattr_files
-                (
-                    ARG1
-                )
-            )
-            (call setattr_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro setattr_dirs ((type ARG1))
-            (allow ARG1 isid
-                (dirs
-                    (
-                        setattr
-                    )
-                )
-            )
-            (call fs.sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro setattr_files ((type ARG1))
-            (allow ARG1 isid
-                (files
-                    (
-                        setattr
-                    )
-                )
-            )
-            (call fs.sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro setattr_lnk_files ((type ARG1))
-            (allow ARG1 isid
-                (lnk_files
-                    (
-                        setattr
-                    )
-                )
-            )
-            (call fs.sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro unmount ((type ARG1))
-            (allow ARG1 isid
-                (filesystem
-                    (
-                        unmount
-                    )
-                )
-            )
-        )
-
-        (macro write ((type ARG1))
-            (call write_dirs
-                (
-                    ARG1
-                )
-            )
-            (call write_files
-                (
-                    ARG1
-                )
-            )
-            (call write_lnk_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro write_dirs ((type ARG1))
-            (allow ARG1 isid
-                (dirs
-                    (
-                        write
-                    )
-                )
-            )
-            (call fs.sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro write_files ((type ARG1))
-            (allow ARG1 isid
-                (files
-                    (
-                        write
-                    )
-                )
-            )
-            (call fs.sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro write_lnk_files ((type ARG1))
-            (allow ARG1 isid
-                (lnk_files
-                    (
-                        write
-                    )
-                )
-            )
-            (call fs.sysfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        ;
-        ; Policy
-        ;
-
-        (blockinherit sys.isid.stub)
-
-        (neverallow
-            not_load_policy_subj_type_or_unconfined_subj_type_attribute
-                isid
-                    (security
-                        (
-                            load_policy
-                        )
-                    )
-        )
-
-        (neverallow
-            not_set_enforce_subj_type_or_unconfined_subj_type_attribute
-                isid
-                    (security
-                        (
-                            setenforce
-                        )
-                    )
-        )
-
-        (neverallow
-            not_set_secparam_subj_type_or_unconfined_subj_type_attribute
-                isid
-                    (security
-                        (
-                            setsecparam
-                        )
-                    )
-        )
-
-        (call bool_file.obj_type
-            (
-                isid
-            )
-        )
-
-        (call fs.obj_type
-            (
-                isid
-            )
-        )
-
-        (allow set_fscreate_subj_type_attribute self
-            (process
-                (
-                    setfscreate
-                )
-            )
-        )
-
-        (call read_files
-            (
-                set_fscreate_subj_type_attribute
-            )
-        )
-
-        (allow set_secparam_subj_type_attribute isid
-            (security
-                (
-                    setsecparam
-                )
-            )
-        )
-
-        (auditallow set_secparam_subj_type_attribute isid
-            (security
-                (
-                    setsecparam
-                )
-            )
-        )
-
-        (call list
-            (
-                 load_policy_subj_type_set_enforce_subj_type_and_set_secparam_subj_type_attribute
-            )
-        )
-        (call rw_files
-            (
-                 load_policy_subj_type_set_enforce_subj_type_and_set_secparam_subj_type_attribute
-            )
-        )
-
-        (allow unconfined_subj_type_attribute isid list_dir_perms)
-        (allow unconfined_subj_type_attribute isid
-            security_except_load_policy_and_setenforce)
-
-        (booleanif load_policy
-            (true
-                (allow
-                    set_enforce_subj_type_and_unconfined_subj_type_attribute
-                        isid
-                            (security
-                                (
-                                    setenforce
-                                )
-                            )
-                )
-                (allow
-                    load_policy_subj_type_and_unconfined_subj_type_attribute
-                        isid
-                            (security
-                                (
-                                    load_policy
-                                )
-                            )
-                )
-            )
-        )
-    )
-)
+        (not
+         (set_secparam_subj_type_attribute unconfined_subj_type_attribute)))
+
+       (block bool_file
+
+              ;;
+              ;; Macros
+              ;;
+
+              (blockinherit obj_all_macro_template)
+
+              ;;
+              ;; Policy
+              ;;
+
+              (typeattribute obj_type_attribute)
+
+              (typeattribute
+               obj_type_except_sec_load_policy_obj_type_attribute)
+
+              (typeattributeset
+               obj_type_except_sec_load_policy_obj_type_attribute
+               (and (obj_type_attribute) (not (load_policy.bool_file))))
+
+              (allow unconfined_subj_type_attribute obj_type_attribute
+                     read_file_perms)
+              (allow unconfined_subj_type_attribute
+                     obj_type_except_sec_load_policy_obj_type_attribute
+                     (file (append write)))
+
+              (call sys.obj_type (obj_type_attribute))
+
+              ;;
+              ;; Templates
+              ;;
+
+              (block obj_all_macro_template
+
+                     ;;
+                     ;; Macros
+                     ;;
+
+                     (macro dontaudit_get ((type ARG1))
+                            (dontaudit ARG1 obj_type_attribute
+                                       read_file_perms))
+
+                     (macro get ((type ARG1))
+                            (allow ARG1 obj_type_attribute read_file_perms)
+                            (call sec.securityfs.list (ARG1)))
+
+                     (macro obj_type ((type ARG1))
+                            (typeattributeset obj_type_attribute ARG1))
+
+                     (macro set ((type ARG1))
+                            (allow ARG1 sec.securityfs.isid (security
+                                                             (setbool)))
+                            (allow ARG1 obj_type_attribute read_file_perms)
+                            (allow ARG1
+                                   sec.bool_file.obj_type_except_sec_load_policy_obj_type_attribute
+                                   (file (append write)))
+                            (call sec.securityfs.list (ARG1))
+                            (call sec.securityfs.rw_files (ARG1))
+                            (booleanif (sec.load_policy)
+                                       (true
+                                        (allow ARG1 sec.load_policy.bool_file
+                                               (file (append write))))))
+
+                     ;;
+                     ;; Policy
+                     ;;
+
+                     (blockabstract obj_all_macro_template))
+
+              (block obj_stub
+
+                     ;;
+                     ;; Contexts
+                     ;;
+
+                     (context bool_file_context
+                              (sys.id sys.role bool_file (systemlow
+                                                          systemlow)))
+
+                     ;;
+                     ;; Policy
+                     ;;
+
+                     (blockabstract obj_stub)
+
+                     (type bool_file)
+                     (call sec.bool_file.obj_type (bool_file)))
+
+              (block obj_template
+
+                     ;;
+                     ;; Macros
+                     ;;
+
+                     (macro dontaudit_get ((type ARG1))
+                            (dontaudit ARG1 bool_file read_file_perms))
+
+                     (macro get ((type ARG1))
+                            (allow ARG1 bool_file read_file_perms)
+                            (call sec.securityfs.list (ARG1)))
+
+                     (macro set ((type ARG1))
+                            (allow ARG1 bool_file rw_file_perms)
+                            (allow ARG1 sec.securityfs.isid (security
+                                                             (setbool)))
+                            (call sec.securityfs.list (ARG1))
+                            (call sec.securityfs.rw_files (ARG1)))
+
+                     ;;
+                     ;; Policy
+                     ;;
+
+                     (blockabstract obj_template)
+
+                     (blockinherit sec.bool_file.obj_stub)))
+
+       (block load_policy
+
+              ;;
+              ;; Contexts
+              ;;
+
+              (genfscon "selinuxfs" "/booleans/sec.load_policy"
+                        bool_file_context)
+
+              ;;
+              ;; Macros
+              ;;
+
+              (macro get ((type ARG1))
+                     (allow ARG1 bool_file read_file_perms)
+                     (call securityfs.list (ARG1)))
+
+              (macro set ((type ARG1))
+                     (allow ARG1 securityfs.isid (security (setbool)))
+                     (call securityfs.list (ARG1))
+                     (call securityfs.rw_files (ARG1))
+                     (booleanif (load_policy)
+                                (true (allow ARG1 bool_file rw_file_perms))))
+
+              ;;
+              ;; Policy
+              ;;
+
+              (blockinherit sec.bool_file.obj_stub)
+
+              (booleanif load_policy
+                         (true
+                          (allow unconfined_subj_type_attribute bool_file
+                                 (file (append write))))))
+
+       (block securityfs
+
+              ;;
+              ;; Contexts
+              ;;
+
+              (genfscon "securityfs" "/" isid_context)
+              (genfscon "selinuxfs" "/" isid_context)
+
+              (sidcontext security isid_context)
+
+              ;;
+              ;; Macros
+              ;;
+
+              (macro dontaudit_list ((type ARG1))
+                     (dontaudit ARG1 isid list_dir_perms))
+
+              (macro dontaudit_write_files ((type ARG1))
+                     (dontaudit ARG1 isid write_file_perms))
+
+              (macro add_entries ((type ARG1))
+                     (allow ARG1 isid add_entry_dir_perms)
+                     (call fs.sysfs.search (ARG1)))
+
+              (macro append_files ((type ARG1))
+                     (allow ARG1 isid append_file_perms)
+                     (call search (ARG1)))
+
+              (macro associate ((type ARG1))
+                     (allow ARG1 isid (filesystem (associate))))
+
+              (macro create ((type ARG1))
+                     (call create_dirs (ARG1))
+                     (call create_files (ARG1))
+                     (call create_lnk_files (ARG1)))
+
+              (macro create_dirs ((type ARG1))
+                     (allow ARG1 isid (dirs (create)))
+                     (call fs.sysfs.search (ARG1)))
+
+              (macro create_files ((type ARG1))
+                     (allow ARG1 isid (files (create)))
+                     (call fs.sysfs.search (ARG1)))
+
+              (macro create_lnk_files ((type ARG1))
+                     (allow ARG1 isid (lnk_files (create)))
+                     (call fs.sysfs.search (ARG1)))
+
+              (macro del_entries ((type ARG1))
+                     (allow ARG1 isid del_entry_dir_perms)
+                     (call fs.sysfs.search (ARG1)))
+
+              (macro delete ((type ARG1))
+                     (call delete_dirs (ARG1))
+                     (call delete_files (ARG1))
+                     (call delete_lnk_files (ARG1)))
+
+              (macro delete_dirs ((type ARG1))
+                     (allow ARG1 isid (dirs (delete)))
+                     (call fs.sysfs.search (ARG1)))
+
+              (macro delete_files ((type ARG1))
+                     (allow ARG1 isid (files (delete)))
+                     (call fs.sysfs.search (ARG1)))
+
+              (macro delete_lnk_files ((type ARG1))
+                     (allow ARG1 isid (lnk_files (delete)))
+                     (call fs.sysfs.search (ARG1)))
+
+              (macro execute ((type ARG1))
+                     (allow ARG1 isid exec_file_perms)
+                     (call search (ARG1)))
+
+              (macro getattr ((type ARG1))
+                     (call getattr_dirs (ARG1))
+                     (call getattr_files (ARG1))
+                     (call getattr_lnk_files (ARG1)))
+
+              (macro getattr_dirs ((type ARG1))
+                     (allow ARG1 isid (dirs (getattr)))
+                     (call fs.sysfs.search (ARG1)))
+
+              (macro getattr_files ((type ARG1))
+                     (allow ARG1 isid (files (getattr)))
+                     (call fs.sysfs.search (ARG1)))
+
+              (macro getattr_fs ((type ARG1))
+                     (allow ARG1 isid (filesystem (getattr))))
+
+              (macro getattr_lnk_files ((type ARG1))
+                     (allow ARG1 isid (lnk_files (getattr)))
+                     (call fs.sysfs.search (ARG1)))
+
+              (macro list ((type ARG1))
+                     (allow ARG1 isid list_dir_perms)
+                     (call fs.sysfs.search (ARG1)))
+
+              (macro manage ((type ARG1))
+                     (call manage_dirs (ARG1))
+                     (call manage_files (ARG1))
+                     (call manage_lnk_files (ARG1)))
+
+              (macro manage_dirs ((type ARG1))
+                     (allow ARG1 isid (dirs (manage)))
+                     (call fs.sysfs.search (ARG1)))
+
+              (macro manage_files ((type ARG1))
+                     (allow ARG1 isid (files (manage)))
+                     (call fs.sysfs.search (ARG1)))
+
+              (macro manage_lnk_files ((type ARG1))
+                     (allow ARG1 isid (lnk_files (manage)))
+                     (call fs.sysfs.search (ARG1)))
+
+              (macro map_files ((type ARG1))
+                     (allow ARG1 isid (file (map))))
+
+              (macro mmap ((type ARG1))
+                     (allow ARG1 isid mmap_file_perms)
+                     (call search (ARG1)))
+
+              (macro mount ((type ARG1))
+                     (allow ARG1 isid (filesystem (mount))))
+
+              (macro mounton_files ((type ARG1))
+                     (allow ARG1 isid (file (getattr mounton)))
+                     (call search (ARG1)))
+
+              (macro quotaget ((type ARG1))
+                     (allow ARG1 isid (filesystem (quotaget))))
+
+              (macro quotamod ((type ARG1))
+                     (allow ARG1 isid (filesystem (quotamod))))
+
+              (macro read ((type ARG1))
+                     (call list (ARG1))
+                     (call read_files (ARG1))
+                     (call read_lnk_files (ARG1)))
+
+              (macro read_files ((type ARG1))
+                     (allow ARG1 isid (files (read)))
+                     (call fs.sysfs.search (ARG1)))
+
+              (macro read_lnk_files ((type ARG1))
+                     (allow ARG1 isid (lnk_files (read)))
+                     (call fs.sysfs.search (ARG1)))
+
+              (macro relabel ((type ARG1))
+                     (call relabel_dirs (ARG1))
+                     (call relabel_files (ARG1))
+                     (call relabel_lnk_files (ARG1)))
+
+              (macro relabel_dirs ((type ARG1))
+                     (allow ARG1 isid (dirs (relabel)))
+                     (call fs.sysfs.search (ARG1)))
+
+              (macro relabel_files ((type ARG1))
+                     (allow ARG1 isid (files (relabel)))
+                     (call fs.sysfs.search (ARG1)))
+
+              (macro relabel_fs ((type ARG1))
+                     (allow ARG1 isid (filesystem (getattr relabelfrom
+                                                           relabelto))))
+
+              (macro relabel_lnk_files ((type ARG1))
+                     (allow ARG1 isid (lnk_files (relabel)))
+                     (call fs.sysfs.search (ARG1)))
+
+              (macro relabelfrom ((type ARG1))
+                     (call relabelfrom_dirs (ARG1))
+                     (call relabelfrom_files (ARG1))
+                     (call relabelfrom_lnk_files (ARG1)))
+
+              (macro relabelfrom_dirs ((type ARG1))
+                     (allow ARG1 isid (dirs (relabelfrom)))
+                     (call fs.sysfs.search (ARG1)))
+
+              (macro relabelfrom_files ((type ARG1))
+                     (allow ARG1 isid (files (relabelfrom)))
+                     (call fs.sysfs.search (ARG1)))
+
+              (macro relabelfrom_fs ((type ARG1))
+                     (allow ARG1 isid (filesystem (getattr relabelfrom))))
+
+              (macro relabelfrom_lnk_files ((type ARG1))
+                     (allow ARG1 isid (lnk_files (relabelfrom)))
+                     (call fs.sysfs.search (ARG1)))
+
+              (macro relabelto ((type ARG1))
+                     (call relabelto_dirs (ARG1))
+                     (call relabelto_files (ARG1))
+                     (call relabelto_lnk_files (ARG1)))
+
+              (macro relabelto_dirs ((type ARG1))
+                     (allow ARG1 isid (dirs (relabelto)))
+                     (call fs.sysfs.search (ARG1)))
+
+              (macro relabelto_files ((type ARG1))
+                     (allow ARG1 isid (files (relabelto)))
+                     (call fs.sysfs.search (ARG1)))
+
+              (macro relabelto_fs ((type ARG1))
+                     (allow ARG1 isid (filesystem (getattr relabelto))))
+
+              (macro relabelto_lnk_files ((type ARG1))
+                     (allow ARG1 isid (lnk_files (relabelto)))
+                     (call fs.sysfs.search (ARG1)))
+
+              (macro remount ((type ARG1))
+                     (allow ARG1 isid (filesystem (remount))))
+
+              (macro rename ((type ARG1))
+                     (call rename_dirs (ARG1))
+                     (call rename_files (ARG1))
+                     (call rename_lnk_files (ARG1)))
+
+              (macro rename_dirs ((type ARG1))
+                     (allow ARG1 isid (dirs (rename)))
+                     (call fs.sysfs.search (ARG1)))
+
+              (macro rename_files ((type ARG1))
+                     (allow ARG1 isid (files (rename)))
+                     (call fs.sysfs.search (ARG1)))
+
+              (macro rename_lnk_files ((type ARG1))
+                     (allow ARG1 isid (lnk_files (rename)))
+                     (call fs.sysfs.search (ARG1)))
+
+              (macro rw ((type ARG1))
+                     (call rw_dirs (ARG1))
+                     (call rw_files (ARG1))
+                     (call rw_lnk_files (ARG1)))
+
+              (macro rw_dirs ((type ARG1))
+                     (allow ARG1 isid (dirs (rw)))
+                     (call fs.sysfs.search (ARG1)))
+
+              (macro rw_files ((type ARG1))
+                     (allow ARG1 isid (files (rw)))
+                     (call fs.sysfs.search (ARG1)))
+
+              (macro rw_lnk_files ((type ARG1))
+                     (allow ARG1 isid (lnk_files (rw)))
+                     (call fs.sysfs.search (ARG1)))
+
+              (macro search ((type ARG1))
+                     (allow ARG1 isid search_dir_perms)
+                     (call fs.sysfs.search (ARG1)))
+
+              (macro setattr ((type ARG1))
+                     (call setattr_dirs (ARG1))
+                     (call setattr_files (ARG1))
+                     (call setattr_lnk_files (ARG1)))
+
+              (macro setattr_dirs ((type ARG1))
+                     (allow ARG1 isid (dirs (setattr)))
+                     (call fs.sysfs.search (ARG1)))
+
+              (macro setattr_files ((type ARG1))
+                     (allow ARG1 isid (files (setattr)))
+                     (call fs.sysfs.search (ARG1)))
+
+              (macro setattr_lnk_files ((type ARG1))
+                     (allow ARG1 isid (lnk_files (setattr)))
+                     (call fs.sysfs.search (ARG1)))
+
+              (macro unmount ((type ARG1))
+                     (allow ARG1 isid (filesystem (unmount))))
+
+              (macro write ((type ARG1))
+                     (call write_dirs (ARG1))
+                     (call write_files (ARG1))
+                     (call write_lnk_files (ARG1)))
+
+              (macro write_dirs ((type ARG1))
+                     (allow ARG1 isid (dirs (write)))
+                     (call fs.sysfs.search (ARG1)))
+
+              (macro write_files ((type ARG1))
+                     (allow ARG1 isid (files (write)))
+                     (call fs.sysfs.search (ARG1)))
+
+              (macro write_lnk_files ((type ARG1))
+                     (allow ARG1 isid (lnk_files (write)))
+                     (call fs.sysfs.search (ARG1)))
+
+              ;;
+              ;; Policy
+              ;;
+
+              (blockinherit sys.isid.stub)
+
+              (neverallow
+               not_load_policy_subj_type_or_unconfined_subj_type_attribute
+               isid (security (load_policy)))
+
+              (neverallow
+               not_set_enforce_subj_type_or_unconfined_subj_type_attribute
+               isid (security (setenforce)))
+
+              (neverallow
+               not_set_secparam_subj_type_or_unconfined_subj_type_attribute
+               isid (security (setsecparam)))
+
+              (call bool_file.obj_type (isid))
+
+              (call fs.obj_type (isid))
+
+              (allow set_fscreate_subj_type_attribute self (process
+                                                            (setfscreate)))
+
+              (call read_files (set_fscreate_subj_type_attribute))
+
+              (allow set_secparam_subj_type_attribute isid (security
+                                                            (setsecparam)))
+              (auditallow set_secparam_subj_type_attribute isid
+                          (security (setsecparam)))
+
+              (call list
+                    (load_policy_subj_type_set_enforce_subj_type_and_set_secparam_subj_type_attribute))
+              (call rw_files
+                    (load_policy_subj_type_set_enforce_subj_type_and_set_secparam_subj_type_attribute))
+
+              (allow unconfined_subj_type_attribute isid list_dir_perms)
+              (allow unconfined_subj_type_attribute isid
+                     security_except_load_policy_and_setenforce)
+
+              (booleanif load_policy
+                         (true
+                          (allow
+                           set_enforce_subj_type_and_unconfined_subj_type_attribute
+                           isid (security (setenforce)))
+                          (allow
+                           load_policy_subj_type_and_unconfined_subj_type_attribute
+                           isid (security (load_policy)))))))

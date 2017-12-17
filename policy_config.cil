@@ -1,12 +1,12 @@
-; -*- mode: CIL; fill-column: 75; indent-tabs-mode: nil; tab-width: 4 -*-
-; SPDX-License-Identifier: Unlicense
+;; -*- mode: CIL; fill-column: 79; indent-tabs-mode: nil; -*-
+;; SPDX-License-Identifier: Unlicense
 
 (handleunknown deny)
 (mls true)
 
-;
-; Enabled policy capabilities
-;
+;;
+;; Enabled policy capabilities
+;;
 
 (policycap "cgroup_seclabel")
 (policycap "extended_socket_class")
@@ -14,8 +14,8 @@
 (policycap "nnp_nosuid_transition")
 (policycap "open_perms")
 
-;
-; Disabled policy capabilities
-;
+;;
+;; Disabled policy capabilities
+;;
 
-; (policycap "always_check_network")
+;; (policycap "always_check_network")

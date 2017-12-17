@@ -1,3502 +1,1436 @@
-; -*- mode: CIL; fill-column: 75; indent-tabs-mode: nil; tab-width: 4 -*-
-; SPDX-License-Identifier: Unlicense
+;; -*- mode: CIL; fill-column: 79; indent-tabs-mode: nil; -*-
+;; SPDX-License-Identifier: Unlicense
 
-; stor
-;     fixed_disk
-;     fuse
-;     removable
-;     scsi_generic
-;     stor_file
-;         obj_all_macro_template
-;         obj_stub
-;         obj_template
+;; stor
+;;     fixed_disk
+;;     fuse
+;;     removable
+;;     scsi_generic
+;;     stor_file
+;;         obj_all_macro_template
+;;         obj_stub
+;;         obj_template
 
 (block stor
 
-    ;
-    ; Macros
-    ;
+       ;;
+       ;; Macros
+       ;;
 
-    (macro read_fixed_disk_subj_type ((type ARG1))
-        (typeattributeset read_fixed_disk_subj_type_attribute ARG1)
-    )
+       (macro read_fixed_disk_subj_type ((type ARG1))
+              (typeattributeset read_fixed_disk_subj_type_attribute ARG1))
 
-    (macro read_scsi_generic_subj_type ((type ARG1))
-        (typeattributeset read_scsi_generic_subj_type_attribute ARG1)
-    )
+       (macro read_scsi_generic_subj_type ((type ARG1))
+              (typeattributeset read_scsi_generic_subj_type_attribute ARG1))
 
-    (macro unconfined_subj_type ((type ARG1))
-        (typeattributeset unconfined_subj_type_attribute ARG1)
-    )
+       (macro unconfined_subj_type ((type ARG1))
+              (typeattributeset unconfined_subj_type_attribute ARG1))
 
-    (macro write_fixed_disk_subj_type ((type ARG1))
-        (typeattributeset write_fixed_disk_subj_type_attribute ARG1)
-    )
+       (macro write_fixed_disk_subj_type ((type ARG1))
+              (typeattributeset write_fixed_disk_subj_type_attribute ARG1))
 
-    (macro write_scsi_generic_subj_type ((type ARG1))
-        (typeattributeset write_scsi_generic_subj_type_attribute ARG1)
-    )
+       (macro write_scsi_generic_subj_type ((type ARG1))
+              (typeattributeset write_scsi_generic_subj_type_attribute ARG1))
 
-    ;
-    ; Policy
-    ;
+       ;;
+       ;; Policy
+       ;;
 
-    (typeattribute read_fixed_disk_subj_type_attribute)
-    (typeattribute
+       (typeattribute read_fixed_disk_subj_type_attribute)
+       (typeattribute
         not_read_fixed_disk_subj_type_or_unconfined_subj_type_attribute)
 
-    (typeattribute read_scsi_generic_subj_type_attribute)
-    (typeattribute
+       (typeattribute read_scsi_generic_subj_type_attribute)
+       (typeattribute
         not_read_scsi_generic_subj_type_or_unconfined_subj_type_attribute)
 
-    (typeattribute unconfined_subj_type_attribute)
+       (typeattribute unconfined_subj_type_attribute)
 
-    (typeattribute write_fixed_disk_subj_type_attribute)
-    (typeattribute
+       (typeattribute write_fixed_disk_subj_type_attribute)
+       (typeattribute
         not_unconfined_subj_type_or_write_fixed_disk_subj_type_attribute)
 
-    (typeattribute write_scsi_generic_subj_type_attribute)
-    (typeattribute
+       (typeattribute write_scsi_generic_subj_type_attribute)
+       (typeattribute
         not_unconfined_subj_type_or_write_scsi_generic_subj_type_attribute)
 
-    (typeattributeset
+       (typeattributeset
         not_read_fixed_disk_subj_type_or_unconfined_subj_type_attribute
-            (not
-                (
-                    read_fixed_disk_subj_type_attribute
-                    unconfined_subj_type_attribute
-                )
-            )
-    )
+        (not (read_fixed_disk_subj_type_attribute
+              unconfined_subj_type_attribute)))
 
-    (typeattributeset
+       (typeattributeset
         not_read_scsi_generic_subj_type_or_unconfined_subj_type_attribute
-            (not
-                (
-                    read_scsi_generic_subj_type_attribute
-                    unconfined_subj_type_attribute
-                )
-            )
-    )
+        (not (read_scsi_generic_subj_type_attribute
+              unconfined_subj_type_attribute)))
 
-    (typeattributeset
+       (typeattributeset
         not_unconfined_subj_type_or_write_fixed_disk_subj_type_attribute
-            (not
-                (
-                    unconfined_subj_type_attribute
-                    write_fixed_disk_subj_type_attribute
-                )
-            )
-    )
+        (not (unconfined_subj_type_attribute
+              write_fixed_disk_subj_type_attribute)))
 
-    (typeattributeset
+       (typeattributeset
         not_unconfined_subj_type_or_write_scsi_generic_subj_type_attribute
-            (not
-                (
-                    unconfined_subj_type_attribute
-                    write_scsi_generic_subj_type_attribute
-                )
-            )
-    )
-
-    (block fixed_disk
-
-        ;
-        ; Contexts
-        ;
-
-        (filecon "/dev/dm-[0-9]+" block stor_file_context)
-        (filecon "/dev/loop.+" block stor_file_context)
-        (filecon "/dev/nvme[0-9]+" char stor_file_context)
-        (filecon "/dev/nvme[0-9]n[^/]+" block stor_file_context)
-        (filecon "/dev/raw/.+" char stor_file_context)
-        (filecon "/dev/[shmxv]d[^/]+" block stor_file_context)
-
-        ;
-        ; Macros
-        ;
-
-        (macro devtmpfs_obj_type_transition ((type ARG1))
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "dm-0"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "dm-1"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "dm-2"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "dm-3"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "dm-4"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "dm-5"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "dm-6"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "dm-7"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "dm-8"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "dm-9"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "loop0"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "loop0p1"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "loop0p2"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "loop0p3"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "loop0p4"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "loop0p5"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "loop0p6"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "loop0p7"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "loop0p8"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "loop0p9"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "loop1"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "loop1p1"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "loop1p2"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "loop1p3"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "loop1p4"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "loop1p5"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "loop1p6"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "loop1p7"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "loop1p8"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "loop1p9"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "loop2"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "loop2p1"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "loop2p2"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "loop2p3"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "loop2p4"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "loop2p5"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "loop2p6"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "loop2p7"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "loop2p8"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "loop2p9"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "loop3"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "loop3p1"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "loop3p2"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "loop3p3"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "loop3p4"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "loop3p5"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "loop3p6"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "loop3p7"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "loop3p8"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "loop3p9"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "loop4"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "loop4p1"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "loop4p2"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "loop4p3"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "loop4p4"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "loop4p5"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "loop4p6"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "loop4p7"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "loop4p8"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "loop4p9"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sda"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sda1"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sda2"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sda3"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sda4"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sda5"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sda6"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sda7"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sda8"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sda9"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdb"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdb1"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdb2"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdb3"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdb4"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdb5"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdb6"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdb7"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdb8"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdb9"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdc"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdc1"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdc2"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdc3"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdc4"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdc5"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdc6"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdc7"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdc8"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdc9"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdd"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdd1"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdd2"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdd3"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdd4"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdd5"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdd6"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdd7"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdd8"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdd9"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sde"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sde1"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sde2"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sde3"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sde4"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sde5"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sde6"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sde7"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sde8"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sde9"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdf"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdf1"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdf2"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdf3"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdf4"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdf5"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdf6"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdf7"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdf8"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdf9"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdg"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdg1"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdg2"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdg3"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdg4"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdg5"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdg6"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdg7"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdg8"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdg9"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdh"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdh1"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdh2"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdh3"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdh4"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdh5"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdh6"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdh7"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdh8"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdh9"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdi"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdi1"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdi2"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdi3"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdi4"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdi5"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdi6"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdi7"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdi8"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdi9"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdj"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdj1"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdj2"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdj3"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdj4"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdj5"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdj6"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdj7"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdj8"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "sdj9"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vda"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vda1"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vda2"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vda3"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vda4"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vda5"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vda6"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vda7"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vda8"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vda9"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdb"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdb1"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdb2"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdb3"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdb4"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdb5"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdb6"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdb7"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdb8"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdb9"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdc"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdc1"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdc2"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdc3"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdc4"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdc5"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdc6"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdc7"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdc8"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdc9"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdd"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdd1"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdd2"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdd3"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdd4"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdd5"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdd6"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdd7"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdd8"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdd9"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vde"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vde1"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vde2"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vde3"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vde4"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vde5"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vde6"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vde7"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vde8"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vde9"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdf"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdf1"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdf2"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdf3"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdf4"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdf5"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdf6"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdf7"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdf8"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdf9"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdg"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdg1"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdg2"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdg3"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdg4"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdg5"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdg6"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdg7"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdg8"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdg9"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdh"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdh1"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdh2"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdh3"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdh4"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdh5"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdh6"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdh7"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdh8"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdh9"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdi"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdi1"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdi2"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdi3"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdi4"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdi5"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdi6"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdi7"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdi8"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdi9"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdj"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdj1"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdj2"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdj3"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdj4"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdj5"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdj6"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdj7"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdj8"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "vdj9"
-                )
-            )
-        )
-
-        (macro create ((type ARG1))
-            (call create_blk_files
-                (
-                    ARG1
-                )
-            )
-            (call create_chr_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro create_blk_files ((type ARG1))
-            (allow ARG1 self
-                (capability
-                    (
-                        mknod
-                    )
-                )
-            )
-            (allow ARG1 stor_file create_blk_file_perms)
-            (call fs.devtmpfs.rw_dirs
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro create_chr_files ((type ARG1))
-            (allow ARG1 self
-                (capability
-                    (
-                        mknod
-                    )
-                )
-            )
-            (allow ARG1 stor_file create_chr_file_perms)
-            (call fs.devtmpfs.rw_dirs
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro delete ((type ARG1))
-            (call delete_blk_files
-                (
-                    ARG1
-                )
-            )
-            (call delete_chr_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro delete_blk_files ((type ARG1))
-            (allow ARG1 stor_file delete_blk_file_perms)
-            (call fs.devtmpfs.rw_dirs
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro delete_chr_files ((type ARG1))
-            (allow ARG1 stor_file delete_chr_file_perms)
-            (call fs.devtmpfs.rw_dirs
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro getattr ((type ARG1))
-            (call getattr_blk_files
-                (
-                    ARG1
-                )
-            )
-            (call getattr_chr_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro getattr_blk_files ((type ARG1))
-            (allow ARG1 stor_file
-                (blk_file
-                    (
-                        getattr
-                    )
-                )
-            )
-            (call fs.devtmpfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro getattr_chr_files ((type ARG1))
-            (allow ARG1 stor_file
-                (chr_file
-                    (
-                        getattr
-                    )
-                )
-            )
-            (call fs.devtmpfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro manage ((type ARG1))
-            (call manage_blk_files
-                (
-                    ARG1
-                )
-            )
-            (call manage_chr_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro manage_blk_files ((type ARG1))
-            (allow ARG1 self
-                (capability
-                    (
-                        mknod
-                    )
-                )
-            )
-            (allow ARG1 stor_file manage_blk_file_perms)
-            (call read_fixed_disk_subj_type
-                (
-                    ARG1
-                )
-            )
-            (call write_fixed_disk_subj_type
-                (
-                    ARG1
-                )
-            )
-            (call fs.devtmpfs.rw_dirs
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro manage_chr_files ((type ARG1))
-            (allow ARG1 self
-                (capability
-                    (
-                        mknod
-                    )
-                )
-            )
-            (allow ARG1 stor_file manage_chr_file_perms)
-            (call read_fixed_disk_subj_type
-                (
-                    ARG1
-                )
-            )
-            (call write_fixed_disk_subj_type
-                (
-                    ARG1
-                )
-            )
-            (call fs.devtmpfs.rw_dirs
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro map_chr_files ((type ARG1))
-            (allow ARG1 stor_file
-                (chr_file
-                    (
-                        map
-                    )
-                )
-            )
-            (call fs.devtmpfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro read ((type ARG1))
-            (call read_blk_files
-                (
-                    ARG1
-                )
-            )
-            (call read_chr_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro read_blk_files ((type ARG1))
-            (allow ARG1 stor_file read_blk_file_perms)
-            (call read_fixed_disk_subj_type
-                (
-                    ARG1
-                )
-            )
-            (call fs.devtmpfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro read_chr_files ((type ARG1))
-            (allow ARG1 stor_file read_chr_file_perms)
-            (call read_fixed_disk_subj_type
-                (
-                    ARG1
-                )
-            )
-            (call fs.devtmpfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabel ((type ARG1))
-            (call relabel_blk_files
-                (
-                    ARG1
-                )
-            )
-            (call relabel_chr_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabel_blk_files ((type ARG1))
-            (allow ARG1 stor_file relabel_blk_file_perms)
-            (call fs.devtmpfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabel_chr_files ((type ARG1))
-            (allow ARG1 stor_file relabel_chr_file_perms)
-            (call fs.devtmpfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabelfrom ((type ARG1))
-            (call relabelfrom_blk_files
-                (
-                    ARG1
-                )
-            )
-            (call relabelfrom_chr_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabelfrom_blk_files ((type ARG1))
-            (allow ARG1 stor_file relabelfrom_blk_file_perms)
-            (call fs.devtmpfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabelfrom_chr_files ((type ARG1))
-            (allow ARG1 stor_file relabelfrom_chr_file_perms)
-            (call fs.devtmpfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabelto ((type ARG1))
-            (call relabelto_blk_files
-                (
-                    ARG1
-                )
-            )
-            (call relabelto_chr_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabelto_blk_files ((type ARG1))
-            (allow ARG1 stor_file relabelto_blk_file_perms)
-            (call fs.devtmpfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabelto_chr_files ((type ARG1))
-            (allow ARG1 stor_file relabelto_chr_file_perms)
-            (call fs.devtmpfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro rename ((type ARG1))
-            (call rename_blk_files
-                (
-                    ARG1
-                )
-            )
-            (call rename_chr_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro rename_blk_files ((type ARG1))
-            (allow ARG1 stor_file rename_blk_file_perms)
-            (call fs.devtmpfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro rename_chr_files ((type ARG1))
-            (allow ARG1 stor_file rename_chr_file_perms)
-            (call fs.devtmpfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro rw ((type ARG1))
-            (call rw_blk_files
-                (
-                    ARG1
-                )
-            )
-            (call rw_chr_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro rw_blk_files ((type ARG1))
-            (allow ARG1 stor_file rw_blk_file_perms)
-            (call read_fixed_disk_subj_type
-                (
-                    ARG1
-                )
-            )
-            (call write_fixed_disk_subj_type
-                (
-                    ARG1
-                )
-            )
-            (call fs.devtmpfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro rw_chr_files ((type ARG1))
-            (allow ARG1 stor_file rw_chr_file_perms)
-            (call read_fixed_disk_subj_type
-                (
-                    ARG1
-                )
-            )
-            (call write_fixed_disk_subj_type
-                (
-                    ARG1
-                )
-            )
-            (call fs.devtmpfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro setattr ((type ARG1))
-            (call setattr_blk_files
-                (
-                    ARG1
-                )
-            )
-            (call setattr_chr_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro setattr_blk_files ((type ARG1))
-            (allow ARG1 stor
-                (blk_file
-                    (
-                        setattr
-                    )
-                )
-            )
-            (call fs.devtmpfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro setattr_chr_files ((type ARG1))
-            (allow ARG1 stor
-                (chr_file
-                    (
-                        setattr
-                    )
-                )
-            )
-            (call fs.devtmpfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro write ((type ARG1))
-            (call write_blk_files
-                (
-                    ARG1
-                )
-            )
-            (call write_chr_files
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro write_blk_files ((type ARG1))
-            (allow ARG1 stor_file write_blk_file_perms)
-            (call write_fixed_disk_subj_type
-                (
-                    ARG1
-                )
-            )
-            (call fs.devtmpfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro write_chr_files ((type ARG1))
-            (allow ARG1 stor_file write_chr_file_perms)
-            (call write_fixed_disk_subj_type
-                (
-                    ARG1
-                )
-            )
-            (call fs.devtmpfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        ;
-        ; Policy
-        ;
-
-        (blockinherit stor_file.obj_stub)
-
-        (neverallow
-            not_read_fixed_disk_subj_type_or_unconfined_subj_type_attribute
-                stor_file
-                    (blk_file
-                        (
-                            read
-                        )
-                    )
-        )
-
-        (neverallow
-            not_read_fixed_disk_subj_type_or_unconfined_subj_type_attribute
-                stor_file
-                    (chr_file
-                        (
-                            read
-                        )
-                    )
-        )
-
-        (neverallow
-            not_unconfined_subj_type_or_write_fixed_disk_subj_type_attribute
-                stor_file
-                    (blk_file
-                        (
-                            append
-                            write
-                        )
-                    )
-        )
-
-        (neverallow
-            not_unconfined_subj_type_or_write_fixed_disk_subj_type_attribute
-                stor_file
-                    (chr_file
-                        (
-                            append
-                            write
-                        )
-                    )
-        )
-
-        (call devtmpfs_obj_type_transition
-            (
-                unconfined_subj_type_attribute
-            )
-        )
-    )
-
-    (block fuse
-
-        ;
-        ; Contexts
-        ;
-
-        (filecon "/dev/fuse" char stor_file_context)
-
-        ;
-        ; Policy
-        ;
-
-        (blockinherit stor_file.obj_template)
-    )
-
-    (block removable
-
-        ;
-        ; Contexts
-        ;
-
-        (filecon "/dev/mmcblk.+" block stor_file_context)
-        (filecon "/dev/mspblk.+" block stor_file_context)
-        (filecon "/dev/sr[0-9]+" block stor_file_context)
-
-        ;
-        ; Macros
-        ;
-
-        (macro devtmpfs_obj_type_transition ((type ARG1))
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "mmcblk0"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "mmcblk0p1"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "mmcblk0p2"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "mmcblk0p3"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "mmcblk0p4"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "mmcblk0p5"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "mmcblk0p6"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "mmcblk0p7"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "mmcblk0p7"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "mmcblk0p9"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "mspblk0"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "mspblk0p1"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "mspblk0p2"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "mspblk0p3"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "mspblk0p4"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "mspblk0p5"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "mspblk0p6"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "mspblk0p7"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "mspblk0p8"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file blk_file "mspblk0p9"
-                )
-            )
-        )
-
-        ;
-        ; Policy
-        ;
-
-        (blockinherit stor_file.obj_template)
-
-        (call devtmpfs_obj_type_transition
-            (
-                unconfined_subj_type_attribute
-            )
-        )
-    )
-
-    (block scsi_generic
-
-        ;
-        ; Contexts
-        ;
-
-        (filecon "/dev/bsg/.+" char stor_file_context)
-        (filecon "/dev/sg[0-9]+" char stor_file_context)
-
-        ;
-        ; Macros
-        ;
-
-        (macro devtmpfs_obj_type_transition ((type ARG1))
-           (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file chr_file "0:0:0:0"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file chr_file "1:0:0:0"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file chr_file "2:0:0:0"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file chr_file "3:0:0:0"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file chr_file "4:0:0:0"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file chr_file "5:0:0:0"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file chr_file "6:0:0:0"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file chr_file "7:0:0:0"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file chr_file "8:0:0:0"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file chr_file "9:0:0:0"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file chr_file "sg0"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file chr_file "sg1"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file chr_file "sg2"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file chr_file "sg3"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file chr_file "sg4"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file chr_file "sg5"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file chr_file "sg6"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file chr_file "sg7"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file chr_file "sg8"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file chr_file "sg9"
-                )
-            )
-            (call fs.devtmpfs.obj_type_transition
-                (
-                    ARG1 stor_file chr_file "sg10"
-                )
-            )
-        )
-
-        (macro create_chr_files ((type ARG1))
-            (allow ARG1 self
-                (capability
-                    (
-                        mknod
-                    )
-                )
-            )
-            (allow ARG1 stor_file create_chr_file_perms)
-            (call fs.devtmpfs.rw_dirs
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro delete_chr_files ((type ARG1))
-            (allow ARG1 stor_file delete_chr_file_perms)
-            (call fs.devtmpfs.rw_dirs
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro getattr_chr_files ((type ARG1))
-            (allow ARG1 stor_file
-                (chr_file
-                    (
-                        getattr
-                    )
-                )
-            )
-            (call fs.devtmpfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro manage_chr_files ((type ARG1))
-            (allow ARG1 self
-                (capability
-                    (
-                        mknod
-                    )
-                )
-            )
-            (allow ARG1 stor_file manage_chr_file_perms)
-            (call read_scsi_generic_subj_type
-                (
-                    ARG1
-                )
-            )
-            (call write_scsi_generic_subj_type
-                (
-                    ARG1
-                )
-            )
-            (call fs.devtmpfs.rw_dirs
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro map_chr_files ((type ARG1))
-            (allow ARG1 stor_file
-                (chr_file
-                    (
-                        map
-                    )
-                )
-            )
-            (call fs.devtmpfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro read_chr_files ((type ARG1))
-            (allow ARG1 stor_file read_chr_file_perms)
-            (call read_scsi_generic_subj_type
-                (
-                    ARG1
-                )
-            )
-            (call fs.devtmpfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabel_chr_files ((type ARG1))
-            (allow ARG1 stor_file relabel_chr_file_perms)
-            (call fs.devtmpfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabelfrom_chr_files ((type ARG1))
-            (allow ARG1 stor_file relabelfrom_chr_file_perms)
-            (call fs.devtmpfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro relabelto_chr_files ((type ARG1))
-            (allow ARG1 stor_file relabelto_chr_file_perms)
-            (call fs.devtmpfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-
-        (macro rename_chr_files ((type ARG1))
-            (allow ARG1 stor_file rename_chr_file_perms)
-            (call fs.devtmpfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro rw_chr_files ((type ARG1))
-            (allow ARG1 stor_file rw_chr_file_perms)
-            (call read_scsi_generic_subj_type
-                (
-                    ARG1
-                )
-            )
-            (call write_scsi_generic_subj_type
-                (
-                    ARG1
-                )
-            )
-            (call fs.devtmpfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro setattr_chr_files ((type ARG1))
-            (allow ARG1 stor
-                (chr_file
-                    (
-                        setattr
-                    )
-                )
-            )
-            (call fs.devtmpfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        (macro write_chr_files ((type ARG1))
-            (allow ARG1 stor_file write_chr_file_perms)
-            (call write_scsi_generic_subj_type
-                (
-                    ARG1
-                )
-            )
-            (call fs.devtmpfs.search
-                (
-                    ARG1
-                )
-            )
-        )
-
-        ;
-        ; Policy
-        ;
-
-        (blockinherit stor_file.obj_stub)
-
-        (neverallow
-            not_read_scsi_generic_subj_type_or_unconfined_subj_type_attribute
-                stor_file
-                    (chr_file
-                        (
-                            read
-                        )
-                    )
-        )
-
-        (neverallow
-            not_unconfined_subj_type_or_write_scsi_generic_subj_type_attribute
-                stor_file
-                    (chr_file
-                        (
-                            append
-                            write
-                        )
-                    )
-        )
-
-        (call devtmpfs_obj_type_transition
-            (
-                unconfined_subj_type_attribute
-            )
-        )
-    )
-
-    (block stor_file
-
-        ;
-        ; Macros
-        ;
-
-        (blockinherit obj_all_macro_template)
-
-        ;
-        ; Policy
-        ;
-
-        (typeattribute obj_type_attribute)
-
-        (allow unconfined_subj_type_attribute obj_type_attribute
-            blk_file_except_execmod_map_and_mounton)
-        (allow unconfined_subj_type_attribute obj_type_attribute
-            chr_file_except_execmod_and_mounton)
-
-        (call sys.obj_type
-            (
-                obj_type_attribute
-            )
-        )
-
-        (call fs.devtmpfs.associate
-            (
-                obj_type_attribute
-            )
-        )
-
-        ;
-        ; Templates
-        ;
-
-        (block obj_all_macro_template
-
-            ;
-            ; Macros
-            ;
-
-            (macro create ((type ARG1))
-                (call create_blk_files
-                    (
-                        ARG1
-                    )
-                )
-                (call create_chr_files
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro create_blk_files ((type ARG1))
-                (allow ARG1 self
-                    (capability
-                        (
-                            mknod
-                        )
-                    )
-                )
-                (allow ARG1 obj_type_attribute create_blk_file_perms)
-                (call fs.devtmpfs.add_entries
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro create_chr_files ((type ARG1))
-                (allow ARG1 self
-                    (capability
-                        (
-                            mknod
-                        )
-                    )
-                )
-                (allow ARG1 obj_type_attribute create_chr_file_perms)
-                (call fs.devtmpfs.add_entries
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro delete ((type ARG1))
-                (call delete_blk_files
-                    (
-                        ARG1
-                    )
-                )
-                (call delete_chr_files
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro delete_blk_files ((type ARG1))
-                (allow ARG1 obj_type_attribute delete_blk_file_perms)
-                (call fs.devtmpfs.del_entries
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro delete_chr_files ((type ARG1))
-                (allow ARG1 obj_type_attribute delete_chr_file_perms)
-                (call fs.devtmpfs.del_entries
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro getattr ((type ARG1))
-                (call getattr_blk_files
-                    (
-                        ARG1
-                    )
-                )
-                (call getattr_chr_files
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro getattr_blk_files ((type ARG1))
-                (allow ARG1 obj_type_attribute
-                    (blk_file
-                        (
-                            getattr
-                        )
-                    )
-                )
-                (call fs.devtmpfs.search
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro getattr_chr_files ((type ARG1))
-                (allow ARG1 obj_type_attribute
-                    (chr_file
-                        (
-                            getattr
-                        )
-                    )
-                )
-                (call fs.devtmpfs.search
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro manage ((type ARG1))
-                (call manage_blk_files
-                    (
-                        ARG1
-                    )
-                )
-                (call manage_chr_files
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro manage_blk_files ((type ARG1))
-                (allow ARG1 self
-                    (capability
-                        (
-                            mknod
-                        )
-                    )
-                )
-                (allow ARG1 obj_type_attribute manage_blk_file_perms)
-                (call stor.read_fixed_disk_subj_type
-                    (
-                        ARG1
-                    )
-                )
-                (call stor.write_fixed_disk_subj_type
-                    (
-                        ARG1
-                    )
-                )
-                (call fs.devtmpfs.rw_dirs
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro manage_chr_files ((type ARG1))
-                (allow ARG1 self
-                    (capability
-                        (
-                            mknod
-                        )
-                    )
-                )
-                (allow ARG1 obj_type_attribute manage_chr_file_perms)
-                (call stor.read_fixed_disk_subj_type
-                    (
-                        ARG1
-                    )
-                )
-                (call stor.read_scsi_generic_subj_type
-                    (
-                        ARG1
-                    )
-                )
-                (call stor.write_fixed_disk_subj_type
-                    (
-                        ARG1
-                    )
-                )
-                (call stor.write_scsi_generic_subj_type
-                    (
-                        ARG1
-                    )
-                )
-                (call fs.devtmpfs.rw_dirs
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro map_chr_files ((type ARG1))
-                (allow ARG1 obj_type_attribute
-                    (chr_file
-                        (
-                            map
-                        )
-                    )
-                )
-                (call fs.devtmpfs.search
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro obj_type ((type ARG1))
-                (typeattributeset obj_type_attribute ARG1)
-            )
-
-            (macro read ((type ARG1))
-                (call read_blk_files
-                    (
-                        ARG1
-                    )
-                )
-                (call read_chr_files
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro read_blk_files ((type ARG1))
-                (allow ARG1 obj_type_attribute read_blk_file_perms)
-                (call stor.read_fixed_disk_subj_type
-                    (
-                        ARG1
-                    )
-                )
-                (call fs.devtmpfs.search
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro read_chr_files ((type ARG1))
-                (allow ARG1 obj_type_attribute read_chr_file_perms)
-                (call stor.read_fixed_disk_subj_type
-                    (
-                        ARG1
-                    )
-                )
-                (call stor.read_scsi_generic_subj_type
-                    (
-                        ARG1
-                    )
-                )
-                (call fs.devtmpfs.search
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro relabel ((type ARG1))
-                (call relabel_blk_files
-                    (
-                        ARG1
-                    )
-                )
-                (call relabel_chr_files
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro relabel_blk_files ((type ARG1))
-                (allow ARG1 obj_type_attribute relabel_blk_file_perms)
-                (call fs.devtmpfs.search
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro relabel_chr_files ((type ARG1))
-                (allow ARG1 obj_type_attribute relabel_chr_file_perms)
-                (call fs.devtmpfs.search
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro relabelfrom ((type ARG1))
-                (call relabelfrom_blk_files
-                    (
-                        ARG1
-                    )
-                )
-                (call relabelfrom_chr_files
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro relabelfrom_blk_files ((type ARG1))
-                (allow ARG1 obj_type_attribute relabelfrom_blk_file_perms)
-                (call fs.devtmpfs.search
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro relabelfrom_chr_files ((type ARG1))
-                (allow ARG1 obj_type_attribute relabelfrom_chr_file_perms)
-                (call fs.devtmpfs.search
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro relabelto ((type ARG1))
-                (call relabelto_blk_files
-                    (
-                        ARG1
-                    )
-                )
-                (call relabelto_chr_files
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro relabelto_blk_files ((type ARG1))
-                (allow ARG1 obj_type_attribute relabelto_blk_file_perms)
-                (call fs.devtmpfs.search
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro relabelto_chr_files ((type ARG1))
-                (allow ARG1 obj_type_attribute relabelto_chr_file_perms)
-                (call fs.devtmpfs.search
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro rename ((type ARG1))
-                (call rename_blk_files
-                    (
-                        ARG1
-                    )
-                )
-                (call rename_chr_files
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro rename_blk_files ((type ARG1))
-                (allow ARG1 obj_type_attribute rename_blk_file_perms)
-                (call fs.devtmpfs.search
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro rename_chr_files ((type ARG1))
-                (allow ARG1 obj_type_attribute rename_chr_file_perms)
-                (call fs.devtmpfs.search
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro rw ((type ARG1))
-                (call rw_blk_files
-                    (
-                        ARG1
-                    )
-                )
-                (call rw_chr_files
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro rw_blk_files ((type ARG1))
-                (allow ARG1 obj_type_attribute rw_blk_file_perms)
-                (call stor.read_fixed_disk_subj_type
-                    (
-                        ARG1
-                    )
-                )
-                (call stor.write_fixed_disk_subj_type
-                    (
-                        ARG1
-                    )
-                )
-                (call fs.devtmpfs.search
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro rw_chr_files ((type ARG1))
-                (allow ARG1 obj_type_attribute rw_chr_file_perms)
-                (call stor.read_fixed_disk_subj_type
-                    (
-                        ARG1
-                    )
-                )
-                (call stor.read_scsi_generic_subj_type
-                    (
-                        ARG1
-                    )
-                )
-                (call stor.write_fixed_disk_subj_type
-                    (
-                        ARG1
-                    )
-                )
-                (call stor.write_scsi_generic_subj_type
-                    (
-                        ARG1
-                    )
-                )
-                (call fs.devtmpfs.search
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro setattr ((type ARG1))
-                (call setattr_blk_files
-                    (
-                        ARG1
-                    )
-                )
-                (call setattr_chr_files
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro setattr_blk_files ((type ARG1))
-                (allow ARG1 obj_type_attribute
-                    (blk_file
-                        (
-                            setattr
-                        )
-                    )
-                )
-                (call fs.devtmpfs.search
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro setattr_chr_files ((type ARG1))
-                (allow ARG1 obj_type_attribute
-                    (chr_file
-                        (
-                            setattr
-                        )
-                    )
-                )
-                (call fs.devtmpfs.search
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro write ((type ARG1))
-                (call write_blk_files
-                    (
-                        ARG1
-                    )
-                )
-                (call write_chr_files
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro write_blk_files ((type ARG1))
-                (allow ARG1 obj_type_attribute write_blk_file_perms)
-                (call stor.write_fixed_disk_subj_type
-                    (
-                        ARG1
-                    )
-                )
-                (call fs.devtmpfs.search
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro write_chr_files ((type ARG1))
-                (allow ARG1 obj_type_attribute write_chr_file_perms)
-                (call stor.write_fixed_disk_subj_type
-                    (
-                        ARG1
-                    )
-                )
-                (call stor.write_scsi_generic_subj_type
-                    (
-                        ARG1
-                    )
-                )
-                (call fs.devtmpfs.search
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            ;
-            ; Policy
-            ;
-
-            (blockabstract obj_all_macro_template)
-        )
-
-        (block obj_stub
-
-            ;
-            ; Contexts
-            ;
-
-            (context stor_file_context
-                (
-                    sys.id
-                    sys.role
-                    stor_file
-                        (
-                            systemlow
-                            systemlow
-                        )
-                )
-            )
-
-            ;
-            ; Policy
-            ;
-
-            (blockabstract obj_stub)
-
-            (type stor_file)
-            (call stor.stor_file.obj_type
-                (
-                    stor_file
-                )
-            )
-        )
-
-        (block obj_template
-
-            ;
-            ; Macros
-            ;
-
-            (macro create ((type ARG1))
-                (call create_blk_files
-                    (
-                        ARG1
-                    )
-                )
-                (call create_chr_files
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro create_blk_files ((type ARG1))
-                (allow ARG1 stor_file
-                    (blk_file
-                        (
-                            create
-                        )
-                    )
-                )
-                (call fs.devtmpfs.add_entries
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro create_chr_files ((type ARG1))
-                (allow ARG1 stor_file
-                    (chr_file
-                        (
-                            create
-                        )
-                    )
-                )
-                (call fs.devtmpfs.add_entries
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro delete ((type ARG1))
-                (call delete_blk_files
-                    (
-                        ARG1
-                    )
-                )
-                (call delete_chr_files
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro delete_blk_files ((type ARG1))
-                (allow ARG1 stor_file
-                    (blk_file
-                        (
-                            delete
-                        )
-                    )
-                )
-                (call fs.devtmpfs.del_entries
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro delete_chr_files ((type ARG1))
-                (allow ARG1 stor_file
-                    (chr_file
-                        (
-                            delete
-                        )
-                    )
-                )
-                (call fs.devtmpfs.del_entries
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro getattr ((type ARG1))
-                (call getattr_blk_files
-                    (
-                        ARG1
-                    )
-                )
-                (call getattr_chr_files
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro getattr_blk_files ((type ARG1))
-                (allow ARG1 stor_file
-                    (blk_file
-                        (
-                            getattr
-                        )
-                    )
-                )
-                (call fs.devtmpfs.search
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro getattr_chr_files ((type ARG1))
-                (allow ARG1 stor_file
-                    (chr_file
-                        (
-                            getattr
-                        )
-                    )
-                )
-                (call fs.devtmpfs.search
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro manage ((type ARG1))
-                (call manage_blk_files
-                    (
-                        ARG1
-                    )
-                )
-                (call manage_chr_files
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro manage_blk_files ((type ARG1))
-                (allow ARG1 self
-                    (capability
-                        (
-                            mknod
-                        )
-                    )
-                )
-                (allow ARG1 stor_file manage_blk_file_perms)
-                (call fs.devtmpfs.rw_dirs
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro manage_chr_files ((type ARG1))
-                (allow ARG1 self
-                    (capability
-                        (
-                            mknod
-                        )
-                    )
-                )
-                (allow ARG1 stor_file manage_chr_file_perms)
-                (call fs.devtmpfs.rw_dirs
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro map_chr_files ((type ARG1))
-                (allow ARG1 stor_file
-                    (chr_file
-                        (
-                            map
-                        )
-                    )
-                )
-                (call fs.devtmpfs.search
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro read ((type ARG1))
-                (call manage_blk_files
-                    (
-                        ARG1
-                    )
-                )
-                (call manage_chr_files
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro read_blk_files ((type ARG1))
-                (allow ARG1 stor_file read_blk_file_perms)
-                (call fs.devtmpfs.search
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro read_chr_files ((type ARG1))
-                (allow ARG1 stor_file read_chr_file_perms)
-                (call fs.devtmpfs.search
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro relabel ((type ARG1))
-                (call relabel_blk_files
-                    (
-                        ARG1
-                    )
-                )
-                (call relabel_chr_files
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro relabel_blk_files ((type ARG1))
-                (allow ARG1 stor_file relabel_blk_file_perms)
-                (call fs.devtmpfs.search
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro relabel_chr_files ((type ARG1))
-                (allow ARG1 stor_file relabel_chr_file_perms)
-                (call fs.devtmpfs.search
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro relabelfrom ((type ARG1))
-                (call relabelfrom_blk_files
-                    (
-                        ARG1
-                   )
-               )
-               (call relabelfrom_chr_files
-                   (
-                       ARG1
-                   )
-               )
-           )
-
-           (macro relabelfrom_blk_files ((type ARG1))
-               (allow ARG1 stor_file relabelfrom_blk_file_perms)
-               (call fs.devtmpfs.search
-                   (
-                       ARG1
-                   )
-               )
-           )
-
-           (macro relabelfrom_chr_files ((type ARG1))
-               (allow ARG1 stor_file relabelfrom_chr_file_perms)
-               (call fs.devtmpfs.search
-                   (
-                       ARG1
-                   )
-               )
-           )
-
-           (macro relabelto ((type ARG1))
-               (call relabelto_blk_files
-                   (
-                       ARG1
-                   )
-               )
-               (call relabelto_chr_files
-                   (
-                       ARG1
-                   )
-               )
-           )
-
-           (macro relabelto_blk_files ((type ARG1))
-               (allow ARG1 stor_file relabelto_blk_file_perms)
-               (call fs.devtmpfs.search
-                   (
-                       ARG1
-                   )
-               )
-           )
-
-           (macro relabelto_chr_files ((type ARG1))
-               (allow ARG1 stor_file relabelto_chr_file_perms)
-               (call fs.devtmpfs.search
-                    (
-                       ARG1
-                    )
-                )
-            )
-
-            (macro rw ((type ARG1))
-                (call rw_blk_files
-                    (
-                        ARG1
-                    )
-                )
-                (call rw_chr_files
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro rw_blk_files ((type ARG1))
-                (allow ARG1 stor_file rw_blk_file_perms)
-                (call fs.devtmpfs.search
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro rw_chr_files ((type ARG1))
-                (allow ARG1 stor_file rw_chr_file_perms)
-                (call fs.devtmpfs.search
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro setattr ((type ARG1))
-                (call setattr_blk_files
-                    (
-                        ARG1
-                    )
-                )
-                (call setattr_chr_files
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro setattr_blk_files ((type ARG1))
-                (allow ARG1 stor_file
-                    (blk_file
-                        (
-                            setattr
-                        )
-                    )
-                )
-                (call fs.devtmpfs.search
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro setattr_chr_files ((type ARG1))
-                (allow ARG1 stor_file
-                    (chr_file
-                        (
-                            setattr
-                        )
-                    )
-                )
-                (call fs.devtmpfs.search
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro write ((type ARG1))
-                (call write_blk_files
-                    (
-                        ARG1
-                    )
-                )
-                (call write_chr_files
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro write_blk_files ((type ARG1))
-                (allow ARG1 stor_file write_blk_file_perms)
-                (call fs.devtmpfs.search
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            (macro write_chr_files ((type ARG1))
-                (allow ARG1 stor_file write_chr_file_perms)
-                (call fs.devtmpfs.search
-                    (
-                        ARG1
-                    )
-                )
-            )
-
-            ;
-            ; Policy
-            ;
-
-            (blockabstract obj_template)
-
-            (blockinherit stor.stor_file.obj_stub)
-        )
-    )
-)
+        (not (unconfined_subj_type_attribute
+              write_scsi_generic_subj_type_attribute)))
+
+       (block fixed_disk
+
+              ;;
+              ;; Contexts
+              ;;
+
+              (filecon "/dev/dm-[0-9]+" block stor_file_context)
+              (filecon "/dev/loop.+" block stor_file_context)
+              (filecon "/dev/nvme[0-9]+" char stor_file_context)
+              (filecon "/dev/nvme[0-9]n[^/]+" block stor_file_context)
+              (filecon "/dev/raw/.+" char stor_file_context)
+              (filecon "/dev/[shmxv]d[^/]+" block stor_file_context)
+
+              ;;
+              ;; Macros
+              ;;
+
+              (macro devtmpfs_obj_type_transition ((type ARG1))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "dm-0"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "dm-1"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "dm-2"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "dm-3"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "dm-4"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "dm-5"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "dm-6"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "dm-7"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "dm-8"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "dm-9"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "loop0"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "loop0p1"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "loop0p2"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "loop0p3"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "loop0p4"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "loop0p5"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "loop0p6"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "loop0p7"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "loop0p8"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "loop0p9"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "loop1"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "loop1p1"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "loop1p2"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "loop1p3"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "loop1p4"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "loop1p5"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "loop1p6"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "loop1p7"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "loop1p8"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "loop1p9"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "loop2"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "loop2p1"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "loop2p2"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "loop2p3"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "loop2p4"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "loop2p5"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "loop2p6"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "loop2p7"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "loop2p8"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "loop2p9"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "loop3"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "loop3p1"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "loop3p2"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "loop3p3"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "loop3p4"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "loop3p5"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "loop3p6"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "loop3p7"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "loop3p8"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "loop3p9"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "loop4"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "loop4p1"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "loop4p2"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "loop4p3"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "loop4p4"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "loop4p5"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "loop4p6"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "loop4p7"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "loop4p8"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "loop4p9"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "nvme0n1"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "nvme0n1p1"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "nvme0n1p2"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "nvme0n1p3"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "nvme0n1p4"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "nvme0n1p5"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "nvme0n1p6"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "nvme0n1p7"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "nvme0n1p8"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "nvme0n1p9"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sda"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sda1"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sda2"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sda3"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sda4"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sda5"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sda6"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sda7"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sda8"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sda9"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdb"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdb1"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdb2"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdb3"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdb4"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdb5"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdb6"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdb7"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdb8"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdb9"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdc"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdc1"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdc2"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdc3"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdc4"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdc5"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdc6"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdc7"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdc8"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdc9"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdd"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdd1"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdd2"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdd3"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdd4"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdd5"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdd6"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdd7"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdd8"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdd9"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sde"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sde1"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sde2"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sde3"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sde4"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sde5"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sde6"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sde7"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sde8"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sde9"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdf"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdf1"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdf2"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdf3"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdf4"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdf5"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdf6"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdf7"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdf8"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdf9"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdg"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdg1"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdg2"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdg3"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdg4"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdg5"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdg6"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdg7"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdg8"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdg9"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdh"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdh1"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdh2"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdh3"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdh4"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdh5"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdh6"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdh7"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdh8"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdh9"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdi"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdi1"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdi2"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdi3"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdi4"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdi5"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdi6"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdi7"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdi8"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdi9"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdj"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdj1"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdj2"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdj3"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdj4"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdj5"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdj6"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdj7"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdj8"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "sdj9"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vda"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vda1"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vda2"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vda3"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vda4"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vda5"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vda6"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vda7"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vda8"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vda9"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdb"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdb1"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdb2"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdb3"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdb4"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdb5"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdb6"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdb7"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdb8"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdb9"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdc"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdc1"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdc2"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdc3"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdc4"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdc5"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdc6"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdc7"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdc8"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdc9"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdd"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdd1"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdd2"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdd3"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdd4"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdd5"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdd6"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdd7"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdd8"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdd9"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vde"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vde1"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vde2"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vde3"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vde4"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vde5"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vde6"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vde7"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vde8"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vde9"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdf"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdf1"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdf2"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdf3"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdf4"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdf5"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdf6"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdf7"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdf8"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdf9"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdg"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdg1"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdg2"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdg3"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdg4"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdg5"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdg6"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdg7"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdg8"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdg9"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdh"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdh1"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdh2"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdh3"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdh4"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdh5"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdh6"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdh7"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdh8"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdh9"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdi"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdi1"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdi2"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdi3"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdi4"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdi5"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdi6"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdi7"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdi8"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdi9"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdj"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdj1"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdj2"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdj3"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdj4"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdj5"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdj6"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdj7"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdj8"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "vdj9")))
+
+              (macro create ((type ARG1))
+                     (call create_blk_files (ARG1))
+                     (call create_chr_files (ARG1)))
+
+              (macro create_blk_files ((type ARG1))
+                     (allow ARG1 self (capability (mknod)))
+                     (allow ARG1 stor_file create_blk_file_perms)
+                     (call fs.devtmpfs.rw_dirs (ARG1)))
+
+              (macro create_chr_files ((type ARG1))
+                     (allow ARG1 self (capability (mknod)))
+                     (allow ARG1 stor_file create_chr_file_perms)
+                     (call fs.devtmpfs.rw_dirs (ARG1)))
+
+              (macro delete ((type ARG1))
+                     (call delete_blk_files (ARG1))
+                     (call delete_chr_files (ARG1)))
+
+              (macro delete_blk_files ((type ARG1))
+                     (allow ARG1 stor_file delete_blk_file_perms)
+                     (call fs.devtmpfs.rw_dirs (ARG1)))
+
+              (macro delete_chr_files ((type ARG1))
+                     (allow ARG1 stor_file delete_chr_file_perms)
+                     (call fs.devtmpfs.rw_dirs (ARG1)))
+
+              (macro getattr ((type ARG1))
+                     (call getattr_blk_files (ARG1))
+                     (call getattr_chr_files (ARG1)))
+
+              (macro getattr_blk_files ((type ARG1))
+                     (allow ARG1 stor_file (blk_file (getattr)))
+                     (call fs.devtmpfs.search (ARG1)))
+
+              (macro getattr_chr_files ((type ARG1))
+                     (allow ARG1 stor_file (chr_file (getattr)))
+                     (call fs.devtmpfs.search (ARG1)))
+
+              (macro manage ((type ARG1))
+                     (call manage_blk_files (ARG1))
+                     (call manage_chr_files (ARG1)))
+
+              (macro manage_blk_files ((type ARG1))
+                     (allow ARG1 self (capability (mknod)))
+                     (allow ARG1 stor_file manage_blk_file_perms)
+                     (call read_fixed_disk_subj_type (ARG1))
+                     (call write_fixed_disk_subj_type (ARG1))
+                     (call fs.devtmpfs.rw_dirs (ARG1)))
+
+              (macro manage_chr_files ((type ARG1))
+                     (allow ARG1 self (capability (mknod)))
+                     (allow ARG1 stor_file manage_chr_file_perms)
+                     (call read_fixed_disk_subj_type (ARG1))
+                     (call write_fixed_disk_subj_type (ARG1))
+                     (call fs.devtmpfs.rw_dirs (ARG1)))
+
+              (macro map_chr_files ((type ARG1))
+                     (allow ARG1 stor_file (chr_file (map))))
+
+              (macro read ((type ARG1))
+                     (call read_blk_files (ARG1))
+                     (call read_chr_files (ARG1)))
+
+              (macro read_blk_files ((type ARG1))
+                     (allow ARG1 stor_file read_blk_file_perms)
+                     (call read_fixed_disk_subj_type (ARG1))
+                     (call fs.devtmpfs.search (ARG1)))
+
+              (macro read_chr_files ((type ARG1))
+                     (allow ARG1 stor_file read_chr_file_perms)
+                     (call read_fixed_disk_subj_type (ARG1))
+                     (call fs.devtmpfs.search (ARG1)))
+
+              (macro relabel ((type ARG1))
+                     (call relabel_blk_files (ARG1))
+                     (call relabel_chr_files (ARG1)))
+
+              (macro relabel_blk_files ((type ARG1))
+                     (allow ARG1 stor_file relabel_blk_file_perms)
+                     (call fs.devtmpfs.search (ARG1)))
+
+              (macro relabel_chr_files ((type ARG1))
+                     (allow ARG1 stor_file relabel_chr_file_perms)
+                     (call fs.devtmpfs.search (ARG1)))
+
+              (macro relabelfrom ((type ARG1))
+                     (call relabelfrom_blk_files (ARG1))
+                     (call relabelfrom_chr_files (ARG1)))
+
+              (macro relabelfrom_blk_files ((type ARG1))
+                     (allow ARG1 stor_file relabelfrom_blk_file_perms)
+                     (call fs.devtmpfs.search (ARG1)))
+
+              (macro relabelfrom_chr_files ((type ARG1))
+                     (allow ARG1 stor_file relabelfrom_chr_file_perms)
+                     (call fs.devtmpfs.search (ARG1)))
+
+              (macro relabelto ((type ARG1))
+                     (call relabelto_blk_files (ARG1))
+                     (call relabelto_chr_files (ARG1)))
+
+              (macro relabelto_blk_files ((type ARG1))
+                     (allow ARG1 stor_file relabelto_blk_file_perms)
+                     (call fs.devtmpfs.search (ARG1)))
+
+              (macro relabelto_chr_files ((type ARG1))
+                     (allow ARG1 stor_file relabelto_chr_file_perms)
+                     (call fs.devtmpfs.search (ARG1)))
+
+              (macro rename ((type ARG1))
+                     (call rename_blk_files (ARG1))
+                     (call rename_chr_files (ARG1)))
+
+              (macro rename_blk_files ((type ARG1))
+                     (allow ARG1 stor_file rename_blk_file_perms)
+                     (call fs.devtmpfs.search (ARG1)))
+
+              (macro rename_chr_files ((type ARG1))
+                     (allow ARG1 stor_file rename_chr_file_perms)
+                     (call fs.devtmpfs.search (ARG1)))
+
+              (macro rw ((type ARG1))
+                     (call rw_blk_files (ARG1))
+                     (call rw_chr_files (ARG1)))
+
+              (macro rw_blk_files ((type ARG1))
+                     (allow ARG1 stor_file rw_blk_file_perms)
+                     (call read_fixed_disk_subj_type (ARG1))
+                     (call write_fixed_disk_subj_type (ARG1))
+                     (call fs.devtmpfs.search (ARG1)))
+
+              (macro rw_chr_files ((type ARG1))
+                     (allow ARG1 stor_file rw_chr_file_perms)
+                     (call read_fixed_disk_subj_type (ARG1))
+                     (call write_fixed_disk_subj_type (ARG1))
+                     (call fs.devtmpfs.search (ARG1)))
+
+              (macro setattr ((type ARG1))
+                     (call setattr_blk_files (ARG1))
+                     (call setattr_chr_files (ARG1)))
+
+              (macro setattr_blk_files ((type ARG1))
+                     (allow ARG1 stor (blk_file (setattr)))
+                     (call fs.devtmpfs.search (ARG1)))
+
+              (macro setattr_chr_files ((type ARG1))
+                     (allow ARG1 stor (chr_file (setattr)))
+                     (call fs.devtmpfs.search (ARG1)))
+
+              (macro write ((type ARG1))
+                     (call write_blk_files (ARG1))
+                     (call write_chr_files (ARG1)))
+
+              (macro write_blk_files ((type ARG1))
+                     (allow ARG1 stor_file write_blk_file_perms)
+                     (call write_fixed_disk_subj_type (ARG1))
+                     (call fs.devtmpfs.search (ARG1)))
+
+              (macro write_chr_files ((type ARG1))
+                     (allow ARG1 stor_file write_chr_file_perms)
+                     (call write_fixed_disk_subj_type (ARG1))
+                     (call fs.devtmpfs.search (ARG1)))
+
+              ;;
+              ;; Policy
+              ;;
+
+              (blockinherit stor_file.obj_stub)
+
+              (neverallow
+               not_read_fixed_disk_subj_type_or_unconfined_subj_type_attribute
+               stor_file (blk_file (read)))
+
+              (neverallow
+               not_read_fixed_disk_subj_type_or_unconfined_subj_type_attribute
+               stor_file (chr_file (read)))
+
+              (neverallow
+               not_unconfined_subj_type_or_write_fixed_disk_subj_type_attribute
+               stor_file (blk_file (append write)))
+
+              (neverallow
+               not_unconfined_subj_type_or_write_fixed_disk_subj_type_attribute
+               stor_file (chr_file (append write)))
+
+              (call devtmpfs_obj_type_transition
+                    (unconfined_subj_type_attribute)))
+
+       (block fuse
+
+              ;;
+              ;; Contexts
+              ;;
+
+              (filecon "/dev/fuse" char stor_file_context)
+
+              ;;
+              ;; Policy
+              ;;
+
+              (blockinherit stor_file.obj_template))
+
+       (block removable
+
+              ;;
+              ;; Contexts
+              ;;
+
+              (filecon "/dev/mmcblk.+" block stor_file_context)
+              (filecon "/dev/mspblk.+" block stor_file_context)
+              (filecon "/dev/sr[0-9]+" block stor_file_context)
+
+              ;;
+              ;; Macros
+              ;;
+
+              (macro devtmpfs_obj_type_transition ((type ARG1))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "mmcblk0"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "mmcblk0p1"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "mmcblk0p2"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "mmcblk0p3"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "mmcblk0p4"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "mmcblk0p5"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "mmcblk0p6"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "mmcblk0p7"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "mmcblk0p7"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "mmcblk0p9"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "mspblk0"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "mspblk0p1"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "mspblk0p2"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "mspblk0p3"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "mspblk0p4"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "mspblk0p5"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "mspblk0p6"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "mspblk0p7"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "mspblk0p8"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "mspblk0p9")))
+
+              ;;
+              ;; Policy
+              ;;
+
+              (blockinherit stor_file.obj_template)
+
+              (call devtmpfs_obj_type_transition
+                    (unconfined_subj_type_attribute)))
+
+       (block scsi_generic
+
+              ;;
+              ;; Contexts
+              ;;
+
+              (filecon "/dev/bsg/.+" char stor_file_context)
+              (filecon "/dev/sg[0-9]+" char stor_file_context)
+
+              ;;
+              ;; Macros
+              ;;
+
+              (macro devtmpfs_obj_type_transition ((type ARG1))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file chr_file "0:0:0:0"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file chr_file "1:0:0:0"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file chr_file "2:0:0:0"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file chr_file "3:0:0:0"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file chr_file "4:0:0:0"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file chr_file "5:0:0:0"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file chr_file "6:0:0:0"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file chr_file "7:0:0:0"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file chr_file "8:0:0:0"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file chr_file "9:0:0:0"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file chr_file "sg0"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file chr_file "sg1"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file chr_file "sg2"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file chr_file "sg3"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file chr_file "sg4"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file chr_file "sg5"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file chr_file "sg6"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file chr_file "sg7"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file chr_file "sg8"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file chr_file "sg9"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file chr_file "sg10")))
+
+              (macro create_chr_files ((type ARG1))
+                     (allow ARG1 self (capability (mknod)))
+                     (allow ARG1 stor_file create_chr_file_perms)
+                     (call fs.devtmpfs.rw_dirs (ARG1)))
+
+              (macro delete_chr_files ((type ARG1))
+                     (allow ARG1 stor_file delete_chr_file_perms)
+                     (call fs.devtmpfs.rw_dirs (ARG1)))
+
+              (macro getattr_chr_files ((type ARG1))
+                     (allow ARG1 stor_file (chr_file (getattr)))
+                     (call fs.devtmpfs.search (ARG1)))
+
+              (macro manage_chr_files ((type ARG1))
+                     (allow ARG1 self (capability (mknod)))
+                     (allow ARG1 stor_file manage_chr_file_perms)
+                     (call read_scsi_generic_subj_type (ARG1))
+                     (call write_scsi_generic_subj_type (ARG1))
+                     (call fs.devtmpfs.rw_dirs (ARG1)))
+
+              (macro map_chr_files ((type ARG1))
+                     (allow ARG1 stor_file (chr_file (map))))
+
+              (macro read_chr_files ((type ARG1))
+                     (allow ARG1 stor_file read_chr_file_perms)
+                     (call read_scsi_generic_subj_type (ARG1))
+                     (call fs.devtmpfs.search (ARG1)))
+
+              (macro relabel_chr_files ((type ARG1))
+                     (allow ARG1 stor_file relabel_chr_file_perms)
+                     (call fs.devtmpfs.search (ARG1)))
+
+              (macro relabelfrom_chr_files ((type ARG1))
+                     (allow ARG1 stor_file relabelfrom_chr_file_perms)
+                     (call fs.devtmpfs.search (ARG1)))
+
+              (macro relabelto_chr_files ((type ARG1))
+                     (allow ARG1 stor_file relabelto_chr_file_perms)
+                     (call fs.devtmpfs.search (ARG1)))
+
+              (macro rename_chr_files ((type ARG1))
+                     (allow ARG1 stor_file rename_chr_file_perms)
+                     (call fs.devtmpfs.search (ARG1)))
+
+              (macro rw_chr_files ((type ARG1))
+                     (allow ARG1 stor_file rw_chr_file_perms)
+                     (call read_scsi_generic_subj_type (ARG1))
+                     (call write_scsi_generic_subj_type (ARG1))
+                     (call fs.devtmpfs.search (ARG1)))
+
+              (macro setattr_chr_files ((type ARG1))
+                     (allow ARG1 stor (chr_file (setattr)))
+                     (call fs.devtmpfs.search (ARG1)))
+
+              (macro write_chr_files ((type ARG1))
+                     (allow ARG1 stor_file write_chr_file_perms)
+                     (call write_scsi_generic_subj_type (ARG1))
+                     (call fs.devtmpfs.search (ARG1)))
+
+              ;;
+              ;; Policy
+              ;;
+
+              (blockinherit stor_file.obj_stub)
+
+              (neverallow
+               not_read_scsi_generic_subj_type_or_unconfined_subj_type_attribute
+               stor_file (chr_file (read)))
+
+              (neverallow
+               not_unconfined_subj_type_or_write_scsi_generic_subj_type_attribute
+               stor_file (chr_file (append write)))
+
+              (call devtmpfs_obj_type_transition
+                    (unconfined_subj_type_attribute)))
+
+       (block stor_file
+
+              ;;
+              ;; Macros
+              ;;
+
+              (blockinherit obj_all_macro_template)
+
+              ;;
+              ;; Policy
+              ;;
+
+              (typeattribute obj_type_attribute)
+
+              (allow unconfined_subj_type_attribute obj_type_attribute
+                     blk_file_except_execmod_map_and_mounton)
+              (allow unconfined_subj_type_attribute obj_type_attribute
+                     chr_file_except_execmod_and_mounton)
+
+              (call sys.obj_type (obj_type_attribute))
+
+              (call fs.devtmpfs.associate (obj_type_attribute))
+
+              ;;
+              ;; Templates
+              ;;
+
+              (block obj_all_macro_template
+
+                     ;;
+                     ;; Macros
+                     ;;
+
+                     (macro create ((type ARG1))
+                            (call create_blk_files (ARG1))
+                            (call create_chr_files (ARG1)))
+
+                     (macro create_blk_files ((type ARG1))
+                            (allow ARG1 self (capability (mknod)))
+                            (allow ARG1 obj_type_attribute
+                                   create_blk_file_perms)
+                            (call fs.devtmpfs.add_entries (ARG1)))
+
+                     (macro create_chr_files ((type ARG1))
+                            (allow ARG1 self (capability (mknod)))
+                            (allow ARG1 obj_type_attribute
+                                   create_chr_file_perms)
+                            (call fs.devtmpfs.add_entries (ARG1)))
+
+                     (macro delete ((type ARG1))
+                            (call delete_blk_files (ARG1))
+                            (call delete_chr_files (ARG1)))
+
+                     (macro delete_blk_files ((type ARG1))
+                            (allow ARG1 obj_type_attribute
+                                   delete_blk_file_perms)
+                            (call fs.devtmpfs.del_entries (ARG1)))
+
+                     (macro delete_chr_files ((type ARG1))
+                            (allow ARG1 obj_type_attribute
+                                   delete_chr_file_perms)
+                            (call fs.devtmpfs.del_entries (ARG1)))
+
+                     (macro getattr ((type ARG1))
+                            (call getattr_blk_files (ARG1))
+                            (call getattr_chr_files (ARG1)))
+
+                     (macro getattr_blk_files ((type ARG1))
+                            (allow ARG1 obj_type_attribute (blk_file
+                                                            (getattr)))
+                            (call fs.devtmpfs.search (ARG1)))
+
+                     (macro getattr_chr_files ((type ARG1))
+                            (allow ARG1 obj_type_attribute (chr_file
+                                                            (getattr)))
+                            (call fs.devtmpfs.search (ARG1)))
+
+                     (macro manage ((type ARG1))
+                            (call manage_blk_files (ARG1))
+                            (call manage_chr_files (ARG1)))
+
+                     (macro manage_blk_files ((type ARG1))
+                            (allow ARG1 self (capability (mknod)))
+                            (allow ARG1 obj_type_attribute
+                                   manage_blk_file_perms)
+                            (call stor.read_fixed_disk_subj_type (ARG1))
+                            (call stor.write_fixed_disk_subj_type (ARG1))
+                            (call fs.devtmpfs.rw_dirs (ARG1)))
+
+                     (macro manage_chr_files ((type ARG1))
+                            (allow ARG1 self (capability (mknod)))
+                            (allow ARG1 obj_type_attribute
+                                   manage_chr_file_perms)
+                            (call stor.read_fixed_disk_subj_type (ARG1))
+                            (call stor.read_scsi_generic_subj_type (ARG1))
+                            (call stor.write_fixed_disk_subj_type (ARG1))
+                            (call stor.write_scsi_generic_subj_type (ARG1))
+                            (call fs.devtmpfs.rw_dirs (ARG1)))
+
+                     (macro map_chr_files ((type ARG1))
+                            (allow ARG1 obj_type_attribute (chr_file (map))))
+
+                     (macro obj_type ((type ARG1))
+                            (typeattributeset obj_type_attribute ARG1))
+
+                     (macro read ((type ARG1))
+                            (call read_blk_files (ARG1))
+                            (call read_chr_files (ARG1)))
+
+                     (macro read_blk_files ((type ARG1))
+                            (allow ARG1 obj_type_attribute read_blk_file_perms)
+                            (call stor.read_fixed_disk_subj_type (ARG1))
+                            (call fs.devtmpfs.search (ARG1)))
+
+                     (macro read_chr_files ((type ARG1))
+                            (allow ARG1 obj_type_attribute read_chr_file_perms)
+                            (call stor.read_fixed_disk_subj_type (ARG1))
+                            (call stor.read_scsi_generic_subj_type (ARG1))
+                            (call fs.devtmpfs.search (ARG1)))
+
+                     (macro relabel ((type ARG1))
+                            (call relabel_blk_files (ARG1))
+                            (call relabel_chr_files (ARG1)))
+
+                     (macro relabel_blk_files ((type ARG1))
+                            (allow ARG1 obj_type_attribute
+                                   relabel_blk_file_perms)
+                            (call fs.devtmpfs.search (ARG1)))
+
+                     (macro relabel_chr_files ((type ARG1))
+                            (allow ARG1 obj_type_attribute
+                                   relabel_chr_file_perms)
+                            (call fs.devtmpfs.search (ARG1)))
+
+                     (macro relabelfrom ((type ARG1))
+                            (call relabelfrom_blk_files (ARG1))
+                            (call relabelfrom_chr_files (ARG1)))
+
+                     (macro relabelfrom_blk_files ((type ARG1))
+                            (allow ARG1 obj_type_attribute
+                                   relabelfrom_blk_file_perms)
+                            (call fs.devtmpfs.search (ARG1)))
+
+                     (macro relabelfrom_chr_files ((type ARG1))
+                            (allow ARG1 obj_type_attribute
+                                   relabelfrom_chr_file_perms)
+                            (call fs.devtmpfs.search (ARG1)))
+
+                     (macro relabelto ((type ARG1))
+                            (call relabelto_blk_files (ARG1))
+                            (call relabelto_chr_files (ARG1)))
+
+                     (macro relabelto_blk_files ((type ARG1))
+                            (allow ARG1 obj_type_attribute
+                                   relabelto_blk_file_perms)
+                            (call fs.devtmpfs.search (ARG1)))
+
+                     (macro relabelto_chr_files ((type ARG1))
+                            (allow ARG1 obj_type_attribute
+                                   relabelto_chr_file_perms)
+                            (call fs.devtmpfs.search (ARG1)))
+
+                     (macro rename ((type ARG1))
+                            (call rename_blk_files (ARG1))
+                            (call rename_chr_files (ARG1)))
+
+                     (macro rename_blk_files ((type ARG1))
+                            (allow ARG1 obj_type_attribute
+                                   rename_blk_file_perms)
+                            (call fs.devtmpfs.search (ARG1)))
+
+                     (macro rename_chr_files ((type ARG1))
+                            (allow ARG1 obj_type_attribute
+                                   rename_chr_file_perms)
+                            (call fs.devtmpfs.search (ARG1)))
+
+                     (macro rw ((type ARG1))
+                            (call rw_blk_files (ARG1))
+                            (call rw_chr_files (ARG1)))
+
+                     (macro rw_blk_files ((type ARG1))
+                            (allow ARG1 obj_type_attribute rw_blk_file_perms)
+                            (call stor.read_fixed_disk_subj_type (ARG1))
+                            (call stor.write_fixed_disk_subj_type (ARG1))
+                            (call fs.devtmpfs.search (ARG1)))
+
+                     (macro rw_chr_files ((type ARG1))
+                            (allow ARG1 obj_type_attribute rw_chr_file_perms)
+                            (call stor.read_fixed_disk_subj_type (ARG1))
+                            (call stor.read_scsi_generic_subj_type (ARG1))
+                            (call stor.write_fixed_disk_subj_type (ARG1))
+                            (call stor.write_scsi_generic_subj_type (ARG1))
+                            (call fs.devtmpfs.search (ARG1)))
+
+                     (macro setattr ((type ARG1))
+                            (call setattr_blk_files (ARG1))
+                            (call setattr_chr_files (ARG1)))
+
+                     (macro setattr_blk_files ((type ARG1))
+                            (allow ARG1 obj_type_attribute (blk_file
+                                                            (setattr)))
+                            (call fs.devtmpfs.search (ARG1)))
+
+                     (macro setattr_chr_files ((type ARG1))
+                            (allow ARG1 obj_type_attribute (chr_file
+                                                            (setattr)))
+                            (call fs.devtmpfs.search (ARG1)))
+
+                     (macro write ((type ARG1))
+                            (call write_blk_files (ARG1))
+                            (call write_chr_files (ARG1)))
+
+                     (macro write_blk_files ((type ARG1))
+                            (allow ARG1 obj_type_attribute
+                                   write_blk_file_perms)
+                            (call stor.write_fixed_disk_subj_type (ARG1))
+                            (call fs.devtmpfs.search (ARG1)))
+
+                     (macro write_chr_files ((type ARG1))
+                            (allow ARG1 obj_type_attribute
+                                   write_chr_file_perms)
+                            (call stor.write_fixed_disk_subj_type (ARG1))
+                            (call stor.write_scsi_generic_subj_type (ARG1))
+                            (call fs.devtmpfs.search (ARG1)))
+
+                     ;;
+                     ;; Policy
+                     ;;
+
+                     (blockabstract obj_all_macro_template))
+
+              (block obj_stub
+
+                     ;;
+                     ;; Contexts
+                     ;;
+
+                     (context stor_file_context (sys.id sys.role stor_file
+                                                        (systemlow systemlow)))
+
+                     ;;
+                     ;; Policy
+                     ;;
+
+                     (blockabstract obj_stub)
+
+                     (type stor_file)
+                     (call stor.stor_file.obj_type (stor_file)))
+
+              (block obj_template
+
+                     ;;
+                     ;; Macros
+                     ;;
+
+                     (macro create ((type ARG1))
+                            (call create_blk_files (ARG1))
+                            (call create_chr_files (ARG1)))
+
+                     (macro create_blk_files ((type ARG1))
+                            (allow ARG1 self (capability (mknod)))
+                            (allow ARG1 stor_file (blk_file (create)))
+                            (call fs.devtmpfs.add_entries (ARG1)))
+
+                     (macro create_chr_files ((type ARG1))
+                            (allow ARG1 self (capability (mknod)))
+                            (allow ARG1 stor_file (chr_file (create)))
+                            (call fs.devtmpfs.add_entries (ARG1)))
+
+                     (macro delete ((type ARG1))
+                            (call delete_blk_files (ARG1))
+                            (call delete_chr_files (ARG1)))
+
+                     (macro delete_blk_files ((type ARG1))
+                            (allow ARG1 stor_file (blk_file (delete)))
+                            (call fs.devtmpfs.del_entries (ARG1)))
+
+                     (macro delete_chr_files ((type ARG1))
+                            (allow ARG1 stor_file (chr_file (delete)))
+                            (call fs.devtmpfs.del_entries (ARG1)))
+
+                     (macro getattr ((type ARG1))
+                            (call getattr_blk_files (ARG1))
+                            (call getattr_chr_files (ARG1)))
+
+                     (macro getattr_blk_files ((type ARG1))
+                            (allow ARG1 stor_file (blk_file (getattr)))
+                            (call fs.devtmpfs.search (ARG1)))
+
+                     (macro getattr_chr_files ((type ARG1))
+                            (allow ARG1 stor_file (chr_file (getattr)))
+                            (call fs.devtmpfs.search (ARG1)))
+
+                     (macro manage ((type ARG1))
+                            (call manage_blk_files (ARG1))
+                            (call manage_chr_files (ARG1)))
+
+                     (macro manage_blk_files ((type ARG1))
+                            (allow ARG1 self (capability (mknod)))
+                            (allow ARG1 stor_file manage_blk_file_perms)
+                            (call fs.devtmpfs.rw_dirs (ARG1)))
+
+                     (macro manage_chr_files ((type ARG1))
+                            (allow ARG1 self (capability (mknod)))
+                            (allow ARG1 stor_file manage_chr_file_perms)
+                            (call fs.devtmpfs.rw_dirs (ARG1)))
+
+                     (macro map_chr_files ((type ARG1))
+                            (allow ARG1 stor_file (chr_file (map))))
+
+                     (macro read ((type ARG1))
+                            (call manage_blk_files (ARG1))
+                            (call manage_chr_files (ARG1)))
+
+                     (macro read_blk_files ((type ARG1))
+                            (allow ARG1 stor_file read_blk_file_perms)
+                            (call fs.devtmpfs.search (ARG1)))
+
+                     (macro read_chr_files ((type ARG1))
+                            (allow ARG1 stor_file read_chr_file_perms)
+                            (call fs.devtmpfs.search (ARG1)))
+
+                     (macro relabel ((type ARG1))
+                            (call relabel_blk_files (ARG1))
+                            (call relabel_chr_files (ARG1)))
+
+                     (macro relabel_blk_files ((type ARG1))
+                            (allow ARG1 stor_file relabel_blk_file_perms)
+                            (call fs.devtmpfs.search (ARG1)))
+
+                     (macro relabel_chr_files ((type ARG1))
+                            (allow ARG1 stor_file relabel_chr_file_perms)
+                            (call fs.devtmpfs.search (ARG1)))
+
+                     (macro relabelfrom ((type ARG1))
+                            (call relabelfrom_blk_files (ARG1))
+                            (call relabelfrom_chr_files (ARG1)))
+
+                     (macro relabelfrom_blk_files ((type ARG1))
+                            (allow ARG1 stor_file relabelfrom_blk_file_perms)
+                            (call fs.devtmpfs.search (ARG1)))
+
+                     (macro relabelfrom_chr_files ((type ARG1))
+                            (allow ARG1 stor_file relabelfrom_chr_file_perms)
+                            (call fs.devtmpfs.search (ARG1)))
+
+                     (macro relabelto ((type ARG1))
+                            (call relabelto_blk_files (ARG1))
+                            (call relabelto_chr_files (ARG1)))
+
+                     (macro relabelto_blk_files ((type ARG1))
+                            (allow ARG1 stor_file relabelto_blk_file_perms)
+                            (call fs.devtmpfs.search (ARG1)))
+
+                     (macro relabelto_chr_files ((type ARG1))
+                            (allow ARG1 stor_file relabelto_chr_file_perms)
+                            (call fs.devtmpfs.search (ARG1)))
+
+                     (macro rw ((type ARG1))
+                            (call rw_blk_files (ARG1))
+                            (call rw_chr_files (ARG1)))
+
+                     (macro rw_blk_files ((type ARG1))
+                            (allow ARG1 stor_file rw_blk_file_perms)
+                            (call fs.devtmpfs.search (ARG1)))
+
+                     (macro rw_chr_files ((type ARG1))
+                            (allow ARG1 stor_file rw_chr_file_perms)
+                            (call fs.devtmpfs.search (ARG1)))
+
+                     (macro setattr ((type ARG1))
+                            (call setattr_blk_files (ARG1))
+                            (call setattr_chr_files (ARG1)))
+
+                     (macro setattr_blk_files ((type ARG1))
+                            (allow ARG1 stor_file (blk_file (setattr)))
+                            (call fs.devtmpfs.search (ARG1)))
+
+                     (macro setattr_chr_files ((type ARG1))
+                            (allow ARG1 stor_file (chr_file (setattr)))
+                            (call fs.devtmpfs.search (ARG1)))
+
+                     (macro write ((type ARG1))
+                            (call write_blk_files (ARG1))
+                            (call write_chr_files (ARG1)))
+
+                     (macro write_blk_files ((type ARG1))
+                            (allow ARG1 stor_file write_blk_file_perms)
+                            (call fs.devtmpfs.search (ARG1)))
+
+                     (macro write_chr_files ((type ARG1))
+                            (allow ARG1 stor_file write_chr_file_perms)
+                            (call fs.devtmpfs.search (ARG1)))
+
+                     ;;
+                     ;; Policy
+                     ;;
+
+                     (blockabstract obj_template)
+
+                     (blockinherit stor.stor_file.obj_stub))))

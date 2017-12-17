@@ -1,66 +1,66 @@
-; -*- mode: CIL; fill-column: 75; indent-tabs-mode: nil; tab-width: 4 -*-
-; SPDX-License-Identifier: Unlicense
+;; -*- mode: CIL; fill-column: 79; indent-tabs-mode: nil; -*-
+;; SPDX-License-Identifier: Unlicense
 
-; sys
-;     abi_sysctl
-;     cpu_sysfs
-;     cpu_online_sysfs
-;     cpuinfo_proc
-;     crypto_sysctl
-;     debug_sysctl
-;     dev_sysctl
-;     fs_sysctl
-;     generic_sysctl
-;     invalid
-;         obj_all_macro_template
-;     iomem_proc
-;     irq_sysctl
-;     isid
-;         stub
-;     kallsyms_proc
-;     kcore_proc
-;     kernel_sysctl
-;     kmsg_proc
-;     latency_stats_proc
-;     load_kernel_init_module
-;     load_kernel_module
-;     manage_files_except
-;     mdstat_proc
-;     meminfo_proc
-;     memory_sysfs
-;     mountpoint
-;         obj_all_macro_template
-;     mtrr_proc
-;     net_proc
-;     net_sysctl
-;     net_unix_sysctl
-;     node_sysfs
-;     node_online_sysfs
-;     proc_file
-;         obj_all_macro_template
-;         obj_stub
-;         obj_template
-;     security_sysctl
-;     sysctl_file
-;         obj_all_macro_template
-;         obj_stub
-;         obj_template
-;     sysfs_file
-;         obj_all_macro_template
-;         obj_stub
-;         obj_template
-;     sysrq_proc
-;     timer_proc
-;     unlabeled
-;     user_sysctl
-;     usermodehelper_sysctl
-;     var_log
-;     vm_sysctl
-;     vm_overcommit_sysctl
+;; sys
+;;     abi_sysctl
+;;     cpu_sysfs
+;;     cpu_online_sysfs
+;;     cpuinfo_proc
+;;     crypto_sysctl
+;;     debug_sysctl
+;;     dev_sysctl
+;;     fs_sysctl
+;;     generic_sysctl
+;;     invalid
+;;         obj_all_macro_template
+;;     iomem_proc
+;;     irq_sysctl
+;;     isid
+;;         stub
+;;     kallsyms_proc
+;;     kcore_proc
+;;     kernel_sysctl
+;;     kmsg_proc
+;;     latency_stats_proc
+;;     load_kernel_init_module
+;;     load_kernel_module
+;;     manage_files_except
+;;     mdstat_proc
+;;     meminfo_proc
+;;     memory_sysfs
+;;     mountpoint
+;;         obj_all_macro_template
+;;     mtrr_proc
+;;     net_proc
+;;     net_sysctl
+;;     net_unix_sysctl
+;;     node_sysfs
+;;     node_online_sysfs
+;;     proc_file
+;;         obj_all_macro_template
+;;         obj_stub
+;;         obj_template
+;;     security_sysctl
+;;     sysctl_file
+;;         obj_all_macro_template
+;;         obj_stub
+;;         obj_template
+;;     sysfs_file
+;;         obj_all_macro_template
+;;         obj_stub
+;;         obj_template
+;;     sysrq_proc
+;;     timer_proc
+;;     unlabeled
+;;     user_sysctl
+;;     usermodehelper_sysctl
+;;     var_log
+;;     vm_sysctl
+;;     vm_overcommit_sysctl
 
-;
-; Policy
-;
+;;
+;; Policy
+;;
 
 (sid file)
 (sid kernel)
@@ -69,909 +69,344 @@
 
 (block sys
 
-    ;
-    ; Contexts
-    ;
+       ;;
+       ;; Contexts
+       ;;
 
-    (sidcontext kernel
-        (
-            sys.id
-            sys.role
-            isid
-                (
-                    systemlow
-                    systemlow
-                )
-        )
-    )
+       (sidcontext kernel (sys.id sys.role isid (systemlow systemlow)))
 
-    ;
-    ; Macros
-    ;
+       ;;
+       ;; Macros
+       ;;
 
-    (macro dontaudit_link_keyring ((type ARG1))
-        (dontaudit ARG1 isid link_key_perms)
-    )
+       (macro dontaudit_link_keyring ((type ARG1))
+              (dontaudit ARG1 isid link_key_perms))
 
-    (macro audit_client ((type ARG1))
-        (allow ARG1 self
-            (capability
-                (
-                    audit_write
-                )
-            )
-        )
-        (allow ARG1 self r_netlink_audit_socket_perms)
-        (allow ARG1 self
-            (netlink_audit_socket
-                (
-                    nlmsg_relay
-                )
-            )
-        )
-    )
+       (macro audit_client ((type ARG1))
+              (allow ARG1 self (capability (audit_write)))
+              (allow ARG1 self r_netlink_audit_socket_perms)
+              (allow ARG1 self (netlink_audit_socket (nlmsg_relay))))
 
-    (macro audit_set_loginuid ((type ARG1))
-        (allow ARG1 self
-            (capability
-                (
-                    audit_control
-                )
-            )
-        )
-        (allow ARG1 self r_netlink_audit_socket_perms)
-        (allow ARG1 self
-            (netlink_audit_socket
-                (
-                    nlmsg_relay
-                )
-            )
-        )
-    )
+       (macro audit_set_loginuid ((type ARG1))
+              (allow ARG1 self (capability (audit_control)))
+              (allow ARG1 self r_netlink_audit_socket_perms)
+              (allow ARG1 self (netlink_audit_socket (nlmsg_relay))))
 
-    (macro audit_set_params ((type ARG1))
-        (allow ARG1 self
-            (capability
-                (
-                    audit_control
-                    audit_write
-                )
-            )
-        )
-        (allow ARG1 self create_netlink_audit_socket_perms)
-        (allow ARG1 self
-            (netlink_audit_socket
-                (
-                    nlmsg_relay
-                )
-            )
-        )
-    )
+       (macro audit_set_params ((type ARG1))
+              (allow ARG1 self (capability (audit_control audit_write)))
+              (allow ARG1 self create_netlink_audit_socket_perms)
+              (allow ARG1 self (netlink_audit_socket (nlmsg_relay))))
 
-    (macro audit_set_tty_audit ((type ARG1))
-        (allow ARG1 self r_netlink_audit_socket_perms)
-        (allow ARG1 self
-            (netlink_audit_socket
-                (
-                    nlmsg_tty_audit
-                )
-            )
-        )
-    )
+       (macro audit_set_tty_audit ((type ARG1))
+              (allow ARG1 self r_netlink_audit_socket_perms)
+              (allow ARG1 self (netlink_audit_socket (nlmsg_tty_audit))))
 
-    (macro change_ring_buffer_level ((type ARG1))
-        (allow ARG1 self
-            (capability2
-                (
-                    syslog
-                )
-            )
-        )
-        (allow ARG1 isid
-            (system
-                (
-                    syslog_console
-                )
-            )
-        )
-    )
+       (macro change_ring_buffer_level ((type ARG1))
+              (allow ARG1 self (capability2 (syslog)))
+              (allow ARG1 isid (system (syslog_console))))
 
-    (macro dump_kernel_subj_type ((type ARG1))
-        (typeattributeset dump_kernel_subj_type_attribute ARG1)
-    )
+       (macro dump_kernel_subj_type ((type ARG1))
+              (typeattributeset dump_kernel_subj_type_attribute ARG1))
 
-    (macro get_sysvipc_info ((type ARG1))
-        (allow ARG1 isid
-            (system
-                (
-                    ipc_info
-                )
-            )
-        )
-    )
+       (macro get_sysvipc_info ((type ARG1))
+              (allow ARG1 isid (system (ipc_info))))
 
-    (macro link_keyring ((type ARG1))
-        (allow ARG1 isid link_key_perms)
-    )
+       (macro link_keyring ((type ARG1))
+              (allow ARG1 isid link_key_perms))
 
-    (macro load_kernel_module_subj_type ((type ARG1))
-        (typeattributeset load_kernel_module_subj_type_attribute ARG1)
-    )
+       (macro load_kernel_module_subj_type ((type ARG1))
+              (typeattributeset load_kernel_module_subj_type_attribute ARG1))
 
-    (macro obj_type ((type ARG1))
-        (typeattributeset obj_type_attribute ARG1)
-    )
+       (macro obj_type ((type ARG1))
+              (typeattributeset obj_type_attribute ARG1))
 
-    (macro read_kernel_msg_subj_type ((type ARG1))
-        (typeattributeset read_kernel_msg_subj_type_attribute ARG1)
-    )
+       (macro read_kernel_msg_subj_type ((type ARG1))
+              (typeattributeset read_kernel_msg_subj_type_attribute ARG1))
 
-    (macro read_keyring ((type ARG1))
-        (allow ARG1 isid read_key_perms)
-    )
+       (macro read_keyring ((type ARG1))
+              (allow ARG1 isid read_key_perms))
 
-    (macro read_ring_buffer ((type ARG1))
-        (allow ARG1 self
-            (capability2
-                (
-                    syslog
-                )
-            )
-        )
-        (allow ARG1 isid
-            (system
-                (
-                    syslog_read
-                )
-            )
-        )
-    )
+       (macro read_ring_buffer ((type ARG1))
+              (allow ARG1 self (capability2 (syslog)))
+              (allow ARG1 isid (system (syslog_read))))
 
-    (macro read_state ((type ARG1))
-        (allow ARG1 isid
-            (process_state
-                (
-                    read
-                )
-            )
-        )
-    )
+       (macro read_state ((type ARG1))
+              (allow ARG1 isid (process_state (read))))
 
-    (macro request_load_kernel_module ((type ARG1))
-        (allow ARG1 isid
-            (system
-                (
-                    module_request
-                )
-            )
-        )
-    )
+       (macro request_load_kernel_module ((type ARG1))
+              (allow ARG1 isid (system (module_request))))
 
-    (macro role ((role ARG1))
-        (roleattributeset role_attribute ARG1)
-    )
+       (macro role ((role ARG1))
+              (roleattributeset role_attribute ARG1))
 
-    (macro roleallow_role ((role ARG1))
-        (roleattributeset roleallow_role_attribute ARG1)
-    )
+       (macro roleallow_role ((role ARG1))
+              (roleattributeset roleallow_role_attribute ARG1))
 
-    (macro read_netlink_audit_sockets ((type ARG1))
-        (allow ARG1 isid r_netlink_audit_socket_perms)
-    )
+       (macro read_netlink_audit_sockets ((type ARG1))
+              (allow ARG1 isid r_netlink_audit_socket_perms))
 
-    (macro read_inherited_netlink_audit_sockets ((type ARG1))
-        (allow ARG1 isid
-            (netlink_audit_socket
-                (
-                    read
-                )
-            )
-        )
-    )
+       (macro read_inherited_netlink_audit_sockets ((type ARG1))
+              (allow ARG1 isid (netlink_audit_socket (read))))
 
-    (macro rw_unix_dgram_sockets ((type ARG1))
-        (allow ARG1 isid rw_unix_dgram_socket_perms)
-    )
+       (macro rw_unix_dgram_sockets ((type ARG1))
+              (allow ARG1 isid rw_unix_dgram_socket_perms))
 
-    (macro rw_unix_stream_sockets ((type ARG1))
-        (allow ARG1 isid rw_unix_stream_socket_perms)
-    )
+       (macro rw_unix_stream_sockets ((type ARG1))
+              (allow ARG1 isid rw_unix_stream_socket_perms))
 
-    (macro setkeycreate ((type ARG1))
-        (allow ARG1 isid
-            (process
-                (
-                    setkeycreate
-                )
-            )
-        )
-    )
+       (macro setkeycreate ((type ARG1))
+              (allow ARG1 isid (process (setkeycreate))))
 
-    (macro setpgid ((type ARG1))
-        (allow ARG1 isid
-            (process
-                (
-                    setpgid
-                )
-            )
-        )
-    )
+       (macro setpgid ((type ARG1))
+              (allow ARG1 isid (process (setpgid))))
 
-    (macro setsched ((type ARG1))
-        (allow ARG1 isid
-            (process
-                (
-                    setsched
-                )
-            )
-        )
-    )
+       (macro setsched ((type ARG1))
+              (allow ARG1 isid (process (setsched))))
 
-    (macro share ((type ARG1))
-        (allow ARG1 isid
-            (process
-                (
-                    share
-                )
-            )
-        )
-    )
+       (macro share ((type ARG1))
+              (allow ARG1 isid (process (share))))
 
-    (macro sigchld ((type ARG1))
-        (allow ARG1 isid
-            (process
-                (
-                    sigchld
-                )
-            )
-        )
-    )
+       (macro sigchld ((type ARG1))
+              (allow ARG1 isid (process (sigchld))))
 
-    (macro transition ((type ARG1))
-        (allow ARG1 isid
-            (process
-                (
-                    transition
-                )
-            )
-        )
-    )
+       (macro transition ((type ARG1))
+              (allow ARG1 isid (process (transition))))
 
-    (macro unconfined_subj_type ((type ARG1))
-        (typeattributeset unconfined_subj_type_attribute ARG1)
-    )
+       (macro unconfined_subj_type ((type ARG1))
+              (typeattributeset unconfined_subj_type_attribute ARG1))
 
-    (macro unix_dgram_socket_sendto ((type ARG1))
-        (allow ARG1 self create_unix_dgram_socket_perms)
-        (allow ARG1 isid
-            (unix_dgram_socket
-                (
-                    sendto
-                )
-            )
-        )
-    )
+       (macro unix_dgram_socket_sendto ((type ARG1))
+              (allow ARG1 self create_unix_dgram_socket_perms)
+              (allow ARG1 isid (unix_dgram_socket (sendto))))
 
-    (macro unix_stream_socket_connectto ((type ARG1))
-        (allow ARG1 self create_unix_stream_socket_perms)
-        (allow ARG1 isid
-            (unix_stream_socket
-                (
-                    connectto
-                )
-            )
-        )
-    )
+       (macro unix_stream_socket_connectto ((type ARG1))
+              (allow ARG1 self create_unix_stream_socket_perms)
+              (allow ARG1 isid (unix_stream_socket (connectto))))
 
-    (macro use_fd ((type ARG1))
-        (allow ARG1 isid
-            (fd
-                (
-                    use
-                )
-            )
-        )
-    )
+       (macro use_fd ((type ARG1))
+              (allow ARG1 isid (fd (use))))
 
-    (macro write_security_subj_type ((type ARG1))
-        (typeattributeset write_security_subj_type_attribute ARG1)
-    )
+       (macro write_security_subj_type ((type ARG1))
+              (typeattributeset write_security_subj_type_attribute ARG1))
 
-    (macro write_usermodehelper_subj_type ((type ARG1))
-        (typeattributeset write_usermodehelper_subj_type_attribute ARG1)
-    )
+       (macro write_usermodehelper_subj_type ((type ARG1))
+              (typeattributeset write_usermodehelper_subj_type_attribute ARG1))
 
-    ;
-    ; Policy
-    ;
+       ;;
+       ;; Policy
+       ;;
 
-    (boolean load_kernel_init_module true)
-    (boolean load_kernel_module true)
-    (boolean manage_files_except true)
+       (boolean load_kernel_init_module true)
+       (boolean load_kernel_module true)
+       (boolean manage_files_except true)
 
-    (roleattribute role_attribute)
-    (roleattribute roleallow_role_attribute)
+       (roleattribute role_attribute)
+       (roleattribute roleallow_role_attribute)
 
-    (typeattribute dump_kernel_subj_type_attribute)
-    (typeattribute
+       (typeattribute dump_kernel_subj_type_attribute)
+       (typeattribute
         not_dump_kernel_subj_type_or_unconfined_subj_type_attribute)
 
-    (typeattribute load_kernel_module_subj_type_attribute)
-    (typeattribute not_load_kernel_module_subj_type_attribute)
+       (typeattribute load_kernel_module_subj_type_attribute)
+       (typeattribute not_load_kernel_module_subj_type_attribute)
 
-    (typeattribute obj_type_attribute)
+       (typeattribute obj_type_attribute)
 
-    (typeattribute
+       (typeattribute
         not_read_kernel_msg_subj_type_or_unconfined_subj_type_attribute)
-    (typeattribute read_kernel_msg_subj_type_attribute)
+       (typeattribute read_kernel_msg_subj_type_attribute)
 
-    (typeattribute unconfined_subj_type_attribute)
+       (typeattribute unconfined_subj_type_attribute)
 
-    (typeattribute
+       (typeattribute
         not_unconfined_subj_type_or_write_security_subj_type_attribute)
-    (typeattribute write_security_subj_type_attribute)
+       (typeattribute write_security_subj_type_attribute)
 
-    (typeattribute
+       (typeattribute
         not_unconfined_subj_type_or_write_usermodehelper_subj_type_attribute)
-    (typeattribute write_usermodehelper_subj_type_attribute)
+       (typeattribute write_usermodehelper_subj_type_attribute)
 
-    (user id)
-    (role role)
+       (user id)
+       (role role)
 
-    (userlevel id systemlow)
+       (userlevel id systemlow)
 
-    (userrange id
-        (
-            systemlow
-            systemhigh
-        )
-    )
+       (userrange id (systemlow systemhigh))
 
-    (userrole id role)
+       (userrole id role)
 
-    (blockinherit isid.stub)
+       (blockinherit isid.stub)
 
-    (roletype role isid)
+       (roletype role isid)
 
-    (call subj.common_subj.subj_type
-        (
-            isid
-        )
-    )
+       (call subj.common_subj.subj_type (isid))
 
-    (roleallow role roleallow_role_attribute)
+       (roleallow role roleallow_role_attribute)
 
-    (roletype role_attribute obj_type_attribute)
+       (roletype role_attribute obj_type_attribute)
 
-    (call role
-        (
-            role
-        )
-    )
+       (call role (role))
 
-    (call ibac_sys_id
-        (
-            id
-        )
-    )
+       (call ibac_sys_id (id))
 
-    (call rbacsep_exemption_role
-        (
-            role
-        )
-    )
-    (call rbac_sys_role
-        (
-            role
-        )
-    )
+       (call rbacsep_exemption_role (role))
+       (call rbac_sys_role (role))
 
-    (dontaudit isid self
-        (capability
-            (
-                dac_override
-            )
-        )
-    )
-    (allow isid self
-        (capability
-            (
-                sys_tty_config
-                sys_admin
-                sys_nice
-                net_admin
-                net_bind_service
-                dac_read_search
-            )
-        )
-    )
-    (allow isid self
-        (capability2
-            (
-                block_suspend
-            )
-        )
-    )
-    (allow isid self
-        (process
-            (
-                setsched
-            )
-        )
-    )
-    (allow isid self
-        (unix_dgram_socket
-            (
-                sendto
-            )
-        )
-    )
-    (allow isid self create_unix_stream_socket_perms)
+       (dontaudit isid self (capability (dac_override)))
+       (allow isid self (capability
+                         (sys_tty_config sys_admin sys_nice net_admin
+                                         net_bind_service dac_read_search)))
+       (allow isid self (capability2 (block_suspend)))
+       (allow isid self (process (setsched)))
+       (allow isid self (unix_dgram_socket (sendto)))
+       (allow isid self create_unix_stream_socket_perms)
 
-    (call change_ring_buffer_level
-        (
-            isid
-        )
-    )
-    (call request_load_kernel_module
-        (
-            isid
-        )
-    )
+       (call change_ring_buffer_level (isid))
+       (call request_load_kernel_module (isid))
 
-    (call dev.clock.devtmpfs_obj_type_transition
-        (
-            isid
-        )
-    )
-    (call dev.cuse.devtmpfs_obj_type_transition
-        (
-            isid
-        )
-    )
-    (call dev.devtty.tmpfs_obj_type_transition
-        (
-            isid
-        )
-    )
-    (call dev.event.devtmpfs_obj_type_transition
-        (
-            isid
-        )
-    )
-    (call dev.kvm.devtmpfs_obj_type_transition
-        (
-            isid
-        )
-    )
-    (call dev.dev_file.manage_chr_files
-        (
-            isid
-        )
-    )
-    (call dev.mei_misc.devtmpfs_obj_type_transition
-        (
-            isid
-        )
-    )
-    (call dev.modem.devtmpfs_obj_type_transition
-        (
-            isid
-        )
-    )
-    (call dev.mouse.devtmpfs_obj_type_transition
-        (
-            isid
-        )
-    )
-    (call dev.null.tmpfs_obj_type_transition
-        (
-            isid
-        )
-    )
-    (call dev.random.tmpfs_obj_type_transition
-        (
-            isid
-        )
-    )
-    (call dev.sound.devtmpfs_obj_type_transition
-        (
-            isid
-        )
-    )
-    (call dev.tpm.devtmpfs_obj_type_transition
-        (
-            isid
-        )
-    )
-    (call dev.urandom.tmpfs_obj_type_transition
-        (
-            isid
-        )
-    )
-    (call dev.usb.devtmpfs_obj_type_transition
-        (
-            isid
-        )
-    )
-    (call dev.v4l.devtmpfs_obj_type_transition
-        (
-            isid
-        )
-    )
-    (call dev.watchdog.devtmpfs_obj_type_transition
-        (
-            isid
-        )
-    )
-    (call dev.wireless.devtmpfs_obj_type_transition
-        (
-            isid
-        )
-    )
-    (call dev.zero.tmpfs_obj_type_transition
-        (
-            isid
-        )
-    )
+       (call dev.clock.devtmpfs_obj_type_transition (isid))
+       (call dev.cuse.devtmpfs_obj_type_transition (isid))
+       (call dev.devtty.tmpfs_obj_type_transition (isid))
+       (call dev.event.devtmpfs_obj_type_transition (isid))
+       (call dev.kvm.devtmpfs_obj_type_transition (isid))
+       (call dev.dev_file.manage_chr_files (isid))
+       (call dev.mei_misc.devtmpfs_obj_type_transition (isid))
+       (call dev.modem.devtmpfs_obj_type_transition (isid))
+       (call dev.mouse.devtmpfs_obj_type_transition (isid))
+       (call dev.null.tmpfs_obj_type_transition (isid))
+       (call dev.random.tmpfs_obj_type_transition (isid))
+       (call dev.sound.devtmpfs_obj_type_transition (isid))
+       (call dev.tpm.devtmpfs_obj_type_transition (isid))
+       (call dev.urandom.tmpfs_obj_type_transition (isid))
+       (call dev.usb.devtmpfs_obj_type_transition (isid))
+       (call dev.v4l.devtmpfs_obj_type_transition (isid))
+       (call dev.watchdog.devtmpfs_obj_type_transition (isid))
+       (call dev.wireless.devtmpfs_obj_type_transition (isid))
+       (call dev.zero.tmpfs_obj_type_transition (isid))
 
-    (call files.generic_data.read
-        (
-            isid
-        )
-    )
+       (call files.generic_data.read (isid))
 
-    (call fs.tracefs.search
-        (
-            isid
-        )
-    )
-    (call fs.devtmpfs.manage_blk_files
-        (
-            isid
-        )
-    )
-    (call fs.devtmpfs.manage_chr_files
-        (
-            isid
-        )
-    )
-    (call fs.devtmpfs.manage_dirs
-        (
-            isid
-        )
-    )
-    (call fs.devtmpfs.manage_lnk_files
-        (
-            isid
-        )
-    )
-    (call fs.rootfs.list
-        (
-            isid
-        )
-    )
-    (call fs.rootfs.mounton_dirs
-        (
-            isid
-        )
-    )
-    (call fs.sysfs.read
-        (
-            isid
-        )
-    )
-    (call fs.tmpfs.search
-        (
-            isid
-        )
-    )
-    (call fs.xattr.getattr_fs
-        (
-            isid
-        )
-    )
+       (call fs.tracefs.search (isid))
+       (call fs.devtmpfs.manage_blk_files (isid))
+       (call fs.devtmpfs.manage_chr_files (isid))
+       (call fs.devtmpfs.manage_dirs (isid))
+       (call fs.devtmpfs.manage_lnk_files (isid))
+       (call fs.rootfs.list (isid))
+       (call fs.rootfs.mounton_dirs (isid))
+       (call fs.sysfs.read (isid))
+       (call fs.tmpfs.search (isid))
+       (call fs.xattr.getattr_fs (isid))
 
-    (call sec.compute_create_context
-        (
-            isid
-        )
-    )
+       (call sec.compute_create_context (isid))
 
-    (call term.generic_serial.devtmpfs_obj_type_transition
-        (
-            isid
-        )
-    )
-    (call term.generic_serial.manage_chr_files
-        (
-            isid
-        )
-    )
+       (call term.generic_serial.devtmpfs_obj_type_transition (isid))
+       (call term.generic_serial.manage_chr_files (isid))
 
-    (optional sys_optional_bluetooth
-        (call bluetooth.daemon.rw_sockets
-            (
-                isid
-            )
-        )
-    )
+       (optional sys_optional_bluetooth
+                 (call bluetooth.daemon.rw_sockets (isid)))
 
-    (optional sys_optional_bootchart
-        (call bootchart.auto_subj_type_transition
-            (
-                isid
-            )
-        )
-    )
+       (optional sys_optional_bootchart
+                 (call bootchart.auto_subj_type_transition (isid)))
 
-    (optional sys_optional_cgroups_agent
-        (call cgroups_agent.auto_subj_type_transition
-            (
-                isid
-            )
-        )
-    )
+       (optional sys_optional_cgroups_agent
+                 (call cgroups_agent.auto_subj_type_transition (isid)))
 
-    (optional sys_optional_dracut_initramfs
-        (call dracut_initramfs.runtime.list
-            (
-                isid
-            )
-        )
-    )
+       (optional sys_optional_dracut_initramfs
+                 (call dracut_initramfs.runtime.list (isid)))
 
-    (optional sys_optional_fsutils
-        (call fsutils.use_fd
-            (
-                isid
-            )
-        )
-    )
+       (optional sys_optional_fsutils
+                 (call fsutils.use_fd (isid)))
 
-    (optional sys_optional_gssproxy
-        (call gssproxy.unix_stream_socket_connectto
-            (
-                isid
-            )
-        )
-    )
+       (optional sys_optional_gssproxy
+                 (call gssproxy.unix_stream_socket_connectto (isid)))
 
-    (optional sys_optional_keyutils
-        (call keyutils.request_key.auto_subj_type_transition
-            (
-                isid
-            )
-        )
-    )
+       (optional sys_optional_keyutils
+                 (call keyutils.request_key.auto_subj_type_transition (isid)))
 
-    (optional sys_optional_kmod
-        (call kmod.auto_subj_type_transition
-            (
-                isid
-            )
-        )
-    )
+       (optional sys_optional_kmod
+                 (call kmod.auto_subj_type_transition (isid)))
 
-    (optional sys_optional_machined
-        (call machined.var_lib.audit_read_access_files
-            (
-                isid
-            )
-        )
-    )
+       (optional sys_optional_machined
+                 (call machined.var_lib.audit_read_access_files (isid)))
 
-    (optional sys_optional_misc
-        (call misc.font.client_subj_type
-            (
-                isid
-            )
-        )
-    )
+       (optional sys_optional_misc
+                 (call misc.font.client_subj_type (isid)))
 
-    (optional sys_optional_mkosi
-        (call mkosi.use_fd
-            (
-                isid
-            )
-        )
-    )
+       (optional sys_optional_mkosi
+                 (call mkosi.use_fd (isid)))
 
-    (optional sys_optional_mount
-        (call mount.loopback.read_files
-            (
-                isid
-            )
-        )
-        (call mount.use_fd
-            (
-                isid
-            )
-        )
+       (optional sys_optional_mount
+                 (call mount.loopback.read_files (isid))
+                 (call mount.use_fd (isid))
 
-        (booleanif mount.mount_any_file
-            (true
-                (call files.rw_inherited_except
-                    (
-                        isid
-                    )
-                )
-            )
-        )
-    )
+                 (booleanif mount.mount_any_file
+                            (true
+                             (call files.rw_inherited_except (isid)))))
 
-    (optional sys_optional_nfs
-        (call nfs.client.auto_subj_type_transition
-            (
-                isid
-            )
-        )
-        (call nfs.rpcnfsd.read_tcp_sockets
-            (
-                isid
-            )
-        )
-    )
+       (optional sys_optional_nfs
+                 (call nfs.client.auto_subj_type_transition (isid))
+                 (call nfs.rpcnfsd.read_tcp_sockets (isid)))
 
-    (optional sys_optional_nspawn
-        (call nspawn.use_fd
-            (
-                isid
-            )
-        )
-    )
+       (optional sys_optional_nspawn
+                 (call nspawn.use_fd (isid)))
 
-    (optional sys_optional_plymouth
-        (call plymouth.config.read
-            (
-                isid
-            )
-        )
-        (call plymouth.runtime.manage
-            (
-                isid
-            )
-        )
-        (call plymouth.var_lib.manage
-            (
-                isid
-            )
-        )
-    )
+       (optional sys_optional_plymouth
+                 (call plymouth.config.read (isid))
+                 (call plymouth.runtime.manage (isid))
+                 (call plymouth.var_lib.manage (isid)))
 
-    (optional sys_optional_rpcbind
-        (call rpcbind.daemon.unix_stream_socket_connectto
-            (
-                isid
-            )
-        )
-    )
+       (optional sys_optional_rpcbind
+                 (call rpcbind.daemon.unix_stream_socket_connectto (isid)))
 
-    (optional sys_optional_sd_coredump
-        (call sd_coredump.auto_subj_type_transition
-            (
-                isid
-            )
-        )
-    )
+       (optional sys_optional_sd_coredump
+                 (call sd_coredump.auto_subj_type_transition (isid)))
 
-    (optional sys_optional_stor
-        (call stor.fixed_disk.devtmpfs_obj_type_transition
-            (
-                isid
-            )
-        )
-        (call stor.stor_file.manage
-            (
-                isid
-            )
-        )
-        (call stor.removable.devtmpfs_obj_type_transition
-            (
-                isid
-            )
-        )
-        (call stor.scsi_generic.devtmpfs_obj_type_transition
-            (
-                isid
-            )
-        )
-    )
+       (optional sys_optional_stor
+                 (call stor.fixed_disk.devtmpfs_obj_type_transition (isid))
+                 (call stor.stor_file.manage (isid))
+                 (call stor.removable.devtmpfs_obj_type_transition (isid))
+                 (call stor.scsi_generic.devtmpfs_obj_type_transition (isid)))
 
-    (optional sys_optional_systemd
-        (call subj.dyntransition_subj_type
-            (
-                isid
-            )
-        )
-        (call systemd.system.read_state
-            (
-                isid
-            )
-        )
-        (call systemd.system.signal
-            (
-                isid
-            )
-        )
-        (call systemd.system.dynamic_subj_type_transition
-            (
-                isid
-            )
-        )
-    )
+       (optional sys_optional_systemd
+                 (call subj.dyntransition_subj_type (isid))
+                 (call systemd.system.read_state (isid))
+                 (call systemd.system.signal (isid))
+                 (call systemd.system.dynamic_subj_type_transition (isid)))
 
-    (optional sys_optional_udev
-        (call udev.client_subj_type
-            (
-                isid
-            )
-        )
-    )
+       (optional sys_optional_udev
+                 (call udev.client_subj_type (isid)))
 
-    (typeattributeset
+       (typeattributeset
         not_dump_kernel_subj_type_or_unconfined_subj_type_attribute
-            (not
-                (
-                    dump_kernel_subj_type_attribute
-                    unconfined_subj_type_attribute
-                )
-            )
-    )
+        (not (dump_kernel_subj_type_attribute unconfined_subj_type_attribute)))
 
-    (typeattributeset not_load_kernel_module_subj_type_attribute
-        (not
-            load_kernel_module_subj_type_attribute
-        )
-    )
+       (typeattributeset not_load_kernel_module_subj_type_attribute
+                         (not load_kernel_module_subj_type_attribute))
 
-    (neverallow not_load_kernel_module_subj_type_attribute self
-        (capability
-            (
-                sys_module
-            )
-        )
-    )
+       (neverallow not_load_kernel_module_subj_type_attribute self
+                   (capability (sys_module)))
 
-    (typeattributeset
+       (typeattributeset
         not_read_kernel_msg_subj_type_or_unconfined_subj_type_attribute
-            (not
-                (
-                    read_kernel_msg_subj_type_attribute
-                    unconfined_subj_type_attribute
-                )
-            )
-    )
+        (not (read_kernel_msg_subj_type_attribute
+              unconfined_subj_type_attribute)))
 
-    (allow unconfined_subj_type_attribute isid system_except_module_load)
+       (allow unconfined_subj_type_attribute isid system_except_module_load)
 
-    (call load_kernel_module_subj_type
-        (
-            unconfined_subj_type_attribute
-        )
-    )
+       (call load_kernel_module_subj_type (unconfined_subj_type_attribute))
 
-    (typeattributeset
+       (typeattributeset
         not_unconfined_subj_type_or_write_security_subj_type_attribute
-            (not
-                (
-                    unconfined_subj_type_attribute
-                    write_security_subj_type_attribute
-                )
-            )
-    )
+        (not (unconfined_subj_type_attribute
+              write_security_subj_type_attribute)))
 
-    (typeattributeset
+       (typeattributeset
         not_unconfined_subj_type_or_write_usermodehelper_subj_type_attribute
-            (not
-                (
-                    unconfined_subj_type_attribute
-                    write_usermodehelper_subj_type_attribute
-                )
-            )
-    )
+        (not (unconfined_subj_type_attribute
+              write_usermodehelper_subj_type_attribute)))
 
-    (block abi_sysctl
+;; lispy-cil
+       (block abi_sysctl
 
         ;
         ; Contexts
