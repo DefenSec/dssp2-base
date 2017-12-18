@@ -394,6 +394,14 @@
               (macro map_files ((type ARG1))
                      (allow ARG1 isid (file (map))))
 
+              (macro mapr_files ((type ARG1))
+                     (allow ARG1 isid (files (mapr)))
+                     (call fs.sysfs.search (ARG1)))
+
+              (macro maprw_files ((type ARG1))
+                     (allow ARG1 isid (files (maprw)))
+                     (call fs.sysfs.search (ARG1)))
+
               (macro mapx ((type ARG1))
                      (allow ARG1 isid mapx_file_perms)
                      (call search (ARG1)))

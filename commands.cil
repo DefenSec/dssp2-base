@@ -134,6 +134,14 @@
               (macro map_files ((type ARG1))
                      (allow ARG1 cmd_file (files (map))))
 
+              (macro mapr_files ((type ARG1))
+                     (allow ARG1 cmd_file (file (mapr)))
+                     (call read_lnk_files (ARG1)))
+
+              (macro maprw_files ((type ARG1))
+                     (allow ARG1 cmd_file (file (maprw)))
+                     (call read_lnk_files (ARG1)))
+
               (macro mapx ((type ARG1))
                      (allow ARG1 cmd_file mapx_file_perms)
                      (call search (ARG1)))
@@ -360,6 +368,14 @@
                      (macro map_files ((type ARG1))
                             (allow ARG1 obj_type_attribute (file (map))))
 
+                     (macro mapr_files ((type ARG1))
+                            (allow ARG1 obj_type_attribute mapr_file_perms)
+                            (call cmd.generic_commands.read_lnk_files (ARG1)))
+
+                     (macro maprw_files ((type ARG1))
+                            (allow ARG1 obj_type_attribute maprw_file_perms)
+                            (call cmd.generic_commands.read_lnk_files (ARG1)))
+
                      (macro mapx ((type ARG1))
                             (allow ARG1 obj_type_attribute mapx_file_perms)
                             (call cmd.generic_commands.read_lnk_files (ARG1)))
@@ -469,6 +485,14 @@
 
                      (macro map_files ((type ARG1))
                             (allow ARG1 cmd_file (file (map))))
+
+                     (macro mapr_files ((type ARG1))
+                            (allow ARG1 cmd_file mapr_file_perms)
+                            (call cmd.generic_commands.read_lnk_files (ARG1)))
+
+                     (macro maprw_files ((type ARG1))
+                            (allow ARG1 cmd_file maprw_file_perms)
+                            (call cmd.generic_commands.read_lnk_files (ARG1)))
 
                      (macro mapx ((type ARG1))
                             (allow ARG1 cmd_file mapx_file_perms)

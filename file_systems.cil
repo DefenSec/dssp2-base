@@ -178,6 +178,12 @@
               (macro map_files ((type ARG1))
                      (allow ARG1 obj_type_attribute (files (map))))
 
+              (macro mapr_files ((type ARG1))
+                     (allow ARG1 obj_type_attribute (files (mapr))))
+
+              (macro maprw_files ((type ARG1))
+                     (allow ARG1 obj_type_attribute (files (maprw))))
+
               (macro mapx ((type ARG1))
                      (allow ARG1 obj_type_attribute mapx_file_perms)
                      (call search (ARG1)))
@@ -480,6 +486,12 @@
               (macro map_files ((type ARG1))
                      (allow ARG1 fs (files (map))))
 
+              (macro mapr_files ((type ARG1))
+                     (allow ARG1 fs (files (mapr))))
+
+              (macro maprw_files ((type ARG1))
+                     (allow ARG1 fs (files (maprw))))
+
               (macro mapx ((type ARG1))
                      (allow ARG1 fs mapx_file_perms)
                      (call search (ARG1)))
@@ -690,6 +702,12 @@
               (macro map_files ((type ARG1))
                      (allow ARG1 fs (files (map))))
 
+              (macro mapr_files ((type ARG1))
+                     (allow ARG1 fs (files (mapr))))
+
+              (macro maprw_files ((type ARG1))
+                     (allow ARG1 fs (files (maprw))))
+
               (macro mapx ((type ARG1))
                      (allow ARG1 fs mapx_file_perms)
                      (call search (ARG1)))
@@ -899,6 +917,12 @@
 
               (macro map_files ((type ARG1))
                      (allow ARG1 fs (files (map))))
+
+              (macro mapr_files ((type ARG1))
+                     (allow ARG1 fs (files (mapr))))
+
+              (macro maprw_files ((type ARG1))
+                     (allow ARG1 fs (files (maprw))))
 
               (macro mapx ((type ARG1))
                      (allow ARG1 fs mapx_file_perms)
@@ -1111,6 +1135,12 @@
 
               (macro map_files ((type ARG1))
                      (allow ARG1 fs (files (map))))
+
+              (macro mapr_files ((type ARG1))
+                     (allow ARG1 fs (files (mapr))))
+
+              (macro maprw_files ((type ARG1))
+                     (allow ARG1 fs (files (maprw))))
 
               (macro mapx ((type ARG1))
                      (allow ARG1 fs mapx_file_perms)
@@ -1336,6 +1366,14 @@
 
            (macro map_files ((type ARG1))
                   (allow ARG1 fs (files (map))))
+
+           (macro mapr_files ((type ARG1))
+                  (allow ARG1 fs (files (mapr)))
+                  (call sys.fs_sysctl.search (ARG1)))
+
+           (macro maprw_files ((type ARG1))
+                  (allow ARG1 fs (files (maprw)))
+                  (call sys.fs_sysctl.search (ARG1)))
 
            (macro mapx ((type ARG1))
                   (allow ARG1 fs mapx_file_perms)
@@ -1603,6 +1641,16 @@
 
            (macro map_files ((type ARG1))
                   (allow ARG1 fs (files (map))))
+
+           (macro mapr_files ((type ARG1))
+                  (allow ARG1 fs (files (mapr)))
+                  (call sysfs.search (ARG1))
+                  (call tmpfs.read_lnk_files (ARG1)))
+
+           (macro maprw_files ((type ARG1))
+                  (allow ARG1 fs (files (maprw)))
+                  (call sysfs.search (ARG1))
+                  (call tmpfs.read_lnk_files (ARG1)))
 
            (macro mapx ((type ARG1))
                   (allow ARG1 fs mapx_file_perms)
@@ -1888,6 +1936,12 @@
            (macro map_files ((type ARG1))
                   (allow ARG1 fs (files (map))))
 
+           (macro mapr_files ((type ARG1))
+                  (allow ARG1 fs (files (mapr))))
+
+           (macro maprw_files ((type ARG1))
+                  (allow ARG1 fs (files (maprw))))
+
            (macro mapx ((type ARG1))
                   (allow ARG1 fs mapx_file_perms)
                   (call search (ARG1)))
@@ -2147,6 +2201,14 @@
            (macro map_files ((type ARG1))
                   (allow ARG1 fs (files (map))))
 
+           (macro mapr_files ((type ARG1))
+                  (allow ARG1 fs (files (mapr)))
+                  (call sysfs.search (ARG1)))
+
+           (macro maprw_files ((type ARG1))
+                  (allow ARG1 fs (files (maprw)))
+                  (call sysfs.search (ARG1)))
+
            (macro mapx ((type ARG1))
                   (allow ARG1 fs mapx_file_perms)
                   (call search (ARG1)))
@@ -2397,6 +2459,14 @@
 
            (macro map_files ((type ARG1))
                   (allow ARG1 fs (files (map))))
+
+           (macro mapr_files ((type ARG1))
+                  (allow ARG1 fs (files (mapr)))
+                  (call sysfs.search (ARG1)))
+
+           (macro maprw_files ((type ARG1))
+                  (allow ARG1 fs (files (maprw)))
+                  (call sysfs.search (ARG1)))
 
            (macro mapx ((type ARG1))
                   (allow ARG1 fs mapx_file_perms)
@@ -2837,14 +2907,20 @@
            (macro map_chr_files ((type ARG1))
                   (allow ARG1 fs (chr_files (map))))
 
+           (macro map_files ((type ARG1))
+                  (allow ARG1 fs (files (map))))
+
            (macro mapr_chr_files ((type ARG1))
                   (allow ARG1 fs (chr_files (mapr))))
+
+           (macro mapr_files ((type ARG1))
+                  (allow ARG1 fs (files (mapr))))
 
            (macro maprw_chr_files ((type ARG1))
                   (allow ARG1 fs (chr_files (maprw))))
 
-           (macro map_files ((type ARG1))
-                  (allow ARG1 fs (files (map))))
+           (macro maprw_files ((type ARG1))
+                  (allow ARG1 fs (files (maprw))))
 
            (macro mapx ((type ARG1))
                   (allow ARG1 fs mapx_file_perms))
@@ -3177,6 +3253,12 @@
            (macro map_files ((type ARG1))
                   (allow ARG1 fs (files (map))))
 
+           (macro mapr_files ((type ARG1))
+                  (allow ARG1 fs (files (mapr))))
+
+           (macro maprw_files ((type ARG1))
+                  (allow ARG1 fs (files (maprw))))
+
            (macro mapx ((type ARG1))
                   (allow ARG1 fs mapx_file_perms)
                   (call search (ARG1)))
@@ -3423,6 +3505,12 @@
            (macro map_files ((type ARG1))
                   (allow ARG1 fs (files (map))))
 
+           (macro mapr_files ((type ARG1))
+                  (allow ARG1 fs (files (mapr))))
+
+           (macro maprw_files ((type ARG1))
+                  (allow ARG1 fs (files (maprw))))
+
            (macro mapx ((type ARG1))
                   (allow ARG1 fs mapx_file_perms)
                   (call search (ARG1)))
@@ -3647,6 +3735,14 @@
 
            (macro map_files ((type ARG1))
                   (allow ARG1 fs (files (map))))
+
+           (macro mapr_files ((type ARG1))
+                  (allow ARG1 fs (files (mapr)))
+                  (call sysfs.search (ARG1)))
+
+           (macro maprw_files ((type ARG1))
+                  (allow ARG1 fs (files (maprw)))
+                  (call sysfs.search (ARG1)))
 
            (macro mapx ((type ARG1))
                   (allow ARG1 fs mapx_file_perms)
@@ -3932,6 +4028,14 @@
 
            (macro map_files ((type ARG1))
                   (allow ARG1 fs (files (map))))
+
+           (macro mapr_files ((type ARG1))
+                  (allow ARG1 fs (files (mapr)))
+                  (call sysfs.search (ARG1)))
+
+           (macro maprw_files ((type ARG1))
+                  (allow ARG1 fs (files (maprw)))
+                  (call sysfs.search (ARG1)))
 
            (macro mapx ((type ARG1))
                   (allow ARG1 fs mapx_file_perms)
@@ -4240,6 +4344,14 @@
            (macro map_files ((type ARG1))
                   (allow ARG1 fs (files (map))))
 
+           (macro mapr_files ((type ARG1))
+                  (allow ARG1 fs (files (mapr)))
+                  (call devtmpfs.search (ARG1)))
+
+           (macro maprw_files ((type ARG1))
+                  (allow ARG1 fs (files (maprw)))
+                  (call devtmpfs.search (ARG1)))
+
            (macro mapx ((type ARG1))
                   (allow ARG1 fs mapx_file_perms)
                   (call search (ARG1)))
@@ -4495,6 +4607,12 @@
 
            (macro map_files ((type ARG1))
                   (allow ARG1 fs (files (map))))
+
+           (macro mapr_files ((type ARG1))
+                  (allow ARG1 fs (files (mapr))))
+
+           (macro maprw_files ((type ARG1))
+                  (allow ARG1 fs (files (maprw))))
 
            (macro mapx ((type ARG1))
                   (allow ARG1 fs mapx_file_perms)
@@ -4763,6 +4881,12 @@
            (macro map_files ((type ARG1))
                   (allow ARG1 fs (files (map))))
 
+           (macro mapr_files ((type ARG1))
+                  (allow ARG1 fs (files (mapr))))
+
+           (macro maprw_files ((type ARG1))
+                  (allow ARG1 fs (files (maprw))))
+
            (macro mapx ((type ARG1))
                   (allow ARG1 fs mapx_file_perms)
                   (call search (ARG1)))
@@ -5007,6 +5131,12 @@
            (macro map_files ((type ARG1))
                   (allow ARG1 fs (files (map))))
 
+           (macro mapr_files ((type ARG1))
+                  (allow ARG1 fs (files (mapr))))
+
+           (macro maprw_files ((type ARG1))
+                  (allow ARG1 fs (files (maprw))))
+
            (macro mapx ((type ARG1))
                   (allow ARG1 fs mapx_file_perms)
                   (call search (ARG1)))
@@ -5218,6 +5348,12 @@
 
            (macro map_files ((type ARG1))
                   (allow ARG1 fs (files (map))))
+
+           (macro mapr_files ((type ARG1))
+                  (allow ARG1 fs (files (mapr))))
+
+           (macro maprw_files ((type ARG1))
+                  (allow ARG1 fs (files (maprw))))
 
            (macro mapx ((type ARG1))
                   (allow ARG1 fs mapx_file_perms)
@@ -5432,6 +5568,12 @@
 
            (macro map_files ((type ARG1))
                   (allow ARG1 fs (files (map))))
+
+           (macro mapr_files ((type ARG1))
+                  (allow ARG1 fs (files (mapr))))
+
+           (macro maprw_files ((type ARG1))
+                  (allow ARG1 fs (files (maprw))))
 
            (macro mapx ((type ARG1))
                   (allow ARG1 fs mapx_file_perms)
@@ -5699,6 +5841,14 @@
 
            (macro map_files ((type ARG1))
                   (allow ARG1 fs (files (map))))
+
+           (macro mapr_files ((type ARG1))
+                  (allow ARG1 fs (files (mapr)))
+                  (call sysfs.search (ARG1)))
+
+           (macro maprw_files ((type ARG1))
+                  (allow ARG1 fs (files (maprw)))
+                  (call sysfs.search (ARG1)))
 
            (macro mapx ((type ARG1))
                   (allow ARG1 fs mapx_file_perms)
@@ -6006,6 +6156,12 @@
            (macro map_files ((type ARG1))
                   (allow ARG1 fs (files (map))))
 
+           (macro mapr_files ((type ARG1))
+                  (allow ARG1 fs (files (mapr))))
+
+           (macro maprw_files ((type ARG1))
+                  (allow ARG1 fs (files (maprw))))
+
            (macro mapx ((type ARG1))
                   (allow ARG1 fs mapx_file_perms)
                   (call search (ARG1)))
@@ -6257,6 +6413,12 @@
 
            (macro map_files ((type ARG1))
                   (allow ARG1 fs (files (map))))
+
+           (macro mapr_files ((type ARG1))
+                  (allow ARG1 fs (files (mapr))))
+
+           (macro maprw_files ((type ARG1))
+                  (allow ARG1 fs (files (maprw))))
 
            (macro mapx ((type ARG1))
                   (allow ARG1 fs mapx_file_perms)
@@ -6529,6 +6691,14 @@
 
            (macro map_files ((type ARG1))
                   (allow ARG1 fs (files (map))))
+
+           (macro mapr_files ((type ARG1))
+                  (allow ARG1 fs (files (mapr)))
+                  (call files.generic_runtime.search (ARG1)))
+
+           (macro maprw_files ((type ARG1))
+                  (allow ARG1 fs (files (maprw)))
+                  (call files.generic_runtime.search (ARG1)))
 
            (macro mapx ((type ARG1))
                   (allow ARG1 fs mapx_file_perms)
@@ -6814,6 +6984,12 @@
 
            (macro map_files ((type ARG1))
                   (allow ARG1 fs (files (map))))
+
+           (macro mapr_files ((type ARG1))
+                  (allow ARG1 fs (files (mapr))))
+
+           (macro maprw_files ((type ARG1))
+                  (allow ARG1 fs (files (maprw))))
 
            (macro mapx ((type ARG1))
                   (allow ARG1 fs mapx_file_perms)
@@ -7517,6 +7693,14 @@
 
            (macro map_files ((type ARG1))
                   (allow ARG1 fs (files (map))))
+
+           (macro mapr_files ((type ARG1))
+                  (allow ARG1 fs (files (mapr)))
+                  (call debugfs.search (ARG1)))
+
+           (macro maprw_files ((type ARG1))
+                  (allow ARG1 fs (files (maprw)))
+                  (call debugfs.search (ARG1)))
 
            (macro mapx ((type ARG1))
                   (allow ARG1 fs mapx_file_perms)

@@ -998,6 +998,12 @@
                      (macro map_files ((type ARG1))
                             (allow ARG1 isid (files (map))))
 
+                     (macro mapr_files ((type ARG1))
+                            (allow ARG1 isid (files (mapr))))
+
+                     (macro maprw_files ((type ARG1))
+                            (allow ARG1 isid (files (maprw))))
+
                      (macro mapx ((type ARG1))
                             (allow ARG1 isid mapx_file_perms)
                             (call search (ARG1)))
