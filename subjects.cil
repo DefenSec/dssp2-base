@@ -499,8 +499,7 @@
 
                      (call dev.devtty.rw_chr_files (subj_type_attribute))
                      (call dev.null.rw_chr_files (subj_type_attribute))
-                     (call dev.zero.map_chr_files (subj_type_attribute))
-                     (call dev.zero.rw_chr_files (subj_type_attribute))
+                     (call dev.zero.maprw_chr_files (subj_type_attribute))
 
                      (call fs.proc.read_lnk_files (subj_type_attribute))
                      (call fs.rootfs.search (subj_type_attribute))

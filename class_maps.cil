@@ -18,7 +18,7 @@
           (create delete getattr manage read relabel relabelfrom relabelto
                   rename rw setattr write))
 (classmap chr_files
-          (create delete getattr manage map read relabel relabelfrom
+          (create delete getattr manage map mapr maprw read relabel relabelfrom
                   relabelto rename rw setattr write))
 (classmap dirs
           (create delete getattr manage relabel relabelfrom relabelto
@@ -27,8 +27,8 @@
           (create delete getattr manage read relabel relabelfrom relabelto
                   rename rw setattr write))
 (classmap files
-          (create delete getattr manage map read relabel relabelfrom
-                  relabelto rename rw setattr write))
+          (create delete getattr manage map mapr maprw mapx read relabel
+                  relabelfrom relabelto rename rw setattr write))
 (classmap files_except_blk_and_chr
           (create delete getattr manage mounton read read_inherited relabel
                   relabelfrom relabelto rename rw rw_inherited setattr
@@ -862,6 +862,12 @@
 (classmapping chr_files map search_dir_perms)
 (classmapping chr_files map (file (map)))
 
+(classmapping chr_files mapr search_dir_perms)
+(classmapping chr_files mapr mapr_chr_file_perms)
+
+(classmapping chr_files maprw search_dir_perms)
+(classmapping chr_files maprw maprw_chr_file_perms)
+
 (classmapping chr_files read search_dir_perms)
 (classmapping chr_files read read_chr_file_perms)
 
@@ -965,6 +971,15 @@
 
 (classmapping files map search_dir_perms)
 (classmapping files map (file (map)))
+
+(classmapping files mapr search_dir_perms)
+(classmapping files mapr mapr_file_perms)
+
+(classmapping files maprw search_dir_perms)
+(classmapping files maprw maprw_file_perms)
+
+(classmapping files mapx search_dir_perms)
+(classmapping files mapx mapx_file_perms)
 
 (classmapping files read search_dir_perms)
 (classmapping files read read_file_perms)

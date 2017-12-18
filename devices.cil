@@ -271,6 +271,15 @@
                      (macro map_chr_files ((type ARG1))
                             (allow ARG1 obj_type_attribute (chr_file (map))))
 
+                     (macro mapr_chr_files ((type ARG1))
+                            (allow ARG1 obj_type_attribute mapr_chr_file_perms)
+                            (call fs.devtmpfs.search (ARG1)))
+
+                     (macro maprw_chr_files ((type ARG1))
+                            (allow ARG1 obj_type_attribute
+                                   maprw_chr_file_perms)
+                            (call fs.devtmpfs.search (ARG1)))
+
                      (macro obj_type ((type ARG1))
                             (typeattributeset obj_type_attribute ARG1))
 
@@ -366,6 +375,14 @@
 
                      (macro map_chr_files ((type ARG1))
                             (allow ARG1 dev_file (chr_file (map))))
+
+                     (macro mapr_chr_files ((type ARG1))
+                            (allow ARG1 dev_file mapr_chr_file_perms)
+                            (call fs.devtmpfs.search (ARG1)))
+
+                     (macro maprw_chr_files ((type ARG1))
+                            (allow ARG1 dev_file maprw_chr_file_perms)
+                            (call fs.devtmpfs.search (ARG1)))
 
                      (macro read_chr_files ((type ARG1))
                             (allow ARG1 dev_file read_chr_file_perms)
@@ -692,6 +709,14 @@
               (macro map_chr_files ((type ARG1))
                      (allow ARG1 dev_file (chr_file (map))))
 
+              (macro mapr_chr_files ((type ARG1))
+                     (allow ARG1 dev_file mapr_chr_file_perms)
+                     (call fs.devtmpfs.search (ARG1)))
+
+              (macro maprw_chr_files ((type ARG1))
+                     (allow ARG1 dev_file maprw_chr_file_perms)
+                     (call fs.devtmpfs.search (ARG1)))
+
               (macro read_chr_files ((type ARG1))
                      (allow ARG1 dev_file read_chr_file_perms)
                      (call read_memory_subj_type (ARG1))
@@ -842,6 +867,14 @@
               (macro map_chr_files ((type ARG1))
                      (allow ARG1 isid (chr_file (map))))
 
+              (macro mapr_chr_files ((type ARG1))
+                     (allow ARG1 isid mapr_chr_file_perms)
+                     (call fs.devtmpfs.search (ARG1)))
+
+              (macro maprw_chr_files ((type ARG1))
+                     (allow ARG1 isid maprw_chr_file_perms)
+                     (call fs.devtmpfs.search (ARG1)))
+
               (macro read_chr_files ((type ARG1))
                      (allow ARG1 isid read_chr_file_perms)
                      (call fs.devtmpfs.search (ARG1)))
@@ -989,6 +1022,14 @@
 
               (macro map_chr_files ((type ARG1))
                      (allow ARG1 dev_file (chr_file (map))))
+
+              (macro mapr_chr_files ((type ARG1))
+                     (allow ARG1 dev_file mapr_chr_file_perms)
+                     (call fs.devpts.search (ARG1)))
+
+              (macro maprw_chr_files ((type ARG1))
+                     (allow ARG1 dev_file maprw_chr_file_perms)
+                     (call fs.devpts.search (ARG1)))
 
               (macro read_chr_files ((type ARG1))
                      (allow ARG1 dev_file read_chr_file_perms)

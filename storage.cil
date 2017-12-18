@@ -692,6 +692,14 @@
               (macro map_chr_files ((type ARG1))
                      (allow ARG1 stor_file (chr_file (map))))
 
+              (macro mapr_chr_files ((type ARG1))
+                     (allow ARG1 stor_file mapr_chr_file_perms)
+                     (call fs.devtmpfs.search (ARG1)))
+
+              (macro maprw_chr_files ((type ARG1))
+                     (allow ARG1 stor_file maprw_chr_file_perms)
+                     (call fs.devtmpfs.search (ARG1)))
+
               (macro read ((type ARG1))
                      (call read_blk_files (ARG1))
                      (call read_chr_files (ARG1)))
@@ -980,6 +988,14 @@
               (macro map_chr_files ((type ARG1))
                      (allow ARG1 stor_file (chr_file (map))))
 
+              (macro mapr_chr_files ((type ARG1))
+                     (allow ARG1 stor_file mapr_chr_file_perms)
+                     (call fs.devtmpfs.search (ARG1)))
+
+              (macro maprw_chr_files ((type ARG1))
+                     (allow ARG1 stor_file maprw_chr_file_perms)
+                     (call fs.devtmpfs.search (ARG1)))
+
               (macro read_chr_files ((type ARG1))
                      (allow ARG1 stor_file read_chr_file_perms)
                      (call read_scsi_generic_subj_type (ARG1))
@@ -1134,6 +1150,15 @@
 
                      (macro map_chr_files ((type ARG1))
                             (allow ARG1 obj_type_attribute (chr_file (map))))
+
+                     (macro mapr_chr_files ((type ARG1))
+                            (allow ARG1 obj_type_attribute mapr_chr_file_perms)
+                            (call fs.devtmpfs.search (ARG1)))
+
+                     (macro maprw_chr_files ((type ARG1))
+                            (allow ARG1 obj_type_attribute
+                                   maprw_chr_file_perms)
+                            (call fs.devtmpfs.search (ARG1)))
 
                      (macro obj_type ((type ARG1))
                             (typeattributeset obj_type_attribute ARG1))
@@ -1342,6 +1367,14 @@
 
                      (macro map_chr_files ((type ARG1))
                             (allow ARG1 stor_file (chr_file (map))))
+
+                     (macro mapr_chr_files ((type ARG1))
+                            (allow ARG1 stor_file mapr_chr_file_perms)
+                            (call fs.devtmpfs.search (ARG1)))
+
+                     (macro maprw_chr_files ((type ARG1))
+                            (allow ARG1 stor_file maprw_chr_file_perms)
+                            (call fs.devtmpfs.search (ARG1)))
 
                      (macro read ((type ARG1))
                             (call manage_blk_files (ARG1))
