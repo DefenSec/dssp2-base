@@ -65,7 +65,8 @@
 (classpermission create_chr_file_perms)
 (classpermission delete_chr_file_perms)
 (classpermission manage_chr_file_perms)
-(classpermission map_chr_file_perms)
+(classpermission mapr_chr_file_perms)
+(classpermission maprw_chr_file_perms)
 (classpermission read_chr_file_perms)
 (classpermission read_inherited_chr_file_perms)
 (classpermission relabel_chr_file_perms)
@@ -129,7 +130,8 @@
 (classpermission file_except_entrypoint_and_execmod)
 (classpermission file_except_entrypoint_execmod_and_mounton)
 (classpermission manage_file_perms)
-(classpermission map_file_perms)
+(classpermission mapr_file_perms)
+(classpermission maprw_file_perms)
 (classpermission mapx_file_perms)
 (classpermission mapx_inherited_file_perms)
 (classpermission read_file_perms)
@@ -488,7 +490,11 @@
                     (chr_file
                      (append create getattr ioctl link lock open read rename
                              setattr unlink write)))
-(classpermissionset map_chr_file_perms (chr_file (map)))
+(classpermissionset mapr_chr_file_perms (chr_file (getattr ioctl lock map
+                                                           open read)))
+(classpermissionset maprw_chr_file_perms (chr_file (append getattr ioctl lock
+                                                           open map read
+                                                           write)))
 (classpermissionset read_chr_file_perms (chr_file (getattr ioctl lock open
                                                            read)))
 (classpermissionset read_inherited_chr_file_perms (chr_file
@@ -616,7 +622,9 @@
 (classpermissionset manage_file_perms
                     (file (append create getattr ioctl link lock open read
                                   rename setattr unlink write)))
-(classpermissionset map_file_perms (file (map)))
+(classpermissionset mapr_file_perms (file (getattr ioctl lock open map read)))
+(classpermissionset maprw_file_perms (file (append getattr ioctl lock open map
+                                                   read write)))
 (classpermissionset mapx_file_perms (file (execute getattr ioctl map open
                                                    read)))
 (classpermissionset mapx_inherited_file_perms (file (execute getattr ioctl map

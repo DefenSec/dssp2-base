@@ -860,7 +860,7 @@
 (classmapping chr_files manage manage_chr_file_perms)
 
 (classmapping chr_files map search_dir_perms)
-(classmapping chr_files map map_chr_file_perms)
+(classmapping chr_files map (file (map)))
 
 (classmapping chr_files read search_dir_perms)
 (classmapping chr_files read read_chr_file_perms)
@@ -964,7 +964,7 @@
 (classmapping files manage manage_file_perms)
 
 (classmapping files map search_dir_perms)
-(classmapping files map map_file_perms)
+(classmapping files map (file (map)))
 
 (classmapping files read search_dir_perms)
 (classmapping files read read_file_perms)
