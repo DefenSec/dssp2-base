@@ -269,8 +269,7 @@
                             (call fs.devtmpfs.rw_dirs (ARG1)))
 
                      (macro map_chr_files ((type ARG1))
-                            (allow ARG1 obj_type_attribute map_chr_file_perms)
-                            (call fs.devtmpfs.search (ARG1)))
+                            (allow ARG1 obj_type_attribute (chr_file (map))))
 
                      (macro obj_type ((type ARG1))
                             (typeattributeset obj_type_attribute ARG1))
@@ -366,8 +365,7 @@
                             (call fs.devtmpfs.rw_dirs (ARG1)))
 
                      (macro map_chr_files ((type ARG1))
-                            (allow ARG1 dev_file map_chr_file_perms)
-                            (call fs.devtmpfs.search (ARG1)))
+                            (allow ARG1 dev_file (chr_file (map))))
 
                      (macro read_chr_files ((type ARG1))
                             (allow ARG1 dev_file read_chr_file_perms)
@@ -692,8 +690,7 @@
                      (call fs.devtmpfs.rw_dirs (ARG1)))
 
               (macro map_chr_files ((type ARG1))
-                     (allow ARG1 dev_file map_chr_file_perms)
-                     (call fs.devtmpfs.search (ARG1)))
+                     (allow ARG1 dev_file (chr_file (map))))
 
               (macro read_chr_files ((type ARG1))
                      (allow ARG1 dev_file read_chr_file_perms)
@@ -843,8 +840,7 @@
                      (call fs.devtmpfs.rw_dirs (ARG1)))
 
               (macro map_chr_files ((type ARG1))
-                     (allow ARG1 isid map_chr_file_perms)
-                     (call fs.devtmpfs.search (ARG1)))
+                     (allow ARG1 isid (chr_file (map))))
 
               (macro read_chr_files ((type ARG1))
                      (allow ARG1 isid read_chr_file_perms)
@@ -992,8 +988,7 @@
                      (call fs.devpts.rw_dirs (ARG1)))
 
               (macro map_chr_files ((type ARG1))
-                     (allow ARG1 dev_file map_chr_file_perms)
-                     (call fs.devpts.search (ARG1)))
+                     (allow ARG1 dev_file (chr_file (map))))
 
               (macro read_chr_files ((type ARG1))
                      (allow ARG1 dev_file read_chr_file_perms)

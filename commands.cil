@@ -42,7 +42,7 @@
               (macro cmd_file_auto_subj_type_transition ((type ARG1)(type
                                                                      ARG2))
                      (typetransition ARG1 cmd_file process "*" ARG2)
-                     (call mmap (ARG1)))
+                     (call mapx (ARG1)))
 
               (macro bounded_files ((type ARG1))
                      (typebounds cmd_file ARG1))
@@ -87,7 +87,7 @@
 
               (macro entry ((type ARG1))
                      (allow ARG1 cmd_file (file (entrypoint)))
-                     (call mmap (ARG1)))
+                     (call mapx (ARG1)))
 
               (macro execute ((type ARG1))
                      (allow ARG1 cmd_file exec_file_perms)
@@ -134,12 +134,12 @@
               (macro map_files ((type ARG1))
                      (allow ARG1 cmd_file (files (map))))
 
-              (macro mmap ((type ARG1))
-                     (allow ARG1 cmd_file mmap_file_perms)
+              (macro mapx ((type ARG1))
+                     (allow ARG1 cmd_file mapx_file_perms)
                      (call search (ARG1)))
 
-              (macro mmap_inherited_files ((type ARG1))
-                     (allow ARG1 cmd_file mmap_inherited_file_perms))
+              (macro mapx_inherited_files ((type ARG1))
+                     (allow ARG1 cmd_file mapx_inherited_file_perms))
 
               (macro obj_type_transition ((type ARG1)(type ARG2)(class ARG3)
                                           (name ARG4))
@@ -358,10 +358,10 @@
                             (call cmd.generic_commands.read_lnk_files (ARG1)))
 
                      (macro map_files ((type ARG1))
-                            (allow ARG1 obj_type_attribute map_file_perms))
+                            (allow ARG1 obj_type_attribute (file (map))))
 
-                     (macro mmap ((type ARG1))
-                            (allow ARG1 obj_type_attribute mmap_file_perms)
+                     (macro mapx ((type ARG1))
+                            (allow ARG1 obj_type_attribute mapx_file_perms)
                             (call cmd.generic_commands.read_lnk_files (ARG1)))
 
                      (macro obj_type ((type ARG1))
@@ -438,7 +438,7 @@
                      (macro cmd_file_auto_subj_type_transition ((type ARG1)
                                                                 (type ARG2))
                             (typetransition ARG1 cmd_file process "*" ARG2)
-                            (call mmap (ARG1)))
+                            (call mapx (ARG1)))
 
                      (macro bounded_files ((type ARG1))
                             (typebounds cmd_file ARG1))
@@ -453,7 +453,7 @@
 
                      (macro entry ((type ARG1))
                             (allow ARG1 cmd_file (file (entrypoint)))
-                            (call mmap (ARG1)))
+                            (call mapx (ARG1)))
 
                      (macro execute ((type ARG1))
                             (allow ARG1 cmd_file exec_file_perms)
@@ -468,10 +468,10 @@
                             (call cmd.generic_commands.read_lnk_files (ARG1)))
 
                      (macro map_files ((type ARG1))
-                            (allow ARG1 cmd_file map_file_perms))
+                            (allow ARG1 cmd_file (file (map))))
 
-                     (macro mmap ((type ARG1))
-                            (allow ARG1 cmd_file mmap_file_perms)
+                     (macro mapx ((type ARG1))
+                            (allow ARG1 cmd_file mapx_file_perms)
                             (call cmd.generic_commands.read_lnk_files (ARG1)))
 
                      (macro read_files ((type ARG1))
@@ -531,8 +531,8 @@
               (macro audit_execute_access ((type ARG1))
                      (allow ARG1 cmd_file (file (getattr execute))))
 
-              (macro mmap_inherited_files ((type ARG1))
-                     (allow ARG1 cmd_file mmap_inherited_file_perms))
+              (macro mapx_inherited_files ((type ARG1))
+                     (allow ARG1 cmd_file mapx_inherited_file_perms))
 
               ;;
               ;; Policy

@@ -998,8 +998,8 @@
                      (macro map_files ((type ARG1))
                             (allow ARG1 isid (files (map))))
 
-                     (macro mmap ((type ARG1))
-                            (allow ARG1 isid mmap_file_perms)
+                     (macro mapx ((type ARG1))
+                            (allow ARG1 isid mapx_file_perms)
                             (call search (ARG1)))
 
                      (macro mount ((type ARG1))

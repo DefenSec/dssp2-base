@@ -448,14 +448,14 @@
        (macro map_files_except_sec ((type ARG1))
               (allow ARG1 except_sec_obj_type_attribute (files (map))))
 
-       (macro mmap_except ((type ARG1))
-              (allow ARG1 except_obj_type_attribute mmap_file_perms))
+       (macro mapx_except ((type ARG1))
+              (allow ARG1 except_obj_type_attribute mapx_file_perms))
 
-       (macro mmap_except_auth ((type ARG1))
-              (allow ARG1 except_auth_obj_type_attribute mmap_file_perms))
+       (macro mapx_except_auth ((type ARG1))
+              (allow ARG1 except_auth_obj_type_attribute mapx_file_perms))
 
-       (macro mmap_except_sec ((type ARG1))
-              (allow ARG1 except_sec_obj_type_attribute mmap_file_perms))
+       (macro mapx_except_sec ((type ARG1))
+              (allow ARG1 except_sec_obj_type_attribute mapx_file_perms))
 
        (macro mounton_except ((type ARG1))
               (allow ARG1 except_obj_type_attribute (files_except_blk_and_chr
@@ -1145,8 +1145,8 @@
               (macro map_files ((type ARG1))
                      (allow ARG1 obj_type_attribute (files (map))))
 
-              (macro mmap ((type ARG1))
-                     (allow ARG1 obj_type_attribute mmap_file_perms))
+              (macro mapx ((type ARG1))
+                     (allow ARG1 obj_type_attribute mapx_file_perms))
 
               (macro obj_type ((type ARG1))
                      (typeattributeset obj_type_attribute ARG1))
@@ -1455,10 +1455,10 @@
                             (allow ARG1 auth_file manage_sock_file_perms))
 
                      (macro map_files ((type ARG1))
-                            (allow ARG1 auth_file map_file_perms))
+                            (allow ARG1 auth_file (file (map))))
 
-                     (macro mmap ((type ARG1))
-                            (allow ARG1 auth_file mmap_file_perms))
+                     (macro mapx ((type ARG1))
+                            (allow ARG1 auth_file mapx_file_perms))
 
                      (macro obj_type_transition
                             ((type ARG1)(type ARG2)(class ARG3)(name ARG4))
@@ -1740,10 +1740,10 @@
                             (call boot.search (ARG1)))
 
                      (macro map_files ((type ARG1))
-                            (allow ARG1 boot_file map_file_perms))
+                            (allow ARG1 boot_file (file (map))))
 
-                     (macro mmap ((type ARG1))
-                            (allow ARG1 boot_file mmap_file_perms)
+                     (macro mapx ((type ARG1))
+                            (allow ARG1 boot_file mapx_file_perms)
                             (call boot.search (ARG1)))
 
                      (macro read ((type ARG1))
@@ -1987,10 +1987,10 @@
                             (call files.generic_boot.search (ARG1)))
 
                      (macro map_files ((type ARG1))
-                            (allow ARG1 obj_type_attribute map_file_perms))
+                            (allow ARG1 obj_type_attribute (file (map))))
 
-                     (macro mmap ((type ARG1))
-                            (allow ARG1 obj_type_attribute mmap_file_perms)
+                     (macro mapx ((type ARG1))
+                            (allow ARG1 obj_type_attribute mapx_file_perms)
                             (call files.generic_boot.search (ARG1)))
 
                      (macro obj_type ((type ARG1))
@@ -2260,10 +2260,10 @@
                             (call files.generic_boot.search (ARG1)))
 
                      (macro map_files ((type ARG1))
-                            (allow ARG1 boot_file map_file_perms))
+                            (allow ARG1 boot_file (file (map))))
 
-                     (macro mmap ((type ARG1))
-                            (allow ARG1 boot_file mmap_file_perms)
+                     (macro mapx ((type ARG1))
+                            (allow ARG1 boot_file mapx_file_perms)
                             (call files.generic_boot.search (ARG1)))
 
                      (macro obj_type_transition
@@ -2457,7 +2457,7 @@
                             (allow ARG1 obj_type_attribute manage_file_perms))
 
                      (macro map_files ((type ARG1))
-                            (allow ARG1 obj_type_attribute map_file_perms))
+                            (allow ARG1 obj_type_attribute (file (map))))
 
                      (macro obj_type ((type ARG1))
                             (typeattributeset obj_type_attribute ARG1))
@@ -2535,7 +2535,7 @@
                             (allow ARG1 boot_flag_file manage_file_perms))
 
                      (macro map_files ((type ARG1))
-                            (allow ARG1 boot_flag_file map_file_perms))
+                            (allow ARG1 boot_flag_file (file (map))))
 
                      (macro read_files ((type ARG1))
                             (allow ARG1 boot_flag_file read_file_perms))
@@ -2684,10 +2684,10 @@
                             (call config.search (ARG1)))
 
                      (macro map_files ((type ARG1))
-                            (allow ARG1 config_file map_file_perms))
+                            (allow ARG1 config_file (file (map))))
 
-                     (macro mmap ((type ARG1))
-                            (allow ARG1 config_file mmap_file_perms)
+                     (macro mapx ((type ARG1))
+                            (allow ARG1 config_file mapx_file_perms)
                             (call config.search (ARG1)))
 
                      (macro read ((type ARG1))
@@ -2929,10 +2929,10 @@
                             (call files.generic_config.read_lnk_files (ARG1)))
 
                      (macro map_files ((type ARG1))
-                            (allow ARG1 obj_type_attribute map_file_perms))
+                            (allow ARG1 obj_type_attribute (file (map))))
 
-                     (macro mmap ((type ARG1))
-                            (allow ARG1 obj_type_attribute mmap_file_perms)
+                     (macro mapx ((type ARG1))
+                            (allow ARG1 obj_type_attribute mapx_file_perms)
                             (call files.generic_config.read_lnk_files (ARG1)))
 
                      (macro obj_type ((type ARG1))
@@ -3200,10 +3200,10 @@
                             (call files.generic_config.read_lnk_files (ARG1)))
 
                      (macro map_files ((type ARG1))
-                            (allow ARG1 config_file map_file_perms))
+                            (allow ARG1 config_file (file (map))))
 
-                     (macro mmap ((type ARG1))
-                            (allow ARG1 config_file mmap_file_perms)
+                     (macro mapx ((type ARG1))
+                            (allow ARG1 config_file mapx_file_perms)
                             (call files.generic_config.read_lnk_files (ARG1)))
 
                      (macro obj_type_transition
@@ -3470,10 +3470,10 @@
                             (call data.search (ARG1)))
 
                      (macro map_files ((type ARG1))
-                            (allow ARG1 data_file map_file_perms))
+                            (allow ARG1 data_file (file (map))))
 
-                     (macro mmap ((type ARG1))
-                            (allow ARG1 data_file mmap_file_perms)
+                     (macro mapx ((type ARG1))
+                            (allow ARG1 data_file mapx_file_perms)
                             (call data.search (ARG1)))
 
                      (macro read ((type ARG1))
@@ -3715,10 +3715,10 @@
                             (call files.generic_data.search (ARG1)))
 
                      (macro map_files ((type ARG1))
-                            (allow ARG1 obj_type_attribute map_file_perms))
+                            (allow ARG1 obj_type_attribute (file (map))))
 
-                     (macro mmap ((type ARG1))
-                            (allow ARG1 obj_type_attribute mmap_file_perms)
+                     (macro mapx ((type ARG1))
+                            (allow ARG1 obj_type_attribute mapx_file_perms)
                             (call files.generic_data.search (ARG1)))
 
                      (macro obj_type ((type ARG1))
@@ -3986,10 +3986,10 @@
                             (call files.generic_data.search (ARG1)))
 
                      (macro map_files ((type ARG1))
-                            (allow ARG1 data_file map_file_perms))
+                            (allow ARG1 data_file (file (map))))
 
-                     (macro mmap ((type ARG1))
-                            (allow ARG1 data_file mmap_file_perms)
+                     (macro mapx ((type ARG1))
+                            (allow ARG1 data_file mapx_file_perms)
                             (call files.generic_data.search (ARG1)))
 
                      (macro obj_type_transition
@@ -4322,10 +4322,10 @@
                             (allow ARG1 file manage_sock_file_perms))
 
                      (macro map_files ((type ARG1))
-                            (allow ARG1 file map_file_perms))
+                            (allow ARG1 file (file (map))))
 
-                     (macro mmap ((type ARG1))
-                            (allow ARG1 file mmap_file_perms))
+                     (macro mapx ((type ARG1))
+                            (allow ARG1 file mapx_file_perms))
 
                      (macro obj_type_transition
                             ((type ARG1)(type ARG2)(class ARG3)(name ARG4))
@@ -4594,8 +4594,8 @@
               (macro map_files ((type ARG1))
                      (allow ARG1 boot_file (files (map))))
 
-              (macro mmap ((type ARG1))
-                     (allow ARG1 boot_file mmap_file_perms)
+              (macro mapx ((type ARG1))
+                     (allow ARG1 boot_file mapx_file_perms)
                      (call search (ARG1))
                      (call fs.rootfs.read_lnk_files (ARG1)))
 
@@ -4871,8 +4871,8 @@
               (macro map_files ((type ARG1))
                      (allow ARG1 config_file (files (map))))
 
-              (macro mmap ((type ARG1))
-                     (allow ARG1 config_file mmap_file_perms)
+              (macro mapx ((type ARG1))
+                     (allow ARG1 config_file mapx_file_perms)
                      (call search (ARG1)))
 
               (macro mounton_dirs ((type ARG1))
@@ -5092,8 +5092,8 @@
               (macro map_files ((type ARG1))
                      (allow ARG1 data_file (files (map))))
 
-              (macro mmap ((type ARG1))
-                     (allow ARG1 data_file mmap_file_perms)
+              (macro mapx ((type ARG1))
+                     (allow ARG1 data_file mapx_file_perms)
                      (call search (ARG1)))
 
               (macro obj_type_transition
@@ -5328,8 +5328,8 @@
               (macro map_files ((type ARG1))
                      (allow ARG1 modules_file (files (map))))
 
-              (macro mmap ((type ARG1))
-                     (allow ARG1 modules_file mmap_file_perms)
+              (macro mapx ((type ARG1))
+                     (allow ARG1 modules_file mapx_file_perms)
                      (call search (ARG1)))
 
               (macro mounton_dirs ((type ARG1))
@@ -5621,8 +5621,8 @@
               (macro map_files ((type ARG1))
                      (allow ARG1 runtime_file (files (map))))
 
-              (macro mmap ((type ARG1))
-                     (allow ARG1 runtime_file mmap_file_perms)
+              (macro mapx ((type ARG1))
+                     (allow ARG1 runtime_file mapx_file_perms)
                      (call search (ARG1)))
 
               (macro obj_type_transition
@@ -5944,8 +5944,8 @@
               (macro map_files ((type ARG1))
                      (allow ARG1 runtime_config_file (files (map))))
 
-              (macro mmap ((type ARG1))
-                     (allow ARG1 runtime_config_file mmap_file_perms)
+              (macro mapx ((type ARG1))
+                     (allow ARG1 runtime_config_file mapx_file_perms)
                      (call search (ARG1)))
 
               (macro obj_type_transition
@@ -6205,8 +6205,8 @@
               (macro map_files ((type ARG1))
                      (allow ARG1 runtime_lock_file (files (map))))
 
-              (macro mmap ((type ARG1))
-                     (allow ARG1 runtime_lock_file mmap_file_perms)
+              (macro mapx ((type ARG1))
+                     (allow ARG1 runtime_lock_file mapx_file_perms)
                      (call search (ARG1)))
 
               (macro obj_type_transition
@@ -6476,8 +6476,8 @@
               (macro map_files ((type ARG1))
                      (allow ARG1 var_file (files (map))))
 
-              (macro mmap ((type ARG1))
-                     (allow ARG1 var_file mmap_file_perms))
+              (macro mapx ((type ARG1))
+                     (allow ARG1 var_file mapx_file_perms))
 
               (macro obj_type_transition
                      ((type ARG1)(type ARG2)(class ARG3)(name ARG4))
@@ -6782,8 +6782,8 @@
               (macro map_files ((type ARG1))
                      (allow ARG1 var_cache_file (files (map))))
 
-              (macro mmap ((type ARG1))
-                     (allow ARG1 var_cache_file mmap_file_perms)
+              (macro mapx ((type ARG1))
+                     (allow ARG1 var_cache_file mapx_file_perms)
                      (call search (ARG1)))
 
               (macro obj_type_transition
@@ -7102,8 +7102,8 @@
               (macro map_files ((type ARG1))
                      (allow ARG1 var_db_file (files (map))))
 
-              (macro mmap ((type ARG1))
-                     (allow ARG1 var_db_file mmap_file_perms)
+              (macro mapx ((type ARG1))
+                     (allow ARG1 var_db_file mapx_file_perms)
                      (call search (ARG1)))
 
               (macro obj_type_transition
@@ -7394,8 +7394,8 @@
               (macro map_files ((type ARG1))
                      (allow ARG1 var_lib_file (files (map))))
 
-              (macro mmap ((type ARG1))
-                     (allow ARG1 var_lib_file mmap_file_perms)
+              (macro mapx ((type ARG1))
+                     (allow ARG1 var_lib_file mapx_file_perms)
                      (call search (ARG1)))
 
               (macro obj_type_transition
@@ -7713,8 +7713,8 @@
               (macro map_files ((type ARG1))
                      (allow ARG1 var_log_file (files (map))))
 
-              (macro mmap ((type ARG1))
-                     (allow ARG1 var_log_file mmap_file_perms)
+              (macro mapx ((type ARG1))
+                     (allow ARG1 var_log_file mapx_file_perms)
                      (call search (ARG1)))
 
               (macro obj_type_transition
@@ -8005,8 +8005,8 @@
               (macro map_files ((type ARG1))
                      (allow ARG1 var_spool_file (files (map))))
 
-              (macro mmap ((type ARG1))
-                     (allow ARG1 var_spool_file mmap_file_perms)
+              (macro mapx ((type ARG1))
+                     (allow ARG1 var_spool_file mapx_file_perms)
                      (call search (ARG1)))
 
               (macro obj_type_transition
@@ -8388,8 +8388,8 @@
               (macro map_files ((type ARG1))
                      (allow ARG1 var_tmp_file (files (map))))
 
-              (macro mmap ((type ARG1))
-                     (allow ARG1 var_tmp_file mmap_file_perms)
+              (macro mapx ((type ARG1))
+                     (allow ARG1 var_tmp_file mapx_file_perms)
                      (call search (ARG1)))
 
               (macro obj_type_transition
@@ -9204,10 +9204,10 @@
                             (call files.generic_modules.read_lnk_files (ARG1)))
 
                      (macro map_files ((type ARG1))
-                            (allow ARG1 obj_type_attribute map_file_perms))
+                            (allow ARG1 obj_type_attribute (file (map))))
 
-                     (macro mmap ((type ARG1))
-                            (allow ARG1 obj_type_attribute mmap_file_perms)
+                     (macro mapx ((type ARG1))
+                            (allow ARG1 obj_type_attribute mapx_file_perms)
                             (call files.generic_modules.read_lnk_files (ARG1)))
 
                      (macro obj_type ((type ARG1))
@@ -9307,10 +9307,10 @@
                             (call files.generic_modules.read_lnk_files (ARG1)))
 
                      (macro map_files ((type ARG1))
-                            (allow ARG1 modules_file map_file_perms))
+                            (allow ARG1 modules_file (file (map))))
 
-                     (macro mmap ((type ARG1))
-                            (allow ARG1 modules_file mmap_file_perms)
+                     (macro mapx ((type ARG1))
+                            (allow ARG1 modules_file mapx_file_perms)
                             (call files.generic_modules.read_lnk_files (ARG1)))
 
                      (macro read_files ((type ARG1))
@@ -9506,10 +9506,10 @@
                             (call runtime.search (ARG1)))
 
                      (macro map_files ((type ARG1))
-                            (allow ARG1 runtime_file map_file_perms))
+                            (allow ARG1 runtime_file (file (map))))
 
-                     (macro mmap ((type ARG1))
-                            (allow ARG1 runtime_file mmap_file_perms)
+                     (macro mapx ((type ARG1))
+                            (allow ARG1 runtime_file mapx_file_perms)
                             (call runtime.search (ARG1)))
 
                      (macro read ((type ARG1))
@@ -9865,10 +9865,10 @@
                             (call files.generic_runtime.search (ARG1)))
 
                      (macro map_files ((type ARG1))
-                            (allow ARG1 obj_type_attribute map_file_perms))
+                            (allow ARG1 obj_type_attribute (file (map))))
 
-                     (macro mmap ((type ARG1))
-                            (allow ARG1 obj_type_attribute mmap_file_perms)
+                     (macro mapx ((type ARG1))
+                            (allow ARG1 obj_type_attribute mapx_file_perms)
                             (call files.generic_runtime.search (ARG1)))
 
                      (macro obj_type ((type ARG1))
@@ -10253,10 +10253,10 @@
                             (call files.generic_runtime.search (ARG1)))
 
                      (macro map_files ((type ARG1))
-                            (allow ARG1 runtime_file map_file_perms))
+                            (allow ARG1 runtime_file (file (map))))
 
-                     (macro mmap ((type ARG1))
-                            (allow ARG1 runtime_file mmap_file_perms)
+                     (macro mapx ((type ARG1))
+                            (allow ARG1 runtime_file mapx_file_perms)
                             (call files.generic_runtime.search (ARG1)))
 
                      (macro obj_type_transition
@@ -10596,10 +10596,10 @@
                             (call runtime_config.search (ARG1)))
 
                      (macro map_files ((type ARG1))
-                            (allow ARG1 runtime_config_file map_file_perms))
+                            (allow ARG1 runtime_config_file (file (map))))
 
-                     (macro mmap ((type ARG1))
-                            (allow ARG1 runtime_config_file mmap_file_perms)
+                     (macro mapx ((type ARG1))
+                            (allow ARG1 runtime_config_file mapx_file_perms)
                             (call runtime_config.search (ARG1)))
 
                      (macro read ((type ARG1))
@@ -10854,10 +10854,10 @@
                             (call files.generic_runtime_config.search (ARG1)))
 
                      (macro map_files ((type ARG1))
-                            (allow ARG1 obj_type_attribute map_file_perms))
+                            (allow ARG1 obj_type_attribute (file (map))))
 
-                     (macro mmap ((type ARG1))
-                            (allow ARG1 obj_type_attribute mmap_file_perms)
+                     (macro mapx ((type ARG1))
+                            (allow ARG1 obj_type_attribute mapx_file_perms)
                             (call files.generic_runtime_config.search (ARG1)))
 
                      (macro obj_type ((type ARG1))
@@ -11135,10 +11135,10 @@
                             (call files.generic_runtime_config.search (ARG1)))
 
                      (macro map_files ((type ARG1))
-                            (allow ARG1 runtime_config_file map_file_perms))
+                            (allow ARG1 runtime_config_file (file (map))))
 
-                     (macro mmap ((type ARG1))
-                            (allow ARG1 runtime_config_file mmap_file_perms)
+                     (macro mapx ((type ARG1))
+                            (allow ARG1 runtime_config_file mapx_file_perms)
                             (call files.generic_runtime_config.search (ARG1)))
 
                      (macro obj_type_transition
@@ -11420,10 +11420,10 @@
                             (call runtime_lock.search (ARG1)))
 
                      (macro map_files ((type ARG1))
-                            (allow ARG1 runtime_lock_file map_file_perms))
+                            (allow ARG1 runtime_lock_file (file (map))))
 
-                     (macro mmap ((type ARG1))
-                            (allow ARG1 runtime_lock_file mmap_file_perms)
+                     (macro mapx ((type ARG1))
+                            (allow ARG1 runtime_lock_file mapx_file_perms)
                             (call runtime_lock.search (ARG1)))
 
                      (macro read ((type ARG1))
@@ -11673,10 +11673,10 @@
                             (call files.generic_runtime_lock.search (ARG1)))
 
                      (macro map_files ((type ARG1))
-                            (allow ARG1 obj_type_attribute map_file_perms))
+                            (allow ARG1 obj_type_attribute (file (map))))
 
-                     (macro mmap ((type ARG1))
-                            (allow ARG1 obj_type_attribute mmap_file_perms)
+                     (macro mapx ((type ARG1))
+                            (allow ARG1 obj_type_attribute mapx_file_perms)
                             (call files.generic_runtime_lock.search (ARG1)))
 
                      (macro obj_type ((type ARG1))
@@ -11951,10 +11951,10 @@
                             (call files.generic_runtime_lock.search (ARG1)))
 
                      (macro map_files ((type ARG1))
-                            (allow ARG1 runtime_lock_file map_file_perms))
+                            (allow ARG1 runtime_lock_file (file (map))))
 
-                     (macro mmap ((type ARG1))
-                            (allow ARG1 runtime_lock_file mmap_file_perms)
+                     (macro mapx ((type ARG1))
+                            (allow ARG1 runtime_lock_file mapx_file_perms)
                             (call files.generic_runtime_lock.search (ARG1)))
 
                      (macro obj_type_transition
@@ -12401,10 +12401,10 @@
                             (allow ARG1 sec_file manage_sock_file_perms))
 
                      (macro map_files ((type ARG1))
-                            (allow ARG1 sec_file map_file_perms))
+                            (allow ARG1 sec_file (file (map))))
 
-                     (macro mmap ((type ARG1))
-                            (allow ARG1 sec_file mmap_file_perms))
+                     (macro mapx ((type ARG1))
+                            (allow ARG1 sec_file mapx_file_perms))
 
                      (macro obj_type_transition
                             ((type ARG1)(type ARG2)(class ARG3)(name ARG4))
@@ -12727,8 +12727,8 @@
                             (allow ARG1 tmpfs_file manage_file_perms)
                             (call tmpfs.search (ARG1)))
 
-                     (macro mmap ((type ARG1))
-                            (allow ARG1 tmpfs_file mmap_file_perms)
+                     (macro mapx ((type ARG1))
+                            (allow ARG1 tmpfs_file mapx_file_perms)
                             (call tmpfs.search (ARG1)))
 
                      (macro read ((type ARG1))
@@ -13081,10 +13081,10 @@
                             (call fs.tmpfs.search (ARG1)))
 
                      (macro map_files ((type ARG1))
-                            (allow ARG1 obj_type_attribute map_file_perms))
+                            (allow ARG1 obj_type_attribute (file (map))))
 
-                     (macro mmap ((type ARG1))
-                            (allow ARG1 obj_type_attribute mmap_file_perms)
+                     (macro mapx ((type ARG1))
+                            (allow ARG1 obj_type_attribute mapx_file_perms)
                             (call fs.tmpfs.search (ARG1)))
 
                      (macro obj_type ((type ARG1))
@@ -13469,10 +13469,10 @@
                             (call fs.tmpfs.search (ARG1)))
 
                      (macro map_files ((type ARG1))
-                            (allow ARG1 tmpfs_file map_file_perms))
+                            (allow ARG1 tmpfs_file (file (map))))
 
-                     (macro mmap ((type ARG1))
-                            (allow ARG1 tmpfs_file mmap_file_perms)
+                     (macro mapx ((type ARG1))
+                            (allow ARG1 tmpfs_file mapx_file_perms)
                             (call fs.tmpfs.search (ARG1)))
 
                      (macro obj_type_transition
@@ -13791,10 +13791,10 @@
                      (allow ARG1 file manage_sock_file_perms))
 
               (macro map_files ((type ARG1))
-                     (allow ARG1 file map_file_perms))
+                     (allow ARG1 file (file (map))))
 
-              (macro mmap ((type ARG1))
-                     (allow ARG1 file mmap_file_perms))
+              (macro mapx ((type ARG1))
+                     (allow ARG1 file mapx_file_perms))
 
               (macro read ((type ARG1))
                      (allow ARG1 file (files_except_blk_and_chr (read))))
@@ -14113,10 +14113,10 @@
                             (call var.search (ARG1)))
 
                      (macro map_files ((type ARG1))
-                            (allow ARG1 var_file map_file_perms))
+                            (allow ARG1 var_file (file (map))))
 
-                     (macro mmap ((type ARG1))
-                            (allow ARG1 var_file mmap_file_perms)
+                     (macro mapx ((type ARG1))
+                            (allow ARG1 var_file mapx_file_perms)
                             (call var.search (ARG1)))
 
                      (macro read ((type ARG1))
@@ -14463,10 +14463,10 @@
                             (call files.generic_var.search (ARG1)))
 
                      (macro map_files ((type ARG1))
-                            (allow ARG1 obj_type_attribute map_file_perms))
+                            (allow ARG1 obj_type_attribute (file (map))))
 
-                     (macro mmap ((type ARG1))
-                            (allow ARG1 obj_type_attribute mmap_file_perms)
+                     (macro mapx ((type ARG1))
+                            (allow ARG1 obj_type_attribute mapx_file_perms)
                             (call files.generic_var.search (ARG1)))
 
                      (macro obj_type ((type ARG1))
@@ -14839,10 +14839,10 @@
                             (call files.generic_var.search (ARG1)))
 
                      (macro map_files ((type ARG1))
-                            (allow ARG1 var_file map_file_perms))
+                            (allow ARG1 var_file (file (map))))
 
-                     (macro mmap ((type ARG1))
-                            (allow ARG1 var_file mmap_file_perms)
+                     (macro mapx ((type ARG1))
+                            (allow ARG1 var_file mapx_file_perms)
                             (call files.generic_var.search (ARG1)))
 
                      (macro obj_type_transition
@@ -15209,10 +15209,10 @@
                             (call var_cache.search (ARG1)))
 
                      (macro map_files ((type ARG1))
-                            (allow ARG1 var_cache_file map_file_perms))
+                            (allow ARG1 var_cache_file (file (map))))
 
-                     (macro mmap ((type ARG1))
-                            (allow ARG1 var_cache_file mmap_file_perms)
+                     (macro mapx ((type ARG1))
+                            (allow ARG1 var_cache_file mapx_file_perms)
                             (call var_cache.search (ARG1)))
 
                      (macro read ((type ARG1))
@@ -15601,10 +15601,10 @@
                                   (ARG1)))
 
                      (macro map_files ((type ARG1))
-                            (allow ARG1 obj_type_attribute map_file_perms))
+                            (allow ARG1 obj_type_attribute (file (map))))
 
-                     (macro mmap ((type ARG1))
-                            (allow ARG1 obj_type_attribute mmap_file_perms)
+                     (macro mapx ((type ARG1))
+                            (allow ARG1 obj_type_attribute mapx_file_perms)
                             (call files.generic_var_cache.read_lnk_files
                                   (ARG1)))
 
@@ -16068,10 +16068,10 @@
                                   (ARG1)))
 
                      (macro map_files ((type ARG1))
-                            (allow ARG1 var_cache_file map_file_perms))
+                            (allow ARG1 var_cache_file (file (map))))
 
-                     (macro mmap ((type ARG1))
-                            (allow ARG1 var_cache_file mmap_file_perms)
+                     (macro mapx ((type ARG1))
+                            (allow ARG1 var_cache_file mapx_file_perms)
                             (call files.generic_var_cache.read_lnk_files
                                   (ARG1)))
 
@@ -16457,10 +16457,10 @@
                             (call var_db.search (ARG1)))
 
                      (macro map_files ((type ARG1))
-                            (allow ARG1 var_db_file map_file_perms))
+                            (allow ARG1 var_db_file (file (map))))
 
-                     (macro mmap ((type ARG1))
-                            (allow ARG1 var_db_file mmap_file_perms)
+                     (macro mapx ((type ARG1))
+                            (allow ARG1 var_db_file mapx_file_perms)
                             (call var_db.search (ARG1)))
 
                      (macro read ((type ARG1))
@@ -16704,10 +16704,10 @@
                             (call files.generic_var_db.search (ARG1)))
 
                      (macro map_files ((type ARG1))
-                            (allow ARG1 obj_type_attribute map_file_perms))
+                            (allow ARG1 obj_type_attribute (file (map))))
 
-                     (macro mmap ((type ARG1))
-                            (allow ARG1 obj_type_attribute mmap_file_perms)
+                     (macro mapx ((type ARG1))
+                            (allow ARG1 obj_type_attribute mapx_file_perms)
                             (call files.generic_var_db.search (ARG1)))
 
                      (macro obj_type ((type ARG1))
@@ -16978,10 +16978,10 @@
                             (call files.generic_var_db.search (ARG1)))
 
                      (macro map_files ((type ARG1))
-                            (allow ARG1 var_db_file map_file_perms))
+                            (allow ARG1 var_db_file (file (map))))
 
-                     (macro mmap ((type ARG1))
-                            (allow ARG1 var_db_file mmap_file_perms)
+                     (macro mapx ((type ARG1))
+                            (allow ARG1 var_db_file mapx_file_perms)
                             (call files.generic_var_db.search (ARG1)))
 
                      (macro obj_type_transition
@@ -17284,10 +17284,10 @@
                             (call var_lib.search (ARG1)))
 
                      (macro map_files ((type ARG1))
-                            (allow ARG1 var_lib_file map_file_perms))
+                            (allow ARG1 var_lib_file (file (map))))
 
-                     (macro mmap ((type ARG1))
-                            (allow ARG1 var_lib_file mmap_file_perms)
+                     (macro mapx ((type ARG1))
+                            (allow ARG1 var_lib_file mapx_file_perms)
                             (call var_lib.search (ARG1)))
 
                      (macro read ((type ARG1))
@@ -17643,10 +17643,10 @@
                             (call files.generic_var_lib.read_lnk_files (ARG1)))
 
                      (macro map_files ((type ARG1))
-                            (allow ARG1 obj_type_attribute map_file_perms))
+                            (allow ARG1 obj_type_attribute (file (map))))
 
-                     (macro mmap ((type ARG1))
-                            (allow ARG1 obj_type_attribute mmap_file_perms)
+                     (macro mapx ((type ARG1))
+                            (allow ARG1 obj_type_attribute mapx_file_perms)
                             (call files.generic_var_lib.read_lnk_files (ARG1)))
 
                      (macro obj_type ((type ARG1))
@@ -18031,10 +18031,10 @@
                             (call files.generic_var_lib.read_lnk_files (ARG1)))
 
                      (macro map_files ((type ARG1))
-                            (allow ARG1 var_lib_file map_file_perms))
+                            (allow ARG1 var_lib_file (file (map))))
 
-                     (macro mmap ((type ARG1))
-                            (allow ARG1 var_lib_file mmap_file_perms)
+                     (macro mapx ((type ARG1))
+                            (allow ARG1 var_lib_file mapx_file_perms)
                             (call files.generic_var_lib.read_lnk_files (ARG1)))
 
                      (macro obj_type_transition
@@ -18368,10 +18368,10 @@
                             (call var_log.search (ARG1)))
 
                      (macro map_files ((type ARG1))
-                            (allow ARG1 var_log_file map_file_perms))
+                            (allow ARG1 var_log_file (file (map))))
 
-                     (macro mmap ((type ARG1))
-                            (allow ARG1 var_log_file mmap_file_perms)
+                     (macro mapx ((type ARG1))
+                            (allow ARG1 var_log_file mapx_file_perms)
                             (call var_log.search (ARG1)))
 
                      (macro read ((type ARG1))
@@ -18616,10 +18616,10 @@
                             (call files.generic_var_log.read_lnk_files (ARG1)))
 
                      (macro map_files ((type ARG1))
-                            (allow ARG1 obj_type_attribute map_file_perms))
+                            (allow ARG1 obj_type_attribute (file (map))))
 
-                     (macro mmap ((type ARG1))
-                            (allow ARG1 obj_type_attribute mmap_file_perms)
+                     (macro mapx ((type ARG1))
+                            (allow ARG1 obj_type_attribute mapx_file_perms)
                             (call files.generic_var_log.read_lnk_files (ARG1)))
 
                      (macro obj_type ((type ARG1))
@@ -18890,10 +18890,10 @@
                             (call files.generic_var_log.read_lnk_files (ARG1)))
 
                      (macro map_files ((type ARG1))
-                            (allow ARG1 var_log_file map_file_perms))
+                            (allow ARG1 var_log_file (file (map))))
 
-                     (macro mmap ((type ARG1))
-                            (allow ARG1 var_log_file mmap_file_perms)
+                     (macro mapx ((type ARG1))
+                            (allow ARG1 var_log_file mapx_file_perms)
                             (call files.generic_var_log.read_lnk_files (ARG1)))
 
                      (macro obj_type_transition
@@ -19197,10 +19197,10 @@
                             (call var_spool.search (ARG1)))
 
                      (macro map_files ((type ARG1))
-                            (allow ARG1 var_spool_file map_file_perms))
+                            (allow ARG1 var_spool_file (file (map))))
 
-                     (macro mmap ((type ARG1))
-                            (allow ARG1 var_spool_file mmap_file_perms)
+                     (macro mapx ((type ARG1))
+                            (allow ARG1 var_spool_file mapx_file_perms)
                             (call var_spool.search (ARG1)))
 
                      (macro read ((type ARG1))
@@ -19559,10 +19559,10 @@
                             (call files.generic_var_spool.search (ARG1)))
 
                      (macro map_files ((type ARG1))
-                            (allow ARG1 obj_type_attribute map_file_perms))
+                            (allow ARG1 obj_type_attribute (file (map))))
 
-                     (macro mmap ((type ARG1))
-                            (allow ARG1 obj_type_attribute mmap_file_perms)
+                     (macro mapx ((type ARG1))
+                            (allow ARG1 obj_type_attribute mapx_file_perms)
                             (call files.generic_var_spool.search (ARG1)))
 
                      (macro obj_type ((type ARG1))
@@ -19947,10 +19947,10 @@
                             (call files.generic_var_spool.search (ARG1)))
 
                      (macro map_files ((type ARG1))
-                            (allow ARG1 var_spool_file map_file_perms))
+                            (allow ARG1 var_spool_file (file (map))))
 
-                     (macro mmap ((type ARG1))
-                            (allow ARG1 var_spool_file mmap_file_perms)
+                     (macro mapx ((type ARG1))
+                            (allow ARG1 var_spool_file mapx_file_perms)
                             (call files.generic_var_spool.search (ARG1)))
 
                      (macro obj_type_transition
@@ -20323,10 +20323,10 @@
                             (call var_tmp.search (ARG1)))
 
                      (macro map_files ((type ARG1))
-                            (allow ARG1 var_tmp_file map_file_perms))
+                            (allow ARG1 var_tmp_file (file (map))))
 
-                     (macro mmap ((type ARG1))
-                            (allow ARG1 var_tmp_file mmap_file_perms)
+                     (macro mapx ((type ARG1))
+                            (allow ARG1 var_tmp_file mapx_file_perms)
                             (call var_tmp.search (ARG1)))
 
                      (macro read ((type ARG1))
@@ -20691,10 +20691,10 @@
                             (call files.generic_var_tmp.search (ARG1)))
 
                      (macro map_files ((type ARG1))
-                            (allow ARG1 obj_type_attribute map_file_perms))
+                            (allow ARG1 obj_type_attribute (file (map))))
 
-                     (macro mmap ((type ARG1))
-                            (allow ARG1 obj_type_attribute mmap_file_perms)
+                     (macro mapx ((type ARG1))
+                            (allow ARG1 obj_type_attribute mapx_file_perms)
                             (call files.generic_var_tmp.search (ARG1)))
 
                      (macro obj_type ((type ARG1))
@@ -21090,10 +21090,10 @@
                             (call files.generic_var_tmp.search (ARG1)))
 
                      (macro map_files ((type ARG1))
-                            (allow ARG1 var_tmp_file map_file_perms))
+                            (allow ARG1 var_tmp_file (file (map))))
 
-                     (macro mmap ((type ARG1))
-                            (allow ARG1 var_tmp_file mmap_file_perms)
+                     (macro mapx ((type ARG1))
+                            (allow ARG1 var_tmp_file mapx_file_perms)
                             (call files.generic_var_tmp.search (ARG1)))
 
                      (macro obj_type_transition

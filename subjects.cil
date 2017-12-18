@@ -494,7 +494,7 @@
                      (call sys.vm_overcommit_sysctl.read_files
                            (subj_type_attribute))
 
-                     (call cmd.shell.mmap_inherited_files
+                     (call cmd.shell.mapx_inherited_files
                            (subj_type_attribute))
 
                      (call dev.devtty.rw_chr_files (subj_type_attribute))
@@ -505,10 +505,10 @@
                      (call fs.proc.read_lnk_files (subj_type_attribute))
                      (call fs.rootfs.search (subj_type_attribute))
 
-                     (call lib.generic_libraries.mmap (subj_type_attribute))
+                     (call lib.generic_libraries.mapx (subj_type_attribute))
                      (call lib.ld_so.use_files (subj_type_attribute))
                      (call lib.textrel.execmod (subj_type_attribute))
-                     (call lib.textrel.mmap (subj_type_attribute))
+                     (call lib.textrel.mapx (subj_type_attribute))
 
                      (optional common_subj_optional_mcstrans
                                (call mcstrans.client_subj_type

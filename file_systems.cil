@@ -178,8 +178,8 @@
               (macro map_files ((type ARG1))
                      (allow ARG1 obj_type_attribute (files (map))))
 
-              (macro mmap ((type ARG1))
-                     (allow ARG1 obj_type_attribute mmap_file_perms)
+              (macro mapx ((type ARG1))
+                     (allow ARG1 obj_type_attribute mapx_file_perms)
                      (call search (ARG1)))
 
               (macro mount ((type ARG1))
@@ -480,8 +480,8 @@
               (macro map_files ((type ARG1))
                      (allow ARG1 fs (files (map))))
 
-              (macro mmap ((type ARG1))
-                     (allow ARG1 fs mmap_file_perms)
+              (macro mapx ((type ARG1))
+                     (allow ARG1 fs mapx_file_perms)
                      (call search (ARG1)))
 
               (macro read ((type ARG1))
@@ -690,8 +690,8 @@
               (macro map_files ((type ARG1))
                      (allow ARG1 fs (files (map))))
 
-              (macro mmap ((type ARG1))
-                     (allow ARG1 fs mmap_file_perms)
+              (macro mapx ((type ARG1))
+                     (allow ARG1 fs mapx_file_perms)
                      (call search (ARG1)))
 
               (macro read ((type ARG1))
@@ -900,8 +900,8 @@
               (macro map_files ((type ARG1))
                      (allow ARG1 fs (files (map))))
 
-              (macro mmap ((type ARG1))
-                     (allow ARG1 fs mmap_file_perms)
+              (macro mapx ((type ARG1))
+                     (allow ARG1 fs mapx_file_perms)
                      (call search (ARG1)))
 
               (macro read ((type ARG1))
@@ -1112,8 +1112,8 @@
               (macro map_files ((type ARG1))
                      (allow ARG1 fs (files (map))))
 
-              (macro mmap ((type ARG1))
-                     (allow ARG1 fs mmap_file_perms)
+              (macro mapx ((type ARG1))
+                     (allow ARG1 fs mapx_file_perms)
                      (call search (ARG1)))
 
               (macro read ((type ARG1))
@@ -1337,8 +1337,8 @@
            (macro map_files ((type ARG1))
                   (allow ARG1 fs (files (map))))
 
-           (macro mmap ((type ARG1))
-                  (allow ARG1 fs mmap_file_perms)
+           (macro mapx ((type ARG1))
+                  (allow ARG1 fs mapx_file_perms)
                   (call search (ARG1)))
 
            (macro read ((type ARG1))
@@ -1604,8 +1604,8 @@
            (macro map_files ((type ARG1))
                   (allow ARG1 fs (files (map))))
 
-           (macro mmap ((type ARG1))
-                  (allow ARG1 fs mmap_file_perms)
+           (macro mapx ((type ARG1))
+                  (allow ARG1 fs mapx_file_perms)
                   (call search (ARG1)))
 
            (macro mounton_dirs ((type ARG1))
@@ -1888,8 +1888,8 @@
            (macro map_files ((type ARG1))
                   (allow ARG1 fs (files (map))))
 
-           (macro mmap ((type ARG1))
-                  (allow ARG1 fs mmap_file_perms)
+           (macro mapx ((type ARG1))
+                  (allow ARG1 fs mapx_file_perms)
                   (call search (ARG1)))
 
            (macro read ((type ARG1))
@@ -2147,8 +2147,8 @@
            (macro map_files ((type ARG1))
                   (allow ARG1 fs (files (map))))
 
-           (macro mmap ((type ARG1))
-                  (allow ARG1 fs mmap_file_perms)
+           (macro mapx ((type ARG1))
+                  (allow ARG1 fs mapx_file_perms)
                   (call search (ARG1)))
 
            (macro read ((type ARG1))
@@ -2398,8 +2398,8 @@
            (macro map_files ((type ARG1))
                   (allow ARG1 fs (files (map))))
 
-           (macro mmap ((type ARG1))
-                  (allow ARG1 fs mmap_file_perms)
+           (macro mapx ((type ARG1))
+                  (allow ARG1 fs mapx_file_perms)
                   (call search (ARG1)))
 
            (macro read ((type ARG1))
@@ -2832,8 +2832,8 @@
            (macro map_files ((type ARG1))
                   (allow ARG1 fs (files (map))))
 
-           (macro mmap ((type ARG1))
-                  (allow ARG1 fs mmap_file_perms))
+           (macro mapx ((type ARG1))
+                  (allow ARG1 fs mapx_file_perms))
 
            (macro mounton_dirs ((type ARG1))
                   (allow ARG1 fs (dir (getattr mounton))))
@@ -3163,8 +3163,8 @@
            (macro map_files ((type ARG1))
                   (allow ARG1 fs (files (map))))
 
-           (macro mmap ((type ARG1))
-                  (allow ARG1 fs mmap_file_perms)
+           (macro mapx ((type ARG1))
+                  (allow ARG1 fs mapx_file_perms)
                   (call search (ARG1)))
 
            (macro read ((type ARG1))
@@ -3409,8 +3409,8 @@
            (macro map_files ((type ARG1))
                   (allow ARG1 fs (files (map))))
 
-           (macro mmap ((type ARG1))
-                  (allow ARG1 fs mmap_file_perms)
+           (macro mapx ((type ARG1))
+                  (allow ARG1 fs mapx_file_perms)
                   (call search (ARG1)))
 
            (macro read ((type ARG1))
@@ -3634,8 +3634,8 @@
            (macro map_files ((type ARG1))
                   (allow ARG1 fs (files (map))))
 
-           (macro mmap ((type ARG1))
-                  (allow ARG1 fs mmap_file_perms)
+           (macro mapx ((type ARG1))
+                  (allow ARG1 fs mapx_file_perms)
                   (call search (ARG1)))
 
            (macro read ((type ARG1))
@@ -3919,8 +3919,8 @@
            (macro map_files ((type ARG1))
                   (allow ARG1 fs (files (map))))
 
-           (macro mmap ((type ARG1))
-                  (allow ARG1 fs mmap_file_perms)
+           (macro mapx ((type ARG1))
+                  (allow ARG1 fs mapx_file_perms)
                   (call search (ARG1)))
 
            (macro read ((type ARG1))
@@ -4226,8 +4226,8 @@
            (macro map_files ((type ARG1))
                   (allow ARG1 fs (files (map))))
 
-           (macro mmap ((type ARG1))
-                  (allow ARG1 fs mmap_file_perms)
+           (macro mapx ((type ARG1))
+                  (allow ARG1 fs mapx_file_perms)
                   (call search (ARG1)))
 
            (macro read ((type ARG1))
@@ -4482,8 +4482,8 @@
            (macro map_files ((type ARG1))
                   (allow ARG1 fs (files (map))))
 
-           (macro mmap ((type ARG1))
-                  (allow ARG1 fs mmap_file_perms)
+           (macro mapx ((type ARG1))
+                  (allow ARG1 fs mapx_file_perms)
                   (call search (ARG1)))
 
            (macro read ((type ARG1))
@@ -4749,8 +4749,8 @@
            (macro map_files ((type ARG1))
                   (allow ARG1 fs (files (map))))
 
-           (macro mmap ((type ARG1))
-                  (allow ARG1 fs mmap_file_perms)
+           (macro mapx ((type ARG1))
+                  (allow ARG1 fs mapx_file_perms)
                   (call search (ARG1)))
 
            (macro read ((type ARG1))
@@ -4993,8 +4993,8 @@
            (macro map_files ((type ARG1))
                   (allow ARG1 fs (files (map))))
 
-           (macro mmap ((type ARG1))
-                  (allow ARG1 fs mmap_file_perms)
+           (macro mapx ((type ARG1))
+                  (allow ARG1 fs mapx_file_perms)
                   (call search (ARG1)))
 
            (macro read ((type ARG1))
@@ -5205,8 +5205,8 @@
            (macro map_files ((type ARG1))
                   (allow ARG1 fs (files (map))))
 
-           (macro mmap ((type ARG1))
-                  (allow ARG1 fs mmap_file_perms)
+           (macro mapx ((type ARG1))
+                  (allow ARG1 fs mapx_file_perms)
                   (call search (ARG1)))
 
            (macro read ((type ARG1))
@@ -5419,8 +5419,8 @@
            (macro map_files ((type ARG1))
                   (allow ARG1 fs (files (map))))
 
-           (macro mmap ((type ARG1))
-                  (allow ARG1 fs mmap_file_perms)
+           (macro mapx ((type ARG1))
+                  (allow ARG1 fs mapx_file_perms)
                   (call search (ARG1)))
 
            (macro mounton_dirs ((type ARG1))
@@ -5686,8 +5686,8 @@
            (macro map_files ((type ARG1))
                   (allow ARG1 fs (files (map))))
 
-           (macro mmap ((type ARG1))
-                  (allow ARG1 fs mmap_file_perms)
+           (macro mapx ((type ARG1))
+                  (allow ARG1 fs mapx_file_perms)
                   (call search (ARG1)))
 
            (macro read ((type ARG1))
@@ -5992,8 +5992,8 @@
            (macro map_files ((type ARG1))
                   (allow ARG1 fs (files (map))))
 
-           (macro mmap ((type ARG1))
-                  (allow ARG1 fs mmap_file_perms)
+           (macro mapx ((type ARG1))
+                  (allow ARG1 fs mapx_file_perms)
                   (call search (ARG1)))
 
            (macro read ((type ARG1))
@@ -6244,8 +6244,8 @@
            (macro map_files ((type ARG1))
                   (allow ARG1 fs (files (map))))
 
-           (macro mmap ((type ARG1))
-                  (allow ARG1 fs mmap_file_perms)
+           (macro mapx ((type ARG1))
+                  (allow ARG1 fs mapx_file_perms)
                   (call search (ARG1)))
 
            (macro mounton_dirs ((type ARG1))
@@ -6516,8 +6516,8 @@
            (macro map_files ((type ARG1))
                   (allow ARG1 fs (files (map))))
 
-           (macro mmap ((type ARG1))
-                  (allow ARG1 fs mmap_file_perms)
+           (macro mapx ((type ARG1))
+                  (allow ARG1 fs mapx_file_perms)
                   (call search (ARG1)))
 
            (macro read ((type ARG1))
@@ -6801,8 +6801,8 @@
            (macro map_files ((type ARG1))
                   (allow ARG1 fs (files (map))))
 
-           (macro mmap ((type ARG1))
-                  (allow ARG1 fs mmap_file_perms)
+           (macro mapx ((type ARG1))
+                  (allow ARG1 fs mapx_file_perms)
                   (call search (ARG1)))
 
            (macro mounton_dirs ((type ARG1))
@@ -7114,8 +7114,8 @@
            (macro map_files ((type ARG1))
                   (allow ARG1 fs (files (map))))
 
-           (macro mmap ((type ARG1))
-                  (allow ARG1 fs mmap_file_perms)
+           (macro mapx ((type ARG1))
+                  (allow ARG1 fs mapx_file_perms)
                   (call search (ARG1)))
 
            (macro mounton_dirs ((type ARG1))
@@ -7498,8 +7498,8 @@
            (macro map_files ((type ARG1))
                   (allow ARG1 fs (files (map))))
 
-           (macro mmap ((type ARG1))
-                  (allow ARG1 fs mmap_file_perms)
+           (macro mapx ((type ARG1))
+                  (allow ARG1 fs mapx_file_perms)
                   (call search (ARG1)))
 
            (macro read ((type ARG1))
