@@ -1005,8 +1005,7 @@
                             (allow ARG1 isid (files (maprw))))
 
                      (macro mapx ((type ARG1))
-                            (allow ARG1 isid mapx_file_perms)
-                            (call search (ARG1)))
+                            (allow ARG1 isid (files (mapx))))
 
                      (macro mount ((type ARG1))
                             (allow ARG1 isid (filesystem (mount))))

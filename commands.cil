@@ -135,16 +135,16 @@
                      (allow ARG1 cmd_file (files (map))))
 
               (macro mapr_files ((type ARG1))
-                     (allow ARG1 cmd_file (file (mapr)))
+                     (allow ARG1 cmd_file (files (mapr)))
                      (call read_lnk_files (ARG1)))
 
               (macro maprw_files ((type ARG1))
-                     (allow ARG1 cmd_file (file (maprw)))
+                     (allow ARG1 cmd_file (files (maprw)))
                      (call read_lnk_files (ARG1)))
 
               (macro mapx ((type ARG1))
-                     (allow ARG1 cmd_file mapx_file_perms)
-                     (call search (ARG1)))
+                     (allow ARG1 cmd_file (files (mapx)))
+                     (call read_lnk_files (ARG1)))
 
               (macro mapx_inherited_files ((type ARG1))
                      (allow ARG1 cmd_file mapx_inherited_file_perms))

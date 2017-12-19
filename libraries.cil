@@ -125,8 +125,8 @@
                   (call read_lnk_files (ARG1)))
 
            (macro mapx ((type ARG1))
-                  (allow ARG1 lib_file mapx_file_perms)
-                  (call search (ARG1)))
+                  (allow ARG1 lib_file (files (mapx)))
+                  (call read_lnk_files (ARG1)))
 
            (macro obj_type_transition
                   ((type ARG1)(type ARG2)(class ARG3)(name ARG4))

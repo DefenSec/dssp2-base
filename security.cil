@@ -403,8 +403,8 @@
                      (call fs.sysfs.search (ARG1)))
 
               (macro mapx ((type ARG1))
-                     (allow ARG1 isid mapx_file_perms)
-                     (call search (ARG1)))
+                     (allow ARG1 isid (files (mapx)))
+                     (call fs.sysfs.search (ARG1)))
 
               (macro mount ((type ARG1))
                      (allow ARG1 isid (filesystem (mount))))
