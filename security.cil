@@ -294,6 +294,9 @@
               (macro dontaudit_list ((type ARG1))
                      (dontaudit ARG1 isid list_dir_perms))
 
+              (macro dontaudit_setattr_dirs ((type ARG1))
+                     (dontaudit ARG1 isid (dir (setattr))))
+
               (macro dontaudit_write_files ((type ARG1))
                      (dontaudit ARG1 isid write_file_perms))
 

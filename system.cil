@@ -2834,6 +2834,9 @@
               ;; Macros
               ;;
 
+              (macro dontaudit_write_files ((type ARG1))
+                     (dontaudit ARG1 sysctl_file write_file_perms))
+
               (blockinherit obj_all_macro_template)
 
               ;;
