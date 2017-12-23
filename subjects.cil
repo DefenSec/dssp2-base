@@ -164,7 +164,7 @@
        (allow unconfined_subj_type_attribute subj_type_attribute (association
                                                                   (all)))
 
-       (allow unconfined_subj_type_attribute subj_type_attribute (bpf (all)))
+       (allow unconfined_subj_type_attribute self (bpf (all)))
 
        (allow unconfined_subj_type_attribute subj_type_attribute (binder
                                                                   (all)))
