@@ -348,6 +348,10 @@
                      (macro link_keyring ((type ARG1))
                             (allow ARG1 subj_type_attribute link_key_perms))
 
+                     (macro manage_keyring ((type ARG1))
+                            (allow ARG1 self (process (setkeycreate)))
+                            (allow ARG1 subj_type_attribute (key (all))))
+
                      (macro nnp_transition ((type ARG1))
                             (allow ARG1 subj_type_attribute
                                    (process2 (nnp_transition))))
@@ -599,6 +603,10 @@
 
                      (macro link_keyring ((type ARG1))
                             (allow ARG1 subj link_key_perms))
+
+                     (macro manage_keyring ((type ARG1))
+                            (allow ARG1 self (process (setkeycreate)))
+                            (allow ARG1 subj (key (all))))
 
                      (macro nnp_transition ((type ARG1))
                             (allow ARG1 subj (process2 (nnp_transition))))
