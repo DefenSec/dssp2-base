@@ -339,7 +339,7 @@
 
                  (booleanif mount.mount_any_file
                             (true
-                             (call files.rw_inherited_except (isid)))))
+                             (call files.read_inherited_except (isid)))))
 
        (optional sys_optional_nfs
                  (call nfs.client.auto_subj_type_transition (isid))
