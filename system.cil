@@ -326,9 +326,6 @@
        (optional sys_optional_kmod
                  (call kmod.auto_subj_type_transition (isid)))
 
-       (optional sys_optional_machined
-                 (call machined.var_lib.audit_read_access_files (isid)))
-
        (optional sys_optional_misc
                  (call misc.font.client_subj_type (isid)))
 
@@ -336,7 +333,8 @@
                  (call mkosi.use_fd (isid)))
 
        (optional sys_optional_mount
-                 (call mount.loopback.read_files (isid))
+                 (call mount.loopback.read_inherited_files (isid))
+                 (call mount.read_inherited_image_files (isid))
                  (call mount.use_fd (isid))
 
                  (booleanif mount.mount_any_file
