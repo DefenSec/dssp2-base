@@ -184,8 +184,8 @@
               (macro maprw_files ((type ARG1))
                      (allow ARG1 obj_type_attribute (files (maprw))))
 
-              (macro mapx ((type ARG1))
-                     (allow ARG1 obj_type_attribute (files (mapx))))
+              (macro maprx ((type ARG1))
+                     (allow ARG1 obj_type_attribute (files (maprx))))
 
               (macro mount ((type ARG1))
                      (allow ARG1 obj_type_attribute (filesystem (mount))))
@@ -491,8 +491,8 @@
               (macro maprw_files ((type ARG1))
                      (allow ARG1 fs (files (maprw))))
 
-              (macro mapx ((type ARG1))
-                     (allow ARG1 fs (files (mapx))))
+              (macro maprx ((type ARG1))
+                     (allow ARG1 fs (files (maprx))))
 
               (macro read ((type ARG1))
                      (call list (ARG1))
@@ -706,8 +706,8 @@
               (macro maprw_files ((type ARG1))
                      (allow ARG1 fs (files (maprw))))
 
-              (macro mapx ((type ARG1))
-                     (allow ARG1 fs (files (mapx))))
+              (macro maprx ((type ARG1))
+                     (allow ARG1 fs (files (maprx))))
 
               (macro read ((type ARG1))
                      (call list (ARG1))
@@ -921,8 +921,8 @@
               (macro maprw_files ((type ARG1))
                      (allow ARG1 fs (files (maprw))))
 
-              (macro mapx ((type ARG1))
-                     (allow ARG1 fs (files (mapx))))
+              (macro maprx ((type ARG1))
+                     (allow ARG1 fs (files (maprx))))
 
               (macro read ((type ARG1))
                      (call list (ARG1))
@@ -1138,8 +1138,8 @@
               (macro maprw_files ((type ARG1))
                      (allow ARG1 fs (files (maprw))))
 
-              (macro mapx ((type ARG1))
-                     (allow ARG1 fs (files (mapx))))
+              (macro maprx ((type ARG1))
+                     (allow ARG1 fs (files (maprx))))
 
               (macro read ((type ARG1))
                      (call list (ARG1))
@@ -1370,8 +1370,8 @@
                   (allow ARG1 fs (files (maprw)))
                   (call sys.fs_sysctl.search (ARG1)))
 
-           (macro mapx ((type ARG1))
-                  (allow ARG1 fs (files (mapx)))
+           (macro maprx ((type ARG1))
+                  (allow ARG1 fs (files (maprx)))
                   (call sys.fs_sysctl.search (ARG1)))
 
            (macro read ((type ARG1))
@@ -1647,8 +1647,8 @@
                   (call sysfs.search (ARG1))
                   (call tmpfs.read_lnk_files (ARG1)))
 
-           (macro mapx ((type ARG1))
-                  (allow ARG1 fs (files (mapx)))
+           (macro maprx ((type ARG1))
+                  (allow ARG1 fs (files (maprx)))
                   (call sysfs.search (ARG1))
                   (call tmpfs.read_lnk_files (ARG1)))
 
@@ -1938,8 +1938,8 @@
            (macro maprw_files ((type ARG1))
                   (allow ARG1 fs (files (maprw))))
 
-           (macro mapx ((type ARG1))
-                  (allow ARG1 fs (files (mapx))))
+           (macro maprx ((type ARG1))
+                  (allow ARG1 fs (files (maprx))))
 
            (macro read ((type ARG1))
                   (allow ARG1 fs (files_except_blk_and_chr (read))))
@@ -2204,8 +2204,8 @@
                   (allow ARG1 fs (files (maprw)))
                   (call sysfs.search (ARG1)))
 
-           (macro mapx ((type ARG1))
-                  (allow ARG1 fs (files (mapx)))
+           (macro maprx ((type ARG1))
+                  (allow ARG1 fs (files (maprx)))
                   (call sysfs.search (ARG1)))
 
            (macro read ((type ARG1))
@@ -2463,8 +2463,8 @@
                   (allow ARG1 fs (files (maprw)))
                   (call sysfs.search (ARG1)))
 
-           (macro mapx ((type ARG1))
-                  (allow ARG1 fs (files (mapx)))
+           (macro maprx ((type ARG1))
+                  (allow ARG1 fs (files (maprx)))
                   (call sysfs.search (ARG1)))
 
            (macro read ((type ARG1))
@@ -2917,8 +2917,8 @@
            (macro maprw_files ((type ARG1))
                   (allow ARG1 fs (files (maprw))))
 
-           (macro mapx ((type ARG1))
-                  (allow ARG1 fs (files (mapx))))
+           (macro maprx ((type ARG1))
+                  (allow ARG1 fs (files (maprx))))
 
            (macro mounton_dirs ((type ARG1))
                   (allow ARG1 fs (dir (getattr mounton))))
@@ -3254,8 +3254,8 @@
            (macro maprw_files ((type ARG1))
                   (allow ARG1 fs (files (maprw))))
 
-           (macro mapx ((type ARG1))
-                  (allow ARG1 fs (files (mapx))))
+           (macro maprx ((type ARG1))
+                  (allow ARG1 fs (files (maprx))))
 
            (macro read ((type ARG1))
                   (allow ARG1 fs (files_except_blk_and_chr (read))))
@@ -3505,8 +3505,8 @@
            (macro maprw_files ((type ARG1))
                   (allow ARG1 fs (files (maprw))))
 
-           (macro mapx ((type ARG1))
-                  (allow ARG1 fs (files (mapx))))
+           (macro maprx ((type ARG1))
+                  (allow ARG1 fs (files (maprx))))
 
            (macro read ((type ARG1))
                   (call list (ARG1))
@@ -3737,8 +3737,8 @@
                   (allow ARG1 fs (files (maprw)))
                   (call sysfs.search (ARG1)))
 
-           (macro mapx ((type ARG1))
-                  (allow ARG1 fs (files (mapx)))
+           (macro maprx ((type ARG1))
+                  (allow ARG1 fs (files (maprx)))
                   (call sysfs.search (ARG1)))
 
            (macro read ((type ARG1))
@@ -4030,8 +4030,8 @@
                   (allow ARG1 fs (files (maprw)))
                   (call sysfs.search (ARG1)))
 
-           (macro mapx ((type ARG1))
-                  (allow ARG1 fs (files (mapx)))
+           (macro maprx ((type ARG1))
+                  (allow ARG1 fs (files (maprx)))
                   (call sysfs.search (ARG1)))
 
            (macro read ((type ARG1))
@@ -4345,8 +4345,8 @@
                   (allow ARG1 fs (files (maprw)))
                   (call devtmpfs.search (ARG1)))
 
-           (macro mapx ((type ARG1))
-                  (allow ARG1 fs (files (mapx)))
+           (macro maprx ((type ARG1))
+                  (allow ARG1 fs (files (maprx)))
                   (call devtmpfs.search (ARG1)))
 
            (macro read ((type ARG1))
@@ -4607,8 +4607,8 @@
            (macro maprw_files ((type ARG1))
                   (allow ARG1 fs (files (maprw))))
 
-           (macro mapx ((type ARG1))
-                  (allow ARG1 fs (files (mapx))))
+           (macro maprx ((type ARG1))
+                  (allow ARG1 fs (files (maprx))))
 
            (macro read ((type ARG1))
                   (allow ARG1 fs (files_except_blk_and_chr (read))))
@@ -4879,8 +4879,8 @@
            (macro maprw_files ((type ARG1))
                   (allow ARG1 fs (files (maprw))))
 
-           (macro mapx ((type ARG1))
-                  (allow ARG1 fs (files (mapx))))
+           (macro maprx ((type ARG1))
+                  (allow ARG1 fs (files (maprx))))
 
            (macro read ((type ARG1))
                   (allow ARG1 fs (files_except_blk_and_chr (read))))
@@ -5128,8 +5128,8 @@
            (macro maprw_files ((type ARG1))
                   (allow ARG1 fs (files (maprw))))
 
-           (macro mapx ((type ARG1))
-                  (allow ARG1 fs (files (mapx))))
+           (macro maprx ((type ARG1))
+                  (allow ARG1 fs (files (maprx))))
 
            (macro read ((type ARG1))
                   (call list (ARG1))
@@ -5345,8 +5345,8 @@
            (macro maprw_files ((type ARG1))
                   (allow ARG1 fs (files (maprw))))
 
-           (macro mapx ((type ARG1))
-                  (allow ARG1 fs (files (mapx))))
+           (macro maprx ((type ARG1))
+                  (allow ARG1 fs (files (maprx))))
 
            (macro read ((type ARG1))
                   (call list (ARG1))
@@ -5564,8 +5564,8 @@
            (macro maprw_files ((type ARG1))
                   (allow ARG1 fs (files (maprw))))
 
-           (macro mapx ((type ARG1))
-                  (allow ARG1 fs (files (mapx))))
+           (macro maprx ((type ARG1))
+                  (allow ARG1 fs (files (maprx))))
 
            (macro mounton_dirs ((type ARG1))
                   (allow ARG1 fs (dir (getattr mounton))))
@@ -5838,8 +5838,8 @@
                   (allow ARG1 fs (files (maprw)))
                   (call sysfs.search (ARG1)))
 
-           (macro mapx ((type ARG1))
-                  (allow ARG1 fs (files (mapx)))
+           (macro maprx ((type ARG1))
+                  (allow ARG1 fs (files (maprx)))
                   (call sysfs.search (ARG1)))
 
            (macro read ((type ARG1))
@@ -6150,8 +6150,8 @@
            (macro maprw_files ((type ARG1))
                   (allow ARG1 fs (files (maprw))))
 
-           (macro mapx ((type ARG1))
-                  (allow ARG1 fs (files (mapx))))
+           (macro maprx ((type ARG1))
+                  (allow ARG1 fs (files (maprx))))
 
            (macro read ((type ARG1))
                   (allow ARG1 fs (files_except_blk_and_chr (read))))
@@ -6407,8 +6407,8 @@
            (macro maprw_files ((type ARG1))
                   (allow ARG1 fs (files (maprw))))
 
-           (macro mapx ((type ARG1))
-                  (allow ARG1 fs (files (mapx))))
+           (macro maprx ((type ARG1))
+                  (allow ARG1 fs (files (maprx))))
 
            (macro mounton_dirs ((type ARG1))
                   (allow ARG1 fs (dir (getattr mounton))))
@@ -6686,8 +6686,8 @@
                   (allow ARG1 fs (files (maprw)))
                   (call files.generic_runtime.search (ARG1)))
 
-           (macro mapx ((type ARG1))
-                  (allow ARG1 fs (files (mapx)))
+           (macro maprx ((type ARG1))
+                  (allow ARG1 fs (files (maprx)))
                   (call files.generic_runtime.search (ARG1)))
 
            (macro read ((type ARG1))
@@ -6977,8 +6977,8 @@
            (macro maprw_files ((type ARG1))
                   (allow ARG1 fs (files (maprw))))
 
-           (macro mapx ((type ARG1))
-                  (allow ARG1 fs (files (mapx))))
+           (macro maprx ((type ARG1))
+                  (allow ARG1 fs (files (maprx))))
 
            (macro mounton_dirs ((type ARG1))
                   (allow ARG1 fs (dir (getattr mounton))))
@@ -7301,8 +7301,8 @@
            (macro maprw_files ((type ARG1))
                   (allow ARG1 fs (files (maprw))))
 
-           (macro mapx ((type ARG1))
-                  (allow ARG1 fs (files (mapx))))
+           (macro maprx ((type ARG1))
+                  (allow ARG1 fs (files (maprx))))
 
            (macro mounton_dirs ((type ARG1))
                   (allow ARG1 fs (dir (getattr mounton))))
@@ -7692,8 +7692,8 @@
                   (allow ARG1 fs (files (maprw)))
                   (call debugfs.search (ARG1)))
 
-           (macro mapx ((type ARG1))
-                  (allow ARG1 fs (files (mapx)))
+           (macro maprx ((type ARG1))
+                  (allow ARG1 fs (files (maprx)))
                   (call debugfs.search (ARG1)))
 
            (macro read ((type ARG1))

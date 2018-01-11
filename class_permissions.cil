@@ -136,8 +136,8 @@
 (classpermission mapr_inherited_file_perms)
 (classpermission maprw_file_perms)
 (classpermission maprw_inherited_file_perms)
-(classpermission mapx_file_perms)
-(classpermission mapx_inherited_file_perms)
+(classpermission maprx_file_perms)
+(classpermission maprx_inherited_file_perms)
 (classpermission read_file_perms)
 (classpermission read_inherited_file_perms)
 (classpermission relabel_file_perms)
@@ -636,9 +636,9 @@
                                                    read write)))
 (classpermissionset maprw_inherited_file_perms (file (append getattr ioctl lock
                                                              map read write)))
-(classpermissionset mapx_file_perms (file (execute getattr ioctl map open
+(classpermissionset maprx_file_perms (file (execute getattr ioctl map open
                                                    read)))
-(classpermissionset mapx_inherited_file_perms (file (execute getattr ioctl map
+(classpermissionset maprx_inherited_file_perms (file (execute getattr ioctl map
                                                              read)))
 (classpermissionset read_file_perms (file (getattr ioctl lock open read)))
 (classpermissionset read_inherited_file_perms (file (getattr ioctl lock read)))

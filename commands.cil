@@ -42,7 +42,7 @@
               (macro cmd_file_auto_subj_type_transition ((type ARG1)(type
                                                                      ARG2))
                      (typetransition ARG1 cmd_file process "*" ARG2)
-                     (call mapx (ARG1)))
+                     (call maprx (ARG1)))
 
               (macro bounded_files ((type ARG1))
                      (typebounds cmd_file ARG1))
@@ -87,7 +87,7 @@
 
               (macro entry ((type ARG1))
                      (allow ARG1 cmd_file (file (entrypoint)))
-                     (call mapx (ARG1)))
+                     (call maprx (ARG1)))
 
               (macro execute ((type ARG1))
                      (allow ARG1 cmd_file exec_file_perms)
@@ -142,12 +142,12 @@
                      (allow ARG1 cmd_file (files (maprw)))
                      (call read_lnk_files (ARG1)))
 
-              (macro mapx ((type ARG1))
-                     (allow ARG1 cmd_file (files (mapx)))
+              (macro maprx ((type ARG1))
+                     (allow ARG1 cmd_file (files (maprx)))
                      (call read_lnk_files (ARG1)))
 
-              (macro mapx_inherited_files ((type ARG1))
-                     (allow ARG1 cmd_file mapx_inherited_file_perms))
+              (macro maprx_inherited_files ((type ARG1))
+                     (allow ARG1 cmd_file maprx_inherited_file_perms))
 
               (macro obj_type_transition ((type ARG1)(type ARG2)(class ARG3)
                                           (name ARG4))
@@ -376,8 +376,8 @@
                             (allow ARG1 obj_type_attribute maprw_file_perms)
                             (call cmd.generic_commands.read_lnk_files (ARG1)))
 
-                     (macro mapx ((type ARG1))
-                            (allow ARG1 obj_type_attribute mapx_file_perms)
+                     (macro maprx ((type ARG1))
+                            (allow ARG1 obj_type_attribute maprx_file_perms)
                             (call cmd.generic_commands.read_lnk_files (ARG1)))
 
                      (macro obj_type ((type ARG1))
@@ -454,7 +454,7 @@
                      (macro cmd_file_auto_subj_type_transition ((type ARG1)
                                                                 (type ARG2))
                             (typetransition ARG1 cmd_file process "*" ARG2)
-                            (call mapx (ARG1)))
+                            (call maprx (ARG1)))
 
                      (macro bounded_files ((type ARG1))
                             (typebounds cmd_file ARG1))
@@ -469,7 +469,7 @@
 
                      (macro entry ((type ARG1))
                             (allow ARG1 cmd_file (file (entrypoint)))
-                            (call mapx (ARG1)))
+                            (call maprx (ARG1)))
 
                      (macro execute ((type ARG1))
                             (allow ARG1 cmd_file exec_file_perms)
@@ -494,8 +494,8 @@
                             (allow ARG1 cmd_file maprw_file_perms)
                             (call cmd.generic_commands.read_lnk_files (ARG1)))
 
-                     (macro mapx ((type ARG1))
-                            (allow ARG1 cmd_file mapx_file_perms)
+                     (macro maprx ((type ARG1))
+                            (allow ARG1 cmd_file maprx_file_perms)
                             (call cmd.generic_commands.read_lnk_files (ARG1)))
 
                      (macro read_files ((type ARG1))
@@ -555,8 +555,8 @@
               (macro audit_execute_access ((type ARG1))
                      (allow ARG1 cmd_file (file (getattr execute))))
 
-              (macro mapx_inherited_files ((type ARG1))
-                     (allow ARG1 cmd_file mapx_inherited_file_perms))
+              (macro maprx_inherited_files ((type ARG1))
+                     (allow ARG1 cmd_file maprx_inherited_file_perms))
 
               ;;
               ;; Policy

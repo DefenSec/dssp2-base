@@ -110,7 +110,7 @@
               (call dontaudit_noatsecure (ARG1))
               (call dontaudit_siginh (ARG1))
               (call dontaudit_rlimitinh (ARG1))
-              (call mapx (ARG1))
+              (call maprx (ARG1))
               (call transition (ARG1)))
 
        ;;

@@ -1002,8 +1002,8 @@
                      (macro maprw_files ((type ARG1))
                             (allow ARG1 isid (files (maprw))))
 
-                     (macro mapx ((type ARG1))
-                            (allow ARG1 isid (files (mapx))))
+                     (macro maprx ((type ARG1))
+                            (allow ARG1 isid (files (maprx))))
 
                      (macro mount ((type ARG1))
                             (allow ARG1 isid (filesystem (mount))))

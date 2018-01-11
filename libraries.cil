@@ -124,8 +124,8 @@
                   (allow ARG1 lib_file (files (maprw)))
                   (call read_lnk_files (ARG1)))
 
-           (macro mapx ((type ARG1))
-                  (allow ARG1 lib_file (files (mapx)))
+           (macro maprx ((type ARG1))
+                  (allow ARG1 lib_file (files (maprx)))
                   (call read_lnk_files (ARG1)))
 
            (macro obj_type_transition
@@ -323,8 +323,8 @@
                   (allow ARG1 file maprw_file_perms)
                   (call generic_libraries.read_lnk_files (ARG1)))
 
-           (macro mapx ((type ARG1))
-                  (allow ARG1 file mapx_file_perms)
+           (macro maprx ((type ARG1))
+                  (allow ARG1 file maprx_file_perms)
                   (call generic_libraries.read_lnk_files (ARG1)))
 
            (macro read_files ((type ARG1))
@@ -356,7 +356,7 @@
                   (call generic_libraries.read_lnk_files (ARG1)))
 
            (macro use_files ((type ARG1))
-                  (allow ARG1 file mapx_file_perms)
+                  (allow ARG1 file maprx_file_perms)
                   (call generic_libraries.list (ARG1))
                   (call generic_libraries.read_lnk_files (ARG1))
                   (call ld_so_cache.map_files (ARG1))
@@ -421,8 +421,8 @@
                   (allow ARG1 file maprw_file_perms)
                   (call files.generic_config.search (ARG1)))
 
-           (macro mapx ((type ARG1))
-                  (allow ARG1 file mapx_file_perms)
+           (macro maprx ((type ARG1))
+                  (allow ARG1 file maprx_file_perms)
                   (call files.generic_config.search (ARG1)))
 
            (macro generic_config_obj_type_transition ((type ARG1))
@@ -534,8 +534,8 @@
                          (allow ARG1 obj_type_attribute maprw_file_perms)
                          (call lib.generic_libraries.read_lnk_files (ARG1)))
 
-                  (macro mapx ((type ARG1))
-                         (allow ARG1 obj_type_attribute mapx_file_perms)
+                  (macro maprx ((type ARG1))
+                         (allow ARG1 obj_type_attribute maprx_file_perms)
                          (call lib.generic_libraries.read_lnk_files (ARG1)))
 
                   (macro obj_type ((type ARG1))
@@ -638,8 +638,8 @@
                          (allow ARG1 lib_file maprw_file_perms)
                          (call lib.generic_libraries.read_lnk_files (ARG1)))
 
-                  (macro mapx ((type ARG1))
-                         (allow ARG1 lib_file mapx_file_perms)
+                  (macro maprx ((type ARG1))
+                         (allow ARG1 lib_file maprx_file_perms)
                          (call lib.generic_libraries.read_lnk_files (ARG1)))
 
                   (macro read_files ((type ARG1))

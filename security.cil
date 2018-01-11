@@ -405,8 +405,8 @@
                      (allow ARG1 isid (files (maprw)))
                      (call fs.sysfs.search (ARG1)))
 
-              (macro mapx ((type ARG1))
-                     (allow ARG1 isid (files (mapx)))
+              (macro maprx ((type ARG1))
+                     (allow ARG1 isid (files (maprx)))
                      (call fs.sysfs.search (ARG1)))
 
               (macro mount ((type ARG1))
