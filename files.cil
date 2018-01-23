@@ -4627,6 +4627,8 @@
               (filecon "/boot(/.*)?" any boot_file_context)
 
               (filecon "/usr/lib/modules/[^/]+/config" file boot_file_context)
+              (filecon "/usr/lib/modules/[^/]+/initramfs\.img" file
+                       boot_file_context)
               (filecon "/usr/lib/modules/[^/]+/system\.map" file
                        boot_file_context)
               (filecon "/usr/lib/modules/[^/]+/vmlinuz" file boot_file_context)
