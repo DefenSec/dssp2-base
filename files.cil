@@ -1934,6 +1934,7 @@
 
                      (macro add_entries ((type ARG1))
                             (allow ARG1 obj_type_attribute add_entry_dir_perms)
+                            (call generic_modules.search (ARG1))
                             (call fs.rootfs.read_lnk_files (ARG1)))
 
                      (macro append_files ((type ARG1))
@@ -1960,6 +1961,7 @@
 
                      (macro del_entries ((type ARG1))
                             (allow ARG1 obj_type_attribute del_entry_dir_perms)
+                            (call generic_modules.search (ARG1))
                             (call fs.rootfs.read_lnk_files (ARG1)))
 
                      (macro delete ((type ARG1))
@@ -2004,6 +2006,7 @@
 
                      (macro list ((type ARG1))
                             (allow ARG1 obj_type_attribute list_dir_perms)
+                            (call generic_modules.search (ARG1))
                             (call fs.rootfs.read_lnk_files (ARG1)))
 
                      (macro manage ((type ARG1))
@@ -2013,6 +2016,7 @@
 
                      (macro manage_dirs ((type ARG1))
                             (allow ARG1 obj_type_attribute manage_dir_perms)
+                            (call generic_modules.search (ARG1))
                             (call fs.rootfs.read_lnk_files (ARG1)))
 
                      (macro manage_files ((type ARG1))
@@ -2137,6 +2141,7 @@
 
                      (macro rw_dirs ((type ARG1))
                             (allow ARG1 obj_type_attribute rw_dir_perms)
+                            (call generic_modules.search (ARG1))
                             (call fs.rootfs.read_lnk_files (ARG1)))
 
                      (macro rw_files ((type ARG1))
@@ -2149,6 +2154,7 @@
 
                      (macro search ((type ARG1))
                             (allow ARG1 obj_type_attribute search_dir_perms)
+                            (call generic_modules.search (ARG1))
                             (call fs.rootfs.read_lnk_files (ARG1)))
 
                      (macro setattr ((type ARG1))
@@ -2176,6 +2182,7 @@
 
                      (macro write_dirs ((type ARG1))
                             (allow ARG1 obj_type_attribute write_dir_perms)
+                            (call generic_modules.search (ARG1))
                             (call fs.rootfs.read_lnk_files (ARG1)))
 
                      (macro write_files ((type ARG1))
@@ -4619,12 +4626,18 @@
 
               (filecon "/boot(/.*)?" any boot_file_context)
 
+              (filecon "/usr/lib/modules/[^/]+/config" file boot_file_context)
+              (filecon "/usr/lib/modules/[^/]+/system\.map" file
+                       boot_file_context)
+              (filecon "/usr/lib/modules/[^/]+/vmlinuz" file boot_file_context)
+
               ;;
               ;; Macros
               ;;
 
               (macro add_entries ((type ARG1))
                      (allow ARG1 boot_file add_entry_dir_perms)
+                     (call generic_modules.search (ARG1))
                      (call fs.rootfs.read_lnk_files (ARG1)))
 
               (macro append_files ((type ARG1))
@@ -4638,18 +4651,22 @@
 
               (macro create_dirs ((type ARG1))
                      (allow ARG1 boot_file (dirs (create)))
+                     (call generic_modules.search (ARG1))
                      (call fs.rootfs.read_lnk_files (ARG1)))
 
               (macro create_files ((type ARG1))
                      (allow ARG1 boot_file (files (create)))
+                     (call generic_modules.search (ARG1))
                      (call fs.rootfs.read_lnk_files (ARG1)))
 
               (macro create_lnk_files ((type ARG1))
                      (allow ARG1 boot_file (lnk_files (create)))
+                     (call generic_modules.search (ARG1))
                      (call fs.rootfs.read_lnk_files (ARG1)))
 
               (macro del_entries ((type ARG1))
                      (allow ARG1 boot_file del_entry_dir_perms)
+                     (call generic_modules.search (ARG1))
                      (call fs.rootfs.read_lnk_files (ARG1)))
 
               (macro delete ((type ARG1))
@@ -4659,14 +4676,17 @@
 
               (macro delete_dirs ((type ARG1))
                      (allow ARG1 boot_file (dirs (delete)))
+                     (call generic_modules.search (ARG1))
                      (call fs.rootfs.read_lnk_files (ARG1)))
 
               (macro delete_files ((type ARG1))
                      (allow ARG1 boot_file (files (delete)))
+                     (call generic_modules.search (ARG1))
                      (call fs.rootfs.read_lnk_files (ARG1)))
 
               (macro delete_lnk_files ((type ARG1))
                      (allow ARG1 boot_file (lnk_files (delete)))
+                     (call generic_modules.search (ARG1))
                      (call fs.rootfs.read_lnk_files (ARG1)))
 
               (macro execute ((type ARG1))
@@ -4680,18 +4700,22 @@
 
               (macro getattr_dirs ((type ARG1))
                      (allow ARG1 boot_file (dirs (getattr)))
+                     (call generic_modules.search (ARG1))
                      (call fs.rootfs.read_lnk_files (ARG1)))
 
               (macro getattr_files ((type ARG1))
                      (allow ARG1 boot_file (files (getattr)))
+                     (call generic_modules.search (ARG1))
                      (call fs.rootfs.read_lnk_files (ARG1)))
 
               (macro getattr_lnk_files ((type ARG1))
                      (allow ARG1 boot_file (lnk_files (getattr)))
+                     (call generic_modules.search (ARG1))
                      (call fs.rootfs.read_lnk_files (ARG1)))
 
               (macro list ((type ARG1))
                      (allow ARG1 boot_file list_dir_perms)
+                     (call generic_modules.search (ARG1))
                      (call fs.rootfs.read_lnk_files (ARG1)))
 
               (macro manage ((type ARG1))
@@ -4701,14 +4725,17 @@
 
               (macro manage_dirs ((type ARG1))
                      (allow ARG1 boot_file (dirs (manage)))
+                     (call generic_modules.search (ARG1))
                      (call fs.rootfs.read_lnk_files (ARG1)))
 
               (macro manage_files ((type ARG1))
                      (allow ARG1 boot_file (files (manage)))
+                     (call generic_modules.search (ARG1))
                      (call fs.rootfs.read_lnk_files (ARG1)))
 
               (macro manage_lnk_files ((type ARG1))
                      (allow ARG1 boot_file (lnk_files (manage)))
+                     (call generic_modules.search (ARG1))
                      (call fs.rootfs.read_lnk_files (ARG1)))
 
               (macro map_files ((type ARG1))
@@ -4716,14 +4743,17 @@
 
               (macro mapr_files ((type ARG1))
                      (allow ARG1 boot_file (files (mapr)))
+                     (call generic_modules.search (ARG1))
                      (call fs.rootfs.read_lnk_files (ARG1)))
 
               (macro maprw_files ((type ARG1))
                      (allow ARG1 boot_file (files (maprw)))
+                     (call generic_modules.search (ARG1))
                      (call fs.rootfs.read_lnk_files (ARG1)))
 
               (macro maprx ((type ARG1))
                      (allow ARG1 boot_file (files (maprx)))
+                     (call generic_modules.search (ARG1))
                      (call fs.rootfs.read_lnk_files (ARG1)))
 
               (macro obj_type_transition
@@ -4738,10 +4768,12 @@
 
               (macro read_files ((type ARG1))
                      (allow ARG1 boot_file (files (read)))
+                     (call generic_modules.search (ARG1))
                      (call fs.rootfs.read_lnk_files (ARG1)))
 
               (macro read_lnk_files ((type ARG1))
                      (allow ARG1 boot_file (lnk_files (read)))
+                     (call generic_modules.search (ARG1))
                      (call fs.rootfs.read_lnk_files (ARG1)))
 
               (macro relabel ((type ARG1))
@@ -4751,14 +4783,17 @@
 
               (macro relabel_dirs ((type ARG1))
                      (allow ARG1 boot_file (dirs (relabel)))
+                     (call generic_modules.search (ARG1))
                      (call fs.rootfs.read_lnk_files (ARG1)))
 
               (macro relabel_files ((type ARG1))
                      (allow ARG1 boot_file (files (relabel)))
+                     (call generic_modules.search (ARG1))
                      (call fs.rootfs.read_lnk_files (ARG1)))
 
               (macro relabel_lnk_files ((type ARG1))
                      (allow ARG1 boot_file (lnk_files (relabel)))
+                     (call generic_modules.search (ARG1))
                      (call fs.rootfs.read_lnk_files (ARG1)))
 
               (macro relabelfrom ((type ARG1))
@@ -4768,14 +4803,17 @@
 
               (macro relabelfrom_dirs ((type ARG1))
                      (allow ARG1 boot_file (dirs (relabelfrom)))
+                     (call generic_modules.search (ARG1))
                      (call fs.rootfs.read_lnk_files (ARG1)))
 
               (macro relabelfrom_files ((type ARG1))
                      (allow ARG1 boot_file (files (relabelfrom)))
+                     (call generic_modules.search (ARG1))
                      (call fs.rootfs.read_lnk_files (ARG1)))
 
               (macro relabelfrom_lnk_files ((type ARG1))
                      (allow ARG1 boot_file (lnk_files (relabelfrom)))
+                     (call generic_modules.search (ARG1))
                      (call fs.rootfs.read_lnk_files (ARG1)))
 
               (macro relabelto ((type ARG1))
@@ -4785,14 +4823,17 @@
 
               (macro relabelto_dirs ((type ARG1))
                      (allow ARG1 boot_file (dirs (relabelto)))
+                     (call generic_modules.search (ARG1))
                      (call fs.rootfs.read_lnk_files (ARG1)))
 
               (macro relabelto_files ((type ARG1))
                      (allow ARG1 boot_file (files (relabelto)))
+                     (call generic_modules.search (ARG1))
                      (call fs.rootfs.read_lnk_files (ARG1)))
 
               (macro relabelto_lnk_files ((type ARG1))
                      (allow ARG1 boot_file (lnk_files (relabelto)))
+                     (call generic_modules.search (ARG1))
                      (call fs.rootfs.read_lnk_files (ARG1)))
 
               (macro rename ((type ARG1))
@@ -4802,14 +4843,17 @@
 
               (macro rename_dirs ((type ARG1))
                      (allow ARG1 boot_file (dirs (rename)))
+                     (call generic_modules.search (ARG1))
                      (call fs.rootfs.read_lnk_files (ARG1)))
 
               (macro rename_files ((type ARG1))
                      (allow ARG1 boot_file (files (rename)))
+                     (call generic_modules.search (ARG1))
                      (call fs.rootfs.read_lnk_files (ARG1)))
 
               (macro rename_lnk_files ((type ARG1))
                      (allow ARG1 boot_file (lnk_files (rename)))
+                     (call generic_modules.search (ARG1))
                      (call fs.rootfs.read_lnk_files (ARG1)))
 
               (macro rw ((type ARG1))
@@ -4819,18 +4863,22 @@
 
               (macro rw_dirs ((type ARG1))
                      (allow ARG1 boot_file (dirs (rw)))
+                     (call generic_modules.search (ARG1))
                      (call fs.rootfs.read_lnk_files (ARG1)))
 
               (macro rw_files ((type ARG1))
                      (allow ARG1 boot_file (files (rw)))
+                     (call generic_modules.search (ARG1))
                      (call fs.rootfs.read_lnk_files (ARG1)))
 
               (macro rw_lnk_files ((type ARG1))
                      (allow ARG1 boot_file (lnk_files (rw)))
+                     (call generic_modules.search (ARG1))
                      (call fs.rootfs.read_lnk_files (ARG1)))
 
               (macro search ((type ARG1))
                      (allow ARG1 boot_file search_dir_perms)
+                     (call generic_modules.search (ARG1))
                      (call fs.rootfs.read_lnk_files (ARG1)))
 
               (macro setattr ((type ARG1))
@@ -4840,14 +4888,17 @@
 
               (macro setattr_dirs ((type ARG1))
                      (allow ARG1 boot_file (dirs (setattr)))
+                     (call generic_modules.search (ARG1))
                      (call fs.rootfs.read_lnk_files (ARG1)))
 
               (macro setattr_files ((type ARG1))
                      (allow ARG1 boot_file (files (setattr)))
+                     (call generic_modules.search (ARG1))
                      (call fs.rootfs.read_lnk_files (ARG1)))
 
               (macro setattr_lnk_files ((type ARG1))
                      (allow ARG1 boot_file (lnk_files (setattr)))
+                     (call generic_modules.search (ARG1))
                      (call fs.rootfs.read_lnk_files (ARG1)))
 
               (macro write ((type ARG1))
@@ -4857,14 +4908,17 @@
 
               (macro write_dirs ((type ARG1))
                      (allow ARG1 boot_file (dirs (write)))
+                     (call generic_modules.search (ARG1))
                      (call fs.rootfs.read_lnk_files (ARG1)))
 
               (macro write_files ((type ARG1))
                      (allow ARG1 boot_file (files (write)))
+                     (call generic_modules.search (ARG1))
                      (call fs.rootfs.read_lnk_files (ARG1)))
 
               (macro write_lnk_files ((type ARG1))
                      (allow ARG1 boot_file (lnk_files (write)))
+                     (call generic_modules.search (ARG1))
                      (call fs.rootfs.read_lnk_files (ARG1)))
 
               ;;
