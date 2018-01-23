@@ -4630,7 +4630,7 @@
               (filecon "/usr/lib/modules/[^/]+/system\.map" file
                        boot_file_context)
               (filecon "/usr/lib/modules/[^/]+/vmlinuz" file boot_file_context)
-              (filecon "/usr/lib/modules/[^/]+/vmlinuz\.hmac" file
+              (filecon "/usr/lib/modules/[^/]+/\.vmlinuz\.hmac" file
                        boot_file_context)
 
               ;;
