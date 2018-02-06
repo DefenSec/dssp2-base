@@ -25,6 +25,9 @@
            ;; Macros
            ;;
 
+           (macro dontaudit_audit_write_access_dirs ((type ARG1))
+                  (dontaudit ARG1 lib_file (dir (write))))
+
            (macro add_entries ((type ARG1))
                   (allow ARG1 lib_file add_entry_dir_perms)
                   (call read_lnk_files (ARG1)))
