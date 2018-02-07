@@ -367,9 +367,10 @@
 
        (optional sys_optional_systemd
                  (call subj.dyntransition_subj_type (isid))
+                 (call systemd.system.dynamic_subj_type_transition (isid))
                  (call systemd.system.read_state (isid))
                  (call systemd.system.signal (isid))
-                 (call systemd.system.dynamic_subj_type_transition (isid)))
+                 (call systemd.system.use_fd (isid)))
 
        (optional sys_optional_udev
                  (call udev.client_subj_type (isid)))
