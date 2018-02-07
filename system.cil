@@ -333,7 +333,6 @@
                  (call mkosi.use_fd (isid)))
 
        (optional sys_optional_mount
-                 (call mount.loopback.read_inherited_files (isid))
                  (call mount.read_inherited_image_files (isid))
                  (call mount.use_fd (isid))
 
