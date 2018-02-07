@@ -47,6 +47,15 @@
        ;; Macros
        ;;
 
+       (macro dontaudit_mount_fs ((type ARG1))
+              (dontaudit ARG1 fs (filesystem (mount))))
+
+       (macro dontaudit_remount_fs ((type ARG1))
+              (dontaudit ARG1 fs (filesystem (remount))))
+
+       (macro dontaudit_unmount_fs ((type ARG1))
+              (dontaudit ARG1 fs (filesystem (unmount))))
+
        (blockinherit obj_all_macro_template)
 
        (macro unconfined_subj_type ((type ARG1))
