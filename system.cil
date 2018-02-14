@@ -374,6 +374,9 @@
        (optional sys_optional_udev
                  (call udev.client_subj_type (isid)))
 
+       (optional sys_optional_udisks
+                 (call udisks.client.use_fd (isid)))
+
        (typeattributeset
         not_dump_kernel_subj_type_or_unconfined_subj_type_attribute
         (not (dump_kernel_subj_type_attribute unconfined_subj_type_attribute)))
