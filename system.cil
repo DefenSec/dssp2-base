@@ -397,6 +397,9 @@
 
        (call load_kernel_module_subj_type (unconfined_subj_type_attribute))
 
+       (call var_log.generic_var_log_obj_type_transition
+             (unconfined_subj_type_attribute))
+
        (typeattributeset
         not_unconfined_subj_type_or_write_security_subj_type_attribute
         (not (unconfined_subj_type_attribute
