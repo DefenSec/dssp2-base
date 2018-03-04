@@ -333,12 +333,12 @@
                  (call mkosi.use_fd (isid)))
 
        (optional sys_optional_mount
-                 (call mount.read_inherited_image_files (isid))
+                 (call mount.rw_inherited_image_files (isid))
                  (call mount.use_fd (isid))
 
                  (booleanif mount.mount_any_file
                             (true
-                             (call files.read_inherited_except (isid)))))
+                             (call files.rw_inherited_except (isid)))))
 
        (optional sys_optional_nfs
                  (call nfs.client.auto_subj_type_transition (isid))
