@@ -182,13 +182,19 @@
                 (eq t2 rbacsep_read_state_target_subj_type_attribute))))
 
 (constrain (fd (use))
-           (or (or (or (or (eq r1 r2)
-                           (and
-                            (eq r1 rbacsep_exemption_role_attribute)
-                            (neq t1 rbacsep_constrained_subj_type_attribute)))
-                       (eq r2 rbacsep_exemption_role_attribute))
-                   (eq t1 rbacsep_exemption_subj_type_attribute))
-               (eq t2 rbacsep_exemption_subj_type_attribute)))
+           (or (or (or (or (or (eq r1 r2)
+                               (and
+                                (eq r1 rbacsep_exemption_role_attribute)
+                                (neq
+                                 t1 rbacsep_constrained_subj_type_attribute)))
+                           (eq t1 rbacsep_exemption_subj_type_attribute))
+                       (eq t2 rbacsep_exemption_obj_type_attribute))
+                   (and
+                    (eq r2 rbacsep_exemption_role_attribute)
+                    (neq t2 subj.subj_type_attribute)))
+               (and
+                (eq t1 rbacsep_use_fd_source_subj_type_attribute)
+                (eq t2 rbacsep_use_fd_target_subj_type_attribute))))
 
 (constrain (fifo_file (audit_access execmod execute link mounton quotaon rename
                                     setattr unlink))
@@ -908,6 +914,12 @@
 (macro rbacsep_target_subj_type ((type ARG1))
        (typeattributeset rbacsep_target_subj_type_attribute ARG1))
 
+(macro rbacsep_use_fd_source_subj_type ((type ARG1))
+       (typeattributeset rbacsep_use_fd_source_subj_type_attribute ARG1))
+
+(macro rbacsep_read_state_target_subj_type ((type ARG1))
+       (typeattributeset rbacsep_use_fd_target_subj_type_attribute ARG1))
+
 ;;
 ;; Policy
 ;;
@@ -920,6 +932,8 @@
 (typeattribute rbacsep_read_state_source_subj_type_attribute)
 (typeattribute rbacsep_read_state_target_subj_type_attribute)
 (typeattribute rbacsep_target_subj_type_attribute)
+(typeattribute rbacsep_use_fd_source_subj_type_attribute)
+(typeattribute rbacsep_use_fd_target_subj_type_attribute)
 
 (defaultrole blk_file source)
 (defaultrole chr_file source)
