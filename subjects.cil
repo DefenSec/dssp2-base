@@ -250,7 +250,6 @@
              (unconfined_subj_type_attribute))
        (call rbac_uncond_exemption_subj_type (unconfined_subj_type_attribute))
        (call rbacsep_exemption_subj_type (unconfined_subj_type_attribute))
-       (call rbacsep_target_subj_type (subj_type_attribute))
 
        (block common_subj
 
@@ -492,6 +491,8 @@
                      (allow subj_type_attribute self rw_file_perms)
 
                      (call subj.subj_type (subj_type_attribute))
+
+                     (call rbacsep_target_subj_type (subj_type_attribute))
 
                      (call sys.invalid.search (subj_type_attribute))
                      (call sys.meminfo_proc.read_files (subj_type_attribute))

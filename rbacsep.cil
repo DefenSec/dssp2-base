@@ -234,7 +234,7 @@
                        (eq t2 rbacsep_exemption_obj_type_attribute))
                    (and
                     (eq r2 rbacsep_exemption_role_attribute)
-                    (neq t2 subj.subj_type_attribute)))
+                    (neq t2 rbacsep_target_subj_type_attribute)))
                (and
                 (eq t1 rbacsep_read_state_source_subj_type_attribute)
                 (eq t2 rbacsep_read_state_target_subj_type_attribute))))
@@ -372,7 +372,7 @@
                        (eq t2 rbacsep_exemption_obj_type_attribute))
                    (and
                     (eq r2 rbacsep_exemption_role_attribute)
-                    (neq t2 subj.subj_type_attribute)))
+                    (neq t2 rbacsep_target_subj_type_attribute)))
                (and
                 (eq t1 rbacsep_read_state_source_subj_type_attribute)
                 (eq t2 rbacsep_read_state_target_subj_type_attribute))))
