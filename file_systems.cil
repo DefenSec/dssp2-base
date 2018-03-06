@@ -1540,6 +1540,9 @@
            ;; Macros
            ;;
 
+           (macro dontaudit_getattr_dirs ((type ARG1))
+                  (dontaudit ARG1 fs (dir (getattr))))
+
            (macro add_entries ((type ARG1))
                   (allow ARG1 fs add_entry_dir_perms)
                   (call sysfs.search (ARG1)))
