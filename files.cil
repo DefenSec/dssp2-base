@@ -6881,9 +6881,7 @@
 
               (blockinherit var_file.obj_stub)
 
-              (call sys.mountpoint.obj_type (var_file))
-
-              (call fs.rootfs.associate (var_file)))
+              (call sys.mountpoint.obj_type (var_file)))
 
        (block generic_var_cache
 
@@ -7878,9 +7876,7 @@
 
               (blockinherit var_lib_file.obj_stub)
 
-              (call sys.mountpoint.obj_type (var_lib_file))
-
-              (call fs.rootfs.associate (var_lib_file)))
+              (call sys.mountpoint.obj_type (var_lib_file)))
 
        (block generic_var_log
 
