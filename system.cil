@@ -830,6 +830,7 @@
 
               (allow isid self (filesystem (associate)))
 
+              ;; find a better solution for this hack
               (call mountpoint.obj_type (isid))
 
               (call fs.nfs.associate (isid))
