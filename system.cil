@@ -778,6 +778,9 @@
               (macro icmp_recvfrom ((type ARG1))
                      (allow ARG1 isid (icmp_socket (recvfrom))))
 
+              (macro mounton_dirs ((type ARG1))
+                     (allow ARG1 isid (dir (getattr mounton))))
+
               (macro rawip_recvfrom ((type ARG1))
                      (allow ARG1 isid (rawip_socket (recvfrom))))
 
