@@ -285,13 +285,16 @@
        (call dev.zero.tmpfs_obj_type_transition (isid))
 
        (call files.generic_data.read (isid))
+       (call files.generic_var.create_dirs (isid))
+       (call files.generic_var.rootfs_obj_type_transition (isid))
+       (call files.generic_var_lib.create_dirs (isid))
+       (call files.generic_var_lib.generic_var_obj_type_transition (isid))
 
        (call fs.tracefs.search (isid))
        (call fs.devtmpfs.manage_blk_files (isid))
        (call fs.devtmpfs.manage_chr_files (isid))
        (call fs.devtmpfs.manage_dirs (isid))
        (call fs.devtmpfs.manage_lnk_files (isid))
-       (call fs.rootfs.list (isid))
        (call fs.rootfs.mounton_dirs (isid))
        (call fs.sysfs.read (isid))
        (call fs.tmpfs.search (isid))
@@ -350,7 +353,9 @@
        (optional sys_optional_plymouth
                  (call plymouth.config.read (isid))
                  (call plymouth.runtime.manage (isid))
-                 (call plymouth.var_lib.manage (isid)))
+                 (call plymouth.var_lib.manage (isid))
+                 (call plymouth.var_lib.generic_var_lib_obj_type_transition
+                       (isid)))
 
        (optional sys_optional_rpcbind
                  (call rpcbind.daemon.unix_stream_socket_connectto (isid)))

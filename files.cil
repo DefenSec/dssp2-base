@@ -6812,6 +6812,10 @@
               (macro rename_sock_files ((type ARG1))
                      (allow ARG1 var_file (sock_files (rename))))
 
+              (macro rootfs_obj_type_transition ((type ARG1))
+                     (call fs.rootfs.obj_type_transition
+                           (ARG1 var_file dir "var")))
+
               (macro rw ((type ARG1))
                      (allow ARG1 var_file (files_except_blk_and_chr (rw))))
 
@@ -7588,6 +7592,10 @@
               (macro execute ((type ARG1))
                      (allow ARG1 var_lib_file exec_file_perms)
                      (call search (ARG1)))
+
+              (macro generic_var_obj_type_transition ((type ARG1))
+                     (call generic_var.obj_type_transition
+                           (ARG1 var_lib_file dir "lib")))
 
               (macro getattr ((type ARG1))
                      (allow ARG1 var_lib_file (files_except_blk_and_chr
