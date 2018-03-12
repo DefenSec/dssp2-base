@@ -93,6 +93,7 @@
 (classpermission del_entry_dir_perms)
 (classpermission delete_dir_perms)
 (classpermission dir_except_execmod_and_map)
+(classpermission dir_except_execmod_map_and_mounton)
 (classpermission list_dir_perms)
 (classpermission list_inherited_dir_perms)
 (classpermission manage_dir_perms)
@@ -559,6 +560,8 @@
                                                   remove_name search write)))
 (classpermissionset delete_dir_perms (dir (getattr rmdir)))
 (classpermissionset dir_except_execmod_and_map (dir (not (execmod map))))
+(classpermissionset dir_except_execmod_map_and_mounton
+                    (dir (not (execmod map mounton))))
 (classpermissionset list_dir_perms (dir (getattr ioctl lock open read search)))
 (classpermissionset list_inherited_dir_perms (dir (getattr ioctl lock read
                                                            search)))

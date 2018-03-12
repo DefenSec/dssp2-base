@@ -117,6 +117,9 @@
        (macro load_kernel_module_subj_type ((type ARG1))
               (typeattributeset load_kernel_module_subj_type_attribute ARG1))
 
+       (macro mounton_invalid_dir_subj_type ((type ARG1))
+              (typeattributeset mounton_invalid_dir_subj_type_attribute ARG1))
+
        (macro obj_type ((type ARG1))
               (typeattributeset obj_type_attribute ARG1))
 
@@ -199,6 +202,7 @@
        (boolean load_kernel_init_module true)
        (boolean load_kernel_module true)
        (boolean manage_files_except true)
+       (boolean mounton_invalid_dir true)
 
        (roleattribute role_attribute)
        (roleattribute roleallow_role_attribute)
@@ -209,6 +213,9 @@
 
        (typeattribute load_kernel_module_subj_type_attribute)
        (typeattribute not_load_kernel_module_subj_type_attribute)
+
+       (typeattribute mounton_invalid_dir_subj_type_attribute)
+       (typeattribute not_mounton_invalid_dir_subj_type_attribute)
 
        (typeattribute obj_type_attribute)
 
@@ -389,6 +396,9 @@
        (neverallow not_load_kernel_module_subj_type_attribute self
                    (capability (sys_module)))
 
+       (typeattributeset not_mounton_invalid_dir_subj_type_attribute
+                         (not mounton_invalid_dir_subj_type_attribute))
+
        (typeattributeset
         not_read_kernel_msg_subj_type_or_unconfined_subj_type_attribute
         (not (read_kernel_msg_subj_type_attribute
@@ -397,6 +407,8 @@
        (allow unconfined_subj_type_attribute isid system_except_module_load)
 
        (call load_kernel_module_subj_type (unconfined_subj_type_attribute))
+
+       (call mounton_invalid_dir_subj_type (unconfined_subj_type_attribute))
 
        (call var_log.generic_var_log_obj_type_transition
              (unconfined_subj_type_attribute))
@@ -841,12 +853,15 @@
               (optional invalid_optional_systemd
                         (call systemd.system.sigchld (isid)))
 
+              (neverallow not_mounton_invalid_dir_subj_type_attribute isid
+                          (dir (mounton)))
+
               (allow unconfined_subj_type_attribute isid
                      blk_file_except_execmod_map_and_mounton)
               (allow unconfined_subj_type_attribute isid
                      chr_file_except_execmod_and_mounton)
               (allow unconfined_subj_type_attribute isid
-                     dir_except_execmod_and_map)
+                     dir_except_execmod_map_and_mounton)
               (allow unconfined_subj_type_attribute isid
                      fifo_file_except_execmod_map_and_mounton)
               (allow unconfined_subj_type_attribute isid
@@ -1701,25 +1716,6 @@
                 (allow load_kernel_module_subj_type_attribute self
                        (system (module_load))))))
 
-       (block manage_files_except
-
-              ;;
-              ;; Contexts
-              ;;
-
-              (genfscon "selinuxfs" "/booleans/sys.manage_files_except"
-                        bool_file_context)
-
-              ;;
-              ;; Policy
-              ;;
-
-              (blockinherit sec.bool_file.obj_template)
-
-              (booleanif manage_files_except
-                         (true
-                          (call files.manage_except (isid)))))
-
        (block load_kernel_module
 
               ;;
@@ -1741,6 +1737,25 @@
                                  (capability (sys_module sys_nice)))
                           (allow load_kernel_module_subj_type_attribute
                                  sys.isid (process (setsched))))))
+
+       (block manage_files_except
+
+              ;;
+              ;; Contexts
+              ;;
+
+              (genfscon "selinuxfs" "/booleans/sys.manage_files_except"
+                        bool_file_context)
+
+              ;;
+              ;; Policy
+              ;;
+
+              (blockinherit sec.bool_file.obj_template)
+
+              (booleanif manage_files_except
+                         (true
+                          (call files.manage_except (isid)))))
 
        (block mdstat_proc
 
@@ -1845,6 +1860,26 @@
               ;;
 
               (blockinherit sys.sysfs_file.obj_template))
+
+       (block mounton_invalid_dir
+
+              ;;
+              ;; Contexts
+              ;;
+
+              (genfscon "selinuxfs" "/booleans/sys.mounton_invalid_dir"
+                        bool_file_context)
+
+              ;;
+              ;; Policy
+              ;;
+
+              (blockinherit sec.bool_file.obj_template)
+
+              (booleanif mounton_invalid_dir
+                         (true
+                          (allow mounton_invalid_dir_subj_type_attribute
+                                 sys.invalid.isid (dir (mounton))))))
 
        (block mountpoint
 
