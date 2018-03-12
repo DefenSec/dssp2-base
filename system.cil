@@ -1879,7 +1879,7 @@
               (booleanif mounton_invalid_dir
                          (true
                           (allow mounton_invalid_dir_subj_type_attribute
-                                 sys.invalid.isid (dir (mounton))))))
+                                 sys.invalid.isid (dir (getattr mounton))))))
 
        (block mountpoint
 
