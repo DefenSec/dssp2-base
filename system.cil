@@ -328,6 +328,9 @@
        (optional sys_optional_gssproxy
                  (call gssproxy.unix_stream_socket_connectto (isid)))
 
+       (optional sys_optional_importd
+                 (call importd.use_fd (isid)))
+
        (optional sys_optional_keyutils
                  (call keyutils.request_key.auto_subj_type_transition (isid)))
 
@@ -3773,6 +3776,8 @@
               (roletype role isid)
 
               (allow isid self (filesystem (associate)))
+
+              (call fs.xattr.associate (isid))
 
               (allow unconfined_subj_type_attribute isid
                      blk_file_except_execmod_map_and_mounton)
