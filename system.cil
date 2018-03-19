@@ -784,14 +784,17 @@
               (macro dccp_recvfrom ((type ARG1))
                      (allow ARG1 isid (dccp_socket (recvfrom))))
 
+              (macro icmp_recvfrom ((type ARG1))
+                     (allow ARG1 isid (icmp_socket (recvfrom))))
+
               (macro infiniband_endport_manage_subnet ((type ARG1))
                      (allow ARG1 isid (infiniband_endport (manage_subnet))))
 
               (macro infiniband_pkey_access ((type ARG1))
                      (allow ARG1 isid (infiniband_pkey (access))))
 
-              (macro icmp_recvfrom ((type ARG1))
-                     (allow ARG1 isid (icmp_socket (recvfrom))))
+              (macro ipsec_association_recvfrom_sendto ((type ARG1))
+                     (allow ARG1 isid (association (recvfrom sendto))))
 
               (macro mounton_dirs ((type ARG1))
                      (allow ARG1 isid (dir (getattr mounton))))

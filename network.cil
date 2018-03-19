@@ -10,6 +10,7 @@
 ;;     generic_if
 ;;     generic_infiniband_endport
 ;;     generic_infiniband_pkey
+;;     generic_ipsec_spd
 ;;     generic_node
 ;;     generic_packet
 ;;     generic_peer
@@ -28,6 +29,10 @@
 ;;         obj_stub
 ;;         obj_template
 ;;     infiniband_pkey
+;;         obj_all_macro_template
+;;         obj_stub
+;;         obj_template
+;;     ipsec_spd
 ;;         obj_all_macro_template
 ;;         obj_stub
 ;;         obj_template
@@ -82,6 +87,8 @@
        (call sys.invalid.infiniband_endport_manage_subnet
              (unconfined_subj_type_attribute))
        (call sys.invalid.infiniband_pkey_access
+             (unconfined_subj_type_attribute))
+       (call sys.invalid.ipsec_association_recvfrom_sendto
              (unconfined_subj_type_attribute))
        (call sys.invalid.packet_recv (unconfined_subj_type_attribute))
        (call sys.invalid.packet_send (unconfined_subj_type_attribute))
@@ -263,6 +270,14 @@
               ;;
 
               (blockinherit infiniband_pkey.obj_template))
+
+       (block generic_ipsec_spd
+
+              ;;
+              ;; Policy
+              ;;
+
+              (blockinherit ipsec_spd.obj_template))
 
        (block generic_node
 
@@ -777,6 +792,85 @@
                      (blockabstract obj_template)
 
                      (blockinherit net.infiniband_pkey.obj_stub)))
+
+       (block ipsec_spd
+
+              ;;
+              ;; Macros
+              ;;
+
+              (blockinherit obj_all_macro_template)
+
+              ;;
+              ;; Policy
+              ;;
+
+              (typeattribute obj_type_attribute)
+
+              (allow unconfined_subj_type_attribute self (association
+                                                          (recvfrom sendto)))
+              (allow unconfined_subj_type_attribute obj_type_attribute
+                     (association (polmatch setcontext)))
+
+              (call sys.obj_type (obj_type_attribute))
+
+              ;;
+              ;; Templates
+              ;;
+
+              (block obj_all_macro_template
+
+                     ;;
+                     ;; Macros
+                     ;;
+
+                     (macro association_polmatch ((type ARG1))
+                            (allow ARG1 obj_type_attribute (association
+                                                            (polmatch))))
+
+                     (macro association_setcontext ((type ARG1))
+                            (allow ARG1 obj_type_attribute (association
+                                                            (setcontext))))
+
+                     (macro obj_type ((type ARG1))
+                            (typeattributeset obj_type_attribute ARG1))
+
+                     ;;
+                     ;; Policy
+                     ;;
+
+                     (blockabstract obj_all_macro_template))
+
+              (block obj_stub
+
+                     ;;
+                     ;; Policy
+                     ;;
+
+                     (blockabstract obj_stub)
+
+                     (type ipsec_spd)
+                     (call net.ipsec_spd.obj_type (ipsec_spd)))
+
+              (block obj_template
+
+                     ;;
+                     ;; Macros
+                     ;;
+
+                     (macro association_polmatch ((type ARG1))
+                            (allow ARG1 ipsec_spd (association (polmatch))))
+
+                     (macro association_setcontext ((type ARG1))
+                            (allow ARG1 ipsec_spd (association (setcontext))))
+
+                     ;;
+                     ;; Policy
+                     ;;
+
+                     (blockabstract obj_template)
+
+                     (blockinherit net.ipsec_spd.obj_stub)))
 
        (block node
 
