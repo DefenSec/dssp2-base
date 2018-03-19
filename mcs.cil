@@ -21,6 +21,10 @@
               (or (dom h1 h2)
                   (neq t1 mcs_constrained_subj_type_attribute)))
 
+(mlsconstrain (association (polmatch recvfrom sendto setcontext))
+              (or (dom h1 h2)
+                  (neq t1 mcs_constrained_subj_type_attribute)))
+
 (mlsconstrain (blk_file (append audit_access execmod execute getattr ioctl
                                 lock link mounton open quotaon read relabelfrom
                                 rename setattr unlink write))
