@@ -135,7 +135,7 @@
               (or (dom h1 h2)
                   (neq t1 mcs_constrained_subj_type_attribute)))
 
-(mlsconstrain (sctp_socket (name_connect node_bind))
+(mlsconstrain (sctp_socket (association name_connect node_bind))
               (or (dom h1 h2)
                   (neq t1 mcs_constrained_subj_type_attribute)))
 

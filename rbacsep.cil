@@ -737,9 +737,10 @@
                    (eq t1 rbacsep_exemption_subj_type_attribute))
                (eq t2 rbacsep_exemption_obj_type_attribute)))
 
-(constrain (sctp_socket (accept append bind connect getattr getopt ioctl listen
-                                lock name_connect node_bind read recvfrom
-                                sendto setattr setopt shutdown write))
+(constrain (sctp_socket (association accept append bind connect getattr getopt
+                                     ioctl listen lock name_connect node_bind
+                                     read recvfrom sendto setattr setopt
+                                     shutdown write))
            (or (or (or (or (eq r1 r2)
                            (and
                             (eq r1 rbacsep_exemption_role_attribute)

@@ -139,9 +139,6 @@
 (class rawip_socket (node_bind))
 (classcommon rawip_socket common_socket)
 
-(class sctp_socket (name_connect node_bind))
-(classcommon sctp_socket common_socket)
-
 (class security
        (check_context compute_av compute_create compute_member compute_relabel
                       compute_user load_policy read_policy setbool
@@ -197,7 +194,7 @@
            netlink_netfilter_socket netlink_generic_socket
            netlink_scsitransport_socket netlink_rdma_socket
            netlink_crypto_socket cap_userns cap2_userns infiniband_pkey
-           infiniband_endport process2 bpf sctp_socket))
+           infiniband_endport process2 bpf))
 
 ;;
 ;; Unordered Linux access vector declarations
@@ -275,6 +272,9 @@
 (class rxrpc_socket ())
 (classcommon rxrpc_socket common_socket)
 
+(class sctp_socket (association name_connect node_bind))
+(classcommon sctp_socket common_socket)
+
 (class smc_socket ())
 (classcommon smc_socket common_socket)
 
@@ -296,8 +296,8 @@
             caif_socket can_socket decnet_socket icmp_socket ieee802154_socket
             ipx_socket irda_socket isdn_socket iucv_socket kcm_socket
             llc_socket netrom_socket nfc_socket phonet_socket pppox_socket
-            qipcrtr_socket rds_socket rose_socket rxrpc_socket smc_socket
-            tipc_socket vsock_socket x25_socket))
+            qipcrtr_socket rds_socket rose_socket rxrpc_socket sctp_socket
+            smc_socket tipc_socket vsock_socket x25_socket))
 
 ;;
 ;; Common Linux access vector permission declarations
