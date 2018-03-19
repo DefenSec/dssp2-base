@@ -162,9 +162,9 @@
                             (allow ARG1 ephemeral_port (sctp_socket
                                                         (name_bind))))
 
-                     (macro stcp_connect ((type ARG1))
-                            (allow ARG1 self create_stcp_socket_perms)
-                            (allow ARG1 ephemeral_port (stcp_socket
+                     (macro sctp_connect ((type ARG1))
+                            (allow ARG1 self create_sctp_socket_perms)
+                            (allow ARG1 ephemeral_port (sctp_socket
                                                         (name_connect))))
 
                      (macro tcp_bind ((type ARG1))
@@ -374,9 +374,9 @@
                      (allow ARG1 self create_sctp_socket_perms)
                      (allow ARG1 isid (sctp_socket (name_bind))))
 
-              (macro stcp_connect ((type ARG1))
-                     (allow ARG1 self create_stcp_socket_perms)
-                     (allow ARG1 isid (stcp_socket (name_connect))))
+              (macro sctp_connect ((type ARG1))
+                     (allow ARG1 self create_sctp_socket_perms)
+                     (allow ARG1 isid (sctp_socket (name_connect))))
 
               (macro tcp_bind ((type ARG1))
                      (allow ARG1 self create_tcp_stream_socket_perms)
@@ -507,9 +507,9 @@
                             (allow ARG1 hi_reserved_port (sctp_socket
                                                           (name_bind))))
 
-                     (macro stcp_connect ((type ARG1))
-                            (allow ARG1 self create_stcp_socket_perms)
-                            (allow ARG1 hi_reserved_port (stcp_socket
+                     (macro sctp_connect ((type ARG1))
+                            (allow ARG1 self create_sctp_socket_perms)
+                            (allow ARG1 hi_reserved_port (sctp_socket
                                                           (name_connect))))
 
                      (macro tcp_bind ((type ARG1))
@@ -1156,9 +1156,9 @@
                             (allow ARG1 obj_type_attribute (sctp_socket
                                                             (name_bind))))
 
-                     (macro stcp_connect ((type ARG1))
-                            (allow ARG1 self create_stcp_socket_perms)
-                            (allow ARG1 obj_type_attribute (stcp_socket
+                     (macro sctp_connect ((type ARG1))
+                            (allow ARG1 self create_sctp_socket_perms)
+                            (allow ARG1 obj_type_attribute (sctp_socket
                                                             (name_connect))))
 
                      (macro tcp_bind ((type ARG1))
@@ -1240,9 +1240,9 @@
                             (allow ARG1 obj_type_attribute (sctp_socket
                                                             (name_bind))))
 
-                     (macro stcp_connect ((type ARG1))
-                            (allow ARG1 self create_stcp_socket_perms)
-                            (allow ARG1 obj_type_attribute (stcp_socket
+                     (macro sctp_connect ((type ARG1))
+                            (allow ARG1 self create_sctp_socket_perms)
+                            (allow ARG1 obj_type_attribute (sctp_socket
                                                             (name_connect))))
 
                      (macro tcp_bind ((type ARG1))
@@ -1326,9 +1326,9 @@
                             (allow ARG1 reserved_port (sctp_socket
                                                        (name_bind))))
 
-                     (macro stcp_connect ((type ARG1))
-                            (allow ARG1 self create_stcp_socket_perms)
-                            (allow ARG1 reserved_port (stcp_socket
+                     (macro sctp_connect ((type ARG1))
+                            (allow ARG1 self create_sctp_socket_perms)
+                            (allow ARG1 reserved_port (sctp_socket
                                                        (name_connect))))
 
                      (macro tcp_bind ((type ARG1))
@@ -1425,9 +1425,9 @@
                             (allow ARG1 unreserved_port (sctp_socket
                                                          (name_bind))))
 
-                     (macro stcp_connect ((type ARG1))
-                            (allow ARG1 self create_stcp_socket_perms)
-                            (allow ARG1 unreserved_port (stcp_socket
+                     (macro sctp_connect ((type ARG1))
+                            (allow ARG1 self create_sctp_socket_perms)
+                            (allow ARG1 unreserved_port (sctp_socket
                                                          (name_connect))))
 
                      (macro tcp_bind ((type ARG1))
