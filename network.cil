@@ -87,7 +87,7 @@
        (call sys.invalid.packet_send (unconfined_subj_type_attribute))
        (call sys.invalid.peer_recv (unconfined_subj_type_attribute))
        (call sys.invalid.rawip_recvfrom (unconfined_subj_type_attribute))
-       (call sys.invalid.sctp_associate (unconfined_subj_type_attribute))
+       (call sys.invalid.sctp_association (unconfined_subj_type_attribute))
        (call sys.invalid.sctp_recvfrom (unconfined_subj_type_attribute))
        (call sys.invalid.tcp_recvfrom (unconfined_subj_type_attribute))
        (call sys.invalid.udp_recvfrom (unconfined_subj_type_attribute))
@@ -330,6 +330,9 @@
 
               (macro peer_recv ((type ARG1))
                      (allow ARG1 isid (peer (recv))))
+
+              (macro sctp_association ((type ARG1))
+                     (allow ARG1 isid (sctp_socket (association))))
 
               ;;
               ;; Policy
@@ -1025,7 +1028,7 @@
                      (peer (recv)))
 
               (allow unconfined_subj_type_attribute obj_type_attribute
-                     (sctp_socket (associate)))
+                     (sctp_socket (association)))
 
               (call sys.obj_type (obj_type_attribute))
 
@@ -1045,9 +1048,9 @@
                      (macro peer_recv ((type ARG1))
                             (allow ARG1 obj_type_attribute (peer (recv))))
 
-                     (macro sctp_associate ((type ARG1))
+                     (macro sctp_association ((type ARG1))
                             (allow ARG1 obj_type_attribute (sctp_socket
-                                                            (associate))))
+                                                            (association))))
 
                      ;;
                      ;; Policy
@@ -1075,8 +1078,8 @@
                      (macro peer_recv ((type ARG1))
                             (allow ARG1 peer (peer (recv))))
 
-                     (macro sctp_associate ((type ARG1))
-                            (allow ARG1 peer (sctp_socket (associate))))
+                     (macro sctp_association ((type ARG1))
+                            (allow ARG1 peer (sctp_socket (association))))
 
                      ;;
                      ;; Policy
