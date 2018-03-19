@@ -811,6 +811,9 @@
               (macro peer_recv ((type ARG1))
                      (allow ARG1 isid (peer (recv))))
 
+              (macro sctp_associate ((type ARG1))
+                     (allow ARG1 isid (sctp_socket (associate))))
+
               (macro sctp_recvfrom ((type ARG1))
                      (allow ARG1 isid (sctp_socket (recvfrom))))
 
