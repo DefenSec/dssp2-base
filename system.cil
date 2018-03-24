@@ -859,6 +859,13 @@
               (call fs.tmpfs.associate (isid))
               (call fs.xattr.associate (isid))
 
+              (booleanif subj.recv_invalid_peers
+                         (true
+                          (call net.generic_if.ingress
+                                (isid))
+                          (call net.generic_node.recvfrom
+                                (isid))))
+
               (optional invalid_optional_systemd
                         (call systemd.system.sigchld (isid)))
 
