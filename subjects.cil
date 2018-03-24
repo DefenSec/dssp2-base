@@ -9,6 +9,7 @@
 ;;         subj_template
 ;;     mmap_low
 ;;     recv_and_send_invalid_packets
+;;     recv_invalid_peers
 
 (block subj
 
@@ -318,6 +319,10 @@
                                    append_inherited_fifo_file_perms)
                             (call use_fd (ARG1)))
 
+                     (macro association_recvfrom ((type ARG1))
+                            (allow ARG1 subj_type_attribute (association
+                                                             (recvfrom))))
+
                      (macro create_keyring ((type ARG1))
                             (allow ARG1 self (process (setkeycreate)))
                             (allow ARG1 subj_type_attribute create_key_perms))
@@ -583,6 +588,9 @@
                      (macro append_inherited_fifo_files ((type ARG1))
                             (allow ARG1 subj append_inherited_fifo_file_perms)
                             (call use_fd (ARG1)))
+
+                     (macro association_recvfrom ((type ARG1))
+                            (allow ARG1 subj (association (recvfrom))))
 
                      (macro create_keyring ((type ARG1))
                             (allow ARG1 self (process (setkeycreate)))
