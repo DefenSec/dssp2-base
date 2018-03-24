@@ -861,9 +861,9 @@
 
               (booleanif subj.recv_invalid_peers
                          (true
-                          (call net.generic_if.ingress
+                          (call net.if.ingress
                                 (isid))
-                          (call net.generic_node.recvfrom
+                          (call net.node.recvfrom
                                 (isid))))
 
               (optional invalid_optional_systemd
