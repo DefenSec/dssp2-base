@@ -361,6 +361,9 @@
                             (allow ARG1 subj_type_attribute
                                    (process2 (nosuid_transition))))
 
+                     (macro peer_recv ((type ARG1))
+                            (allow ARG1 subj_type_attribute (peer (recv))))
+
                      (macro ps ((type ARG1))
                             (allow ARG1 subj_type_attribute (process_state
                                                              (ps))))
@@ -615,6 +618,9 @@
 
                      (macro nosuid_transition ((type ARG1))
                             (allow ARG1 subj (process2 (nosuid_transition))))
+
+                     (macro peer_recv ((type ARG1))
+                            (allow ARG1 subj (peer (recv))))
 
                      (macro ps ((type ARG1))
                             (allow ARG1 subj (process_state (ps))))
