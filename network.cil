@@ -357,7 +357,10 @@
 
               (blockinherit sys.isid.stub)
 
-              (call peer.obj_type (isid)))
+              (call peer.obj_type (isid))
+
+              (call net.generic_if.ingress (isid))
+              (call net.generic_node.recvfrom (isid)))
 
        (block generic_port
 
