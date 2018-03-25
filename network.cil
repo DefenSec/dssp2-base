@@ -144,7 +144,7 @@
                      ;; Macros
                      ;;
 
-                     (macro dccp_bind ((type ARG1))
+                     (macro dccp_name_bind ((type ARG1))
                             (allow ARG1 self create_dccp_stream_socket_perms)
                             (allow ARG1 ephemeral_port (dccp_socket
                                                         (name_bind))))
@@ -154,17 +154,17 @@
                             (allow ARG1 ephemeral_port (dccp_socket
                                                         (name_connect))))
 
-                     (macro icmp_bind ((type ARG1))
+                     (macro icmp_name_bind ((type ARG1))
                             (allow ARG1 self create_icmp_socket_perms)
                             (allow ARG1 ephemeral_port (icmp_socket
                                                         (name_bind))))
 
-                     (macro rawip_bind ((type ARG1))
+                     (macro rawip_name_bind ((type ARG1))
                             (allow ARG1 self create_rawip_socket_perms)
                             (allow ARG1 ephemeral_port (rawip_socket
                                                         (name_bind))))
 
-                     (macro sctp_bind ((type ARG1))
+                     (macro sctp_name_bind ((type ARG1))
                             (allow ARG1 self create_sctp_stream_socket_perms)
                             (allow ARG1 ephemeral_port (sctp_socket
                                                         (name_bind))))
@@ -174,7 +174,7 @@
                             (allow ARG1 ephemeral_port (sctp_socket
                                                         (name_connect))))
 
-                     (macro tcp_bind ((type ARG1))
+                     (macro tcp_name_bind ((type ARG1))
                             (allow ARG1 self create_tcp_stream_socket_perms)
                             (allow ARG1 ephemeral_port (tcp_socket
                                                         (name_bind))))
@@ -184,7 +184,7 @@
                             (allow ARG1 ephemeral_port (tcp_socket
                                                         (name_connect))))
 
-                     (macro udp_bind ((type ARG1))
+                     (macro udp_name_bind ((type ARG1))
                             (allow ARG1 self create_udp_socket_perms)
                             (allow ARG1 ephemeral_port (udp_socket
                                                         (name_bind))))
@@ -293,16 +293,16 @@
               ;; Macros
               ;;
 
-              (macro dccp_bind ((type ARG1))
+              (macro dccp_node_bind ((type ARG1))
                      (allow ARG1 isid (dccp_socket (node_bind))))
 
-              (macro icmp_bind ((type ARG1))
+              (macro icmp_node_bind ((type ARG1))
                      (allow ARG1 isid (icmp_socket (node_bind))))
 
-              (macro rawip_bind ((type ARG1))
+              (macro rawip_node_bind ((type ARG1))
                      (allow ARG1 isid (rawip_socket (node_bind))))
 
-              (macro sctp_bind ((type ARG1))
+              (macro sctp_node_bind ((type ARG1))
                      (allow ARG1 isid (sctp_socket (node_bind))))
 
               (macro recvfrom ((type ARG1))
@@ -311,10 +311,10 @@
               (macro sendto ((type ARG1))
                      (allow ARG1 isid (node (sendto))))
 
-              (macro tcp_bind ((type ARG1))
+              (macro tcp_node_bind ((type ARG1))
                      (allow ARG1 isid (tcp_socket (node_bind))))
 
-              (macro udp_bind ((type ARG1))
+              (macro udp_node_bind ((type ARG1))
                      (allow ARG1 isid (udp_socket (node_bind))))
 
               ;;
@@ -374,7 +374,7 @@
               ;; Macros
               ;;
 
-              (macro dccp_bind ((type ARG1))
+              (macro dccp_name_bind ((type ARG1))
                      (allow ARG1 self create_dccp_stream_socket_perms)
                      (allow ARG1 isid (dccp_socket (name_bind))))
 
@@ -382,15 +382,15 @@
                      (allow ARG1 self create_dccp_socket_perms)
                      (allow ARG1 isid (dccp_socket (name_connect))))
 
-              (macro icmp_bind ((type ARG1))
+              (macro icmp_name_bind ((type ARG1))
                      (allow ARG1 self create_icmp_socket_perms)
                      (allow ARG1 isid (icmp_socket (name_bind))))
 
-              (macro rawip_bind ((type ARG1))
+              (macro rawip_name_bind ((type ARG1))
                      (allow ARG1 self create_rawip_socket_perms)
                      (allow ARG1 isid (rawip_socket (name_bind))))
 
-              (macro sctp_bind ((type ARG1))
+              (macro sctp_name_bind ((type ARG1))
                      (allow ARG1 self create_sctp_stream_socket_perms)
                      (allow ARG1 isid (sctp_socket (name_bind))))
 
@@ -398,7 +398,7 @@
                      (allow ARG1 self create_sctp_socket_perms)
                      (allow ARG1 isid (sctp_socket (name_connect))))
 
-              (macro tcp_bind ((type ARG1))
+              (macro tcp_name_bind ((type ARG1))
                      (allow ARG1 self create_tcp_stream_socket_perms)
                      (allow ARG1 isid (tcp_socket (name_bind))))
 
@@ -406,7 +406,7 @@
                      (allow ARG1 self create_tcp_socket_perms)
                      (allow ARG1 isid (tcp_socket (name_connect))))
 
-              (macro udp_bind ((type ARG1))
+              (macro udp_name_bind ((type ARG1))
                      (allow ARG1 self create_udp_socket_perms)
                      (allow ARG1 isid (udp_socket (name_bind))))
 
@@ -501,7 +501,7 @@
                      ;; Macros
                      ;;
 
-                     (macro dccp_bind ((type ARG1))
+                     (macro dccp_name_bind ((type ARG1))
                             (allow ARG1 self (capability (net_bind_service)))
                             (allow ARG1 self create_dccp_stream_socket_perms)
                             (allow ARG1 hi_reserved_port (dccp_socket
@@ -512,19 +512,19 @@
                             (allow ARG1 hi_reserved_port (dccp_socket
                                                           (name_connect))))
 
-                     (macro icmp_bind ((type ARG1))
+                     (macro icmp_name_bind ((type ARG1))
                             (allow ARG1 self (capability (net_bind_service)))
                             (allow ARG1 self create_icmp_socket_perms)
                             (allow ARG1 hi_reserved_port (icmp_socket
                                                           (name_bind))))
 
-                     (macro rawip_bind ((type ARG1))
+                     (macro rawip_name_bind ((type ARG1))
                             (allow ARG1 self (capability (net_bind_service)))
                             (allow ARG1 self create_rawip_socket_perms)
                             (allow ARG1 hi_reserved_port (rawip_socket
                                                           (name_bind))))
 
-                     (macro sctp_bind ((type ARG1))
+                     (macro sctp_name_bind ((type ARG1))
                             (allow ARG1 self (capability (net_bind_service)))
                             (allow ARG1 self create_sctp_stream_socket_perms)
                             (allow ARG1 hi_reserved_port (sctp_socket
@@ -535,7 +535,7 @@
                             (allow ARG1 hi_reserved_port (sctp_socket
                                                           (name_connect))))
 
-                     (macro tcp_bind ((type ARG1))
+                     (macro tcp_name_bind ((type ARG1))
                             (allow ARG1 self (capability (net_bind_service)))
                             (allow ARG1 self create_tcp_stream_socket_perms)
                             (allow ARG1 hi_reserved_port (tcp_socket
@@ -546,7 +546,7 @@
                             (allow ARG1 hi_reserved_port (tcp_socket
                                                           (name_connect))))
 
-                     (macro udp_bind ((type ARG1))
+                     (macro udp_name_bind ((type ARG1))
                             (allow ARG1 self (capability (net_bind_service)))
                             (allow ARG1 self create_udp_socket_perms)
                             (allow ARG1 hi_reserved_port (udp_socket
@@ -921,22 +921,22 @@
                      ;; Macros
                      ;;
 
-                     (macro dccp_bind ((type ARG1))
+                     (macro dccp_node_bind ((type ARG1))
                             (allow ARG1 obj_type_attribute (dccp_socket
                                                             (node_bind))))
 
-                     (macro icmp_bind ((type ARG1))
+                     (macro icmp_node_bind ((type ARG1))
                             (allow ARG1 obj_type_attribute (icmp_socket
                                                             (node_bind))))
 
                      (macro obj_type ((type ARG1))
                             (typeattributeset obj_type_attribute ARG1))
 
-                     (macro rawip_bind ((type ARG1))
+                     (macro rawip_node_bind ((type ARG1))
                             (allow ARG1 obj_type_attribute (rawip_socket
                                                             (node_bind))))
 
-                     (macro sctp_bind ((type ARG1))
+                     (macro sctp_node_bind ((type ARG1))
                             (allow ARG1 obj_type_attribute (sctp_socket
                                                             (node_bind))))
 
@@ -946,11 +946,11 @@
                      (macro sendto ((type ARG1))
                             (allow ARG1 obj_type_attribute (node (sendto))))
 
-                     (macro tcp_bind ((type ARG1))
+                     (macro tcp_node_bind ((type ARG1))
                             (allow ARG1 obj_type_attribute (tcp_socket
                                                             (node_bind))))
 
-                     (macro udp_bind ((type ARG1))
+                     (macro udp_node_bind ((type ARG1))
                             (allow ARG1 obj_type_attribute (udp_socket
                                                             (node_bind))))
 
@@ -984,16 +984,16 @@
                      ;; Macros
                      ;;
 
-                     (macro dccp_bind ((type ARG1))
+                     (macro dccp_node_bind ((type ARG1))
                             (allow ARG1 node (dccp_socket (node_bind))))
 
-                     (macro icmp_bind ((type ARG1))
+                     (macro icmp_node_bind ((type ARG1))
                             (allow ARG1 node (icmp_socket (node_bind))))
 
-                     (macro rawip_bind ((type ARG1))
+                     (macro rawip_node_bind ((type ARG1))
                             (allow ARG1 node (rawip_socket (node_bind))))
 
-                     (macro sctp_bind ((type ARG1))
+                     (macro sctp_node_bind ((type ARG1))
                             (allow ARG1 node (sctp_socket (node_bind))))
 
                      (macro recvfrom ((type ARG1))
@@ -1002,10 +1002,10 @@
                      (macro sendto ((type ARG1))
                             (allow ARG1 node (node (sendto))))
 
-                     (macro tcp_bind ((type ARG1))
+                     (macro tcp_node_bind ((type ARG1))
                             (allow ARG1 node (tcp_socket (node_bind))))
 
-                     (macro udp_bind ((type ARG1))
+                     (macro udp_node_bind ((type ARG1))
                             (allow ARG1 node (udp_socket (node_bind))))
 
                      ;;
@@ -1230,7 +1230,7 @@
                      ;; Macros
                      ;;
 
-                     (macro dccp_bind ((type ARG1))
+                     (macro dccp_name_bind ((type ARG1))
                             (allow ARG1 self create_dccp_stream_socket_perms)
                             (allow ARG1 obj_type_attribute (dccp_socket
                                                             (name_bind))))
@@ -1240,7 +1240,7 @@
                             (allow ARG1 obj_type_attribute (dccp_socket
                                                             (name_connect))))
 
-                     (macro icmp_bind ((type ARG1))
+                     (macro icmp_name_bind ((type ARG1))
                             (allow ARG1 self create_icmp_socket_perms)
                             (allow ARG1 obj_type_attribute (icmp_socket
                                                             (name_bind))))
@@ -1248,12 +1248,12 @@
                      (macro obj_type ((type ARG1))
                             (typeattributeset obj_type_attribute ARG1))
 
-                     (macro rawip_bind ((type ARG1))
+                     (macro rawip_name_bind ((type ARG1))
                             (allow ARG1 self create_rawip_socket_perms)
                             (allow ARG1 obj_type_attribute (rawip_socket
                                                             (name_bind))))
 
-                     (macro sctp_bind ((type ARG1))
+                     (macro sctp_name_bind ((type ARG1))
                             (allow ARG1 self create_sctp_stream_socket_perms)
                             (allow ARG1 obj_type_attribute (sctp_socket
                                                             (name_bind))))
@@ -1263,7 +1263,7 @@
                             (allow ARG1 obj_type_attribute (sctp_socket
                                                             (name_connect))))
 
-                     (macro tcp_bind ((type ARG1))
+                     (macro tcp_name_bind ((type ARG1))
                             (allow ARG1 self create_tcp_stream_socket_perms)
                             (allow ARG1 obj_type_attribute (tcp_socket
                                                             (name_bind))))
@@ -1273,7 +1273,7 @@
                             (allow ARG1 obj_type_attribute (tcp_socket
                                                             (name_connect))))
 
-                     (macro udp_bind ((type ARG1))
+                     (macro udp_name_bind ((type ARG1))
                             (allow ARG1 self create_udp_socket_perms)
                             (allow ARG1 obj_type_attribute (udp_socket
                                                             (name_bind))))
@@ -1310,7 +1310,7 @@
                      ;; Macros
                      ;;
 
-                     (macro dccp_bind ((type ARG1))
+                     (macro dccp_name_bind ((type ARG1))
                             (allow ARG1 self (capability (net_bind_service)))
                             (allow ARG1 self create_dccp_stream_socket_perms)
                             (allow ARG1 obj_type_attribute (dccp_socket
@@ -1321,7 +1321,7 @@
                             (allow ARG1 obj_type_attribute (dccp_socket
                                                             (name_connect))))
 
-                     (macro icmp_bind ((type ARG1))
+                     (macro icmp_name_bind ((type ARG1))
                             (allow ARG1 self (capability (net_bind_service)))
                             (allow ARG1 self create_icmp_socket_perms)
                             (allow ARG1 obj_type_attribute (icmp_socket
@@ -1330,13 +1330,13 @@
                      (macro obj_type ((type ARG1))
                             (typeattributeset obj_type_attribute ARG1))
 
-                     (macro rawip_bind ((type ARG1))
+                     (macro rawip_name_bind ((type ARG1))
                             (allow ARG1 self (capability (net_bind_service)))
                             (allow ARG1 self create_rawip_socket_perms)
                             (allow ARG1 obj_type_attribute (rawip_socket
                                                             (name_bind))))
 
-                     (macro sctp_bind ((type ARG1))
+                     (macro sctp_name_bind ((type ARG1))
                             (allow ARG1 self (capability (net_bind_service)))
                             (allow ARG1 self create_sctp_stream_socket_perms)
                             (allow ARG1 obj_type_attribute (sctp_socket
@@ -1347,7 +1347,7 @@
                             (allow ARG1 obj_type_attribute (sctp_socket
                                                             (name_connect))))
 
-                     (macro tcp_bind ((type ARG1))
+                     (macro tcp_name_bind ((type ARG1))
                             (allow ARG1 self (capability (net_bind_service)))
                             (allow ARG1 self create_tcp_stream_socket_perms)
                             (allow ARG1 obj_type_attribute (tcp_socket
@@ -1362,7 +1362,7 @@
                             (allow ARG1 obj_type_attribute (tcp_socket
                                                             (name_connect))))
 
-                     (macro udp_bind ((type ARG1))
+                     (macro udp_name_bind ((type ARG1))
                             (allow ARG1 self (capability (net_bind_service)))
                             (allow ARG1 self create_udp_socket_perms)
                             (allow ARG1 obj_type_attribute (udp_socket
@@ -1399,7 +1399,7 @@
                      ;; Macros
                      ;;
 
-                     (macro dccp_bind ((type ARG1))
+                     (macro dccp_name_bind ((type ARG1))
                             (allow ARG1 self (capability (net_bind_service)))
                             (allow ARG1 self create_dccp_stream_socket_perms)
                             (allow ARG1 reserved_port (dccp_socket
@@ -1410,19 +1410,19 @@
                             (allow ARG1 reserved_port (dccp_socket
                                                        (name_connect))))
 
-                     (macro icmp_bind ((type ARG1))
+                     (macro icmp_name_bind ((type ARG1))
                             (allow ARG1 self (capability (net_bind_service)))
                             (allow ARG1 self create_icmp_socket_perms)
                             (allow ARG1 reserved_port (icmp_socket
                                                        (name_bind))))
 
-                     (macro rawip_bind ((type ARG1))
+                     (macro rawip_name_bind ((type ARG1))
                             (allow ARG1 self (capability (net_bind_service)))
                             (allow ARG1 self create_rawip_socket_perms)
                             (allow ARG1 reserved_port (rawip_socket
                                                        (name_bind))))
 
-                     (macro sctp_bind ((type ARG1))
+                     (macro sctp_name_bind ((type ARG1))
                             (allow ARG1 self (capability (net_bind_service)))
                             (allow ARG1 self create_sctp_stream_socket_perms)
                             (allow ARG1 reserved_port (sctp_socket
@@ -1433,7 +1433,7 @@
                             (allow ARG1 reserved_port (sctp_socket
                                                        (name_connect))))
 
-                     (macro tcp_bind ((type ARG1))
+                     (macro tcp_name_bind ((type ARG1))
                             (allow ARG1 self (capability (net_bind_service)))
                             (allow ARG1 self create_tcp_stream_socket_perms)
                             (allow ARG1 reserved_port (tcp_socket
@@ -1444,7 +1444,7 @@
                             (allow ARG1 reserved_port (tcp_socket
                                                        (name_connect))))
 
-                     (macro udp_bind ((type ARG1))
+                     (macro udp_name_bind ((type ARG1))
                             (allow ARG1 self (capability (net_bind_service)))
                             (allow ARG1 self create_udp_socket_perms)
                             (allow ARG1 reserved_port (udp_socket
@@ -1502,7 +1502,7 @@
                      ;; Macros
                      ;;
 
-                     (macro dccp_bind ((type ARG1))
+                     (macro dccp_name_bind ((type ARG1))
                             (allow ARG1 self create_dccp_stream_socket_perms)
                             (allow ARG1 unreserved_port (dccp_socket
                                                          (name_bind))))
@@ -1512,17 +1512,17 @@
                             (allow ARG1 unreserved_port (dccp_socket
                                                          (name_connect))))
 
-                     (macro icmp_bind ((type ARG1))
+                     (macro icmp_name_bind ((type ARG1))
                             (allow ARG1 self create_icmp_socket_perms)
                             (allow ARG1 unreserved_port (icmp_socket
                                                          (name_bind))))
 
-                     (macro rawip_bind ((type ARG1))
+                     (macro rawip_name_bind ((type ARG1))
                             (allow ARG1 self create_rawip_socket_perms)
                             (allow ARG1 unreserved_port (rawip_socket
                                                          (name_bind))))
 
-                     (macro sctp_bind ((type ARG1))
+                     (macro sctp_name_bind ((type ARG1))
                             (allow ARG1 self create_sctp_stream_socket_perms)
                             (allow ARG1 unreserved_port (sctp_socket
                                                          (name_bind))))
@@ -1532,7 +1532,7 @@
                             (allow ARG1 unreserved_port (sctp_socket
                                                          (name_connect))))
 
-                     (macro tcp_bind ((type ARG1))
+                     (macro tcp_name_bind ((type ARG1))
                             (allow ARG1 self create_tcp_stream_socket_perms)
                             (allow ARG1 unreserved_port (tcp_socket
                                                          (name_bind))))
@@ -1542,7 +1542,7 @@
                             (allow ARG1 unreserved_port (tcp_socket
                                                          (name_connect))))
 
-                     (macro udp_bind ((type ARG1))
+                     (macro udp_name_bind ((type ARG1))
                             (allow ARG1 self create_udp_socket_perms)
                             (allow ARG1 unreserved_port (udp_socket
                                                          (name_bind))))
