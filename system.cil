@@ -307,6 +307,7 @@
 
        (call net.generic_if.egress (isid))
        (call net.generic_node.sendto (isid))
+       (call net.generic_packet.packet_send (isid))
 
        (call sec.compute_create_context (isid))
 
