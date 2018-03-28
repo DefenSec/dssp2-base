@@ -55,8 +55,6 @@
        ;;
 
        (boolean mmap_low false)
-       (boolean recv_and_send_invalid_packets true)
-       (boolean recv_invalid_peers true)
 
        (typeattribute dyntransition_subj_type_attribute)
        (typeattribute
@@ -731,48 +729,4 @@
               (booleanif mmap_low
                          (true
                           (allow mmap_low_subj_type_attribute self
-                                 (memprotect (mmap_zero))))))
-
-       (block recv_and_send_invalid_packets
-
-              ;;
-              ;; Contexts
-              ;;
-
-              (genfscon "selinuxfs"
-                        "/booleans/subj.recv_and_send_invalid_packets"
-                        bool_file_context)
-
-              ;;
-              ;; Policy
-              ;;
-
-              (blockinherit sec.bool_file.obj_template)
-
-              (booleanif recv_and_send_invalid_packets
-                         (true
-                          (call sys.invalid.packet_recv
-                                (subj.common_subj.subj_type_attribute))
-                          (call sys.invalid.packet_send
-                                (subj.common_subj.subj_type_attribute)))))
-
-       (block recv_invalid_peers
-
-              ;;
-              ;; Contexts
-              ;;
-
-              (genfscon "selinuxfs"
-                        "/booleans/subj.recv_invalid_peers"
-                        bool_file_context)
-
-              ;;
-              ;; Policy
-              ;;
-
-              (blockinherit sec.bool_file.obj_template)
-
-              (booleanif recv_invalid_peers
-                         (true
-                          (call sys.invalid.peer_recv
-                                (subj.common_subj.subj_type_attribute))))))
+                                 (memprotect (mmap_zero)))))))

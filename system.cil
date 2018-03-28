@@ -136,6 +136,13 @@
        (macro read_state ((type ARG1))
               (allow ARG1 isid (process_state (read))))
 
+       (macro recv_and_send_invalid_packets_subj_type ((type ARG1))
+              (typeattributeset recv_and_send_invalid_packets_subj_type_attribute
+                                ARG1))
+
+       (macro recv_invalid_peers_subj_type ((type ARG1))
+              (typeattributeset recv_invalid_peers_subj_type_attribute ARG1))
+
        (macro request_load_kernel_module ((type ARG1))
               (allow ARG1 isid (system (module_request))))
 
@@ -203,6 +210,8 @@
        (boolean load_kernel_module true)
        (boolean manage_files_except true)
        (boolean mounton_invalid_dir true)
+       (boolean recv_and_send_invalid_packets true)
+       (boolean recv_invalid_peers true)
 
        (roleattribute role_attribute)
        (roleattribute roleallow_role_attribute)
@@ -222,6 +231,12 @@
        (typeattribute
         not_read_kernel_msg_subj_type_or_unconfined_subj_type_attribute)
        (typeattribute read_kernel_msg_subj_type_attribute)
+
+       (typeattribute not_recv_and_send_invalid_packets_subj_type_attribute)
+       (typeattribute recv_and_send_invalid_packets_subj_type_attribute)
+
+       (typeattribute recv_invalid_peers_subj_type_attribute)
+       (typeattribute not_recv_invalid_peers_subj_type_attribute)
 
        (typeattribute unconfined_subj_type_attribute)
 
@@ -269,6 +284,7 @@
        (allow isid self create_unix_stream_socket_perms)
 
        (call change_ring_buffer_level (isid))
+       (call recv_and_send_invalid_packets_subj_type (isid))
        (call request_load_kernel_module (isid))
 
        (call dev.clock.devtmpfs_obj_type_transition (isid))
@@ -810,12 +826,15 @@
                      (allow ARG1 isid (process_state (read))))
 
               (macro packet_recv ((type ARG1))
+                     (call recv_and_send_invalid_packets_subj_type (ARG1))
                      (allow ARG1 isid (packet (recv))))
 
               (macro packet_send ((type ARG1))
+                     (call recv_and_send_invalid_packets_subj_type (ARG1))
                      (allow ARG1 isid (packet (send))))
 
               (macro peer_recv ((type ARG1))
+                     (call recv_invalid_peers_subj_type (ARG1))
                      (allow ARG1 isid (peer (recv))))
 
               (macro sctp_association ((type ARG1))
@@ -863,18 +882,29 @@
               (call fs.tmpfs.associate (isid))
               (call fs.xattr.associate (isid))
 
-              (booleanif subj.recv_invalid_peers
+              (booleanif recv_invalid_peers
                          (true
-                          (call net.if.ingress
-                                (isid))
-                          (call net.node.recvfrom
-                                (isid))))
+                          (call net.if.ingress (isid))
+                          (call net.node.recvfrom (isid))))
 
               (optional invalid_optional_systemd
                         (call systemd.system.sigchld (isid)))
 
               (neverallow not_mounton_invalid_dir_subj_type_attribute isid
                           (dir (mounton)))
+
+              (typeattributeset not_recv_and_send_invalid_packets_subj_type_attribute
+                                (not
+                                 (recv_and_send_invalid_packets_subj_type_attribute)))
+
+              (neverallow not_recv_and_send_invalid_packets_subj_type_attribute
+                          isid (packet (recv send)))
+
+              (typeattributeset not_recv_invalid_peers_subj_type_attribute
+                                (not (recv_invalid_peers_subj_type_attribute)))
+
+              (neverallow not_recv_invalid_peers_subj_type_attribute isid
+                          (peer (recv)))
 
               (allow unconfined_subj_type_attribute isid
                      blk_file_except_execmod_map_and_mounton)
@@ -2657,6 +2687,49 @@
                      (blockabstract obj_template)
 
                      (blockinherit sys.proc_file.obj_stub)))
+
+       (block recv_and_send_invalid_packets
+
+              ;;
+              ;; Contexts
+              ;;
+
+              (genfscon "selinuxfs"
+                        "/booleans/sys.recv_and_send_invalid_packets"
+                        bool_file_context)
+
+              ;;
+              ;; Policy
+              ;;
+
+              (blockinherit sec.bool_file.obj_template)
+
+              (booleanif recv_and_send_invalid_packets
+                         (true
+                          (call invalid.packet_recv
+                                (recv_and_send_invalid_packets_subj_type_attribute))
+                          (call invalid.packet_send
+                                (recv_and_send_invalid_packets_subj_type_attribute)))))
+
+       (block recv_invalid_peers
+
+              ;;
+              ;; Contexts
+              ;;
+
+              (genfscon "selinuxfs" "/booleans/sys.recv_invalid_peers"
+                        bool_file_context)
+
+              ;;
+              ;; Policy
+              ;;
+
+              (blockinherit sec.bool_file.obj_template)
+
+              (booleanif recv_invalid_peers
+                         (true
+                          (call invalid.peer_recv
+                                (recv_invalid_peers_subj_type_attribute)))))
 
        (block security_sysctl
 
