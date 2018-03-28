@@ -90,15 +90,11 @@
              (unconfined_subj_type_attribute))
        (call sys.invalid.ipsec_association_recvfrom_sendto
              (unconfined_subj_type_attribute))
-       (call sys.invalid.packet_recv (unconfined_subj_type_attribute))
-       (call sys.invalid.packet_send (unconfined_subj_type_attribute))
-       (call sys.invalid.peer_recv (unconfined_subj_type_attribute))
        (call sys.invalid.rawip_recvfrom (unconfined_subj_type_attribute))
        (call sys.invalid.sctp_association (unconfined_subj_type_attribute))
        (call sys.invalid.sctp_recvfrom (unconfined_subj_type_attribute))
        (call sys.invalid.tcp_recvfrom (unconfined_subj_type_attribute))
        (call sys.invalid.udp_recvfrom (unconfined_subj_type_attribute))
-
        (call sys.recv_and_send_invalid_packets_subj_type
              (unconfined_subj_type_attribute))
        (call sys.recv_invalid_peers_subj_type (unconfined_subj_type_attribute))
