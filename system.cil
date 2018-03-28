@@ -296,6 +296,7 @@
 
        (call change_ring_buffer_level (isid))
        (call request_load_kernel_module (isid))
+       (call sys.send_invalid_packets_subj_type (isid))
 
        (call dev.clock.devtmpfs_obj_type_transition (isid))
        (call dev.cuse.devtmpfs_obj_type_transition (isid))
