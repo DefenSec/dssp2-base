@@ -136,9 +136,13 @@
        (macro read_state ((type ARG1))
               (allow ARG1 isid (process_state (read))))
 
-       (macro recv_and_send_invalid_packets_subj_type ((type ARG1))
-              (typeattributeset recv_and_send_invalid_packets_subj_type_attribute
+       (macro recv_invalid_packets_subj_type ((type ARG1))
+              (typeattributeset recv_invalid_packets_subj_type_attribute
                                 ARG1))
+
+       (macro recv_and_send_invalid_packets_subj_type ((type ARG1))
+              (call recv_invalid_packets_subj_type (ARG1))
+              (call send_invalid_packets_subj_type (ARG1)))
 
        (macro recv_invalid_peers_subj_type ((type ARG1))
               (typeattributeset recv_invalid_peers_subj_type_attribute ARG1))
@@ -163,6 +167,10 @@
 
        (macro rw_unix_stream_sockets ((type ARG1))
               (allow ARG1 isid rw_unix_stream_socket_perms))
+
+       (macro send_invalid_packets_subj_type ((type ARG1))
+              (typeattributeset send_invalid_packets_subj_type_attribute
+                                ARG1))
 
        (macro setkeycreate ((type ARG1))
               (allow ARG1 isid (process (setkeycreate))))
@@ -232,8 +240,11 @@
         not_read_kernel_msg_subj_type_or_unconfined_subj_type_attribute)
        (typeattribute read_kernel_msg_subj_type_attribute)
 
-       (typeattribute not_recv_and_send_invalid_packets_subj_type_attribute)
-       (typeattribute recv_and_send_invalid_packets_subj_type_attribute)
+       (typeattribute not_recv_invalid_packets_subj_type_attribute)
+       (typeattribute recv_invalid_packets_subj_type_attribute)
+
+       (typeattribute not_send_invalid_packets_subj_type_attribute)
+       (typeattribute send_invalid_packets_subj_type_attribute)
 
        (typeattribute recv_invalid_peers_subj_type_attribute)
        (typeattribute not_recv_invalid_peers_subj_type_attribute)
@@ -284,8 +295,8 @@
        (allow isid self create_unix_stream_socket_perms)
 
        (call change_ring_buffer_level (isid))
-       (call recv_and_send_invalid_packets_subj_type (isid))
        (call request_load_kernel_module (isid))
+       (call send_invalid_packets_subj_type (isid))
 
        (call dev.clock.devtmpfs_obj_type_transition (isid))
        (call dev.cuse.devtmpfs_obj_type_transition (isid))
@@ -426,6 +437,15 @@
         not_read_kernel_msg_subj_type_or_unconfined_subj_type_attribute
         (not (read_kernel_msg_subj_type_attribute
               unconfined_subj_type_attribute)))
+
+       (typeattributeset not_recv_invalid_packets_subj_type_attribute
+                         (not (recv_invalid_packets_subj_type_attribute)))
+
+       (typeattributeset not_send_invalid_packets_subj_type_attribute
+                         (not (send_invalid_packets_subj_type_attribute)))
+
+       (typeattributeset not_recv_invalid_peers_subj_type_attribute
+                         (not (recv_invalid_peers_subj_type_attribute)))
 
        (allow unconfined_subj_type_attribute isid system_except_module_load)
 
@@ -826,15 +846,12 @@
                      (allow ARG1 isid (process_state (read))))
 
               (macro packet_recv ((type ARG1))
-                     (call recv_and_send_invalid_packets_subj_type (ARG1))
                      (allow ARG1 isid (packet (recv))))
 
               (macro packet_send ((type ARG1))
-                     (call recv_and_send_invalid_packets_subj_type (ARG1))
                      (allow ARG1 isid (packet (send))))
 
               (macro peer_recv ((type ARG1))
-                     (call recv_invalid_peers_subj_type (ARG1))
                      (allow ARG1 isid (peer (recv))))
 
               (macro sctp_association ((type ARG1))
@@ -893,15 +910,11 @@
               (neverallow not_mounton_invalid_dir_subj_type_attribute isid
                           (dir (mounton)))
 
-              (typeattributeset not_recv_and_send_invalid_packets_subj_type_attribute
-                                (not
-                                 (recv_and_send_invalid_packets_subj_type_attribute)))
+              (neverallow not_recv_invalid_packets_subj_type_attribute isid
+                          (packet (recv)))
 
-              (neverallow not_recv_and_send_invalid_packets_subj_type_attribute
-                          isid (packet (recv send)))
-
-              (typeattributeset not_recv_invalid_peers_subj_type_attribute
-                                (not (recv_invalid_peers_subj_type_attribute)))
+              (neverallow not_send_invalid_packets_subj_type_attribute isid
+                          (packet (send)))
 
               (neverallow not_recv_invalid_peers_subj_type_attribute isid
                           (peer (recv)))
@@ -2707,9 +2720,9 @@
               (booleanif recv_and_send_invalid_packets
                          (true
                           (call invalid.packet_recv
-                                (recv_and_send_invalid_packets_subj_type_attribute))
+                                (recv_invalid_packets_subj_type_attribute))
                           (call invalid.packet_send
-                                (recv_and_send_invalid_packets_subj_type_attribute)))))
+                                (send_invalid_packets_subj_type_attribute)))))
 
        (block recv_invalid_peers
 
