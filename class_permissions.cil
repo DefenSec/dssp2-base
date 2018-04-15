@@ -176,6 +176,7 @@
 (classpermission read_key_perms)
 (classpermission rw_key_perms)
 (classpermission setattr_key_perms)
+(classpermission view_key_perms)
 (classpermission write_key_perms)
 
 (classpermission create_key_socket_perms)
@@ -726,6 +727,7 @@
 (classpermissionset read_key_perms (key (link read search view)))
 (classpermissionset rw_key_perms (key (link read search view write)))
 (classpermissionset setattr_key_perms (key (link search setattr write)))
+(classpermissionset view_key_perms (key (search view)))
 (classpermissionset write_key_perms (key (link search write)))
 
 (classpermissionset create_key_socket_perms

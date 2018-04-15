@@ -469,6 +469,9 @@
                      (macro use_fd ((type ARG1))
                             (allow ARG1 subj_type_attribute (fd (use))))
 
+                     (macro view_keyring ((type ARG1))
+                            (allow ARG1 subj_type_attribute view_key_perms))
+
                      ;;
                      ;; Policy
                      ;;
@@ -702,6 +705,9 @@
 
                      (macro use_fd ((type ARG1))
                             (allow ARG1 subj (fd (use))))
+
+                     (macro view_keyring ((type ARG1))
+                            (allow ARG1 subj view_key_perms))
 
                      ;;
                      ;; Policy
