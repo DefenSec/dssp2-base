@@ -204,6 +204,9 @@
        (macro use_fd ((type ARG1))
               (allow ARG1 isid (fd (use))))
 
+       (macro userrole_user ((user ARG1))
+              (userrole ARG1 role))
+
        (macro write_security_subj_type ((type ARG1))
               (typeattributeset write_security_subj_type_attribute ARG1))
 
