@@ -714,10 +714,13 @@
 
               (macro mapr_chr_files ((type ARG1))
                      (allow ARG1 dev_file mapr_chr_file_perms)
+                     (call read_memory_subj_type (ARG1))
                      (call fs.devtmpfs.search (ARG1)))
 
               (macro maprw_chr_files ((type ARG1))
                      (allow ARG1 dev_file maprw_chr_file_perms)
+                     (call read_memory_subj_type (ARG1))
+                     (call write_memory_subj_type (ARG1))
                      (call fs.devtmpfs.search (ARG1)))
 
               (macro read_chr_files ((type ARG1))
