@@ -915,8 +915,14 @@
               (call fs.tmpfs.associate (isid))
               (call fs.xattr.associate (isid))
 
+              (booleanif recv_and_send_invalid_packets
+                         (true
+                          (call forward_in (isid))
+                          (call forward_out (isid))))
+
               (booleanif recv_invalid_peers
                          (true
+                          (call net.generic_node.sendto (isid))
                           (call net.if.ingress (isid))
                           (call net.node.recvfrom (isid))))
 
