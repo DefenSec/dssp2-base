@@ -301,6 +301,9 @@
        (call request_load_kernel_module (isid))
        (call sys.send_invalid_packets_subj_type (isid))
 
+       (call recv_invalid_packets_subj_type (isid))
+       (call recv_invalid_peers_subj_type (isid))
+
        (call dev.clock.devtmpfs_obj_type_transition (isid))
        (call dev.cuse.devtmpfs_obj_type_transition (isid))
        (call dev.devtty.tmpfs_obj_type_transition (isid))
@@ -308,6 +311,7 @@
        (call dev.kvm.devtmpfs_obj_type_transition (isid))
        (call dev.dev_file.manage_chr_files (isid))
        (call dev.mei_misc.devtmpfs_obj_type_transition (isid))
+
        (call dev.modem.devtmpfs_obj_type_transition (isid))
        (call dev.mouse.devtmpfs_obj_type_transition (isid))
        (call dev.null.tmpfs_obj_type_transition (isid))
@@ -827,6 +831,12 @@
               (macro dccp_recvfrom ((type ARG1))
                      (allow ARG1 isid (dccp_socket (recvfrom))))
 
+              (macro forward_in ((type ARG1))
+                     (allow ARG1 isid (packet (forward_in))))
+
+              (macro forward_out ((type ARG1))
+                     (allow ARG1 isid (packet (forward_out))))
+
               (macro icmp_recvfrom ((type ARG1))
                      (allow ARG1 isid (icmp_socket (recvfrom))))
 
@@ -842,11 +852,23 @@
               (macro mounton_dirs ((type ARG1))
                      (allow ARG1 isid (dir (getattr mounton))))
 
+              (macro packet_recv ((type ARG1))
+                     (allow ARG1 isid (packet (recv))))
+
+              (macro packet_send ((type ARG1))
+                     (allow ARG1 isid (packet (send))))
+
+              (macro peer_recv ((type ARG1))
+                     (allow ARG1 isid (peer (recv))))
+
               (macro rawip_recvfrom ((type ARG1))
                      (allow ARG1 isid (rawip_socket (recvfrom))))
 
               (macro read_state ((type ARG1))
                      (allow ARG1 isid (process_state (read))))
+
+              (macro packet_relabelto ((type ARG1))
+                     (allow ARG1 isid (packet (relabelto))))
 
               (macro sctp_association ((type ARG1))
                      (allow ARG1 isid (sctp_socket (association))))
