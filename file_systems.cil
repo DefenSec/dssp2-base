@@ -1830,7 +1830,7 @@
 
            (blockinherit fs.obj_template)
 
-           (call sys.mountpoint.obj_type (fs))))
+           (call sys.mountpoint.obj_type (fs)))
 
     (block cgroup
 
