@@ -1828,7 +1828,9 @@
            ;; Policy
            ;;
 
-           (blockinherit fs.obj_template))
+           (blockinherit fs.obj_template)
+
+           (call sys.mountpoint.obj_type (fs))))
 
     (block cgroup
 
