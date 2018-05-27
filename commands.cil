@@ -27,6 +27,9 @@
               (filecon "/usr/libexec(/.*)?" any cmd_file_context)
               (filecon "/usr/sbin(/.*)?" any cmd_file_context)
 
+              ;; hard-linked
+              (filecon "/usr/lib/qt4/bin/qdbus" file cmd_file_context)
+
               ;;
               ;; Macros
               ;;
