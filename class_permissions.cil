@@ -347,6 +347,9 @@
 (classpermission create_x25_socket_perms)
 (classpermission rw_x25_socket_perms)
 
+(classpermission create_xdp_socket_perms)
+(classpermission rw_xdp_socket_perms)
+
 ;;
 ;; Class permission sets
 ;;
@@ -1185,5 +1188,14 @@
                              setattr setopt shutdown write)))
 (classpermissionset rw_x25_socket_perms
                     (x25_socket
+                     (append bind connect getattr getopt ioctl read setattr
+                             setopt shutdown write)))
+
+(classpermissionset create_xdp_socket_perms
+                    (xdp_socket
+                     (append bind connect create getattr getopt ioctl read
+                             setattr setopt shutdown write)))
+(classpermissionset rw_xdp_socket_perms
+                    (xdp_socket
                      (append bind connect getattr getopt ioctl read setattr
                              setopt shutdown write)))

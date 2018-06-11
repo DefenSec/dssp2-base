@@ -468,6 +468,11 @@
                (accept append bind connect create getattr getopt ioctl
                        listen lock name_bind read recvfrom relabelfrom
                        relabelto sendto setattr setopt shutdown write)))
+(classmapping all_sockets common_socket_perms
+              (xdp_socket
+               (accept append bind connect create getattr getopt ioctl
+                       listen lock name_bind read recvfrom relabelfrom
+                       relabelto sendto setattr setopt shutdown write)))
 
 (classmapping all_sockets create_relabelfrom_relabelto
               (alg_socket (create relabelfrom relabelto)))
@@ -581,6 +586,8 @@
               (vsock_socket (create relabelfrom relabelto)))
 (classmapping all_sockets create_relabelfrom_relabelto
               (x25_socket (create relabelfrom relabelto)))
+(classmapping all_sockets create_relabelfrom_relabelto
+              (xdp_socket (create relabelfrom relabelto)))
 
 (classmapping all_sockets getattr (alg_socket (getattr)))
 (classmapping all_sockets getattr (appletalk_socket (getattr)))
@@ -639,6 +646,7 @@
 (classmapping all_sockets getattr (unix_stream_socket (getattr)))
 (classmapping all_sockets getattr (vsock_socket (getattr)))
 (classmapping all_sockets getattr (x25_socket (getattr)))
+(classmapping all_sockets getattr (xdp_socket (getattr)))
 
 (classmapping all_sockets map (alg_socket (map)))
 (classmapping all_sockets map (appletalk_socket (map)))
@@ -696,6 +704,7 @@
 (classmapping all_sockets map (unix_stream_socket (map)))
 (classmapping all_sockets map (vsock_socket (map)))
 (classmapping all_sockets map (x25_socket (map)))
+(classmapping all_sockets map (xdp_socket (map)))
 
 (classmapping all_sockets name_bind (alg_socket (name_bind)))
 (classmapping all_sockets name_bind (appletalk_socket (name_bind)))
@@ -754,6 +763,7 @@
 (classmapping all_sockets name_bind (unix_stream_socket (name_bind)))
 (classmapping all_sockets name_bind (vsock_socket (name_bind)))
 (classmapping all_sockets name_bind (x25_socket (name_bind)))
+(classmapping all_sockets name_bind (xdp_socket (name_bind)))
 
 (classmapping blk_and_chr_files create add_entry_dir_perms)
 (classmapping blk_and_chr_files create create_blk_file_perms)

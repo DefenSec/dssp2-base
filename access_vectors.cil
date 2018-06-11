@@ -290,6 +290,9 @@
 (class x25_socket ())
 (classcommon x25_socket common_socket)
 
+(class xdp_socket ())
+(classcommon xdp_socket common_socket)
+
 ;;
 ;; Class order of unordered Linux access vectors
 ;;
@@ -300,7 +303,7 @@
             ipx_socket irda_socket isdn_socket iucv_socket kcm_socket
             llc_socket netrom_socket nfc_socket phonet_socket pppox_socket
             qipcrtr_socket rds_socket rose_socket rxrpc_socket sctp_socket
-            smc_socket tipc_socket vsock_socket x25_socket))
+            smc_socket tipc_socket vsock_socket x25_socket xdp_socket))
 
 ;;
 ;; Common Linux access vector permission declarations
