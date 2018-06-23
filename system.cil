@@ -1566,6 +1566,9 @@
               (macro getattr_files ((type ARG1))
                      (allow ARG1 proc_file (file (getattr))))
 
+              (macro mounton_files ((type ARG1))
+                     (allow ARG1 proc_file (file (getattr mounton))))
+
               (macro read_files ((type ARG1))
                      (allow ARG1 proc_file read_file_perms))
 
@@ -1591,7 +1594,10 @@
               ;; Policy
               ;;
 
-              (blockinherit sys.proc_file.obj_stub))
+              (blockinherit sys.proc_file.obj_stub)
+
+              (allow unconfined_subj_type_attribute proc_file
+                     (file (getattr mounton))))
 
        (block kcore_proc
 
@@ -1611,6 +1617,9 @@
 
               (macro getattr_files ((type ARG1))
                      (allow ARG1 proc_file (file (getattr))))
+
+              (macro mounton_files ((type ARG1))
+                     (allow ARG1 proc_file (file (getattr mounton))))
 
               (macro read_files ((type ARG1))
                      (allow ARG1 proc_file read_file_perms)
@@ -1644,7 +1653,10 @@
 
               (neverallow
                not_dump_kernel_subj_type_or_unconfined_subj_type_attribute
-               proc_file (file (append read write))))
+               proc_file (file (append read write)))
+
+              (allow unconfined_subj_type_attribute proc_file
+                     (file (getattr mounton))))
 
        (block kernel_sysctl
 
