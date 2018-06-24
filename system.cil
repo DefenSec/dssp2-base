@@ -401,6 +401,9 @@
                  (call plymouth.runtime.manage (isid))
                  (call plymouth.var_lib.manage (isid)))
 
+       (optional sys_optional_portable
+                 (call portable.daemon.use_fd (isid)))
+
        (optional sys_optional_rpcbind
                  (call rpcbind.daemon.unix_stream_socket_connectto (isid)))
 
