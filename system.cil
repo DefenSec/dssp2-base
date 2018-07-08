@@ -375,6 +375,9 @@
        (optional sys_optional_kmod
                  (call kmod.auto_subj_type_transition (isid)))
 
+       (optional sys_optional_lorax
+                 (call lorax.lmc.use_fd (isid)))
+
        (optional sys_optional_misc
                  (call misc.font.client_subj_type (isid)))
 
