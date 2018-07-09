@@ -834,6 +834,9 @@
 
               (blockinherit obj_all_macro_template)
 
+              (macro dontaudit_relabelto_files ((type ARG1))
+                     (dontaudit ARG1 isid (file (relabeltp))))
+
               (macro dccp_recvfrom ((type ARG1))
                      (allow ARG1 isid (dccp_socket (recvfrom))))
 
