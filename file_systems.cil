@@ -4933,6 +4933,9 @@
            (macro read_files ((type ARG1))
                   (allow ARG1 fs (files (read))))
 
+           (macro read_inherited_files ((type ARG1))
+                  (allow ARG1 fs read_inherited_file_perms))
+
            (macro read_lnk_files ((type ARG1))
                   (allow ARG1 fs (lnk_files (read))))
 

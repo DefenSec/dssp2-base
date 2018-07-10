@@ -332,6 +332,7 @@
        (call fs.devtmpfs.manage_chr_files (isid))
        (call fs.devtmpfs.manage_dirs (isid))
        (call fs.devtmpfs.manage_lnk_files (isid))
+       (call fs.iso9660.read_inherited_files (isid))
        (call fs.rootfs.manage_dirs (isid))
        (call fs.rootfs.manage_files (isid))
        (call fs.rootfs.mounton_dirs (isid))
@@ -412,6 +413,9 @@
 
        (optional sys_optional_sd_coredump
                  (call sd_coredump.auto_subj_type_transition (isid)))
+
+       (optional sys_optional_sd_udevd
+                 (call sd_udevd.lnk_keyring (isid)))
 
        (optional sys_optional_stor
                  (call stor.fixed_disk.devtmpfs_obj_type_transition (isid))
