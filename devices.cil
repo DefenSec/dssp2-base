@@ -16,6 +16,7 @@
 ;;     dri
 ;;     event
 ;;     framebuf
+;;     gpio
 ;;     infiniband
 ;;     kmsg
 ;;     kvm
@@ -575,6 +576,20 @@
               ;;
 
               (filecon "/dev/fb([0-9]+)?" char dev_file_context)
+
+              ;;
+              ;; Policy
+              ;;
+
+              (blockinherit dev_file.obj_template))
+
+       (block gpio
+
+              ;;
+              ;; Contexts
+              ;;
+
+              (filecon "/dev/gpiochip([0-9]+)?" char dev_file_context)
 
               ;;
               ;; Policy
