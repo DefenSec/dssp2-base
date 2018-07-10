@@ -415,7 +415,7 @@
                  (call sd_coredump.auto_subj_type_transition (isid)))
 
        (optional sys_optional_sd_udevd
-                 (call sd_udevd.lnk_keyring (isid)))
+                 (call sd_udevd.link_keyring (isid)))
 
        (optional sys_optional_stor
                  (call stor.fixed_disk.devtmpfs_obj_type_transition (isid))
