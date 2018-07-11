@@ -8937,7 +8937,9 @@
 
               (blockinherit var_tmp_file.obj_stub)
 
-              (call sys.mountpoint.obj_type (var_tmp_file)))
+              (call sys.mountpoint.obj_type (var_tmp_file))
+
+              (call fs.tmpfs.associate (var_tmp_file)))
 
        (block home
 
