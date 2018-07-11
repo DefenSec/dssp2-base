@@ -671,9 +671,6 @@
                      (allow ARG1 stor_file (chr_file (getattr)))
                      (call fs.devtmpfs.search (ARG1)))
 
-              (macro lock_inherited_blk_files ((type ARG1))
-                     (allow ARG1 stor_file (blk_file (lock))))
-
               (macro manage ((type ARG1))
                      (call manage_blk_files (ARG1))
                      (call manage_chr_files (ARG1)))
