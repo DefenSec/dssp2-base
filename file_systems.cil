@@ -3670,6 +3670,9 @@
            (macro rw_files ((type ARG1))
                   (allow ARG1 fs (files (rw))))
 
+           (macro rw_inherited_files ((type ARG1))
+                  (allow ARG1 fs rw_inherited_file_perms))
+
            (macro rw_lnk_files ((type ARG1))
                   (allow ARG1 fs (lnk_files (rw))))
 

@@ -332,6 +332,7 @@
        (call fs.devtmpfs.manage_chr_files (isid))
        (call fs.devtmpfs.manage_dirs (isid))
        (call fs.devtmpfs.manage_lnk_files (isid))
+       (call fs.dosfs.rw_inherited_files (isid))
        (call fs.iso9660.read_inherited_files (isid))
        (call fs.rootfs.manage_dirs (isid))
        (call fs.rootfs.manage_files (isid))
