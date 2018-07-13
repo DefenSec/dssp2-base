@@ -1490,6 +1490,7 @@
 
               (filecon "/dev/vhci" char dev_file_context)
               (filecon "/dev/vhost-net" char dev_file_context)
+              (filecon "/dev/vhost-scsi" char dev_file_context)
               (filecon "/dev/vhost-vsock" char dev_file_context)
 
               ;;
