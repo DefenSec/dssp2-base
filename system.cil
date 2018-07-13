@@ -381,7 +381,8 @@
                  (call livecditd.use_fd (isid)))
 
        (optional sys_optional_lorax
-                 (call lorax.lmc.use_fd (isid)))
+                 (call lorax.lmc.use_fd (isid))
+                 (call lorax.var_tmp.rw_inherited_files (isid)))
 
        (optional sys_optional_misc
                  (call misc.font.client_subj_type (isid)))
