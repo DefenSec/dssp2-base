@@ -842,6 +842,9 @@
 
               (blockinherit obj_all_macro_template)
 
+              (macro dontaudit_relabelto ((type ARG1))
+                     (dontaudit ARG1 isid (all_files (relabelto))))
+
               (macro dontaudit_relabelto_files ((type ARG1))
                      (dontaudit ARG1 isid (file (relabelto))))
 
