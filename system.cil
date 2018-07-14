@@ -887,6 +887,9 @@
               (macro read_state ((type ARG1))
                      (allow ARG1 isid (process_state (read))))
 
+              (macro roletype_role ((role ARG1))
+                     (roletype ARG1 isid))
+
               (macro packet_relabelto ((type ARG1))
                      (allow ARG1 isid (packet (relabelto))))
 
