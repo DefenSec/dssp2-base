@@ -1,4 +1,4 @@
-;; -*- mode: CIL; fill-column: 79; indent-tabs-mode: nil; -*-
+;; -*- Mode: CIL; fill-column: 79; indent-tabs-mode: nil; -*-
 ;; SPDX-License-Identifier: Unlicense
 
 ;; files
@@ -8986,6 +8986,9 @@
 
               (macro manage_lnk_files ((type ARG1))
                      (allow ARG1 file (lnk_files (manage))))
+
+              (macro mounton_dirs ((type ARG1))
+                     (allow ARG1 file (dir (getattr mounton))))
 
               (macro obj_type_transition
                      ((type ARG1)(type ARG2)(class ARG3)(name ARG4))
