@@ -380,6 +380,9 @@
        (optional sys_optional_livecditd
                  (call livecditd.use_fd (isid)))
 
+       (optional sys_optional_livesys
+                 (call livesys.use_fd (isid)))
+
        (optional sys_optional_lorax
                  (call lorax.var_tmp.rw_inherited_files (isid)))
 
