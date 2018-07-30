@@ -359,6 +359,9 @@
        (optional sys_optional_cgroups_agent
                  (call cgroups_agent.auto_subj_type_transition (isid)))
 
+       (optional sys_optional_dm
+                 (call dm.crypt.use_fd (isid)))
+
        (optional sys_optional_dracut_initramfs
                  (call dracut_initramfs.runtime.list (isid)))
 
