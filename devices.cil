@@ -17,6 +17,7 @@
 ;;     event
 ;;     framebuf
 ;;     gpio
+;;     iio
 ;;     infiniband
 ;;     kmsg
 ;;     kvm
@@ -555,20 +556,6 @@
               (call devtmpfs_obj_type_transition
                     (unconfined_subj_type_attribute)))
 
-       (block infiniband
-
-              ;;
-              ;; Contexts
-              ;;
-
-              (filecon "/dev/infiniband/.+" char dev_file_context)
-
-              ;;
-              ;; Policy
-              ;;
-
-              (blockinherit dev_file.obj_template))
-
        (block framebuf
 
               ;;
@@ -590,6 +577,34 @@
               ;;
 
               (filecon "/dev/gpiochip([0-9]+)?" char dev_file_context)
+
+              ;;
+              ;; Policy
+              ;;
+
+              (blockinherit dev_file.obj_template))
+
+       (block iio
+
+              ;;
+              ;; Contexts
+              ;;
+
+              (filecon "/dev/iio:device([0-9]+)?" char dev_file_context)
+
+              ;;
+              ;; Policy
+              ;;
+
+              (blockinherit dev_file.obj_template))
+
+       (block infiniband
+
+              ;;
+              ;; Contexts
+              ;;
+
+              (filecon "/dev/infiniband/.+" char dev_file_context)
 
               ;;
               ;; Policy

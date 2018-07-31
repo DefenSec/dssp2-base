@@ -856,8 +856,12 @@
               ;; Contexts
               ;;
 
-              (filecon "/dev/mmcblk.+" block stor_file_context)
-              (filecon "/dev/mspblk.+" block stor_file_context)
+              (filecon "/dev/mmcblk[0-9]+" char stor_file_context)
+              (filecon "/dev/mmcblk[0-9]boot[^/]+" block stor_file_context)
+              (filecon "/dev/mmcblk[0-9]n[^/]+" block stor_file_context)
+              (filecon "/dev/mspblk[0-9]+" char stor_file_context)
+              (filecon "/dev/mspblk[0-9]boot[^/]+" block stor_file_context)
+              (filecon "/dev/mspblk[0-9]n[^/]+" block stor_file_context)
               (filecon "/dev/sr[0-9]+" block stor_file_context)
 
               ;;
@@ -867,6 +871,10 @@
               (macro devtmpfs_obj_type_transition ((type ARG1))
                      (call fs.devtmpfs.obj_type_transition
                            (ARG1 stor_file blk_file "mmcblk0"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "mmcblk0boot0"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "mmcblk0boot1"))
                      (call fs.devtmpfs.obj_type_transition
                            (ARG1 stor_file blk_file "mmcblk0p1"))
                      (call fs.devtmpfs.obj_type_transition
@@ -886,7 +894,65 @@
                      (call fs.devtmpfs.obj_type_transition
                            (ARG1 stor_file blk_file "mmcblk0p9"))
                      (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file chr_file "mmcblk0rpmb"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "mmcblk1"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "mmcblk1boot0"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "mmcblk1boot1"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "mmcblk1p1"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "mmcblk1p2"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "mmcblk1p3"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "mmcblk1p4"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "mmcblk1p5"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "mmcblk1p6"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "mmcblk1p7"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "mmcblk1p7"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "mmcblk1p9"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file chr_file "mmcblk1rpmb"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "mmcblk2"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "mmcblk2boot0"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "mmcblk2boot1"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "mmcblk2p1"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "mmcblk2p2"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "mmcblk2p3"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "mmcblk2p4"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "mmcblk2p5"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "mmcblk2p6"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "mmcblk2p7"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "mmcblk2p7"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "mmcblk2p9"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file chr_file "mmcblk2rpmb"))
+                     (call fs.devtmpfs.obj_type_transition
                            (ARG1 stor_file blk_file "mspblk0"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "mspblk0boot0"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "mspblk0boot1"))
                      (call fs.devtmpfs.obj_type_transition
                            (ARG1 stor_file blk_file "mspblk0p1"))
                      (call fs.devtmpfs.obj_type_transition
@@ -904,7 +970,9 @@
                      (call fs.devtmpfs.obj_type_transition
                            (ARG1 stor_file blk_file "mspblk0p8"))
                      (call fs.devtmpfs.obj_type_transition
-                           (ARG1 stor_file blk_file "mspblk0p9")))
+                           (ARG1 stor_file blk_file "mspblk0p9"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 stor_file blk_file "mspblk0rpmb")))
 
               ;;
               ;; Policy
