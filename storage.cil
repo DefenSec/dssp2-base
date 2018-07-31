@@ -858,11 +858,11 @@
 
               (filecon "/dev/mmcblk[0-9]+" block stor_file_context)
               (filecon "/dev/mmcblk[0-9]boot[^/]+" block stor_file_context)
-              (filecon "/dev/mmcblk[0-9]n[^/]+" block stor_file_context)
+              (filecon "/dev/mmcblk[0-9]p[^/]+" block stor_file_context)
               (filecon "/dev/mmcblk[0-9]rpmb" char stor_file_context)
               (filecon "/dev/mspblk[0-9]+" block stor_file_context)
               (filecon "/dev/mspblk[0-9]boot[^/]+" block stor_file_context)
-              (filecon "/dev/mspblk[0-9]n[^/]+" block stor_file_context)
+              (filecon "/dev/mspblk[0-9]p[^/]+" block stor_file_context)
               (filecon "/dev/mspblk[0-9]rpmb" char stor_file_context)
               (filecon "/dev/sr[0-9]+" block stor_file_context)
 
