@@ -151,9 +151,6 @@
 
               (roleattributeset role_attribute ARG2)
 
-              (call getattr_all_sockets (ARG1))
-              (call getattr_fifo_files (ARG1))
-
               (call getrlimit (ARG1))
               (call getsched (ARG1))
               (call ps (ARG1))
