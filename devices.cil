@@ -282,6 +282,11 @@
                                    maprw_chr_file_perms)
                             (call fs.devtmpfs.search (ARG1)))
 
+                     (macro maprx_chr_files ((type ARG1))
+                            (allow ARG1 obj_type_attribute
+                                   maprx_chr_file_perms)
+                            (call fs.devtmpfs.search (ARG1)))
+
                      (macro obj_type ((type ARG1))
                             (typeattributeset obj_type_attribute ARG1))
 
