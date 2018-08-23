@@ -318,7 +318,6 @@
        (call dev.random.tmpfs_obj_type_transition (isid))
        (call dev.sound.devtmpfs_obj_type_transition (isid))
        (call dev.tpm.devtmpfs_obj_type_transition (isid))
-       (call dev.urandom.tmpfs_obj_type_transition (isid))
        (call dev.usb.devtmpfs_obj_type_transition (isid))
        (call dev.v4l.devtmpfs_obj_type_transition (isid))
        (call dev.watchdog.devtmpfs_obj_type_transition (isid))

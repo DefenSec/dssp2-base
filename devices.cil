@@ -1131,6 +1131,7 @@
 
               (filecon "/dev/hwrng" char dev_file_context)
               (filecon "/dev/random" char dev_file_context)
+              (filecon "/dev/urandom" char dev_file_context)
 
               ;;
               ;; Macros
@@ -1140,7 +1141,9 @@
                      (call fs.tmpfs.obj_type_transition
                            (ARG1 dev_file chr_file "hwrng"))
                      (call fs.tmpfs.obj_type_transition
-                           (ARG1 dev_file chr_file "random")))
+                           (ARG1 dev_file chr_file "random"))
+                     (call fs.tmpfs.obj_type_transition
+                           (ARG1 dev_file chr_file "urandom")))
 
               ;;
               ;; Policy
@@ -1279,29 +1282,12 @@
        (block urandom
 
               ;;
-              ;; Contexts
-              ;;
-
-              (filecon "/dev/urandom" char dev_file_context)
-
-              ;;
-              ;; Macros
-              ;;
-
-              (macro tmpfs_obj_type_transition ((type ARG1))
-                     (call fs.tmpfs.obj_type_transition
-                           (ARG1 dev_file chr_file "urandom")))
-
-              ;;
               ;; Policy
               ;;
 
-              (blockinherit dev_file.obj_template)
+              (typealias dev_file)
 
-              (call tmpfs_obj_type_transition
-                    (unconfined_subj_type_attribute))
-
-              (call fs.tmpfs.associate (dev_file)))
+              (typealiasactual dev.urandom.dev_file dev.random.dev_file))
 
        (block usb
 
