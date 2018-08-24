@@ -9117,6 +9117,9 @@
               ;; Macros
               ;;
 
+              (macro dontaudit_list ((type ARG1))
+                     (dontaudit ARG1 file list_dir_perms))
+
               (macro add_entries ((type ARG1))
                      (allow ARG1 file add_entry_dir_perms)
                      (call sys.mountpoint.search (ARG1)))
