@@ -7882,6 +7882,9 @@
               ;; Macros
               ;;
 
+              (macro dontaudit_search ((type ARG1))
+                     (dontaudit ARG1 var_log_file search_dir_perms))
+
               (macro add_entries ((type ARG1))
                      (allow ARG1 var_log_file add_entry_dir_perms)
                      (call generic_var.search (ARG1)))
