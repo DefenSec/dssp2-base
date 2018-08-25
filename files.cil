@@ -124,6 +124,9 @@
               (dontaudit ARG1 except_obj_type_attribute
                          (files_except_blk_and_chr (getattr))))
 
+       (macro dontaudit_list_except ((type ARG1))
+              (dontaudit ARG1 except_obj_type_attribute list_dir_perms))
+
        (macro dontaudit_relabel_except ((type ARG1))
               (dontaudit ARG1 except_obj_type_attribute
                          (files_except_blk_and_chr (relabel))))
