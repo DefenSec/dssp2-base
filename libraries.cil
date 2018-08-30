@@ -362,8 +362,7 @@
                   (allow ARG1 file maprx_file_perms)
                   (call generic_libraries.list (ARG1))
                   (call generic_libraries.read_lnk_files (ARG1))
-                  (call ld_so_cache.map_files (ARG1))
-                  (call ld_so_cache.read_files (ARG1)))
+                  (call ld_so_cache.mapr_files (ARG1)))
 
            (macro write_files ((type ARG1))
                   (allow ARG1 file write_file_perms)
