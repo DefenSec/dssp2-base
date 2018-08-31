@@ -1230,6 +1230,10 @@
                      ;; Macros
                      ;;
 
+                     (macro dontaudit_tcp_connect ((type ARG1))
+                            (dontaudit ARG1 obj_type_attribute
+                                       (tcp_socket (name_connect))))
+
                      (macro dccp_name_bind ((type ARG1))
                             (allow ARG1 self create_dccp_stream_socket_perms)
                             (allow ARG1 obj_type_attribute (dccp_socket
