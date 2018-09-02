@@ -3045,7 +3045,7 @@
               ;; Contexts
               ;;
 
-              (genfscon "proc" "/sys/net/rpc" sysctl_file_context)
+              (genfscon "proc" "/net/rpc" sysctl_file_context)
 
               ;;
               ;; Macros
