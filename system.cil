@@ -40,6 +40,7 @@
 ;;         obj_all_macro_template
 ;;         obj_stub
 ;;         obj_template
+;;     rpc_sysctl
 ;;     security_sysctl
 ;;     sysctl_file
 ;;         obj_all_macro_template
@@ -3038,6 +3039,168 @@
                not_unconfined_subj_type_or_write_security_subj_type_attribute
                sysctl_file (file (append write))))
 
+       (block rpc_sysctl
+
+              ;;
+              ;; Contexts
+              ;;
+
+              (genfscon "proc" "/sys/net/rpc" sysctl_file_context)
+
+              ;;
+              ;; Macros
+              ;;
+
+              (macro append_files ((type ARG1))
+                     (allow ARG1 sysctl_file (files (append)))
+                     (call net_proc.search (ARG1)))
+
+              (macro getattr ((type ARG1))
+                     (call getattr_dirs (ARG1))
+                     (call getattr_files (ARG1))
+                     (call getattr_lnk_files (ARG1)))
+
+              (macro getattr_dirs ((type ARG1))
+                     (allow ARG1 sysctl_file (dirs (getattr)))
+                     (call net_proc.search (ARG1)))
+
+              (macro getattr_files ((type ARG1))
+                     (allow ARG1 sysctl_file (files (getattr)))
+                     (call net_proc.search (ARG1)))
+
+              (macro getattr_lnk_files ((type ARG1))
+                     (allow ARG1 sysctl_file (lnk_files (getattr)))
+                     (call net_proc.search (ARG1)))
+
+              (macro list ((type ARG1))
+                     (allow ARG1 sysctl_file list_dir_perms)
+                     (call net_proc.search (ARG1)))
+
+              (macro read ((type ARG1))
+                     (call list (ARG1))
+                     (call read_files (ARG1))
+                     (call read_lnk_files (ARG1)))
+
+              (macro read_files ((type ARG1))
+                     (allow ARG1 sysctl_file (files (read)))
+                     (call net_proc.search (ARG1)))
+
+              (macro read_lnk_files ((type ARG1))
+                     (allow ARG1 sysctl_file (lnk_files (read)))
+                     (call net_proc.search (ARG1)))
+
+              (macro relabel ((type ARG1))
+                     (call relabel_dirs (ARG1))
+                     (call relabel_files (ARG1))
+                     (call relabel_lnk_files (ARG1)))
+
+              (macro relabel_dirs ((type ARG1))
+                     (allow ARG1 sysctl_file (dirs (relabel)))
+                     (call net_proc.search (ARG1)))
+
+              (macro relabel_files ((type ARG1))
+                     (allow ARG1 sysctl_file (files (relabel)))
+                     (call net_proc.search (ARG1)))
+
+              (macro relabel_lnk_files ((type ARG1))
+                     (allow ARG1 sysctl_file (lnk_files (relabel)))
+                     (call net_proc.search (ARG1)))
+
+              (macro relabelfrom ((type ARG1))
+                     (call relabelfrom_dirs (ARG1))
+                     (call relabelfrom_files (ARG1))
+                     (call relabelfrom_lnk_files (ARG1)))
+
+              (macro relabelfrom_dirs ((type ARG1))
+                     (allow ARG1 sysctl_file (dirs (relabelfrom)))
+                     (call net_proc.search (ARG1)))
+
+              (macro relabelfrom_files ((type ARG1))
+                     (allow ARG1 sysctl_file (files (relabelfrom)))
+                     (call net_proc.search (ARG1)))
+
+              (macro relabelfrom_lnk_files ((type ARG1))
+                     (allow ARG1 sysctl_file (lnk_files (relabelfrom)))
+                     (call net_proc.search (ARG1)))
+
+              (macro relabelto ((type ARG1))
+                     (call relabelto_dirs (ARG1))
+                     (call relabelto_files (ARG1))
+                     (call relabelto_lnk_files (ARG1)))
+
+              (macro relabelto_dirs ((type ARG1))
+                     (allow ARG1 sysctl_file (dirs (relabelto)))
+                     (call net_proc.search (ARG1)))
+
+              (macro relabelto_files ((type ARG1))
+                     (allow ARG1 sysctl_file (files (relabelto)))
+                     (call net_proc.search (ARG1)))
+
+              (macro relabelto_lnk_files ((type ARG1))
+                     (allow ARG1 sysctl_file (lnk_files (relabelto)))
+                     (call net_proc.search (ARG1)))
+
+              (macro rw ((type ARG1))
+                     (call rw_dirs (ARG1))
+                     (call rw_files (ARG1))
+                     (call rw_lnk_files (ARG1)))
+
+              (macro rw_dirs ((type ARG1))
+                     (allow ARG1 sysctl_file rw_dir_perms)
+                     (call net_proc.search (ARG1)))
+
+              (macro rw_files ((type ARG1))
+                     (allow ARG1 sysctl_file (files (rw)))
+                     (call net_proc.search (ARG1)))
+
+              (macro rw_lnk_files ((type ARG1))
+                     (allow ARG1 sysctl_file (lnk_files (rw)))
+                     (call net_proc.search (ARG1)))
+
+              (macro search ((type ARG1))
+                     (allow ARG1 sysctl_file search_dir_perms)
+                     (call net_proc.search (ARG1)))
+
+              (macro setattr ((type ARG1))
+                     (call setattr_dirs (ARG1))
+                     (call setattr_files (ARG1))
+                     (call setattr_lnk_files (ARG1)))
+
+              (macro setattr_dirs ((type ARG1))
+                     (allow ARG1 sysctl_file (dirs (setattr)))
+                     (call net_proc.search (ARG1)))
+
+              (macro setattr_files ((type ARG1))
+                     (allow ARG1 sysctl_file (files (setattr)))
+                     (call net_proc.search (ARG1)))
+
+              (macro setattr_lnk_files ((type ARG1))
+                     (allow ARG1 sysctl_file (lnk_files (setattr)))
+                     (call net_proc.search (ARG1)))
+
+              (macro write ((type ARG1))
+                     (call write_dirs (ARG1))
+                     (call write_files (ARG1))
+                     (call write_lnk_files (ARG1)))
+
+              (macro write_dirs ((type ARG1))
+                     (allow ARG1 sysctl_file (dirs (write)))
+                     (call net_proc.search (ARG1)))
+
+              (macro write_files ((type ARG1))
+                     (allow ARG1 sysctl_file (files (write)))
+                     (call net_proc.search (ARG1)))
+
+              (macro write_lnk_files ((type ARG1))
+                     (allow ARG1 sysctl_file (lnk_files (write)))
+                     (call net_proc.search (ARG1)))
+
+              ;;
+              ;; Policy
+              ;;
+
+              (blockinherit sys.sysctl_file.obj_stub))
+
        (block sysctl_file
 
               ;;
@@ -3086,6 +3249,7 @@
                      (macro append_files ((type ARG1))
                             (allow ARG1 obj_type_attribute append_file_perms)
                             (call search (ARG1))
+                            (call sys.net_proc.search (ARG1))
                             (call sys.write_security_subj_type (ARG1))
                             (call sys.write_usermodehelper_subj_type (ARG1)))
 
@@ -3096,20 +3260,24 @@
 
                      (macro getattr_dirs ((type ARG1))
                             (allow ARG1 obj_type_attribute (dir (getattr)))
-                            (call sys.generic_sysctl.search (ARG1)))
+                            (call sys.generic_sysctl.search (ARG1))
+                            (call sys.net_proc.search (ARG1)))
 
                      (macro getattr_files ((type ARG1))
                             (allow ARG1 obj_type_attribute (file (getattr)))
-                            (call sys.generic_sysctl.search (ARG1)))
+                            (call sys.generic_sysctl.search (ARG1))
+                            (call sys.net_proc.search (ARG1)))
 
                      (macro getattr_lnk_files ((type ARG1))
                             (allow ARG1 obj_type_attribute (lnk_file
                                                             (getattr)))
-                            (call sys.generic_sysctl.search (ARG1)))
+                            (call sys.generic_sysctl.search (ARG1))
+                            (call sys.net_proc.search (ARG1)))
 
                      (macro list ((type ARG1))
                             (allow ARG1 obj_type_attribute list_dir_perms)
-                            (call sys.generic_sysctl.search (ARG1)))
+                            (call sys.generic_sysctl.search (ARG1))
+                            (call sys.net_proc.search (ARG1)))
 
                      (macro obj_type ((type ARG1))
                             (typeattributeset obj_type_attribute ARG1))
@@ -3121,11 +3289,13 @@
 
                      (macro read_files ((type ARG1))
                             (allow ARG1 obj_type_attribute read_file_perms)
-                            (call sys.generic_sysctl.search (ARG1)))
+                            (call sys.generic_sysctl.search (ARG1))
+                            (call sys.net_proc.search (ARG1)))
 
                      (macro read_lnk_files ((type ARG1))
                             (allow ARG1 obj_type_attribute read_lnk_file_perms)
-                            (call sys.generic_sysctl.search (ARG1)))
+                            (call sys.generic_sysctl.search (ARG1))
+                            (call sys.net_proc.search (ARG1)))
 
                      (macro relabel ((type ARG1))
                             (call relabel_dirs (ARG1))
@@ -3134,16 +3304,19 @@
 
                      (macro relabel_dirs ((type ARG1))
                             (allow ARG1 obj_type_attribute relabel_dir_perms)
-                            (call sys.generic_sysctl.search (ARG1)))
+                            (call sys.generic_sysctl.search (ARG1))
+                            (call sys.net_proc.search (ARG1)))
 
                      (macro relabel_files ((type ARG1))
                             (allow ARG1 obj_type_attribute relabel_file_perms)
-                            (call sys.generic_sysctl.search (ARG1)))
+                            (call sys.generic_sysctl.search (ARG1))
+                            (call sys.net_proc.search (ARG1)))
 
                      (macro relabel_lnk_files ((type ARG1))
                             (allow ARG1 obj_type_attribute
                                    relabel_lnk_file_perms)
-                            (call sys.generic_sysctl.search (ARG1)))
+                            (call sys.generic_sysctl.search (ARG1))
+                            (call sys.net_proc.search (ARG1)))
 
                      (macro relabelfrom ((type ARG1))
                             (call relabelfrom_dirs (ARG1))
@@ -3153,17 +3326,20 @@
                      (macro relabelfrom_dirs ((type ARG1))
                             (allow ARG1 obj_type_attribute
                                    relabelfrom_dir_perms)
-                            (call sys.generic_sysctl.search (ARG1)))
+                            (call sys.generic_sysctl.search (ARG1))
+                            (call sys.net_proc.search (ARG1)))
 
                      (macro relabelfrom_files ((type ARG1))
                             (allow ARG1 obj_type_attribute
                                    relabelfrom_file_perms)
-                            (call sys.generic_sysctl.search (ARG1)))
+                            (call sys.generic_sysctl.search (ARG1))
+                            (call sys.net_proc.search (ARG1)))
 
                      (macro relabelfrom_lnk_files ((type ARG1))
                             (allow ARG1 obj_type_attribute
                                    relabelfrom_lnk_file_perms)
-                            (call sys.generic_sysctl.search (ARG1)))
+                            (call sys.generic_sysctl.search (ARG1))
+                            (call sys.net_proc.search (ARG1)))
 
                      (macro relabelto ((type ARG1))
                             (call relabelto_dirs (ARG1))
@@ -3172,17 +3348,20 @@
 
                      (macro relabelto_dirs ((type ARG1))
                             (allow ARG1 obj_type_attribute relabelto_dir_perms)
-                            (call sys.generic_sysctl.search (ARG1)))
+                            (call sys.generic_sysctl.search (ARG1))
+                            (call sys.net_proc.search (ARG1)))
 
                      (macro relabelto_files ((type ARG1))
                             (allow ARG1 obj_type_attribute
                                    relabelto_file_perms)
-                            (call sys.generic_sysctl.search (ARG1)))
+                            (call sys.generic_sysctl.search (ARG1))
+                            (call sys.net_proc.search (ARG1)))
 
                      (macro relabelto_lnk_files ((type ARG1))
                             (allow ARG1 obj_type_attribute
                                    relabelto_lnk_file_perms)
-                            (call sys.generic_sysctl.search (ARG1)))
+                            (call sys.generic_sysctl.search (ARG1))
+                            (call sys.net_proc.search (ARG1)))
 
                      (macro rw ((type ARG1))
                             (call rw_dirs (ARG1))
@@ -3191,21 +3370,25 @@
 
                      (macro rw_dirs ((type ARG1))
                             (allow ARG1 obj_type_attribute rw_dir_perms)
-                            (call sys.generic_sysctl.search (ARG1)))
+                            (call sys.generic_sysctl.search (ARG1))
+                            (call sys.net_proc.search (ARG1)))
 
                      (macro rw_files ((type ARG1))
                             (allow ARG1 obj_type_attribute rw_file_perms)
                             (call sys.generic_sysctl.search (ARG1))
+                            (call sys.net_proc.search (ARG1))
                             (call sys.write_security_subj_type (ARG1))
                             (call sys.write_usermodehelper_subj_type (ARG1)))
 
                      (macro rw_lnk_files ((type ARG1))
                             (allow ARG1 obj_type_attribute rw_lnk_file_perms)
-                            (call sys.generic_sysctl.search (ARG1)))
+                            (call sys.generic_sysctl.search (ARG1))
+                            (call sys.net_proc.search (ARG1)))
 
                      (macro search ((type ARG1))
                             (allow ARG1 obj_type_attribute search_dir_perms)
-                            (call sys.generic_sysctl.search (ARG1)))
+                            (call sys.generic_sysctl.search (ARG1))
+                            (call sys.net_proc.search (ARG1)))
 
                      (macro setattr ((type ARG1))
                             (call setattr_dirs (ARG1))
@@ -3214,16 +3397,19 @@
 
                      (macro setattr_dirs ((type ARG1))
                             (allow ARG1 obj_type_attribute (dir (setattr)))
-                            (call sys.generic_sysctl.search (ARG1)))
+                            (call sys.generic_sysctl.search (ARG1))
+                            (call sys.net_proc.search (ARG1)))
 
                      (macro setattr_files ((type ARG1))
                             (allow ARG1 obj_type_attribute (file (setattr)))
-                            (call sys.generic_sysctl.search (ARG1)))
+                            (call sys.generic_sysctl.search (ARG1))
+                            (call sys.net_proc.search (ARG1)))
 
                      (macro setattr_lnk_files ((type ARG1))
                             (allow ARG1 obj_type_attribute (lnk_file
                                                             (setattr)))
-                            (call sys.generic_sysctl.search (ARG1)))
+                            (call sys.generic_sysctl.search (ARG1))
+                            (call sys.net_proc.search (ARG1)))
 
                      (macro write ((type ARG1))
                             (call write_dirs (ARG1))
@@ -3232,18 +3418,21 @@
 
                      (macro write_dirs ((type ARG1))
                             (allow ARG1 obj_type_attribute write_dir_perms)
-                            (call sys.generic_sysctl.search (ARG1)))
+                            (call sys.generic_sysctl.search (ARG1))
+                            (call sys.net_proc.search (ARG1)))
 
                      (macro write_files ((type ARG1))
                             (allow ARG1 obj_type_attribute write_file_perms)
                             (call sys.generic_sysctl.search (ARG1))
+                            (call sys.net_proc.search (ARG1))
                             (call sys.write_security_subj_type (ARG1))
                             (call sys.write_usermodehelper_subj_type (ARG1)))
 
                      (macro write_lnk_files ((type ARG1))
                             (allow ARG1 obj_type_attribute
                                    write_lnk_file_perms)
-                            (call sys.generic_sysctl.search (ARG1)))
+                            (call sys.generic_sysctl.search (ARG1))
+                            (call sys.net_proc.search (ARG1)))
 
                      ;;
                      ;; Policy
