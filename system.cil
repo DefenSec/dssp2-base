@@ -306,6 +306,7 @@
        (call recv_invalid_peers_subj_type (isid))
 
        (call dev.clock.devtmpfs_obj_type_transition (isid))
+       (call dev.cpu.devtmpfs_obj_type_transition (isid))
        (call dev.cuse.devtmpfs_obj_type_transition (isid))
        (call dev.devtty.tmpfs_obj_type_transition (isid))
        (call dev.event.devtmpfs_obj_type_transition (isid))

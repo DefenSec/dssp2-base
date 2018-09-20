@@ -188,7 +188,15 @@
               ;; Policy
               ;;
 
-              (blockinherit dev_file.obj_template))
+              (blockinherit dev_file.obj_template)
+
+              (macro devtmpfs_obj_type_transition ((type ARG1))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 dev_file chr_file "cpuid"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 dev_file chr_file "microcode"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 dev_file chr_file "msr"))))
 
        (block cuse
 
