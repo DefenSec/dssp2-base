@@ -1424,6 +1424,9 @@
               ;; Macros
               ;;
 
+              (macro dontaudit_audit_access_dirs ((type ARG1))
+                     (dontaudit ARG1 sysctl_file (dir (audit_access))))
+
               (macro append_files ((type ARG1))
                      (allow ARG1 sysctl_file append_file_perms)
                      (call search (ARG1)))
@@ -4007,6 +4010,9 @@
               ;;
               ;; Macros
               ;;
+
+              (macro dontaudit_audit_access_files ((type ARG1))
+                     (dontaudit ARG1 proc_file (file (audit_access))))
 
               (macro append_files ((type ARG1))
                      (allow ARG1 proc_file append_file_perms))
