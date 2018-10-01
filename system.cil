@@ -30,6 +30,7 @@
 ;;     memory_sysfs
 ;;     mountpoint
 ;;         obj_all_macro_template
+;;     modules_proc
 ;;     mtrr_proc
 ;;     net_proc
 ;;     net_sysctl
@@ -2119,6 +2120,54 @@
                      ;;
 
                      (blockabstract obj_all_macro_template)))
+
+       (block modules_proc
+
+              ;;
+              ;; Contexts
+              ;;
+
+              (genfscon "proc" "/modules" proc_file_context)
+
+              ;;
+              ;; Macros
+              ;;
+
+              (macro append_files ((type ARG1))
+                     (allow ARG1 proc_file append_file_perms))
+
+              (macro getattr_files ((type ARG1))
+                     (allow ARG1 proc_file (file (getattr))))
+
+              (macro mounton_files ((type ARG1))
+                     (allow ARG1 proc_file (file (getattr mounton))))
+
+              (macro read_files ((type ARG1))
+                     (allow ARG1 proc_file read_file_perms))
+
+              (macro relabel_files ((type ARG1))
+                     (allow ARG1 proc_file relabel_file_perms))
+
+              (macro relabelfrom_files ((type ARG1))
+                     (allow ARG1 proc_file relabelfrom_file_perms))
+
+              (macro relabelto_files ((type ARG1))
+                     (allow ARG1 proc_file relabelto_file_perms))
+
+              (macro rw_files ((type ARG1))
+                     (allow ARG1 proc_file rw_file_perms))
+
+              (macro setattr_files ((type ARG1))
+                     (allow ARG1 proc_file (file (setattr))))
+
+              (macro write_files ((type ARG1))
+                     (allow ARG1 proc_file write_file_perms))
+
+              ;;
+              ;; Policy
+              ;;
+
+              (blockinherit sys.proc_file.obj_stub))
 
        (block mtrr_proc
 
