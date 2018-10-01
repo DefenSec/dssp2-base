@@ -2829,8 +2829,12 @@
                         sysctl_file_context)
               (genfscon "proc" "/sys/kernel/randomize_va_space"
                         sysctl_file_context)
+              (genfscon "proc" "/sys/kernel/seccomp" sysctl_file_context)
               (genfscon "proc" "/sys/kernel/yama" sysctl_file_context)
               (genfscon "proc" "/sys/vm/mmap_min_addr" sysctl_file_context)
+              (genfscon "proc" "/sys/vm/mmap_rnd_bits" sysctl_file_context)
+              (genfscon "proc" "/sys/vm/mmap_rnd_compat_bits"
+                        sysctl_file_context)
 
               ;;
               ;; Macros
@@ -4181,6 +4185,8 @@
               ;;
 
               (genfscon "proc" "/sys/kernel/core_pattern" sysctl_file_context)
+              (genfscon "proc" "/sys/kernel/core_pipe_limit"
+                        sysctl_file_context)
               (genfscon "proc" "/sys/kernel/modprobe" sysctl_file_context)
               (genfscon "proc" "/sys/kernel/poweroff_cmd" sysctl_file_context)
               (genfscon "proc" "/sys/kernel/usermodehelper"
