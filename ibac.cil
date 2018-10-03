@@ -48,26 +48,28 @@
 ;;
 
 (macro ibac_id_change_exemption_subj_type ((type ARG1))
-    (typeattributeset ibac_id_change_exemption_subj_type_attribute ARG1))
+       (typeattributeset ibac_id_change_exemption_subj_type_attribute ARG1))
 
 (macro ibac_obj_id_change_exemption_subj_type ((type ARG1))
-    (typeattributeset ibac_obj_id_change_exemption_subj_type_attribute ARG1))
+       (typeattributeset ibac_obj_id_change_exemption_subj_type_attribute
+                         ARG1))
 
 (macro ibac_obj_sys_id_change_exemption_subj_type ((type ARG1))
        (typeattributeset ibac_obj_sys_id_change_exemption_subj_type_attribute
                          ARG1))
 
 (macro ibac_sys_id ((user ARG1))
-    (userattributeset ibac_sys_id_attribute ARG1))
+       (userattributeset ibac_sys_id_attribute ARG1))
 
 (macro ibac_sys_id_change_exemption_subj_type ((type ARG1))
-    (typeattributeset ibac_sys_id_change_exemption_subj_type_attribute ARG1))
+       (typeattributeset ibac_sys_id_change_exemption_subj_type_attribute
+                         ARG1))
 
 (macro ibac_uncond_exemption_subj_type ((type ARG1))
-    (typeattributeset ibac_uncond_exemption_subj_type_attribute ARG1))
+       (typeattributeset ibac_uncond_exemption_subj_type_attribute ARG1))
 
 (macro ibac_user_exemption_target_subj_type ((type ARG1))
-    (typeattributeset ibac_user_exemption_target_subj_type_attribute ARG1))
+       (typeattributeset ibac_user_exemption_target_subj_type_attribute ARG1))
 
 ;;
 ;; Policy
