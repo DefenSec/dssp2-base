@@ -24,6 +24,9 @@
        ;; Macros
        ;;
 
+       (macro dontaudit_relabel_chr_files ((type ARG1))
+              (dontaudit ARG1 obj_type_attribute relabel_chr_file_perms))
+
        (blockinherit pty_file.obj_all_macro_template)
 
        (macro unconfined_subj_type ((type ARG1))
