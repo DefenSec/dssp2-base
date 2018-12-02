@@ -1,54 +1,6 @@
 ;; -*- mode: CIL; fill-column: 79; indent-tabs-mode: nil; -*-
 ;; SPDX-License-Identifier: Unlicense
 
-;; dev
-;;     apm
-;;     autofs
-;;     clock
-;;     cpu
-;;     cuse
-;;     dev_file
-;;         obj_all_macro_template
-;;         obj_stub
-;;         obj_template
-;;     devtty
-;;     dpaux
-;;     dri
-;;     event
-;;     framebuf
-;;     gpio
-;;     iio
-;;     infiniband
-;;     kmsg
-;;     kvm
-;;     loop_control
-;;     lvm_control
-;;     mei_misc
-;;     memory
-;;     modem
-;;     mouse
-;;     null
-;;     nvram
-;;     pm_qos_misc
-;;     ppp
-;;     printer
-;;     ptmx
-;;     random
-;;     sound
-;;     tpm
-;;     tun_tap
-;;     uhid
-;;     urandom
-;;     usb
-;;     usbmon
-;;     v4l
-;;     vfio
-;;     vhost
-;;     watchdog
-;;     wireless
-;;     xserver_misc
-;;     zero
-
 ;;
 ;; Policy
 ;;

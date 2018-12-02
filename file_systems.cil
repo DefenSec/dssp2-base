@@ -1,41 +1,6 @@
 ;; -*- mode: CIL; fill-column: 79; indent-tabs-mode: nil; -*-
 ;; SPDX-License-Identifier: Unlicense
 
-;; fs
-;;     obj_all_macro_template
-;;     obj_stub
-;;     obj_template
-;;     aio
-;;     anon_inodefs
-;;     autofs
-;;     bdev
-;;     binfmt_misc
-;;     bpf
-;;     cgroup
-;;     cifs
-;;     configfs
-;;     debugfs
-;;     devpts
-;;     devtmpfs
-;;     dosfs
-;;     drm
-;;     efivarfs
-;;     fuse
-;;     hugetlbfs
-;;     iso9660
-;;     nfs
-;;     nfsd
-;;     nsfs
-;;     proc
-;;     pstore
-;;     removable
-;;     rootfs
-;;     rpc_pipefs
-;;     sysfs
-;;     tmpfs
-;;     tracefs
-;;     xattr
-
 ;;
 ;; Policy
 ;;

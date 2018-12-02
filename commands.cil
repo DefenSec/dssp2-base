@@ -1,14 +1,6 @@
 ;; -*- mode: CIL; fill-column: 79; indent-tabs-mode: nil; -*-
 ;; SPDX-License-Identifier: Unlicense
 
-;; cmd
-;;     generic_commands
-;;     cmd_file
-;;         obj_all_macro_template
-;;         obj_stub
-;;         obj_template
-;;     shell
-
 (block cmd
 
        (block generic_commands

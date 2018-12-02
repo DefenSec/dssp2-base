@@ -1,66 +1,6 @@
 ;; -*- mode: CIL; fill-column: 79; indent-tabs-mode: nil; -*-
 ;; SPDX-License-Identifier: Unlicense
 
-;; sys
-;;     abi_sysctl
-;;     cpu_sysfs
-;;     cpu_online_sysfs
-;;     cpuinfo_proc
-;;     crypto_sysctl
-;;     debug_sysctl
-;;     dev_sysctl
-;;     fs_sysctl
-;;     generic_sysctl
-;;     invalid
-;;         obj_all_macro_template
-;;     iomem_proc
-;;     irq_sysctl
-;;     isid
-;;         stub
-;;     kallsyms_proc
-;;     kcore_proc
-;;     kernel_sysctl
-;;     kmsg_proc
-;;     latency_stats_proc
-;;     load_kernel_init_module
-;;     load_kernel_module
-;;     manage_files_except
-;;     mdstat_proc
-;;     meminfo_proc
-;;     memory_sysfs
-;;     mountpoint
-;;         obj_all_macro_template
-;;     modules_proc
-;;     mtrr_proc
-;;     net_proc
-;;     net_sysctl
-;;     net_unix_sysctl
-;;     node_sysfs
-;;     node_online_sysfs
-;;     proc_file
-;;         obj_all_macro_template
-;;         obj_stub
-;;         obj_template
-;;     rpc_sysctl
-;;     security_sysctl
-;;     sunrpc_sysctl
-;;     sysctl_file
-;;         obj_all_macro_template
-;;         obj_stub
-;;         obj_template
-;;     sysfs_file
-;;         obj_all_macro_template
-;;         obj_stub
-;;         obj_template
-;;     sysrq_proc
-;;     timer_proc
-;;     unlabeled
-;;     user_sysctl
-;;     usermodehelper_sysctl
-;;     var_log
-;;     vm_sysctl
-;;     vm_overcommit_sysctl
-
 ;;
 ;; Policy
 ;;

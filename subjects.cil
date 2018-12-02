@@ -1,16 +1,6 @@
 ;; -*- mode: CIL; fill-column: 79; indent-tabs-mode: nil; -*-
 ;; SPDX-License-Identifier: Unlicense
 
-;; subj
-;;     common_subj
-;;         subj_all_macro_template
-;;         subj_policy_template
-;;         subj_stub
-;;         subj_template
-;;     mmap_low
-;;     recv_and_send_invalid_packets
-;;     recv_invalid_peers
-
 (block subj
 
        ;;

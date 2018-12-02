@@ -1,16 +1,6 @@
 ;; -*- mode: CIL; fill-column: 79; indent-tabs-mode: nil; -*-
 ;; SPDX-License-Identifier: Unlicense
 
-;; lib
-;;     generic_libraries
-;;     ld_so
-;;     ld_so_cache
-;;     lib_file
-;;         obj_all_macro_template
-;;         obj_stub
-;;         obj_template
-;;     textrel
-
 (block lib
 
     (block generic_libraries

@@ -1,17 +1,6 @@
 ;; -*- mode: CIL; fill-column: 79; indent-tabs-mode: nil; -*-
 ;; SPDX-License-Identifier: Unlicense
 
-;; agent_base_template
-;; auto_subj_type_transition_base_template
-;; auto_subj_type_transition_template
-;; dynamic_subj_type_transition_template
-;; hybrid_agent_template
-;; manual_subj_type_transition_base_template
-;; manual_subj_type_transition_template
-;; run_template
-;; system_agent_template
-;; user_agent_template
-
 (block agent_base_template
 
        ;;

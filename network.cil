@@ -1,63 +1,6 @@
 ;; -*- mode: CIL; fill-column: 79; indent-tabs-mode: nil; -*-
 ;; SPDX-License-Identifier: Unlicense
 
-;; net
-;;     ephemeral_port
-;;         obj_stub
-;;         obj_template
-;;     generic_ephemeral_port
-;;     generic_hi_reserved_port
-;;     generic_if
-;;     generic_infiniband_endport
-;;     generic_infiniband_pkey
-;;     generic_ipsec_spd
-;;     generic_node
-;;     generic_packet
-;;     generic_peer
-;;     generic_port
-;;     generic_reserved_port
-;;     generic_unreserved_port
-;;     hi_reserved_port
-;;         obj_stub
-;;         obj_template
-;;     if
-;;         obj_all_macro_template
-;;         obj_stub
-;;         obj_template
-;;     infiniband_endport
-;;         obj_all_macro_template
-;;         obj_stub
-;;         obj_template
-;;     infiniband_pkey
-;;         obj_all_macro_template
-;;         obj_stub
-;;         obj_template
-;;     ipsec_spd
-;;         obj_all_macro_template
-;;         obj_stub
-;;         obj_template
-;;     node
-;;         obj_all_macro_template
-;;         obj_stub
-;;         obj_template
-;;     packet
-;;         obj_all_macro_template
-;;         obj_stub
-;;         obj_template
-;;     peer
-;;         obj_all_macro_template
-;;         obj_stub
-;;         obj_template
-;;     port
-;;         obj_all_macro_template
-;;     reserved_port
-;;         obj_all_macro_template
-;;         obj_stub
-;;         obj_template
-;;     unreserved_port
-;;         obj_stub
-;;         obj_template
-
 ;;
 ;; Policy
 ;;

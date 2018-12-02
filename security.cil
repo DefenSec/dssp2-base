@@ -1,14 +1,6 @@
 ;; -*- mode: CIL; fill-column: 79; indent-tabs-mode: nil; -*-
 ;; SPDX-License-Identifier: Unlicense
 
-;; sec
-;;     bool_file
-;;         obj_all_macro_template
-;;         obj_stub
-;;         obj_template
-;;     load_policy
-;;     securityfs
-
 ;;
 ;; Policy
 ;;

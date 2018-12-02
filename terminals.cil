@@ -1,23 +1,6 @@
 ;; -*- mode: CIL; fill-column: 79; indent-tabs-mode: nil; -*-
 ;; SPDX-License-Identifier: Unlicense
 
-;; term
-;;     console
-;;     console_login
-;;     generic_serial
-;;     login_pty_file
-;;         obj_stub
-;;         obj_template
-;;     pty_file
-;;         obj_all_macro_template
-;;         obj_stub
-;;         obj_template
-;;     serial_file
-;;         obj_all_macro_template
-;;         obj_stub
-;;         obj_template
-;;     virtio
-
 (block term
 
        ;;
