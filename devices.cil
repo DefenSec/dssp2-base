@@ -1200,6 +1200,7 @@
               ;;
 
               (filecon "/dev/tpm([0-9]+)?" char dev_file_context)
+              (filecon "/dev/tpmrm([0-9]+)?" char dev_file_context)
 
               ;;
               ;; Macros
@@ -1207,8 +1208,9 @@
 
               (macro devtmpfs_obj_type_transition ((type ARG1))
                      (call fs.devtmpfs.obj_type_transition
-                           (ARG1 dev_file chr_file "tpm0")))
-
+                           (ARG1 dev_file chr_file "tpm0"))
+                     (call fs.devtmpfs.obj_type_transition
+                           (ARG1 dev_file chr_file "tpmrm0")))
               ;;
               ;; Policy
               ;;
