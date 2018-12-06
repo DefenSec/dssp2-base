@@ -278,7 +278,7 @@
                      (macro rw_chr_files ((type ARG1))
                             (allow ARG1 obj_type_attribute rw_chr_file_perms)
                             (call dev.read_memory_subj_type (ARG1))
-                            (call write_memory_subj_type (ARG1))
+                            (call dev.write_memory_subj_type (ARG1))
                             (call fs.devtmpfs.search (ARG1)))
 
                      (macro setattr_chr_files ((type ARG1))
