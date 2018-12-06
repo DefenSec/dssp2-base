@@ -553,6 +553,20 @@
 
               (blockinherit dev_file.obj_template))
 
+       (block hsa
+
+              ;;
+              ;; Contexts
+              ;;
+
+              (filecon "/dev/kfd" char dev_file_context)
+
+              ;;
+              ;; Policy
+              ;;
+
+              (blockinherit dev_file.obj_template))
+
        (block iio
 
               ;;
