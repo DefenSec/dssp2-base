@@ -226,8 +226,8 @@
                             (allow ARG1 self (capability (mknod)))
                             (allow ARG1 obj_type_attribute
                                    manage_chr_file_perms)
-                            (call dev.read_memory_subj_type (ARG1))
-                            (call dev.write_memory_subj_type (ARG1))
+                            (call read_memory_subj_type (ARG1))
+                            (call write_memory_subj_type (ARG1))
                             (call fs.devtmpfs.rw_dirs (ARG1)))
 
                      (macro map_chr_files ((type ARG1))
@@ -252,7 +252,7 @@
 
                      (macro read_chr_files ((type ARG1))
                             (allow ARG1 obj_type_attribute read_chr_file_perms)
-                            (call dev.read_memory_subj_type (ARG1))
+                            (call read_memory_subj_type (ARG1))
                             (call fs.devtmpfs.search (ARG1)))
 
                      (macro relabel_chr_files ((type ARG1))
@@ -277,8 +277,8 @@
 
                      (macro rw_chr_files ((type ARG1))
                             (allow ARG1 obj_type_attribute rw_chr_file_perms)
-                            (call dev.read_memory_subj_type (ARG1))
-                            (call dev.write_memory_subj_type (ARG1))
+                            (call read_memory_subj_type (ARG1))
+                            (call write_memory_subj_type (ARG1))
                             (call fs.devtmpfs.search (ARG1)))
 
                      (macro setattr_chr_files ((type ARG1))
@@ -289,7 +289,7 @@
                      (macro write_chr_files ((type ARG1))
                             (allow ARG1 obj_type_attribute
                                    write_chr_file_perms)
-                            (call dev.write_memory_subj_type (ARG1))
+                            (call write_memory_subj_type (ARG1))
                             (call fs.devtmpfs.search (ARG1)))
 
                      ;;
