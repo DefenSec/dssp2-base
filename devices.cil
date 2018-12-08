@@ -1241,6 +1241,20 @@
 
               (blockinherit dev_file.obj_template))
 
+       (block udmabuf
+
+              ;;
+              ;; Contexts
+              ;;
+
+              (filecon "/dev/udmabuf" char dev_file_context)
+
+              ;;
+              ;; Policy
+              ;;
+
+              (blockinherit dev_file.obj_template))
+
        (block uhid
 
               ;;
