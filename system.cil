@@ -237,6 +237,7 @@
                                          net_bind_service dac_read_search)))
        (allow isid self (capability2 (block_suspend)))
        (allow isid self (process (setsched)))
+       (allow isid self link_key_perms)
        (allow isid self (unix_dgram_socket (sendto)))
        (allow isid self create_unix_stream_socket_perms)
 
