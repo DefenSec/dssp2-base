@@ -348,6 +348,8 @@
                              (call files.rw_inherited_except (isid)))))
 
        (optional sys_optional_nfs
+                 (allow isid self (capability (lease)))
+
                  (call nfs.client.auto_subj_type_transition (isid))
                  (call nfs.rpcnfsd.read_tcp_sockets (isid)))
 
