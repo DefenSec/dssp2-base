@@ -146,10 +146,10 @@
               ;; Contexts
               ;;
 
-              (portcon "dccp" (32768 61000) ephemeral_port_context)
-              (portcon "sctp" (32768 61000) ephemeral_port_context)
-              (portcon "tcp" (32768 61000) ephemeral_port_context)
-              (portcon "udp" (32768 61000) ephemeral_port_context)
+              (portcon "dccp" (32768 60999) ephemeral_port_context)
+              (portcon "sctp" (32768 60999) ephemeral_port_context)
+              (portcon "tcp" (32768 60999) ephemeral_port_context)
+              (portcon "udp" (32768 60999) ephemeral_port_context)
 
               ;;
               ;; Policy
@@ -385,13 +385,13 @@
               ;;
 
               (portcon "dccp" (1023 32767) unreserved_port_context)
-              (portcon "dccp" (61001 65535) unreserved_port_context)
+              (portcon "dccp" (61000 65535) unreserved_port_context)
               (portcon "sctp" (1023 32767) unreserved_port_context)
-              (portcon "sctp" (61001 65535) unreserved_port_context)
+              (portcon "sctp" (61000 65535) unreserved_port_context)
               (portcon "tcp" (1023 32767) unreserved_port_context)
-              (portcon "tcp" (61001 65535) unreserved_port_context)
+              (portcon "tcp" (61000 65535) unreserved_port_context)
               (portcon "udp" (1023 32767) unreserved_port_context)
-              (portcon "udp" (61001 65535) unreserved_port_context)
+              (portcon "udp" (61000 65535) unreserved_port_context)
 
               ;;
               ;; Policy
