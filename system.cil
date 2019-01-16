@@ -462,6 +462,13 @@
               (genfscon "sysfs" "/devices/system/cpu" sysfs_file_context)
 
               ;;
+              ;; Macros
+              ;;
+
+              (macro dontaudit_read_lnk_files ((type ARG1))
+                     (dontaudit ARG1 sysfs_file read_lnk_file_perms))
+
+              ;;
               ;; Policy
               ;;
 
@@ -793,6 +800,9 @@
               ;;
 
               (blockinherit obj_all_macro_template)
+
+              (macro dontaudit_read_lnk_files ((type ARG1))
+                     (dontaudit ARG1 isid read_lnk_file_perms))
 
               (macro dontaudit_relabelto ((type ARG1))
                      (dontaudit ARG1 isid (all_files (relabelto))))
@@ -4132,6 +4142,9 @@
 
               (macro dontaudit_audit_access_dirs ((type ARG1))
                      (dontaudit ARG1 isid (dir (audit_access))))
+
+              (macro dontaudit_read_lnk_files ((type ARG1))
+                     (dontaudit ARG1 isid read_lnk_file_perms))
 
               (macro dontaudit_setattr_dirs ((type ARG1))
                      (dontaudit ARG1 isid (dir (setattr))))
