@@ -7,5 +7,4 @@
  (makefile-mode
   (indent-tabs-mode . t))
  (sh-mode
-  (sh-indentation . 4)
   (sh-basic-offset . 4)))
