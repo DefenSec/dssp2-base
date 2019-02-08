@@ -22,7 +22,7 @@
                   relabelto rename rw setattr write))
 (classmap dirs
           (create delete getattr manage relabel relabelfrom relabelto
-                  rename rw setattr))
+                  rename rw setattr write))
 (classmap fifo_files
           (create delete getattr manage read relabel relabelfrom relabelto
                   rename rw setattr write))
@@ -930,6 +930,9 @@
 
 (classmapping dirs setattr search_dir_perms)
 (classmapping dirs setattr (dir (setattr)))
+
+(classmapping dirs write search_dir_perms)
+(classmapping dirs write write_dir_perms)
 
 (classmapping fifo_files create add_entry_dir_perms)
 (classmapping fifo_files create create_fifo_file_perms)
