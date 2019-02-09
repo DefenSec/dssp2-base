@@ -4626,6 +4626,10 @@
                   (allow ARG1 fs (files (mapr)))
                   (call devtmpfs.search (ARG1)))
 
+           (macro maprw_inherited_files ((type ARG1))
+                  (allow ARG1 fs rw_inherited_file_perms)
+                  (allow ARG1 fs (file (map))))
+
            (macro maprw_files ((type ARG1))
                   (allow ARG1 fs (files (maprw)))
                   (call devtmpfs.search (ARG1)))
