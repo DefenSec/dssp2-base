@@ -1236,6 +1236,10 @@
               ;; Macros
               ;;
 
+              (macro dontaudit_getattr ((type ARG1))
+                     (dontaudit ARG1 obj_type_attribute
+                                (files_except_blk_and_chr (getattr))))
+
               (macro dontaudit_read_files ((type ARG1))
                      (dontaudit ARG1 obj_type_attribute read_file_perms))
 
@@ -12578,6 +12582,10 @@
               ;;
               ;; Macros
               ;;
+
+              (macro dontaudit_getattr ((type ARG1))
+                     (dontaudit ARG1 obj_type_attribute
+                                (files_except_blk_and_chr (getattr))))
 
               (macro dontaudit_list ((type ARG1))
                      (dontaudit ARG1 obj_type_attribute list_dir_perms))
