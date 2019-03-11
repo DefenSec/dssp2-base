@@ -1749,7 +1749,9 @@
               ;; Policy
               ;;
 
-              (blockinherit sys.sysfs_file.obj_template))
+              (blockinherit sys.sysfs_file.obj_template)
+
+              (call fs.sysfs.associate (sysfs_file)))
 
        (block latency_stats_proc
 
