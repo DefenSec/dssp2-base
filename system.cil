@@ -1729,6 +1729,20 @@
               (allow unconfined_subj_type_attribute proc_file
                      (file (getattr mounton))))
 
+       (block ksm_sysfs
+
+              ;;
+              ;; Contexts
+              ;;
+
+              (genfscon "sysfs" "/kernel/mm/ksm" sysfs_file_context)
+
+              ;;
+              ;; Policy
+              ;;
+
+              (blockinherit sys.sysfs_file.obj_template))
+
        (block latency_stats_proc
 
               ;;
