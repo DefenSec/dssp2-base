@@ -1738,6 +1738,14 @@
               (genfscon "sysfs" "/kernel/mm/ksm" sysfs_file_context)
 
               ;;
+              ;; Macros
+              ;;
+
+              (macro manage_files ((type ARG1))
+                     (allow ARG1 sysfs_file manage_file_perms)
+                     (call fs.sysfs.search (ARG1)))
+
+              ;;
               ;; Policy
               ;;
 
