@@ -9991,155 +9991,155 @@
 
                      (macro add_entries ((type ARG1))
                             (allow ARG1 obj_type_attribute add_entry_dir_perms)
-                            (call files.generic_var.read_lnk_files (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro append_fifo_files ((type ARG1))
                             (allow ARG1 obj_type_attribute
                                    append_fifo_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro append_files ((type ARG1))
                             (allow ARG1 obj_type_attribute append_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro create ((type ARG1))
                             (allow ARG1 obj_type_attribute
                                    (files_except_blk_and_chr (create)))
-                            (call files.generic_var.read_lnk_files (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro create_dirs ((type ARG1))
                             (allow ARG1 obj_type_attribute create_dir_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro create_fifo_files ((type ARG1))
                             (allow ARG1 obj_type_attribute
                                    create_fifo_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro create_files ((type ARG1))
                             (allow ARG1 obj_type_attribute create_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro create_lnk_files ((type ARG1))
                             (allow ARG1 obj_type_attribute
                                    create_lnk_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro create_sock_files ((type ARG1))
                             (allow ARG1 obj_type_attribute
                                    create_sock_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro del_entries ((type ARG1))
                             (allow ARG1 obj_type_attribute del_entry_dir_perms)
-                            (call files.generic_var.read_lnk_files (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro delete ((type ARG1))
                             (allow ARG1 obj_type_attribute
                                    (files_except_blk_and_chr (delete)))
-                            (call files.generic_var.read_lnk_files (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro delete_dirs ((type ARG1))
                             (allow ARG1 obj_type_attribute delete_dir_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro delete_fifo_files ((type ARG1))
                             (allow ARG1 obj_type_attribute
                                    delete_fifo_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro delete_files ((type ARG1))
                             (allow ARG1 obj_type_attribute delete_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
-
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
+                     
                      (macro delete_lnk_files ((type ARG1))
                             (allow ARG1 obj_type_attribute
                                    delete_lnk_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro delete_sock_files ((type ARG1))
                             (allow ARG1 obj_type_attribute
                                    delete_sock_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro execute ((type ARG1))
                             (allow ARG1 obj_type_attribute exec_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro getattr ((type ARG1))
                             (allow ARG1 obj_type_attribute
                                    (files_except_blk_and_chr (getattr)))
-                            (call files.generic_var.read_lnk_files (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro getattr_dirs ((type ARG1))
                             (allow ARG1 obj_type_attribute (dir (getattr)))
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro getattr_fifo_files ((type ARG1))
                             (allow ARG1 obj_type_attribute (fifo_file
                                                             (getattr)))
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro getattr_files ((type ARG1))
                             (allow ARG1 obj_type_attribute (file (getattr)))
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro getattr_lnk_files ((type ARG1))
                             (allow ARG1 obj_type_attribute (lnk_file
                                                             (getattr)))
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro getattr_sock_files ((type ARG1))
                             (allow ARG1 obj_type_attribute (sock_file
                                                             (getattr)))
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro list ((type ARG1))
                             (allow ARG1 obj_type_attribute list_dir_perms)
-                            (call files.generic_var.read_lnk_files (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro manage ((type ARG1))
                             (allow ARG1 obj_type_attribute
                                    (files_except_blk_and_chr (manage)))
-                            (call files.generic_var.read_lnk_files (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro manage_dirs ((type ARG1))
                             (allow ARG1 obj_type_attribute manage_dir_perms)
-                            (call files.generic_var.read_lnk_files (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro manage_fifo_files ((type ARG1))
                             (allow ARG1 obj_type_attribute
                                    manage_fifo_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro manage_files ((type ARG1))
                             (allow ARG1 obj_type_attribute manage_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro manage_lnk_files ((type ARG1))
                             (allow ARG1 obj_type_attribute
                                    manage_lnk_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro manage_sock_files ((type ARG1))
                             (allow ARG1 obj_type_attribute
                                    manage_sock_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro map_files ((type ARG1))
                             (allow ARG1 obj_type_attribute (file (map))))
 
                      (macro mapr_files ((type ARG1))
                             (allow ARG1 obj_type_attribute mapr_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro maprw_files ((type ARG1))
                             (allow ARG1 obj_type_attribute maprw_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro maprx ((type ARG1))
                             (allow ARG1 obj_type_attribute maprx_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro obj_type ((type ARG1))
                             (typeattributeset obj_type_attribute ARG1))
@@ -10147,225 +10147,225 @@
                      (macro read ((type ARG1))
                             (allow ARG1 obj_type_attribute
                                    (files_except_blk_and_chr (read)))
-                            (call files.generic_var.read_lnk_files (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro read_fifo_files ((type ARG1))
                             (allow ARG1 obj_type_attribute
                                    read_fifo_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro read_files ((type ARG1))
                             (allow ARG1 obj_type_attribute read_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro read_lnk_files ((type ARG1))
                             (allow ARG1 obj_type_attribute read_lnk_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro read_sock_files ((type ARG1))
                             (allow ARG1 obj_type_attribute
                                    read_sock_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro relabel ((type ARG1))
                             (allow ARG1 obj_type_attribute
                                    (files_except_blk_and_chr (relabel)))
-                            (call files.generic_var.read_lnk_files (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro relabel_dirs ((type ARG1))
                             (allow ARG1 obj_type_attribute relabel_dir_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro relabel_fifo_files ((type ARG1))
                             (allow ARG1 obj_type_attribute
                                    relabel_fifo_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro relabel_files ((type ARG1))
                             (allow ARG1 obj_type_attribute relabel_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro relabel_lnk_files ((type ARG1))
                             (allow ARG1 obj_type_attribute
                                    relabel_lnk_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro relabel_sock_files ((type ARG1))
                             (allow ARG1 obj_type_attribute
                                    relabel_sock_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro relabelfrom ((type ARG1))
                             (allow ARG1 obj_type_attribute
                                    (files_except_blk_and_chr (relabelfrom)))
-                            (call files.generic_var.read_lnk_files (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro relabelfrom_dirs ((type ARG1))
                             (allow ARG1 obj_type_attribute
                                    relabelfrom_dir_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro relabelfrom_fifo_files ((type ARG1))
                             (allow ARG1 obj_type_attribute
                                    relabelfrom_fifo_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro relabelfrom_files ((type ARG1))
                             (allow ARG1 obj_type_attribute
                                    relabelfrom_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro relabelfrom_lnk_files ((type ARG1))
                             (allow ARG1 obj_type_attribute
                                    relabelfrom_lnk_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro relabelfrom_sock_files ((type ARG1))
                             (allow ARG1 obj_type_attribute
                                    relabelfrom_sock_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro relabelto ((type ARG1))
                             (allow ARG1 obj_type_attribute
                                    (files_except_blk_and_chr (relabelto)))
-                            (call files.generic_var.read_lnk_files (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro relabelto_dirs ((type ARG1))
                             (allow ARG1 obj_type_attribute relabelto_dir_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro relabelto_fifo_files ((type ARG1))
                             (allow ARG1 obj_type_attribute
                                    relabelto_fifo_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro relabelto_files ((type ARG1))
                             (allow ARG1 obj_type_attribute
                                    relabelto_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro relabelto_lnk_files ((type ARG1))
                             (allow ARG1 obj_type_attribute
                                    relabelto_lnk_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro relabelto_sock_files ((type ARG1))
                             (allow ARG1 obj_type_attribute
                                    relabelto_sock_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro rename ((type ARG1))
                             (allow ARG1 obj_type_attribute
                                    (files_except_blk_and_chr (rename)))
-                            (call files.generic_var.read_lnk_files (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro rename_dirs ((type ARG1))
                             (allow ARG1 obj_type_attribute rename_dir_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro rename_fifo_files ((type ARG1))
                             (allow ARG1 obj_type_attribute
                                    rename_fifo_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro rename_files ((type ARG1))
                             (allow ARG1 obj_type_attribute rename_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro rename_lnk_files ((type ARG1))
                             (allow ARG1 obj_type_attribute
                                    rename_lnk_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro rename_sock_files ((type ARG1))
                             (allow ARG1 obj_type_attribute
                                    rename_sock_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro rw ((type ARG1))
                             (allow ARG1 obj_type_attribute
                                    (files_except_blk_and_chr (rw)))
-                            (call files.generic_var.read_lnk_files (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro rw_dirs ((type ARG1))
                             (allow ARG1 obj_type_attribute rw_dir_perms)
-                            (call files.generic_var.read_lnk_files (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro rw_fifo_files ((type ARG1))
                             (allow ARG1 obj_type_attribute rw_fifo_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro rw_files ((type ARG1))
                             (allow ARG1 obj_type_attribute rw_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro rw_lnk_files ((type ARG1))
                             (allow ARG1 obj_type_attribute rw_lnk_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro rw_sock_files ((type ARG1))
                             (allow ARG1 obj_type_attribute rw_sock_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro search ((type ARG1))
                             (allow ARG1 obj_type_attribute search_dir_perms)
-                            (call files.generic_var.read_lnk_files (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro setattr ((type ARG1))
                             (allow ARG1 obj_type_attribute
                                    (files_except_blk_and_chr (setattr)))
-                            (call files.generic_var.read_lnk_files (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro setattr_dirs ((type ARG1))
                             (allow ARG1 obj_type_attribute (dir (setattr)))
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro setattr_fifo_files ((type ARG1))
                             (allow ARG1 obj_type_attribute (fifo_file
                                                             (setattr)))
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro setattr_files ((type ARG1))
                             (allow ARG1 obj_type_attribute (file (setattr)))
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro setattr_lnk_files ((type ARG1))
                             (allow ARG1 obj_type_attribute (lnk_file
                                                             (setattr)))
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro setattr_sock_files ((type ARG1))
                             (allow ARG1 obj_type_attribute (sock_file
                                                             (setattr)))
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro write ((type ARG1))
                             (allow ARG1 obj_type_attribute
                                    (files_except_blk_and_chr (write)))
-                            (call files.generic_var.read_lnk_files (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro write_dirs ((type ARG1))
                             (allow ARG1 obj_type_attribute write_dir_perms)
-                            (call files.generic_var.read_lnk_files (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro write_fifo_files ((type ARG1))
                             (allow ARG1 obj_type_attribute
                                    write_fifo_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro write_files ((type ARG1))
                             (allow ARG1 obj_type_attribute write_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro write_lnk_files ((type ARG1))
                             (allow ARG1 obj_type_attribute
                                    write_lnk_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro write_sock_files ((type ARG1))
                             (allow ARG1 obj_type_attribute
                                    write_sock_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      ;;
                      ;; Policy
@@ -10400,142 +10400,142 @@
 
                      (macro add_entries ((type ARG1))
                             (allow ARG1 runtime_file add_entry_dir_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro append_fifo_files ((type ARG1))
                             (allow ARG1 runtime_file append_fifo_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro append_files ((type ARG1))
                             (allow ARG1 runtime_file append_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro create ((type ARG1))
                             (allow ARG1 runtime_file (files_except_blk_and_chr
                                                       (create)))
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro create_dirs ((type ARG1))
                             (allow ARG1 runtime_file create_dir_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro create_fifo_files ((type ARG1))
                             (allow ARG1 runtime_file create_fifo_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro create_files ((type ARG1))
                             (allow ARG1 runtime_file create_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro create_lnk_files ((type ARG1))
                             (allow ARG1 runtime_file create_lnk_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro create_sock_files ((type ARG1))
                             (allow ARG1 runtime_file create_sock_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro del_entries ((type ARG1))
                             (allow ARG1 runtime_file del_entry_dir_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro delete ((type ARG1))
                             (allow ARG1 runtime_file (files_except_blk_and_chr
                                                       (delete)))
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro delete_dirs ((type ARG1))
                             (allow ARG1 runtime_file delete_dir_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro delete_fifo_files ((type ARG1))
                             (allow ARG1 runtime_file delete_fifo_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro delete_files ((type ARG1))
                             (allow ARG1 runtime_file delete_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro delete_lnk_files ((type ARG1))
                             (allow ARG1 runtime_file delete_lnk_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro delete_sock_files ((type ARG1))
                             (allow ARG1 runtime_file delete_sock_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro execute ((type ARG1))
                             (allow ARG1 runtime_file exec_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro getattr ((type ARG1))
                             (allow ARG1 runtime_file (files_except_blk_and_chr
                                                       (getattr)))
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro getattr_dirs ((type ARG1))
                             (allow ARG1 runtime_file (dir (getattr)))
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro getattr_fifo_files ((type ARG1))
                             (allow ARG1 runtime_file (fifo_file (getattr)))
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro getattr_files ((type ARG1))
                             (allow ARG1 runtime_file (file (getattr)))
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro getattr_lnk_files ((type ARG1))
                             (allow ARG1 runtime_file (lnk_file (getattr)))
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro getattr_sock_files ((type ARG1))
                             (allow ARG1 runtime_file (sock_file (getattr)))
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro list ((type ARG1))
                             (allow ARG1 runtime_file list_dir_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro manage ((type ARG1))
                             (allow ARG1 runtime_file (files_except_blk_and_chr
                                                       (manage)))
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro manage_dirs ((type ARG1))
                             (allow ARG1 runtime_file manage_dir_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro manage_fifo_files ((type ARG1))
                             (allow ARG1 runtime_file manage_fifo_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro manage_files ((type ARG1))
                             (allow ARG1 runtime_file manage_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro manage_lnk_files ((type ARG1))
                             (allow ARG1 runtime_file manage_lnk_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro manage_sock_files ((type ARG1))
                             (allow ARG1 runtime_file manage_sock_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro map_files ((type ARG1))
                             (allow ARG1 runtime_file (file (map))))
 
                      (macro mapr_files ((type ARG1))
                             (allow ARG1 runtime_file mapr_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro maprw_files ((type ARG1))
                             (allow ARG1 runtime_file maprw_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro maprx ((type ARG1))
                             (allow ARG1 runtime_file maprx_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro obj_type_transition
                             ((type ARG1)(type ARG2)(class ARG3)(name ARG4))
@@ -10545,205 +10545,205 @@
                      (macro read ((type ARG1))
                             (allow ARG1 runtime_file (files_except_blk_and_chr
                                                       (read)))
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro read_fifo_files ((type ARG1))
                             (allow ARG1 runtime_file read_fifo_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro read_files ((type ARG1))
                             (allow ARG1 runtime_file read_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro read_lnk_files ((type ARG1))
                             (allow ARG1 runtime_file read_lnk_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro read_sock_files ((type ARG1))
                             (allow ARG1 runtime_file read_sock_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro relabel ((type ARG1))
                             (allow ARG1 runtime_file (files_except_blk_and_chr
                                                       (relabel)))
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro relabel_dirs ((type ARG1))
                             (allow ARG1 runtime_file relabel_dir_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro relabel_fifo_files ((type ARG1))
                             (allow ARG1 runtime_file relabel_fifo_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro relabel_files ((type ARG1))
                             (allow ARG1 runtime_file relabel_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro relabel_lnk_files ((type ARG1))
                             (allow ARG1 runtime_file relabel_lnk_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro relabel_sock_files ((type ARG1))
                             (allow ARG1 runtime_file relabel_sock_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro relabelfrom ((type ARG1))
                             (allow ARG1 runtime_file (files_except_blk_and_chr
                                                       (relabelfrom)))
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro relabelfrom_dirs ((type ARG1))
                             (allow ARG1 runtime_file relabelfrom_dir_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro relabelfrom_fifo_files ((type ARG1))
                             (allow ARG1 runtime_file
                                    relabelfrom_fifo_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro relabelfrom_files ((type ARG1))
                             (allow ARG1 runtime_file relabelfrom_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro relabelfrom_lnk_files ((type ARG1))
                             (allow ARG1 runtime_file
                                    relabelfrom_lnk_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro relabelfrom_sock_files ((type ARG1))
                             (allow ARG1 runtime_file
                                    relabelfrom_sock_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro relabelto ((type ARG1))
                             (allow ARG1 runtime_file (files_except_blk_and_chr
                                                       (relabelto)))
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro relabelto_dirs ((type ARG1))
                             (allow ARG1 runtime_file relabelto_dir_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro relabelto_fifo_files ((type ARG1))
                             (allow ARG1 runtime_file relabelto_fifo_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro relabelto_files ((type ARG1))
                             (allow ARG1 runtime_file relabelto_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro relabelto_lnk_files ((type ARG1))
                             (allow ARG1 runtime_file relabelto_lnk_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro relabelto_sock_files ((type ARG1))
                             (allow ARG1 runtime_file relabelto_sock_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro rename ((type ARG1))
                             (allow ARG1 runtime_file (files_except_blk_and_chr
                                                       (rename)))
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro rename_dirs ((type ARG1))
                             (allow ARG1 runtime_file rename_dir_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro rename_fifo_files ((type ARG1))
                             (allow ARG1 runtime_file rename_fifo_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro rename_files ((type ARG1))
                             (allow ARG1 runtime_file rename_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro rename_lnk_files ((type ARG1))
                             (allow ARG1 runtime_file rename_lnk_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro rename_sock_files ((type ARG1))
                             (allow ARG1 runtime_file rename_sock_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro rw ((type ARG1))
                             (allow ARG1 runtime_file (files_except_blk_and_chr
                                                       (rw)))
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro rw_dirs ((type ARG1))
                             (allow ARG1 runtime_file rw_dir_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro rw_fifo_files ((type ARG1))
                             (allow ARG1 runtime_file rw_fifo_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro rw_files ((type ARG1))
                             (allow ARG1 runtime_file rw_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro rw_lnk_files ((type ARG1))
                             (allow ARG1 runtime_file rw_lnk_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro rw_sock_files ((type ARG1))
                             (allow ARG1 runtime_file rw_sock_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro search ((type ARG1))
                             (allow ARG1 runtime_file search_dir_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro setattr ((type ARG1))
                             (allow ARG1 runtime_file (files_except_blk_and_chr
                                                       (setattr)))
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro setattr_dirs ((type ARG1))
                             (allow ARG1 runtime_file (dir (setattr)))
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro setattr_fifo_files ((type ARG1))
                             (allow ARG1 runtime_file (fifo_file (setattr)))
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro setattr_files ((type ARG1))
                             (allow ARG1 runtime_file (file (setattr)))
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro setattr_lnk_files ((type ARG1))
                             (allow ARG1 runtime_file (lnk_file (setattr)))
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro setattr_sock_files ((type ARG1))
                             (allow ARG1 runtime_file (sock_file (setattr)))
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro write ((type ARG1))
                             (allow ARG1 runtime_file (files_except_blk_and_chr
                                                       (write)))
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro write_dirs ((type ARG1))
                             (allow ARG1 runtime_file write_dir_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro write_fifo_files ((type ARG1))
                             (allow ARG1 runtime_file write_fifo_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro write_files ((type ARG1))
                             (allow ARG1 runtime_file write_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro write_lnk_files ((type ARG1))
                             (allow ARG1 runtime_file write_lnk_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      (macro write_sock_files ((type ARG1))
                             (allow ARG1 runtime_file write_sock_file_perms)
-                            (call files.generic_runtime.search (ARG1)))
+                            (call files.generic_runtime.read_lnk_files (ARG1)))
 
                      ;;
                      ;; Policy
