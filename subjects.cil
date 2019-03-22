@@ -374,6 +374,11 @@
                             (allow ARG1 subj_type_attribute (process
                                                              (rlimitinh))))
 
+                     (macro read_inherited_fifo_files ((type ARG1))
+                            (allow ARG1 subj_type_attribute
+                                   read_inherited_fifo_file_perms)
+                            (call use_fd (ARG1)))
+
                      (macro rw_fifo_files ((type ARG1))
                             (allow ARG1 subj_type_attribute
                                    rw_fifo_file_perms))
@@ -632,6 +637,10 @@
 
                      (macro rlimitinh ((type ARG1))
                             (allow ARG1 subj (process (rlimitinh))))
+
+                     (macro read_inherited_fifo_files ((type ARG1))
+                            (allow ARG1 subj read_inherited_fifo_file_perms)
+                            (call use_fd (ARG1)))
 
                      (macro rw_fifo_files ((type ARG1))
                             (allow ARG1 subj rw_fifo_file_perms))
