@@ -21071,6 +21071,10 @@
                      ;; Macros
                      ;;
 
+                     (macro dontaudit_getattr ((type ARG1))
+                            (dontaudit ARG1 obj_type_attribute
+                                   (files_except_blk_and_chr (getattr))))
+
                      (macro add_entries ((type ARG1))
                             (allow ARG1 obj_type_attribute add_entry_dir_perms)
                             (call files.generic_data.read_lnk_files (ARG1))
