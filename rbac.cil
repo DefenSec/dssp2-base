@@ -24,22 +24,22 @@
 (constrain (process (dyntransition noatsecure rlimitinh siginh transition))
            (or (or (or (eq r1 r2)
                        (and
-                        (eq t1 rbac_role_change_exemption_subj_type_attribute)
+                        (eq t1 rbac_subj_role_change_exemption_subj_type_attribute)
                         (eq
                          t2 rbac_user_exemption_target_subj_type_attribute)))
                    (and
-                    (eq t1 rbac_sys_role_change_exemption_subj_type_attribute)
+                    (eq t1 rbac_subj_sys_role_change_exemption_subj_type_attribute)
                     (eq r2 rbac_sys_role_attribute)))
                (eq t1 rbac_uncond_exemption_subj_type_attribute)))
 
 (constrain (process2 (nnp_transition nosuid_transition))
            (or (or (or (eq r1 r2)
                        (and
-                        (eq t1 rbac_role_change_exemption_subj_type_attribute)
+                        (eq t1 rbac_subj_role_change_exemption_subj_type_attribute)
                         (eq
                          t2 rbac_user_exemption_target_subj_type_attribute)))
                    (and
-                    (eq t1 rbac_sys_role_change_exemption_subj_type_attribute)
+                    (eq t1 rbac_subj_sys_role_change_exemption_subj_type_attribute)
                     (eq r2 rbac_sys_role_attribute)))
                (eq t1 rbac_uncond_exemption_subj_type_attribute)))
 
@@ -51,19 +51,20 @@
        (typeattributeset rbac_obj_role_change_exemption_subj_type_attribute
                          ARG1))
 
-(macro rbac_role_change_exemption_subj_type ((type ARG1))
-       (typeattributeset rbac_role_change_exemption_subj_type_attribute ARG1))
-
 (macro rbac_obj_sys_role_change_exemption_subj_type ((type ARG1))
        (typeattributeset rbac_obj_sys_role_change_exemption_subj_type_attribute
                          ARG1))
 
+(macro rbac_subj_role_change_exemption_subj_type ((type ARG1))
+       (typeattributeset rbac_subj_role_change_exemption_subj_type_attribute
+                         ARG1))
+
+(macro rbac_subj_sys_role_change_exemption_subj_type ((type ARG1))
+       (typeattributeset rbac_subj_sys_role_change_exemption_subj_type_attribute
+                         ARG1))
+
 (macro rbac_sys_role ((role ARG1))
        (roleattributeset rbac_sys_role_attribute ARG1))
-
-(macro rbac_sys_role_change_exemption_subj_type ((type ARG1))
-       (typeattributeset rbac_sys_role_change_exemption_subj_type_attribute
-                         ARG1))
 
 (macro rbac_uncond_exemption_subj_type ((type ARG1))
        (typeattributeset rbac_uncond_exemption_subj_type_attribute ARG1))
@@ -79,7 +80,7 @@
 
 (typeattribute rbac_obj_role_change_exemption_subj_type_attribute)
 (typeattribute rbac_obj_sys_role_change_exemption_subj_type_attribute)
-(typeattribute rbac_role_change_exemption_subj_type_attribute)
-(typeattribute rbac_sys_role_change_exemption_subj_type_attribute)
+(typeattribute rbac_subj_role_change_exemption_subj_type_attribute)
+(typeattribute rbac_subj_sys_role_change_exemption_subj_type_attribute)
 (typeattribute rbac_uncond_exemption_subj_type_attribute)
 (typeattribute rbac_user_exemption_target_subj_type_attribute)
