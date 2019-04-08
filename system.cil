@@ -1668,7 +1668,10 @@
               ;; Policy
               ;;
 
-              (blockinherit sys.sysctl_file.obj_template))
+              (blockinherit sys.sysctl_file.obj_template)
+
+              (allow unconfined_subj_type_attribute sysctl_file
+                     (file (getattr mounton))))
 
        (block kernel_ns_last_pid_sysctl
 
