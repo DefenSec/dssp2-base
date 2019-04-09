@@ -47,6 +47,10 @@
 ;; Macros
 ;;
 
+(macro ibac_id_change_exemption_subj_type ((type ARG1))
+       (call ibac_obj_id_change_exemption_subj_type (ARG1))
+       (call ibac_subj_id_change_exemption_subj_type (ARG1)))
+
 (macro ibac_obj_id_change_exemption_subj_type ((type ARG1))
        (typeattributeset ibac_obj_id_change_exemption_subj_type_attribute
                          ARG1))
@@ -65,6 +69,10 @@
 
 (macro ibac_sys_id ((user ARG1))
        (userattributeset ibac_sys_id_attribute ARG1))
+
+(macro ibac_sys_id_change_exemption_subj_type ((type ARG1))
+       (call ibac_obj_sys_id_change_exemption_subj_type (ARG1))
+       (call ibac_subj_sys_id_change_exemption_subj_type (ARG1)))
 
 (macro ibac_uncond_exemption_subj_type ((type ARG1))
        (typeattributeset ibac_uncond_exemption_subj_type_attribute ARG1))
