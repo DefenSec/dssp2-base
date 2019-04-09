@@ -4334,6 +4334,9 @@
                   (allow ARG1 fs (files (read)))
                   (call sysfs.search (ARG1)))
 
+           (macro read_inherited_files ((type ARG1))
+                  (allow ARG1 fs read_inherited_file_perms))
+
            (macro read_lnk_files ((type ARG1))
                   (allow ARG1 fs (lnk_files (read)))
                   (call sysfs.search (ARG1)))
@@ -4453,6 +4456,9 @@
            (macro rw_files ((type ARG1))
                   (allow ARG1 fs (files (rw)))
                   (call sysfs.search (ARG1)))
+
+           (macro rw_inherited_files ((type ARG1))
+                  (allow ARG1 fs rw_inherited_file_perms))
 
            (macro rw_lnk_files ((type ARG1))
                   (allow ARG1 fs (lnk_files (rw)))
