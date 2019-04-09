@@ -3336,9 +3336,6 @@
               (allow unconfined_subj_type_attribute obj_type_attribute
                      rw_file_perms)
 
-              (allow unconfined_subj_type_attribute isid
-                     (dir (getattr mounton)))
-
               ;;
               ;; Templates
               ;;
