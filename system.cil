@@ -1728,7 +1728,7 @@
               ;; Policy
               ;;
 
-              (blockinherit sys.sysctl_file.obj_template))
+              (blockinherit sys.sysctl_file.obj_stub))
 
        (block kmsg_proc
 
