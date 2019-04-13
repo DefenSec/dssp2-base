@@ -333,6 +333,9 @@
        (optional sys_optional_lorax
                  (call lorax.var_tmp.rw_inherited_files (isid)))
 
+       (optional sys_optional_machined
+                 (call machined.use_fd (isid)))
+
        (optional sys_optional_misc
                  (call misc.font.client_subj_type (isid)))
 
