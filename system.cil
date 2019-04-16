@@ -150,6 +150,9 @@
        (macro userrole_user ((user ARG1))
               (userrole ARG1 role))
 
+       (macro write_keyring ((type ARG1))
+              (allow ARG1 isid write_key_perms))
+
        (macro write_security_subj_type ((type ARG1))
               (typeattributeset write_security_subj_type_attribute ARG1))
 
