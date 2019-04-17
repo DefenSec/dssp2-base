@@ -7420,6 +7420,9 @@
            ;; Contexts
            ;;
 
+           (filecon "/dev/mqueue" dir fs_context)
+           (filecon "/dev/mqueue(/.*)?" any ())
+
            (filecon "/tmp" dir fs_context)
            (filecon "/tmp(/.*)?" any ())
 
