@@ -7423,6 +7423,9 @@
            (filecon "/dev/mqueue" dir fs_context)
            (filecon "/dev/mqueue/.*" any ())
 
+           (filecon "/dev/shm" dir fs_context)
+           (filecon "/dev/shm/.*" any ())
+
            (filecon "/tmp" dir fs_context)
            (filecon "/tmp/.*" any ())
 
