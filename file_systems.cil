@@ -7892,6 +7892,7 @@
 
            (blockinherit fs.obj_template)
 
+           (call devtmpfs.associate (fs))
            (call xattr.associate (fs))
 
            (call sys.mountpoint.obj_type (fs)))
