@@ -283,6 +283,10 @@
                             (dontaudit ARG1 subj_type_attribute
                                        (process (noatsecure))))
 
+                     (macro dontaudit_ps ((type ARG1))
+                            (dontaudit ARG1 subj_type_attribute (process_state
+                                                                 (ps))))
+
                      (macro dontaudit_read_state ((type ARG1))
                             (dontaudit ARG1 subj_type_attribute (process_state
                                                                  (read))))
