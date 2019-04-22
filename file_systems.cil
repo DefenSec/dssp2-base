@@ -4187,6 +4187,9 @@
            (macro dontaudit_audit_access_dirs ((type ARG1))
                   (dontaudit ARG1 fs (dir (audit_access))))
 
+           (macro dontaudit_getattr ((type ARG1))
+                  (dontaudit ARG1 fs (files_except_blk_and_chr (getattr))))
+
            (macro add_entries ((type ARG1))
                   (allow ARG1 fs add_entry_dir_perms)
                   (call sysfs.search (ARG1)))
