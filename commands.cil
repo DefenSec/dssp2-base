@@ -34,6 +34,9 @@
                      (allow ARG1 cmd_file append_file_perms)
                      (call search (ARG1)))
 
+              (macro audit_execute_access ((type ARG1))
+                     (allow ARG1 cmd_file (file (getattr execute))))
+
               (macro cmd_file_auto_subj_type_transition ((type ARG1)(type
                                                                      ARG2))
                      (typetransition ARG1 cmd_file process "*" ARG2)
