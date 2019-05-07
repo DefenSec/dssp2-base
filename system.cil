@@ -957,13 +957,13 @@
                           (dir (mounton)))
 
               (neverallow not_recv_invalid_associations_subj_type_attribute
-                          isid (association (recv)))
+                          isid (association (recvfrom)))
 
               (neverallow not_recv_invalid_packets_subj_type_attribute isid
                           (packet (recv)))
 
               (neverallow not_send_invalid_associations_subj_type_attribute
-                          isid (association (send)))
+                          isid (association (sendto)))
 
               (neverallow not_send_invalid_packets_subj_type_attribute isid
                           (packet (send)))
