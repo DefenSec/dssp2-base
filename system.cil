@@ -264,13 +264,11 @@
        (allow isid self create_unix_stream_socket_perms)
 
        (call change_ring_buffer_level (isid))
-       (call request_load_kernel_module (isid))
-       (call sys.send_invalid_associations_subj_type (isid))
-       (call sys.send_invalid_packets_subj_type (isid))
-
-       (call recv_invalid_associations_subj_type (isid))
-       (call recv_invalid_packets_subj_type (isid))
+       (call invalid.ipsec_association_sendto (isid))
+       (call recv_and_send_invalid_associations_subj_type (isid))
+       (call recv_and_send_invalid_packets_subj_type (isid))
        (call recv_invalid_peers_subj_type (isid))
+       (call request_load_kernel_module (isid))
 
        (call dev.clock.devtmpfs_obj_type_transition (isid))
        (call dev.cpu.devtmpfs_obj_type_transition (isid))
