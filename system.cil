@@ -79,9 +79,17 @@
        (macro read_state ((type ARG1))
               (allow ARG1 isid (process_state (read))))
 
+       (macro recv_invalid_associations_subj_type ((type ARG1))
+              (typeattributeset recv_invalid_associations_subj_type_attribute
+                                ARG1))
+
        (macro recv_invalid_packets_subj_type ((type ARG1))
               (typeattributeset recv_invalid_packets_subj_type_attribute
                                 ARG1))
+
+       (macro recv_and_send_invalid_associations_subj_type ((type ARG1))
+              (call recv_invalid_associations_subj_type (ARG1))
+              (call send_invalid_associations_subj_type (ARG1)))
 
        (macro recv_and_send_invalid_packets_subj_type ((type ARG1))
               (call recv_invalid_packets_subj_type (ARG1))
@@ -110,6 +118,10 @@
 
        (macro rw_unix_stream_sockets ((type ARG1))
               (allow ARG1 isid rw_unix_stream_socket_perms))
+
+       (macro send_invalid_associations_subj_type ((type ARG1))
+              (typeattributeset send_invalid_associations_subj_type_attribute
+                                ARG1))
 
        (macro send_invalid_packets_subj_type ((type ARG1))
               (typeattributeset send_invalid_packets_subj_type_attribute
@@ -167,6 +179,7 @@
        (boolean load_kernel_module true)
        (boolean manage_files_except true)
        (boolean mounton_invalid_dir true)
+       (boolean recv_and_send_invalid_associations true)
        (boolean recv_and_send_invalid_packets true)
        (boolean recv_invalid_peers true)
 
@@ -188,6 +201,12 @@
        (typeattribute
         not_read_kernel_msg_subj_type_or_unconfined_subj_type_attribute)
        (typeattribute read_kernel_msg_subj_type_attribute)
+
+       (typeattribute not_recv_invalid_associations_subj_type_attribute)
+       (typeattribute recv_invalid_associations_subj_type_attribute)
+
+       (typeattribute not_send_invalid_associations_subj_type_attribute)
+       (typeattribute send_invalid_associations_subj_type_attribute)
 
        (typeattribute not_recv_invalid_packets_subj_type_attribute)
        (typeattribute recv_invalid_packets_subj_type_attribute)
@@ -246,8 +265,10 @@
 
        (call change_ring_buffer_level (isid))
        (call request_load_kernel_module (isid))
+       (call sys.send_invalid_associations_subj_type (isid))
        (call sys.send_invalid_packets_subj_type (isid))
 
+       (call recv_invalid_associations_subj_type (isid))
        (call recv_invalid_packets_subj_type (isid))
        (call recv_invalid_peers_subj_type (isid))
 
@@ -416,6 +437,12 @@
         not_read_kernel_msg_subj_type_or_unconfined_subj_type_attribute
         (not (read_kernel_msg_subj_type_attribute
               unconfined_subj_type_attribute)))
+
+       (typeattributeset not_recv_invalid_associations_subj_type_attribute
+                         (not (recv_invalid_associations_subj_type_attribute)))
+
+       (typeattributeset not_send_invalid_associations_subj_type_attribute
+                         (not (send_invalid_associations_subj_type_attribute)))
 
        (typeattributeset not_recv_invalid_packets_subj_type_attribute
                          (not (recv_invalid_packets_subj_type_attribute)))
@@ -837,8 +864,11 @@
               (macro infiniband_pkey_access ((type ARG1))
                      (allow ARG1 isid (infiniband_pkey (access))))
 
-              (macro ipsec_association_recvfrom_sendto ((type ARG1))
-                     (allow ARG1 isid (association (recvfrom sendto))))
+              (macro ipsec_association_recvfrom ((type ARG1))
+                     (allow ARG1 isid (association (recvfrom))))
+
+              (macro ipsec_association_sendto ((type ARG1))
+                     (allow ARG1 isid (association (sendto))))
 
               (macro mounton_dirs ((type ARG1))
                      (allow ARG1 isid (dir (getattr mounton))))
@@ -926,8 +956,14 @@
               (neverallow not_mounton_invalid_dir_subj_type_attribute isid
                           (dir (mounton)))
 
+              (neverallow not_recv_invalid_associations_subj_type_attribute
+                          isid (association (recv)))
+
               (neverallow not_recv_invalid_packets_subj_type_attribute isid
                           (packet (recv)))
+
+              (neverallow not_send_invalid_associations_subj_type_attribute
+                          isid (association (send)))
 
               (neverallow not_send_invalid_packets_subj_type_attribute isid
                           (packet (send)))
@@ -2863,6 +2899,29 @@
                      (blockabstract obj_template)
 
                      (blockinherit sys.proc_file.obj_stub)))
+
+       (block recv_and_send_invalid_associations
+
+              ;;
+              ;; Contexts
+              ;;
+
+              (genfscon "selinuxfs"
+                        "/booleans/sys.recv_and_send_invalid_associations"
+                        bool_file_context)
+
+              ;;
+              ;; Policy
+              ;;
+
+              (blockinherit sec.bool_file.obj_template)
+
+              (booleanif recv_and_send_invalid_associations
+                         (true
+                          (allow recv_invalid_associations_subj_type_attribute
+                                 invalid.isid (association (recvfrom)))
+                          (allow send_invalid_associations_subj_type_attribute
+                                 invalid.isid (association (sendto))))))
 
        (block recv_and_send_invalid_packets
 
