@@ -307,9 +307,9 @@
        (call fs.tmpfs.search (isid))
        (call fs.xattr.getattr_fs (isid))
 
-       (call net.generic_if.egress (isid))
-       (call net.generic_node.sendto (isid))
-       (call net.generic_packet.packet_send (isid))
+       (call net.if.egress (isid))
+       (call net.node.sendto (isid))
+       (call net.packet.packet_send (isid))
 
        (call sec.compute_create_context (isid))
 
