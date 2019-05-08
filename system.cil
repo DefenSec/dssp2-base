@@ -265,6 +265,7 @@
 
        (call change_ring_buffer_level (isid))
        (call invalid.ipsec_association_sendto (isid))
+       (call invalid.packet_send (isid))
        (call recv_and_send_invalid_associations_subj_type (isid))
        (call recv_and_send_invalid_packets_subj_type (isid))
        (call recv_invalid_peers_subj_type (isid))
