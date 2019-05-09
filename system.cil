@@ -4291,6 +4291,9 @@
               (macro dontaudit_audit_access_dirs ((type ARG1))
                      (dontaudit ARG1 isid (dir (audit_access))))
 
+              (macro dontaudit_list ((type ARG1))
+                     (dontaudit ARG1 isid list_dir_perms))
+
               (macro dontaudit_read_lnk_files ((type ARG1))
                      (dontaudit ARG1 isid read_lnk_file_perms))
 
