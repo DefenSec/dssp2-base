@@ -85,7 +85,7 @@
 
        (roleattribute role_attribute)
 
-       (roleattributeset role_attribute sys.role)
+       (call roletype_role (sys.role))
 
        (roletype role_attribute subj))
 
@@ -135,10 +135,13 @@
        ;; Macros
        ;;
 
+       (macro roletype_role ((role ARG1))
+              (roleattributeset role_attribute ARG1))
+
        (macro run ((type ARG1)(role ARG2))
               (call auto_subj_type_transition (ARG1))
 
-              (roleattributeset role_attribute ARG2)
+              (call roletype_role (ARG2))
 
               (call getrlimit (ARG1))
               (call getsched (ARG1))
