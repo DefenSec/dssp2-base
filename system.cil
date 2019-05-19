@@ -266,10 +266,12 @@
        (call change_ring_buffer_level (isid))
        (call invalid.ipsec_association_sendto (isid))
        (call invalid.packet_send (isid))
+       (call invalid.roletype_role (role))
        (call recv_and_send_invalid_associations_subj_type (isid))
        (call recv_and_send_invalid_packets_subj_type (isid))
        (call recv_invalid_peers_subj_type (isid))
        (call request_load_kernel_module (isid))
+       (call unlabeled.roletype_role (role))
 
        (call dev.clock.devtmpfs_obj_type_transition (isid))
        (call dev.cpu.devtmpfs_obj_type_transition (isid))
@@ -888,7 +890,7 @@
                      (allow ARG1 isid (process_state (read))))
 
               (macro roletype_role ((role ARG1))
-                     (roletype ARG1 isid))
+                     (roleattributeset role_attribute ARG1))
 
               (macro packet_relabelto ((type ARG1))
                      (allow ARG1 isid (packet (relabelto))))
@@ -923,7 +925,9 @@
 
               (blockinherit isid.stub)
 
-              (roletype role isid)
+              (roleattribute role_attribute)
+
+              (roletype role_attribute isid)
 
               (allow isid self (process (sigchld)))
 
@@ -4300,6 +4304,9 @@
               (macro dontaudit_setattr_dirs ((type ARG1))
                      (dontaudit ARG1 isid (dir (setattr))))
 
+              (macro roletype_role ((role ARG1))
+                     (roleattributeset role_attribute ARG1))
+
               (macro mounton_dirs ((type ARG1))
                      (allow ARG1 isid (dir (getattr mounton))))
 
@@ -4309,7 +4316,9 @@
 
               (blockinherit isid.stub)
 
-              (roletype role isid)
+              (roleattribute role_attribute)
+
+              (roletype role_attribute isid)
 
               (allow isid self (filesystem (associate)))
 
