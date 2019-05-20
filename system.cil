@@ -319,6 +319,12 @@
        (call term.generic_serial.devtmpfs_obj_type_transition (isid))
        (call term.generic_serial.manage_chr_files (isid))
 
+       (optional sys_optional_application
+                 (call app.system.hybrid.roletype_role (role)))
+
+       (optional sys_optional_ask_password
+                 (call ask_password.tty_agent.roletype_role (role)))
+
        (optional sys_optional_bluetooth
                  (call bluetooth.daemon.rw_sockets (isid)))
 
@@ -327,6 +333,12 @@
 
        (optional sys_optional_cgroups_agent
                  (call cgroups_agent.auto_subj_type_transition (isid)))
+
+       (optional sys_optional_cronie
+                 (call cronie.system_cronjob.roletype_role (role)))
+
+       (optional sys_optional_dbus_system
+                 (call dbus.system.roletype_role (role)))
 
        (optional sys_optional_dm
                  (call dm.crypt.use_fd (isid)))
@@ -348,6 +360,9 @@
 
        (optional sys_optional_kmod
                  (call kmod.auto_subj_type_transition (isid)))
+
+       (optional sys_optional_libvirt_dbus
+                 (call libvirt.libvirt_dbus.system.roletype_role (role)))
 
        (optional sys_optional_livecditd
                  (call livecditd.use_fd (isid)))
@@ -384,10 +399,16 @@
        (optional sys_optional_nspawn
                  (call nspawn.use_fd (isid)))
 
+       (optional sys_optional_nspawn_container
+                 (call nspawn.container_subj.roletype_role (role)))
+
        (optional sys_optional_plymouth
                  (call plymouth.config.read (isid))
                  (call plymouth.runtime.manage (isid))
                  (call plymouth.var_lib.manage (isid)))
+
+       (optional sys_optional_polkit
+                 (call polkit.action.roletype_role (role)))
 
        (optional sys_optional_portable
                  (call portable.daemon.use_fd (isid)))
@@ -401,6 +422,9 @@
        (optional sys_optional_sd_udevd
                  (call sd_udevd.link_keyring (isid)))
 
+       (optional sys_optional_ssh_server
+                 (call ssh.server.pp.roletype_role (role)))
+
        (optional sys_optional_stor
                  (call stor.fixed_disk.devtmpfs_obj_type_transition (isid))
                  (call stor.stor_file.manage (isid))
@@ -412,17 +436,22 @@
                  (call systemd.getattr_files (isid))
                  (call systemd.system.dynamic_subj_type_transition (isid))
                  (call systemd.system.read_state (isid))
+                 (call systemd.system.roletype_role (role))
                  (call systemd.system.signal (isid))
-                 (call systemd.system.use_fd (isid)))
+                 (call systemd.system.use_fd (isid))
+                 (call systemd.unknown.roletype_role (role)))
 
        (optional sys_optional_web_content
-                 (call web_content.cgi.roletype_role (sys.role)))
+                 (call web_content.cgi.roletype_role (role)))
 
        (optional sys_optional_udev
                  (call udev.client_subj_type (isid)))
 
        (optional sys_optional_udisks
                  (call udisks.client.use_fd (isid)))
+
+       (optional sys_optional_xserver
+                 (call xserver.roletype_role (role)))
 
        (typeattributeset
         not_dump_kernel_subj_type_or_unconfined_subj_type_attribute
