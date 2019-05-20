@@ -415,6 +415,9 @@
                  (call systemd.system.signal (isid))
                  (call systemd.system.use_fd (isid)))
 
+       (optional sys_optional_web_content
+                 (call web_content.cgi.roletype_role (sys.role)))
+
        (optional sys_optional_udev
                  (call udev.client_subj_type (isid)))
 
