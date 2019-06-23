@@ -394,7 +394,7 @@
                  (allow isid self (capability (lease)))
 
                  (call nfs.client.auto_subj_type_transition (isid))
-                 (call nfs.rpcnfsd.read_tcp_sockets (isid)))
+                 (call nfs.rpcnfsd.rw_tcp_sockets (isid)))
 
        (optional sys_optional_nspawn
                  (call nspawn.use_fd (isid)))
