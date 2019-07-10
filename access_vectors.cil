@@ -320,7 +320,8 @@
         (audit_read block_suspend mac_admin mac_override syslog wake_alarm))
 (common common_file
         (append create execute getattr ioctl lock link map mounton quotaon read
-                relabelfrom relabelto rename setattr unlink write))
+                relabelfrom relabelto rename setattr unlink watch watch_reads
+                watch_with_perm write))
 (common common_ipc
         (associate create destroy getattr read setattr unix_read
                    unix_write write))
