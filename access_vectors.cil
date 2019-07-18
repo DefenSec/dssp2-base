@@ -47,7 +47,7 @@
 
 (class filesystem
        (associate getattr mount quotaget quotamod relabelfrom relabelto remount
-                  unmount))
+                  unmount watch))
 (class infiniband_endport (manage_subnet))
 (class infiniband_pkey (access))
 
@@ -320,8 +320,8 @@
         (audit_read block_suspend mac_admin mac_override syslog wake_alarm))
 (common common_file
         (append create execute getattr ioctl lock link map mounton quotaon read
-                relabelfrom relabelto rename setattr unlink watch watch_reads
-                watch_with_perm write))
+                relabelfrom relabelto rename setattr unlink watch watch_mount
+                watch_reads watch_sb watch_with_perm write))
 (common common_ipc
         (associate create destroy getattr read setattr unix_read
                    unix_write write))
